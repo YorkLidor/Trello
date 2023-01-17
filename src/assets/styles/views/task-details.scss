@@ -1,4 +1,99 @@
 .task-details {
+    color: $clr_font_blue;
     display: grid;
-    grid-template-columns: minmax(1fr, 1fr)
+    grid-template-columns: 0.8fr 0.2fr;
+    grid-template-rows: 0.2fr 0.7fr;
+    column-gap: 10px;
+
+    background-color: #FFFFFF;
+
+    max-width: 768px;
+    min-height: 600px;
+
+    padding: 10px;
+}
+
+.task-header {
+    grid-column: 1 / -1;
+    height: fit-content;
+
+    .task-title {
+        border: none;
+        outline: none;
+        font-size: 20px;
+        font-weight: 600;
+        width: 100%;
+        font-family: unset;
+
+        &.is-editing {
+            box-shadow: 0 0 0 2px $color_input_shadow;
+        }
+    }
+}
+
+.task-main-col {
+
+    &>* {
+        width: 100%;
+    }
+}
+
+
+
+.title-main-col {
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 600;
+}
+
+.task-activity {
+    resize: none;
+    font-size: 14px;
+    border-radius: 3px;
+    padding: 8px 12px;
+}
+
+.task-description-box {
+
+    margin-block-end: 20px;
+
+    .task-description {
+        resize: none;
+        background-color: #eaecf0;
+        border: none;
+        width: 100%;
+        font-size: 14px;
+        border-radius: 3px;
+        padding: 8px 12px;
+
+        &.is-editing {
+            background-color: #FFFFFF;
+            box-shadow: 0 0 0 2px $color_input_shadow;
+            height: 223px;
+        }
+    }
+}
+
+
+.window-sidebar {
+    .button-link {
+        color: #42526E;
+        background-color: #eaecf0;
+        border-radius: 3px;
+        max-width: 300px;
+        margin-block-start: 8px;
+        padding-inline-start: 5px;
+        height: 32px;
+
+        &:hover{
+            background-color: #e2e5e9;
+            text-decoration: none;
+        }
+    }
+
+    .sidebar-title {
+        font-weight: 600;
+        font-size: 12px;
+        color: #5e6c84;
+    }
 }
