@@ -1,19 +1,30 @@
-.main-nav{
+.main-nav {
     background-color: $clr1;
     color: #FFF;
-    padding: 6px 4px;
     height: 43px;
 
-    a{
-        text-decoration: none;
-        margin-inline-end: .5em;
+    &>* {
+        padding: 6px 4px;
     }
 
-    a:visited{
+    a {
+        line-height: 1.9;
+        text-decoration: none;
+        padding: 6px 12px 6px 10px;
+        border-radius: 3px;
+
+        &:hover {
+            background-color: $dynamic-button-background-color-hover;
+        }
+    }
+
+    a:visited {
         color: #FFF;
     }
 
-    .logo{
+    .logo {
+        line-height: 2.2;
         font-family: sans-serif;
+        font-weight: 700;
     }
 }
