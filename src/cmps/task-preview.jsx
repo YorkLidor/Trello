@@ -1,6 +1,6 @@
 export function TaskPreview(){
 
-    return <div>
-        
-    </div>
+    return <li>
+        Ahlahn ya marbuta
+    </li>
 }

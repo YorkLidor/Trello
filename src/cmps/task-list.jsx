@@ -1,6 +1,8 @@
-export function TaskList(){
+import { TaskPreview } from "./task-preview";
 
-    return <div>
-        
-    </div>
+export function TaskList() {
+
+    return <ul>
+        <TaskPreview />
+    </ul>
 }
