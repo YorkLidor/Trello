@@ -1,0 +1,24 @@
+.group-footer {
+    display: flex;
+    justify-content: space-between;
+    max-height: 38px;
+    min-height: 38px;
+
+    .add-card-btn {
+        border-radius: 3px;
+        color: $clr20;
+        display: block;
+        flex: 1 0 auto;
+        margin: 2px 0 0 8px;
+        padding: 4px 8px;
+        position: relative;
+        text-decoration: none;
+        // -webkit-user-select: none;
+        // user-select: none;
+
+        &:hover {
+            background-color: $clr22;
+            color: $clr21
+        }
+    }
+}

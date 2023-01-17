@@ -2,7 +2,7 @@ import { TaskPreview } from "./task-preview";
 
 export function TaskList() {
 
-    return <ul>
+    return <ul className="task-list">
         <TaskPreview />
     </ul>
 }

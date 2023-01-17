@@ -2,7 +2,8 @@ import { Group } from "./group";
 
 export function GroupList(){
 
-    return <ul>
+    return <ul className="group-list-container">
+        <Group/>
         <Group/>
     </ul>
 }
