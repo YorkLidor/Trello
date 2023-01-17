@@ -1,11 +1,11 @@
 import { Link, NavLink } from "react-router-dom";
 
 export function AppHeader() {
-    
-    return <header>
-        <nav className="main-nav">
+
+    return <header className="app-header">
+        <nav className="main-nav flex justify-between">
             <Link to="/">
-                <h3 className="logo">LOGO!</h3>
+                <h3 className="logo">Shmello</h3>
             </Link>
             <nav className="navlinks-container">
                 <NavLink to="/">Home</NavLink>
