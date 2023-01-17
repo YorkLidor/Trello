@@ -4,6 +4,11 @@
     padding: 6px 4px;
     height: 43px;
 
+    a{
+        text-decoration: none;
+        margin-inline-end: .5em;
+    }
+
     a:visited{
         color: #FFF;
     }
