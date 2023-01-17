@@ -4,19 +4,22 @@ export function BoardHeader() {
     const [editClass, setEditClass] = useState('')
     const elTitleContainer = useRef(null)
 
-    function onTitleEditToggle(classToSet) {
+    useEffect(() => {
+        elTitleContainer?.current.focus()
+    }, [editClass])
+
+    function onTitleEditToggle(ev, classToSet) {
         setEditClass(classToSet)
-        elTitleContainer.current.className.add('editable')
+        if (classToSet === 'editable') ev.target.focus()
     }
 
     return <section className="board-header flex justify-between">
         <div
             className={`title-container ${editClass}`}
-            ref={elTitleContainer}
         >
             <h1
                 className="board-title-header"
-                onClick={() => onTitleEditToggle('editable')}
+                onClick={ev => onTitleEditToggle(ev, 'editable')}
             >
                 Sprint 4
             </h1>
@@ -26,7 +29,9 @@ export function BoardHeader() {
                 value="Sprint 4"
                 name="title"
                 onChange={console.log}
-                onBlur={() => onTitleEditToggle('')}
+                ref={elTitleContainer}
+
+                onBlur={ev => onTitleEditToggle(ev, '')}
             />
         </div>
         <div className="actions-container">
