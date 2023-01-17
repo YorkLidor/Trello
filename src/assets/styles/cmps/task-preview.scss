@@ -1,7 +1,29 @@
 .task-preview-container {
-    color: $clr21;
-    overflow: hidden;
-    padding: 6px 8px 2px;
+    // background-color: #fff;
+    // color: $clr21;
+    // overflow: hidden;
+    // padding: 6px 8px 2px;
+    // position: relative;
+    // z-index: 10;
+
+    background-color: $clr6;
+    border-radius: 3px;
+    box-shadow: var(--ds-shadow-raised, 0 1px 0 $clr23);
+    color: var(--ds-text, inherit);
+    cursor: pointer;
+    display: block;
+    margin-bottom: 8px;
+    max-width: 300px;
+    min-height: 20px;
     position: relative;
-    z-index: 10;
+    z-index: 0;
+
+    &:hover{
+        background-color: #c4c5c7c2;
+    }
+
+    .task-labels{
+        color: $clr21;
+    }
+    
 }

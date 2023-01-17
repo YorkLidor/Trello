@@ -4,7 +4,6 @@ export function GroupHeader() {
         <section
             contentEditable={true}
             suppressContentEditableWarning={true}
-            multiline={false}
         >
             <section>Backlog-Server</section>
         </section>
