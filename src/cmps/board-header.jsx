@@ -10,7 +10,9 @@ export function BoardHeader() {
         <div className="actions-container">
             <button className="btn btn-filter">Filter</button>
             <button className="btn btn-share">Share</button>
-            <button className="btn btn-menu">...</button>
+            <button className="btn btn-menu">
+                <span>...</span>
+                </button>
         </div>
     </section>
 }

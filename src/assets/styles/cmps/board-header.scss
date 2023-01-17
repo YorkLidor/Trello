@@ -1,3 +1,17 @@
-.board-header{
-    
+.board-header {
+
+    .btn {
+        display: inline-flex;
+        background-color: $dynamic-button;
+        border: none;
+        padding: 6px 12px;
+        font-size: 14px;
+        justify-content: center;
+        color: #FFF;
+        margin: 0 .3em;
+    }
+
+    .btn-menu{
+        padding: 6px;
+    }
 }
