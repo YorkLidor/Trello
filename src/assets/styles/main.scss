@@ -1,0 +1,33 @@
+// // Setup
+// @import "setup/variables";
+// @import "setup/functions";
+// @import "setup/mixins";
+@import "setup/typography";
+
+// Basics
+// @import "basics/helpers";
+// @import "basics/layout";
+@import "basics/base";
+// @import "basics/links";
+
+// // Views
+@import "views/board";
+@import "views/home-page";
+@import "views/task-details";
+@import "views/work-space";
+
+// // Components
+@import "cmps/app-header";
+@import "cmps/app-footer";
+@import "cmps/group-list";
+@import "cmps/group";
+@import "cmps/task-footer";
+@import "cmps/task-header";
+@import "cmps/task-list";
+@import "cmps/task-preview";
+
+
+
+
+
+
