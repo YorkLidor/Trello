@@ -1,6 +1,8 @@
+import { Group } from "./group";
+
 export function GroupList(){
 
-    return <div>
-        
-    </div>
+    return <ul>
+        <Group/>
+    </ul>
 }
