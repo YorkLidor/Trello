@@ -27,7 +27,6 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: caveat;
     margin: 0 0 0.6em;
     line-height: 1;
 }
@@ -48,9 +47,13 @@ p {
 }
 
 a {
-    text-decoration: none;
+    text-decoration: underline;
 }
 
 a:hover {
     text-decoration: underline;
+}
+
+button{
+    cursor: pointer;
 }

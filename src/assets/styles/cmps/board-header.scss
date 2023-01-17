@@ -9,7 +9,15 @@
         justify-content: center;
         color: #FFF;
         margin: 0 .3em;
+        border-radius: 3px;
+        transition-property: background-color;
+        transition-duration: 85ms;
+
+        &:hover{
+            background-color: $dynamic-button-hover;
+        }
     }
+
 
     .btn-menu{
         padding: 6px;
@@ -18,5 +26,20 @@
         span{
             line-height: 14px;
         }
+    }
+    
+    .btn-share{
+        background-color: rgba(255, 255, 255, 0.90);
+        color: #091e42;
+
+        &:hover{
+            background-color: rgba(255, 255, 255, 0.80);
+        }
+    }
+
+    .btn-divider{
+        border-left: 1px solid rgba(255, 255, 255, 0.16);
+        height: 16px;
+        margin: 8px 8px 12px 4px;
     }
 }
