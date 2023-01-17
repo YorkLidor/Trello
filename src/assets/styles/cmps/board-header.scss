@@ -13,33 +13,70 @@
         transition-property: background-color;
         transition-duration: 85ms;
 
-        &:hover{
+        &:hover {
             background-color: $dynamic-button-hover;
         }
     }
 
 
-    .btn-menu{
+    .btn-menu {
         padding: 6px;
         line-height: 20px;
 
-        span{
+        span {
             line-height: 14px;
         }
     }
-    
-    .btn-share{
+
+    .btn-share {
         background-color: rgba(255, 255, 255, 0.90);
         color: #091e42;
 
-        &:hover{
+        &:hover {
             background-color: rgba(255, 255, 255, 0.80);
         }
     }
 
-    .btn-divider{
+    .btn-divider {
         border-left: 1px solid rgba(255, 255, 255, 0.16);
         height: 16px;
         margin: 8px 8px 12px 4px;
+    }
+
+    .title-container {
+
+        .board-title-header {
+            font-size: 1.125em;
+            font-weight: 700;
+            line-height: 1.7;
+            padding: 0 1.5em;
+
+            &:hover {
+                background-color: $dynamic-button-hover;
+            }
+        }
+
+        .board-title-input {
+            display: none;
+            background-color: #fff;
+            border: 0;
+            font-style: 1.125em;
+            font-weight: 700;
+            height: 1.7em;
+            margin: 0;
+            padding: 0 1.5em;
+        }
+
+        &.editable {
+
+            .board-title-header {
+                display: none;
+            }
+
+            .board-title-input {
+                display: block;
+            }
+        }
+
     }
 }
