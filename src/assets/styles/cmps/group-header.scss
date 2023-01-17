@@ -1,0 +1,30 @@
+.group-header {
+    display: flex;
+    justify-content: space-between;
+    color: #172b4d;
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans, Ubuntu, Droid Sans, Helvetica Neue, sans-serif;
+    align-items: center;
+    display: flex;
+    font-weight: 800;
+    height: 34px;
+    padding-left: 10px;
+    padding-right: 3px;
+    padding-top: 10px;
+
+    button {
+        align-items: center;
+        align-items: flex-start;
+        background-color: transparent;
+        border: none;
+        border-radius: 3px;
+        color: #6d788a;
+        display: flex;
+        font-size: 18px;
+        height: 32px;
+        justify-content: center;
+        line-height: 20px;
+        margin-bottom: 6px;
+        width: 32px;
+    }
+
+}

@@ -1,4 +1,4 @@
-export function TaskHeader(){
+export function GroupFooter(){
 
     return <div>
         
