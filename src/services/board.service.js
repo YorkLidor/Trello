@@ -1,3 +1,4 @@
+import { async } from 'q'
 import { storageService } from './async-storage.service.js'
 import { jBoard } from './jsons/board.js'
 import { utilService } from './util.service.js'
@@ -11,7 +12,8 @@ export const boardService = {
     saveBoard,
     saveTask,
     remove,
-    getById
+    getById,
+    getLabelsById,
 }
 
 function query() {
@@ -45,6 +47,17 @@ function saveTask(boardId, groupId, task, activity) {
     // return task
 }
 
+async function getLabelsById(boardId, labelIds) {
+    const board = await getById(boardId)
+    console.log('board:', board)
+    console.log('board.labels:', board.labels)
+    const allLabels = board.labels.reduce((labelId,idx) => labelId.id === labelIds[idx])
+    console.log('*********allLabels:', allLabels)
+    return 5
+
+
+}
+
 function _createBoards() {
     let boards = utilService.loadFromStorage(STORAGE_KEY)
     if (!boards || !boards.length) {
@@ -58,3 +71,4 @@ function _createBoards() {
         utilService.saveToStorage(STORAGE_KEY, boards)
     }
 }
+

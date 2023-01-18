@@ -11,7 +11,7 @@ export function Group({ group }) {
 
             <GroupHeader groupTitle={group.title} />
 
-            <TaskList tasks={group.tasks} />
+            <TaskList group={group} />
 
             {isAddCardOpen && <textarea className="add-card-textarea" placeholder="Enter a title for this card..."></textarea>}
 
