@@ -1,11 +1,11 @@
-export function GroupHeader() {
+export function GroupHeader({groupTitle}) {
 
     return <section className="group-header">
         <section
             contentEditable={true}
             suppressContentEditableWarning={true}
         >
-            <section>Backlog-Server</section>
+            <section>{groupTitle}</section>
         </section>
 
         <button onClick={() => alert('Dont Click me!')}>...</button>

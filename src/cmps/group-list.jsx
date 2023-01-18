@@ -1,10 +1,10 @@
 import { Group } from "./group";
 
-export function GroupList({board}){
-    console.log('board:', board)
+export function GroupList({ groups }) {
 
     return <ul className="group-list-container">
-        <Group group={board.groups[0]}/>
-        {/* <Group/> */}
+        {
+            groups.map((group) => <Group group={group} key={group.id} />)
+        }
     </ul>
 }
