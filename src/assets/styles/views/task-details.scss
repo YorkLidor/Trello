@@ -158,10 +158,6 @@
 
     .description-editor-tools {
         display: none;
-
-        &.show {
-            display: block;
-        }
     }
 }
 
@@ -195,16 +191,23 @@
 
 
 .task-activity {
-    resize: none;
+
     font-size: 14px;
     border-radius: 3px;
     padding: 8px 12px;
-    outline: none;
-    border: none;
     box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 2px -1px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
-
-    &:focus {
+    
+    &.comment-typing {
         box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+    }
+    
+    .task-activity-input {
+        outline: none;
+        resize: none;
+        border: none;
+        line-height: 20px;
+        height: fit-content;
+        width: 100%;
     }
 }
 
@@ -253,6 +256,9 @@
 
 .description-editor-tools {
     margin: 8px 0 0;
+    &.show {
+        display: block;
+    }
 }
 
 .user-logo {
@@ -266,13 +272,22 @@
 
 .save-btn {
     @include button-filled($button-filled , #FFF);
+    font-size: 10px;
 }
 
 .cancel-btn {
     @include button-filled(#FFF, #2B2B2C);
+    font-size: 10px;
 
     &:hover {
         color: #2B2B2C;
         background-color: #EAECF0;
+    }
+}
+
+.comment-btn {
+    display: none;
+    &.show {
+        display: block;
     }
 }

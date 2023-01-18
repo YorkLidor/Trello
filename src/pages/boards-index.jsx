@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from "react"
 import { useNavigate } from "react-router-dom";
 import { BoardPreview } from "../cmps/board-preview";
+import { Bars } from 'react-loader-spinner'
+
 
 import { boardService } from "../services/board.service"
 
@@ -26,19 +28,34 @@ export function BoardsIndex() {
     function onCreateBoard() {
         const boardToEdit = boardService.getEmptyBoard()
         boardToEdit.title = prompt("Enter Title:")
-        saveBoard(boardToEdit)
+        if (boardToEdit.title) saveBoard(boardToEdit)
     }
-    
-    async function saveBoard(board){
+
+    async function saveBoard(board) {
         try {
             const savedBoard = await boardService.saveBoard(board)
             setBoards(prevBoards => [...prevBoards, savedBoard])
         } catch (err) {
-            console.error('Cant save board!', err)
+            console.error('Can\'t save board!', err)
         }
     }
 
-    return <main className="boards-index-container">
+    function getLoader() {
+        return <main className="boards-index-container">
+            <Bars
+                height="80"
+                width="80"
+                color="#026AA7"
+                ariaLabel="bars-loading"
+                wrapperStyle={{}}
+                wrapperClass=""
+                visible={true}
+            />
+        </main>
+    }
+
+    if (!boards) return getLoader()
+    else return <main className="boards-index-container">
         <section className="boards-index flex column">
             <header className="main-header">
                 <h3>Recently viewed</h3>
