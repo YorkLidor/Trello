@@ -1,12 +1,12 @@
-import { boardService } from "../services/board.service"
+// import { boardService } from "../services/board.service"
 
 
-export async function removeGroup(groupId) {
-    try {
-        await boardService.remove(groupId)
-        // store.dispatch(getActionRemoveGroup(groupId))
-    } catch (err) {
-        console.log('Cannot remove car', err)
-        throw err
-    }
-}
+// export async function removeGroup(boardId,groupId) {
+//     try {
+//         await boardService.removeGroup(boardId,groupId)
+//         // store.dispatch(getActionRemoveGroup(groupId))
+//     } catch (err) {
+//         console.log('Cannot remove car', err)
+//         throw err
+//     }
+// }
