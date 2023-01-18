@@ -4,11 +4,11 @@ import { TaskList } from "./task-list";
 
 export function Group() {
 
-    return <li className="group-item clean-list">
-        <GroupHeader />
-
-        <TaskList />
-
-        <GroupFooter />
+    return <li className="group-item-container">
+        <div className="group-item">
+            <GroupHeader />
+            <TaskList />
+            <GroupFooter />
+        </div>
     </li>
 }
