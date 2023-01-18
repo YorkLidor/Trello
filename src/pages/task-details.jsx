@@ -10,11 +10,12 @@ import { TbCheckbox } from 'react-icons/tb'
 import { GoClock } from 'react-icons/go'
 import { GrAttachment } from 'react-icons/gr'
 import { MdWallpaper } from 'react-icons/md'
-import userEvent from "@testing-library/user-event";
+import { Blocks } from "react-loader-spinner";
 
 import { utilService } from '../services/util.service'
 import { useNavigate, useParams } from "react-router-dom";
 import { boardService } from "../services/board.service";
+import userEvent from "@testing-library/user-event";
 
 
 export function TaskDetails() {
@@ -25,6 +26,14 @@ export function TaskDetails() {
 
     const userIconDefault = 'assets/styles/img/profileDefault.png'
     const navigate = useNavigate()
+
+    const descToolsRef = useRef()
+    const elCommentRef = useRef()
+    const commentBtnRef = useRef()
+
+    const elCommentInputRef = useRef()
+    const elDescInputRef = useRef()
+
 
     useEffect(() => {
         if (!boardId || !groupId || !taskId) return
@@ -64,6 +73,17 @@ export function TaskDetails() {
         }
     }
 
+    function getLoader() {
+        return <Blocks
+            visible={true}
+            height="80"
+            width="80"
+            ariaLabel="blocks-loading"
+            wrapperStyle={{}}
+            wrapperClass="blocks-wrapper"
+        />
+    }
+
     function errorRedirect() {
         console.log('ERROR: Failed to load board')
         return navigate('/workspace')
@@ -82,12 +102,7 @@ export function TaskDetails() {
         // }]
     }
 
-    const descToolsRef = useRef()
-    const elCommentRef = useRef()
-    const commentBtnRef = useRef()
 
-    const elCommentInputRef = useRef()
-    const elDescInputRef = useRef()
 
 
 
@@ -138,8 +153,8 @@ export function TaskDetails() {
         setTaskToEdit({ ...taskToEdit, comments })
     }
 
-    return taskToEdit && <section className="task-window flex">
-        <section className="task-details">
+    return (!taskToEdit) ? getLoader() : <section className="task-window flex" onClick={() => navigate(`/board/${boardId}`)}>
+        <section className="task-details" onClick={(ev) => ev.stopPropagation()}>
             <div className="task-header">
                 <FaPager className="header-icon task-icon" /><input type='text' className="task-title" defaultValue={taskToEdit.title} onFocus={handleEdit} onBlur={handleEdit} data-type='header' />
                 <p className="header-subtitle">in list <span style={{ textDecoration: 'underline' }}>{group.title}</span></p>
@@ -147,7 +162,7 @@ export function TaskDetails() {
 
 
             <section className="task-main-col">
-                <section className="task-info">
+                <section className="task-info flex">
 
                     <div className="task-labels-box">
 
@@ -208,24 +223,10 @@ export function TaskDetails() {
             <div className="window-sidebar-box">
                 <nav className="window-sidebar flex column">
                     <span className="sidebar-title">Add to card</span>
-                    <a className='button-link' href='#'><HiOutlineUser /> Members</a>
                     <a className='button-link' href='#'><IoPricetagOutline /> Labels</a>
-                    <a className='button-link' href='#'><TbCheckbox /> Checklist</a>
-                    <a className='button-link' href='#'><GoClock /> Dates</a>
-                    <a className='button-link' href='#'><GrAttachment /> Attachment</a>
-                    <a className='button-link' href='#'><MdWallpaper /> Cover</a>
-                </nav>
-
-                <nav className="window-sidebar flex column">
-                    <span className="sidebar-title">Actions</span>
-                    <a className='button-link' href='#'>Move</a>
-                    <a className='button-link' href='#'>Copy</a>
-                    <a className='button-link' href='#'>Make template</a>
-                    <a className='button-link' href='#'>Watch</a>
-                    <a className='button-link' href='#'>Archive</a>
-                    <a className='button-link' href='#'>Share</a>
                 </nav>
             </div>
+
         </section>
     </section >
 }
