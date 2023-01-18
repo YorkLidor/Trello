@@ -1,5 +1,9 @@
 .board-header {
 
+    .board-title-header{
+        margin: 0;
+    }
+
     .btn {
         display: inline-flex;
         background-color: $dynamic-button;
@@ -57,10 +61,11 @@
         }
 
         .board-title-input {
+            font-family: inherit;
             display: none;
             background-color: #fff;
             border: 0;
-            font-style: 1.125em;
+            font-size: 1.125em;
             font-weight: 700;
             height: 1.7em;
             margin: 0;
