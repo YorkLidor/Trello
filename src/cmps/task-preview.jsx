@@ -1,13 +1,30 @@
-export function TaskPreview(){
+export function TaskPreview({ task }) {
+    console.log('task:', task)
+
+    const coverColor = task.style?.bgColor
 
     return <li className="task-preview-container">
 
-        <section className="task-cover-color"></section>
+        {/* Style */}
+        {coverColor &&
+            <header className="cover-color" style={{background: coverColor}}></header>
+        }
+
+        {/* Labels */}
+        {task.labelIds?.length &&
+
+            // <LabelPicker info={} onUpdate={} />
+
+            task.labelIds.map((labelId)=>
+            {
+                return 'color'
+            })
+        }
 
         <section className="task-body">
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Esse quidem, nam quaerat cupiditate blanditiis facere deleniti, a nemo laborum maiores consequuntur. Architecto, eveniet cumque. Deleniti eveniet nam sequi facere consequatur?</p>
+            <p>{task.title}</p>
         </section>
-            {/* <section className="task-labels">lorem*5 Create backend service</section>
+        {/* <section className="task-labels">lorem*5 Create backend service</section>
             <section className="task-content"></section>
             <section className="task-footer"></section> */}
 

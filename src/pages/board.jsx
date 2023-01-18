@@ -26,7 +26,7 @@ export function Board() {
     return <main className="board flex column">
         {board && <>
             <BoardHeader board={board} />
-            <GroupList board={board} />
+            <GroupList groups={board.groups} />
         </>}
     </main>
 }
