@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
 import { useParams } from 'react-router-dom'
 
+
+import { Blocks } from 'react-loader-spinner'
+
 import { BoardHeader } from "../cmps/board-header";
 import { GroupList } from "../cmps/group-list";
 import { boardService } from "../services/board.service";
@@ -23,10 +26,16 @@ export function Board() {
         }
     }
 
-    return <main className="board flex column">
-        {board && <>
-            <BoardHeader board={board} />
-            <GroupList groups={board.groups} />
-        </>}
+    if (!board) return <Blocks
+        visible={true}
+        height="80"
+        width="80"
+        ariaLabel="blocks-loading"
+        wrapperStyle={{}}
+        wrapperClass="blocks-wrapper"
+    />
+    else return <main className="board flex column">
+        <BoardHeader board={board} />
+        <GroupList board={board} />
     </main>
 }
