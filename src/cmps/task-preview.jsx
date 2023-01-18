@@ -1,24 +1,19 @@
-export function TaskPreview({ task }) {
-    console.log('task:', task)
+import { LabelPicker } from "./lable-picker"
 
+export function TaskPreview({ task, group }) {
+    const groupId = group.id
     const coverColor = task.style?.bgColor
 
     return <li className="task-preview-container">
 
         {/* Style */}
         {coverColor &&
-            <header className="cover-color" style={{background: coverColor}}></header>
+            <header className="cover-color" style={{ background: coverColor }}></header>
         }
 
         {/* Labels */}
         {task.labelIds?.length &&
-
-            // <LabelPicker info={} onUpdate={} />
-
-            task.labelIds.map((labelId)=>
-            {
-                return 'color'
-            })
+            <LabelPicker labelIds={task.labelIds} onUpdate={''} />
         }
 
         <section className="task-body">
