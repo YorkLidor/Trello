@@ -1,10 +1,12 @@
+import { useNavigate } from "react-router-dom"
 import { LabelPicker } from "./lable-picker"
 
-export function TaskPreview({ task, group }) {
+export function TaskPreview({ task, group, boardId }) {
     const groupId = group.id
     const coverColor = task?.style?.bgColor
+    const navigate = useNavigate()
 
-    return <li className="task-preview-container">
+    return <li className="task-preview-container" onClick={() => navigate(`/card/${boardId}/${groupId}/${task.id}`)}>
 
         {/* Style */}
         {coverColor &&

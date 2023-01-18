@@ -269,6 +269,10 @@
     left: -43px;
 }
 
+.commentor-logo {
+    @include user-logo-circle
+}
+
 
 .save-btn {
     @include button-filled($button-filled , #FFF);

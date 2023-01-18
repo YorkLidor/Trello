@@ -1,4 +1,4 @@
-import { useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 
 import { FaPager } from 'react-icons/fa'
 import { GrTextAlignFull } from 'react-icons/gr'
@@ -12,35 +12,137 @@ import { GrAttachment } from 'react-icons/gr'
 import { MdWallpaper } from 'react-icons/md'
 import userEvent from "@testing-library/user-event";
 
+import { utilService } from '../services/util.service'
+import { useNavigate, useParams } from "react-router-dom";
+import { boardService } from "../services/board.service";
+
 
 export function TaskDetails() {
-    const userIcon = 'assets/styles/img/profileDefault.png'
-    const task = {
-        "id": "c103",
-        "title": "Update team tasks",
-        "archivedAt": 1589983468418,
+    const { boardId, groupId, taskId } = useParams()
+    const [board, setBoard] = useState(boardService.getEmptyBoard())
+    const group = board?.groups.find(group => group.id === groupId)
+    const [taskToEdit, setTaskToEdit] = useState(null)
+
+    const userIconDefault = 'assets/styles/img/profileDefault.png'
+    const navigate = useNavigate()
+
+    useEffect(() => {
+        if (!boardId || !groupId || !taskId) return
+        loadBoard()
+    }, [])
+
+    useEffect(() => {
+        if (board && taskToEdit) {
+            group.tasks = [...group.tasks.filter(task => task.id !== taskToEdit.id), taskToEdit]
+            setBoard({ ...board, groups: [...board.groups.filter(grp => grp.id !== group.id), group] })
+            boardService.saveBoard(board)
+        }
+    }, [taskToEdit])
+
+
+    async function loadBoard() {
+        try {
+            const result = await boardService.getById(boardId)
+
+            console.log(result);
+
+            const group = result.groups.find(group => group.id === groupId)
+            console.log(group);
+            if (!group) return errorRedirect()
+
+
+            const task = group.tasks.find(task => task.id === taskId)
+            console.log(task);
+            if (!task) return errorRedirect()
+
+
+            setTaskToEdit(task)
+            setBoard(result)
+        }
+        catch {
+            errorRedirect()
+        }
     }
-    const [taskToEdit, setTaskToEdit] = useState(task)
+
+    function errorRedirect() {
+        console.log('ERROR: Failed to load board')
+        return navigate('/workspace')
+    }
+
+    const user = {
+        "_id": "u101",
+        "fullname": "Gal Zohar",
+        "username": "galzo@ggmail.com",
+        "password": "aBambi123",
+        "imgUrl": "https://res.cloudinary.com/dk2geeubr/image/upload/v1673873845/g2gqvov30haxc8adehvi.jpg",
+        // "mentions": [{ //optional
+        //     "id": "m101",
+        //     "boardId": "m101",
+        //     "taskId": "t101"
+        // }]
+    }
+
     const descToolsRef = useRef()
     const elCommentRef = useRef()
     const commentBtnRef = useRef()
 
+    const elCommentInputRef = useRef()
+    const elDescInputRef = useRef()
 
-    function handleEdit({ target }) {
-        console.log(target.dataset.type)
+
+
+    function handleEdit(ev) {
+        const { target } = ev
         target.classList.toggle('is-editing')
-        if (target.dataset.type === 'desc') descToolsRef.current.classList.toggle('show')
+
+        if (target.dataset.type === 'desc') {
+            descToolsRef.current.classList.toggle('show')
+            if (ev.type === 'blur') onSaveDescription()
+        }
+
         else if (target.dataset.type === 'comment') {
+            if (target.value.length) return
             elCommentRef.current.classList.toggle('comment-typing')
             commentBtnRef.current.classList.toggle('show')
         }
+
+        else if (target.dataset.type === 'header') {
+            if (ev.type === 'blur') {
+                const val = target.value
+                console.log(val)
+                setTaskToEdit({ ...taskToEdit, title: val })
+            }
+        }
+    }
+
+    function onSaveDescription() {
+        if (!taskToEdit.description && !elDescInputRef.current.value.length) return
+        setTaskToEdit({ ...taskToEdit, description: elDescInputRef.current.value })
+    }
+
+    function onSaveComment({ target }) {
+        const value = elCommentInputRef.current.value
+        if (!value.length) return
+        const comment = {
+            id: utilService.makeId(),
+            createdAt: Date.now(),
+            txt: value,
+            byMember: {
+                id: user._id,
+                fullName: user.fullname,
+                imgUrl: user.imgUrl
+            }
+
+        }
+        const comments = taskToEdit.comments ? [...taskToEdit.comments, comment] : [comment]
+        setTaskToEdit({ ...taskToEdit, comments })
     }
 
     return taskToEdit && <section className="task-window flex">
         <section className="task-details">
             <div className="task-header">
-                <FaPager className="header-icon task-icon" /><input type='text' className="task-title" defaultValue={task.title} onFocus={handleEdit} onBlur={handleEdit} data-type='header' />
-                <p className="header-subtitle">in list <span style={{ textDecoration: 'underline' }}>{`In development`}</span></p>
+                <FaPager className="header-icon task-icon" /><input type='text' className="task-title" defaultValue={taskToEdit.title} onFocus={handleEdit} onBlur={handleEdit} data-type='header' />
+                <p className="header-subtitle">in list <span style={{ textDecoration: 'underline' }}>{group.title}</span></p>
             </div>
 
 
@@ -64,10 +166,10 @@ export function TaskDetails() {
                     </div>
 
 
-                    <textarea type='text' className="task-description" placeholder={'Add a more detailed description...'} onFocus={handleEdit} onBlur={handleEdit} data-type='desc' />
+                    <textarea ref={elDescInputRef} className="task-description" placeholder={'Add a more detailed description...'} defaultValue={taskToEdit.description} onFocus={handleEdit} onBlur={handleEdit} data-type='desc' />
 
                     <div ref={descToolsRef} className="description-editor-tools">
-                        <button className="save-btn">Save</button>
+                        <button className="save-btn" onClick={onSaveDescription}>Save</button>
                         <button className="cancel-btn">Cancel</button>
                     </div>
                 </div>
@@ -80,13 +182,28 @@ export function TaskDetails() {
                         <span className="title-main-col">Activity</span>
                         <a className='button-link-header' href='#'>Show Details</a>
                     </div>
-                    <img className="user-logo" src='https://res.cloudinary.com/dk2geeubr/image/upload/v1673890694/profileDefault_khqx4r.png' />
-                    <div className="task-activity" ref={elCommentRef}>
-                        <textarea type='text' className="task-activity-input" placeholder={'Write a comment...'} data-type='comment' onFocus={handleEdit} onBlur={handleEdit} />
-                        <button className="save-btn comment-btn" ref={commentBtnRef}>Save</button>
-                    </div>
-                </div>
 
+
+                    <img className="user-logo" src={user.imgUrl ? user.imgUrl : 'https://res.cloudinary.com/dk2geeubr/image/upload/v1673890694/profileDefault_khqx4r.png'} />
+                    <div className="task-activity" ref={elCommentRef}>
+                        <textarea ref={elCommentInputRef} className="task-activity-input" placeholder={'Write a comment...'} data-type='comment' onFocus={handleEdit} onBlur={handleEdit} />
+                        <button onClick={onSaveComment} className="save-btn comment-btn" ref={commentBtnRef}>Save</button>
+                    </div>
+
+
+                </div>
+                {
+                    taskToEdit.comments?.length && taskToEdit.comments.map(comment => {
+                        return <div className="comments-list" key={comment.id}>
+                            <img className="commentor-logo" src={comment.byMember.imgUrl ? comment.byMember.imgUrl : 'https://res.cloudinary.com/dk2geeubr/image/upload/v1673890694/profileDefault_khqx4r.png'} />
+                            <span className="comment-by-member">{comment.byMember.fullName}</span>
+                            <span className="comment-time">{new Date(+comment.createdAt).toLocaleTimeString()}</span>
+                            <div className="task-activity" ref={elCommentRef}>
+                                <div className="comment-text">{comment.txt}</div>
+                            </div>
+                        </div>
+                    })
+                }
             </section>
             <div className="window-sidebar-box">
                 <nav className="window-sidebar flex column">

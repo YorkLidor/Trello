@@ -94,4 +94,3 @@ function _createBoards() {
         utilService.saveToStorage(STORAGE_KEY, boards)
     }
 }
-
