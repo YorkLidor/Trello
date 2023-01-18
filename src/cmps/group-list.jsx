@@ -25,18 +25,31 @@ export function GroupList({ groups, setBoard, board }) {
 
     return <ul className="group-list-container">
         {
-            groups.map((group) => <Group group={group} key={group.id} setBoard={setBoard} board={board} />)
+            groups.map((group) => <Group
+                key={group.id}
+                group={group}
+                setBoard={setBoard}
+                board={board}
+            />)
         }
 
-        {!isAddCardOpen && <div className="add-group-btn" onClick={() => setIsAddCardOpen(!isAddCardOpen)}>
+        {!isAddCardOpen && <div
+            className="add-group-btn"
+            onClick={() => setIsAddCardOpen(!isAddCardOpen)}>
             <IoMdAdd />  Add another list
-
         </div>
         }
 
-        {isAddCardOpen && <form onSubmit={onAddGroup} className="add-group-form flex" action="">
-
-            <input className="aaa" type="text" placeholder="Enter list title..." onChange={handleChange} />
+        {isAddCardOpen && <form
+            onSubmit={onAddGroup}
+            className="add-group-form flex group-item"
+            action=""
+        >
+            <input className="aaa"
+                type="text"
+                placeholder="Enter list title..."
+                onChange={handleChange}
+            />
 
             <div className="bbb">
                 <button>add</button>
