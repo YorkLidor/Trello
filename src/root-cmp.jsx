@@ -6,6 +6,7 @@ import { Board } from './pages/board'
 import { HomePage } from './pages/home-page'
 import { WorkSpace } from './pages/work-space'
 import { TaskDetails } from './pages/task-details'
+import { BoardsIndex } from './pages/boards-index'
 
 export function RootCmp() {
 
