@@ -24,8 +24,6 @@
 
 //pages
 @import "cmps/board-header";
-<<<<<<< HEAD
-=======
 @import "cmps/boards-index";
 
 
@@ -34,8 +32,7 @@
 @import "cmps/group-header";
 @import "cmps/group-footer";
 @import "cmps/group-list";
-@import "cmps/group-add-card-form";
->>>>>>> 022970a9ebc6014378178737f3e35fb32268a5a2
+@import "cmps/group-add-card-form.scss";
 
 //tasks
 @import "cmps/task-list";
