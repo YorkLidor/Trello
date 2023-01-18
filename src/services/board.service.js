@@ -30,7 +30,7 @@ function saveBoard(board) {
 }
 
 function removeBoard(boardId) {
-    return storageService.delete(STORAGE_KEY, boardId)
+    return storageService.remove(STORAGE_KEY, boardId)
 }
 
 function getById(boardId) {

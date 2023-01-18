@@ -26,15 +26,15 @@ export function BoardsIndex() {
     function onCreateBoard() {
         const boardToEdit = boardService.getEmptyBoard()
         boardToEdit.title = prompt("Enter Title:")
-        saveBoard(boardToEdit)
+        if (boardToEdit.title) saveBoard(boardToEdit)
     }
-    
-    async function saveBoard(board){
+
+    async function saveBoard(board) {
         try {
             const savedBoard = await boardService.saveBoard(board)
             setBoards(prevBoards => [...prevBoards, savedBoard])
         } catch (err) {
-            console.error('Cant save board!', err)
+            console.error('Can\'t save board!', err)
         }
     }
 

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 
 import { Blocks } from 'react-loader-spinner'
 
@@ -10,16 +10,28 @@ import { boardService } from "../services/board.service";
 export function Board() {
     const [board, setBoard] = useState(null)
     const { boardId } = useParams()
+    const navigate = useNavigate()
 
     useEffect(() => {
         loadBoard()
     }, [])
 
+    async function onDeleteBoard() {
+        const isWantDelete = window.confirm('Are you sure?')
+        if (!isWantDelete) return
+        try {
+            await boardService.removeBoard(boardId)
+            navigate('/workspace')
+        } catch (err) {
+            console.error('somthing went wrong', err)
+        }
+    }
+
     async function loadBoard() {
         try {
             const board = await boardService.getById(boardId)
             setBoard(board)
-            document.body.style.backgroundImage  = `url(${board.style.bg})`
+            document.body.style.backgroundImage = `url(${board.style.bg})`
         } catch (err) {
             console.error('No Board!', err)
         }
@@ -38,7 +50,14 @@ export function Board() {
 
     if (!board) return getLoader()
     else return <main className="board flex column">
-        <BoardHeader board={board} />
-        <GroupList groups={board.groups} setBoard={setBoard} board={board} />
+        <BoardHeader
+            board={board}
+            onDeleteBoard={onDeleteBoard}
+        />
+        <GroupList
+            groups={board.groups}
+            setBoard={setBoard}
+            board={board}
+        />
     </main>
 }
