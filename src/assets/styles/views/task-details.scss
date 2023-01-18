@@ -8,41 +8,80 @@
     padding: 0px;
     overflow: hidden visible;
     margin: 0 auto;
+    padding-block-start: 12px;
+}
+
+.task-icon {
+    vertical-align: middle;
+    font-family: unset;
+    height: 18px;
+    width: 19px;
+    line-height: 25px;
+    text-align: center;
+
+    color: $task-details-icon;
 }
 
 .task-header {
     height: fit-content;
     float: left;
+
     padding: 12px 40px 8px 56px;
     width: 100%;
+    position: relative;
+
+
+
+    .header-icon {
+        position: absolute;
+        left: 22px;
+        top: 15px;
+    }
 
     .task-title {
         border: none;
         outline: none;
         font-size: 20px;
         font-weight: 600;
-        width: fit-content;
+        width: 100%;
         font-family: unset;
-        padding: 0px;
+        padding: 4px 8px;
+        margin: -5px -8px;
+
+        min-height: 24px;
+        line-height: 24px;
+
+        height: 32px;
+        color: #172b4d;
 
         &.is-editing {
             box-shadow: 0 0 0 2px $color_input_shadow;
         }
     }
+
+    .header-subtitle {
+        font-size: 14px;
+        display: inline-block;
+        width: fit-content;
+        padding-inline-start: 2px;
+        margin: 0px;
+
+        line-height: 20px;
+
+
+    }
 }
 
 .task-main-col {
     position: relative;
-    width: 552px;
+    width: 576px;
     overflow: hidden;
     margin: 0;
     display: inline-block;
 
-    padding: 0 8px 8px 16px;
+    padding: 0px 8px 8px 16px;
 
-    &>* {
-        width: 100%;
-    }
+ 
 }
 
 
@@ -51,17 +90,33 @@
     font-size: 16px;
     line-height: 20px;
     font-weight: 600;
-    padding: 8px 0px;
-    margin: 0 0 4px 40px;
+}
 
-
+.task-labels-box,
+.task-info {
+    margin-block-end: 8px;
 }
 
 
-
 .task-description-box {
+    position: relative;
+    margin: 0 0 4px 40px;
+    margin-block-end: 24px;
 
-    margin-block-end: 20px;
+    .desc-icon {
+        position: absolute;
+        left: -33px;
+        top: 5px;
+    }
+
+    .description-header {
+        display: flex;
+        flex-direction: row;
+
+        padding: 5px 0px;
+        margin-block-end: 14px;
+
+    }
 
     .task-description {
         resize: none;
@@ -72,7 +127,10 @@
         border-radius: 3px;
         padding: 8px 12px;
         outline: unset;
-        transition-duration: height 2s;
+        transition-duration: 85ms;
+
+        font-family: unset;
+        min-height: 40px;
 
         &.is-editing {
             background-color: #FFFFFF;
@@ -89,6 +147,20 @@
             display: block;
         }
     }
+}
+
+
+
+.task-activity-box {
+    position: relative;
+    margin: 0 0 4px 40px;
+
+    .activity-icon {
+        position: absolute;
+        left: -33px;
+        top: 5px;
+    }
+
 }
 
 
