@@ -13,7 +13,7 @@ export function TaskDetails() {
 
     function handleEdit({ target }) {
         target.classList.toggle('is-editing')
-        if(target.dataset.type === 'desc') {
+        if (target.dataset.type === 'desc') {
             descToolsRef.current.classList.toggle('show')
         }
     }
@@ -24,7 +24,8 @@ export function TaskDetails() {
             <span className="header-subtitle">in list {`<group name>`}</span>
         </div>
 
-        <section className="task-main-col flex column">
+
+        <section className="task-main-col">
             <div className="task-description-box flex column">
                 <span className="title-main-col">Description</span>
                 <textarea type='text' className="task-description" placeholder={'Add a more detailed description...'} onFocus={handleEdit} onBlur={handleEdit} data-type='desc' />
@@ -41,16 +42,27 @@ export function TaskDetails() {
             </div>
 
         </section>
+        <div className="window-sidebar-box">
+            <nav className="window-sidebar flex column">
+                <span className="sidebar-title">Add to card</span>
+                <a className='button-link' href='#'>Members</a>
+                <a className='button-link' href='#'>Labels</a>
+                <a className='button-link' href='#'>Checklist</a>
+                <a className='button-link' href='#'>Dates</a>
+                <a className='button-link' href='#'>Attachment</a>
+                <a className='button-link' href='#'>Cover</a>
+            </nav>
 
-        <nav className="window-sidebar flex column">
-            <span className="sidebar-title">Add to card</span>
-            <a className='button-link' href='#'>Members</a>
-            <a className='button-link' href='#'>Labels</a>
-            <a className='button-link' href='#'>Checklist</a>
-            <a className='button-link' href='#'>Dates</a>
-            <a className='button-link' href='#'>Attachment</a>
-            <a className='button-link' href='#'>Cover</a>
-        </nav>
+            <nav className="window-sidebar flex column">
+                <span className="sidebar-title">Actions</span>
+                <a className='button-link' href='#'>Move</a>
+                <a className='button-link' href='#'>Copy</a>
+                <a className='button-link' href='#'>Make template</a>
+                <a className='button-link' href='#'>Watch</a>
+                <a className='button-link' href='#'>Archive</a>
+                <a className='button-link' href='#'>Share</a>
+            </nav>
+        </div>
 
-    </section>
+    </section >
 }
