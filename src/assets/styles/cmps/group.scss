@@ -6,7 +6,7 @@
     vertical-align: top;
     white-space: nowrap;
     width: 272px;
-    
+
     .group-item {
         display: flex;
         flex-direction: column;
@@ -17,5 +17,20 @@
         max-height: 100%;
         min-width: 272px;
         width: 272px;
+    }
+
+    .add-card-textarea {
+        border: none;
+        height: 54px;
+        overflow-y: auto;
+        background-color: $clr6;
+        position: relative;
+        margin: 0 4px 7px;
+        overflow-y: auto;
+        border-radius: 3px;
+        box-shadow: var(--ds-shadow-raised, 0 1px 0 $clr23);
+        display: block;
+        max-width: 300px;
+        min-height: 20px;
     }
 }

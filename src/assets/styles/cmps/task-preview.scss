@@ -1,11 +1,4 @@
 .task-preview-container {
-    // background-color: #fff;
-    // color: $clr21;
-    // overflow: hidden;
-    // padding: 6px 8px 2px;
-    // position: relative;
-    // z-index: 10;
-
     background-color: $clr6;
     border-radius: 3px;
     box-shadow: var(--ds-shadow-raised, 0 1px 0 $clr23);
@@ -16,14 +9,27 @@
     max-width: 300px;
     min-height: 20px;
     position: relative;
-    z-index: 0;
 
-    &:hover{
+    &:hover {
         background-color: #c4c5c7c2;
     }
 
-    .task-labels{
+    .task-body {
+        color: red;
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+        justify-content: center;
+        padding: 6px 6px 6px 8px;
+        word-break: break-word;
+        
+        p{
+            text-align: left;
+        }
+    }
+
+    .task-labels {
         color: $clr21;
     }
-    
+
 }
