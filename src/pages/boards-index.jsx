@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from "react"
 import { useNavigate } from "react-router-dom";
 import { BoardPreview } from "../cmps/board-preview";
+import { Bars } from 'react-loader-spinner'
+
 
 import { boardService } from "../services/board.service"
 
@@ -38,7 +40,22 @@ export function BoardsIndex() {
         }
     }
 
-    return <main className="boards-index-container">
+    function getLoader() {
+        return <main className="boards-index-container">
+            <Bars
+                height="80"
+                width="80"
+                color="#026AA7"
+                ariaLabel="bars-loading"
+                wrapperStyle={{}}
+                wrapperClass=""
+                visible={true}
+            />
+        </main>
+    }
+
+    if (!boards) return getLoader()
+    else return <main className="boards-index-container">
         <section className="boards-index flex column">
             <header className="main-header">
                 <h3>Recently viewed</h3>
