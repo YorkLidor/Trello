@@ -59,7 +59,11 @@ export function TaskDetails() {
 
             <div className="task-activity-box flex column">
                 <MdFormatListBulleted className="activity-icon task-icon" />
-                <span className="title-main-col">Activity</span>
+
+                <div className="activity-header">
+                    <span className="title-main-col">Activity</span>
+                </div>
+                
                 <textarea type='text' className="task-activity" placeholder={'Write a comment...'} onFocus={handleEdit} onBlur={handleEdit} />
             </div>
 
