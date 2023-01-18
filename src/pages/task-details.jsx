@@ -1,4 +1,8 @@
 import { useRef, useState } from "react"
+import { FaPager } from 'react-icons/fa'
+import { GrTextAlignFull } from 'react-icons/gr'
+import { MdFormatListBulleted } from "react-icons/md";
+
 
 export function TaskDetails() {
 
@@ -19,15 +23,32 @@ export function TaskDetails() {
     }
 
     return taskToEdit && <section className="task-details">
-        <div className="task-header flex column">
-            <input type='text' className="task-title" defaultValue={task.title} onFocus={handleEdit} onBlur={handleEdit} data-type='header' />
-            <span className="header-subtitle">in list {`<group name>`}</span>
+        <div className="task-header">
+            <FaPager className="header-icon task-icon" /><input type='text' className="task-title" defaultValue={task.title} onFocus={handleEdit} onBlur={handleEdit} data-type='header' />
+            <p className="header-subtitle">in list <span style={{ textDecoration: 'underline' }}>{`In development`}</span></p>
         </div>
 
 
         <section className="task-main-col">
+            <section className="task-info">
+
+                <div className="task-labels-box">
+
+                </div>
+                <div className="task-members-box">
+
+                </div>
+            </section>
+
+
             <div className="task-description-box flex column">
-                <span className="title-main-col">Description</span>
+                <GrTextAlignFull className="desc-icon task-icon" />
+
+                <div className="description-header">
+                    <span className="title-main-col">Description</span>
+                </div>
+
+
                 <textarea type='text' className="task-description" placeholder={'Add a more detailed description...'} onFocus={handleEdit} onBlur={handleEdit} data-type='desc' />
                 <div ref={descToolsRef} className="description-editor-tools">
                     <button className="save-btn">Save</button>
@@ -37,6 +58,7 @@ export function TaskDetails() {
 
 
             <div className="task-activity-box flex column">
+                <MdFormatListBulleted className="activity-icon task-icon" />
                 <span className="title-main-col">Activity</span>
                 <textarea type='text' className="task-activity" placeholder={'Write a comment...'} onFocus={handleEdit} onBlur={handleEdit} />
             </div>
