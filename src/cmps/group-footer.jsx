@@ -1,14 +1,11 @@
-import { useState } from "react"
-import { AddCardForm } from "./group-add-card-form"
 
-export function GroupFooter() {
-    const [isAddCardOpen, setIsAddCardOpen] = useState(false)
+export function GroupFooter({ setIsAddCardOpen, isAddCardOpen }) {
 
     return <footer className="group-footer">
 
-        {!isAddCardOpen && <a className="add-card-btn" onClick={()=> setIsAddCardOpen(!isAddCardOpen)} href="#">+ Add a card</a>}
+        {!isAddCardOpen && <a className="add-card-btn" onClick={() => setIsAddCardOpen(!isAddCardOpen)} href="#">+ Add a card</a>}
 
-        {isAddCardOpen && <AddCardForm isAddCardOpen={isAddCardOpen} setIsAddCardOpen={setIsAddCardOpen}/>}
+        {isAddCardOpen && <div><button className="add-card-btn-second">Add card</button> <button onClick={() => setIsAddCardOpen(!isAddCardOpen)}>X</button></div>}
 
     </footer>
 }

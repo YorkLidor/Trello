@@ -1,10 +1,9 @@
 import { BoardHeader } from "../cmps/board-header";
 import { GroupList } from "../cmps/group-list";
-import { TaskList } from "../cmps/task-list";
 
 export function Board() {
 
-    return <main>
+    return <main className="board flex column">
         <BoardHeader />
         <GroupList />
     </main>

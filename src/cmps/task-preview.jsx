@@ -5,10 +5,11 @@ export function TaskPreview(){
         <section className="task-cover-color"></section>
 
         <section className="task-body">
-            <section className="task-labels">Create backend service</section>
-            <section className="task-content"></section>
-            <section className="task-footer"></section>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Esse quidem, nam quaerat cupiditate blanditiis facere deleniti, a nemo laborum maiores consequuntur. Architecto, eveniet cumque. Deleniti eveniet nam sequi facere consequatur?</p>
         </section>
+            {/* <section className="task-labels">lorem*5 Create backend service</section>
+            <section className="task-content"></section>
+            <section className="task-footer"></section> */}
 
     </li>
 }
