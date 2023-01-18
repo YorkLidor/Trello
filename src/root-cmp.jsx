@@ -15,8 +15,8 @@ export function RootCmp() {
             <AppHeader />
             <Routes>
                 <Route path="/" element={<HomePage />} />
-                <Route path="/workspace" element={<WorkSpace />} />
-                <Route path="/board" element={<Board />} />
+                <Route path="/workspace" element={<BoardsIndex />} />
+                <Route path="/board/:boardId" element={<Board />} />
                 <Route path="/c/:groupId/:taskId" element={<TaskDetails />} />
             </Routes>
 

@@ -1,14 +1,14 @@
 import { useEffect, useRef, useState } from "react"
 import { useEffectUpdate } from "../customHooks/useEffectUpdate"
 
-export function BoardHeader({board}) {
+export function BoardHeader({ board }) {
     const [editClass, setEditClass] = useState('')
     const elTitleInput = useRef(null)
     const elTitle = useRef(null)
 
     useEffect(() => {
         setElTitleInputWidth()
-    }, [])
+    }, [board])
 
     useEffectUpdate(() => {
         setElTitleInputFocus()

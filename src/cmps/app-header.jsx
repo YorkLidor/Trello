@@ -11,7 +11,6 @@ export function AppHeader() {
             </div>
             <nav className="navlinks-container">
                 <NavLink to="/workspace">Workspaces</NavLink>
-                <NavLink to="/board">Board</NavLink>
             </nav>
         </nav >
     </header >

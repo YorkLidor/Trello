@@ -49,9 +49,12 @@ function _createBoards() {
     let boards = utilService.loadFromStorage(STORAGE_KEY)
     if (!boards || !boards.length) {
         boards = []
-        boards.push(
-            jBoard
-        )
+        boards.push({ ...jBoard })
+        jBoard._id = 'b102'
+        jBoard.title = 'Lidorush'
+        const bg = "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/540x960/31e71464ca152e3c9518a3d1242361ed/photo-1669651567608-6a5ceb13845b.jpg"
+        boards.push({ ...jBoard, style: { bg } })
+
         utilService.saveToStorage(STORAGE_KEY, boards)
     }
 }

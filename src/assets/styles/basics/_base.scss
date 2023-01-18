@@ -21,7 +21,7 @@ body {
     color: #FFF;
 
     &>*{
-        height: 100%;
+        height: calc(100% - 44px);
     }
 }
 
