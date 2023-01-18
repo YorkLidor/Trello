@@ -1,12 +1,14 @@
 .group-list-container {
+
     display: flex;
     flex-grow: 1;
     margin-top: 0;
     overflow-x: hidden;
     overflow-y: auto;
 
-    .add-group-btn {
+    .add-group-form {
         display: flex;
+        flex-direction: column;
         box-sizing: border-box;
         display: inline-block;
 
@@ -19,7 +21,7 @@
         align-items: center;
         display: flex;
         font-weight: 400;
-        line-height: 20px;
+        // line-height: 20px;
         padding-left: 10px;
         padding-right: 3px;
         overflow: hidden;
@@ -28,6 +30,7 @@
     }
 
     .aaa {
+        display: flex;
         background-color: var(--ds-background-input, #fff);
         box-shadow: inset 0 0 0 2px var(--ds-border-focused, #0079bf);
         display: block;
@@ -37,7 +40,8 @@
 
     }
 
-    .bbb{
+    .bbb {
+        display: flex;
         height: 34px;
     }
 }
