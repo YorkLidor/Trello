@@ -10,6 +10,7 @@ import { TbCheckbox } from 'react-icons/tb'
 import { GoClock } from 'react-icons/go'
 import { GrAttachment } from 'react-icons/gr'
 import { MdWallpaper } from 'react-icons/md'
+import userEvent from "@testing-library/user-event";
 
 
 export function TaskDetails() {
@@ -21,12 +22,17 @@ export function TaskDetails() {
     }
     const [taskToEdit, setTaskToEdit] = useState(task)
     const descToolsRef = useRef()
+    const elCommentRef = useRef()
+    const commentBtnRef = useRef()
 
 
     function handleEdit({ target }) {
+        console.log(target.dataset.type)
         target.classList.toggle('is-editing')
-        if (target.dataset.type === 'desc') {
-            descToolsRef.current.classList.toggle('show')
+        if (target.dataset.type === 'desc') descToolsRef.current.classList.toggle('show')
+        else if (target.dataset.type === 'comment') {
+            elCommentRef.current.classList.toggle('comment-typing')
+            commentBtnRef.current.classList.toggle('show')
         }
     }
 
@@ -59,6 +65,7 @@ export function TaskDetails() {
 
 
                     <textarea type='text' className="task-description" placeholder={'Add a more detailed description...'} onFocus={handleEdit} onBlur={handleEdit} data-type='desc' />
+
                     <div ref={descToolsRef} className="description-editor-tools">
                         <button className="save-btn">Save</button>
                         <button className="cancel-btn">Cancel</button>
@@ -74,7 +81,10 @@ export function TaskDetails() {
                         <a className='button-link-header' href='#'>Show Details</a>
                     </div>
                     <img className="user-logo" src='https://res.cloudinary.com/dk2geeubr/image/upload/v1673890694/profileDefault_khqx4r.png' />
-                    <textarea type='text' className="task-activity" placeholder={'Write a comment...'} onFocus={handleEdit} onBlur={handleEdit} />
+                    <div className="task-activity" ref={elCommentRef}>
+                        <textarea type='text' className="task-activity-input" placeholder={'Write a comment...'} data-type='comment' onFocus={handleEdit} onBlur={handleEdit} />
+                        <button className="save-btn comment-btn" ref={commentBtnRef}>Save</button>
+                    </div>
                 </div>
 
             </section>
