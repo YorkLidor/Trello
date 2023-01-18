@@ -63,3 +63,7 @@ a:hover {
 button{
     cursor: pointer;
 }
+
+input, textarea, button {
+    font-family: inherit;
+}
