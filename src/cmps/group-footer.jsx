@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { AddCardForm } from "./add-card-form"
+import { AddCardForm } from "./group-add-card-form"
 
 export function GroupFooter() {
     const [isAddCardOpen, setIsAddCardOpen] = useState(false)
