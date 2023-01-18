@@ -2,7 +2,6 @@ import { boardService } from "../services/board.service.js"
 
 export function GroupHeader({group,setBoard, board}) {
 
-
     async function onRemoveGroup(groupId) {
         try {
             const groups =  board.groups.filter((group)=>group.id !== groupId)

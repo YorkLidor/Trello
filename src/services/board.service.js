@@ -14,7 +14,8 @@ export const boardService = {
     removeBoard,
     getById,
     getLabelsById,
-    getEmptyBoard
+    getEmptyBoard,
+    getEmptyGroup
 }
 
 function query() {
@@ -68,6 +69,15 @@ function getEmptyBoard() {
         },
         labels: [],
         groups: [],
+    }
+}
+
+function getEmptyGroup() {
+    return {
+        id: utilService.makeId(),
+        title: "",
+        archivedAt: null,
+        tasks: [],
     }
 }
 
