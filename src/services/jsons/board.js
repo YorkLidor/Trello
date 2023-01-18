@@ -65,7 +65,9 @@ export const jBoard = {
         "fullname": "Abi Abambi",
         "imgUrl": "http://some-img"
     },
-    "style": {},
+    "style": {
+        "bg": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/480x320/ebc7bac53ed630b52574ccf18d52b3f4/photo-1672508644335-e2097539f42f.jpg"
+    },
     "labels": [
         {
             "id": "l101",

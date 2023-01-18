@@ -1,0 +1,27 @@
+.boards-index {
+    margin: 0 auto;
+    min-height: 100%;
+    max-width: rem(825px);
+    min-width: rem(288px);
+    width: 100%;
+    background-color: #fff;
+    color: black;
+
+    .recently-boards-container{
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .board-preview {
+        color: #fff;
+        width: rem(194px);
+        height: rem(96px);
+        padding: rem(10px);
+        font-size: rem(16px);
+        border-radius: 3px;
+        background-color: #0000004c;
+        transition: .11s;
+        background-size: cover;
+        cursor: pointer;
+    }
+}
