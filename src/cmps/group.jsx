@@ -9,7 +9,7 @@ export function Group({ group }) {
     return <li className="group-item-container">
         <div className="group-item">
 
-            <GroupHeader groupTitle={group.title} />
+            <GroupHeader group={group} />
 
             <TaskList group={group} />
 

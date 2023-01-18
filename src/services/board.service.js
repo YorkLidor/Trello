@@ -11,7 +11,7 @@ export const boardService = {
     query,
     saveBoard,
     saveTask,
-    remove,
+    removeBoard,
     getById,
     getLabelsById,
 }
@@ -28,7 +28,7 @@ function saveBoard(board) {
     }
 }
 
-function remove(boardId) {
+function removeBoard(boardId) {
     return storageService.delete(STORAGE_KEY, boardId)
 }
 
@@ -51,11 +51,9 @@ async function getLabelsById(boardId, labelIds) {
     const board = await getById(boardId)
     console.log('board:', board)
     console.log('board.labels:', board.labels)
-    const allLabels = board.labels.reduce((labelId,idx) => labelId.id === labelIds[idx])
+    const allLabels = board.labels.reduce((labelId, idx) => labelId.id === labelIds[idx])
     console.log('*********allLabels:', allLabels)
     return 5
-
-
 }
 
 function _createBoards() {
