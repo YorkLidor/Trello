@@ -7,26 +7,30 @@
     overflow-y: auto;
 
     .add-group-form {
-        display: flex;
-        flex-direction: column;
         box-sizing: border-box;
         display: inline-block;
-
         white-space: nowrap;
         width: 272px;
-        // height: 35px;
-        background-color: #ffffff3d;
+        background-color: #ebecf0;
         cursor: pointer;
-
-        align-items: center;
         display: flex;
         font-weight: 400;
-        // line-height: 20px;
         padding-left: 10px;
         padding-right: 3px;
         overflow: hidden;
         overflow-wrap: break-word;
         height: 34px;
+
+    }
+
+    &.editable {
+        background-color: #ebecf0;
+        min-height: 80px;
+
+        .add-group-form {
+            cursor: inherit;
+            padding: 4px;
+        }
     }
 
     .aaa {
