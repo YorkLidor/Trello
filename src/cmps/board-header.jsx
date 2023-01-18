@@ -36,12 +36,12 @@ export function BoardHeader({board}) {
                 onClick={() => setEditClass('editable')}
                 ref={elTitle}
             >
-                {board.title}
+                {board?.title || 'Demo'}
             </h1>
             <input
                 className="board-title-input"
                 type="text"
-                value={board.title}
+                value={board?.title || 'Demo'}
                 name="title"
                 onChange={onHandleChange}
                 ref={elTitleInput}
