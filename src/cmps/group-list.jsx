@@ -42,18 +42,21 @@ export function GroupList({ groups, setBoard, board }) {
 
         {isAddCardOpen && <form
             onSubmit={onAddGroup}
-            className="add-group-form flex group-item"
+            className="add-group-form flex group-item editable"
             action=""
         >
-            <input className="aaa"
+            <input className="new-group-title"
                 type="text"
                 placeholder="Enter list title..."
                 onChange={handleChange}
             />
 
-            <div className="bbb">
-                <button>add</button>
-                <button onClick={() => setIsAddCardOpen(!isAddCardOpen)}>x</button>
+            <div className="btn-container">
+                <button className="btn-add">add</button>
+                <button 
+                className="btn-cancel"
+                onClick={() => setIsAddCardOpen(!isAddCardOpen)}
+                >x</button>
             </div>
         </form>
         }
