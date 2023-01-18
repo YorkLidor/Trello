@@ -10,15 +10,19 @@
 html {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", roboto, "noto-sans", ubuntu, "droid-sans", "helvetica-neue", sans-serif;
     line-height: 1.6;
-    // color: $clr2;
 }
 
 body {
+    height: 100vh;
     font-size: rem(16px);
     margin: 0;
     margin: auto;
     background-color: $clr2;
     color: #FFF;
+
+    &>*{
+        height: calc(100% - 44px);
+    }
 }
 
 h1,

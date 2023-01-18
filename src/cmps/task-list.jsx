@@ -4,5 +4,6 @@ export function TaskList() {
 
     return <ul className="task-list">
         <TaskPreview />
+        <TaskPreview />
     </ul>
 }

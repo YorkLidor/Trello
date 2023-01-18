@@ -1,24 +1,54 @@
 .group-footer {
     display: flex;
     justify-content: space-between;
-    max-height: 38px;
     min-height: 38px;
 
-    .add-card-btn {
-        border-radius: 3px;
+    .group-footer-close{
+        display: flex;
+        align-items: center;
+        width: 100%;
         color: $clr20;
-        display: block;
-        flex: 1 0 auto;
-        margin: 2px 0 0 8px;
-        padding: 4px 8px;
-        position: relative;
-        text-decoration: none;
-        // -webkit-user-select: none;
-        // user-select: none;
+        
+        .add-card-btn {
+            color: $clr20;
+            border-radius: 3px;
+            display: block;
+            flex: 1 0 auto;
+            padding: 4px 8px;
+            position: relative;
+            text-decoration: none;
+            -webkit-user-select: none;
+            user-select: none;
+            &:hover {
+                color: $clr21
+            }
+        }
 
         &:hover {
             background-color: $clr22;
             color: $clr21
         }
+    }
+
+
+    .group-footer-open{
+        display: flex;
+        align-items: center;
+    }
+
+    .add-card-btn-second {
+        border: none;
+        border-radius: 3px;
+        height: 32px;
+        padding: 6px 12px;
+        background-color: #0079bf;
+        color: #fff;
+        margin-right: 4px;
+    }
+
+    .close-btn{
+        color: $clr20;
+        height: 25px;
+        width: 25px;
     }
 }

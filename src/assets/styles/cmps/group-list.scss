@@ -1,3 +1,7 @@
 .group-list-container{
     display: flex;
+    flex-grow: 1;
+    margin-top: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
 }

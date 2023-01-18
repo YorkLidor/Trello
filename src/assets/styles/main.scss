@@ -24,7 +24,7 @@
 
 //pages
 @import "cmps/board-header";
-@import "cmps/boards-index";
+@import "views/boards-index";
 
 
 //groups
@@ -32,7 +32,7 @@
 @import "cmps/group-header";
 @import "cmps/group-footer";
 @import "cmps/group-list";
-@import "cmps/group-add-card-form";
+@import "cmps/group-add-card-form.scss";
 
 //tasks
 @import "cmps/task-list";
