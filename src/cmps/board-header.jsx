@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react"
 import { useEffectUpdate } from "../customHooks/useEffectUpdate"
 
-export function BoardHeader() {
+export function BoardHeader({board}) {
     const [editClass, setEditClass] = useState('')
     const elTitleInput = useRef(null)
     const elTitle = useRef(null)
@@ -36,12 +36,12 @@ export function BoardHeader() {
                 onClick={() => setEditClass('editable')}
                 ref={elTitle}
             >
-                Sprint 4
+                {board.title}
             </h1>
             <input
                 className="board-title-input"
                 type="text"
-                value="Sprint 4"
+                value={board.title}
                 name="title"
                 onChange={onHandleChange}
                 ref={elTitleInput}
