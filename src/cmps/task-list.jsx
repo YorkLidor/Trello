@@ -1,11 +1,10 @@
 import { TaskPreview } from "./task-preview";
 
-export function TaskList({ tasks }) {
-
+export function TaskList({ group }) {
 
     return <ul className="task-list">
         {
-            tasks.map((task) => <TaskPreview task={task} key={task.id} />)
+            group.tasks.map((task) => <TaskPreview task={task} key={task.id} group={group} />)
         }
     </ul>
 }

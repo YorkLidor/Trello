@@ -39,6 +39,6 @@ export function Board() {
     if (!board) return getLoader()
     else return <main className="board flex column">
         <BoardHeader board={board} />
-        <GroupList board={board} />
+        <GroupList groups={board.groups} />
     </main>
 }
