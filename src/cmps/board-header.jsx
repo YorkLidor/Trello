@@ -1,23 +1,30 @@
 import { useEffect, useRef, useState } from "react"
+import { useEffectUpdate } from "../customHooks/useEffectUpdate"
 
 export function BoardHeader() {
     const [editClass, setEditClass] = useState('')
     const elTitleInput = useRef(null)
     const elTitle = useRef(null)
-    const width = useRef(null)
 
     useEffect(() => {
-        width.current = elTitle.current.offsetWidth
-        elTitleInput.current.style.width = width.current + 'px'
+        setElTitleInputWidth()
     }, [])
 
-    useEffect(() => {
-        elTitleInput.current?.focus()
+    useEffectUpdate(() => {
+        setElTitleInputFocus()
     }, [editClass])
 
-    function onTitleEditToggle(ev, classToSet) {
-        setEditClass(classToSet)
-        if (classToSet === 'editable') ev.target.focus()
+    function onHandleChange() {
+        //TODO: implement handle change and set to the right object
+    }
+
+    function setElTitleInputWidth() {
+        const width = elTitle.current.offsetWidth
+        elTitleInput.current.style.width = width + 'px'
+    }
+
+    function setElTitleInputFocus() {
+        elTitleInput.current?.focus()
     }
 
     return <section className="board-header flex justify-between">
@@ -26,7 +33,7 @@ export function BoardHeader() {
         >
             <h1
                 className="board-title-header"
-                onClick={ev => onTitleEditToggle(ev, 'editable')}
+                onClick={() => setEditClass('editable')}
                 ref={elTitle}
             >
                 Sprint 4
@@ -36,10 +43,9 @@ export function BoardHeader() {
                 type="text"
                 value="Sprint 4"
                 name="title"
-                onChange={console.log}
+                onChange={onHandleChange}
                 ref={elTitleInput}
-
-                onBlur={ev => onTitleEditToggle(ev, '')}
+                onBlur={() => setEditClass('')}
             />
         </div>
         <div className="actions-container">
