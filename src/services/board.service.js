@@ -54,8 +54,6 @@ async function getLabelsById(boardId, labelIds) {
     const allLabels = board.labels.reduce((labelId,idx) => labelId.id === labelIds[idx])
     console.log('*********allLabels:', allLabels)
     return 5
-
-
 }
 
 function _createBoards() {
