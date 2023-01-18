@@ -7,21 +7,45 @@
     background-color: #fff;
     color: black;
 
-    .recently-boards-container{
+    .recently-boards-container {}
+
+
+    .boards-preview-list {
         display: flex;
         flex-wrap: wrap;
+        justify-content: flex-start;
+        width: 100%;
+        gap: rem(4px);
     }
 
     .board-preview {
         color: #fff;
-        width: rem(194px);
+        width: calc(50% - rem(4px));
         height: rem(96px);
-        padding: rem(10px);
         font-size: rem(16px);
         border-radius: 3px;
         background-color: #0000004c;
         transition: .11s;
         background-size: cover;
+        background-position: 50%;
         cursor: pointer;
+        position: relative;
+        
+        .board-preview-fade{
+            padding: rem(8px);
+            background-color: #00000026;
+            bottom: 0;
+            left: 0;
+            position: absolute;
+            right: 0;
+            top: 0;
+            border-radius: inherit;
+        }
+
+        &:hover{
+            .board-preview-fade{
+                background-color: rgba(0, 0, 0, 0.4);
+            }
+        }
     }
 }
