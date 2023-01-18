@@ -18,6 +18,6 @@ export function Board() {
 
     return <main className="board flex column">
         <BoardHeader board={board}/>
-        <GroupList />
+        <GroupList board={board}/>
     </main>
 }
