@@ -13,7 +13,7 @@ import { MdWallpaper } from 'react-icons/md'
 
 
 export function TaskDetails() {
-
+    const userIcon = 'assets/styles/img/profileDefault.png'
     const task = {
         "id": "c103",
         "title": "Update team tasks",
@@ -73,7 +73,7 @@ export function TaskDetails() {
                         <span className="title-main-col">Activity</span>
                         <a className='button-link-header' href='#'>Show Details</a>
                     </div>
-
+                    <img className="user-logo" src='https://res.cloudinary.com/dk2geeubr/image/upload/v1673890694/profileDefault_khqx4r.png' />
                     <textarea type='text' className="task-activity" placeholder={'Write a comment...'} onFocus={handleEdit} onBlur={handleEdit} />
                 </div>
 

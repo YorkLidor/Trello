@@ -6,7 +6,7 @@
     height: 100vh;
     align-items: flex-start;
     justify-content: center;
-    background-color: #12121264;
+    background-color: #000000a3;
     padding: 0;
 }
 
@@ -167,6 +167,7 @@
 
 
 
+
 .task-activity-box {
     position: relative;
     margin: 0 0 4px 40px;
@@ -237,7 +238,7 @@
         @include task-nav-button;
         margin: 0 0 0 8px;
         padding-inline: 12px;
-        
+
         &:hover {
             background-color: #e2e5e9;
             text-decoration: none;
@@ -247,5 +248,31 @@
     &:hover {
         background-color: #e2e5e9;
         text-decoration: none;
+    }
+}
+
+.description-editor-tools {
+    margin: 8px 0 0;
+}
+
+.user-logo {
+    @include user-logo-circle;
+
+    position: absolute;
+    top: 67px;
+    left: -43px;
+}
+
+
+.save-btn {
+    @include button-filled($button-filled , #FFF);
+}
+
+.cancel-btn {
+    @include button-filled(#FFF , #2B2B2C);
+
+    &:hover {
+        color: #2B2B2C;
+        background-color: #EAECF0;
     }
 }

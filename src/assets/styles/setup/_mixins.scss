@@ -28,36 +28,38 @@
 @mixin aspect-ratio($width, $height) {
     position: relative;
     overflow: hidden;
+
     &::before {
-      display: block;
-      content: "";
-      width: 100%;
-      padding-top: calc(($height / $width) * 100%);
+        display: block;
+        content: "";
+        width: 100%;
+        padding-top: calc(($height / $width) * 100%);
     }
-    > * {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
+
+    >* {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
     }
-  
-    > img {
-      height: 100%;
-      object-fit: cover;
+
+    >img {
+        height: 100%;
+        object-fit: cover;
     }
-  }
-  
-  // Mixin for removing hover efects on iphone screen
-  @mixin hover-supported {    
+}
+
+// Mixin for removing hover efects on iphone screen
+@mixin hover-supported {
     @media not all and (pointer: coarse) {
         &:hover {
             @content;
         }
     }
-  }
+}
 
-  @mixin task-nav-button {
+@mixin task-nav-button {
     display: block;
     color: #42526E;
     background-color: #eaecf0;
@@ -71,4 +73,31 @@
     line-height: 20px;
     font-size: 14px;
     text-decoration: none;
-  }
+}
+
+@mixin user-logo-circle($height : 32px, $width : 32px) {
+    @include aspect-ratio($height, $width);
+    object-fit: cover;
+    border-radius: 50%;
+    height: $height;
+    width: $width;
+}
+
+@mixin button-filled($color, $text-color) {
+    display: inline-flex;
+    font-family: inherit;
+    background-color: $color;
+    border: none;
+    padding: 6px 12px;
+    font-size: 14px;
+    justify-content: center;
+    color: $text-color;
+    margin: 0 4px 0 0;
+    border-radius: 3px;
+    transition-property: background-color;
+    transition-duration: 85ms;
+
+    &:hover {
+        background-color: darken($color, 10%);
+    }
+}
