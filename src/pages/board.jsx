@@ -18,8 +18,8 @@ export function Board() {
     async function loadBoard() {
         try {
             const board = await boardService.getById(boardId)
-            console.log('boardId', boardId, boardId);
             setBoard(board)
+            document.body.style.backgroundImage  = `url(${board.style.bg})`
         } catch (err) {
             console.error('No Board!', err)
         }
