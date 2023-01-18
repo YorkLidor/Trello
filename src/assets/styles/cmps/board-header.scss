@@ -1,29 +1,18 @@
 .board-header {
 
-    .board-title-header{
+    .board-title-header {
         margin: 0;
     }
 
-    .btn {
-        display: inline-flex;
-        background-color: $dynamic-button;
-        border: none;
-        padding: 6px 12px;
-        font-size: 14px;
-        justify-content: center;
-        color: #FFF;
-        margin: 0 .3em;
-        border-radius: 3px;
-        transition-property: background-color;
-        transition-duration: 85ms;
+    .btn {}
 
-        &:hover {
-            background-color: $dynamic-button-hover;
-        }
+    .btn-filter {
+        @include button-filled($dynamic-button, #FFF);
     }
 
 
     .btn-menu {
+        @include button-filled($dynamic-button, #FFF);
         padding: 6px;
         line-height: 20px;
 
@@ -33,12 +22,15 @@
     }
 
     .btn-share {
-        background-color: rgba(255, 255, 255, 0.90);
-        color: #091e42;
+        @include button-filled(rgba(255, 255, 255, 0.90), #091e42);
 
         &:hover {
             background-color: rgba(255, 255, 255, 0.80);
         }
+    }
+
+    .btn-delete {
+        @include button-filled($red, #FFF);
     }
 
     .btn-divider {

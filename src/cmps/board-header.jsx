@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react"
 import { useEffectUpdate } from "../customHooks/useEffectUpdate"
 
-export function BoardHeader({ board }) {
+export function BoardHeader({ board, onDeleteBoard }) {
     const [editClass, setEditClass] = useState('')
     const elTitleInput = useRef(null)
     const elTitle = useRef(null)
@@ -52,6 +52,13 @@ export function BoardHeader({ board }) {
             <button className="btn btn-filter">Filter</button>
             <span className="btn-divider"></span>
             <button className="btn btn-share">Share</button>
+            <span className="btn-divider"></span>
+            <button
+                className="btn btn-delete"
+                onClick={onDeleteBoard}
+            >
+                Delete
+            </button>
             <span className="btn-divider"></span>
             <button className="btn btn-menu">
                 <span>...</span>

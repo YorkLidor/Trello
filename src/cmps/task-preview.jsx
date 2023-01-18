@@ -2,7 +2,7 @@ import { LabelPicker } from "./lable-picker"
 
 export function TaskPreview({ task, group }) {
     const groupId = group.id
-    const coverColor = task.style?.bgColor
+    const coverColor = task?.style?.bgColor
 
     return <li className="task-preview-container">
 
@@ -12,7 +12,7 @@ export function TaskPreview({ task, group }) {
         }
 
         {/* Labels */}
-        {task.labelIds?.length &&
+        {task?.labelIds?.length &&
             <LabelPicker labelIds={task.labelIds} onUpdate={''} />
         }
 

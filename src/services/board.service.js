@@ -14,7 +14,8 @@ export const boardService = {
     removeBoard,
     getById,
     getLabelsById,
-    getEmptyBoard
+    getEmptyBoard,
+    getEmptyGroup
 }
 
 function query() {
@@ -30,7 +31,7 @@ function saveBoard(board) {
 }
 
 function removeBoard(boardId) {
-    return storageService.delete(STORAGE_KEY, boardId)
+    return storageService.remove(STORAGE_KEY, boardId)
 }
 
 function getById(boardId) {
@@ -68,6 +69,15 @@ function getEmptyBoard() {
         },
         labels: [],
         groups: [],
+    }
+}
+
+function getEmptyGroup() {
+    return {
+        id: utilService.makeId(),
+        title: "",
+        archivedAt: null,
+        tasks: [],
     }
 }
 
