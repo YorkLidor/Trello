@@ -41,13 +41,13 @@ export function BoardsIndex() {
     }
 
     function getLoader() {
-        return <main className="boards-index-container">
+        return <main className="boards-index-container flex column justify-center">
             <Bars
-                height="80"
-                width="80"
+                height="100"
+                width="100"
                 color="#026AA7"
                 ariaLabel="bars-loading"
-                wrapperStyle={{}}
+                wrapperStyle={{ margin: '0 auto' }}
                 wrapperClass=""
                 visible={true}
             />

@@ -53,7 +53,12 @@ export function BoardHeader({ board, onDeleteBoard }) {
             <span className="btn-divider"></span>
             <button className="btn btn-share">Share</button>
             <span className="btn-divider"></span>
-            <button className="btn btn-share" onClick={onDeleteBoard}>Delete</button>
+            <button
+                className="btn btn-delete"
+                onClick={onDeleteBoard}
+            >
+                Delete
+            </button>
             <span className="btn-divider"></span>
             <button className="btn btn-menu">
                 <span>...</span>
