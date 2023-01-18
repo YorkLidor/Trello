@@ -2,10 +2,17 @@ import { useEffect, useRef, useState } from "react"
 
 export function BoardHeader() {
     const [editClass, setEditClass] = useState('')
-    const elTitleContainer = useRef(null)
+    const elTitleInput = useRef(null)
+    const elTitle = useRef(null)
+    const width = useRef(null)
 
     useEffect(() => {
-        elTitleContainer?.current.focus()
+        width.current = elTitle.current.offsetWidth
+        elTitleInput.current.style.width = width.current + 'px'
+    }, [])
+
+    useEffect(() => {
+        elTitleInput.current?.focus()
     }, [editClass])
 
     function onTitleEditToggle(ev, classToSet) {
@@ -20,6 +27,7 @@ export function BoardHeader() {
             <h1
                 className="board-title-header"
                 onClick={ev => onTitleEditToggle(ev, 'editable')}
+                ref={elTitle}
             >
                 Sprint 4
             </h1>
@@ -29,7 +37,7 @@ export function BoardHeader() {
                 value="Sprint 4"
                 name="title"
                 onChange={console.log}
-                ref={elTitleContainer}
+                ref={elTitleInput}
 
                 onBlur={ev => onTitleEditToggle(ev, '')}
             />
