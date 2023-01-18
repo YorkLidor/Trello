@@ -56,3 +56,19 @@
         }
     }
   }
+
+  @mixin task-nav-button {
+    display: block;
+    color: #42526E;
+    background-color: #eaecf0;
+    border-radius: 3px;
+    max-width: 300px;
+    margin-block-end: 8px;
+    padding: 6px 12px;
+    height: 32px;
+    white-space: nowrap;
+    border: none;
+    line-height: 20px;
+    font-size: 14px;
+    text-decoration: none;
+  }

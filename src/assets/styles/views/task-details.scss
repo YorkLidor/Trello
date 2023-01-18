@@ -1,13 +1,24 @@
+.task-window {
+    flex-direction: row;
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    align-items: flex-start;
+    justify-content: center;
+    background-color: #12121264;
+    padding: 0;
+}
+
 .task-details {
     color: $clr_font_blue;
-
     background-color: #FFFFFF;
 
     max-width: 768px;
     min-height: 600px;
     padding: 0px;
     overflow: hidden visible;
-    margin: 0 auto;
+    margin: 48px 0 80px;
     padding-block-start: 12px;
 }
 
@@ -18,6 +29,7 @@
     width: 19px;
     line-height: 25px;
     text-align: center;
+    font-weight: 400;
 
     color: $task-details-icon;
 }
@@ -81,7 +93,8 @@
 
     padding: 0px 8px 8px 16px;
 
- 
+    vertical-align: top;
+
 }
 
 
@@ -101,12 +114,14 @@
 .task-description-box {
     position: relative;
     margin: 0 0 4px 40px;
-    margin-block-end: 24px;
+    margin-block-end: 31px;
 
     .desc-icon {
         position: absolute;
         left: -33px;
         top: 5px;
+
+
     }
 
     .description-header {
@@ -119,6 +134,7 @@
     }
 
     .task-description {
+        box-shadow: none;
         resize: none;
         background-color: #eaecf0;
         border: none;
@@ -159,14 +175,19 @@
         position: absolute;
         left: -33px;
         top: 5px;
+
+        height: 23px;
     }
 
     .activity-header {
         display: flex;
         flex-direction: row;
 
-        padding: 5px 0px;
-        margin-block-end: 14px;
+        padding: 8px 0px;
+        margin-block-end: 11px;
+        min-height: 32px;
+
+        justify-content: space-between;
 
     }
 }
@@ -188,38 +209,43 @@
 
 .window-sidebar-box {
 
-    width: calc((100%) - (600px));
+    width: 192px;
     float: right;
     overflow: hidden;
     padding: 0 16px 8px 8px;
 }
 
+
+
 .window-sidebar {
     position: relative;
     margin-block-end: 24px;
 
-    .button-link {
-        display: block;
-        color: #42526E;
-        background-color: #eaecf0;
-        border-radius: 3px;
-        max-width: 300px;
-        margin-block-start: 8px;
-        padding: 6px 12px;
-        height: 32px;
-        text-decoration: none;
-        white-space: nowrap;
-        border: none;
-        line-height: 20px;
 
-        &:hover {
-            background-color: #e2e5e9;
-        }
-    }
 
     .sidebar-title {
         font-weight: 600;
         font-size: 12px;
         color: #5e6c84;
+    }
+}
+
+.button-link {
+    @include task-nav-button;
+
+    &-header {
+        @include task-nav-button;
+        margin: 0 0 0 8px;
+        padding-inline: 12px;
+        
+        &:hover {
+            background-color: #e2e5e9;
+            text-decoration: none;
+        }
+    }
+
+    &:hover {
+        background-color: #e2e5e9;
+        text-decoration: none;
     }
 }
