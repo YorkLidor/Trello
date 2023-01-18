@@ -16,17 +16,27 @@
 @import "views/task-details";
 @import "views/work-space";
 
-// // Components
+// Components
+
+//main app cmps
 @import "cmps/app-header";
 @import "cmps/app-footer";
-@import "cmps/group-list";
+
+//pages
+@import "cmps/board-header";
+@import "cmps/boards-index";
+
+
+//groups
 @import "cmps/group";
-@import "cmps/group-footer";
 @import "cmps/group-header";
+@import "cmps/group-footer";
+@import "cmps/group-list";
+@import "cmps/group-add-card-form";
+
+//tasks
 @import "cmps/task-list";
 @import "cmps/task-preview";
-@import "cmps/board-header";
-@import "cmps/group-add-card-form";
 
 
 
