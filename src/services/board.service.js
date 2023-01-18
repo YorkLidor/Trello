@@ -14,6 +14,7 @@ export const boardService = {
     removeBoard,
     getById,
     getLabelsById,
+    getEmptyBoard
 }
 
 function query() {
@@ -47,6 +48,7 @@ function saveTask(boardId, groupId, task, activity) {
     // return task
 }
 
+
 async function getLabelsById(boardId, labelIds) {
     const board = await getById(boardId)
     console.log('board:', board)
@@ -56,6 +58,19 @@ async function getLabelsById(boardId, labelIds) {
     return 5
 }
 
+function getEmptyBoard() {
+    return {
+        title: '',
+        isStarred: false,
+        createdBy: {},
+        style: {
+            bg: "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/2048x1152/17c10de18b89807a945d83325a9002eb/photo-1647831597506-3f9071cbbd6f.jpg"
+        },
+        labels: [],
+        groups: [],
+    }
+}
+
 function _createBoards() {
     let boards = utilService.loadFromStorage(STORAGE_KEY)
     if (!boards || !boards.length) {
@@ -63,7 +78,7 @@ function _createBoards() {
         boards.push({ ...jBoard })
         jBoard._id = 'b102'
         jBoard.title = 'Lidorush'
-        const bg = "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/540x960/31e71464ca152e3c9518a3d1242361ed/photo-1669651567608-6a5ceb13845b.jpg"
+        const bg = "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/2048x1152/18cb4dc9d683e8775a107e41e54108c2/photo-1672821337870-2180f5223865.jpg"
         boards.push({ ...jBoard, style: { bg } })
 
         utilService.saveToStorage(STORAGE_KEY, boards)

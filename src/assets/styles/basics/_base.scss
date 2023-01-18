@@ -19,6 +19,8 @@ body {
     margin: auto;
     background-color: $clr2;
     color: #FFF;
+    background-position: 50%;
+    background-size: cover;
 
     &>*{
         height: calc(100% - 44px);

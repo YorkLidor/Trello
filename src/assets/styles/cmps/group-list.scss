@@ -1,7 +1,43 @@
-.group-list-container{
+.group-list-container {
     display: flex;
     flex-grow: 1;
     margin-top: 0;
     overflow-x: hidden;
     overflow-y: auto;
+
+    .add-group-btn {
+        display: flex;
+        box-sizing: border-box;
+        display: inline-block;
+
+        white-space: nowrap;
+        width: 272px;
+        // height: 35px;
+        background-color: #ffffff3d;
+        cursor: pointer;
+
+        align-items: center;
+        display: flex;
+        font-weight: 400;
+        line-height: 20px;
+        padding-left: 10px;
+        padding-right: 3px;
+        overflow: hidden;
+        overflow-wrap: break-word;
+        height: 34px;
+    }
+
+    .aaa {
+        background-color: var(--ds-background-input, #fff);
+        box-shadow: inset 0 0 0 2px var(--ds-border-focused, #0079bf);
+        display: block;
+        margin: 0;
+        transition: margin 85ms ease-in, background 85ms ease-in;
+        width: 100%;
+
+    }
+
+    .bbb{
+        height: 34px;
+    }
 }

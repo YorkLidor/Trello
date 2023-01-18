@@ -1,13 +1,22 @@
+.boards-index-container {
+    width: 100vw;
+    min-height: 100%;
+    background-color: #fff;
+}
+
 .boards-index {
+    padding: 0;
+    margin: 0;
     margin: 0 auto;
     min-height: 100%;
     max-width: rem(825px);
     min-width: rem(288px);
     width: 100%;
-    background-color: #fff;
     color: black;
 
-    .recently-boards-container {}
+    .recently-boards-container {
+        padding: 0;
+    }
 
 
     .boards-preview-list {
@@ -15,7 +24,7 @@
         flex-wrap: wrap;
         justify-content: flex-start;
         width: 100%;
-        gap: rem(4px);
+        padding: 0;
     }
 
     .board-preview {
@@ -30,8 +39,9 @@
         background-position: 50%;
         cursor: pointer;
         position: relative;
-        
-        .board-preview-fade{
+        margin: 0 2% 2% 0;
+
+        .board-preview-fade {
             padding: rem(8px);
             background-color: #00000026;
             bottom: 0;
@@ -42,8 +52,8 @@
             border-radius: inherit;
         }
 
-        &:hover{
-            .board-preview-fade{
+        &:hover {
+            .board-preview-fade {
                 background-color: rgba(0, 0, 0, 0.4);
             }
         }
