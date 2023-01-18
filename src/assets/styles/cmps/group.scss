@@ -1,11 +1,21 @@
-.group-item {
-    display: flex;
-    flex-direction: column;
-    background-color: #ebecf0;
-    border-radius: 3px;
-    font-size: .875rem;
-    margin-inline-end: 8px;
-    max-height: 100%;
-    min-width: 272px;
+.group-item-container {
+    box-sizing: border-box;
+    display: inline-block;
+    height: 100%;
+    margin: 0 4px;
+    vertical-align: top;
+    white-space: nowrap;
     width: 272px;
+    
+    .group-item {
+        display: flex;
+        flex-direction: column;
+        background-color: #ebecf0;
+        border-radius: 3px;
+        font-size: .875rem;
+        margin-inline-end: 8px;
+        max-height: 100%;
+        min-width: 272px;
+        width: 272px;
+    }
 }
