@@ -8,7 +8,12 @@ export function GroupFooter({ setIsAddCardOpen, isAddCardOpen }) {
         {!isAddCardOpen &&
             <div className="group-footer-close">
                 <IoMdAdd className="add-icon" />
-                <a className="add-card-btn" onClick={() => setIsAddCardOpen(!isAddCardOpen)} href="#"> Add a card</a>
+                <a
+                    className="add-card-btn"
+                    onClick={() => setIsAddCardOpen(!isAddCardOpen)}
+                    href="#"
+                > Add a card
+                </a>
             </div>
         }
 

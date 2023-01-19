@@ -8,12 +8,10 @@ export function TaskPreview({ task, group, boardId }) {
 
     return <li className="task-preview-container" onClick={() => navigate(`/card/${boardId}/${groupId}/${task.id}`)}>
 
-        {/* Style */}
         {coverColor &&
             <header className="cover-color" style={{ background: coverColor }}></header>
         }
 
-        {/* Labels */}
         {task?.labelIds?.length &&
             <LabelPicker labelIds={task.labelIds} onUpdate={''} />
         }
@@ -21,9 +19,6 @@ export function TaskPreview({ task, group, boardId }) {
         <section className="task-body">
             <p>{task.title}</p>
         </section>
-        {/* <section className="task-labels">lorem*5 Create backend service</section>
-            <section className="task-content"></section>
-            <section className="task-footer"></section> */}
 
     </li>
 }
