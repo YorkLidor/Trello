@@ -62,7 +62,7 @@ export function BoardIndex() {
     else return <main className="boards-index-container">
         <section className="boards-index flex column">
             <header className="main-header">
-                <h3>Recently viewed</h3>
+                <h3>Your Boards</h3>
             </header>
             <section
                 className="recently-boards-container"

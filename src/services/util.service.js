@@ -6,8 +6,17 @@ export const utilService = {
     saveToStorage,
     animateCSS,
     debounce,
-    getElementPosition
+    getElementPosition,
+    reorder
 }
+
+function reorder(arr, startIdx, endIdx) {
+    const orderedArr = [...arr]
+    const [removed] = orderedArr.splice(startIdx, 1)
+    orderedArr.splice(endIdx, 0, removed)
+    return orderedArr
+}
+
 
 function makeId(length = 6) {
     var txt = ''

@@ -1,25 +1,23 @@
-import { useRef } from "react"
+
 import { LabelsPicker } from "./labels-picker"
-import { useState } from "react"
 import { useSelector } from "react-redux"
 
-export function Modal({ props, type }) {
+export function Modal({ cmpProps, cmpType }) {
 
-    const state = useSelector((storeState) => storeState.appModule.app.isModalOpen)
-    console.log(state)
-    
-    const className = 'modal ' + (state? 'is-open' : '')
+    const isModalOpen = useSelector((storeState) => storeState.appModule.app.isModalOpen)
 
-    return  <div className={className}>
-        <GetCmp props={props} type={type} />
+    const className = 'modal ' + (isModalOpen ? 'is-open' : '')
+
+    return <div className={className}>
+        <GetCmp cmpProps={cmpProps} cmpType={cmpType} />
     </div>
-        
+
 }
 
-function GetCmp({props, type}) {
-    switch (type) {
+function GetCmp({ cmpProps, cmpType }) {
+    switch (cmpType) {
         case 'labels-picker':
-            return <LabelsPicker props={props} />
+            return <LabelsPicker cmpProps={cmpProps} />
 
     }
     return ''
