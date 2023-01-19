@@ -6,7 +6,7 @@ export const SET_BOARD = 'SET_BOARD'
 
 const initialState = {
     boards: [],
-    board: null
+    board: {}
 }
 
 export function boardReducer(state = initialState, action) {

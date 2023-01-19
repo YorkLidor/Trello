@@ -1,13 +1,13 @@
-import { boardService } from "../services/board.service.js"
+import { saveBoard } from "../store/board.actions.js"
 
-export function GroupHeader({ group, setBoard, board }) {
+export function GroupHeader({ group, board }) {
 
     async function onRemoveGroup(groupId) {
         try {
-            const groups = board.groups.filter((group) => group.id !== groupId)
-            board.groups = groups
-            await boardService.saveBoard(board)
-            setBoard({ ...board })
+            const boardToEdit = { ...board }
+            const groups = boardToEdit.groups.filter((group) => group.id !== groupId)
+            boardToEdit.groups = groups
+            await saveBoard(boardToEdit)
         } catch (err) {
             console.error('Cannot remove group', err)
         }

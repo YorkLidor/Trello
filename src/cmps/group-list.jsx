@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Group } from "./group";
 import { IoMdAdd } from "react-icons/io";
 import { boardService } from "../services/board.service";
+import { saveBoard } from "../store/board.actions";
 
 export function GroupList({ groups, setBoard, board }) {
     const [groupToEdit, setGroupToEdit] = useState(boardService.getEmptyGroup())
@@ -11,8 +12,7 @@ export function GroupList({ groups, setBoard, board }) {
         ev.preventDefault()
         try {
             board.groups.push(groupToEdit)
-            await boardService.saveBoard(board)
-            setBoard({ ...board })
+            await saveBoard({ ...board })
         } catch (err) {
             console.log('err', err)
         }
@@ -25,12 +25,13 @@ export function GroupList({ groups, setBoard, board }) {
 
     return <ul className="group-list-container">
         {
-            groups.map((group) => <Group
-                key={group.id}
-                group={group}
-                setBoard={setBoard}
-                board={board}
-            />)
+            groups.map((group) =>
+                <Group
+                    key={group.id}
+                    group={group}
+                    setBoard={setBoard}
+                    board={board}
+                />)
         }
 
         {!isAddCardOpen && <div
@@ -53,9 +54,9 @@ export function GroupList({ groups, setBoard, board }) {
 
             <div className="btn-container">
                 <button className="btn-add">add</button>
-                <button 
-                className="btn-cancel"
-                onClick={() => setIsAddCardOpen(!isAddCardOpen)}
+                <button
+                    className="btn-cancel"
+                    onClick={() => setIsAddCardOpen(!isAddCardOpen)}
                 >x</button>
             </div>
         </form>
