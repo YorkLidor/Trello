@@ -13,7 +13,7 @@ import { boardService } from "../services/board.service";
 import { useSelector } from "react-redux";
 
 import { store } from "../store/store";
-import { SET_BOARD } from "../store/board.reducer";
+import { SET_ACTIVE_BOARD } from "../store/board.reducer";
 
 export function TaskDetails() {
     const { boardId, groupId, taskId } = useParams()
@@ -59,8 +59,6 @@ export function TaskDetails() {
         try {
             const boardModel = board ? { ...board } : await boardService.getById(boardId)
 
-
-
             group.current = boardModel.groups.find(group => group.id === groupId)
             if (!group.current) return errorRedirect()
 
@@ -69,7 +67,7 @@ export function TaskDetails() {
             if (!task) return errorRedirect()
             setTaskToEdit(task)
 
-            if (!board) store.dispatch({ type: SET_BOARD, board: boardModel })
+            if (!board) store.dispatch({ type: SET_ACTIVE_BOARD, board: boardModel })
         }
         catch {
             errorRedirect()
@@ -82,7 +80,7 @@ export function TaskDetails() {
             group.current.tasks = [...group.current.tasks.filter(task => task.id !== taskToEdit.id), taskToEdit]
             const newBoard = { ...board, groups: [...board.groups.filter(grp => grp.id !== group.id), group.current] }
             boardService.saveBoard(newBoard)
-            store.dispatch({ type: SET_BOARD, board: newBoard })
+            store.dispatch({ type: SET_ACTIVE_BOARD, board: newBoard })
         }
         else console.log('ERROR while set board state')
     }

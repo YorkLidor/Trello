@@ -24,10 +24,8 @@ function query() {
     return storageService.query(STORAGE_KEY)
 }
 
-async function saveBoard(board) {
+function saveBoard(board) {
     if (board._id) {
-        const boards = await query()
-        store.dispatch({ type: SET_BOARDS, boards: boards.map(b => b._id === board._id ? board : b) })
         return storageService.put(STORAGE_KEY, board)
     } else {
         return storageService.post(STORAGE_KEY, board)
