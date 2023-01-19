@@ -16,6 +16,13 @@ export function TaskPreview({ task, group, boardId }) {
             <LabelPicker labelIds={task.labelIds} onUpdate={''} />
         }
 
+        <div className="labels-container">
+            <div className="label">
+                <button className="btn-label"></button>
+            </div>
+        </div>
+
+
         <section className="task-body">
             <p>{task.title}</p>
         </section>

@@ -32,10 +32,35 @@
         justify-content: center;
         padding: 6px 6px 6px 8px;
         word-break: break-word;
-        
-        p{
+
+        p {
             text-align: left;
             white-space: break-spaces;
+        }
+    }
+
+    .labels-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4px;
+        margin-bottom: 4px;
+
+        .label {
+            display: inline-flex;
+            max-width: calc(100% - 4px);
+
+            .btn-label {
+                border-radius: 4px;
+                margin-top: 4px;
+                margin-bottom: 4px;
+                padding-right: 0;
+                padding-left: 0;
+                min-width: 40px;
+                max-width: 40px;
+                height: 8px;
+                background-color: #172b4d;
+                color: transparent;
+            }
         }
     }
 

@@ -6,8 +6,7 @@ import { TaskPreview } from "./task-preview";
 export function TaskList({ group, boardId }) {
     const [tasks, setTasks] = useState(group.tasks)
 
-    function onEnd(res) {
-        const { source, destination } = res
+    function onEnd({ source, destination }) {
         setTasks(utilService.reorder(tasks, source.index, destination.index))
 
     }
