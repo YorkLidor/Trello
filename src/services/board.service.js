@@ -24,13 +24,14 @@ function query() {
     return storageService.query(STORAGE_KEY)
 }
 
-function saveBoard(board) {
+async function saveBoard(board) {
     if (board._id) {
+        const boards = await query()
+        store.dispatch({ type: SET_BOARDS, boards: boards.map(b => b._id === board._id ? board : b) })
         return storageService.put(STORAGE_KEY, board)
     } else {
         return storageService.post(STORAGE_KEY, board)
     }
-    store.dispatch({ type: SET_BOARDS, boards: query().map(b => b._id === board._id ? board : b) })
 }
 
 function removeBoard(boardId) {

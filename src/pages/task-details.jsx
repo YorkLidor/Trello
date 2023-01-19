@@ -14,76 +14,75 @@ import { useSelector } from "react-redux";
 
 import { store } from "../store/store";
 import { SET_BOARD } from "../store/board.reducer";
-import { saveBoard } from "../store/board.actions";
 
 export function TaskDetails() {
     const { boardId, groupId, taskId } = useParams()
     const navigate = useNavigate()
-    
+
     const board = useSelector((storeState) => storeState.boardModule.board)
-    var group = board?.groups.find(group => group.id === groupId)
+    var group = useRef()
+    group.current = groupId ? board?.groups?.find(g => g.id === groupId) : null
+
     const [taskToEdit, setTaskToEdit] = useState(null)
-    
-    
+
     const descToolsRef = useRef()
     const elDescInputRef = useRef()
-    
+
     const elCommentRef = useRef()
     const elCommentInputRef = useRef()
     const commentBtnRef = useRef()
-    
+
     const userIconDefault = 'assets/styles/img/profileDefault.png'
-    
+
 
     useEffect(() => {
         if (!boardId || !groupId || !taskId) return errorRedirect()
         loadBoard()
     }, [])
 
-    
+
     useEffect(() => {
-        if (board && taskToEdit) {
-            group.tasks = [...group.tasks.filter(task => task.id !== taskToEdit.id), taskToEdit]
-            const newBoard = { ...board, groups: [...board.groups.filter(grp => grp.id !== group.id), group] }
-            saveBoard(newBoard)
+        if (board && taskToEdit && group.current) {
+            group.current.tasks = [...group.current.tasks.filter(task => task.id !== taskToEdit.id), taskToEdit]
+            const newBoard = { ...board, groups: board.groups.map(grp => grp.id === group.current.id ? group.current : grp)}
+            boardService.saveBoard(newBoard)
         }
         else {
-            console.log(board)
-            console.log(taskToEdit)
+            // console.log(board)
+            // console.log(group.current)
+            // console.log(taskToEdit)
         }
     }, [taskToEdit])
 
 
     async function loadBoard() {
         try {
-            const boardModel = board ? board : await boardService.getById(boardId)
-            if(!board) store.dispatch({type: SET_BOARD , board: boardModel})
-
-            console.log(boardModel)
-
-            group = boardModel.groups.find(group => group.id === groupId)
-            console.log(group)
-            if (!group) return errorRedirect()
+            const boardModel = board ? { ...board } : await boardService.getById(boardId)
 
 
-            const task = group.tasks.find(task => task.id === taskId)
+
+            group.current = boardModel.groups.find(group => group.id === groupId)
+            if (!group.current) return errorRedirect()
+
+
+            const task = group.current.tasks.find(task => task.id === taskId)
             if (!task) return errorRedirect()
-            console.log(task)
             setTaskToEdit(task)
-            
+
+            if (!board) store.dispatch({ type: SET_BOARD, board: boardModel })
         }
         catch {
             errorRedirect()
         }
     }
-    
-    
+
+
     function setBoard(board) {
-        if (board && taskToEdit && group) {
-            group.tasks = [...group.tasks.filter(task => task.id !== taskToEdit.id), taskToEdit]
-            const newBoard = { ...board, groups: [...board.groups.filter(grp => grp.id !== group.id), group] }
+        if (board && taskToEdit && group.current) {
+            group.current.tasks = [...group.current.tasks.filter(task => task.id !== taskToEdit.id), taskToEdit]
+            const newBoard = { ...board, groups: [...board.groups.filter(grp => grp.id !== group.id), group.current] }
             boardService.saveBoard(newBoard)
-            store.dispatch({type: SET_BOARD , board: newBoard})
+            store.dispatch({ type: SET_BOARD, board: newBoard })
         }
         else console.log('ERROR while set board state')
     }
@@ -165,11 +164,11 @@ export function TaskDetails() {
         setTaskToEdit({ ...taskToEdit, comments })
     }
 
-    return (!taskToEdit || !group) ? getLoader() : <section className="task-window flex" onClick={() => navigate(`/board/${boardId}`)}>
+    return (!taskToEdit || !group.current) ? getLoader() : <section className="task-window flex" onClick={() => navigate(`/board/${boardId}`)}>
         <section className="task-details" onClick={(ev) => ev.stopPropagation()}>
             <div className="task-header">
                 <FaPager className="header-icon task-icon" /><input type='text' className="task-title" defaultValue={taskToEdit.title} onFocus={handleEdit} onBlur={handleEdit} data-type='header' />
-                <p className="header-subtitle">in list <span style={{ textDecoration: 'underline' }}>{group.title}</span></p>
+                <p className="header-subtitle">in list <span style={{ textDecoration: 'underline' }}>{group.current.title}</span></p>
             </div>
 
 
