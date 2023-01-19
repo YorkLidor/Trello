@@ -1,12 +1,11 @@
 import { useEffect, useRef, useState } from "react"
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { BoardPreview } from "../cmps/board-preview";
 import { Bars } from 'react-loader-spinner'
 
-
 import { boardService } from "../services/board.service"
 import { loadBoards, saveBoard } from "../store/board.actions";
-import { useSelector } from "react-redux";
 
 export function BoardIndex() {
     const boards = useSelector(state => state.boardModule.boards)
@@ -38,8 +37,8 @@ export function BoardIndex() {
 
     async function onSaveBoard(board) {
         try {
-            const savedBoard = await saveBoard(board)
-            // setBoards(prevBoards => [...prevBoards, savedBoard])
+            await saveBoard(board)
+            console.log('Board Saved successesfuly')
         } catch (err) {
             console.error('Can\'t save board!', err)
         }

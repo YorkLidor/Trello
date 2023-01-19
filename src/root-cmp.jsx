@@ -20,7 +20,6 @@ export function RootCmp() {
                 <Route path="/board/:boardId" element={<Board />} />
                 <Route path="/card/:boardId/:groupId/:taskId" element={<TaskDetails />} />
             </Routes>
-
         </Provider>
     )
 }
