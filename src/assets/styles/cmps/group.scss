@@ -1,33 +1,37 @@
 .group-item-container {
-    display: inline-block;
     max-height: 100%;
     height: fit-content;
     margin: 0 4px;
     vertical-align: top;
     white-space: nowrap;
     width: rem(272px);
+    padding: 4px;
+    list-style: none;
     background-color: #ebecf0;
+    border-radius: 3px;
+
+
 
     &.mod-add {
         background-color: #ebecf0;
         border-radius: 3px;
         height: fit-content;
-        min-height: 32px;
-        padding: 4px;
         transition: background 85ms ease-in, opacity 40ms ease-in, border-color 85ms ease-in;
 
         .add-list-form {
             display: block;
-            padding: rem(4px);
+            transition: background 85ms ease-in, opacity 40ms ease-in, border-color 85ms ease-in;
         }
 
         .open-add-group {
             display: none;
         }
 
-        .list-title-input{
+        .list-title-input {
             margin: 0;
-            width: 100%;
+            margin-bottom: rem(4px);
+            width: calc(100% - 8px);
+            display: inline-block;
         }
 
         .btn-controls-container {
@@ -52,7 +56,8 @@
             }
 
             .open-add-group {
-                display: block;
+                display: flex;
+                align-items: center;
             }
         }
     }
@@ -62,13 +67,12 @@
         max-height: 100%;
         width: 100% !important;
         flex-direction: column;
-        border-radius: 3px;
         font-size: rem(14px);
         margin-inline-end: 8px;
         min-width: 272px;
         width: 272px;
         white-space: normal;
-        
+
     }
 
     .add-card-textarea {
