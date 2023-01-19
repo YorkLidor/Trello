@@ -65,7 +65,7 @@ button{
 }
 
 input{
-    -webkit-appearance: none;
+    appearance: none;
     background-color: var(--ds-background-input,#fafbfc);
     border: none;
     border-radius: 3px;
