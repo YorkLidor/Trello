@@ -169,7 +169,7 @@ export function TaskDetails() {
     }
 
 
-    function toggleSidebarLabelPicker(ev) {
+    function toggleLabelPicker(ev) {
         const pos = utilService.getElementPosition(ev.target)
         sidebarLabelsRef.current.style.top = pos.bottom + 'px'
         sidebarLabelsRef.current.style.left = pos.left + 'px'
@@ -191,10 +191,10 @@ export function TaskDetails() {
                     <div className="task-labels-box flex row">
                         {
 
-                            labels && labels.map(label => <button key={label.id} style={{ backgroundColor: label.color, color: '172B4D' }} className='task-labels'>{label.title}</button>)
+                            labels && labels.map(label => <button key={label.id} style={{ backgroundColor: label.color, color: '172B4D' }} className='task-labels' onClick={toggleLabelPicker}>{label.title}</button>)
                         }
                         {
-                            labels && <button key='add-label' style={{ backgroundColor: '#EAECF0', color: '#172B4D', fontSize: '14px' }} className='task-labels task-add-label'>+</button>
+                            labels && <button key='add-label' style={{ backgroundColor: '#EAECF0', color: '#172B4D', fontSize: '14px' }} className='task-labels task-add-label' onClick={toggleLabelPicker}>+</button>
                         }
                     </div>
                     <div className="task-members-box">
@@ -253,14 +253,14 @@ export function TaskDetails() {
             <div className="window-sidebar-box">
                 <nav className="window-sidebar flex column">
                     <span className="sidebar-title">Add to card</span>
-                    <a className='button-link' href='#' onClick={toggleSidebarLabelPicker}><IoPricetagOutline /> Labels</a>
+                    <a className='button-link' href='#' onClick={toggleLabelPicker}><IoPricetagOutline onClick={(ev) => ev.stopPropagation()} />  Labels</a>
 
                 </nav>
             </div>
 
         </section>
-        <div ref={sidebarLabelsRef} className="sidebar-label-picker">
-            <LabelsPicker labels={board.labels} labelIds={taskToEdit.labelIds} />
+        <div ref={sidebarLabelsRef} className="sidebar-label-picker" onClick={(ev) => ev.stopPropagation()}>
+            <LabelsPicker boardId={boardId} groupId={groupId} task={taskToEdit} labels={board.labels} labelIds={taskToEdit.labelIds}  />
         </div>
     </section >
 }
