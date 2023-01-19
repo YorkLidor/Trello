@@ -3,6 +3,7 @@ import { Group } from "./group";
 import { IoMdAdd } from "react-icons/io";
 import { boardService } from "../services/board.service";
 import { saveBoard } from "../store/board.actions";
+import { GroupAdd } from "./group-add";
 
 export function GroupList({ groups, setBoard, board }) {
     const [groupToEdit, setGroupToEdit] = useState(boardService.getEmptyGroup())
@@ -61,5 +62,6 @@ export function GroupList({ groups, setBoard, board }) {
             </div>
         </form>
         }
+        <GroupAdd/>
     </ul>
 }

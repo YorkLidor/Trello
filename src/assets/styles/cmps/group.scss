@@ -1,22 +1,23 @@
 .group-item-container {
-    box-sizing: border-box;
     display: inline-block;
     height: 100%;
     margin: 0 4px;
     vertical-align: top;
     white-space: nowrap;
-    width: 272px;
+    width: rem(272px);
 
     .group-item {
-        display: flex;
-        flex-direction: column;
         background-color: #ebecf0;
-        border-radius: 3px;
-        font-size: .875rem;
-        margin-inline-end: 8px;
+        display: flex;
         max-height: 100%;
+        width: 100% !important;
+        flex-direction: column;
+        border-radius: 3px;
+        font-size: rem(14px);
+        margin-inline-end: 8px;
         min-width: 272px;
         width: 272px;
+        white-space: normal;
     }
 
     .add-card-textarea {
