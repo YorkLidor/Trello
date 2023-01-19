@@ -13,7 +13,6 @@ export const useForm = (initialState) => {
                 break;
             case 'checkbox':
                 value = checked
-
             default:
                 break;
         }

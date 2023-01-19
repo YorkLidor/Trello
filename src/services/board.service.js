@@ -18,6 +18,7 @@ export const boardService = {
     getLabelsById,
     getEmptyBoard,
     getEmptyGroup,
+    getEmptyTask,
     getActivity
 }
 
@@ -67,6 +68,13 @@ async function getLabelsById(boardId, labelIds) {
 
 }
 
+function getEmptyTask() {
+    return {
+        id: utilService.makeId(),
+        title: ""
+    }
+}
+
 function getEmptyGroup() {
     return {
         id: utilService.makeId(),
@@ -75,6 +83,7 @@ function getEmptyGroup() {
         tasks: [],
     }
 }
+
 
 function getEmptyBoard() {
     return {

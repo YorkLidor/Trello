@@ -1,12 +1,45 @@
 import { useState } from "react";
 import { IoAddSharp } from "react-icons/io5";
+import { IoCloseOutline } from "react-icons/io5";
+import { useForm } from "../customHooks/useForm";
+import { boardService } from "../services/board.service";
+import { utilService } from "../services/util.service";
+import { addNewTask } from "../store/board.actions";
 
-export function GroupFooter() {
-    // const [isOpenClass, setIsIdle] = useState('is-idle')
+export function GroupFooter({ group, boardId, setBoard }) {
+    const groupId = group.id
+    const [isOpenClass, setIsOpenClass] = useState('add-card-close')
+    const [taskTitleToSet, setTaskTitleToSet, handleChange] = useForm(boardService.getEmptyTask())
 
-    return <footer className="group-footer-container task-preview-container">
+    async function onAddNewTask(ev) {
+        ev.preventDefault()
+        console.log('taskTitleToSet.title:', taskTitleToSet.title)
+        if (!taskTitleToSet.title) return
+        try {
+            const board = await boardService.getById(boardId)
+            board.groups.forEach(group => {
+                if (group.id === groupId) {
+                    console.log('group',group)
+                    group.tasks.push(taskTitleToSet)
+                    return group
+                }
+            })
+            await boardService.saveBoard(board)
+            setBoard(board)
+            setTaskTitleToSet(boardService.getEmptyTask())
+            setIsOpenClass('add-card-close')
+        } catch (err) {
+            console.error('Cannot add new task', err)
+        }
 
-        <div className="add-card-container">
+    }
+
+    return <footer className={`group-footer-container ${isOpenClass}`}>
+
+        <div
+            className="add-card-container"
+            onClick={() => setIsOpenClass('')}
+        >
             <span className="add-icon-container">
                 <IoAddSharp className="add-icon" />
             </span>
@@ -15,78 +48,34 @@ export function GroupFooter() {
             </span>
         </div>
 
-        <form action="">
-            <textarea name="" id="" cols="30" rows="10">
+        <form onSubmit={onAddNewTask}>
 
-            </textarea>
+            <div className="textarea-container task-preview-containe">
+                <textarea
+                    onChange={handleChange}
+                    name='title'
+                    placeholder="Enter a title for this card..."
+                    className="form-textarea "
+                >
+
+                </textarea>
+            </div>
+
             <div className="btn-controls-container">
                 <button
-                    className="btn-add"
+                    className="add-btn"
                     type="submit"
                 >
-                    Add list
+                    Add card
                 </button>
                 <button
                     className="btn-cancel"
-                    // onClick={() => setIsIdle('is-idle')}
+                    onClick={() => setIsOpenClass('add-card-close')}
                     type="button"
                 >
-                    X
+                    <IoCloseOutline />
                 </button>
             </div>
         </form>
-
-
-
-        {/* 
-        <div className="task-preview-container">
-            <textarea name="" id="" cols="30" rows="10"></textarea>
-        </div>
-
-        <button className="add-card-btn-second">Add card</button> */}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        {/* <div className="group-footer-container">
-            <div className="add-card-container">
-                <span className="add-icon-container"><IoAddSharp className="add-icon" /></span>
-                <span className="add-txt-container">Add a card</span>
-            </div>
-        </div> */}
-
-
-
-        {/* <div className="group-footer-container-open">
-
-            <div className="task-preview-container">
-                <textarea name="" id="" cols="30" rows="10"></textarea>
-            </div>
-
-            <button className="add-card-btn-second">Add card</button>
-            <IoAddSharp className="close-btn" onClick={() => setIsAddCardOpen(!isAddCardOpen)} />
-        </div> */}
-
     </footer>
 }

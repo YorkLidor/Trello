@@ -11,7 +11,7 @@ export function Group({ group, setBoard, board }) {
 
             <TaskList boardId={board._id} group={group} />
 
-            <GroupFooter />
+            <GroupFooter boardId={board._id} group={group} setBoard={setBoard}/>
         </div>
     </li>
 }
