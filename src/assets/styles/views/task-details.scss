@@ -303,6 +303,15 @@
     }
 }
 
-.task-info {
-    justify-content: space-between;
+.task-info{
+    flex-wrap: wrap;
+}
+.task-labels-box {
+    max-width: 100%;
+    flex-wrap: wrap;
+    gap: 4px;
+}
+
+.task-labels {
+    border: hidden;
 }

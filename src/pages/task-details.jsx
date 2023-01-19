@@ -34,6 +34,8 @@ export function TaskDetails() {
     const elCommentInputRef = useRef()
     const elDescInputRef = useRef()
 
+    const [labels, setLabels] = useState(null)
+
 
     useEffect(() => {
         if (!boardId || !groupId || !taskId) return
@@ -63,9 +65,11 @@ export function TaskDetails() {
             const task = group.tasks.find(task => task.id === taskId)
             console.log(task);
             if (!task) return errorRedirect()
-            const labels = boardService.getLabelsById(boardId, task.labelIds)
-            console.log(labels)
 
+            if (task.labelIds) {
+                const taskLabels = await boardService.getLabelsById(boardId, task.labelIds)
+                if (taskLabels) setLabels(taskLabels)
+            }
             setTaskToEdit(task)
             setBoard(result)
         }
@@ -166,11 +170,13 @@ export function TaskDetails() {
                 <section className="task-info flex row">
 
                     <div className="task-labels-box flex row">
-                        {/* {
-                            (taskToEdit.labelIds?.length) ? boardService.getLabelsById(boardId, taskToEdit.labelIds).then(labels=> labels.map(label => {
-                                return <button style={{ backgroundColor: label.color , color: '#172b4d'}}>{label.title}</button>
-                            })) : ''
-                        } */}
+                        {
+
+                            labels && labels.map(label => <button key={label.id} style={{ backgroundColor: label.color, color: '172B4D' }} className='task-labels'>{label.title}</button>)
+                        }
+                        {
+                            labels && <button key='add-label' style={{ backgroundColor: '#EAECF0', color: '#172B4D', fontSize: '14px' }} className='task-labels'>+</button>
+                        }
                     </div>
                     <div className="task-members-box">
 
