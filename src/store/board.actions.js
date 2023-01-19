@@ -29,7 +29,6 @@ export async function removeBoard(boardId) {
 
 export async function saveBoard(board) {
     try {
-
         const actionType = (board._id) ? EDIT_BOARD : ADD_BOARD
         const savedBoard = await boardService.saveBoard(board)
         store.dispatch({ type: actionType, board: savedBoard })
@@ -39,6 +38,11 @@ export async function saveBoard(board) {
         console.error('Cannot save board')
         throw new Error('Cannot save board')
     }
+}
+
+export async function setBoard(board){
+    const savedBoard = await boardService.saveBoard(board)
+    store.dispatch({ type: SET_ACTIVE_BOARD, board })
 }
 
 export async function addNewTask(boardId, groupId, newTask) {
