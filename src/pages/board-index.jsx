@@ -38,8 +38,8 @@ export function BoardIndex() {
 
     async function onSaveBoard(board) {
         try {
-            const savedBoard = await saveBoard(board)
-            // setBoards(prevBoards => [...prevBoards, savedBoard])
+            await saveBoard(board)
+            console.log('Board Saved successesfuly')
         } catch (err) {
             console.error('Can\'t save board!', err)
         }
