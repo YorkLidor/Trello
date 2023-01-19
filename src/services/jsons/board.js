@@ -112,12 +112,14 @@ export const jBoard = {
                     "id": "c103",
                     "title": "Do that",
                     "archivedAt": 1589983468418,
+                    "labelIds": ["l101"]
                 },
                 {
                     "id": "c104",
                     "title": "Help me",
                     "status": "in-progress", // monday
                     "priority": "high",
+                    
                     "description": "description",
                     "comments": [
                         {

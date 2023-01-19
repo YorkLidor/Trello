@@ -63,7 +63,8 @@ export function TaskDetails() {
             const task = group.tasks.find(task => task.id === taskId)
             console.log(task);
             if (!task) return errorRedirect()
-
+            const labels = boardService.getLabelsById(boardId, task.labelIds)
+            console.log(labels)
 
             setTaskToEdit(task)
             setBoard(result)
@@ -162,10 +163,14 @@ export function TaskDetails() {
 
 
             <section className="task-main-col">
-                <section className="task-info flex">
+                <section className="task-info flex row">
 
-                    <div className="task-labels-box">
-
+                    <div className="task-labels-box flex row">
+                        {/* {
+                            (taskToEdit.labelIds?.length) ? boardService.getLabelsById(boardId, taskToEdit.labelIds).then(labels=> labels.map(label => {
+                                return <button style={{ backgroundColor: label.color , color: '#172b4d'}}>{label.title}</button>
+                            })) : ''
+                        } */}
                     </div>
                     <div className="task-members-box">
 
