@@ -5,7 +5,7 @@ import { SET_BOARDS, ADD_BOARD, REMOVE_BOARD, UPDATE_BOARD, EDIT_BOARD } from '.
 export async function loadBoards() {
     try {
 
-        boards = await boardService.query()
+        const boards = await boardService.query()
         store.dispatch({ type: SET_BOARDS, boards })
     }
     catch {
@@ -14,7 +14,7 @@ export async function loadBoards() {
     }
 }
 
-// // Example for Optimistic mutation:
+// Example for Optimistic mutation:
 export async function removeBoard(boardId) {
     try {
 
@@ -32,7 +32,7 @@ export async function saveBoard(board) {
 
         const actionType = (board._id) ? EDIT_BOARD : ADD_BOARD
         const savedBoard = await boardService.saveBoard(board)
-        store.dispatch({ type, toy: savedToy })
+        store.dispatch({ type: actionType, board: savedBoard })
         return savedBoard
     }
     catch {
