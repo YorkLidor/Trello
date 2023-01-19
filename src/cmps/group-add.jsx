@@ -6,7 +6,9 @@ export function GroupAdd({ onAddGroup, handleChange }) {
     const [isIdleClass, setIsIdle] = useState('is-idle')
 
     return <li className={`group-item-container mod-add ${isIdleClass}`}>
+
         <div className="group-item">
+
             <span
                 className="open-add-group flex justify-center"
                 onClick={() => setIsIdle('')}
@@ -14,6 +16,7 @@ export function GroupAdd({ onAddGroup, handleChange }) {
                 <IoMdAdd />
                 Add another list
             </span>
+
             <form
                 className="add-list-form"
                 onSubmit={onAddGroup}
@@ -42,6 +45,7 @@ export function GroupAdd({ onAddGroup, handleChange }) {
                     </button>
                 </div>
             </form>
+            
         </div>
     </li>
 }
