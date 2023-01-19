@@ -5,19 +5,24 @@ import { Bars } from 'react-loader-spinner'
 
 
 import { boardService } from "../services/board.service"
+import { loadBoards, saveBoard } from "../store/board.actions";
+import { useSelector } from "react-redux";
 
-export function BoardsIndex() {
-    const [boards, setBoards] = useState(null)
+export function BoardIndex() {
+    const boards = useSelector(state => state.boardModule.boards)
     const navigate = useNavigate()
 
 
     useEffect(() => {
-        loadBoards()
+        onLoadBoards()
     }, [])
 
-    async function loadBoards() {
-        const boards = await boardService.query()
-        setBoards(boards)
+    async function onLoadBoards() {
+        try {
+            await loadBoards()
+        } catch (err) {
+            console.error('something went wrong!', err)
+        }
     }
 
     function onBoardClick(boardId) {
@@ -28,13 +33,13 @@ export function BoardsIndex() {
     function onCreateBoard() {
         const boardToEdit = boardService.getEmptyBoard()
         boardToEdit.title = prompt("Enter Title:")
-        if (boardToEdit.title) saveBoard(boardToEdit)
+        if (boardToEdit.title) onSaveBoard(boardToEdit)
     }
 
-    async function saveBoard(board) {
+    async function onSaveBoard(board) {
         try {
-            const savedBoard = await boardService.saveBoard(board)
-            setBoards(prevBoards => [...prevBoards, savedBoard])
+            const savedBoard = await saveBoard(board)
+            // setBoards(prevBoards => [...prevBoards, savedBoard])
         } catch (err) {
             console.error('Can\'t save board!', err)
         }
