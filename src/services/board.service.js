@@ -30,7 +30,6 @@ function saveBoard(board) {
     } else {
         return storageService.post(STORAGE_KEY, board)
     }
-    store.dispatch({ type: SET_BOARDS, boards: query().map(b => b._id === board._id ? board : b) })
 }
 
 function removeBoard(boardId) {
