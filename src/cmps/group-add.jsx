@@ -14,6 +14,7 @@ export function GroupAdd({ onAddGroup, handleChange }) {
                 <IoMdAdd />
                 Add another list
             </span>
+
             <form
                 className="add-list-form"
                 onSubmit={onAddGroup}
@@ -42,6 +43,7 @@ export function GroupAdd({ onAddGroup, handleChange }) {
                     </button>
                 </div>
             </form>
+
         </div>
     </li>
 }

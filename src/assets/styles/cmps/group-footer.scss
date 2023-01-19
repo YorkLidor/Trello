@@ -1,15 +1,14 @@
 .group-footer-container {
-    display: flex;
-    justify-content: space-between;
-    min-height: 38px;
-    max-height: 38px;
+    // display: flex;
+    // justify-content: space-between;
+    // min-height: 38px;
+    // max-height: 38px;
 
     .add-card-container {
         color: var(--ds-text-subtle, #5e6c84);
         flex: 1 0 auto;
         margin: -1px 0px 8px 0px;
         padding: 4px 8px;
-
 
         .add-icon-container {
             color: var(--ds-icon-subtle, #6b778c);
@@ -18,7 +17,6 @@
             .add-icon {
                 font-size: 16px;
             }
-
         }
 
         .add-txt-container {
