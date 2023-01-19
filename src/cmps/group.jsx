@@ -11,12 +11,12 @@ export function Group({ group, setBoard, board }) {
 
             <GroupHeader group={group} setBoard={setBoard} board={board} />
 
-            <TaskList group={group} boardId={board._id} />
+            <TaskList group={group} />
 
             {isAddCardOpen && <textarea
                 className="add-card-textarea"
-                placeholder="Enter a title for this card..."
-            />}
+                placeholder="Enter a title for this card..." 
+                />}
 
             <GroupFooter isAddCardOpen={isAddCardOpen} setIsAddCardOpen={setIsAddCardOpen} />
         </div>
