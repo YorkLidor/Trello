@@ -1,13 +1,11 @@
 import { useState } from "react";
 import { Group } from "./group";
-import { IoMdAdd } from "react-icons/io";
 import { boardService } from "../services/board.service";
 import { saveBoard } from "../store/board.actions";
 import { GroupAdd } from "./group-add";
 
 export function GroupList({ groups, setBoard, board }) {
     const [groupToEdit, setGroupToEdit] = useState(boardService.getEmptyGroup())
-    const [isAddCardOpen, setIsAddCardOpen] = useState(false)
 
     async function onAddGroup(ev) {
         ev.preventDefault()
@@ -19,7 +17,7 @@ export function GroupList({ groups, setBoard, board }) {
         }
     }
 
-    const handleChange = ev => {
+    function handleChange(ev) {
         const { value } = ev.target
         setGroupToEdit({ ...groupToEdit, title: value })
     }
@@ -35,33 +33,6 @@ export function GroupList({ groups, setBoard, board }) {
                 />)
         }
 
-        {!isAddCardOpen && <div
-            className="add-group-btn"
-            onClick={() => setIsAddCardOpen(!isAddCardOpen)}>
-            <IoMdAdd />  Add another list
-        </div>
-        }
-
-        {isAddCardOpen && <form
-            onSubmit={onAddGroup}
-            className="add-group-form flex group-item editable"
-            action=""
-        >
-            <input className="new-group-title-input"
-                type="text"
-                placeholder="Enter list title..."
-                onChange={handleChange}
-            />
-
-            <div className="btn-container">
-                <button className="btn-add">add</button>
-                <button
-                    className="btn-cancel"
-                    onClick={() => setIsAddCardOpen(!isAddCardOpen)}
-                >x</button>
-            </div>
-        </form>
-        }
-        <GroupAdd/>
+        <GroupAdd onAddGroup={onAddGroup} handleChange={handleChange} />
     </ul>
 }
