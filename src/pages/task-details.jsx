@@ -16,21 +16,22 @@ import { store } from "../store/store";
 import { SET_ACTIVE_BOARD } from "../store/board.reducer";
 import { LabelsPicker } from "../cmps/labels-picker";
 import { Modal } from "../cmps/modal";
-import { TOGGLE_MODAL } from "../store/app.reducer";
+import { TOGGLE_MODAL, CLOSE_MODAL } from "../store/app.reducer";
+import { func } from "prop-types";
 
 
 export function TaskDetails() {
-    const { boardId, groupId, taskId } = useParams()
-    const navigate = useNavigate()
 
+    const { boardId, groupId, taskId } = useParams()
     const board = useSelector((storeState) => storeState.boardModule.board)
+    const [taskToEdit, setTaskToEdit] = useState(null)
+
     var group = useRef()
     group.current = groupId ? board?.groups?.find(g => g.id === groupId) : null
 
-    const [taskToEdit, setTaskToEdit] = useState(null)
+    const labels = (taskToEdit && board) ? board.labels.filter(label => taskToEdit?.labelIds?.includes(label.id)) : []
 
-    const labels = taskToEdit && board ? board.labels.filter(label => taskToEdit.labelIds.includes(label.id)) : null
-
+    const navigate = useNavigate()
     const descToolsRef = useRef()
     const elDescInputRef = useRef()
 
@@ -83,17 +84,6 @@ export function TaskDetails() {
     }
 
 
-    function setBoard(board) {
-        if (board && taskToEdit && group.current) {
-            group.current.tasks = [...group.current.tasks.filter(task => task.id !== taskToEdit.id), taskToEdit]
-            const newBoard = { ...board, groups: [...board.groups.filter(grp => grp.id !== group.id), group.current] }
-            boardService.saveBoard(newBoard)
-            store.dispatch({ type: SET_ACTIVE_BOARD, board: newBoard })
-        }
-        else console.log('ERROR while set board state')
-    }
-
-
     function getLoader() {
         return <Blocks
             visible={true}
@@ -109,6 +99,10 @@ export function TaskDetails() {
         console.log('ERROR: Failed to load board')
         return navigate('/workspace')
     }
+    function backToBoard() {
+        store.dispatch({ type: CLOSE_MODAL })
+        navigate(`/board/${boardId}`)
+    }
 
     const user = {
         "_id": "u101",
@@ -116,11 +110,11 @@ export function TaskDetails() {
         "username": "galzo@ggmail.com",
         "password": "aBambi123",
         "imgUrl": "https://res.cloudinary.com/dk2geeubr/image/upload/v1673873845/g2gqvov30haxc8adehvi.jpg",
-        // "mentions": [{ //optional
-        //     "id": "m101",
-        //     "boardId": "m101",
-        //     "taskId": "t101"
-        // }]
+        "mentions": [{ //optional
+            "id": "m101",
+            "boardId": "m101",
+            "taskId": "t101"
+        }]
     }
 
 
@@ -170,37 +164,36 @@ export function TaskDetails() {
         setTaskToEdit({ ...taskToEdit, comments })
     }
 
-
+    // Toggle modal visibility and set it's pos under element
     function toggleLabelPicker(ev) {
         const pos = utilService.getElementPosition(ev.target)
 
         LabelsPickerRef.current.style.top = pos.bottom + 'px'
         LabelsPickerRef.current.style.left = pos.left + 'px'
 
-        store.dispatch({type: TOGGLE_MODAL})
-
+        store.dispatch({ type: TOGGLE_MODAL })
     }
 
-    return (!taskToEdit || !group.current) ? getLoader() : <section className="task-window flex" onClick={() => navigate(`/board/${boardId}`)}>
+    return (!taskToEdit || !group.current) ? getLoader() : <section className="task-window flex" onClick={backToBoard}>
         <section className="task-details" onClick={(ev) => ev.stopPropagation()}>
+
             <div className="task-header">
                 <FaPager className="header-icon task-icon" /><input type='text' className="task-title" defaultValue={taskToEdit.title} onFocus={handleEdit} onBlur={handleEdit} data-type='header' />
                 <p className="header-subtitle">in list <span style={{ textDecoration: 'underline' }}>{group.current.title}</span></p>
             </div>
 
-
             <section className="task-main-col">
+
                 <section className="task-info flex row">
-
                     <div className="task-labels-box flex row">
-                        {
+                        {labels && labels.map(label => <button key={label.id} style={{ backgroundColor: label.color, color: '172B4D' }} 
+                        className='task-labels' onClick={toggleLabelPicker}>{label.title}</button>)}
 
-                            labels && labels.map(label => <button key={label.id} style={{ backgroundColor: label.color, color: '172B4D' }} className='task-labels' onClick={toggleLabelPicker}>{label.title}</button>)
-                        }
                         {
-                            labels && <button key='add-label' style={{ backgroundColor: '#EAECF0', color: '#172B4D', fontSize: '14px' }} className='task-labels task-add-label' onClick={toggleLabelPicker}>+</button>
+                            taskToEdit?.labelIds?.length > 0 && <button key='add-label' style={{ backgroundColor: '#EAECF0', color: '#172B4D', fontSize: '14px' }} className='task-labels task-add-label' onClick={toggleLabelPicker}>+</button>
                         }
                     </div>
+
                     <div className="task-members-box">
 
                     </div>
@@ -241,7 +234,9 @@ export function TaskDetails() {
 
 
                 </div>
+
                 {
+                    /* Task Comments */
                     taskToEdit.comments?.length && taskToEdit.comments.map(comment => {
                         return <div className="comments-list" key={comment.id}>
                             <img className="commentor-logo" src={comment.byMember.imgUrl ? comment.byMember.imgUrl : 'https://res.cloudinary.com/dk2geeubr/image/upload/v1673890694/profileDefault_khqx4r.png'} />
@@ -254,6 +249,7 @@ export function TaskDetails() {
                     })
                 }
             </section>
+
             <div className="window-sidebar-box">
                 <nav className="window-sidebar flex column">
                     <span className="sidebar-title">Add to card</span>
@@ -263,9 +259,10 @@ export function TaskDetails() {
             </div>
 
         </section>
+
         <div ref={LabelsPickerRef} className="labels-picker" onClick={(ev) => ev.stopPropagation()}>
             {
-                <Modal props={{ boardId, groupId, taskToEdit, labels: board.labels, labelIds: taskToEdit.labelIds }} type='labels-picker' />
+                <Modal cmpProps={{ boardId, groupId, task: taskToEdit, labels: board.labels, labelIds: taskToEdit.labelIds }} cmpType='labels-picker' />
             }
         </div>
     </section >

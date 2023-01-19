@@ -1,13 +1,11 @@
-import { func } from 'prop-types'
-import { useEffect, useState } from 'react'
-import { GrFormEdit } from 'react-icons/gr'
-import { useSelector } from 'react-redux'
-import { boardService } from '../services/board.service'
-import { store } from '../store/store'
 
-export function LabelsPicker({ props }) {
-    const { boardId, groupId, task, labels, labelIds } = props
-    const [labelIdsToEdit, setLabelsIds] = useState(labelIds)
+import { useState } from 'react'
+import { GrFormEdit } from 'react-icons/gr'
+import { boardService } from '../services/board.service'
+
+export function LabelsPicker({ cmpProps }) {
+    const { boardId, groupId, task, labels, labelIds } = cmpProps
+    const [labelIdsToEdit, setLabelsIds] = useState(labelIds ? labelIds : [])
 
     const member = {
         id: 101,
