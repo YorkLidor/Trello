@@ -1,4 +1,6 @@
 import { async } from 'q'
+import { SET_BOARDS } from '../store/board.reducer.js'
+import { store } from '../store/store.js'
 import { storageService } from './async-storage.service.js'
 import { jBoard } from './jsons/board.js'
 import { utilService } from './util.service.js'
@@ -28,6 +30,7 @@ function saveBoard(board) {
     } else {
         return storageService.post(STORAGE_KEY, board)
     }
+    store.dispatch({ type: SET_BOARDS, boards: query().map(b => b._id === board._id ? board : b) })
 }
 
 function removeBoard(boardId) {
@@ -53,7 +56,7 @@ function saveTask(boardId, groupId, task, activity) {
 async function getLabelsById(boardId, labelIds) {
     const board = await getById(boardId)
     return board.labels.filter(label => labelIds.includes(label.id))
-    
+
 }
 
 function getEmptyGroup() {
