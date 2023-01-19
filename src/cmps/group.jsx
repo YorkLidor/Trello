@@ -11,7 +11,7 @@ export function Group({ group, setBoard, board }) {
 
             <GroupHeader group={group} setBoard={setBoard} board={board} />
 
-            <TaskList group={group} />
+            <TaskList boardId={board._id} group={group} />
 
             {isAddCardOpen && <textarea
                 className="add-card-textarea"
