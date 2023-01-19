@@ -1,5 +1,5 @@
 import { async } from 'q'
-import { SET_BOARDS } from '../store/board.reducer.js'
+import { SET_ACTIVE_BOARD } from '../store/board.reducer.js'
 import { store } from '../store/store.js'
 import { storageService } from './async-storage.service.js'
 import { jBoard } from './jsons/board.js'
@@ -17,7 +17,8 @@ export const boardService = {
     getById,
     getLabelsById,
     getEmptyBoard,
-    getEmptyGroup
+    getEmptyGroup,
+    getActivity
 }
 
 function query() {
@@ -40,13 +41,21 @@ function getById(boardId) {
     return storageService.get(STORAGE_KEY, boardId)
 }
 
-function saveTask(boardId, groupId, task, activity) {
-    const board = getById(boardId)
+async function saveTask(boardId, groupId, task, activity) {
+    const board = await getById(boardId)
+    if(!board) throw new Error('No such board with this id')
     // PUT /api/board/b123/task/t678
 
     // TODO: find the task, and update
+    const group = board.groups.find(group => group.id === groupId)
+    if(!group) throw new Error('No such a group in board')
+
+    const tasks = group.tasks.map(t => t.id === task.id ? task : t)
+    group.tasks = tasks
+
     board.activities.unshift(activity)
     saveBoard(board)
+    store.dispatch({type: SET_ACTIVE_BOARD, board})
     // return board
     // return task
 }
@@ -91,5 +100,22 @@ function _createBoards() {
         boards.push({ ...jBoard, style: { bg } })
 
         utilService.saveToStorage(STORAGE_KEY, boards)
+    }
+}
+
+function getActivity(member, task, txt) {
+    return {
+        id: 'a'+ utilService.makeId(),
+        txt,
+        createdAt: Date.now(),
+        byMember:{
+            _id : member._id,
+            fullname: member.fullname,
+            imgUrl: member.imgUrl
+        },
+        task: {
+            id: task.id,
+            title: task.title
+        }
     }
 }

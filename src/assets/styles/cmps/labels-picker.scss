@@ -1,8 +1,7 @@
-
 .sidebar-label-picker {
     display: none;
     position: fixed;
-
+    color: $clr_font_blue;
     width: 304px;
 
     z-index: 5;
@@ -15,8 +14,45 @@
     background-color: white;
     border-radius: 3px;
     box-shadow: rgba(9, 30, 66, 0.25) 0px 8px 16px -4px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+    padding-inline: 12px;
 
-    &.is-open{
+    &.is-open {
         display: block;
+    }
+
+    .picker-header {
+        font: inherit;
+        text-align: center;
+        font-size: 14px;
+    }
+}
+
+
+.labels-picker-list {
+    list-style: none;
+    margin-block: 1em;
+    margin-inline: 0px 0px;
+    padding: 0px;
+}
+
+.label-picker-line {
+    margin-block-end: 5px;
+    width: 100%;
+
+    .label-box-preview {
+        position: relative;
+        width: 100%;
+        line-height: 32px;
+        padding: 0 12px;
+    }
+
+    input[name="add-label"] {
+        appearance: checkbox;
+        display: inline;
+        scale: 1.4;
+        border-radius: 3px;
+        border: 0px;
+        margin-inline-end: 4px;
+        line-height: 16px;
     }
 }
