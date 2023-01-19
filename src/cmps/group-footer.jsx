@@ -1,28 +1,30 @@
-import { IoMdAdd } from "react-icons/io";
-import { IoMdClose } from "react-icons/io";
+import { useState } from "react";
+import { IoAddSharp } from "react-icons/io5";
 
-export function GroupFooter({ setIsAddCardOpen, isAddCardOpen }) {
+export function GroupFooter() {
 
-    return <footer className="group-footer">
+    const [isAddCardOpen, setIsAddCardOpen] = useState(true)
 
-        {!isAddCardOpen &&
-            <div className="group-footer-close">
-                <IoMdAdd className="add-icon" />
-                <a
-                    className="add-card-btn"
-                    onClick={() => setIsAddCardOpen(!isAddCardOpen)}
-                    href="#"
-                > Add a card
-                </a>
+    return <>
+
+        <div className="group-footer-container">
+            <div className="add-card-container">
+                <span className="add-icon-container"><IoAddSharp className="add-icon"/></span>
+                <span className="add-txt-container">Add a card</span>
             </div>
-        }
+        </div>
 
-        {isAddCardOpen &&
-            <div className="group-footer-open">
-                <button className="add-card-btn-second">Add card</button>
-                <IoMdClose className="close-btn" onClick={() => setIsAddCardOpen(!isAddCardOpen)} />
+
+
+        <div className="group-footer-container-open">
+
+            <div className="task-preview-container">
+                <textarea name="" id="" cols="30" rows="10"></textarea>
             </div>
-        }
 
-    </footer>
+            <button className="add-card-btn-second">Add card</button>
+            <IoAddSharp className="close-btn" onClick={() => setIsAddCardOpen(!isAddCardOpen)} />
+        </div>
+
+    </>
 }

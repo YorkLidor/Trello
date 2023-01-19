@@ -14,7 +14,6 @@
 @import "views/board";
 @import "views/home-page";
 @import "views/task-details";
-@import "views/work-space";
 
 // Components
 
@@ -38,6 +37,8 @@
 @import "cmps/task-list";
 @import "cmps/task-preview";
 
+//label-picker CMP
+@import "cmps/labels-picker.scss";
 
 
 

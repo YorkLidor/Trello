@@ -14,6 +14,8 @@ import { useSelector } from "react-redux";
 
 import { store } from "../store/store";
 import { SET_ACTIVE_BOARD } from "../store/board.reducer";
+import { LabelsPicker } from "../cmps/labels-picker";
+
 
 export function TaskDetails() {
     const { boardId, groupId, taskId } = useParams()
@@ -25,12 +27,16 @@ export function TaskDetails() {
 
     const [taskToEdit, setTaskToEdit] = useState(null)
 
+    const labels = taskToEdit && board ? board.labels.filter(label => taskToEdit.labelIds.includes(label.id)) : null
+
     const descToolsRef = useRef()
     const elDescInputRef = useRef()
 
     const elCommentRef = useRef()
     const elCommentInputRef = useRef()
     const commentBtnRef = useRef()
+
+    const sidebarLabelsRef = useRef()
 
     const userIconDefault = 'assets/styles/img/profileDefault.png'
 
@@ -44,7 +50,7 @@ export function TaskDetails() {
     useEffect(() => {
         if (board && taskToEdit && group.current) {
             group.current.tasks = [...group.current.tasks.filter(task => task.id !== taskToEdit.id), taskToEdit]
-            const newBoard = { ...board, groups: board.groups.map(grp => grp.id === group.current.id ? group.current : grp)}
+            const newBoard = { ...board, groups: board.groups.map(grp => grp.id === group.current.id ? group.current : grp) }
             boardService.saveBoard(newBoard)
         }
         else {
@@ -162,6 +168,15 @@ export function TaskDetails() {
         setTaskToEdit({ ...taskToEdit, comments })
     }
 
+
+    function toggleSidebarLabelPicker(ev) {
+        const pos = utilService.getElementPosition(ev.target)
+        sidebarLabelsRef.current.style.top = pos.bottom + 'px'
+        sidebarLabelsRef.current.style.left = pos.left + 'px'
+        sidebarLabelsRef.current.classList.toggle('is-open')
+
+    }
+
     return (!taskToEdit || !group.current) ? getLoader() : <section className="task-window flex" onClick={() => navigate(`/board/${boardId}`)}>
         <section className="task-details" onClick={(ev) => ev.stopPropagation()}>
             <div className="task-header">
@@ -174,13 +189,13 @@ export function TaskDetails() {
                 <section className="task-info flex row">
 
                     <div className="task-labels-box flex row">
-                        {/* {
+                        {
 
                             labels && labels.map(label => <button key={label.id} style={{ backgroundColor: label.color, color: '172B4D' }} className='task-labels'>{label.title}</button>)
                         }
                         {
-                            labels && <button key='add-label' style={{ backgroundColor: '#EAECF0', color: '#172B4D', fontSize: '14px' }} className='task-labels'>+</button>
-                        } */}
+                            labels && <button key='add-label' style={{ backgroundColor: '#EAECF0', color: '#172B4D', fontSize: '14px' }} className='task-labels task-add-label'>+</button>
+                        }
                     </div>
                     <div className="task-members-box">
 
@@ -238,10 +253,14 @@ export function TaskDetails() {
             <div className="window-sidebar-box">
                 <nav className="window-sidebar flex column">
                     <span className="sidebar-title">Add to card</span>
-                    <a className='button-link' href='#'><IoPricetagOutline /> Labels</a>
+                    <a className='button-link' href='#' onClick={toggleSidebarLabelPicker}><IoPricetagOutline /> Labels</a>
+
                 </nav>
             </div>
 
         </section>
+        <div ref={sidebarLabelsRef} className="sidebar-label-picker">
+            <LabelsPicker labels={board.labels} labelIds={taskToEdit.labelIds} />
+        </div>
     </section >
 }
