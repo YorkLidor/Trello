@@ -58,7 +58,7 @@ export function TaskDetails() {
         try {
             const board = await boardService.getById(boardId)
 
-            const group = result.groups.find(group => group.id === groupId)
+            const group = board.groups.find(group => group.id === groupId)
             if (!group) return errorRedirect()
 
 
