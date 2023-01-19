@@ -22,20 +22,20 @@ export function GroupAdd() {
                     placeholder="Enter list title..."
                     autoComplete="off"
                 />
+                <div className="btn-controls-container">
+                    <button
+                        className="btn-add"
+                    >
+                        Add list
+                    </button>
+                    <button
+                        className="btn-cancel"
+                        onClick={() => setIsIdle('is-idle')}
+                    >
+                        X
+                    </button>
+                </div>
             </form>
-            <div className="btn-controls-container">
-                <button
-                    className="btn-add-list"
-                >
-                    Add list
-                </button>
-                <button
-                    className="btn-cancel"
-                    onClick={() => setIsIdle('is-idle')}
-                >
-                    X
-                </button>
-            </div>
         </div>
     </li>
 }

@@ -47,7 +47,7 @@ export function GroupList({ groups, setBoard, board }) {
             className="add-group-form flex group-item editable"
             action=""
         >
-            <input className="new-group-title"
+            <input className="new-group-title-input"
                 type="text"
                 placeholder="Enter list title..."
                 onChange={handleChange}
