@@ -6,7 +6,7 @@ export function GroupAdd({ onAddGroup, handleChange }) {
     const [isIdleClass, setIsIdle] = useState('is-idle')
 
     return <li className={`group-item-container mod-add ${isIdleClass}`}>
-        <div className="group-item">
+        <div className={`group-item mod-add ${isIdleClass}`}>
             <span
                 className="open-add-group flex justify-center"
                 onClick={() => setIsIdle('')}
