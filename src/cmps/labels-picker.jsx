@@ -5,8 +5,8 @@ import { useSelector } from 'react-redux'
 import { boardService } from '../services/board.service'
 import { store } from '../store/store'
 
-export function LabelsPicker({ boardId, groupId, task, labels, labelIds }) {
-
+export function LabelsPicker({ props }) {
+    const { boardId, groupId, task, labels, labelIds } = props
     const [labelIdsToEdit, setLabelsIds] = useState(labelIds)
 
     const member = {
@@ -21,11 +21,11 @@ export function LabelsPicker({ boardId, groupId, task, labels, labelIds }) {
         let action = ''
         if (!target.checked) {
             newLabelIds = labelIdsToEdit.filter(labelIdToEdit => labelIdToEdit !== labelId)
-            action = 'Removed label ' + labels.filter(label => label.id === labelId).title 
+            action = 'Removed label ' + labels.filter(label => label.id === labelId).title
             setLabelsIds(newLabelIds)
         } else {
             newLabelIds = [...labelIdsToEdit, labelId]
-            action = 'Added label ' + labels.filter(label => label.id === labelId).title 
+            action = 'Added label ' + labels.filter(label => label.id === labelId).title
             setLabelsIds(newLabelIds)
         }
 

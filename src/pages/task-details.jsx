@@ -15,6 +15,8 @@ import { useSelector } from "react-redux";
 import { store } from "../store/store";
 import { SET_ACTIVE_BOARD } from "../store/board.reducer";
 import { LabelsPicker } from "../cmps/labels-picker";
+import { Modal } from "../cmps/modal";
+import { TOGGLE_MODAL } from "../store/app.reducer";
 
 
 export function TaskDetails() {
@@ -36,7 +38,7 @@ export function TaskDetails() {
     const elCommentInputRef = useRef()
     const commentBtnRef = useRef()
 
-    const sidebarLabelsRef = useRef()
+    const LabelsPickerRef = useRef()
 
     const userIconDefault = 'assets/styles/img/profileDefault.png'
 
@@ -171,9 +173,11 @@ export function TaskDetails() {
 
     function toggleLabelPicker(ev) {
         const pos = utilService.getElementPosition(ev.target)
-        sidebarLabelsRef.current.style.top = pos.bottom + 'px'
-        sidebarLabelsRef.current.style.left = pos.left + 'px'
-        sidebarLabelsRef.current.classList.toggle('is-open')
+
+        LabelsPickerRef.current.style.top = pos.bottom + 'px'
+        LabelsPickerRef.current.style.left = pos.left + 'px'
+
+        store.dispatch({type: TOGGLE_MODAL})
 
     }
 
@@ -259,8 +263,10 @@ export function TaskDetails() {
             </div>
 
         </section>
-        <div ref={sidebarLabelsRef} className="sidebar-label-picker" onClick={(ev) => ev.stopPropagation()}>
-            <LabelsPicker boardId={boardId} groupId={groupId} task={taskToEdit} labels={board.labels} labelIds={taskToEdit.labelIds}  />
+        <div ref={LabelsPickerRef} className="labels-picker" onClick={(ev) => ev.stopPropagation()}>
+            {
+                <Modal props={{ boardId, groupId, taskToEdit, labels: board.labels, labelIds: taskToEdit.labelIds }} type='labels-picker' />
+            }
         </div>
     </section >
 }
