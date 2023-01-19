@@ -10,10 +10,11 @@ import { Blocks } from "react-loader-spinner";
 
 import { utilService } from '../services/util.service'
 import { boardService } from "../services/board.service";
+import { useSelector } from "react-redux";
 
 export function TaskDetails() {
     const { boardId, groupId, taskId } = useParams()
-    const [board, setBoard] = useState(boardService.getEmptyBoard())
+    const [board, setBoard] = useSelector((storeState) => storeState.boardModule.board)
 
     const group = board?.groups.find(group => group.id === groupId)
     
@@ -34,7 +35,7 @@ export function TaskDetails() {
     
 
     useEffect(() => {
-        if (!boardId || !groupId || !taskId) return
+        if (!boardId || !groupId || !taskId) return errorRedirect()
         loadBoard()
     }, [])
 
@@ -49,9 +50,9 @@ export function TaskDetails() {
 
     async function loadBoard() {
         try {
-            const board = await boardService.getById(boardId)
+            const boardModel = board ? board : await boardService.getById(boardId)
 
-            const group = board.groups.find(group => group.id === groupId)
+            const group = boardModel.groups.find(group => group.id === groupId)
             if (!group) return errorRedirect()
 
 
@@ -59,7 +60,7 @@ export function TaskDetails() {
             if (!task) return errorRedirect()
 
             setTaskToEdit(task)
-            setBoard(board)
+            setBoard(boardModel)
         }
         catch {
             errorRedirect()
