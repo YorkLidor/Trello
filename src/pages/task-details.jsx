@@ -21,21 +21,24 @@ import userEvent from "@testing-library/user-event";
 export function TaskDetails() {
     const { boardId, groupId, taskId } = useParams()
     const [board, setBoard] = useState(boardService.getEmptyBoard())
+
     const group = board?.groups.find(group => group.id === groupId)
+    
     const [taskToEdit, setTaskToEdit] = useState(null)
-
-    const userIconDefault = 'assets/styles/img/profileDefault.png'
+    const [labels, setLabels] = useState(null)
     const navigate = useNavigate()
-
+    
+    
     const descToolsRef = useRef()
     const elCommentRef = useRef()
     const commentBtnRef = useRef()
-
+    
     const elCommentInputRef = useRef()
     const elDescInputRef = useRef()
-
-    const [labels, setLabels] = useState(null)
-
+    
+    const userIconDefault = 'assets/styles/img/profileDefault.png'
+    
+    
 
     useEffect(() => {
         if (!boardId || !groupId || !taskId) return
@@ -53,25 +56,17 @@ export function TaskDetails() {
 
     async function loadBoard() {
         try {
-            const result = await boardService.getById(boardId)
-
-            console.log(result);
+            const board = await boardService.getById(boardId)
 
             const group = result.groups.find(group => group.id === groupId)
-            console.log(group);
             if (!group) return errorRedirect()
 
 
             const task = group.tasks.find(task => task.id === taskId)
-            console.log(task);
             if (!task) return errorRedirect()
 
-            if (task.labelIds) {
-                const taskLabels = await boardService.getLabelsById(boardId, task.labelIds)
-                if (taskLabels) setLabels(taskLabels)
-            }
             setTaskToEdit(task)
-            setBoard(result)
+            setBoard(board)
         }
         catch {
             errorRedirect()
@@ -108,9 +103,6 @@ export function TaskDetails() {
     }
 
 
-
-
-
     function handleEdit(ev) {
         const { target } = ev
         target.classList.toggle('is-editing')
@@ -129,7 +121,6 @@ export function TaskDetails() {
         else if (target.dataset.type === 'header') {
             if (ev.type === 'blur') {
                 const val = target.value
-                console.log(val)
                 setTaskToEdit({ ...taskToEdit, title: val })
             }
         }
