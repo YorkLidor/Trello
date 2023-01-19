@@ -5,7 +5,8 @@ export const utilService = {
     loadFromStorage,
     saveToStorage,
     animateCSS,
-    debounce
+    debounce,
+    getElementPosition
 }
 
 function makeId(length = 6) {
@@ -68,4 +69,15 @@ function debounce(func, timeout = 300) {
         clearTimeout(timer)
         timer = setTimeout(() => { func.apply(this, args) }, timeout)
     }
+}
+
+
+function getElementPosition(element) {
+    var clientRect = element.getBoundingClientRect();
+    return {
+        left: clientRect.left + document.body.scrollLeft,
+        top: clientRect.top + document.body.scrollTop,
+        bottom: clientRect.bottom + document.body.scrollTop,
+        right: clientRect.right + document.body.scrollLeft
+    };
 }
