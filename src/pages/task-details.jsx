@@ -1,22 +1,15 @@
 import { useEffect, useRef, useState } from "react"
+import { useNavigate, useParams } from "react-router-dom";
 
 import { FaPager } from 'react-icons/fa'
 import { GrTextAlignFull } from 'react-icons/gr'
 import { FiList } from "react-icons/fi";
-
-import { HiOutlineUser } from 'react-icons/hi'
 import { IoPricetagOutline } from 'react-icons/io5'
-import { TbCheckbox } from 'react-icons/tb'
-import { GoClock } from 'react-icons/go'
-import { GrAttachment } from 'react-icons/gr'
-import { MdWallpaper } from 'react-icons/md'
+
 import { Blocks } from "react-loader-spinner";
 
 import { utilService } from '../services/util.service'
-import { useNavigate, useParams } from "react-router-dom";
 import { boardService } from "../services/board.service";
-import userEvent from "@testing-library/user-event";
-
 
 export function TaskDetails() {
     const { boardId, groupId, taskId } = useParams()
