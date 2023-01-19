@@ -12,26 +12,27 @@ import { utilService } from '../services/util.service'
 import { boardService } from "../services/board.service";
 import { useSelector } from "react-redux";
 
+import { store } from "../store/store";
+import { SET_BOARD } from "../store/board.reducer";
+import { saveBoard } from "../store/board.actions";
+
 export function TaskDetails() {
     const { boardId, groupId, taskId } = useParams()
-    const [board, setBoard] = useSelector((storeState) => storeState.boardModule.board)
-
-    const group = board?.groups.find(group => group.id === groupId)
-    
-    const [taskToEdit, setTaskToEdit] = useState(null)
-    const [labels, setLabels] = useState(null)
     const navigate = useNavigate()
+    
+    const board = useSelector((storeState) => storeState.boardModule.board)
+    var group = board?.groups.find(group => group.id === groupId)
+    const [taskToEdit, setTaskToEdit] = useState(null)
     
     
     const descToolsRef = useRef()
-    const elCommentRef = useRef()
-    const commentBtnRef = useRef()
-    
-    const elCommentInputRef = useRef()
     const elDescInputRef = useRef()
     
-    const userIconDefault = 'assets/styles/img/profileDefault.png'
+    const elCommentRef = useRef()
+    const elCommentInputRef = useRef()
+    const commentBtnRef = useRef()
     
+    const userIconDefault = 'assets/styles/img/profileDefault.png'
     
 
     useEffect(() => {
@@ -39,11 +40,16 @@ export function TaskDetails() {
         loadBoard()
     }, [])
 
+    
     useEffect(() => {
         if (board && taskToEdit) {
             group.tasks = [...group.tasks.filter(task => task.id !== taskToEdit.id), taskToEdit]
-            setBoard({ ...board, groups: [...board.groups.filter(grp => grp.id !== group.id), group] })
-            boardService.saveBoard(board)
+            const newBoard = { ...board, groups: [...board.groups.filter(grp => grp.id !== group.id), group] }
+            saveBoard(newBoard)
+        }
+        else {
+            console.log(board)
+            console.log(taskToEdit)
         }
     }, [taskToEdit])
 
@@ -51,21 +57,37 @@ export function TaskDetails() {
     async function loadBoard() {
         try {
             const boardModel = board ? board : await boardService.getById(boardId)
+            if(!board) store.dispatch({type: SET_BOARD , board: boardModel})
 
-            const group = boardModel.groups.find(group => group.id === groupId)
+            console.log(boardModel)
+
+            group = boardModel.groups.find(group => group.id === groupId)
+            console.log(group)
             if (!group) return errorRedirect()
 
 
             const task = group.tasks.find(task => task.id === taskId)
             if (!task) return errorRedirect()
-
+            console.log(task)
             setTaskToEdit(task)
-            setBoard(boardModel)
+            
         }
         catch {
             errorRedirect()
         }
     }
+    
+    
+    function setBoard(board) {
+        if (board && taskToEdit && group) {
+            group.tasks = [...group.tasks.filter(task => task.id !== taskToEdit.id), taskToEdit]
+            const newBoard = { ...board, groups: [...board.groups.filter(grp => grp.id !== group.id), group] }
+            boardService.saveBoard(newBoard)
+            store.dispatch({type: SET_BOARD , board: newBoard})
+        }
+        else console.log('ERROR while set board state')
+    }
+
 
     function getLoader() {
         return <Blocks
@@ -143,7 +165,7 @@ export function TaskDetails() {
         setTaskToEdit({ ...taskToEdit, comments })
     }
 
-    return (!taskToEdit) ? getLoader() : <section className="task-window flex" onClick={() => navigate(`/board/${boardId}`)}>
+    return (!taskToEdit || !group) ? getLoader() : <section className="task-window flex" onClick={() => navigate(`/board/${boardId}`)}>
         <section className="task-details" onClick={(ev) => ev.stopPropagation()}>
             <div className="task-header">
                 <FaPager className="header-icon task-icon" /><input type='text' className="task-title" defaultValue={taskToEdit.title} onFocus={handleEdit} onBlur={handleEdit} data-type='header' />
@@ -155,13 +177,13 @@ export function TaskDetails() {
                 <section className="task-info flex row">
 
                     <div className="task-labels-box flex row">
-                        {
+                        {/* {
 
                             labels && labels.map(label => <button key={label.id} style={{ backgroundColor: label.color, color: '172B4D' }} className='task-labels'>{label.title}</button>)
                         }
                         {
                             labels && <button key='add-label' style={{ backgroundColor: '#EAECF0', color: '#172B4D', fontSize: '14px' }} className='task-labels'>+</button>
-                        }
+                        } */}
                     </div>
                     <div className="task-members-box">
 
