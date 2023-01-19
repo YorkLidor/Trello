@@ -2,9 +2,11 @@ export const SET_BOARDS = 'SET_TOYS'
 export const REMOVE_BOARD = 'REMOVE_BOARD'
 export const EDIT_BOARD = 'EDIT_BOARD'
 export const ADD_BOARD = 'ADD_BOARD'
+export const SET_BOARD = 'SET_BOARD'
 
 const initialState = {
-    boards: [] 
+    boards: [],
+    board: null
 }
 
 export function boardReducer(state = initialState, action) {
@@ -15,6 +17,8 @@ export function boardReducer(state = initialState, action) {
             return { ...state, boards: state.boards.filter(board => board._id !== action.boardId) }
         case EDIT_BOARD:
             return { ...state, boards: state.boards.map(board => board._id === action.board._id ? action.board : board) }
+        case SET_BOARD:
+            return { ...state, board: action.board }
         default:
             return state
     }
