@@ -161,6 +161,12 @@
     }
 }
 
+.description-editor-tools {
+    margin: 8px 0 0;
+    &.show {
+        display: block;
+    }
+}
 
 
 
@@ -211,6 +217,12 @@
     }
 }
 
+.commentor-logo {
+    @include user-logo-circle
+}
+
+
+
 .window-sidebar-box {
 
     width: 192px;
@@ -218,8 +230,6 @@
     overflow: hidden;
     padding: 0 16px 8px 8px;
 }
-
-
 
 .window-sidebar {
     position: relative;
@@ -254,12 +264,12 @@
     }
 }
 
-.description-editor-tools {
-    margin: 8px 0 0;
-    &.show {
-        display: block;
-    }
-}
+
+
+
+
+
+
 
 .user-logo {
     @include user-logo-circle;
@@ -269,9 +279,6 @@
     left: -43px;
 }
 
-.commentor-logo {
-    @include user-logo-circle
-}
 
 
 .save-btn {
@@ -294,4 +301,8 @@
     &.show {
         display: block;
     }
+}
+
+.task-info {
+    justify-content: space-between;
 }

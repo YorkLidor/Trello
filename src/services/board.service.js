@@ -31,7 +31,7 @@ function saveBoard(board) {
 }
 
 function removeBoard(boardId) {
-    return storageService.remove(STORAGE_KEY, boardId)
+    return storageService.delete(STORAGE_KEY, boardId)
 }
 
 function getById(boardId) {
@@ -52,11 +52,17 @@ function saveTask(boardId, groupId, task, activity) {
 
 async function getLabelsById(boardId, labelIds) {
     const board = await getById(boardId)
-    console.log('board:', board)
-    console.log('board.labels:', board.labels)
-    const allLabels = board.labels.reduce((labelId, idx) => labelId.id === labelIds[idx])
-    console.log('*********allLabels:', allLabels)
-    return 5
+    return board.labels.filter(label => labelIds.includes(label.id))
+    
+}
+
+function getEmptyGroup() {
+    return {
+        id: utilService.makeId(),
+        title: "",
+        archivedAt: null,
+        tasks: [],
+    }
 }
 
 function getEmptyBoard() {
@@ -69,15 +75,6 @@ function getEmptyBoard() {
         },
         labels: [],
         groups: [],
-    }
-}
-
-function getEmptyGroup() {
-    return {
-        id: utilService.makeId(),
-        title: "",
-        archivedAt: null,
-        tasks: [],
     }
 }
 
