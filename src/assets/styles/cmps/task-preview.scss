@@ -38,34 +38,49 @@
             white-space: break-spaces;
         }
     }
+}
 
-    .labels-container {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 4px;
+.labels-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    padding-top: 5px;
+    width: 100%;
+    margin-bottom: 4px;
+
+    &.labels-large {
         margin-bottom: 4px;
-
-        .label {
-            display: inline-flex;
-            max-width: calc(100% - 4px);
-
-            .btn-label {
-                border-radius: 4px;
-                margin-top: 4px;
-                margin-bottom: 4px;
-                padding-right: 0;
-                padding-left: 0;
-                min-width: 40px;
-                max-width: 40px;
-                height: 8px;
-                background-color: #172b4d;
-                color: transparent;
-            }
-        }
     }
 
-    .task-labels {
-        color: $clr21;
+    .label-container {
+        height: 16px;
     }
 
+    .labels-preview {
+        height: 8px;
+        border-radius: 4px;
+        min-width: 40px;
+        transition: width, height 0.45s ease-out;
+        display: flex;
+        align-items: center;
+        padding-inline-end: 8px;
+    }
+
+    .labels-large {
+        height: 16px;
+        min-width: 56px;
+    }
+
+    .lable-circle {
+        border-radius: 50%;
+        height: 8px;
+        margin: 4px;
+        width: 8px;
+    }
+
+    .label-title {
+        font-size: 12px;
+        color: #172b4d;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
 }

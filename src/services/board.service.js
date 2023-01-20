@@ -69,6 +69,8 @@ async function saveTask(boardId, groupId, task, activity) {
 
 async function getLabelsById(boardId, labelIds) {
     const board = await getById(boardId)
+    console.log('board:', board)
+    console.log('labelIdssssss:', labelIds)
     return board.labels.filter(label => labelIds.includes(label.id))
 }
 
