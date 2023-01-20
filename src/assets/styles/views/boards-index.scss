@@ -13,6 +13,13 @@
     width: 100%;
     color: #172b4d;
 
+    .main-header {
+        display: inline-flex;
+        align-items: center;
+        font-size: rem(24px);
+        gap: rem(11px);
+    }
+
     h3 {
         font-size: rem(16px);
         font-weight: 700;
@@ -63,6 +70,20 @@
         &:hover {
             .board-preview-fade {
                 background-color: rgba(0, 0, 0, 0.4);
+            }
+        }
+
+        &.mod-add {
+            background-color: #fafbfc;
+            color: #172b4d;
+            .board-preview-fade {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            p {
+                margin: 0;
             }
         }
     }

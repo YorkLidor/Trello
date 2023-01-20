@@ -1,10 +1,18 @@
 
 import { useState, useRef, useEffect } from 'react'
 import { GrFormEdit } from 'react-icons/gr'
+
 import { boardService } from '../services/board.service'
 
-import { TiDeleteOutline } from 'react-icons/ti'
+import { AiOutlineClose } from 'react-icons/ai'
+import { BsFillCircleFill } from 'react-icons/bs'
+import { IoIosArrowBack } from 'react-icons/io'
+import { ImCheckboxChecked, ImCheckboxUnchecked } from 'react-icons/im'
+
 import { useSelector } from 'react-redux'
+import { store } from '../store/store'
+import { CLOSE_MODAL } from '../store/app.reducer'
+
 
 export function LabelsPicker({ cmpProps }) {
     const { groupId, task } = cmpProps
@@ -12,10 +20,17 @@ export function LabelsPicker({ cmpProps }) {
     const board = useSelector((storeState) => storeState.boardModule.board)
     const boardId = board._id
 
-    const [taskLabelIds, setTaskLabels] = useState(task.labelIds ? task.labelIds : [])
-    const labels = board.labels
+    const labelsScreenRef = useRef()
+    const editorScreenRef = useRef()
+    const deleteScreenRef = useRef()
+    const activeColorRef = useRef()
 
+    const [taskLabelIds, setTaskLabels] = useState(task.labelIds ? task.labelIds : [])
     const [editorLabel, setEditorLabel] = useState(boardService.getEmptyLabel())
+    const [pickerHeader, setPickerHeader] = useState(getPickerHeader())
+
+
+    const labels = board.labels
     const labelColors = ['#B7DDB0', '#F5EA92', '#FAD29C', '#EFB3AB', '#DFC0EB',
         '#7BC86C', '#F5DD29', '#FFAF3F', '#EF7564', '#CD8DE5',
         '#5AAC44', '#E6C60D', '#E79217', '#CF513D', '#A86CC1',
@@ -24,13 +39,10 @@ export function LabelsPicker({ cmpProps }) {
         '#026AA7', '#00AECC', '#4ED583', '#E568AF', '#091E42'
     ]
 
-    const labelsScreenRef = useRef()
-    const editorScreenRef = useRef()
-    const deleteScreenRef = useRef()
-    const activeColorRef = useRef()
 
-    console.log(taskLabelIds)
-    console.log(labels)
+    useEffect(() => {
+        setPickerHeader(getPickerHeader())
+    }, [editorLabel])
 
     const member = {
         id: 101,
@@ -54,6 +66,18 @@ export function LabelsPicker({ cmpProps }) {
         saveTask(action)
     }
 
+    function getPickerHeader() {
+        if (editorScreenRef?.current?.classList.contains('active')) return editorLabel.id ? 'Edit label' : 'Create label'
+        if (labelsScreenRef?.current?.classList.contains('active')) return 'Labels'
+        if (deleteScreenRef?.current?.classList.contains('active')) return 'Delete label'
+        return 'Labels'
+    }
+
+    function modalGoBack() {
+        if (pickerHeader === 'Edit label' || pickerHeader === 'Create label') toggleScreens()
+        if (pickerHeader === 'Delete label') toggleDeleteMessage('delete')
+    }
+
     function toggleScreens(label = null) {
         editorScreenRef.current.classList.toggle('active')
         labelsScreenRef.current.classList.toggle('active')
@@ -71,6 +95,7 @@ export function LabelsPicker({ cmpProps }) {
             labelsScreenRef.current.classList.toggle('active')
             deleteScreenRef.current.classList.toggle('active')
         }
+        setPickerHeader(getPickerHeader())
     }
 
     function handleEditorChange({ target }, color = null) {
@@ -84,12 +109,13 @@ export function LabelsPicker({ cmpProps }) {
         else editorLabel.title = target.value
         setEditorLabel({ ...editorLabel })
     }
+
     function resetColor() {
         setEditorLabel((prevEditorLabel) => ({ ...prevEditorLabel, color: boardService.getLabelDeaultColor() }))
     }
 
     async function saveLabel() {
-        await boardService.saveBoardLabel(boardId, editorLabel)
+        await boardService.saveBoardLabel(board, editorLabel)
         toggleScreens()
     }
 
@@ -99,16 +125,21 @@ export function LabelsPicker({ cmpProps }) {
     }
 
     async function deleteLabel() {
-        await boardService.removeBoardLabel(boardId, editorLabel.id)
+        await boardService.removeBoardLabel(board, editorLabel.id)
         setEditorLabel(boardService.getEmptyLabel())
         toggleDeleteMessage('deleted')
     }
 
 
-    return labels && <>
-        <div className='labels-picker-header flex row'>
-            <span className='picker-header'>Labels</span>
+    return labels && <div className='modal-label-picker'>
+        <div className='picker-header-container flex row'>
+            {
+                getPickerHeader() !== 'Labels' ? <IoIosArrowBack className='back-modal' onClick={modalGoBack} /> : <span />
+            }
+            <span className='picker-header'>{pickerHeader}</span>
+            <AiOutlineClose className='close-modal' onClick={() => store.dispatch({ type: CLOSE_MODAL })} />
         </div>
+
         <div className="labels-picker-home active" ref={labelsScreenRef}>
 
             <ul className="labels-picker-list" >
@@ -119,10 +150,20 @@ export function LabelsPicker({ cmpProps }) {
                             backgroundColor: label.color
                         }
 
-                        return <li key={label.id} className='label-picker-line flex row'>
-                            <input type='checkbox' name='add-label' checked={checked} onChange={handleChange} data-id={label.id} />
-                            <div className="label-box-preview" style={labelStyle}>{label.title}</div>
-                            <GrFormEdit className="edit-label-button" onClick={() => toggleScreens(label)} />
+                        return <li key={label.id} className='label-picker-line row'>
+                            <label htmlFor={`add-label-${label.id}`} className='flex row label-line-container'>
+                                <input type='checkbox' name='add-label' id={`add-label-${label.id}`} checked={checked} onChange={handleChange} data-id={label.id} />
+                                <span className='checkbox-container'>
+                                    {
+                                        checked ? <ImCheckboxChecked className='checkbox checkbox-checked' /> : <ImCheckboxUnchecked className='checkbox checkbox-unchecked' />
+
+                                    }
+                                </span>
+                                <div className='flex row label-picker-row'>
+                                    <div className="label-box-preview" style={labelStyle}>{label.title}</div>
+                                    <GrFormEdit className="edit-label-button" onClick={() => toggleScreens(label)} />
+                                </div>
+                            </label>
                         </li>
                     })
                 }
@@ -131,8 +172,20 @@ export function LabelsPicker({ cmpProps }) {
         </div>
 
         <div className='labels-editor' ref={editorScreenRef}>
-            <div className='label-editor-preview' style={{ backgroundColor: editorLabel.color }}>{editorLabel.title}</div>
-            <input type='text' value={editorLabel.title} onChange={handleEditorChange} />
+            <div className='label-editor-preview-box'>
+                <div className='label-editor-preview' style={{ backgroundColor: editorLabel.color + '55' }}>
+                    <BsFillCircleFill className='label-circle' style={{ color: editorLabel.color }} />
+                    <span className='label-title-editor-preview'>
+                        {editorLabel.title}
+                    </span>
+                </div>
+
+            </div>
+
+            <label className='label-title' htmlFor='label-title'>Title</label>
+            <input className="label-editor-title" type='text' id="label-title" value={editorLabel.title} onChange={handleEditorChange} />
+
+            <label className='label-title' htmlFor='label-title'>Select a color</label>
             <div className='editor-colors'>
                 {
                     labelColors.map(color => {
@@ -143,11 +196,11 @@ export function LabelsPicker({ cmpProps }) {
                 }
             </div>
 
-            <button className='remove-color' onClick={resetColor}><TiDeleteOutline style={{ fontSize: '18px', verticalAlign: 'top' }} /> Remove color</button>
+            <button className='remove-color' onClick={resetColor}><AiOutlineClose style={{ fontSize: '18px', verticalAlign: 'top' }} /> Remove color</button>
 
             <hr />
 
-            <section className='flex row' style={{ justifyContent: 'space-between' }}>
+            <section className='label-editor-tools flex row'>
                 <button className='save-label' onClick={saveLabel}>{editorLabel.id ? 'Save' : 'Create'}</button>
                 <button className='delete-label' onClick={() => toggleDeleteMessage('delete')} style={{ visibility: editorLabel.id ? 'visible' : 'hidden' }}>Delete</button>
 
@@ -160,5 +213,5 @@ export function LabelsPicker({ cmpProps }) {
             </p>
             <button className='delete-label' onClick={deleteLabel} style={{ width: '100%' }}>Delete</button>
         </div>
-    </>
+    </div>
 }
