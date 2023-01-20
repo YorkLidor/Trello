@@ -32,15 +32,23 @@ export function GroupList({ groups, board }) {
     function onEnd({ source, destination }) {
         console.log('source:', source)
         console.log('destination:', destination)
+        const groupToEdit = board.groups.find((group, idx) => group.id === destination.droppableId)
+        const groupFrom = board.groups.find((group)=> group.id === source.droppableId)
+        const tasks = groupToEdit.tasks
+
         if (source.droppableId === destination.droppableId) {
-            const groupToEdit = board.groups.find((group, idx) => group.id === source.droppableId)
-            const tasks = groupToEdit.tasks
             groupToEdit.tasks = utilService.reorder(tasks, source.index, destination.index)
-            const idx = board.groups.findIndex(group => group.id === groupToEdit.id)
-            board.groups[idx] = { ...groupToEdit, tasks: [...groupToEdit.tasks] }
             setGroups([...board.groups])
-            console.log('stateGroups:', stateGroups)
-            setset({...board})
+            setset({ ...board })
+            saveBoard({ ...board })
+        } else {
+            const deletedTask = groupFrom.tasks.splice(source.index, 1)
+            groupToEdit.tasks.push(...deletedTask)
+            groupToEdit.tasks = utilService.reorder(tasks, tasks.length -1, destination.index)
+            console.log('deletedTask:', deletedTask)
+            console.log('groupToEdit.tasks:', groupToEdit.tasks)
+            setset({ ...board })
+            saveBoard({ ...board })
         }
 
     }

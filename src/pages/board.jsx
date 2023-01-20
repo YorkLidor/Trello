@@ -10,16 +10,14 @@ import { useSelector } from "react-redux";
 import { setBoard } from "../store/board.actions";
 
 export function Board() {
-    const board = useSelector(state =>state.boardModule.board)
+    const board = useSelector(state => state.boardModule.board)
     const { boardId } = useParams()
     const navigate = useNavigate()
-    
+
 
     useEffect(() => {
         loadBoard()
     }, [])
-
-    useEffect(()=>{},[board])
 
     async function onDeleteBoard() {
         const isWantDelete = window.confirm('Are you sure?')

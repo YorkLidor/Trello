@@ -4,12 +4,6 @@ import { utilService } from "../services/util.service";
 import { TaskPreview } from "./task-preview";
 
 export function TaskList({ group, boardId }) {
-    // const [tasks, setTasks] = useState(group.tasks)
-    console.log('renderrrrrrrrrrrrrrr')
-    function onEnd({ source, destination }) {
-        // setTasks(utilService.reorder(tasks, source.index, destination.index))
-
-    }
 
     return <Droppable droppableId={group.id}>
         {provided =>
