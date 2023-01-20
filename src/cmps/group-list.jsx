@@ -11,6 +11,9 @@ export function GroupList({ groups, board }) {
     const [stateGroups, setGroups] = useState(groups)
     const [groupToEdit, setGroupToEdit] = useState(boardService.getEmptyGroup())
     const setBoard = []
+
+    console.log('render')
+
     async function onAddGroup(ev) {
         ev.preventDefault()
         try {

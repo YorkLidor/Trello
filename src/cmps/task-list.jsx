@@ -4,10 +4,10 @@ import { utilService } from "../services/util.service";
 import { TaskPreview } from "./task-preview";
 
 export function TaskList({ group, boardId }) {
-    const [tasks, setTasks] = useState(group.tasks)
-
+    // const [tasks, setTasks] = useState(group.tasks)
+    console.log('renderrrrrrrrrrrrrrr')
     function onEnd({ source, destination }) {
-        setTasks(utilService.reorder(tasks, source.index, destination.index))
+        // setTasks(utilService.reorder(tasks, source.index, destination.index))
 
     }
 
@@ -17,7 +17,7 @@ export function TaskList({ group, boardId }) {
                 className="task-list"
                 ref={provided.innerRef}
             >
-                {tasks.map((task, idx) =>
+                {group.tasks.map((task, idx) =>
                     <Draggable
                         draggableId={task.id}
                         key={task.id}
