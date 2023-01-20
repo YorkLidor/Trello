@@ -260,7 +260,7 @@ export function TaskDetails() {
         </section>
             <div ref={LabelsPickerRef} className="labels-picker" onClick={(ev) => ev.stopPropagation()}>
                 {
-                    <Modal cmpProps={{ boardId, groupId, task: taskToEdit, labels: board.labels, labelIds: taskToEdit.labelIds }} cmpType='labels-picker' />
+                    <Modal cmpProps={{ groupId, task: taskToEdit }} cmpType='labels-picker' />
                 }
             </div>
     </section >

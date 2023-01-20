@@ -3,7 +3,6 @@
     z-index: 5;
     width: 304px;
 
-
 }
 
 .picker-header {
@@ -18,16 +17,22 @@
     padding: 0 32px;
 }
 
-.labels-picker-list {
-    list-style: none;
-    margin-block: 1em;
-    margin-inline: 0px 0px;
-    padding: 0px;
+.labels-picker-home {
     display: none;
 
     &.active {
         display: block;
     }
+}
+
+.labels-picker-list {
+    list-style: none;
+    margin-block: 1em;
+    margin-inline: 0px 0px;
+    padding: 4px 0 8px;
+
+
+
 }
 
 .label-picker-line {
@@ -55,6 +60,7 @@
 
 .labels-editor {
     display: none;
+    padding: 0 0 12px;
 
     &.active {
         display: block;
@@ -65,6 +71,38 @@
         grid-template-columns: repeat(5, 1fr);
         gap: 4px;
         margin-block-end: 8px;
+    }
+
+    .remove-color {
+        @include task-nav-button;
+        background-color: inherit;
+        width: 100%;
+        margin-block-end: 8px;
+
+        &:hover {
+            background-color: $btn-background-cyan;
+        }
+    }
+
+    .save-label {
+        @include button-filled($button-filled , #FFF);
+    }
+
+    .delete-label {
+        @include button-filled($button-filled , #FFF);
+        background-color: #B04632;
+
+        &:hover {
+            background-color: #933B27;
+        }
+    }
+
+    hr {
+        border: 0;
+        background-color: #091e4221;
+        height: 1px;
+        box-sizing: initial;
+        margin: 16px 0;
     }
 }
 
@@ -89,5 +127,13 @@
     &.active-color {
         border-radius: 3px;
         border: 2px solid #0079BF;
+    }
+}
+
+.delete-label-msg {
+    display: none;
+
+    &.active {
+        display: block;
     }
 }

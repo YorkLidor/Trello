@@ -21,7 +21,10 @@ export const boardService = {
     getEmptyGroup,
     getEmptyTask,
     getActivity,
-    getEmptyLabel
+    getEmptyLabel,
+    getLabelDeaultColor,
+    saveBoardLabel,
+    removeBoardLabel
 }
 
 function query() {
@@ -132,9 +135,31 @@ function getActivity(member, task, txt) {
 }
 
 function getEmptyLabel() {
-    return { 
-        id: '', 
+    return {
         title: '',
-        color: '091E42'
+        color: '#DFE1E6'
     }
+}
+
+async function saveBoardLabel(boardId, newLabel) {
+    let board = await getById(boardId)
+    const labelId = newLabel.id ? newLabel.id : 'l' + utilService.makeId()
+
+    board = newLabel.id ?
+        { ...board, labels: board.labels.map(label => label.id === labelId ? newLabel : label) }
+        : { ...board, labels: [...board.labels, { ...newLabel, id: labelId } ] }
+    store.dispatch({ type: SET_ACTIVE_BOARD, board })
+    saveBoard(board)
+}
+
+async function removeBoardLabel(boardId, labelId) {
+    let board = await getById(boardId)
+    board = { ...board, labels: board.labels.filter(label => label.id !== labelId) }
+    board.groups.forEach(group => group.tasks.forEach(task => task.labelIds = task.labelIds?.filter(id => id !== labelId)))
+    store.dispatch({ type: SET_ACTIVE_BOARD, board })
+    saveBoard(board)
+}
+
+function getLabelDeaultColor() {
+    return '#DFE1E6'
 }
