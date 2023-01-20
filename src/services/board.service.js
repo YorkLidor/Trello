@@ -1,3 +1,4 @@
+import { func } from 'prop-types'
 import { async } from 'q'
 import { SET_ACTIVE_BOARD } from '../store/board.reducer.js'
 import { store } from '../store/store.js'
@@ -19,7 +20,11 @@ export const boardService = {
     getEmptyBoard,
     getEmptyGroup,
     getEmptyTask,
-    getActivity
+    getActivity,
+    getEmptyLabel,
+    getLabelDeaultColor,
+    saveBoardLabel,
+    removeBoardLabel
 }
 
 function query() {
@@ -44,19 +49,19 @@ function getById(boardId) {
 
 async function saveTask(boardId, groupId, task, activity) {
     const board = await getById(boardId)
-    if(!board) throw new Error('No such board with this id')
+    if (!board) throw new Error('No such board with this id')
     // PUT /api/board/b123/task/t678
 
     // TODO: find the task, and update
     const group = board.groups.find(group => group.id === groupId)
-    if(!group) throw new Error('No such a group in board')
+    if (!group) throw new Error('No such a group in board')
 
     const tasks = group.tasks.map(t => t.id === task.id ? task : t)
     group.tasks = tasks
 
     board.activities.unshift(activity)
     saveBoard(board)
-    store.dispatch({type: SET_ACTIVE_BOARD, board})
+    store.dispatch({ type: SET_ACTIVE_BOARD, board })
     // return board
     // return task
 }
@@ -65,7 +70,6 @@ async function saveTask(boardId, groupId, task, activity) {
 async function getLabelsById(boardId, labelIds) {
     const board = await getById(boardId)
     return board.labels.filter(label => labelIds.includes(label.id))
-
 }
 
 function getEmptyTask() {
@@ -114,11 +118,11 @@ function _createBoards() {
 
 function getActivity(member, task, txt) {
     return {
-        id: 'a'+ utilService.makeId(),
+        id: 'a' + utilService.makeId(),
         txt,
         createdAt: Date.now(),
-        byMember:{
-            _id : member._id,
+        byMember: {
+            _id: member._id,
             fullname: member.fullname,
             imgUrl: member.imgUrl
         },
@@ -127,4 +131,34 @@ function getActivity(member, task, txt) {
             title: task.title
         }
     }
+}
+
+function getEmptyLabel() {
+    return {
+        title: '',
+        color: '#DFE1E6'
+    }
+}
+
+async function saveBoardLabel(boardId, newLabel) {
+    let board = await getById(boardId)
+    const labelId = newLabel.id ? newLabel.id : 'l' + utilService.makeId()
+
+    board = newLabel.id ?
+        { ...board, labels: board.labels.map(label => label.id === labelId ? newLabel : label) }
+        : { ...board, labels: [...board.labels, { ...newLabel, id: labelId } ] }
+    store.dispatch({ type: SET_ACTIVE_BOARD, board })
+    saveBoard(board)
+}
+
+async function removeBoardLabel(boardId, labelId) {
+    let board = await getById(boardId)
+    board = { ...board, labels: board.labels.filter(label => label.id !== labelId) }
+    board.groups.forEach(group => group.tasks.forEach(task => task.labelIds = task.labelIds?.filter(id => id !== labelId)))
+    store.dispatch({ type: SET_ACTIVE_BOARD, board })
+    saveBoard(board)
+}
+
+function getLabelDeaultColor() {
+    return '#DFE1E6'
 }

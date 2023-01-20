@@ -17,7 +17,6 @@ import { SET_ACTIVE_BOARD } from "../store/board.reducer";
 import { LabelsPicker } from "../cmps/labels-picker";
 import { Modal } from "../cmps/modal";
 import { TOGGLE_MODAL, CLOSE_MODAL } from "../store/app.reducer";
-import { func } from "prop-types";
 
 
 export function TaskDetails() {
@@ -186,8 +185,8 @@ export function TaskDetails() {
 
                 <section className="task-info flex row">
                     <div className="task-labels-box flex row">
-                        {labels && labels.map(label => <button key={label.id} style={{ backgroundColor: label.color, color: '172B4D' }} 
-                        className='task-labels' onClick={toggleLabelPicker}>{label.title}</button>)}
+                        {labels && labels.map(label => <button key={label.id} style={{ backgroundColor: label.color, color: '172B4D' }}
+                            className='task-labels' onClick={toggleLabelPicker}>{label.title}</button>)}
 
                         {
                             taskToEdit?.labelIds?.length > 0 && <button key='add-label' style={{ backgroundColor: '#EAECF0', color: '#172B4D', fontSize: '14px' }} className='task-labels task-add-label' onClick={toggleLabelPicker}>+</button>
@@ -259,11 +258,10 @@ export function TaskDetails() {
             </div>
 
         </section>
-
-        <div ref={LabelsPickerRef} className="labels-picker" onClick={(ev) => ev.stopPropagation()}>
-            {
-                <Modal cmpProps={{ boardId, groupId, task: taskToEdit, labels: board.labels, labelIds: taskToEdit.labelIds }} cmpType='labels-picker' />
-            }
-        </div>
+            <div ref={LabelsPickerRef} className="labels-picker" onClick={(ev) => ev.stopPropagation()}>
+                {
+                    <Modal cmpProps={{ groupId, task: taskToEdit }} cmpType='labels-picker' />
+                }
+            </div>
     </section >
 }

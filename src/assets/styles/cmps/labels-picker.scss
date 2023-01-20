@@ -1,20 +1,38 @@
 .labels-picker {
     position: fixed;
     z-index: 5;
+    width: 304px;
 
-    .picker-header {
-        font: inherit;
-        text-align: center;
-        font-size: 14px;
-    }
 }
 
+.picker-header {
+    text-align: center;
+    font-size: 14px;
+}
+
+.labels-picker-header {
+    border-block-end: 1px solid rgba(9, 30, 66, 0.13);
+    justify-content: center;
+    line-height: 40px;
+    padding: 0 32px;
+}
+
+.labels-picker-home {
+    display: none;
+
+    &.active {
+        display: block;
+    }
+}
 
 .labels-picker-list {
     list-style: none;
     margin-block: 1em;
     margin-inline: 0px 0px;
-    padding: 0px;
+    padding: 4px 0 8px;
+
+
+
 }
 
 .label-picker-line {
@@ -36,5 +54,86 @@
         border: 0px;
         margin-inline-end: 4px;
         line-height: 16px;
+    }
+}
+
+
+.labels-editor {
+    display: none;
+    padding: 0 0 12px;
+
+    &.active {
+        display: block;
+    }
+
+    .editor-colors {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 4px;
+        margin-block-end: 8px;
+    }
+
+    .remove-color {
+        @include task-nav-button;
+        background-color: inherit;
+        width: 100%;
+        margin-block-end: 8px;
+
+        &:hover {
+            background-color: $btn-background-cyan;
+        }
+    }
+
+    .save-label {
+        @include button-filled($button-filled , #FFF);
+    }
+
+    .delete-label {
+        @include button-filled($button-filled , #FFF);
+        background-color: #B04632;
+
+        &:hover {
+            background-color: #933B27;
+        }
+    }
+
+    hr {
+        border: 0;
+        background-color: #091e4221;
+        height: 1px;
+        box-sizing: initial;
+        margin: 16px 0;
+    }
+}
+
+.color-tab-wrapper {
+    height: 32px;
+
+    .color-tab {
+        border-radius: 3px;
+        cursor: pointer;
+        height: 100%;
+        width: 100%;
+    }
+
+    .color-tab::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border: 2px #FFFFFF solid;
+        pointer-events: none;
+    }
+
+    &.active-color {
+        border-radius: 3px;
+        border: 2px solid #0079BF;
+    }
+}
+
+.delete-label-msg {
+    display: none;
+
+    &.active {
+        display: block;
     }
 }
