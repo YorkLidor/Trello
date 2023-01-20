@@ -6,9 +6,11 @@ import { Blocks } from 'react-loader-spinner'
 import { BoardHeader } from "../cmps/board-header";
 import { GroupList } from "../cmps/group-list";
 import { boardService } from "../services/board.service";
+import { useSelector } from "react-redux";
+import { setBoard } from "../store/board.actions";
 
 export function Board() {
-    const [board, setBoard] = useState(null)
+    const board = useSelector(state =>state.boardModule.board)
     const { boardId } = useParams()
     const navigate = useNavigate()
 
@@ -32,6 +34,7 @@ export function Board() {
             const board = await boardService.getById(boardId)
             setBoard(board)
             document.body.style.backgroundImage = `url(${board.style.bg})`
+
         } catch (err) {
             console.error('No Board!', err)
         }

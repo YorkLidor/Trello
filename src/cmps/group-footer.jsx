@@ -1,31 +1,25 @@
 import { useState } from "react";
 import { IoAddSharp } from "react-icons/io5";
 import { IoCloseOutline } from "react-icons/io5";
+import { useSelector } from "react-redux";
 import { useForm } from "../customHooks/useForm";
 import { boardService } from "../services/board.service";
-import { utilService } from "../services/util.service";
-import { addNewTask } from "../store/board.actions";
+import { saveBoard } from "../store/board.actions";
 
 export function GroupFooter({ group, boardId, setBoard }) {
-    const groupId = group.id
+    let board = useSelector(storeState => storeState.boardModule.board)
     const [isOpenClass, setIsOpenClass] = useState('add-card-close')
-    const [taskTitleToSet, setTaskTitleToSet, handleChange] = useForm(boardService.getEmptyTask())
+    const [taskToSet, setTaskTitleToSet, handleChange] = useForm(boardService.getEmptyTask())
+    const loli = 'aaa'
 
     async function onAddNewTask(ev) {
         ev.preventDefault()
-        console.log('taskTitleToSet.title:', taskTitleToSet.title)
-        if (!taskTitleToSet.title) return
+        console.log('taskTitleToSet.title:', taskToSet.title)
+        if (!taskToSet.title) return
         try {
-            const board = await boardService.getById(boardId)
-            board.groups.forEach(group => {
-                if (group.id === groupId) {
-                    console.log('group',group)
-                    group.tasks.push(taskTitleToSet)
-                    return group
-                }
-            })
-            await boardService.saveBoard(board)
-            setBoard(board)
+            group.tasks.push(taskToSet)
+            board = { ...board, groups: [...board.groups] }
+            await setBoard({...board})
             setTaskTitleToSet(boardService.getEmptyTask())
             setIsOpenClass('add-card-close')
         } catch (err) {
@@ -53,6 +47,7 @@ export function GroupFooter({ group, boardId, setBoard }) {
             <div className="textarea-container task-preview-containe">
                 <textarea
                     onChange={handleChange}
+                    value={taskToSet.title}
                     name='title'
                     placeholder="Enter a title for this card..."
                     className="form-textarea "
