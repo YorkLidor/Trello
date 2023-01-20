@@ -3,8 +3,8 @@ import { boardService } from "../services/board.service"
 
 export function LabelPicker({ labelIds }) {
     // console.log('labelIds:',labelIds )
+
     // const { boardId } = useParams()
-    // console.log('boardId:', boardId)
     // getLabelsDetails()
 
     // function getLabelsDetails(){
