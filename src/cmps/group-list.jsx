@@ -16,6 +16,8 @@ export function GroupList({ groups, board }) {
         try {
             board.groups.push(groupToEdit)
             await saveBoard({ ...board })
+            setset({ ...board })
+            setGroupToEdit(boardService.getEmptyGroup())
         } catch (err) {
             console.log('err', err)
         }
@@ -80,7 +82,11 @@ export function GroupList({ groups, board }) {
                             </Draggable >
                         )}
                     {provided.placeholder}
-                    <GroupAdd onAddGroup={onAddGroup} handleChange={handleChange} />
+                    <GroupAdd
+                        onAddGroup={onAddGroup}
+                        handleChange={handleChange}
+                        groupToEdit={groupToEdit}
+                    />
                 </ul>
             }
         </Droppable >
