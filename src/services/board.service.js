@@ -70,7 +70,6 @@ async function saveTask(boardId, groupId, task, activity) {
 async function getLabelsById(boardId, labelIds) {
     const board = await getById(boardId)
     return board.labels.filter(label => labelIds.includes(label.id))
-
 }
 
 function getEmptyTask() {

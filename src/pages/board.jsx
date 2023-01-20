@@ -13,10 +13,13 @@ export function Board() {
     const board = useSelector(state =>state.boardModule.board)
     const { boardId } = useParams()
     const navigate = useNavigate()
+    
 
     useEffect(() => {
         loadBoard()
     }, [])
+
+    useEffect(()=>{},[board])
 
     async function onDeleteBoard() {
         const isWantDelete = window.confirm('Are you sure?')

@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { BoardPreview } from "../cmps/board-preview";
 import { Bars } from 'react-loader-spinner'
 
+import { RxPerson } from 'react-icons/rx'
+
 import { boardService } from "../services/board.service"
 import { loadBoards, saveBoard } from "../store/board.actions";
 
@@ -62,6 +64,7 @@ export function BoardIndex() {
     else return <main className="boards-index-container">
         <section className="boards-index flex column">
             <header className="main-header">
+                <RxPerson/>
                 <h3>Your Boards</h3>
             </header>
             <section
