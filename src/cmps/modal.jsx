@@ -3,12 +3,9 @@ import { LabelsPicker } from "./labels-picker"
 import { useSelector } from "react-redux"
 
 export function Modal({ cmpProps, cmpType }) {
-
     const isModalOpen = useSelector((storeState) => storeState.appModule.app.isModalOpen)
 
-    const className = 'modal ' + (isModalOpen ? 'is-open' : '')
-
-    return <div className={className}>
+    return isModalOpen && <div className='modal'>
         <GetCmp cmpProps={cmpProps} cmpType={cmpType} />
     </div>
 
