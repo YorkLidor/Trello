@@ -6,9 +6,9 @@ export function Modal({ cmpProps, cmpType }) {
 
     const isModalOpen = useSelector((storeState) => storeState.appModule.app.isModalOpen)
 
-    const className = 'modal ' + (isModalOpen ? 'is-open' : '')
-
-    return <div className={className}>
+    const className = 'modal'
+    console.log(isModalOpen)
+    return isModalOpen && <div className={className}>
         <GetCmp cmpProps={cmpProps} cmpType={cmpType} />
     </div>
 

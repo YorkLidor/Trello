@@ -1,3 +1,4 @@
+import { func } from 'prop-types'
 import { async } from 'q'
 import { SET_ACTIVE_BOARD } from '../store/board.reducer.js'
 import { store } from '../store/store.js'
@@ -19,7 +20,8 @@ export const boardService = {
     getEmptyBoard,
     getEmptyGroup,
     getEmptyTask,
-    getActivity
+    getActivity,
+    getEmptyLabel
 }
 
 function query() {
@@ -44,19 +46,19 @@ function getById(boardId) {
 
 async function saveTask(boardId, groupId, task, activity) {
     const board = await getById(boardId)
-    if(!board) throw new Error('No such board with this id')
+    if (!board) throw new Error('No such board with this id')
     // PUT /api/board/b123/task/t678
 
     // TODO: find the task, and update
     const group = board.groups.find(group => group.id === groupId)
-    if(!group) throw new Error('No such a group in board')
+    if (!group) throw new Error('No such a group in board')
 
     const tasks = group.tasks.map(t => t.id === task.id ? task : t)
     group.tasks = tasks
 
     board.activities.unshift(activity)
     saveBoard(board)
-    store.dispatch({type: SET_ACTIVE_BOARD, board})
+    store.dispatch({ type: SET_ACTIVE_BOARD, board })
     // return board
     // return task
 }
@@ -114,11 +116,11 @@ function _createBoards() {
 
 function getActivity(member, task, txt) {
     return {
-        id: 'a'+ utilService.makeId(),
+        id: 'a' + utilService.makeId(),
         txt,
         createdAt: Date.now(),
-        byMember:{
-            _id : member._id,
+        byMember: {
+            _id: member._id,
             fullname: member.fullname,
             imgUrl: member.imgUrl
         },
@@ -126,5 +128,13 @@ function getActivity(member, task, txt) {
             id: task.id,
             title: task.title
         }
+    }
+}
+
+function getEmptyLabel() {
+    return { 
+        id: '', 
+        title: '',
+        color: '091E42'
     }
 }
