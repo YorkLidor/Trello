@@ -141,23 +141,22 @@ function getEmptyLabel() {
     }
 }
 
-async function saveBoardLabel(boardId, newLabel) {
-    let board = await getById(boardId)
+async function saveBoardLabel(board, newLabel) {
     const labelId = newLabel.id ? newLabel.id : 'l' + utilService.makeId()
 
     board = newLabel.id ?
         { ...board, labels: board.labels.map(label => label.id === labelId ? newLabel : label) }
-        : { ...board, labels: [...board.labels, { ...newLabel, id: labelId } ] }
+        : { ...board, labels: [...board.labels, { ...newLabel, id: labelId }] }
+    await saveBoard(board)
     store.dispatch({ type: SET_ACTIVE_BOARD, board })
-    saveBoard(board)
+
 }
 
-async function removeBoardLabel(boardId, labelId) {
-    let board = await getById(boardId)
+async function removeBoardLabel(board, labelId) {
     board = { ...board, labels: board.labels.filter(label => label.id !== labelId) }
     board.groups.forEach(group => group.tasks.forEach(task => task.labelIds = task.labelIds?.filter(id => id !== labelId)))
+    await saveBoard(board)
     store.dispatch({ type: SET_ACTIVE_BOARD, board })
-    saveBoard(board)
 }
 
 function getLabelDeaultColor() {

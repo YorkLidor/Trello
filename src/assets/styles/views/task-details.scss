@@ -315,39 +315,14 @@
     gap: 4px;
 }
 
-.task-labels {
-    border: hidden;
-    display: inline-block;
-    position: relative;
-    margin-bottom: 0;
-    border-radius: 3px;
-    padding: 0 12px;
-    max-width: 100%;
-    min-width: 48px;
-    height: 32px;
-    background-color: #DFE1E6;
-    line-height: 32px;
-    color: #172b4d;
-    font-size: 14px;
-    font-weight: 400;
-    text-align: left;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+.task-label {
+    @include label-preview;
 
     &.task-add-label{
         text-align: center;
     }
 }
 
-.task-labels::before{
-    content: '';
-    position: absolute;
-    top: 8px;
-    bottom: 8px;
-    left: 8px;
-    border-radius: 50%;
-    width: 16px;
-    height: 16px;
-    background-color: green($color: #000000);
+.task-label::before{
+    @include label-preview-before;
 }
