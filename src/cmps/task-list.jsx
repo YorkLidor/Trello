@@ -11,40 +11,37 @@ export function TaskList({ group, boardId }) {
 
     }
 
-    return <DragDropContext onDragEnd={onEnd}>
-        <Droppable droppableId="group-container">
-            {provided =>
-                <ul
-                    className="task-list"
-                    ref={provided.innerRef}
-                >
-                    {tasks.map((task, idx) =>
-                        <Draggable
-                            draggableId={task.id}
-                            key={task.id}
-                            index={idx}
-                        >
-                            {provided =>
-                                <div
-                                    ref={provided.innerRef}
-                                    {...provided.draggableProps}
-                                    {...provided.dragHandleProps}
-                                >
+    return <Droppable droppableId={group.id}>
+        {provided =>
+            <ul
+                className="task-list"
+                ref={provided.innerRef}
+            >
+                {tasks.map((task, idx) =>
+                    <Draggable
+                        draggableId={task.id}
+                        key={task.id}
+                        index={idx}
+                    >
+                        {provided =>
+                            <div
+                                ref={provided.innerRef}
+                                {...provided.draggableProps}
+                                {...provided.dragHandleProps}
+                            >
+                                <TaskPreview
+                                    boardId={boardId}
+                                    task={task}
+                                    group={group}
 
-                                    {console.log('task:', task, idx)}
-                                    <TaskPreview
-                                        boardId={boardId}
-                                        task={task}
-                                        group={group}
+                                />
+                            </div>
+                        }
+                    </Draggable>
+                )}
+                {provided.placeholder}
+            </ul>
+        }
+    </Droppable >
 
-                                    />
-                                </div>
-                            }
-                        </Draggable>
-                    )}
-                    {provided.placeholder}
-                </ul>
-            }
-        </Droppable >
-    </DragDropContext>
 }

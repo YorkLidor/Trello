@@ -41,7 +41,7 @@ export async function saveBoard(board) {
 }
 
 export async function setBoard(board){
-    const savedBoard = await boardService.saveBoard(board)
+    // const savedBoard = await boardService.saveBoard(board)
     store.dispatch({ type: SET_ACTIVE_BOARD, board })
 }
 
