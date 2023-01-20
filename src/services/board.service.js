@@ -1,5 +1,3 @@
-import { func } from 'prop-types'
-import { async } from 'q'
 import { SET_ACTIVE_BOARD } from '../store/board.reducer.js'
 import { store } from '../store/store.js'
 import { storageService } from './async-storage.service.js'
@@ -69,6 +67,8 @@ async function saveTask(boardId, groupId, task, activity) {
 
 async function getLabelsById(boardId, labelIds) {
     const board = await getById(boardId)
+    console.log('board:', board)
+    console.log('labelIdssssss:', labelIds)
     return board.labels.filter(label => labelIds.includes(label.id))
 }
 

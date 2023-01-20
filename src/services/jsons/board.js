@@ -66,7 +66,8 @@ export const jBoard = {
         "imgUrl": "http://some-img"
     },
     "style": {
-        "bg": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/2048x1152/17c10de18b89807a945d83325a9002eb/photo-1647831597506-3f9071cbbd6f.jpg"
+        "bg": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/2048x1152/17c10de18b89807a945d83325a9002eb/photo-1647831597506-3f9071cbbd6f.jpg",
+        "isLabelsLarge": false
     },
     "labels": [
         {
@@ -77,7 +78,17 @@ export const jBoard = {
         {
             "id": "l102",
             "title": "Progress",
-            "color": "#61bd33"
+            "color": "#E6C60D"
+        },
+        {
+            "id": "l103",
+            "title": "Muki",
+            "color": "#FF8ED4"
+        },
+        {
+            "id": "l104",
+            "title": "Puki",
+            "color": "#00AECC"
         }
     ],
     "members": [
@@ -147,7 +158,7 @@ export const jBoard = {
                         }
                     ],
                     "memberIds": ["u101"],
-                    "labelIds": ["l101", "l102"],
+                    "labelIds": ["l101", "l102","l103","l104"],
                     "dueDate": 16156215211,
                     "byMember": {
                         "_id": "u101",
