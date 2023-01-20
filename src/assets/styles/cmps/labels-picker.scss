@@ -11,17 +11,20 @@
 
 }
 
+.picker-header-container {
+    display: grid;
+    grid-template-columns: 12px 1fr 12px;
+    border-block-end: 1px solid rgba(9, 30, 66, 0.13);
+    line-height: 40px;
+    place-content: center;
+}
+
 .picker-header {
     text-align: center;
     font-size: 14px;
+    grid-column: 0 / 1;
 }
 
-.labels-picker-header {
-    border-block-end: 1px solid rgba(9, 30, 66, 0.13);
-    justify-content: center;
-    line-height: 40px;
-    padding: 0 32px;
-}
 
 .labels-picker-home {
     display: none;
@@ -42,26 +45,50 @@
 }
 
 .label-picker-line {
+    display: inline-flex;
     margin-block-end: 5px;
     width: 100%;
 
     .label-box-preview {
         position: relative;
-        width: 100%;
+        flex-grow: 1;
         line-height: 32px;
         padding: 0 12px;
     }
 
     input[name="add-label"] {
         appearance: checkbox;
-        display: inline;
+        display: none;
         scale: 1.4;
         border-radius: 3px;
         border: 0px;
         line-height: 16px;
     }
+
+
 }
 
+.label-line-container {
+    display: inline-flex;
+    flex-grow: 1;
+
+    .label-picker-row {
+        flex-grow: 1;
+        gap: 4px;
+        margin-inline-start: 12px;
+
+        .edit-label-button {
+            cursor: pointer;
+            min-height: 32px;
+            min-width: 32px;
+            padding: 8px;
+
+            &:hover {
+                background-color: $btn-background-cyan;
+            }
+        }
+    }
+}
 
 .labels-editor {
     display: none;
@@ -181,4 +208,22 @@
             vertical-align: text-bottom;
         }
     }
+}
+
+.close-modal {
+    cursor: pointer;
+    align-self: center;
+    line-height: 20px;
+    grid-column: 0 / 1;
+    font-weight: 400;
+    color: #6b778c;
+}
+
+.back-modal {
+    cursor: pointer;
+    align-self: center;
+    line-height: 20px;
+    grid-column: -1 / 0;
+
+    color: #6b778c;
 }

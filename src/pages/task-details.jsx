@@ -99,6 +99,7 @@ export function TaskDetails() {
         console.log('ERROR: Failed to load board')
         return navigate('/workspace')
     }
+    
     function backToBoard() {
         store.dispatch({ type: CLOSE_MODAL })
         navigate(`/board/${boardId}`)

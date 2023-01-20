@@ -4,10 +4,15 @@ import { GrFormEdit } from 'react-icons/gr'
 
 import { boardService } from '../services/board.service'
 
-import { TiDeleteOutline } from 'react-icons/ti'
-import { useSelector } from 'react-redux'
-
+import { AiOutlineClose } from 'react-icons/ai'
 import { BsFillCircleFill } from 'react-icons/bs'
+import { IoIosArrowBack } from 'react-icons/io'
+import { ImCheckboxChecked, ImCheckboxUnchecked } from 'react-icons/im'
+
+import { useSelector } from 'react-redux'
+import { store } from '../store/store'
+import { CLOSE_MODAL } from '../store/app.reducer'
+
 
 export function LabelsPicker({ cmpProps }) {
     const { groupId, task } = cmpProps
@@ -68,6 +73,11 @@ export function LabelsPicker({ cmpProps }) {
         return 'Labels'
     }
 
+    function modalGoBack() {
+        if (pickerHeader === 'Edit label' || pickerHeader === 'Create label') toggleScreens()
+        if (pickerHeader === 'Delete label') toggleDeleteMessage('delete')
+    }
+
     function toggleScreens(label = null) {
         editorScreenRef.current.classList.toggle('active')
         labelsScreenRef.current.classList.toggle('active')
@@ -122,8 +132,12 @@ export function LabelsPicker({ cmpProps }) {
 
 
     return labels && <div className='modal-label-picker'>
-        <div className='labels-picker-header flex row'>
+        <div className='picker-header-container flex row'>
+            {
+                getPickerHeader() !== 'Labels' ? <IoIosArrowBack className='back-modal' onClick={modalGoBack} /> : <span />
+            }
             <span className='picker-header'>{pickerHeader}</span>
+            <AiOutlineClose className='close-modal' onClick={() => store.dispatch({ type: CLOSE_MODAL })} />
         </div>
 
         <div className="labels-picker-home active" ref={labelsScreenRef}>
@@ -136,10 +150,20 @@ export function LabelsPicker({ cmpProps }) {
                             backgroundColor: label.color
                         }
 
-                        return <li key={label.id} className='label-picker-line flex row'>
-                            <input type='checkbox' name='add-label' checked={checked} onChange={handleChange} data-id={label.id} />
-                            <div className="label-box-preview" style={labelStyle}>{label.title}</div>
-                            <GrFormEdit className="edit-label-button" onClick={() => toggleScreens(label)} />
+                        return <li key={label.id} className='label-picker-line row'>
+                            <label htmlFor={`add-label-${label.id}`} className='flex row label-line-container'>
+                                <input type='checkbox' name='add-label' id={`add-label-${label.id}`} checked={checked} onChange={handleChange} data-id={label.id} />
+                                <span className='checkbox-container'>
+                                    {
+                                        checked ? <ImCheckboxChecked className='checkbox checkbox-checked' /> : <ImCheckboxUnchecked className='checkbox checkbox-unchecked' />
+
+                                    }
+                                </span>
+                                <div className='flex row label-picker-row'>
+                                    <div className="label-box-preview" style={labelStyle}>{label.title}</div>
+                                    <GrFormEdit className="edit-label-button" onClick={() => toggleScreens(label)} />
+                                </div>
+                            </label>
                         </li>
                     })
                 }
@@ -172,7 +196,7 @@ export function LabelsPicker({ cmpProps }) {
                 }
             </div>
 
-            <button className='remove-color' onClick={resetColor}><TiDeleteOutline style={{ fontSize: '18px', verticalAlign: 'top' }} /> Remove color</button>
+            <button className='remove-color' onClick={resetColor}><AiOutlineClose style={{ fontSize: '18px', verticalAlign: 'top' }} /> Remove color</button>
 
             <hr />
 

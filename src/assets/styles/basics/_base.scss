@@ -22,7 +22,7 @@ body {
     background-position: 50%;
     background-size: cover;
 
-    &>*{
+    &>* {
         height: calc(100% - 44px);
     }
 }
@@ -60,16 +60,16 @@ a:hover {
     text-decoration: underline;
 }
 
-button{
+button {
     cursor: pointer;
 }
 
-input{
+input {
     appearance: none;
-    background-color: var(--ds-background-input,#fafbfc);
+    background-color: var(--ds-background-input, #fafbfc);
     border: none;
     border-radius: 3px;
-    box-shadow: inset 0 0 0 2px var(--ds-border-input,#dfe1e6);
+    box-shadow: inset 0 0 0 2px var(--ds-border-input, #dfe1e6);
     box-sizing: border-box;
     display: block;
     line-height: 20px;
@@ -77,10 +77,37 @@ input{
     outline: none;
     padding: 8px 12px;
     transition-duration: 85ms;
-    transition-property: background-color,border-color,box-shadow;
+    transition-property: background-color, border-color, box-shadow;
     transition-timing-function: ease;
 }
 
-input, textarea, button {
+input,
+textarea,
+button {
     font-family: inherit;
+}
+
+.checkbox-container {
+    flex-shrink: 0;
+    transition: all 0.3s;
+    
+    .checkbox {
+        cursor: pointer;
+        height: 16px;
+        width: 16px;
+        border-radius: 4px;
+
+        &.checkbox-checked {
+            color: $button-filled;
+            box-shadow: inset 0 0 0 2px #0079bf;
+            &:hover{
+                color: #5AA4CF;
+            }
+        }
+
+        &.checkbox-unchecked {
+            color: transparent;
+            box-shadow: inset 0 0 0 2px #dfe1e6;
+        }
+    }
 }
