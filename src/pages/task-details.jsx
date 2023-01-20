@@ -5,6 +5,7 @@ import { FaPager } from 'react-icons/fa'
 import { GrTextAlignFull } from 'react-icons/gr'
 import { FiList } from "react-icons/fi";
 import { IoPricetagOutline } from 'react-icons/io5'
+import { BsFillCircleFill } from 'react-icons/bs'
 
 import { Blocks } from "react-loader-spinner";
 
@@ -98,6 +99,7 @@ export function TaskDetails() {
         console.log('ERROR: Failed to load board')
         return navigate('/workspace')
     }
+    
     function backToBoard() {
         store.dispatch({ type: CLOSE_MODAL })
         navigate(`/board/${boardId}`)
@@ -185,11 +187,12 @@ export function TaskDetails() {
 
                 <section className="task-info flex row">
                     <div className="task-labels-box flex row">
-                        {labels && labels.map(label => <button key={label.id} style={{ backgroundColor: label.color, color: '172B4D' }}
-                            className='task-labels' onClick={toggleLabelPicker}>{label.title}</button>)}
+                        {labels.length > 0 && labels.map(label => <button key={label.id} style={{ backgroundColor: label.color + '55' }}
+                            className='task-label' onClick={toggleLabelPicker}><BsFillCircleFill style={{ color: label.color }} />{label.title}</button>)}
 
                         {
-                            taskToEdit?.labelIds?.length > 0 && <button key='add-label' style={{ backgroundColor: '#EAECF0', color: '#172B4D', fontSize: '14px' }} className='task-labels task-add-label' onClick={toggleLabelPicker}>+</button>
+                            labels.length > 0 && <button key='add-label' style={{ backgroundColor: '#EAECF0', color: '#172B4D', fontSize: '14px' }} 
+                            className='task-label task-add-label' onClick={toggleLabelPicker}>+</button>
                         }
                     </div>
 
@@ -258,10 +261,10 @@ export function TaskDetails() {
             </div>
 
         </section>
-            <div ref={LabelsPickerRef} className="labels-picker" onClick={(ev) => ev.stopPropagation()}>
-                {
-                    <Modal cmpProps={{ groupId, task: taskToEdit }} cmpType='labels-picker' />
-                }
-            </div>
+        <div ref={LabelsPickerRef} className="labels-picker" onClick={(ev) => ev.stopPropagation()}>
+            {
+                <Modal cmpProps={{ groupId, task: taskToEdit }} cmpType='labels-picker' />
+            }
+        </div>
     </section >
 }

@@ -102,3 +102,45 @@
         background-color: darken($color, 10%);
     }
 }
+
+@mixin labels-picker-main-button {
+    @include task-nav-button;
+    background-color: inherit;
+    width: 100%;
+    margin-block-end: 8px;
+
+    &:hover {
+        background-color: $btn-background-cyan;
+    }
+}
+
+// include to .label-box
+@mixin label-preview {
+    border: hidden;
+    display: inline-block;
+    position: relative;
+    margin-bottom: 0;
+    border-radius: 3px;
+    padding: 0 12px;
+    max-width: 100%;
+    min-width: 48px;
+    height: 32px;
+    line-height: 32px;
+    color: #172b4d;
+    font-size: 14px;
+    font-weight: 400;
+    text-align: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+// include to .label-box::before
+@mixin label-preview-before {
+    content: '';
+    position: absolute;
+    top: 8px;
+    bottom: 8px;
+    left: 8px;
+    border-radius: 50%;
+}

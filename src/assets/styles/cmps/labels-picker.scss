@@ -1,3 +1,9 @@
+.modal-label-picker {
+    height: 100%;
+    width: 100%;
+    padding: 0 12px 12px;
+}
+
 .labels-picker {
     position: fixed;
     z-index: 5;
@@ -5,17 +11,20 @@
 
 }
 
+.picker-header-container {
+    display: grid;
+    grid-template-columns: 12px 1fr 12px;
+    border-block-end: 1px solid rgba(9, 30, 66, 0.13);
+    line-height: 40px;
+    place-content: center;
+}
+
 .picker-header {
     text-align: center;
     font-size: 14px;
+    grid-column: 0 / 1;
 }
 
-.labels-picker-header {
-    border-block-end: 1px solid rgba(9, 30, 66, 0.13);
-    justify-content: center;
-    line-height: 40px;
-    padding: 0 32px;
-}
 
 .labels-picker-home {
     display: none;
@@ -36,31 +45,53 @@
 }
 
 .label-picker-line {
+    display: inline-flex;
     margin-block-end: 5px;
     width: 100%;
 
     .label-box-preview {
         position: relative;
-        width: 100%;
+        flex-grow: 1;
         line-height: 32px;
         padding: 0 12px;
     }
 
     input[name="add-label"] {
         appearance: checkbox;
-        display: inline;
+        display: none;
         scale: 1.4;
         border-radius: 3px;
         border: 0px;
-        margin-inline-end: 4px;
         line-height: 16px;
+    }
+
+
+}
+
+.label-line-container {
+    display: inline-flex;
+    flex-grow: 1;
+
+    .label-picker-row {
+        flex-grow: 1;
+        gap: 4px;
+        margin-inline-start: 12px;
+
+        .edit-label-button {
+            cursor: pointer;
+            min-height: 32px;
+            min-width: 32px;
+            padding: 8px;
+
+            &:hover {
+                background-color: $btn-background-cyan;
+            }
+        }
     }
 }
 
-
 .labels-editor {
     display: none;
-    padding: 0 0 12px;
 
     &.active {
         display: block;
@@ -74,27 +105,30 @@
     }
 
     .remove-color {
-        @include task-nav-button;
-        background-color: inherit;
-        width: 100%;
-        margin-block-end: 8px;
-
-        &:hover {
-            background-color: $btn-background-cyan;
-        }
+        @include labels-picker-main-button;
+        margin-block-end: 25px;
     }
 
     .save-label {
         @include button-filled($button-filled , #FFF);
     }
 
-    .delete-label {
-        @include button-filled($button-filled , #FFF);
-        background-color: #B04632;
+    .label-title {
+        display: inline-block;
+        font-size: 12px;
+        font-weight: 600;
+        line-height: 16px;
+        margin: 2px 0px 8px;
+    }
 
-        &:hover {
-            background-color: #933B27;
-        }
+    .label-editor-title {
+        width: 100%;
+        margin-inline-start: 0.5px;
+        margin-block-end: 5px;
+    }
+
+    .label-editor-title:focus {
+        box-shadow: rgb(0, 121, 191) 0px 0px 0px 2px inset;
     }
 
     hr {
@@ -104,24 +138,26 @@
         box-sizing: initial;
         margin: 16px 0;
     }
+
+    .label-editor-tools {
+        justify-content: space-between;
+        padding: 0;
+
+        &>* {
+            margin: 0;
+        }
+    }
 }
 
 .color-tab-wrapper {
     height: 32px;
+    padding: 1.5px;
 
     .color-tab {
         border-radius: 3px;
         cursor: pointer;
         height: 100%;
         width: 100%;
-    }
-
-    .color-tab::after {
-        content: '';
-        position: absolute;
-        inset: 0;
-        border: 2px #FFFFFF solid;
-        pointer-events: none;
     }
 
     &.active-color {
@@ -136,4 +172,58 @@
     &.active {
         display: block;
     }
+}
+
+
+.create-label {
+    @include labels-picker-main-button
+}
+
+.delete-label {
+    @include button-filled($button-filled , #FFF);
+    background-color: #B04632;
+
+    &:hover {
+        background-color: #933B27;
+    }
+}
+
+.label-editor-preview-box {
+    margin-block: 8px;
+    padding: 32px 16px 34px 24px;
+
+    .label-editor-preview {
+
+        @include label-preview;
+        margin-inline-start: -3px;
+        display: block;
+
+        .label-title-editor-preview {
+            margin-inline-start: 7px;
+        }
+
+        .label-circle {
+            margin-inline-start: -5px;
+            font-size: 17px;
+            vertical-align: text-bottom;
+        }
+    }
+}
+
+.close-modal {
+    cursor: pointer;
+    align-self: center;
+    line-height: 20px;
+    grid-column: 0 / 1;
+    font-weight: 400;
+    color: #6b778c;
+}
+
+.back-modal {
+    cursor: pointer;
+    align-self: center;
+    line-height: 20px;
+    grid-column: -1 / 0;
+
+    color: #6b778c;
 }
