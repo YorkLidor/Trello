@@ -2,7 +2,7 @@ import { useState } from "react"
 import { IoMdAdd } from "react-icons/io"
 
 
-export function GroupAdd({ onAddGroup, handleChange }) {
+export function GroupAdd({ onAddGroup, handleChange, groupToEdit }) {
     const [isIdleClass, setIsIdle] = useState('is-idle')
 
     return <li className={`group-item-container mod-add ${isIdleClass}`}>
@@ -23,6 +23,7 @@ export function GroupAdd({ onAddGroup, handleChange }) {
                     className="list-title-input"
                     type="text"
                     name="title"
+                    value={groupToEdit.title}
                     placeholder="Enter list title..."
                     autoComplete="off"
                     onChange={handleChange}

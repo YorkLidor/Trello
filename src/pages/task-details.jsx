@@ -6,6 +6,7 @@ import { GrTextAlignFull } from 'react-icons/gr'
 import { FiList } from "react-icons/fi";
 import { IoPricetagOutline } from 'react-icons/io5'
 import { BsFillCircleFill } from 'react-icons/bs'
+import { GrAttachment } from 'react-icons/gr'
 
 import { Blocks } from "react-loader-spinner";
 
@@ -15,9 +16,11 @@ import { useSelector } from "react-redux";
 
 import { store } from "../store/store";
 import { SET_ACTIVE_BOARD } from "../store/board.reducer";
-import { LabelsPicker } from "../cmps/labels-picker";
 import { Modal } from "../cmps/modal";
-import { TOGGLE_MODAL, CLOSE_MODAL } from "../store/app.reducer";
+import { TOGGLE_MODAL, CLOSE_MODAL, SET_MODAL_DATA } from "../store/app.reducer";
+import { setModalData } from "../store/app.actions"
+
+import {MODAL_ATTACH, MODAL_LABELS} from '../cmps/modal.jsx'
 
 
 export function TaskDetails() {
@@ -25,6 +28,8 @@ export function TaskDetails() {
     const { boardId, groupId, taskId } = useParams()
     const board = useSelector((storeState) => storeState.boardModule.board)
     const [taskToEdit, setTaskToEdit] = useState(null)
+
+    const modalData = useSelector((storeState) => storeState.appModule.modalData)
 
     var group = useRef()
     group.current = groupId ? board?.groups?.find(g => g.id === groupId) : null
@@ -39,7 +44,8 @@ export function TaskDetails() {
     const elCommentInputRef = useRef()
     const commentBtnRef = useRef()
 
-    const LabelsPickerRef = useRef()
+    const modalBoxRef = useRef()
+    const AttachmentsRef = useRef()
 
     const userIconDefault = 'assets/styles/img/profileDefault.png'
 
@@ -99,7 +105,7 @@ export function TaskDetails() {
         console.log('ERROR: Failed to load board')
         return navigate('/workspace')
     }
-    
+
     function backToBoard() {
         store.dispatch({ type: CLOSE_MODAL })
         navigate(`/board/${boardId}`)
@@ -166,11 +172,14 @@ export function TaskDetails() {
     }
 
     // Toggle modal visibility and set it's pos under element
-    function toggleLabelPicker(ev) {
+    function toggleModal(ev, modalType) {
+        let props
+        if(modalType === 'labels' || 'attach') props = { groupId, task: taskToEdit }
+        setModalData(modalType, props)
+        
         const pos = utilService.getElementPosition(ev.target)
-
-        LabelsPickerRef.current.style.top = pos.bottom + 'px'
-        LabelsPickerRef.current.style.left = pos.left + 'px'
+        modalBoxRef.current.style.top = pos.bottom + 'px'
+        modalBoxRef.current.style.left = pos.left + 'px'
 
         store.dispatch({ type: TOGGLE_MODAL })
     }
@@ -188,11 +197,11 @@ export function TaskDetails() {
                 <section className="task-info flex row">
                     <div className="task-labels-box flex row">
                         {labels.length > 0 && labels.map(label => <button key={label.id} style={{ backgroundColor: label.color + '55' }}
-                            className='task-label' onClick={toggleLabelPicker}><BsFillCircleFill style={{ color: label.color }} />{label.title}</button>)}
+                            className='task-label' onClick={(ev) => toggleModal(ev, 'labels')}><BsFillCircleFill style={{ color: label.color }} />{label.title}</button>)}
 
                         {
-                            labels.length > 0 && <button key='add-label' style={{ backgroundColor: '#EAECF0', color: '#172B4D', fontSize: '14px' }} 
-                            className='task-label task-add-label' onClick={toggleLabelPicker}>+</button>
+                            labels.length > 0 && <button key='add-label' style={{ backgroundColor: '#EAECF0', color: '#172B4D', fontSize: '14px' }}
+                                className='task-label task-add-label' onClick={(ev) => toggleModal(ev, 'labels')}>+</button>
                         }
                     </div>
 
@@ -255,16 +264,18 @@ export function TaskDetails() {
             <div className="window-sidebar-box">
                 <nav className="window-sidebar flex column">
                     <span className="sidebar-title">Add to card</span>
-                    <a className='button-link' href='#' onClick={toggleLabelPicker}><IoPricetagOutline onClick={(ev) => ev.stopPropagation()} />  Labels</a>
-
+                    <a className='button-link' href='#' onClick={(ev) => toggleModal(ev, 'labels')}><IoPricetagOutline onClick={(ev) => ev.stopPropagation()} />  Labels</a>
+                    <a className='button-link' href='#' onClick={(ev) => toggleModal(ev, 'attach')}><GrAttachment /> Attachment</a>
                 </nav>
             </div>
 
         </section>
-        <div ref={LabelsPickerRef} className="labels-picker" onClick={(ev) => ev.stopPropagation()}>
+        
+        <div ref={modalBoxRef} className='modal-container' onClick={(ev) => ev.stopPropagation()}>
             {
-                <Modal cmpProps={{ groupId, task: taskToEdit }} cmpType='labels-picker' />
+                modalData && <Modal cmpProps={modalData.props} cmpType={modalData.cmpType} className={modalData.className} />
             }
         </div>
+
     </section >
 }

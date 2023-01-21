@@ -1,5 +1,3 @@
-import { func } from 'prop-types'
-import { async } from 'q'
 import { SET_ACTIVE_BOARD } from '../store/board.reducer.js'
 import { store } from '../store/store.js'
 import { storageService } from './async-storage.service.js'
