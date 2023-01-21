@@ -6,11 +6,10 @@ import { useForm } from "../customHooks/useForm";
 import { boardService } from "../services/board.service";
 import { saveBoard } from "../store/board.actions";
 
-export function GroupFooter({ group, boardId }) {
+export function GroupFooter({ group }) {
     let board = useSelector(storeState => storeState.boardModule.board)
     const [isOpenClass, setIsOpenClass] = useState('add-card-close')
     const [taskToSet, setTaskTitleToSet, handleChange] = useForm(boardService.getEmptyTask())
-    const loli = 'aaa'
 
     async function onAddNewTask(ev) {
         ev.preventDefault()

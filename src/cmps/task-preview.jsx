@@ -2,6 +2,7 @@ import { useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import { SET_ACTIVE_BOARD } from "../store/board.reducer"
 import { store } from "../store/store"
+import { TaskPreviewIcons } from "./task-preview-icons"
 
 export function TaskPreview({ task, group, boardId }) {
     const groupId = group.id
@@ -24,10 +25,12 @@ export function TaskPreview({ task, group, boardId }) {
 
     return <li className="task-preview-container" >
 
+        {/* COVER COLOR */}
         {coverColor &&
             <header className="cover-color" style={{ background: coverColor }}></header>
         }
 
+        {/* LABELS */}
         {labels.length > 0 &&
             <div className="labels-container" >
                 {
@@ -49,9 +52,12 @@ export function TaskPreview({ task, group, boardId }) {
             </div>
         }
 
+
         <section className="task-body" onClick={() => navigate(`/card/${boardId}/${groupId}/${task.id}`)}>
             <p>{task.title}</p>
         </section>
 
+        <TaskPreviewIcons board={board} groupId={groupId} task={task}/>
+        
     </li>
 }
