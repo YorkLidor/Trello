@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react"
 import { useEffectUpdate } from "../customHooks/useEffectUpdate"
 import { useForm } from "../customHooks/useForm"
 import { saveBoard } from "../store/board.actions"
+import { FaRegStar } from 'react-icons/fa';
 
 export function BoardHeader({ board, onDeleteBoard }) {
     const [editClass, setEditClass] = useState('')
@@ -64,9 +65,12 @@ export function BoardHeader({ board, onDeleteBoard }) {
             >
                 {boardToEdit?.title || ''}
             </h1>
+            <button className="btn-star">
+                <FaRegStar />
+            </button>
         </div>
         <div className="actions-container">
-            <button className="btn btn-filter">Filter</button>
+            <button className="btn-filter">Filter</button>
             <span className="btn-divider"></span>
             <button className="btn btn-share">Share</button>
             <span className="btn-divider"></span>

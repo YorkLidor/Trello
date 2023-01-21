@@ -24,9 +24,6 @@ import { utilService } from "../util.service"
 // <TaskDetails> (supports edit) - initially can be loaded in seperate route 
 // (later on we can place it in a modal and nested route)
 
-
-
-
 const activity = {
     "id": utilService.makeId(),
     "txt": "Changed Color",
@@ -100,9 +97,30 @@ export const jBoard = {
     "members": [
         {
             "_id": "u101",
-            "fullname": "Tal Tarablus",
-            "imgUrl": "https://www.google.com"
+            "fullname": "Tommy",
+            "imgUrl": "https://ca.slack-edge.com/T043N4KE97B-U0439FVN118-16ee7292919c-512"
+        },
+        {
+            "_id": "u102",
+            "fullname": "Daniel",
+            "imgUrl": "https://ca.slack-edge.com/T043N4KE97B-U0439FW0LSE-206c323abef7-512"
+        },
+        {
+            "_id": "u103",
+            "fullname": "Lidor",
+            "imgUrl": "https://ca.slack-edge.com/T043N4KE97B-U0439GRBDR8-76b4a79a103c-512"
+        },
+        {
+            "_id": "u104",
+            "fullname": "Matan",
+            "imgUrl": "https://ca.slack-edge.com/T043N4KE97B-U045HE0SWR3-89a31180034c-512"
+        },
+        {
+            "_id": "u105",
+            "fullname": "Gal",
+            "imgUrl": "https://ca.slack-edge.com/T043N4KE97B-U043N5QQPT3-278bb6b34de8-512"
         }
+
     ],
     "groups": [
         {
@@ -114,6 +132,7 @@ export const jBoard = {
                     "id": "c101",
                     "title": "Replace logo",
                     "labelIds": ["l104"],
+                    "memberIds": ["u102"],
                     "style": {
                         "bgColor": "#29cce5"
                     }
@@ -122,7 +141,8 @@ export const jBoard = {
                 {
                     "id": "c102",
                     "title": "Add Samples",
-                    "labelIds": ["l104", "l105"]
+                    "labelIds": ["l104", "l105"],
+                    "memberIds": ["u103","u104","u105",]
                 },
                 {
                     "id": "c105",
@@ -140,7 +160,8 @@ export const jBoard = {
                     "id": "c103",
                     "title": "Do that",
                     "archivedAt": 1589983468418,
-                    "labelIds": ["l101"]
+                    "labelIds": ["l101"],
+                    "memberIds": ["u103","u104","u105",]
                 },
                 {
                     "id": "c104",

@@ -1,10 +1,20 @@
 .group-list-container {
 
+
     display: flex;
     flex-grow: 1;
     margin-top: 0;
     overflow-x: auto;
     overflow-y: hidden;
+    padding: 0 0 rem(8px) rem(16px);
+
+    &:first-child {
+
+        .group-item-container {
+
+            margin-left: 16px;
+        }
+    }
 
     .add-group-form {
         box-sizing: border-box;
@@ -42,6 +52,6 @@
 
     }
 
-    
+
 
 }
