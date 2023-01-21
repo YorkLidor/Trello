@@ -5,7 +5,8 @@
     color: var(--ds-text, inherit);
     cursor: pointer;
     display: block;
-    margin-bottom: 8px;
+    margin-bottom: rem(8px);
+    padding: rem(6px) rem(8px) rem(2px);
     max-width: 300px;
     min-height: 20px;
     position: relative;
