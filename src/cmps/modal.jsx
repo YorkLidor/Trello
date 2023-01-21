@@ -1,4 +1,6 @@
 import { LabelsPicker } from "./labels-picker"
+import { AttachmentModal } from "./attachment-modal"
+
 import { useSelector } from "react-redux"
 import { BoardCreator } from "./board-creator"
 
@@ -19,10 +21,11 @@ function GetCmp({ cmpProps, cmpType }) {
         case MODAL_LABELS:
             return <LabelsPicker cmpProps={cmpProps} />
         case MODAL_ATTACH:
-            return <div></div>
+            return <AttachmentModal cmpProps={cmpProps} />
         case BOARD_CREATOR:
             return <BoardCreator {...cmpProps} />
         default:
             return ''
     }
+    return ''
 }
