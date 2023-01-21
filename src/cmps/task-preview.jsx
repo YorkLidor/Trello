@@ -32,7 +32,7 @@ export function TaskPreview({ task, group, boardId, isDragging }) {
 
 
             {/* LABELS */}
-            {(task.labels && task.labels.length) && <div className="labels-container" >
+            {(task.labelIds && task.labelIds.length) && <div className="labels-container" >
                 {console.log('labels:', labels)}
                 {
                     labels.map(label =>
