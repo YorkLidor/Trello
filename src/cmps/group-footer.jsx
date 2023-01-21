@@ -6,7 +6,7 @@ import { useForm } from "../customHooks/useForm";
 import { boardService } from "../services/board.service";
 import { saveBoard } from "../store/board.actions";
 
-export function GroupFooter({ group, boardId, setBoard }) {
+export function GroupFooter({ group, boardId }) {
     let board = useSelector(storeState => storeState.boardModule.board)
     const [isOpenClass, setIsOpenClass] = useState('add-card-close')
     const [taskToSet, setTaskTitleToSet, handleChange] = useForm(boardService.getEmptyTask())
@@ -19,7 +19,7 @@ export function GroupFooter({ group, boardId, setBoard }) {
         try {
             group.tasks.push(taskToSet)
             board = { ...board, groups: [...board.groups] }
-            await setBoard({...board})
+            await saveBoard({...board})
             setTaskTitleToSet(boardService.getEmptyTask())
             setIsOpenClass('add-card-close')
         } catch (err) {

@@ -1,0 +1,95 @@
+
+.homepage-container{
+    padding: 0;
+    display: flex;
+}
+
+.hero-container{
+    display: flex;
+    /* align-items: center; */
+    /* justify-content: space-around; */
+    /* flex-wrap: wrap; */
+    /* margin-left: -1rem; */
+    padding: 0px 10px 0px 111px;
+    /* margin-right: -1rem; */
+    background: url("//images.ctfassets.net/rz1oowkt5gyp/7lTGeXbBRNRLaVk2MdBjtJ/99c266ed4cb8cc63bd0c388071f01ff6/white-wave-bg.svg") center bottom -0.5px/100% 14% no-repeat scroll padding-box border-box, linear-gradient(60deg, rgb(82, 67, 170), rgb(237, 80, 180)) 0% 0%/auto repeat scroll padding-box border-box rgb(82, 67, 170);
+    background-blend-mode: normal, normal;
+    color: rgb(255, 255, 255);
+
+    .left-hero-container{
+        text-align: left;
+        display: block;
+        flex-direction: column;
+        flex: 0 0 auto;
+        width: 50%;
+        margin-bottom: 0px;
+        padding-bottom: 8rem;
+        padding: 8rem 1rem 1rem;
+        position: relative;
+        scroll-margin-top: 72px;
+        margin-top: 0px;
+
+        h1{
+            font-size: 3rem;
+            line-height: 1.25;
+        }
+
+        p{
+            font-size: 20px;
+            font-weight: 400;
+            line-height: 30px;
+            margin-bottom: 2.5rem;
+        }
+
+        form{
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+
+            .signup-input{
+                    font-size: 1rem;
+                    // padding: 0.7rem 0.75rem 0.8rem;
+                    border: 1px solid rgb(223, 225, 230);
+                    border-radius: 0.3rem;
+                    max-width: 300px;
+                    transition: all 250ms ease-out 0s;
+                    width: 376px;
+                    margin: 0;
+            }
+
+            .signup-btn{
+                    appearance: none;
+                    -webkit-box-align: center;
+                    align-items: center;
+                    border-radius: 0.3rem;
+                    cursor: pointer;
+                    display: inline-flex;
+                    transition: all 250ms ease-out 0s;
+                    background-color: rgb(0, 101, 255);
+                    border: 1px solid rgb(0, 101, 255);
+                    text-decoration: none;
+                    font-size: 20px;
+                    padding: 0.7rem 1rem 0.8rem;
+                    color: rgb(255, 255, 255) !important;
+            }
+        }
+
+        .watch-video-container{
+            display: flex;
+            align-items: center;
+            font-size: 16px;
+
+            :first-child{
+                margin-right: 5px;
+                text-decoration: underline;
+            }
+        }
+    }
+
+    .right-hero-container{
+        padding: 8rem 1rem 1rem;
+        img{
+            // height: 633px;
+        }
+    }
+}
