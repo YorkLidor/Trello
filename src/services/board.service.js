@@ -1,7 +1,7 @@
 import { SET_ACTIVE_BOARD } from '../store/board.reducer.js'
 import { store } from '../store/store.js'
 import { storageService } from './async-storage.service.js'
-import { jBoard } from './jsons/board.js'
+import { jBoard, jBoards } from './jsons/board.js'
 import { utilService } from './util.service.js'
 
 const STORAGE_KEY = 'boardDB'
@@ -116,7 +116,7 @@ function _createBoards() {
         jBoard.title = 'Kanban'
         bg = "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/2386x1600/47f09f0e3910259568294477d0bdedac/photo-1576502200916-3808e07386a5.jpg"
         boards.push({ ...jBoard, style: { bg } })
-
+        boards.push(...jBoards)
         utilService.saveToStorage(STORAGE_KEY, boards)
     }
 }
