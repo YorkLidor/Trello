@@ -26,7 +26,7 @@ export function TaskPreview({ task, group, boardId, isDragging }) {
 
     return <div className={`task-preview-container ${isDragging && 'is-dragging'}`}>
         {/* COVER COLOR */}
-        {style &&
+        {(style && style.background || style.backgroundImage) &&
             <header
                 className="cover-color"
                 style={style}
