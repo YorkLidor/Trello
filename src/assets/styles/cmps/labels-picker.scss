@@ -107,6 +107,15 @@
         margin-block-end: 25px;
     }
 
+    .remove-color-icon {
+        height: 13px;
+        width: 13px;
+        vertical-align: middle;
+        font-weight: 900;
+        margin-inline-start: 2px;
+        margin-inline-end: 4px;
+    }
+
     .save-label {
         @include button-filled($button-filled , #FFF);
     }
@@ -121,7 +130,7 @@
 
     .label-editor-title {
         width: 100%;
-        margin-inline-start: 0.5px;
+        margin-inline-start: 2px;
         margin-block-end: 5px;
     }
 
@@ -193,7 +202,7 @@
     .label-editor-preview {
 
         @include label-preview;
-        margin-inline-start: -3px;
+        margin-inline-start: 1px;
         display: block;
 
         .label-title-editor-preview {

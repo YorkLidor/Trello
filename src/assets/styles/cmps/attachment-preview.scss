@@ -1,0 +1,64 @@
+
+.attachment-preview {
+    position: relative;
+    overflow: hidden;
+    min-height: 80px;
+    margin: 0 0 8px;
+    border-radius: 3px;
+}
+
+
+.attachment-preview-img {
+    @include aspect-ratio(80px, 112px);
+    height: 80px;
+    width: 112px;
+
+    position: absolute;
+    margin-block-start: -40px;
+    left: 0;
+    text-align: center;
+    top: 50%;
+    border-radius: 3px;
+}
+
+.attachment-details {
+    margin: 0;
+    min-height: 80px;
+    padding: 8px 8px 8px 128px;
+    cursor: pointer;
+}
+
+.attachment-filename {
+    word-wrap: break-word;
+    font-weight: 700;
+}
+
+.attachment-open {
+    height: 12px;
+    width: 12px;
+    line-height: 20px;
+    margin: 0px 6px;
+    vertical-align: text-middle;
+}
+
+.attachment-date {
+}
+
+.attachment-info {
+    display: block;
+    margin-block-end: 8px;
+    color: #65738A;
+}
+
+.attachment-info-break {
+
+}
+
+.attachment-info-break::after{
+    content: ' • ';
+    
+}
+
+.action-attachment {
+    text-decoration: underline;
+}

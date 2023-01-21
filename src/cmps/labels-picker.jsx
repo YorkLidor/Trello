@@ -209,7 +209,7 @@ export function LabelsPicker({ cmpProps }) {
                 }
             </div>
 
-            <button className='remove-color' onClick={resetColor}><AiOutlineClose style={{ fontSize: '18px', verticalAlign: 'top' }} /> Remove color</button>
+            <button className='remove-color' onClick={resetColor}><AiOutlineClose className='remove-color-icon' /> Remove color</button>
 
             <hr />
 
