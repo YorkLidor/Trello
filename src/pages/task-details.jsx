@@ -174,7 +174,8 @@ export function TaskDetails() {
     // Toggle modal visibility and set it's pos under element
     function toggleModal(ev, modalType) {
         let props
-        if(modalType === 'labels' || 'attach') props = { groupId, task: taskToEdit }
+        if(modalType === 'labels') props = { groupId, task: taskToEdit }
+        if(modalType ==='attach') props = { boardId, groupId, task: taskToEdit }
         setModalData(modalType, props)
         
         const pos = utilService.getElementPosition(ev.target)

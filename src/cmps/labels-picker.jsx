@@ -120,8 +120,8 @@ export function LabelsPicker({ cmpProps }) {
     }
 
     function saveTask(action) {
-        boardService.getActivity(member, { id: task.id, title: task.title }, action)
-        boardService.saveTask(boardId, groupId, task, {})
+        const activity =  boardService.getActivity(member, { id: task.id, title: task.title }, action)
+        boardService.saveTask(boardId, groupId, task, activity)
     }
 
     async function deleteLabel() {

@@ -22,7 +22,8 @@ export const boardService = {
     getEmptyLabel,
     getLabelDeaultColor,
     saveBoardLabel,
-    removeBoardLabel
+    removeBoardLabel,
+    getAttachment
 }
 
 function query() {
@@ -160,4 +161,11 @@ async function removeBoardLabel(board, labelId) {
 
 function getLabelDeaultColor() {
     return '#DFE1E6'
+}
+
+function getAttachment(url) {
+    return {
+        id: 'att'+utilService.makeId(),
+        url
+    }
 }
