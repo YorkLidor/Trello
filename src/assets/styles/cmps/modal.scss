@@ -1,6 +1,11 @@
+.modal-container{
+    position: fixed;
+}
+
 .modal {
     color: $clr_font_blue;
-    width: inherit;
+    width: 304px;
+    min-height: 200px;
     z-index: 5;
     border: none;
     overflow-y: auto;

@@ -168,7 +168,8 @@ export const jBoard = {
                     },
                     "style": {
                         "bgColor": "#26de81"
-                    }
+                    },
+                    
                 }
             ],
             "style": {}
