@@ -6,4 +6,10 @@
     margin: 0 4px 7px;
     overflow-y: auto;
     padding: 5px 0 2px;
+
+    .placeholder {
+        width: 100px;
+        height: 100px;
+        background-color: red;
+    }
 }

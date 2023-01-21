@@ -22,7 +22,8 @@ export function Board() {
     }, [])
 
     useEffectUpdate(() => {
-        elBoard.current.style.backgroundImage = `url(${board.style.bg})`
+        if (board.style.backgroundImage && board.style.backgroundImage !== elBoard.current.style.backgroundImage)
+            elBoard.current.style.backgroundImage = board.style.backgroundImage
     }, [board])
 
     async function onDeleteBoard() {
