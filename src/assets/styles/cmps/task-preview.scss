@@ -6,6 +6,9 @@
     background-color: $clr6;
     border-radius: 3px;
     box-shadow: var(--ds-shadow-raised, 0 1px 0 $clr23);
+}
+
+.task-preview {
     color: var(--ds-text, inherit);
     cursor: pointer;
     display: block;
@@ -23,7 +26,7 @@
         background-color: #f4f5f7;
     }
 
-  
+
 
     .task-body {
         color: $clr21;
@@ -40,6 +43,7 @@
         }
     }
 }
+
 .cover-color {
     align-items: flex-end;
     background-size: 100% auto;

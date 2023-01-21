@@ -23,12 +23,12 @@ export function TaskPreview({ task, group, boardId, isDragging }) {
 
     const labelsStyle = isLabelsLarge ? 'labels-large' : ''
 
-    return <div className={isDragging && 'is-dragging'}>
+    return <div className={`task-preview-container ${isDragging && 'is-dragging'}`}>
             {/* COVER COLOR */}
             {coverColor &&
                 <header className="cover-color" style={{ background: coverColor }}></header>
             }
-        <li className={`task-preview-container `} >
+        <li className={`task-preview`} >
 
 
             {/* LABELS */}
