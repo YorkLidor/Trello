@@ -256,7 +256,7 @@ export function TaskDetails() {
                 <nav className="window-sidebar flex column">
                     <span className="sidebar-title">Add to card</span>
                     <a className='button-link' href='#' onClick={toggleLabelPicker}><IoPricetagOutline onClick={(ev) => ev.stopPropagation()} />  Labels</a>
-
+                    <a className='button-link' href='#' onClick={toggleLabelPicker}><IoPricetagOutline onClick={(ev) => ev.stopPropagation()} />  Labels</a>
                 </nav>
             </div>
 
