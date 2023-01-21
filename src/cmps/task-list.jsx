@@ -5,26 +5,6 @@ import { TaskPreview } from "./task-preview";
 
 export function TaskList({ group, boardId }) {
 
-    function getStyle(style, snapshot) {
-        console.log('snapshot:', snapshot)
-        if (!snapshot.isDraggingAnimation) {
-            return style;
-        }
-        const { moveTo, curve, duration } = snapshot.isDraggingAnimation;
-        // move to the right spot
-        const translate = `translate(${moveTo.x}px, ${moveTo.y}px)`;
-        // add a bit of turn for fun
-        const rotate = 'rotate(0.5turn)';
-
-        // patching the existing style
-        return {
-            ...style,
-            transform: `${translate} ${rotate}`,
-            // slowing down the drop because we can
-            transition: `all ${curve} ${duration + 1}s`,
-        };
-    }
-
     return <Droppable droppableId={group.id} direction="vertical" type="task-list">
         {(provided, snapshot) =>
             <ul
@@ -40,7 +20,6 @@ export function TaskList({ group, boardId }) {
                     >
                         {(provided, snapshot) =>
                             <div
-                                className={`task-preview-drag-container ${snapshot.isDragging && 'is-dragging'}`}
                                 ref={provided.innerRef}
                                 {...provided.draggableProps}
                                 {...provided.dragHandleProps}
@@ -58,7 +37,7 @@ export function TaskList({ group, boardId }) {
                 {provided.placeholder}
                 {(snapshot.isDraggingOver) &&
                     <div
-                        className="placeholder"
+                        className="task-preview-container"
                     />}
             </ul>
         }

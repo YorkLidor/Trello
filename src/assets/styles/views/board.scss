@@ -1,5 +1,11 @@
-.board{
+.board {
     height: calc(100vh - 44px);
     background-position: 50%;
     background-size: cover;
+    display: flex;
+    flex-direction: column;
+    margin-right: 0;
+    position: relative;
+    transition: margin .1s ease-in;
+    padding: 0;
 }

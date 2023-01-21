@@ -147,3 +147,39 @@
     left: 8px;
     border-radius: 50%;
 }
+
+@mixin modal-header {
+    text-align: center;
+    font-size: 14px;
+    grid-column: 0 / 1;
+}
+
+@mixin modal-header-container {
+    display: grid;
+    grid-template-columns: 12px 1fr 12px;
+    border-block-end: 1px solid rgba(9, 30, 66, 0.13);
+    line-height: 40px;
+    place-content: center;
+}
+
+@mixin close-modal {
+    cursor: pointer;
+    align-self: center;
+    line-height: 20px;
+    grid-column: 0 / 1;
+    font-weight: 400;
+    color: #6b778c;
+}
+
+@mixin back-modal {
+    cursor: pointer;
+    align-self: center;
+    line-height: 20px;
+    grid-column: -1 / 0;
+
+    color: #6b778c;
+}
+
+@mixin input-focus {
+    box-shadow: rgb(0, 121, 191) 0px 0px 0px 2px inset;
+}
