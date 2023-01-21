@@ -79,17 +79,22 @@ export const jBoard = {
         {
             "id": "l102",
             "title": "Progress",
-            "color": "#E6C60D"
+            "color": "#f5dd29"
         },
         {
             "id": "l103",
             "title": "Think about it",
-            "color": "#FF8ED4"
+            "color": "#ffaf3f"
         },
         {
             "id": "l104",
             "title": "I am a spoon!",
-            "color": "#00AECC"
+            "color": "#ef7564"
+        },
+        {
+            "id": "l105",
+            "title": "Messy",
+            "color": "#cd8de5"
         }
     ],
     "members": [
