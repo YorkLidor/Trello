@@ -1,12 +1,16 @@
 
 import { MdPlayCircleOutline } from "react-icons/md";
+import { useNavigate } from "react-router-dom"
+
 // MdOutlinePlayCircle
 
 export function HomePage() {
 
+    const navigate = useNavigate()
+
     function onSginup(ev) {
         ev.preventDefault()
-        alert('hi')
+        navigate('/workspace')
     }
 
     return <main className="homepage-container">
@@ -20,9 +24,11 @@ export function HomePage() {
                 </div>
 
                 <form onSubmit={onSginup}>
-                    <input className="signup-input" type="text" placeholder="Email" />
-                    <button className="signup-btn">Sign up - it's free!</button>
+                    {/* <input className="signup-input" type="text" placeholder="Email" /> */}
+                    {/* <button className="signup-btn">Sign up - it's free!</button> */}
+                    <button className="signup-btn">Start Demo</button>
                 </form>
+
 
                 <div className="watch-video-container">
                     <div>
