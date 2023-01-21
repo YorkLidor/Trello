@@ -39,16 +39,18 @@
 @import "cmps/task-preview-icons.scss";
 
 //label-picker CMP
-@import "cmps/labels-picker.scss";
 
 // Attachments
-@import "cmps/attachment-modal.scss";
 @import "cmps/attachment-preview.scss";
 @import "cmps/attachment-list.scss";
-@import 'cmps/attachment-edit-modal.scss';
+
+@import 'cmps/modals/attachment-edit-modal.scss';
+@import "cmps/modals/attachment-modal.scss";
+@import "cmps/modals/attachment-view.scss";
+@import "cmps/modals/labels-picker.scss";
 
 
-@import "cmps/modal.scss";
+@import "cmps/modals/modal.scss";
 
 
 
