@@ -66,6 +66,7 @@ export const jBoard = {
         "imgUrl": "http://some-img"
     },
     "style": {
+        "isBackGroundImg": true,
         "bg": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/2048x1152/17c10de18b89807a945d83325a9002eb/photo-1647831597506-3f9071cbbd6f.jpg",
         "isLabelsLarge": false
     },
@@ -82,12 +83,12 @@ export const jBoard = {
         },
         {
             "id": "l103",
-            "title": "Muki",
+            "title": "Think about it",
             "color": "#FF8ED4"
         },
         {
             "id": "l104",
-            "title": "Puki",
+            "title": "I am a spoon!",
             "color": "#00AECC"
         }
     ],
@@ -130,7 +131,7 @@ export const jBoard = {
                     "title": "Help me",
                     "status": "in-progress", // monday
                     "priority": "high",
-                    
+
                     "description": "description",
                     "comments": [
                         {
@@ -158,7 +159,7 @@ export const jBoard = {
                         }
                     ],
                     "memberIds": ["u101"],
-                    "labelIds": ["l101", "l102","l103","l104"],
+                    "labelIds": ["l101", "l102", "l103", "l104"],
                     "dueDate": 16156215211,
                     "byMember": {
                         "_id": "u101",
@@ -169,7 +170,7 @@ export const jBoard = {
                     "style": {
                         "bgColor": "#26de81"
                     },
-                    
+
                 }
             ],
             "style": {}
