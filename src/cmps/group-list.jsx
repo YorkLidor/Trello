@@ -29,6 +29,8 @@ export function GroupList({ groups, board }) {
     }
 
     function onDragEnd({ source, destination, type }) {
+        if (!destination) return
+
         if (type === 'task-list') {
             const groupToEdit = board.groups.find(group => group.id === destination.droppableId)
             const groupFrom = board.groups.find(group => group.id === source.droppableId)
@@ -82,11 +84,6 @@ export function GroupList({ groups, board }) {
                             </Draggable >
                         )}
                     {provided.placeholder}
-                    <GroupAdd
-                        onAddGroup={onAddGroup}
-                        handleChange={handleChange}
-                        groupToEdit={groupToEdit}
-                    />
                 </ul>
             }
         </Droppable >
