@@ -23,7 +23,6 @@ export function boardReducer(state = initialState, action) {
                 board: action.board
             }
         case SET_ACTIVE_BOARD:
-            console.log('action.board:', action.board)
             return { ...state, board: action.board }
         case ADD_BOARD:
             return { ...state, board: action.board }
