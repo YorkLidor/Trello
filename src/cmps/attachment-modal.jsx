@@ -15,21 +15,20 @@ export function AttachmentModal({ cmpProps }) {
 
     async function uploadAttach(ev) {
         const { url, filename } = await uploadImg(ev)
-        const action = 'Added attachment ' + url
+        const action = 'Added attachment ' + filename
         const activity = boardService.getActivity(member, { id: task.id, title: task.title }, action)
 
-        console.log(task.attachments)
-        if(task.attachments?.length > 0) task.attachments.unshift(boardService.getAttachment(url , filename))
+        if (task.attachments?.length > 0) task.attachments.unshift(boardService.getAttachment(url, filename))
         else task.attachments = [boardService.getAttachment(url, filename)]
-        boardService.saveTask(boardId, groupId, task, activity)
+        await boardService.saveTask(boardId, groupId, task, activity)
 
         store.dispatch({ type: CLOSE_MODAL })
     }
 
     return <div className='attach-modal-box'>
-        <div className='picker-header-container flex row'>
-            <span style={{ margin: 0, padding: 0}}/>
-            <span className='picker-header'>Attach from...</span>
+        <div className='modal-header-container flex row'>
+            <span style={{ margin: 0, padding: 0 }} />
+            <span className='modal-header'>Attach from...</span>
             <AiOutlineClose className='close-modal' onClick={() => store.dispatch({ type: CLOSE_MODAL })} />
         </div>
         <ul className="attachment-list">

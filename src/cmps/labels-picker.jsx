@@ -133,11 +133,11 @@ export function LabelsPicker({ cmpProps }) {
 
 
     return labels && <div className='modal-label-picker'>
-        <div className='picker-header-container flex row'>
+        <div className='modal-header-container flex row'>
             {
                 getPickerHeader() !== 'Labels' ? <IoIosArrowBack className='back-modal' onClick={modalGoBack} /> : <span />
             }
-            <span className='picker-header'>{pickerHeader}</span>
+            <span className='modal-header'>{pickerHeader}</span>
             <AiOutlineClose className='close-modal' onClick={() => store.dispatch({ type: CLOSE_MODAL })} />
         </div>
 
