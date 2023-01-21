@@ -48,13 +48,6 @@ export function BoardHeader({ board, onDeleteBoard }) {
         <div
             className={`title-container ${editClass}`}
         >
-            <h1
-                className="board-title-header"
-                onClick={() => setEditClass('editable')}
-                ref={elTitle}
-            >
-                {boardToEdit?.title || ''}
-            </h1>
             <input
                 className="board-title-input"
                 type="text"
@@ -64,6 +57,13 @@ export function BoardHeader({ board, onDeleteBoard }) {
                 ref={elTitleInput}
                 onBlur={onSaveTitle}
             />
+            <h1
+                className="board-title-header"
+                onClick={() => setEditClass('editable')}
+                ref={elTitle}
+            >
+                {boardToEdit?.title || ''}
+            </h1>
         </div>
         <div className="actions-container">
             <button className="btn btn-filter">Filter</button>
