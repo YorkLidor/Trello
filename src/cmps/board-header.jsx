@@ -1,21 +1,25 @@
 import { useEffect, useRef, useState } from "react"
 import { useEffectUpdate } from "../customHooks/useEffectUpdate"
+import { useForm } from "../customHooks/useForm"
+import { saveBoard } from "../store/board.actions"
 
 export function BoardHeader({ board, onDeleteBoard }) {
     const [editClass, setEditClass] = useState('')
     const elTitleInput = useRef(null)
     const elTitle = useRef(null)
+    const [boardToEdit, setBoardToEdit, handleChange] = useForm(board)
 
     useEffect(() => {
         setElTitleInputWidth()
-    }, [board])
+    }, [boardToEdit])
 
     useEffectUpdate(() => {
         setElTitleInputFocus()
     }, [editClass])
 
-    function onHandleChange() {
-        //TODO: implement handle change and set to the right object
+    function onHandleChange(ev) {
+        setElTitleInputWidth()
+        handleChange(ev)
     }
 
     function setElTitleInputWidth() {
@@ -27,6 +31,19 @@ export function BoardHeader({ board, onDeleteBoard }) {
         elTitleInput.current?.focus()
     }
 
+    async function onSaveTitle() {
+        setEditClass('')
+        if (!boardToEdit.title) {
+            setBoardToEdit(board)
+            return
+        }
+        try {
+            await saveBoard(boardToEdit)
+        } catch (err) {
+            console.error('Can\'t save board!', err)
+        }
+    }
+
     return <section className="board-header flex justify-between">
         <div
             className={`title-container ${editClass}`}
@@ -36,16 +53,16 @@ export function BoardHeader({ board, onDeleteBoard }) {
                 onClick={() => setEditClass('editable')}
                 ref={elTitle}
             >
-                {board?.title || 'Demo'}
+                {boardToEdit?.title || ''}
             </h1>
             <input
                 className="board-title-input"
                 type="text"
-                value={board?.title || 'Demo'}
+                value={boardToEdit?.title || ''}
                 name="title"
                 onChange={onHandleChange}
                 ref={elTitleInput}
-                onBlur={() => setEditClass('')}
+                onBlur={onSaveTitle}
             />
         </div>
         <div className="actions-container">
