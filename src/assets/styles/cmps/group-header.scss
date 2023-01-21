@@ -5,23 +5,23 @@
     color: #172b4d;
     align-items: center;
     font-weight: 600;
-    padding: 1.5rem rem(8px) 1.5rem rem(16px);
+    padding: rem(10px) rem(36px) rem(10px) rem(8px);
     overflow: hidden;
     overflow-wrap: break-word;
     height: rem(40px);
     line-height: 20px;
 
     .group-title {
-        font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans,Ubuntu, Droid Sans, Helvetica Neue, sans-serif;
+        font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans, Ubuntu, Droid Sans, Helvetica Neue, sans-serif;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        height: 34px;
-        padding: 0;
+        padding: rem(4px) rem(8px);
         width: 213px;
+        font-size: 14px;
 
-        &:focus{
-            outline-color: #0079BF;      
+        &:focus {
+            outline-color: #0079BF;
         }
     }
 
