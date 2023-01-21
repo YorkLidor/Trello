@@ -112,11 +112,22 @@ export const jBoard = {
             "tasks": [
                 {
                     "id": "c101",
-                    "title": "Replace logo"
+                    "title": "Replace logo",
+                    "labelIds": ["l104"],
+                    "style": {
+                        "bgColor": "#29cce5"
+                    }
+
                 },
                 {
                     "id": "c102",
-                    "title": "Add Samples"
+                    "title": "Add Samples",
+                    "labelIds": ["l104", "l105"]
+                },
+                {
+                    "id": "c105",
+                    "title": "Add Food",
+                    "labelIds": ["l101", "l103"]
                 }
             ],
             "style": {}
@@ -173,13 +184,38 @@ export const jBoard = {
                         "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
                     },
                     "style": {
-                        "bgColor": "#26de81"
+                        "bgColor": "#7bc86c"
                     },
 
                 }
             ],
             "style": {}
-        }
+        },
+        {
+            "id": "g103",
+            "title": "Group 3",
+            "archivedAt": 1589983468418,
+            "tasks": [
+                {
+                    "id": "c201",
+                    "title": "Eat shawarma!!",
+                },
+                {
+                    "id": "c202",
+                    "title": "Go to bathroom",
+                    "labelIds": ["l102","l103", "l105"]
+                },
+                {
+                    "id": "c203",
+                    "title": "Go to sleep",
+                    "labelIds": ["l102", "l105"],
+                    "style": {
+                        "bgColor": "#ef7564"
+                    }
+                }
+            ],
+            "style": {}
+        },
     ],
     "activities": [
         {
