@@ -3,9 +3,9 @@
     flex-direction: column;
     position: relative;
     gap: 8px;
-    margin: 0 4px 7px;
+    margin: 0 rem(4px);
     overflow-y: auto;
-    padding: 5px 0 2px;
+    padding: 0 rem(4px);
 
     .placeholder {
         width: 100px;
