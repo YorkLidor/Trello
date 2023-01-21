@@ -1,9 +1,10 @@
 import { saveBoard } from "../store/board.actions.js"
 import { useForm } from "../customHooks/useForm";
+import { useState } from "react";
 
 export function GroupHeader({ group, board }) {
     const groupId = group.id
-    const [groupTitleToSet, setGroupTitleToSet, handleChange] = useForm({ title: group.title })
+    const [groupTitleToSet, setGroupTitleToSet] = useState(group.title)
 
     async function onRemoveGroup(groupId) {
         try {
@@ -15,10 +16,14 @@ export function GroupHeader({ group, board }) {
         }
     }
 
+    function handleFormChange(ev) {
+        console.log('ev.target.innerHTML:', ev.target.innerHTML)
+        setGroupTitleToSet(ev.target.innerHTML)
+    }
+
     async function onSaveTitle() {
-        group.title = groupTitleToSet.title
-        console.log('groupt:', groupTitleToSet)
-        board.groups.forEach(group => { (group.id === groupId) && (group.title = groupTitleToSet.title) })
+        group.title = groupTitleToSet
+        board.groups.forEach(group => { (group.id === groupId) && (group.title = groupTitleToSet) })
         try {
             console.log('board:', board)
             await saveBoard({ ...board })
@@ -29,16 +34,17 @@ export function GroupHeader({ group, board }) {
 
     return <section className="group-header">
         <section
-            onInput={console.log}
+            onInput={handleFormChange}
             onBlur={onSaveTitle}
             className="group-title focused"
             contentEditable={true}
             suppressContentEditableWarning={true}
-            value={groupTitleToSet.title}
+            value={groupTitleToSet}
+            dangerouslySetInnerHTML={{ __html: group.title }}
             name="title"
         >
-            <section>{group.title}</section>
         </section>
+            {/* <section>{group.title}</section> */}
 
         <button onClick={() => onRemoveGroup(group.id)}>...</button>
     </section>
