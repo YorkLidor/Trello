@@ -43,10 +43,15 @@
     width: 100%;
 
     .label-box-preview {
+        border-radius: 3px;
         position: relative;
         flex-grow: 1;
         line-height: 32px;
-        padding: 0 12px;
+        padding: 0 rem(12px) 0 rem(8px);
+
+        display: inline-flex;
+        align-items: center;
+        gap: rem(8px);
     }
 
     input[name="add-label"] {

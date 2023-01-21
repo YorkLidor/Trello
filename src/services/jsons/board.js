@@ -74,7 +74,7 @@ export const jBoard = {
         {
             "id": "l101",
             "title": "Done",
-            "color": "#61bd4f"
+            "color": "#7bc86c"
         },
         {
             "id": "l102",

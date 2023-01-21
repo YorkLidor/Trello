@@ -20,7 +20,7 @@ import { Modal } from "../cmps/modal";
 import { TOGGLE_MODAL, CLOSE_MODAL, SET_MODAL_DATA } from "../store/app.reducer";
 import { setModalData } from "../store/app.actions"
 
-import {MODAL_ATTACH, MODAL_LABELS} from '../cmps/modal.jsx'
+import { MODAL_ATTACH, MODAL_LABELS } from '../cmps/modal.jsx'
 
 
 export function TaskDetails() {
@@ -174,9 +174,9 @@ export function TaskDetails() {
     // Toggle modal visibility and set it's pos under element
     function toggleModal(ev, modalType) {
         let props
-        if(modalType === 'labels' || 'attach') props = { groupId, task: taskToEdit }
+        if (modalType === 'labels' || 'attach') props = { groupId, task: taskToEdit }
         setModalData(modalType, props)
-        
+
         const pos = utilService.getElementPosition(ev.target)
         modalBoxRef.current.style.top = pos.bottom + 'px'
         modalBoxRef.current.style.left = pos.left + 'px'
@@ -196,8 +196,21 @@ export function TaskDetails() {
 
                 <section className="task-info flex row">
                     <div className="task-labels-box flex row">
-                        {labels.length > 0 && labels.map(label => <button key={label.id} style={{ backgroundColor: label.color + '55' }}
-                            className='task-label' onClick={(ev) => toggleModal(ev, 'labels')}><BsFillCircleFill style={{ color: label.color }} />{label.title}</button>)}
+                        {labels.length > 0 && labels.map(label =>
+                            <button
+                                key={label.id}
+                                style={{ backgroundColor: label.color + '55' }}
+                                className='task-label'
+                                onClick={(ev) => toggleModal(ev, 'labels')}
+                            >
+
+                                <BsFillCircleFill
+                                    style={{ color: label.color }}
+                                />
+
+                                {label.title}
+
+                            </button>)}
 
                         {
                             labels.length > 0 && <button key='add-label' style={{ backgroundColor: '#EAECF0', color: '#172B4D', fontSize: '14px' }}
@@ -270,7 +283,7 @@ export function TaskDetails() {
             </div>
 
         </section>
-        
+
         <div ref={modalBoxRef} className='modal-container' onClick={(ev) => ev.stopPropagation()}>
             {
                 modalData && <Modal cmpProps={modalData.props} cmpType={modalData.cmpType} className={modalData.className} />
