@@ -66,6 +66,7 @@ export const jBoard = {
         "imgUrl": "http://some-img"
     },
     "style": {
+        "isBackGroundImg": true,
         "bg": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/2048x1152/17c10de18b89807a945d83325a9002eb/photo-1647831597506-3f9071cbbd6f.jpg",
         "isLabelsLarge": false
     },
@@ -73,22 +74,27 @@ export const jBoard = {
         {
             "id": "l101",
             "title": "Done",
-            "color": "#61bd4f"
+            "color": "#7bc86c"
         },
         {
             "id": "l102",
             "title": "Progress",
-            "color": "#E6C60D"
+            "color": "#f5dd29"
         },
         {
             "id": "l103",
-            "title": "Muki",
-            "color": "#FF8ED4"
+            "title": "Think about it",
+            "color": "#ffaf3f"
         },
         {
             "id": "l104",
-            "title": "Puki",
-            "color": "#00AECC"
+            "title": "I am a spoon!",
+            "color": "#ef7564"
+        },
+        {
+            "id": "l105",
+            "title": "Messy",
+            "color": "#cd8de5"
         }
     ],
     "members": [
@@ -106,11 +112,22 @@ export const jBoard = {
             "tasks": [
                 {
                     "id": "c101",
-                    "title": "Replace logo"
+                    "title": "Replace logo",
+                    "labelIds": ["l104"],
+                    "style": {
+                        "bgColor": "#29cce5"
+                    }
+
                 },
                 {
                     "id": "c102",
-                    "title": "Add Samples"
+                    "title": "Add Samples",
+                    "labelIds": ["l104", "l105"]
+                },
+                {
+                    "id": "c105",
+                    "title": "Add Food",
+                    "labelIds": ["l101", "l103"]
                 }
             ],
             "style": {}
@@ -130,7 +147,7 @@ export const jBoard = {
                     "title": "Help me",
                     "status": "in-progress", // monday
                     "priority": "high",
-                    
+
                     "description": "description",
                     "comments": [
                         {
@@ -158,7 +175,7 @@ export const jBoard = {
                         }
                     ],
                     "memberIds": ["u101"],
-                    "labelIds": ["l101", "l102","l103","l104"],
+                    "labelIds": ["l101", "l102", "l103", "l104"],
                     "dueDate": 16156215211,
                     "byMember": {
                         "_id": "u101",
@@ -167,13 +184,38 @@ export const jBoard = {
                         "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
                     },
                     "style": {
-                        "bgColor": "#26de81"
+                        "bgColor": "#7bc86c"
                     },
-                    
+
                 }
             ],
             "style": {}
-        }
+        },
+        {
+            "id": "g103",
+            "title": "Group 3",
+            "archivedAt": 1589983468418,
+            "tasks": [
+                {
+                    "id": "c201",
+                    "title": "Eat shawarma!!",
+                },
+                {
+                    "id": "c202",
+                    "title": "Go to bathroom",
+                    "labelIds": ["l102","l103", "l105"]
+                },
+                {
+                    "id": "c203",
+                    "title": "Go to sleep",
+                    "labelIds": ["l102", "l105"],
+                    "style": {
+                        "bgColor": "#ef7564"
+                    }
+                }
+            ],
+            "style": {}
+        },
     ],
     "activities": [
         {

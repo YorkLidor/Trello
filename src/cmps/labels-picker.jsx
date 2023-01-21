@@ -9,6 +9,7 @@ import { BsFillCircleFill } from 'react-icons/bs'
 import { IoIosArrowBack } from 'react-icons/io'
 import { ImCheckboxChecked, ImCheckboxUnchecked } from 'react-icons/im'
 
+
 import { useSelector } from 'react-redux'
 import { store } from '../store/store'
 import { CLOSE_MODAL } from '../store/app.reducer'
@@ -147,7 +148,7 @@ export function LabelsPicker({ cmpProps }) {
                     labels.map(label => {
                         const checked = (taskLabelIds.length) ? taskLabelIds.includes(label.id) : false
                         const labelStyle = {
-                            backgroundColor: label.color
+                            backgroundColor: label.color + '55'
                         }
 
                         return <li key={label.id} className='label-picker-line row'>
@@ -160,8 +161,20 @@ export function LabelsPicker({ cmpProps }) {
                                     }
                                 </span>
                                 <div className='flex row label-picker-row'>
-                                    <div className="label-box-preview" style={labelStyle}>{label.title}</div>
-                                    <GrFormEdit className="edit-label-button" onClick={() => toggleScreens(label)} />
+                                    <div
+                                        className="label-box-preview"
+                                        style={labelStyle}
+
+                                    >
+                                        <BsFillCircleFill
+                                            style={{ color: label.color }}
+                                        />
+                                        {label.title}
+                                    </div>
+                                    <GrFormEdit
+                                        className="edit-label-button"
+                                        onClick={() => toggleScreens(label)}
+                                    />
                                 </div>
                             </label>
                         </li>

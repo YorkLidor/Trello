@@ -117,11 +117,13 @@
 // include to .label-box
 @mixin label-preview {
     border: hidden;
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
     position: relative;
     margin-bottom: 0;
     border-radius: 3px;
-    padding: 0 12px;
+    padding: 0 rem(12px) 0 rem(8px);
+    gap: rem(8px);
     max-width: 100%;
     min-width: 48px;
     height: 32px;
@@ -133,6 +135,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+
 }
 
 // include to .label-box::before
