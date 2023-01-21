@@ -29,10 +29,15 @@ export function GroupHeader({ group, board }) {
         }
     }
 
+    function onClick(){
+        
+    }
+
     return <section className="group-header">
         <section
             onInput={handleFormChange}
             onBlur={onSaveTitle}
+            onClick={onClick}
             className="group-title focused"
             contentEditable={true}
             suppressContentEditableWarning={true}
