@@ -36,10 +36,16 @@
 //tasks
 @import "cmps/task-list";
 @import "cmps/task-preview";
+@import "cmps/task-preview-icons.scss";
 
 //label-picker CMP
 @import "cmps/labels-picker.scss";
+
+// Attachments
 @import "cmps/attachment-modal.scss";
+@import "cmps/attachment-preview.scss";
+@import "cmps/attachment-list.scss";
+
 
 @import "cmps/modal.scss";
 

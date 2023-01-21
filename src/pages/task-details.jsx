@@ -21,6 +21,7 @@ import { TOGGLE_MODAL, CLOSE_MODAL, SET_MODAL_DATA } from "../store/app.reducer"
 import { setModalData } from "../store/app.actions"
 
 import { MODAL_ATTACH, MODAL_LABELS } from '../cmps/modal.jsx'
+import { AttachmentList } from "../cmps/attachment-list";
 
 
 export function TaskDetails() {
@@ -174,8 +175,8 @@ export function TaskDetails() {
     // Toggle modal visibility and set it's pos under element
     function toggleModal(ev, modalType) {
         let props
-        if(modalType === 'labels') props = { groupId, task: taskToEdit }
-        if(modalType ==='attach') props = { boardId, groupId, task: taskToEdit }
+        if (modalType === 'labels') props = { groupId, task: taskToEdit }
+        if (modalType === 'attach') props = { boardId, groupId, task: taskToEdit }
         setModalData(modalType, props)
 
         const pos = utilService.getElementPosition(ev.target)
@@ -241,7 +242,10 @@ export function TaskDetails() {
                     </div>
                 </div>
 
-
+                {
+                    taskToEdit && <AttachmentList task={taskToEdit} />
+                }
+                
                 <div className="task-activity-box flex column">
                     <FiList className="activity-icon task-icon" />
 

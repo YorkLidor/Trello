@@ -14,11 +14,13 @@ export function AttachmentModal({ cmpProps }) {
     }
 
     async function uploadAttach(ev) {
-        const url = await uploadImg(ev)
+        const { url, filename } = await uploadImg(ev)
         const action = 'Added attachment ' + url
         const activity = boardService.getActivity(member, { id: task.id, title: task.title }, action)
 
-        task.attachments = task.attachments ? task.attachments.unshift(boardService.getAttachment(url)) : [boardService.getAttachment(url)]
+        console.log(task.attachments)
+        if(task.attachments?.length > 0) task.attachments.unshift(boardService.getAttachment(url , filename))
+        else task.attachments = [boardService.getAttachment(url, filename)]
         boardService.saveTask(boardId, groupId, task, activity)
 
         store.dispatch({ type: CLOSE_MODAL })
