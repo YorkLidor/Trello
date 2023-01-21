@@ -20,7 +20,13 @@ import { Modal } from "../cmps/modal";
 import { TOGGLE_MODAL, CLOSE_MODAL, SET_MODAL_DATA } from "../store/app.reducer";
 import { setModalData } from "../store/app.actions"
 
-import { MODAL_ATTACH, MODAL_LABELS, MODAL_ATTACH_EDIT } from '../cmps/modal.jsx'
+import {
+    MODAL_ATTACH,
+    MODAL_LABELS,
+    MODAL_ATTACH_EDIT,
+    MODAL_ATTACH_OPEN
+} from '../cmps/modal.jsx'
+
 import { AttachmentList } from "../cmps/attachment-list";
 
 
@@ -167,15 +173,29 @@ export function TaskDetails() {
         setTaskToEdit({ ...taskToEdit, comments })
     }
 
-    function onRemoveAttachment(attachmentId) {
+    function onRemoveAttachment(ev, attachmentId) {
+        ev.stopPropagation()
         const attachments = [...taskToEdit.attachments?.filter(attachment => attachment.id !== attachmentId)]
         taskToEdit.attachments = attachments
         setTaskToEdit({ ...taskToEdit })
     }
 
     function onEditAttachment(ev, attachment) {
-        const modalType = MODAL_ATTACH_EDIT
-        toggleModal(ev, modalType, { attachment })
+        ev.stopPropagation()
+        toggleModal(ev, MODAL_ATTACH_EDIT, { attachment })
+    }
+
+    function onOpenAttachment(ev, attachment) {
+        ev.stopPropagation()
+        toggleModal(ev, MODAL_ATTACH_OPEN, { attachment })
+    }
+
+    function getAttachmentProps() {
+        return {
+            onEditAttachment,
+            onRemoveAttachment,
+            onOpenAttachment
+        }
     }
 
     // Toggle modal visibility and set it's pos under element
@@ -185,7 +205,7 @@ export function TaskDetails() {
         if (modalType === MODAL_LABELS) props = { groupId, task: taskToEdit }
         else if (modalType === MODAL_ATTACH) props = { boardId, groupId, task: taskToEdit }
         else if (modalType === MODAL_ATTACH_EDIT) props = { boardId, groupId, task: taskToEdit, attachment: ex.attachment }
-        console.log(props)
+        else if (modalType === MODAL_ATTACH_OPEN) props = { deletion: onRemoveAttachment,attachment: ex.attachment }
 
         setModalData(modalType, props)
 
@@ -253,7 +273,7 @@ export function TaskDetails() {
                 </div>
 
                 {
-                    taskToEdit && <AttachmentList task={taskToEdit} onRemoveAttachment={onRemoveAttachment} onEditAttachment={onEditAttachment} />
+                    taskToEdit && <AttachmentList task={taskToEdit} attachmentProps={getAttachmentProps()} />
                 }
 
                 <div className="task-activity-box flex column">

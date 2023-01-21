@@ -4,10 +4,12 @@ import { AttachmentModal } from "./attachment-modal"
 import { useSelector } from "react-redux"
 import { BoardCreator } from "./board-creator"
 import { AttachmentEditModal } from "./attachment-edit-modal"
+import { AttachmentView } from "./attachment-view"
 
 export const MODAL_LABELS = 'MODAL_LABELS'
 export const MODAL_ATTACH = 'MODAL_ATTACH'
 export const MODAL_ATTACH_EDIT = 'MODAL_ATTACH_EDIT'
+export const MODAL_ATTACH_OPEN = 'MODAL_ATTACH_OPEN'
 export const BOARD_CREATOR = 'BOARD_CREATOR'
 
 export function Modal({ cmpProps, cmpType, className }) {
@@ -28,6 +30,8 @@ function GetCmp({ cmpProps, cmpType }) {
             return <BoardCreator {...cmpProps} />
         case MODAL_ATTACH_EDIT:
             return <AttachmentEditModal cmpProps={cmpProps} />
+        case MODAL_ATTACH_OPEN:
+            return <AttachmentView cmpProps={cmpProps} />
         default:
             return ''
     }

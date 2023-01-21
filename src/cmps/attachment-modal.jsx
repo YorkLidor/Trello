@@ -14,6 +14,7 @@ export function AttachmentModal({ cmpProps }) {
     }
 
     async function uploadAttach(ev) {
+        store.dispatch({ type: CLOSE_MODAL })
         const { url, filename } = await uploadImg(ev)
         const action = 'Added attachment ' + filename
         const activity = boardService.getActivity(member, { id: task.id, title: task.title }, action)
@@ -22,7 +23,6 @@ export function AttachmentModal({ cmpProps }) {
         else task.attachments = [boardService.getAttachment(url, filename)]
         await boardService.saveTask(boardId, groupId, task, activity)
 
-        store.dispatch({ type: CLOSE_MODAL })
     }
 
     return <div className='attach-modal-box'>

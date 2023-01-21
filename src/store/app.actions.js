@@ -1,6 +1,6 @@
 import { SET_MODAL_DATA } from "./app.reducer"
 import { store } from "./store"
-import {MODAL_ATTACH, MODAL_LABELS, MODAL_ATTACH_EDIT} from '../cmps/modal.jsx'
+import {MODAL_ATTACH, MODAL_LABELS, MODAL_ATTACH_EDIT, MODAL_ATTACH_OPEN} from '../cmps/modal.jsx'
 
 export function setModalData(modalType, props) {
     let newModalData
@@ -24,6 +24,13 @@ export function setModalData(modalType, props) {
             newModalData = {
                 className: 'modal',
                 cmpType: MODAL_ATTACH_EDIT,
+                props
+            }
+            break
+        case MODAL_ATTACH_OPEN:
+            newModalData = {
+                className: ' ',
+                cmpType: MODAL_ATTACH_OPEN,
                 props
             }
             break

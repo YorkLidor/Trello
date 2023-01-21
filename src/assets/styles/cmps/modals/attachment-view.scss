@@ -1,0 +1,106 @@
+.attachment-viewer {
+    position: fixed;
+    top: 0;
+    right: 0;
+
+    width: 100vw;
+    height: 100vh;
+    margin-inline: 24px;
+    transition: transform .15s;
+
+    background-color: #000000a3;
+    z-index: 12;
+}
+
+.attachment-viewer-preview {
+    position: relative;
+    margin-inline: 24px;
+
+
+    .close-attach-viewer {
+        cursor: pointer;
+        color: #9EA0A3;
+        position: absolute;
+        right: 0;
+        top: 0;
+        transition-duration: .15s;
+        transition-property: transform, color;
+
+
+        height: 18px;
+        width: 18px;
+
+        &:hover {
+            color: #FFFFFF;
+            transform: scale(1.2);
+        }
+    }
+
+
+}
+
+.viewer-img-container {
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 48px 24px 112px;
+
+    .attachment-viewer-img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 3px;
+        z-index: 12;
+
+        transition: transform .15s, opacity .4s;
+
+        border: 0;
+    }
+}
+
+
+.attachment-viewer-info {
+    display: flex;
+    flex-direction: column;
+
+    position: fixed;
+    bottom: 0;
+
+    height: 100px;
+    width: 100%;
+
+    text-align: center;
+    place-content: center;
+
+
+
+
+    .attach-viewer-filename {
+        display: block;
+        margin: 0 0 6px;
+        font-size: 18px;
+        line-height: 22px;
+    }
+
+    .attach-viewer-date {
+        margin: 0 0 6px;
+        font-size: 12px;
+        line-height: 18px;
+
+    }
+
+    .viewer-actions {
+        justify-content: center;
+        font-size: 12px;
+        line-height: 18px;
+
+        .viewer-action-icon {
+            vertical-align: text-bottom;
+            margin: 0 3px 0 14px;
+        }
+    }
+
+    .viewer-info-action {
+        cursor: pointer;
+        color: #fff;
+        text-decoration: underline;
+    }
+}
