@@ -5,7 +5,7 @@
 
     width: 100vw;
     height: 100vh;
-
+    margin-inline: 24px;
     transition: transform .15s;
 
     background-color: #000000a3;
@@ -14,8 +14,8 @@
 
 .attachment-viewer-preview {
     position: relative;
-    margin: 48px 24px 112px;
-    padding: 24px;
+    margin-inline: 24px;
+
 
     .close-attach-viewer {
         cursor: pointer;
@@ -26,6 +26,7 @@
         transition-duration: .15s;
         transition-property: transform, color;
 
+
         height: 18px;
         width: 18px;
 
@@ -35,10 +36,17 @@
         }
     }
 
+
+}
+
+.viewer-img-container {
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 48px 24px 112px;
+
     .attachment-viewer-img {
         max-width: 100%;
         height: auto;
-
         border-radius: 3px;
         z-index: 12;
 
@@ -48,11 +56,12 @@
     }
 }
 
+
 .attachment-viewer-info {
     display: flex;
     flex-direction: column;
 
-    position: absolute;
+    position: fixed;
     bottom: 0;
 
     height: 100px;

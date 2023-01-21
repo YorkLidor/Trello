@@ -205,7 +205,7 @@ export function TaskDetails() {
         if (modalType === MODAL_LABELS) props = { groupId, task: taskToEdit }
         else if (modalType === MODAL_ATTACH) props = { boardId, groupId, task: taskToEdit }
         else if (modalType === MODAL_ATTACH_EDIT) props = { boardId, groupId, task: taskToEdit, attachment: ex.attachment }
-        else if (modalType === MODAL_ATTACH_OPEN) props = { attachment: ex.attachment }
+        else if (modalType === MODAL_ATTACH_OPEN) props = { deletion: onRemoveAttachment,attachment: ex.attachment }
 
         setModalData(modalType, props)
 

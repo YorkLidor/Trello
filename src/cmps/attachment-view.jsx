@@ -7,18 +7,25 @@ import { store } from '../store/store'
 import { useState } from 'react'
 
 export function AttachmentView({ cmpProps }) {
-    const { attachment } = cmpProps
+    const { attachment, onRemoveAttachment } = cmpProps
     const [deleteState, setDeleteState] = useState(false)
 
     function toggleDelete(state) {
         setDeleteState(state)
     }
 
+    function onRemoveAttach(ev) {
+        onRemoveAttachment(ev, attachment.id)
+        store.dispatch({ type: CLOSE_MODAL })
+    }
+
     return <div className="attachment-viewer" onClick={() => store.dispatch({ type: CLOSE_MODAL })}>
 
         <div className="attachment-viewer-preview">
             <AiOutlineClose className='close-attach-viewer' onClick={() => store.dispatch({ type: CLOSE_MODAL })} />
+            <div className='viewer-img-container'>
             <img className="attachment-viewer-img" src={attachment.url} onClick={(ev) => ev.stopPropagation()} />
+            </div>
         </div>
 
         <div className='attachment-viewer-info' onClick={(ev) => ev.stopPropagation()}>
@@ -46,7 +53,7 @@ export function AttachmentView({ cmpProps }) {
                     deleteState &&
                     <span>
                         Are you sure you want to delete? There is no undo.
-                        <span className='viewer-info-action' style={{ marginInline: '6px 0px' }}>Delete forever</span>
+                        <span className='viewer-info-action' style={{ marginInline: '6px 0px' }} onClick={onRemoveAttach}>Delete forever</span>
                         <span className='viewer-info-action' onClick={() => toggleDelete(false)} data-state={false} style={{ marginInline: '12px 14px' }}>Nevermind</span>
                     </span>
                 }
