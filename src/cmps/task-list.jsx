@@ -5,7 +5,7 @@ import { TaskPreview } from "./task-preview";
 
 export function TaskList({ group, boardId }) {
 
-    return <Droppable droppableId={group.id}>
+    return <Droppable droppableId={group.id} direction="vertical" type="task-list">
         {provided =>
             <ul
                 className="task-list"
