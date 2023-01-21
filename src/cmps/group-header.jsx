@@ -1,5 +1,4 @@
 import { saveBoard } from "../store/board.actions.js"
-import { useForm } from "../customHooks/useForm";
 import { useState } from "react";
 
 export function GroupHeader({ group, board }) {
@@ -17,7 +16,6 @@ export function GroupHeader({ group, board }) {
     }
 
     function handleFormChange(ev) {
-        console.log('ev.target.innerHTML:', ev.target.innerHTML)
         setGroupTitleToSet(ev.target.innerHTML)
     }
 
@@ -25,7 +23,6 @@ export function GroupHeader({ group, board }) {
         group.title = groupTitleToSet
         board.groups.forEach(group => { (group.id === groupId) && (group.title = groupTitleToSet) })
         try {
-            console.log('board:', board)
             await saveBoard({ ...board })
         } catch (err) {
             console.error('Can\'t save board!', err)
