@@ -4,7 +4,7 @@ import { SET_ACTIVE_BOARD } from "../store/board.reducer"
 import { store } from "../store/store"
 import { TaskPreviewIcons } from "./task-preview-icons"
 
-export function TaskPreview({ task, group, boardId }) {
+export function TaskPreview({ task, group, boardId, isDragging }) {
     const groupId = group.id
     const coverColor = task?.style?.bgColor
     const navigate = useNavigate()
@@ -23,7 +23,7 @@ export function TaskPreview({ task, group, boardId }) {
 
     const labelsStyle = isLabelsLarge ? 'labels-large' : ''
 
-    return <li className="task-preview-container" >
+    return <li className={`task-preview-container ${isDragging && 'is-dragging'}`} >
 
         {/* COVER COLOR */}
         {coverColor &&

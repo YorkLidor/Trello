@@ -167,9 +167,11 @@ function getLabelDeaultColor() {
     return '#DFE1E6'
 }
 
-function getAttachment(url) {
+function getAttachment(url, filename) {
     return {
         id: 'att'+utilService.makeId(),
-        url
+        url,
+        filename,
+        createdAt: Date.now()
     }
 }

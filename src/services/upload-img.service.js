@@ -15,7 +15,7 @@ export const uploadImg = async (ev) => {
             body: FORM_DATA
         })
         const { url } = await res.json()
-        return url
+        return { url , filename: ev.target.files[0].name }
 
     } catch (err) {
         console.error(err)
