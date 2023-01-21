@@ -7,7 +7,7 @@ import { TaskPreviewIcons } from "./task-preview-icons"
 export function TaskPreview({ task, group, boardId, isDragging }) {
     const groupId = group.id
     let style = { background: task?.style?.bgColor }
-    if (task.attachments && task.attachments.length) style = { backgroundImage: `url(${task.attachments[0].url})`, height: '107.8px' }
+    if (task.attachments && task.attachments.length && task.attachments[0].url) style = { backgroundImage: `url(${task.attachments[0].url})`, height: '107.8px' }
     const navigate = useNavigate()
     const board = useSelector((storeState) => storeState.boardModule.board)
     const labels = board.labels.filter(label => task?.labelIds?.includes(label.id))
