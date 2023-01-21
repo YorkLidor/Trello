@@ -6,6 +6,7 @@
   justify-content: space-between;
   width: 100%;
   padding: 0;
+  align-items: baseline;
 
   .icons-container {
     display: flex;
@@ -13,7 +14,7 @@
     align-items: center;
     gap: 4px;
     margin-left: -2px;
-    padding-bottom: 6px;
+    padding-bottom: 4px;
     max-width: 100%;
     color: var(--ds-text-subtle,#5e6c84);
     display: inline-block;
