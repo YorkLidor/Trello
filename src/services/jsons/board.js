@@ -119,6 +119,11 @@ export const jBoard = {
             "_id": "u105",
             "fullname": "Gal",
             "imgUrl": "https://ca.slack-edge.com/T043N4KE97B-U043N5QQPT3-278bb6b34de8-512"
+        },
+        {
+            "_id": "u106",
+            "fullname": "Ori",
+            "imgUrl": "https://ca.slack-edge.com/T043N4KE97B-U043S281FLH-583926f36186-512"
         }
 
     ],
@@ -147,7 +152,8 @@ export const jBoard = {
                 {
                     "id": "c105",
                     "title": "Add Food",
-                    "labelIds": ["l101", "l103"]
+                    "labelIds": ["l101", "l103"],
+                    "memberIds": ["u106"]
                 }
             ],
             "style": {}

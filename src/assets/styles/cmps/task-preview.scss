@@ -19,15 +19,7 @@
         background-color: #c4c5c7c2;
     }
 
-    .cover-color {
-        align-items: flex-end;
-        background-size: 100% auto;
-        border-top-left-radius: 3px;
-        border-top-right-radius: 3px;
-        display: flex;
-        min-height: 32px;
-        overflow: hidden;
-    }
+  
 
     .task-body {
         color: $clr21;
@@ -43,6 +35,15 @@
             white-space: break-spaces;
         }
     }
+}
+.cover-color {
+    align-items: flex-end;
+    background-size: 100% auto;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    display: flex;
+    min-height: 32px;
+    overflow: hidden;
 }
 
 .labels-container {
