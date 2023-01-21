@@ -147,7 +147,7 @@ export const jBoard = {
                     "id": "c102",
                     "title": "Add Samples",
                     "labelIds": ["l104", "l105"],
-                    "memberIds": ["u103","u104","u105",]
+                    "memberIds": ["u103", "u104", "u105",]
                 },
                 {
                     "id": "c105",
@@ -167,7 +167,20 @@ export const jBoard = {
                     "title": "Do that",
                     "archivedAt": 1589983468418,
                     "labelIds": ["l101"],
-                    "memberIds": ["u103","u104","u105",]
+                    "memberIds": ["u103", "u104", "u105",],
+                    "attachments": [{
+                        "id": 'att' + utilService.makeId(),
+                        "url": "",
+                        "filename": "puki",
+                        "createdAt": Date.now()
+                    },
+                    {
+                        "id": 'att' + utilService.makeId(),
+                        "url": "",
+                        "filename": "nuki",
+                        "createdAt": Date.now()
+                    }
+                    ]
                 },
                 {
                     "id": "c104",
