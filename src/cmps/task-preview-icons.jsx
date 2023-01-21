@@ -9,14 +9,13 @@ export function TaskPreviewIcons({ board, task, groupId }) {
     return <section className="task-preview-icons-container">
 
         <section className="icons-container">
-
+            {/* ATTACHMENTS */}
             {task.attachments?.length > 0 && (
                 <section className="attachments-container">
-                    <FiPaperclip /> 
+                    <FiPaperclip />
                     {task.attachments.length}
                 </section>
             )}
-
         </section>
 
 

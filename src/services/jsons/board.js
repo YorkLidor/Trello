@@ -226,6 +226,13 @@ export const jBoard = {
                     "style": {
                         "bgColor": "#7bc86c"
                     },
+                    "attachments": [{
+                        "id": 'att' + utilService.makeId(),
+                        "url": "",
+                        "filename": "puki",
+                        "createdAt": Date.now()
+                    }
+                    ]
 
                 }
             ],
