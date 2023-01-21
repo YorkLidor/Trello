@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useParams, useNavigate } from 'react-router-dom'
 
 import { Blocks } from 'react-loader-spinner'
@@ -8,8 +8,10 @@ import { GroupList } from "../cmps/group-list";
 import { boardService } from "../services/board.service";
 import { useSelector } from "react-redux";
 import { setBoard } from "../store/board.actions";
+import { useEffectUpdate } from "../customHooks/useEffectUpdate";
 
 export function Board() {
+    const elBoard = useRef()
     const board = useSelector(state => state.boardModule.board)
     const { boardId } = useParams()
     const navigate = useNavigate()
@@ -18,6 +20,10 @@ export function Board() {
     useEffect(() => {
         loadBoard()
     }, [])
+
+    useEffectUpdate(() => {
+        elBoard.current.style.backgroundImage = `url(${board.style.bg})`
+    }, [board])
 
     async function onDeleteBoard() {
         const isWantDelete = window.confirm('Are you sure?')
@@ -34,7 +40,7 @@ export function Board() {
         try {
             const board = await boardService.getById(boardId)
             setBoard(board)
-            document.body.style.backgroundImage = `url(${board.style.bg})`
+
 
         } catch (err) {
             console.error('No Board!', err)
@@ -53,7 +59,7 @@ export function Board() {
     }
 
     if (!board) return getLoader()
-    else return <main className="board flex column">
+    else return <main className="board flex column" ref={elBoard}>
         <BoardHeader
             board={board}
             onDeleteBoard={onDeleteBoard}
