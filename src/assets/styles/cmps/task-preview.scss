@@ -1,3 +1,7 @@
+.is-dragging {
+    transform: rotate(5deg);
+}
+
 .task-preview-container {
     background-color: $clr6;
     border-radius: 3px;

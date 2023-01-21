@@ -23,16 +23,16 @@ export function TaskPreview({ task, group, boardId, isDragging }) {
 
     const labelsStyle = isLabelsLarge ? 'labels-large' : ''
 
-    return <>
+    return <div className={isDragging && 'is-dragging'}>
             {/* COVER COLOR */}
             {coverColor &&
                 <header className="cover-color" style={{ background: coverColor }}></header>
             }
-        <li className={`task-preview-container ${isDragging && 'is-dragging'}`} >
+        <li className={`task-preview-container `} >
 
 
             {/* LABELS */}
-            {labels.length > 0 &&
+            {labels.length &&
                 <div className="labels-container" >
                     {
                         labels.map(label =>
@@ -61,5 +61,5 @@ export function TaskPreview({ task, group, boardId, isDragging }) {
             <TaskPreviewIcons board={board} groupId={groupId} task={task} />
 
         </li>
-    </>
+    </div>
 }
