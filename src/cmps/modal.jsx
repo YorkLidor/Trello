@@ -19,8 +19,7 @@ function GetCmp({ cmpProps, cmpType }) {
         case MODAL_LABELS:
             return <LabelsPicker cmpProps={cmpProps} />
         case MODAL_ATTACH:
-            return <AttachmentModal cmpProps={cmpProps} />
+            return <div></div>
 
     }
-    return ''
 }

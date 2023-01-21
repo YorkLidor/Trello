@@ -67,7 +67,9 @@
         &.editable {
 
             .board-title-header {
-                display: none;
+                // display: none;
+                position: absolute;
+                opacity: 0;
             }
 
             .board-title-input {
