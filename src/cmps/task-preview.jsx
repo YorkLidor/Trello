@@ -6,7 +6,8 @@ import { TaskPreviewIcons } from "./task-preview-icons"
 
 export function TaskPreview({ task, group, boardId, isDragging }) {
     const groupId = group.id
-    const coverColor = task?.style?.bgColor
+    let style = { background: task?.style?.bgColor }
+    if (task.attachments && task.attachments.length) style = { backgroundImage: `url(${task.attachments[0].url})`, height: '107.8px' }
     const navigate = useNavigate()
     const board = useSelector((storeState) => storeState.boardModule.board)
     const labels = board.labels.filter(label => task?.labelIds?.includes(label.id))
@@ -25,32 +26,36 @@ export function TaskPreview({ task, group, boardId, isDragging }) {
 
     return <div className={`task-preview-container ${isDragging && 'is-dragging'}`}>
         {/* COVER COLOR */}
-        {coverColor &&
-            <header className="cover-color" style={{ background: coverColor }}></header>
+        {style &&
+            <header
+                className="cover-color"
+                style={style}
+            />
         }
         <li className={`task-preview`} >
 
 
             {/* LABELS */}
-            {(task.labelIds && task.labelIds.length) && <div className="labels-container" >
-                {console.log('labels:', labels)}
-                {
-                    labels.map(label =>
-                        <div className="label-container" key={label.id}>
-                            <div
-                                style={{ backgroundColor: isLabelsLarge ? label.color + '60' : label.color }}
-                                onClick={toggleLabelsSize}
-                                className={`labels-preview ${labelsStyle}`} >
-                                {isLabelsLarge && <>
-                                    <div className="lable-circle" style={{ backgroundColor: label.color }}></div>
-                                    <span className='label-title' >{label.title}</span>
-                                </>
-                                }
+            {(task.labelIds && task.labelIds.length) &&
+                <div className="labels-container" >
+                    {console.log('labels:', labels)}
+                    {
+                        labels.map(label =>
+                            <div className="label-container" key={label.id}>
+                                <div
+                                    style={{ backgroundColor: isLabelsLarge ? label.color + '60' : label.color }}
+                                    onClick={toggleLabelsSize}
+                                    className={`labels-preview ${labelsStyle}`} >
+                                    {isLabelsLarge && <>
+                                        <div className="lable-circle" style={{ backgroundColor: label.color }}></div>
+                                        <span className='label-title' >{label.title}</span>
+                                    </>
+                                    }
+                                </div>
                             </div>
-                        </div>
-                    )
-                }
-            </div>
+                        )
+                    }
+                </div>
             }
 
 
