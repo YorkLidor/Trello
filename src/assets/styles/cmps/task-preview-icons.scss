@@ -5,12 +5,25 @@
   gap: 3px;
   justify-content: space-between;
   width: 100%;
+  padding: 0;
 
   .icons-container {
     display: flex;
     justify-content: flex-start;
     align-items: center;
     gap: 4px;
+    margin-left: -2px;
+    padding-bottom: 6px;
+    max-width: 100%;
+    color: var(--ds-text-subtle,#5e6c84);
+    display: inline-block;
+    max-width: 100%;
+    min-height: 20px;
+    overflow: hidden;
+    position: relative;
+    text-decoration: none;
+    text-overflow: ellipsis;
+    vertical-align: top;
 
     .attachments-container{
       display: flex;
@@ -19,6 +32,7 @@
       justify-content: center;
       border-radius: 3px;
       color: #5e6c84;
+      padding: 0;
     }
   }
 
@@ -30,6 +44,8 @@
     display: flex;
     justify-content: flex-end;
     flex: 1;
+    padding: 0;
+    padding-bottom: 4px;
 
     .member-container {
       height: 28px;
