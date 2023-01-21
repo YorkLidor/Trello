@@ -20,7 +20,7 @@ import { Modal } from "../cmps/modal";
 import { TOGGLE_MODAL, CLOSE_MODAL, SET_MODAL_DATA } from "../store/app.reducer";
 import { setModalData } from "../store/app.actions"
 
-import { MODAL_ATTACH, MODAL_LABELS } from '../cmps/modal.jsx'
+import { MODAL_ATTACH, MODAL_LABELS, MODAL_ATTACH_EDIT } from '../cmps/modal.jsx'
 import { AttachmentList } from "../cmps/attachment-list";
 
 
@@ -62,11 +62,6 @@ export function TaskDetails() {
             group.current.tasks = [...group.current.tasks.filter(task => task.id !== taskToEdit.id), taskToEdit]
             const newBoard = { ...board, groups: board.groups.map(grp => grp.id === group.current.id ? group.current : grp) }
             boardService.saveBoard(newBoard)
-        }
-        else {
-            // console.log(board)
-            // console.log(group.current)
-            // console.log(taskToEdit)
         }
     }, [taskToEdit])
 
@@ -172,11 +167,26 @@ export function TaskDetails() {
         setTaskToEdit({ ...taskToEdit, comments })
     }
 
+    function onRemoveAttachment(attachmentId) {
+        const attachments = [...taskToEdit.attachments?.filter(attachment => attachment.id !== attachmentId)]
+        taskToEdit.attachments = attachments
+        setTaskToEdit({ ...taskToEdit })
+    }
+
+    function onEditAttachment(ev, attachment) {
+        const modalType = MODAL_ATTACH_EDIT
+        toggleModal(ev, modalType, { attachment })
+    }
+
     // Toggle modal visibility and set it's pos under element
-    function toggleModal(ev, modalType) {
+    function toggleModal(ev, modalType, ex = null) {
+
         let props
-        if (modalType === 'labels') props = { groupId, task: taskToEdit }
-        if (modalType === 'attach') props = { boardId, groupId, task: taskToEdit }
+        if (modalType === MODAL_LABELS) props = { groupId, task: taskToEdit }
+        else if (modalType === MODAL_ATTACH) props = { boardId, groupId, task: taskToEdit }
+        else if (modalType === MODAL_ATTACH_EDIT) props = { boardId, groupId, task: taskToEdit, attachment: ex.attachment }
+        console.log(props)
+
         setModalData(modalType, props)
 
         const pos = utilService.getElementPosition(ev.target)
@@ -203,7 +213,7 @@ export function TaskDetails() {
                                 key={label.id}
                                 style={{ backgroundColor: label.color + '55' }}
                                 className='task-label'
-                                onClick={(ev) => toggleModal(ev, 'labels')}
+                                onClick={(ev) => toggleModal(ev, MODAL_LABELS)}
                             >
 
                                 <BsFillCircleFill
@@ -216,7 +226,7 @@ export function TaskDetails() {
 
                         {
                             labels.length > 0 && <button key='add-label' style={{ backgroundColor: '#EAECF0', color: '#172B4D', fontSize: '14px' }}
-                                className='task-label task-add-label' onClick={(ev) => toggleModal(ev, 'labels')}>+</button>
+                                className='task-label task-add-label' onClick={(ev) => toggleModal(ev, MODAL_LABELS)}>+</button>
                         }
                     </div>
 
@@ -243,9 +253,9 @@ export function TaskDetails() {
                 </div>
 
                 {
-                    taskToEdit && <AttachmentList task={taskToEdit} />
+                    taskToEdit && <AttachmentList task={taskToEdit} onRemoveAttachment={onRemoveAttachment} onEditAttachment={onEditAttachment} />
                 }
-                
+
                 <div className="task-activity-box flex column">
                     <FiList className="activity-icon task-icon" />
 
@@ -282,8 +292,8 @@ export function TaskDetails() {
             <div className="window-sidebar-box">
                 <nav className="window-sidebar flex column">
                     <span className="sidebar-title">Add to card</span>
-                    <a className='button-link' href='#' onClick={(ev) => toggleModal(ev, 'labels')}><IoPricetagOutline onClick={(ev) => ev.stopPropagation()} />  Labels</a>
-                    <a className='button-link' href='#' onClick={(ev) => toggleModal(ev, 'attach')}><GrAttachment /> Attachment</a>
+                    <a className='button-link' href='#' onClick={(ev) => toggleModal(ev, MODAL_LABELS)}><IoPricetagOutline onClick={(ev) => ev.stopPropagation()} />  Labels</a>
+                    <a className='button-link' href='#' onClick={(ev) => toggleModal(ev, MODAL_ATTACH)}><GrAttachment /> Attachment</a>
                 </nav>
             </div>
 
