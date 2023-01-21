@@ -1,28 +1,45 @@
-.task-preview-icons-container{
+.task-preview-icons-container {
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 12px;
+  gap: 3px;
+  justify-content: space-between;
+  width: 100%;
+
+  .icons-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 4px;
+
+    .attachments-container{
+      display: flex;
+      gap: 6px;
+      align-items: center;
+      justify-content: center;
+      border-radius: 3px;
+      color: #5e6c84;
+    }
+  }
+
   
-  .members-container{
+
+
+  //**MEMBERS**//
+  .members-container {
     display: flex;
     justify-content: flex-end;
     flex: 1;
 
-    .member-container{
+    .member-container {
       height: 28px;
       width: 28px;
       margin: 4px 0 0 4px;
-      img{
+
+      img {
         border-radius: 50%;
       }
     }
   }
-
-
-
-
-
-
-
-
-
-
 
 }

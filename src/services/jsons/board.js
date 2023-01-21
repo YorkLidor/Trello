@@ -119,6 +119,11 @@ export const jBoard = {
             "_id": "u105",
             "fullname": "Gal",
             "imgUrl": "https://ca.slack-edge.com/T043N4KE97B-U043N5QQPT3-278bb6b34de8-512"
+        },
+        {
+            "_id": "u106",
+            "fullname": "Ori",
+            "imgUrl": "https://ca.slack-edge.com/T043N4KE97B-U043S281FLH-583926f36186-512"
         }
 
     ],
@@ -142,12 +147,13 @@ export const jBoard = {
                     "id": "c102",
                     "title": "Add Samples",
                     "labelIds": ["l104", "l105"],
-                    "memberIds": ["u103","u104","u105",]
+                    "memberIds": ["u103", "u104", "u105",]
                 },
                 {
                     "id": "c105",
                     "title": "Add Food",
-                    "labelIds": ["l101", "l103"]
+                    "labelIds": ["l101", "l103"],
+                    "memberIds": ["u106"]
                 }
             ],
             "style": {}
@@ -161,7 +167,20 @@ export const jBoard = {
                     "title": "Do that",
                     "archivedAt": 1589983468418,
                     "labelIds": ["l101"],
-                    "memberIds": ["u103","u104","u105",]
+                    "memberIds": ["u103", "u104", "u105",],
+                    "attachments": [{
+                        "id": 'att' + utilService.makeId(),
+                        "url": "",
+                        "filename": "puki",
+                        "createdAt": Date.now()
+                    },
+                    {
+                        "id": 'att' + utilService.makeId(),
+                        "url": "",
+                        "filename": "nuki",
+                        "createdAt": Date.now()
+                    }
+                    ]
                 },
                 {
                     "id": "c104",
@@ -207,6 +226,13 @@ export const jBoard = {
                     "style": {
                         "bgColor": "#7bc86c"
                     },
+                    "attachments": [{
+                        "id": 'att' + utilService.makeId(),
+                        "url": "",
+                        "filename": "puki",
+                        "createdAt": Date.now()
+                    }
+                    ]
 
                 }
             ],
