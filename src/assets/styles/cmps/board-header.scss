@@ -87,13 +87,13 @@
 
         .board-title-input {
             background-color: #fff;
-            border: 0;
             display: none;
-            font-size: rem(18px);
+            font-size: 18px;
+            line-height: 32px;
             font-weight: 700;
-            height: rem(32px);
+            height: 32px;
             margin: 0;
-            padding: 0 rem(12px);
+            font-family: -apple-system, BlinkMacSystemFont, segoe UI, roboto, noto-sans, ubuntu, droid-sans, helvetica-neue, sans-serif;
         }
 
         &.editable {

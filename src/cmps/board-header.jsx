@@ -18,6 +18,7 @@ export function BoardHeader({ onDeleteBoard }) {
 
     useEffectUpdate(() => {
         setElTitleInputFocus()
+        setElTitleInputWidth()
     }, [editClass])
 
     function onHandleChange(ev) {

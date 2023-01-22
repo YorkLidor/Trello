@@ -99,7 +99,7 @@ function getEmptyBoard() {
         isStarred: false,
         createdBy: {},
         style: {
-            bg: "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/2048x1152/17c10de18b89807a945d83325a9002eb/photo-1647831597506-3f9071cbbd6f.jpg"
+            backgroundImage: "url(https://trello-backgrounds.s3.amazonaws.com/SharedBackground/2386x1600/47f09f0e3910259568294477d0bdedac/photo-1576502200916-3808e07386a5.jpg)"
         },
         labels: [],
         groups: [],

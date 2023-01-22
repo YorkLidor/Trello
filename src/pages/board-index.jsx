@@ -13,7 +13,6 @@ export function BoardIndex() {
     const boards = useSelector(state => state.boardModule.boards)
     const navigate = useNavigate()
 
-
     useEffect(() => {
         onLoadBoards()
     }, [])
@@ -64,7 +63,7 @@ export function BoardIndex() {
     else return <main className="boards-index-container">
         <section className="boards-index flex column">
             <header className="main-header">
-                <RxPerson/>
+                <RxPerson />
                 <h3>Your Boards</h3>
             </header>
             <section
