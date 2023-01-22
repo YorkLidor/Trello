@@ -1,19 +1,11 @@
-import { saveBoard } from "../store/board.actions.js"
+import { saveBoard, setBoard } from "../store/board.actions.js"
 import { useState } from "react";
 
-export function GroupHeader({ group, board }) {
+export function GroupHeader({ group, board, onRemoveGroup }) {
     const groupId = group.id
     const [groupTitleToSet, setGroupTitleToSet] = useState(group.title)
 
-    async function onRemoveGroup(groupId) {
-        try {
-            const groups = board.groups.filter((group) => group.id !== groupId)
-            board.groups = groups
-            await saveBoard({ ...board })
-        } catch (err) {
-            console.error('Cannot remove group', err)
-        }
-    }
+    
 
     function handleFormChange(ev) {
         setGroupTitleToSet(ev.target.innerHTML)
@@ -41,7 +33,7 @@ export function GroupHeader({ group, board }) {
             name="title"
         >
         </section>
-            {/* <section>{group.title}</section> */}
+        {/* <section>{group.title}</section> */}
 
         <button onClick={() => onRemoveGroup(group.id)}>...</button>
     </section>

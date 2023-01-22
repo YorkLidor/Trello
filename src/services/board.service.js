@@ -11,6 +11,7 @@ _createBoards()
 export const boardService = {
     query,
     saveBoard,
+    grtDefaultFilter,
     saveTask,
     removeBoard,
     getById,
@@ -26,7 +27,7 @@ export const boardService = {
     getAttachment
 }
 
-function query() {
+async function query(filterBy = grtDefaultFilter()) {
     return storageService.query(STORAGE_KEY)
 }
 
@@ -78,6 +79,10 @@ function getEmptyTask() {
         id: utilService.makeId(),
         title: ""
     }
+}
+
+function grtDefaultFilter() {
+    return { boardId: '' }
 }
 
 function getEmptyGroup() {
@@ -169,7 +174,7 @@ function getLabelDeaultColor() {
 
 function getAttachment(url, filename) {
     return {
-        id: 'att'+utilService.makeId(),
+        id: 'att' + utilService.makeId(),
         url,
         filename,
         createdAt: Date.now()

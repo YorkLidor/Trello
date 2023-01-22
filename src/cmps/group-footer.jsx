@@ -4,7 +4,7 @@ import { IoCloseOutline } from "react-icons/io5";
 import { useSelector } from "react-redux";
 import { useForm } from "../customHooks/useForm";
 import { boardService } from "../services/board.service";
-import { saveBoard } from "../store/board.actions";
+import { saveBoard, setBoard } from "../store/board.actions";
 
 export function GroupFooter({ group }) {
     let board = useSelector(storeState => storeState.boardModule.board)
@@ -24,7 +24,6 @@ export function GroupFooter({ group }) {
         } catch (err) {
             console.error('Cannot add new task', err)
         }
-
     }
 
     return <footer className={`group-footer-container ${isOpenClass}`}>

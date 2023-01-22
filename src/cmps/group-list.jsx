@@ -1,25 +1,35 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 
 import { Group } from "./group";
 import { boardService } from "../services/board.service";
-import { loadBoards, saveBoard, setBoard as setset } from "../store/board.actions";
+import { saveBoard, setBoard } from "../store/board.actions";
 import { GroupAdd } from "./group-add";
 import { utilService } from "../services/util.service";
+import { useSelector } from "react-redux";
 
-export function GroupList({ groups, board }) {
+export function GroupList() {
+    const board = useSelector(state => state.boardModule.board)
     const [groupToEdit, setGroupToEdit] = useState(boardService.getEmptyGroup())
-    const setBoard = []
 
     async function onAddGroup(ev) {
         ev.preventDefault()
         try {
             board.groups.push(groupToEdit)
             await saveBoard({ ...board })
-            setset({ ...board })
+            setBoard({ ...board })
             setGroupToEdit(boardService.getEmptyGroup())
         } catch (err) {
             console.log('err', err)
+        }
+    }
+
+    async function onRemoveGroup(groupId) {
+        try {
+            board.groups = board.groups.filter((group) => group.id !== groupId)
+            await saveBoard({ ...board })
+        } catch (err) {
+            console.error('Cannot remove group', err)
         }
     }
 
@@ -38,20 +48,16 @@ export function GroupList({ groups, board }) {
 
             if (source.droppableId === destination.droppableId) {
                 groupToEdit.tasks = utilService.reorder(tasks, source.index, destination.index)
-                setset({ ...board })
-                saveBoard({ ...board })
             } else {
                 const deletedTask = groupFrom.tasks.splice(source.index, 1)
                 groupToEdit.tasks.push(...deletedTask)
                 groupToEdit.tasks = utilService.reorder(tasks, tasks.length - 1, destination.index)
-                setset({ ...board })
-                saveBoard({ ...board })
             }
         } else {
             board.groups = utilService.reorder(board.groups, source.index, destination.index)
-            setset({ ...board })
-            saveBoard({ ...board })
         }
+        setBoard({ ...board })
+        saveBoard({ ...board })
     }
 
     return <DragDropContext onDragEnd={onDragEnd} >
@@ -59,7 +65,7 @@ export function GroupList({ groups, board }) {
             {provided =>
                 <ul className="group-list-container" ref={provided.innerRef}>
                     {
-                        groups.map((group, idx) =>
+                        board.groups.map((group, idx) =>
                             <Draggable
                                 draggableId={group.id}
                                 key={group.id}
@@ -70,13 +76,13 @@ export function GroupList({ groups, board }) {
                                         ref={provided.innerRef}
                                         {...provided.draggableProps}
                                     >
-
+                                        {console.log('loadGrops', group)}
                                         <Group
                                             provided={provided}
                                             key={group.id}
                                             group={group}
-                                            setBoard={setBoard}
                                             board={board}
+                                            onRemoveGroup={onRemoveGroup}
                                             idx={idx}
                                         />
                                     </div>
@@ -84,6 +90,7 @@ export function GroupList({ groups, board }) {
                             </Draggable >
                         )}
                     {provided.placeholder}
+                    <GroupAdd onAddGroup={onAddGroup} handleChange={handleChange} groupToEdit={groupToEdit} />
                 </ul>
             }
         </Droppable >
