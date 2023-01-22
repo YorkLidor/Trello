@@ -46,12 +46,9 @@
 .task-header {
     height: fit-content;
     float: left;
-
     padding: 12px 40px 8px 56px;
     width: 100%;
     position: relative;
-
-
 
     .header-icon {
         position: absolute;
@@ -344,4 +341,9 @@
     .info-tab {
         margin: 0 8px 8px 0;
     }
+}
+
+.cover-color {
+    background-position: 50%;
+    background-size: cover;
 }

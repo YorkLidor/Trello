@@ -16,7 +16,7 @@ export function TaskPreview({ task, group, boardId, isDragging }) {
 
 
     const toggleLabelsSize = (ev) => {
-        ev.preventDefault()
+        ev.stopPropagation()
         board.style.isLabelsLarge = !isLabelsLarge
         const newBoard = { ...board }
         store.dispatch({ type: SET_ACTIVE_BOARD, board: newBoard })
@@ -24,7 +24,7 @@ export function TaskPreview({ task, group, boardId, isDragging }) {
 
     const labelsStyle = isLabelsLarge ? 'labels-large' : ''
 
-    return <div className={`task-preview-container ${isDragging && 'is-dragging'}`}>
+    return <div className={`task-preview-container ${isDragging && 'is-dragging'}` } onClick={() => navigate(`/card/${boardId}/${groupId}/${task.id}`)}>
         {/* COVER COLOR */}
         {(style && style.background || style.backgroundImage) &&
             <header
@@ -58,7 +58,7 @@ export function TaskPreview({ task, group, boardId, isDragging }) {
             }
 
 
-            <section className="task-body" onClick={() => navigate(`/card/${boardId}/${groupId}/${task.id}`)}>
+            <section className="task-body" >
                 <p>{task.title}</p>
             </section>
 
