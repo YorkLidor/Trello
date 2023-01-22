@@ -19,7 +19,7 @@ import { boardService } from "../services/board.service";
 import { useSelector } from "react-redux";
 
 import { SET_ACTIVE_BOARD } from "../store/board.reducer";
-import { TOGGLE_MODAL, CLOSE_MODAL, SET_MODAL_DATA } from "../store/app.reducer";
+import { TOGGLE_MODAL, CLOSE_MODAL } from "../store/app.reducer";
 
 import { store } from "../store/store";
 import { setModalData } from "../store/app.actions"
@@ -208,9 +208,18 @@ export function TaskDetails() {
 
     function onMemberClick(ev, member) {
         ev.stopPropagation()
-        //toggleModal(ev, MODAL_MEMBER_OPEN, { member })
+        toggleModal(ev, MODAL_MEMBER_OPEN, { member })
     }
 
+    async function onRemoveFromCard(member) {
+        
+        let action = 'Removed member ' + member.fullname + ' from board members.'
+        taskToEdit.memberIds = taskToEdit.memberIds?.filter(memberId => memberId !== member._id)
+
+        const activity = boardService.getActivity(user, { id: taskToEdit.id, title: taskToEdit.title }, action)
+        await boardService.saveTask(board._id, groupId, taskToEdit, activity)
+        store.dispatch({ type: SET_ACTIVE_BOARD, board })
+    }
 
     // Toggle modal visibility and set it's pos under element
     function toggleModal(ev, modalType, ex = null) {
@@ -223,6 +232,7 @@ export function TaskDetails() {
         else if (modalType === MODAL_ATTACH_EDIT) props = { boardId, groupId, task: taskToEdit, attachment: ex.attachment }
         else if (modalType === MODAL_ATTACH_OPEN) props = { deletion: onRemoveAttachment, attachment: ex.attachment }
         else if (modalType === MODAL_MEMBERS) props = { groupId, task: taskToEdit }
+        else if (modalType === MODAL_MEMBER_OPEN) props = { member: ex.member, onRemoveFromCard }
 
         setModalData(modalType, props)
 

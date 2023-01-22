@@ -51,7 +51,7 @@ export function setModalData(modalType, props) {
         case MODAL_MEMBER_OPEN:
             newModalData = {
                 className: 'modal',
-                cmpType: MODAL_MEMBERS,
+                cmpType: MODAL_MEMBER_OPEN,
                 props
             }
             break

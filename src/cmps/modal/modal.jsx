@@ -7,6 +7,7 @@ import { BoardCreator } from "../board-creator"
 import { AttachmentEditModal } from "./attachment-edit-modal"
 import { AttachmentView } from "../task-details/attachment/attachment-view"
 import { MemberPicker } from "./member-picker-modal"
+import { MemberModal } from "./member-modal"
 
 export const MODAL_LABELS = 'MODAL_LABELS'
 export const MODAL_ATTACH = 'MODAL_ATTACH'
@@ -38,6 +39,8 @@ function GetCmp({ cmpProps, cmpType }) {
             return <AttachmentView cmpProps={cmpProps} />
         case MODAL_MEMBERS:
             return <MemberPicker cmpProps={cmpProps} />
+            case MODAL_MEMBER_OPEN:
+            return <MemberModal cmpProps={cmpProps} />
         default:
             return ''
     }
