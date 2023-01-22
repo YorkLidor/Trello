@@ -473,11 +473,17 @@ export const jBoards = [{
                 {
                     "id": "c101",
                     "title": "Replace logo",
-                    "labelIds": ["l104"],
+                    "labelIds": ["l105"],
                     "memberIds": ["u102"],
                     "style": {
                         "bgColor": "#29cce5"
-                    }
+                    },
+                    "attachments": [{
+                        "id": 'sdsadfa1',
+                        "url": "https://www.aljazeera.com/wp-content/uploads/2022/12/SSS10794_1-1.jpg?resize=770%2C513&quality=80",
+                        "filename": "Design.png",
+                        "createdAt": Date.now()
+                    }],
 
                 },
                 {
