@@ -43,7 +43,6 @@ export function Board() {
     async function loadBoard() {
         try {
             const board = await boardService.getById(boardId)
-            console.log('board:', board)
             setCurrBoard(board)
             setBoard(board)
         } catch (err) {

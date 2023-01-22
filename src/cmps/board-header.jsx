@@ -11,7 +11,6 @@ export function BoardHeader({ onDeleteBoard }) {
     const elTitleInput = useRef(null)
     const elTitle = useRef(null)
     const [boardToEdit, setBoardToEdit, handleChange] = useForm(board)
-    console.log('headerboard:', board)
 
     useEffect(() => {
         setElTitleInputWidth()

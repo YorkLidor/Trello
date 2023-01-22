@@ -102,7 +102,6 @@ export function LabelsPicker({ cmpProps }) {
     function handleEditorChange({ target }, color = null) {
         if (color) {
             editorLabel.color = color
-            console.log(editorLabel.color)
             target.parentNode.classList.toggle('active-color')
             if (activeColorRef.current) activeColorRef.current.parentNode.classList.toggle('active-color')
             activeColorRef.current = target

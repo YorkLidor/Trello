@@ -44,19 +44,14 @@ export async function setBoard(board) {
 }
 
 export async function addNewTask(boardId, groupId, newTask) {
-    console.log('tasklTitle:', newTask)
-    console.log('groupId:', groupId)
     try {
         const board = await boardService.getById(boardId)
-        console.log('board.groups:', board.groups)
         board.groups.forEach(group => {
             if (group.id === groupId) {
-                console.log('enter')
                 group.push(newTask)
                 return group
             }
         })
-        console.log('boardaaaaa:', board)
         return store.dispatch({ type: SET_ACTIVE_BOARD, board })
     } catch (error) {
 

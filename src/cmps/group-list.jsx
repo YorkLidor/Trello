@@ -76,7 +76,6 @@ export function GroupList() {
                                         ref={provided.innerRef}
                                         {...provided.draggableProps}
                                     >
-                                        {console.log('loadGrops', group)}
                                         <Group
                                             provided={provided}
                                             key={group.id}

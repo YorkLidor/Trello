@@ -13,12 +13,11 @@ export function GroupFooter({ group }) {
 
     async function onAddNewTask(ev) {
         ev.preventDefault()
-        console.log('taskTitleToSet.title:', taskToSet.title)
         if (!taskToSet.title) return
         try {
             group.tasks.push(taskToSet)
             board = { ...board, groups: [...board.groups] }
-            await saveBoard({...board})
+            await saveBoard({ ...board })
             setTaskTitleToSet(boardService.getEmptyTask())
             setIsOpenClass('add-card-close')
         } catch (err) {
