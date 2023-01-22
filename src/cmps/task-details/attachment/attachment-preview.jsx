@@ -4,7 +4,7 @@ export function AttachmentPreview({ attachment, attachmentProps }) {
     const { onRemoveAttachment, onEditAttachment, onOpenAttachment } = attachmentProps
 
     return attachment && <div className="attachment-preview">
-        <img className="attachment-preview-img" src={attachment.url} alt={attachment.filename} onClick={() => onOpenAttachment(attachment)} />
+        <img className="attachment-preview-img" src={attachment.url} alt={attachment.filename} onClick={(ev) => onOpenAttachment(ev, attachment)} />
         <p className="attachment-details" onClick={(ev) => onOpenAttachment(ev, attachment)}>
             <span className="attachment-filename">{attachment.filename}</span>
             <BsArrowUpRight className='attachment-open' />

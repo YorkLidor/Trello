@@ -41,9 +41,10 @@ import { MemberList } from "../cmps/task-details/member-list";
 export function TaskDetails() {
 
     const { boardId, groupId, taskId } = useParams()
-    const board = useSelector((storeState) => storeState.boardModule.board)
     const [taskToEdit, setTaskToEdit] = useState(null)
 
+    const isModalOpen = useSelector((storeState) => storeState.appModule.app.isModalOpen)
+    const board = useSelector((storeState) => storeState.boardModule.board)
     const modalData = useSelector((storeState) => storeState.appModule.modalData)
 
     var group = useRef()
@@ -115,9 +116,15 @@ export function TaskDetails() {
         return navigate('/workspace')
     }
 
-    function backToBoard() {
+    function closePage() {
+        console.log(isModalOpen)
+        if (isModalOpen) closeModal()
+        else navigate(`/board/${boardId}`)
+    }
+
+    function closeModal(ev = null) {
+        if (ev) ev.stopPropagation()
         store.dispatch({ type: CLOSE_MODAL })
-        navigate(`/board/${boardId}`)
     }
 
     const user = {
@@ -193,7 +200,7 @@ export function TaskDetails() {
     }
 
     function onOpenAttachment(ev, attachment) {
-        ev.stopPropagation()
+        if(ev) ev.stopPropagation()
         toggleModal(ev, MODAL_ATTACH_OPEN, { attachment })
     }
 
@@ -212,7 +219,7 @@ export function TaskDetails() {
     }
 
     async function onRemoveFromCard(member) {
-        
+
         let action = 'Removed member ' + member.fullname + ' from board members.'
         taskToEdit.memberIds = taskToEdit.memberIds?.filter(memberId => memberId !== member._id)
 
@@ -223,8 +230,12 @@ export function TaskDetails() {
 
     // Toggle modal visibility and set it's pos under element
     function toggleModal(ev, modalType, ex = null) {
-        let element = ev.target
-        if (ev.target.dataset?.type === 'icon') element = ev.target.parentNode
+        let element
+        if (ev) {
+            ev.stopPropagation()
+            element = ev.target
+        }
+        if (ev?.target.dataset?.type === 'icon') element = ev.target.parentNode
 
         let props
         if (modalType === MODAL_LABELS) props = { groupId, task: taskToEdit }
@@ -244,8 +255,8 @@ export function TaskDetails() {
     }
 
     return (!taskToEdit || !group.current) ? getLoader() : <>
-        <section className="task-window flex" onClick={backToBoard}>
-            <section className="task-details" onClick={(ev) => ev.stopPropagation()}>
+        <section className="task-window flex" onClick={closePage}>
+            <section className="task-details" onClick={closeModal}>
 
                 <div className="task-header">
                     <FaPager className="header-icon task-icon" /><input type='text' className="task-title" defaultValue={taskToEdit.title} onFocus={handleEdit} onBlur={handleEdit} data-type='header' />
@@ -353,7 +364,7 @@ export function TaskDetails() {
 
 
         </section >
-        <div ref={modalBoxRef} className='modal-container' onClick={(ev) => ev.stopPropagation()}>
+        <div ref={modalBoxRef} className='modal-container'>
             {
                 modalData && <Modal cmpProps={modalData.props} cmpType={modalData.cmpType} className={modalData.className} />
             }

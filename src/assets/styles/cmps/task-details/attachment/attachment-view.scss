@@ -50,11 +50,14 @@
     position: absolute;
     top: 0;
     bottom: 0;
+    text-align: center;
+
+    right: 24px;
+    left: 24px;
+
+
 
     margin: 48px 8px 112px 24px;
-
-
-    max-width: 100%;
 
     @include scrollbar;
     overflow-y: auto;
@@ -69,9 +72,12 @@
 
 .viewer-img-container {
     position: relative;
+    display: block;
 
     .attachment-viewer-img {
+        width: auto;
         max-width: 100%;
+        height: auto;
         border-radius: 3px;
         z-index: 12;
 
