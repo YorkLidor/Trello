@@ -4,7 +4,7 @@ import { IoCloseOutline } from "react-icons/io5";
 import { useSelector } from "react-redux";
 import { useForm } from "../customHooks/useForm";
 import { boardService } from "../services/board.service";
-import { saveBoard } from "../store/board.actions";
+import { saveBoard, setBoard } from "../store/board.actions";
 
 export function GroupFooter({ group }) {
     let board = useSelector(storeState => storeState.boardModule.board)
@@ -13,18 +13,16 @@ export function GroupFooter({ group }) {
 
     async function onAddNewTask(ev) {
         ev.preventDefault()
-        console.log('taskTitleToSet.title:', taskToSet.title)
         if (!taskToSet.title) return
         try {
             group.tasks.push(taskToSet)
             board = { ...board, groups: [...board.groups] }
-            await saveBoard({...board})
+            await saveBoard({ ...board })
             setTaskTitleToSet(boardService.getEmptyTask())
             setIsOpenClass('add-card-close')
         } catch (err) {
             console.error('Cannot add new task', err)
         }
-
     }
 
     return <footer className={`group-footer-container ${isOpenClass}`}>

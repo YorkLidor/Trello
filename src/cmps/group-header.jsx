@@ -1,25 +1,44 @@
-import { saveBoard } from "../store/board.actions.js"
+import { saveBoard, setBoard } from "../store/board.actions.js"
+import { useState } from "react";
 
-export function GroupHeader({ group, board }) {
+export function GroupHeader({ group, board, onRemoveGroup }) {
+    const groupId = group.id
+    const [groupTitleToSet, setGroupTitleToSet] = useState(group.title)
 
-    async function onRemoveGroup(groupId) {
+    
+
+    function handleFormChange(ev) {
+        setGroupTitleToSet(ev.target.innerHTML)
+    }
+
+    async function onSaveTitle() {
+        group.title = groupTitleToSet
+        board.groups.forEach(group => { (group.id === groupId) && (group.title = groupTitleToSet) })
         try {
-            const boardToEdit = { ...board }
-            const groups = boardToEdit.groups.filter((group) => group.id !== groupId)
-            boardToEdit.groups = groups
-            await saveBoard(boardToEdit)
+            await saveBoard({ ...board })
         } catch (err) {
-            console.error('Cannot remove group', err)
+            console.error('Can\'t save board!', err)
         }
+    }
+
+    function onClick(){
+        
     }
 
     return <section className="group-header">
         <section
+            onInput={handleFormChange}
+            onBlur={onSaveTitle}
+            onClick={onClick}
+            className="group-title focused"
             contentEditable={true}
             suppressContentEditableWarning={true}
+            value={groupTitleToSet}
+            dangerouslySetInnerHTML={{ __html: group.title }}
+            name="title"
         >
-            <section>{group.title}</section>
         </section>
+        {/* <section>{group.title}</section> */}
 
         <button onClick={() => onRemoveGroup(group.id)}>...</button>
     </section>

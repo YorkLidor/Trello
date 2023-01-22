@@ -12,13 +12,16 @@ import { useEffectUpdate } from "../customHooks/useEffectUpdate";
 
 export function Board() {
     const elBoard = useRef()
-    const board = useSelector(state => state.boardModule.board)
+    const [board, setCurrBoard] = useState(null)
     const { boardId } = useParams()
     const navigate = useNavigate()
 
 
     useEffect(() => {
         loadBoard()
+
+        //TODO: when task preview be in nested route we need to set board to null in cmp return state
+        // return () => setBoard(null)
     }, [])
 
     useEffectUpdate(() => {
@@ -40,9 +43,8 @@ export function Board() {
     async function loadBoard() {
         try {
             const board = await boardService.getById(boardId)
+            setCurrBoard(board)
             setBoard(board)
-
-
         } catch (err) {
             console.error('No Board!', err)
         }
@@ -67,7 +69,7 @@ export function Board() {
         />
         <GroupList
             groups={board.groups}
-            setBoard={setBoard}
+            setBoard={setCurrBoard}
             board={board}
         />
     </main>

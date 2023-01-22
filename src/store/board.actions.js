@@ -14,7 +14,6 @@ export async function loadBoards() {
     }
 }
 
-// Example for Optimistic mutation:
 export async function removeBoard(boardId) {
     try {
 
@@ -40,25 +39,19 @@ export async function saveBoard(board) {
     }
 }
 
-export async function setBoard(board){
-    // const savedBoard = await boardService.saveBoard(board)
+export async function setBoard(board) {
     store.dispatch({ type: SET_ACTIVE_BOARD, board })
 }
 
 export async function addNewTask(boardId, groupId, newTask) {
-    console.log('tasklTitle:', newTask)
-    console.log('groupId:', groupId)
     try {
         const board = await boardService.getById(boardId)
-        console.log('board.groups:', board.groups)
         board.groups.forEach(group => {
             if (group.id === groupId) {
-                console.log('enter')
                 group.push(newTask)
                 return group
             }
         })
-        console.log('boardaaaaa:', board)
         return store.dispatch({ type: SET_ACTIVE_BOARD, board })
     } catch (error) {
 

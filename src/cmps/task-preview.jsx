@@ -6,7 +6,8 @@ import { TaskPreviewIcons } from "./task-preview-icons"
 
 export function TaskPreview({ task, group, boardId, isDragging }) {
     const groupId = group.id
-    const coverColor = task?.style?.bgColor
+    let style = { background: task?.style?.bgColor }
+    if (task.attachments && task.attachments.length && task.attachments[0].url) style = { backgroundImage: `url(${task.attachments[0].url})`, height: '107.8px' }
     const navigate = useNavigate()
     const board = useSelector((storeState) => storeState.boardModule.board)
     const labels = board.labels.filter(label => task?.labelIds?.includes(label.id))
@@ -23,16 +24,19 @@ export function TaskPreview({ task, group, boardId, isDragging }) {
 
     const labelsStyle = isLabelsLarge ? 'labels-large' : ''
 
-    return <>
-            {/* COVER COLOR */}
-            {coverColor &&
-                <header className="cover-color" style={{ background: coverColor }}></header>
-            }
-        <li className={`task-preview-container ${isDragging && 'is-dragging'}`} >
+    return <div className={`task-preview-container ${isDragging && 'is-dragging'}`}>
+        {/* COVER COLOR */}
+        {(style && style.background || style.backgroundImage) &&
+            <header
+                className="cover-color"
+                style={style}
+            />
+        }
+        <li className={`task-preview`} >
 
 
             {/* LABELS */}
-            {labels.length > 0 &&
+            {(task.labelIds && task.labelIds.length) &&
                 <div className="labels-container" >
                     {
                         labels.map(label =>
@@ -61,5 +65,5 @@ export function TaskPreview({ task, group, boardId, isDragging }) {
             <TaskPreviewIcons board={board} groupId={groupId} task={task} />
 
         </li>
-    </>
+    </div>
 }

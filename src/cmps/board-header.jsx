@@ -3,8 +3,10 @@ import { useEffectUpdate } from "../customHooks/useEffectUpdate"
 import { useForm } from "../customHooks/useForm"
 import { saveBoard } from "../store/board.actions"
 import { FaRegStar } from 'react-icons/fa';
+import { useSelector } from "react-redux";
 
-export function BoardHeader({ board, onDeleteBoard }) {
+export function BoardHeader({ onDeleteBoard }) {
+    const board = useSelector(state => state.boardModule.board)
     const [editClass, setEditClass] = useState('')
     const elTitleInput = useRef(null)
     const elTitle = useRef(null)

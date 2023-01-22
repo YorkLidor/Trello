@@ -1,11 +1,18 @@
+.is-dragging {
+    transform: rotate(5deg);
+}
+
 .task-preview-container {
     background-color: $clr6;
     border-radius: 3px;
     box-shadow: var(--ds-shadow-raised, 0 1px 0 $clr23);
+    margin-bottom: rem(8px);
+}
+
+.task-preview {
     color: var(--ds-text, inherit);
     cursor: pointer;
     display: block;
-    margin-bottom: rem(8px);
     padding: rem(6px) rem(8px) rem(2px);
     max-width: 300px;
     min-height: 20px;
@@ -19,7 +26,7 @@
         background-color: #f4f5f7;
     }
 
-  
+
 
     .task-body {
         color: $clr21;
@@ -27,15 +34,18 @@
         align-items: flex-start;
         flex-direction: column;
         justify-content: center;
-        padding: 6px 6px 6px 8px;
         word-break: break-word;
+        padding: 0;
 
         p {
-            text-align: left;
             white-space: break-spaces;
+            margin: 0 0 4px;
+            font-size: rem(14px);
+            font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans, Ubuntu, Droid Sans, Helvetica Neue, sans-serif;
         }
     }
 }
+
 .cover-color {
     align-items: flex-end;
     background-size: 100% auto;

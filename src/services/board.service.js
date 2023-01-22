@@ -1,7 +1,7 @@
 import { SET_ACTIVE_BOARD } from '../store/board.reducer.js'
 import { store } from '../store/store.js'
 import { storageService } from './async-storage.service.js'
-import { jBoard } from './jsons/board.js'
+import { jBoard, jBoards } from './jsons/board.js'
 import { utilService } from './util.service.js'
 
 const STORAGE_KEY = 'boardDB'
@@ -11,6 +11,7 @@ _createBoards()
 export const boardService = {
     query,
     saveBoard,
+    grtDefaultFilter,
     saveTask,
     removeBoard,
     getById,
@@ -26,7 +27,7 @@ export const boardService = {
     getAttachment
 }
 
-function query() {
+async function query(filterBy = grtDefaultFilter()) {
     return storageService.query(STORAGE_KEY)
 }
 
@@ -68,8 +69,6 @@ async function saveTask(boardId, groupId, task, activity) {
 
 async function getLabelsById(boardId, labelIds) {
     const board = await getById(boardId)
-    console.log('board:', board)
-    console.log('labelIdssssss:', labelIds)
     return board.labels.filter(label => labelIds.includes(label.id))
 }
 
@@ -78,6 +77,10 @@ function getEmptyTask() {
         id: utilService.makeId(),
         title: ""
     }
+}
+
+function grtDefaultFilter() {
+    return { boardId: '' }
 }
 
 function getEmptyGroup() {
@@ -106,17 +109,7 @@ function getEmptyBoard() {
 function _createBoards() {
     let boards = utilService.loadFromStorage(STORAGE_KEY)
     if (!boards || !boards.length) {
-        boards = []
-        boards.push({ ...jBoard })
-        jBoard._id = 'b102'
-        jBoard.title = 'Lidorush'
-        let bg = "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/2048x1152/18cb4dc9d683e8775a107e41e54108c2/photo-1672821337870-2180f5223865.jpg"
-        boards.push({ ...jBoard, style: { bg } })
-        jBoard._id = 'b103'
-        jBoard.title = 'Kanban'
-        bg = "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/2386x1600/47f09f0e3910259568294477d0bdedac/photo-1576502200916-3808e07386a5.jpg"
-        boards.push({ ...jBoard, style: { bg } })
-
+        boards = jBoards
         utilService.saveToStorage(STORAGE_KEY, boards)
     }
 }
@@ -169,7 +162,7 @@ function getLabelDeaultColor() {
 
 function getAttachment(url, filename) {
     return {
-        id: 'att'+utilService.makeId(),
+        id: 'att' + utilService.makeId(),
         url,
         filename,
         createdAt: Date.now()
