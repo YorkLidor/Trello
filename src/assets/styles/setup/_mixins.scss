@@ -74,7 +74,7 @@
     font-size: 14px;
     text-decoration: none;
     vertical-align: baseline;
-    
+
     &>svg {
         line-height: 20px;
         padding: 0;
@@ -217,4 +217,39 @@
     border-radius: 3px;
     padding: 8px 12px 0;
     box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 2px -1px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+}
+
+@mixin details-label {
+    display: inline-block;
+    font-weight: 600;
+    font-size: 12px;
+    color: #66748B;
+    margin-block-start: 4px;
+    margin-block-end: 4px;
+}
+
+
+@mixin task-details-list {
+    @include label-preview;
+
+    &-add {
+        text-align: center;
+        background-color: #EAECF0;
+        color: #172B4D;
+        min-width: 32px;
+        padding: 8px;
+
+        &:hover {
+            background-color: #e2e5e9;
+        }
+    }
+
+    &-add-icon {
+        padding: 0px;
+        height: 16px;
+        max-width: 16px;
+
+        margin-inline-end: -32px;
+    }
+
 }

@@ -141,7 +141,7 @@ export function LabelsPicker({ cmpProps }) {
         </div>
 
         <div className="labels-picker-home active" ref={labelsScreenRef}>
-
+        <span className="modal-label">Labels</span>
             <ul className="labels-picker-list" >
                 {
                     labels.map(label => {
@@ -184,7 +184,9 @@ export function LabelsPicker({ cmpProps }) {
         </div>
 
         <div className='labels-editor' ref={editorScreenRef}>
+
             <div className='label-editor-preview-box'>
+
                 <div className='label-editor-preview' style={{ backgroundColor: editorLabel.color + '55' }}>
                     <BsFillCircleFill className='label-circle' style={{ color: editorLabel.color }} />
                     <span className='label-title-editor-preview'>

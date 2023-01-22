@@ -1,5 +1,4 @@
 .comment-container {
-    margin-inline-start: 40px;
     min-height: 32px;
     padding: 8px 0;
     position: relative;
@@ -8,7 +7,7 @@
 .commentor-logo {
     @include user-logo-circle;
     position: absolute;
-    left: -41px;
+    left: -43px;
 }
 
 

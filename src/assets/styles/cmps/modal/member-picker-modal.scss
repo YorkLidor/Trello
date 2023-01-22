@@ -1,0 +1,85 @@
+.modal-members-box {
+    padding-inline: 12px;
+    padding-block-end: 12px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.modal-label {
+    @include details-label;
+    font-size: 12px;
+    font-weight: 600;
+    margin: 12px 0 8px;
+
+    line-height: 16px;
+}
+
+.members-picker-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.member-picker-line {
+    margin: 0;
+    padding: 0;
+
+    & .member-picker {
+        display: block;
+        width: 100%;
+        min-height: 32px;
+
+        position: relative;
+        text-decoration: none;
+        color: #40506D;
+
+        line-height: 32px;
+        margin-block-end: 2px;
+        padding: 2px;
+        overflow: hidden;
+
+        white-space: nowrap;
+
+        &.checked {
+            padding-inline-end: 28px;
+        }
+    }
+}
+
+.is-checked {
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding-inline-end: 11px;
+    
+    .is-checked-icon {
+        height: 13px;
+        width: 13px;
+
+        vertical-align: middle;
+    }
+}
+
+.member-img-container {
+    position: relative;
+
+    display: block;
+    overflow: visible;
+    border-radius: 50%;
+    margin: 0 4px 4px 0;
+    margin-inline-end: 8px;
+
+    float: left;
+
+    height: 32px;
+
+
+
+    .list-member {
+        margin: 0px 0px;
+    }
+
+
+
+}

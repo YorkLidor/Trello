@@ -8,28 +8,34 @@ import { IoPricetagOutline } from 'react-icons/io5'
 import { BsFillCircleFill } from 'react-icons/bs'
 import { GrAttachment } from 'react-icons/gr'
 import { AiOutlinePlus } from 'react-icons/ai'
+import { HiOutlineUser } from 'react-icons/hi'
+
 
 import { Blocks } from "react-loader-spinner";
+import { Modal } from "../cmps/modal/modal";
 
 import { utilService } from '../services/util.service'
 import { boardService } from "../services/board.service";
 import { useSelector } from "react-redux";
 
-import { store } from "../store/store";
 import { SET_ACTIVE_BOARD } from "../store/board.reducer";
-import { Modal } from "../cmps/modal/modal";
 import { TOGGLE_MODAL, CLOSE_MODAL, SET_MODAL_DATA } from "../store/app.reducer";
+
+import { store } from "../store/store";
 import { setModalData } from "../store/app.actions"
 
 import {
     MODAL_ATTACH,
     MODAL_LABELS,
     MODAL_ATTACH_EDIT,
-    MODAL_ATTACH_OPEN
+    MODAL_ATTACH_OPEN,
+    MODAL_MEMBERS,
+    MODAL_MEMBER_OPEN
 } from '../cmps/modal/modal.jsx'
 
 import { AttachmentList } from "../cmps/task-details/attachment/attachment-list";
 import { CommentList } from "../cmps/task-details/comment-list";
+import { MemberList } from "../cmps/task-details/member-list";
 
 
 export function TaskDetails() {
@@ -48,13 +54,12 @@ export function TaskDetails() {
     const navigate = useNavigate()
     const descToolsRef = useRef()
     const elDescInputRef = useRef()
-    
+
     const elCommentRef = useRef()
     const elCommentInputRef = useRef()
     const commentBtnRef = useRef()
 
     const modalBoxRef = useRef()
-    const AttachmentsRef = useRef()
 
     const userIconDefault = 'assets/styles/img/profileDefault.png'
 
@@ -200,18 +205,28 @@ export function TaskDetails() {
         }
     }
 
+
+    function onMemberClick(ev, member) {
+        ev.stopPropagation()
+        //toggleModal(ev, MODAL_MEMBER_OPEN, { member })
+    }
+
+
     // Toggle modal visibility and set it's pos under element
     function toggleModal(ev, modalType, ex = null) {
+        let element = ev.target
+        if (ev.target.dataset?.type === 'icon') element = ev.target.parentNode
 
         let props
         if (modalType === MODAL_LABELS) props = { groupId, task: taskToEdit }
         else if (modalType === MODAL_ATTACH) props = { boardId, groupId, task: taskToEdit }
         else if (modalType === MODAL_ATTACH_EDIT) props = { boardId, groupId, task: taskToEdit, attachment: ex.attachment }
         else if (modalType === MODAL_ATTACH_OPEN) props = { deletion: onRemoveAttachment, attachment: ex.attachment }
+        else if (modalType === MODAL_MEMBERS) props = { groupId, task: taskToEdit }
 
         setModalData(modalType, props)
 
-        const pos = utilService.getElementPosition(ev.target)
+        const pos = utilService.getElementPosition(element)
         modalBoxRef.current.style.top = pos.bottom + 'px'
         modalBoxRef.current.style.left = pos.left + 'px'
 
@@ -228,32 +243,40 @@ export function TaskDetails() {
                 </div>
 
                 <section className="task-main-col">
-
                     <section className="task-info flex row">
-                        <div className="task-labels-box flex row">
+                        {
+                            taskToEdit?.memberIds?.length > 0 &&
+                            <div className="info-tab flex-col">
+                                <span className="members-label">Members</span>
+                                <MemberList members={board.members?.filter(member => taskToEdit.memberIds?.includes(member._id))} onMemberClick={onMemberClick} toggleModal={toggleModal} />
+                            </div>
+                        }
 
-                            {labels.length > 0 && labels.map(label =>
+                        {labels.length > 0 &&
+                            <div className="flex-col">
+                                <span className="labels-label">Labels</span>
+                                <div className="task-labels-box flex row">
 
-                                <button key={label.id} style={{ backgroundColor: label.color + '55' }}
-                                    className='task-label' onClick={(ev) => toggleModal(ev, MODAL_LABELS)}
-                                    onMouseEnter={(ev) => ev.target.style.backgroundColor = label.color + '80'}
-                                    onMouseLeave={(ev) => ev.target.style.backgroundColor = label.color + '55'} >
+                                    {
+                                        labels.map(label => <button key={label.id} style={{ backgroundColor: label.color + '55' }}
+                                            className='task-label' onClick={(ev) => toggleModal(ev, MODAL_LABELS)}
+                                            onMouseEnter={(ev) => ev.target.style.backgroundColor = label.color + '80'}
+                                            onMouseLeave={(ev) => ev.target.style.backgroundColor = label.color + '55'} >
 
-                                    <BsFillCircleFill style={{ color: label.color }} />
-                                    {label.title}
+                                            <BsFillCircleFill style={{ color: label.color }} />
+                                            {label.title}
 
-                                </button>)}
+                                        </button>)
+                                    }
+                                    {
+                                        labels.length > 0 && <button key='task-label-add' className='task-label task-label-add' onClick={(ev) => toggleModal(ev, MODAL_LABELS)}>
+                                            <span className='task-label task-label-add-icon'><AiOutlinePlus /></span>
+                                        </button>
+                                    }
+                                </div>
+                            </div>
+                        }
 
-                            {
-                                labels.length > 0 && <button key='add-label' className='task-label task-add-label' onClick={(ev) => toggleModal(ev, MODAL_LABELS)}>
-                                    <span className='task-label add-label-icon'><AiOutlinePlus /></span>
-                                </button>
-                            }
-                        </div>
-
-                        <div className="task-members-box">
-
-                        </div>
                     </section>
 
 
@@ -290,7 +313,6 @@ export function TaskDetails() {
 
                         <div className="activity-header">
                             <span className="title-main-col">Activity</span>
-                            <a className='button-link-header' href='#'>Show Details</a>
                         </div>
 
 
@@ -299,21 +321,21 @@ export function TaskDetails() {
                             <textarea ref={elCommentInputRef} className="task-activity-input" placeholder={'Write a comment...'} data-type='comment' onFocus={handleEdit} onBlur={handleEdit} />
                             <button onClick={onSaveComment} className="save-btn comment-btn" ref={commentBtnRef}>Save</button>
                         </div>
-
-
+                        {
+                            /* Task Comments */
+                            <CommentList task={taskToEdit} />
+                        }
                     </div>
 
-                    {
-                        /* Task Comments */
-                        <CommentList task={taskToEdit} />
-                    }
+
                 </section>
 
                 <div className="window-sidebar-box">
                     <nav className="window-sidebar flex column">
                         <span className="sidebar-title">Add to card</span>
-                        <a className='button-link' href='#' onClick={(ev) => toggleModal(ev, MODAL_LABELS)}><IoPricetagOutline onClick={(ev) => ev.stopPropagation()} /><span className="nav-btn-txt">Labels</span></a>
-                        <a className='button-link' href='#' onClick={(ev) => toggleModal(ev, MODAL_ATTACH)}><GrAttachment /><span className="nav-btn-txt">Attachment</span></a>
+                        <a className='button-link' href='#' onClick={(ev) => toggleModal(ev, MODAL_MEMBERS)}><HiOutlineUser data-type='icon' /><span className="nav-btn-txt" data-type='icon'>Members</span></a>
+                        <a className='button-link' href='#' onClick={(ev) => toggleModal(ev, MODAL_LABELS)}><IoPricetagOutline data-type='icon' /><span className="nav-btn-txt" data-type='icon'>Labels</span></a>
+                        <a className='button-link' href='#' onClick={(ev) => toggleModal(ev, MODAL_ATTACH)}><GrAttachment data-type='icon' /><span className="nav-btn-txt" data-type='icon'>Attachment</span></a>
                     </nav>
                 </div>
 

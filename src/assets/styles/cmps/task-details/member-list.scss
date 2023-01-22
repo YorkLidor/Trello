@@ -1,0 +1,16 @@
+
+.members-label {
+    @include details-label;
+    margin: 0 8px 4px 0;
+}
+
+
+.list-member {
+    @include user-logo-circle;
+    margin: 0 4px 4px 0;
+}
+
+.task-member {
+    @include task-details-list;
+    border-radius: 50%;
+}
