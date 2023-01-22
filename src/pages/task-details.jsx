@@ -117,7 +117,6 @@ export function TaskDetails() {
     }
 
     function closePage() {
-        console.log(isModalOpen)
         if (isModalOpen) closeModal()
         else navigate(`/board/${boardId}`)
     }

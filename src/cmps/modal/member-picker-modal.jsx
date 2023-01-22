@@ -49,7 +49,7 @@ export function MemberPicker({ cmpProps }) {
                 board?.members?.length > 0 && board.members.map(member => {
                     const checked = task.memberIds?.find(memberId => memberId === member._id)
                     const className = checked ? 'member-picker checked' : 'member-picker'
-                    return <li className="member-picker-line" onClick={(() => onMemberToggle(member))}>
+                    return <li key={member._id} className="member-picker-line" onClick={(() => onMemberToggle(member))}>
                         <a href='#' className={className}>
                             <span className="member-img-container">
                                 <img src={member.imgUrl} className='list-member' />
