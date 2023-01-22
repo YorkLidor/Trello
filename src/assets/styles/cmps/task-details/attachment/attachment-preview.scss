@@ -1,29 +1,29 @@
-
 .attachment-preview {
     position: relative;
     overflow: hidden;
     min-height: 80px;
-    margin: 0 0 8px;
+    margin: -3px 0 8px;
     border-radius: 3px;
 
-    &:hover{
+    &:hover {
         background-color: $btn-background-cyan;
     }
 }
 
 
 .attachment-preview-img {
-    @include aspect-ratio(80px, 112px);
-    height: 80px;
+    height: 82px;
     width: 112px;
 
     position: absolute;
-    margin-block-start: -40px;
+    padding: 0;
     left: 0;
     top: 50%;
-    
+
     text-align: center;
     border-radius: 3px;
+
+    margin-block-start: -41px;
 }
 
 .attachment-details {
@@ -57,9 +57,9 @@
 
 
 
-.attachment-info-break::after{
+.attachment-info-break::after {
     content: ' • ';
-    
+
 }
 
 .action-attachment {

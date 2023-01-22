@@ -45,7 +45,7 @@ export function TaskDetails() {
 
     const isModalOpen = useSelector((storeState) => storeState.appModule.app.isModalOpen)
     const board = useSelector((storeState) => storeState.boardModule.board)
-    const modalData = useSelector((storeState) => storeState.appModule.modalData)
+    const modalData = useSelector((storeState) => storeState.appModule.app.modalData)
 
     var group = useRef()
     group.current = groupId ? board?.groups?.find(g => g.id === groupId) : null
@@ -199,7 +199,7 @@ export function TaskDetails() {
     }
 
     function onOpenAttachment(ev, attachment) {
-        if(ev) ev.stopPropagation()
+        if (ev) ev.stopPropagation()
         toggleModal(ev, MODAL_ATTACH_OPEN, { attachment })
     }
 
@@ -307,8 +307,8 @@ export function TaskDetails() {
                             <span className="title-main-col">Description</span>
                         </div>
 
-
-                        <textarea ref={elDescInputRef} className="task-description" placeholder={'Add a more detailed description...'} defaultValue={taskToEdit.description} onFocus={handleEdit} onBlur={handleEdit} data-type='desc' />
+                        <textarea ref={elDescInputRef} className={taskToEdit.description?.length > 0 ? "task-description filled" : "task-description"}
+                            placeholder={'Add a more detailed description...'} defaultValue={taskToEdit.description} onFocus={handleEdit} onBlur={handleEdit} data-type='desc' />
 
                         <div ref={descToolsRef} className="description-editor-tools">
                             <button className="save-btn" onClick={onSaveDescription}>Save</button>
