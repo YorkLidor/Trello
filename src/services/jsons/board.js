@@ -64,6 +64,7 @@ export const jBoard = {
     },
     "style": {
         "backgroundImage": "url(https://trello-backgrounds.s3.amazonaws.com/SharedBackground/2048x1152/17c10de18b89807a945d83325a9002eb/photo-1647831597506-3f9071cbbd6f.jpg)",
+        "bg": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/2048x1152/17c10de18b89807a945d83325a9002eb/photo-1647831597506-3f9071cbbd6f.jpg",
         "isLabelsLarge": false
     },
     "labels": [
@@ -400,6 +401,7 @@ export const jBoards = [{
     },
     "style": {
         "backgroundImage": "url(https://trello-backgrounds.s3.amazonaws.com/SharedBackground/2048x1152/17c10de18b89807a945d83325a9002eb/photo-1647831597506-3f9071cbbd6f.jpg)",
+        "bg": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/2048x1152/17c10de18b89807a945d83325a9002eb/photo-1647831597506-3f9071cbbd6f.jpg",
         "isLabelsLarge": false
     },
     "labels": [
@@ -636,6 +638,7 @@ export const jBoards = [{
     },
     "style": {
         "backgroundImage": "url(https://trello-backgrounds.s3.amazonaws.com/SharedBackground/2386x1600/47f09f0e3910259568294477d0bdedac/photo-1576502200916-3808e07386a5.jpg)",
+        "bg": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/2386x1600/47f09f0e3910259568294477d0bdedac/photo-1576502200916-3808e07386a5.jpg",
         "isLabelsLarge": false
     },
     "labels": [
@@ -793,7 +796,7 @@ export const jBoards = [{
                             ]
                         }
                     ],
-                    "memberIds": ["u101", "u102", "u104"],
+                    "memberIds": ["u101","u102","u104"],
                     "labelIds": ["l101", "l102", "l103", "l104"],
                     "dueDate": 16156215211,
                     "byMember": {
@@ -825,7 +828,7 @@ export const jBoards = [{
                 {
                     "id": "c201",
                     "title": "To Do",
-                    "memberIds": ["u105", "u106"]
+                    "memberIds": ["u105","u106"]
                 },
                 {
                     "id": "c202",
@@ -1087,7 +1090,7 @@ export const jBoards = [{
                 "attachments":[
                    {
                       "id":"attdCsR5J",
-                      "url":"http://res.cloudinary.com/dk2geeubr/image/upload/v1674377574/fav3eikeg8ddzyjn9znc.png",
+                      "url":"https://akm-img-a-in.tosshub.com/indiatoday/images/story/202210/AP22271096428610_1200x768.jpeg?VersionId=DH2Lq1kxChXtScHrOOwXbZI4lCsh3.cv&size=690:388",
                       "filename":"sss.png",
                       "createdAt":1674377574564
                    }
