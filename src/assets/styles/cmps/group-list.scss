@@ -1,5 +1,6 @@
 .group-list-container {
 
+    @include scrollbar(12px, 4px, #f4f5f763, #1c1c1d15);
 
     display: flex;
     flex-grow: 1;
@@ -7,13 +8,6 @@
     overflow-x: auto;
     overflow-y: hidden;
     padding: 0 0 rem(8px) rem(24px);
-
-    &:first-child {
-
-        .group-item-container {
-            margin-left: 16px;
-        }
-    }
 
     .add-group-form {
         box-sizing: border-box;
