@@ -1,13 +1,12 @@
-import { useState } from "react";
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
-import { utilService } from "../services/util.service";
+import { TaskAdd } from "./task-add";
 import { TaskPreview } from "./task-preview";
 
-export function TaskList({ group, boardId, provided }) {
+export function TaskList({ group, boardId, provided,isAddCardOpen,setIsAddCardOpen }) {
 
     return <ul
         className="task-list"
-        
+
     >
 
         {group.tasks.map((task, idx) =>
@@ -30,9 +29,12 @@ export function TaskList({ group, boardId, provided }) {
                         />
                     </div>
                 }
+
             </Draggable>
         )}
         {provided.placeholder}
+
+        {<TaskAdd  group={group} isAddCardOpen={isAddCardOpen} setIsAddCardOpen={setIsAddCardOpen}/>}
     </ul>
 
 
