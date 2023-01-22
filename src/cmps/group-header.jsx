@@ -1,5 +1,5 @@
 import { saveBoard } from "../store/board.actions.js"
-import { useRef, useState } from "react";
+import { useRef, useState } from "react"
 
 export function GroupHeader({ group, board, onRemoveGroup }) {
     const groupId = group.id
