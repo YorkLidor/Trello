@@ -109,17 +109,7 @@ function getEmptyBoard() {
 function _createBoards() {
     let boards = utilService.loadFromStorage(STORAGE_KEY)
     if (!boards || !boards.length) {
-        boards = []
-        boards.push({ ...jBoard })
-        jBoard._id = 'b102'
-        jBoard.title = 'Lidorush'
-        let bg = "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/2048x1152/18cb4dc9d683e8775a107e41e54108c2/photo-1672821337870-2180f5223865.jpg"
-        boards.push({ ...jBoard, style: { bg } })
-        jBoard._id = 'b103'
-        jBoard.title = 'Kanban'
-        bg = "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/2386x1600/47f09f0e3910259568294477d0bdedac/photo-1576502200916-3808e07386a5.jpg"
-        boards.push({ ...jBoard, style: { bg } })
-        boards.push(...jBoards)
+        boards = jBoards
         utilService.saveToStorage(STORAGE_KEY, boards)
     }
 }
