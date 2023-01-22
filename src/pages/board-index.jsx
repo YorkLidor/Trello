@@ -12,7 +12,6 @@ import { loadBoards, saveBoard } from "../store/board.actions";
 export function BoardIndex() {
     const boards = useSelector(state => state.boardModule.boards)
     const navigate = useNavigate()
-    console.log('render');
 
     useEffect(() => {
         onLoadBoards()
