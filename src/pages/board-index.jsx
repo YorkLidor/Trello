@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react"
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { BoardPreview } from "../cmps/board-preview";
-import { Bars } from 'react-loader-spinner'
+import { Audio } from 'react-loader-spinner'
 
 import { RxPerson } from 'react-icons/rx'
 
@@ -52,14 +52,15 @@ export function BoardIndex() {
     }
 
     function getLoader() {
+        console.log('loader');
         return <main className="boards-index-container flex column justify-center">
-            <Bars
+            <Audio
                 height="100"
                 width="100"
-                color="#026AA7"
-                ariaLabel="bars-loading"
+                color="#091e4214"
+                ariaLabel="audio-loading"
                 wrapperStyle={{ margin: '0 auto' }}
-                wrapperClass=""
+                wrapperClass="wrapper-class"
                 visible={true}
             />
         </main>
@@ -75,7 +76,7 @@ export function BoardIndex() {
         toggleModal()
     }
 
-    if (!boards) return getLoader()
+    if (!boards || !boards.length) return getLoader()
     else return <main className="boards-index-container">
         <section className="boards-index flex column">
             <header className="main-header">

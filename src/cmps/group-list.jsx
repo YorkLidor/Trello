@@ -1,14 +1,15 @@
-import { useState } from "react";
-import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
-
-import { Group } from "./group";
-import { boardService } from "../services/board.service";
-import { saveBoard, setBoard } from "../store/board.actions";
-import { GroupAdd } from "./group-add";
-import { utilService } from "../services/util.service";
 import { useSelector } from "react-redux";
+
+import { boardService } from "../services/board.service";
+import { utilService } from "../services/util.service";
 import { dndService } from "../services/dnd.service";
+
+import { saveBoard, setBoard } from "../store/board.actions";
 import { useForm } from "../customHooks/useForm";
+
+import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
+import { GroupAdd } from "./group-add";
+import { Group } from "./group";
 
 export function GroupList() {
     const board = useSelector(state => state.boardModule.board)
