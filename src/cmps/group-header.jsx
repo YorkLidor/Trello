@@ -24,6 +24,10 @@ export function GroupHeader({ group, board, onRemoveGroup }) {
         document.execCommand('selectAll', false, null);
     }
 
+    // function toggleModal(ev){
+
+    // }
+
     return <section className="group-header">
         <section
             tabIndex={0}
@@ -39,6 +43,6 @@ export function GroupHeader({ group, board, onRemoveGroup }) {
         >
         </section>
 
-        <button onClick={() => onRemoveGroup(group.id)}>x</button>
+        <button onClick={() => onRemoveGroup(group.id)}>...</button>
     </section>
 }
