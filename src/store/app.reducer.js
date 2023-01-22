@@ -22,7 +22,7 @@ export function appReducer(state = initialState, action) {
         case CLOSE_MODAL:
             return { ...state, app: { ...state.app, isModalOpen: false } }
         case SET_MODAL_DATA:
-            return { ...state, modalData: action.modalData }
+            return { ...state, app: { ...state.app, modalData: action.modalData } }
         default:
             return state
     }

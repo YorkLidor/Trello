@@ -19,7 +19,6 @@ export const MODAL_MEMBER_OPEN = 'MODAL_MEMBER_OPEN'
 
 export function Modal({ cmpProps, cmpType, className }) {
     const isModalOpen = useSelector((storeState) => storeState.appModule.app.isModalOpen)
-
     return isModalOpen && <div className={className ? className : 'modal'}>
         <GetCmp cmpProps={cmpProps} cmpType={cmpType} />
     </div>
@@ -32,14 +31,14 @@ function GetCmp({ cmpProps, cmpType }) {
         case MODAL_ATTACH:
             return <AttachmentModal cmpProps={cmpProps} />
         case BOARD_CREATOR:
-            return <BoardCreator {...cmpProps} />
+            return <BoardCreator cmpProps={cmpProps} />
         case MODAL_ATTACH_EDIT:
             return <AttachmentEditModal cmpProps={cmpProps} />
         case MODAL_ATTACH_OPEN:
             return <AttachmentView cmpProps={cmpProps} />
         case MODAL_MEMBERS:
             return <MemberPicker cmpProps={cmpProps} />
-            case MODAL_MEMBER_OPEN:
+        case MODAL_MEMBER_OPEN:
             return <MemberModal cmpProps={cmpProps} />
         default:
             return ''

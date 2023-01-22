@@ -2,7 +2,7 @@ export function BoardPreview({ board, onBoardClick }) {
 
     return <li
         className={`board-preview ${!board && 'mod-add'}`}
-        onClick={() => onBoardClick(board?._id)}
+        onClick={(ev) => onBoardClick(ev,board?._id)}
         style={board && board.style}
     >
         <span className="board-preview-fade">
