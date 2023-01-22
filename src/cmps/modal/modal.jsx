@@ -2,9 +2,9 @@ import { LabelsPicker } from "./labels-picker"
 import { AttachmentModal } from "./attachment-modal"
 
 import { useSelector } from "react-redux"
-import { BoardCreator } from "./board-creator"
+import { BoardCreator } from "../board-creator"
 import { AttachmentEditModal } from "./attachment-edit-modal"
-import { AttachmentView } from "./attachment-view"
+import { AttachmentView } from "../task-details/attachment/attachment-view"
 
 export const MODAL_LABELS = 'MODAL_LABELS'
 export const MODAL_ATTACH = 'MODAL_ATTACH'

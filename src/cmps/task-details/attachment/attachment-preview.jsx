@@ -10,7 +10,7 @@ export function AttachmentPreview({ attachment, attachmentProps }) {
             <BsArrowUpRight className='attachment-open' />
 
             <span className='attachment-info'>
-                <span className="attachment-date">{new Date(attachment.createdAt).toLocaleDateString()}</span>
+                <span className="attachment-date">Added {new Date(attachment.createdAt).toLocaleDateString()}</span>
                 <span className='attachment-info-break' />
                 <span className="action-attachment" onClick={(ev) => onRemoveAttachment(ev, attachment.id)}>Delete</span>
                 <span className='attachment-info-break' />

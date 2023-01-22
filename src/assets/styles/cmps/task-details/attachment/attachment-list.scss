@@ -1,0 +1,25 @@
+.task-attachment-box {
+    position: relative;
+    margin: 0 0 4px 40px;
+    margin-block-end: 31px;
+}
+
+.attachment-list {
+    padding: 0;
+    list-style: none;
+}
+
+.attach-icon {
+    @include task-details-field-icon;
+    top: 2px;
+}
+
+.nav-btn-txt {
+    margin-inline-start: 8px;
+}
+
+.button-link.add-attachment {
+    font-size: 11px;
+    padding: 6px 12px;
+    width: fit-content;
+}

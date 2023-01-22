@@ -7,6 +7,7 @@ import { FiList } from "react-icons/fi";
 import { IoPricetagOutline } from 'react-icons/io5'
 import { BsFillCircleFill } from 'react-icons/bs'
 import { GrAttachment } from 'react-icons/gr'
+import { AiOutlinePlus } from 'react-icons/ai'
 
 import { Blocks } from "react-loader-spinner";
 
@@ -16,7 +17,7 @@ import { useSelector } from "react-redux";
 
 import { store } from "../store/store";
 import { SET_ACTIVE_BOARD } from "../store/board.reducer";
-import { Modal } from "../cmps/modal";
+import { Modal } from "../cmps/modal/modal";
 import { TOGGLE_MODAL, CLOSE_MODAL, SET_MODAL_DATA } from "../store/app.reducer";
 import { setModalData } from "../store/app.actions"
 
@@ -25,9 +26,10 @@ import {
     MODAL_LABELS,
     MODAL_ATTACH_EDIT,
     MODAL_ATTACH_OPEN
-} from '../cmps/modal.jsx'
+} from '../cmps/modal/modal.jsx'
 
-import { AttachmentList } from "../cmps/attachment-list";
+import { AttachmentList } from "../cmps/task-details/attachment/attachment-list";
+import { CommentList } from "../cmps/task-details/comment-list";
 
 
 export function TaskDetails() {
@@ -46,7 +48,7 @@ export function TaskDetails() {
     const navigate = useNavigate()
     const descToolsRef = useRef()
     const elDescInputRef = useRef()
-
+    
     const elCommentRef = useRef()
     const elCommentInputRef = useRef()
     const commentBtnRef = useRef()
@@ -205,7 +207,7 @@ export function TaskDetails() {
         if (modalType === MODAL_LABELS) props = { groupId, task: taskToEdit }
         else if (modalType === MODAL_ATTACH) props = { boardId, groupId, task: taskToEdit }
         else if (modalType === MODAL_ATTACH_EDIT) props = { boardId, groupId, task: taskToEdit, attachment: ex.attachment }
-        else if (modalType === MODAL_ATTACH_OPEN) props = { deletion: onRemoveAttachment,attachment: ex.attachment }
+        else if (modalType === MODAL_ATTACH_OPEN) props = { deletion: onRemoveAttachment, attachment: ex.attachment }
 
         setModalData(modalType, props)
 
@@ -216,114 +218,113 @@ export function TaskDetails() {
         store.dispatch({ type: TOGGLE_MODAL })
     }
 
-    return (!taskToEdit || !group.current) ? getLoader() : <section className="task-window flex" onClick={backToBoard}>
-        <section className="task-details" onClick={(ev) => ev.stopPropagation()}>
+    return (!taskToEdit || !group.current) ? getLoader() : <>
+        <section className="task-window flex" onClick={backToBoard}>
+            <section className="task-details" onClick={(ev) => ev.stopPropagation()}>
 
-            <div className="task-header">
-                <FaPager className="header-icon task-icon" /><input type='text' className="task-title" defaultValue={taskToEdit.title} onFocus={handleEdit} onBlur={handleEdit} data-type='header' />
-                <p className="header-subtitle">in list <span style={{ textDecoration: 'underline' }}>{group.current.title}</span></p>
-            </div>
+                <div className="task-header">
+                    <FaPager className="header-icon task-icon" /><input type='text' className="task-title" defaultValue={taskToEdit.title} onFocus={handleEdit} onBlur={handleEdit} data-type='header' />
+                    <p className="header-subtitle">in list <span style={{ textDecoration: 'underline' }}>{group.current.title}</span></p>
+                </div>
 
-            <section className="task-main-col">
+                <section className="task-main-col">
 
-                <section className="task-info flex row">
-                    <div className="task-labels-box flex row">
-                        {labels.length > 0 && labels.map(label =>
-                            <button
-                                key={label.id}
-                                style={{ backgroundColor: label.color + '55' }}
-                                className='task-label'
-                                onClick={(ev) => toggleModal(ev, MODAL_LABELS)}
-                            >
+                    <section className="task-info flex row">
+                        <div className="task-labels-box flex row">
 
-                                <BsFillCircleFill
-                                    style={{ color: label.color }}
-                                />
+                            {labels.length > 0 && labels.map(label =>
 
-                                {label.title}
+                                <button key={label.id} style={{ backgroundColor: label.color + '55' }}
+                                    className='task-label' onClick={(ev) => toggleModal(ev, MODAL_LABELS)}
+                                    onMouseEnter={(ev) => ev.target.style.backgroundColor = label.color + '80'}
+                                    onMouseLeave={(ev) => ev.target.style.backgroundColor = label.color + '55'} >
 
-                            </button>)}
+                                    <BsFillCircleFill style={{ color: label.color }} />
+                                    {label.title}
 
-                        {
-                            labels.length > 0 && <button key='add-label' style={{ backgroundColor: '#EAECF0', color: '#172B4D', fontSize: '14px' }}
-                                className='task-label task-add-label' onClick={(ev) => toggleModal(ev, MODAL_LABELS)}>+</button>
-                        }
+                                </button>)}
+
+                            {
+                                labels.length > 0 && <button key='add-label' className='task-label task-add-label' onClick={(ev) => toggleModal(ev, MODAL_LABELS)}>
+                                    <span className='task-label add-label-icon'><AiOutlinePlus /></span>
+                                </button>
+                            }
+                        </div>
+
+                        <div className="task-members-box">
+
+                        </div>
+                    </section>
+
+
+                    <div className="task-description-box flex column">
+                        <GrTextAlignFull className="desc-icon task-icon" />
+
+                        <div className="description-header">
+                            <span className="title-main-col">Description</span>
+                        </div>
+
+
+                        <textarea ref={elDescInputRef} className="task-description" placeholder={'Add a more detailed description...'} defaultValue={taskToEdit.description} onFocus={handleEdit} onBlur={handleEdit} data-type='desc' />
+
+                        <div ref={descToolsRef} className="description-editor-tools">
+                            <button className="save-btn" onClick={onSaveDescription}>Save</button>
+                            <button className="cancel-btn">Cancel</button>
+                        </div>
                     </div>
 
-                    <div className="task-members-box">
+                    {
+                        taskToEdit?.attachments?.length > 0 &&
+                        <div className="task-attachment-box flex column">
+                            <GrAttachment className="attach-icon task-icon" />
+                            <div className="activity-header">
+                                <span className="title-main-col">Attachments</span>
+                            </div>
+                            <AttachmentList task={taskToEdit} attachmentProps={getAttachmentProps()} />
+                            <a className='button-link add-attachment' href='#' onClick={(ev) => toggleModal(ev, MODAL_ATTACH)}>Add an attachment</a>
+                        </div>
+                    }
+
+                    <div className="task-activity-box flex column">
+                        <FiList className="activity-icon task-icon" />
+
+                        <div className="activity-header">
+                            <span className="title-main-col">Activity</span>
+                            <a className='button-link-header' href='#'>Show Details</a>
+                        </div>
+
+
+                        <img className="user-logo" src={user.imgUrl ? user.imgUrl : 'https://res.cloudinary.com/dk2geeubr/image/upload/v1673890694/profileDefault_khqx4r.png'} />
+                        <div className="task-activity" ref={elCommentRef}>
+                            <textarea ref={elCommentInputRef} className="task-activity-input" placeholder={'Write a comment...'} data-type='comment' onFocus={handleEdit} onBlur={handleEdit} />
+                            <button onClick={onSaveComment} className="save-btn comment-btn" ref={commentBtnRef}>Save</button>
+                        </div>
+
 
                     </div>
+
+                    {
+                        /* Task Comments */
+                        <CommentList task={taskToEdit} />
+                    }
                 </section>
 
-
-                <div className="task-description-box flex column">
-                    <GrTextAlignFull className="desc-icon task-icon" />
-
-                    <div className="description-header">
-                        <span className="title-main-col">Description</span>
-                    </div>
-
-
-                    <textarea ref={elDescInputRef} className="task-description" placeholder={'Add a more detailed description...'} defaultValue={taskToEdit.description} onFocus={handleEdit} onBlur={handleEdit} data-type='desc' />
-
-                    <div ref={descToolsRef} className="description-editor-tools">
-                        <button className="save-btn" onClick={onSaveDescription}>Save</button>
-                        <button className="cancel-btn">Cancel</button>
-                    </div>
+                <div className="window-sidebar-box">
+                    <nav className="window-sidebar flex column">
+                        <span className="sidebar-title">Add to card</span>
+                        <a className='button-link' href='#' onClick={(ev) => toggleModal(ev, MODAL_LABELS)}><IoPricetagOutline onClick={(ev) => ev.stopPropagation()} /><span className="nav-btn-txt">Labels</span></a>
+                        <a className='button-link' href='#' onClick={(ev) => toggleModal(ev, MODAL_ATTACH)}><GrAttachment /><span className="nav-btn-txt">Attachment</span></a>
+                    </nav>
                 </div>
 
-                {
-                    taskToEdit && <AttachmentList task={taskToEdit} attachmentProps={getAttachmentProps()} />
-                }
-
-                <div className="task-activity-box flex column">
-                    <FiList className="activity-icon task-icon" />
-
-                    <div className="activity-header">
-                        <span className="title-main-col">Activity</span>
-                        <a className='button-link-header' href='#'>Show Details</a>
-                    </div>
-
-
-                    <img className="user-logo" src={user.imgUrl ? user.imgUrl : 'https://res.cloudinary.com/dk2geeubr/image/upload/v1673890694/profileDefault_khqx4r.png'} />
-                    <div className="task-activity" ref={elCommentRef}>
-                        <textarea ref={elCommentInputRef} className="task-activity-input" placeholder={'Write a comment...'} data-type='comment' onFocus={handleEdit} onBlur={handleEdit} />
-                        <button onClick={onSaveComment} className="save-btn comment-btn" ref={commentBtnRef}>Save</button>
-                    </div>
-
-
-                </div>
-
-                {
-                    /* Task Comments */
-                    taskToEdit.comments?.length && taskToEdit.comments.map(comment => {
-                        return <div className="comments-list" key={comment.id}>
-                            <img className="commentor-logo" src={comment.byMember.imgUrl ? comment.byMember.imgUrl : 'https://res.cloudinary.com/dk2geeubr/image/upload/v1673890694/profileDefault_khqx4r.png'} />
-                            <span className="comment-by-member">{comment.byMember.fullName}</span>
-                            <span className="comment-time">{new Date(+comment.createdAt).toLocaleTimeString()}</span>
-                            <div className="task-activity" ref={elCommentRef}>
-                                <div className="comment-text">{comment.txt}</div>
-                            </div>
-                        </div>
-                    })
-                }
             </section>
 
-            <div className="window-sidebar-box">
-                <nav className="window-sidebar flex column">
-                    <span className="sidebar-title">Add to card</span>
-                    <a className='button-link' href='#' onClick={(ev) => toggleModal(ev, MODAL_LABELS)}><IoPricetagOutline onClick={(ev) => ev.stopPropagation()} />  Labels</a>
-                    <a className='button-link' href='#' onClick={(ev) => toggleModal(ev, MODAL_ATTACH)}><GrAttachment /> Attachment</a>
-                </nav>
-            </div>
 
-        </section>
-
+        </section >
         <div ref={modalBoxRef} className='modal-container' onClick={(ev) => ev.stopPropagation()}>
             {
                 modalData && <Modal cmpProps={modalData.props} cmpType={modalData.cmpType} className={modalData.className} />
             }
         </div>
-
-    </section >
+    </>
 }

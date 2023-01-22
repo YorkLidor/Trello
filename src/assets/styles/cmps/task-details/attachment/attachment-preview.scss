@@ -5,6 +5,10 @@
     min-height: 80px;
     margin: 0 0 8px;
     border-radius: 3px;
+
+    &:hover{
+        background-color: $btn-background-cyan;
+    }
 }
 
 
@@ -16,8 +20,9 @@
     position: absolute;
     margin-block-start: -40px;
     left: 0;
-    text-align: center;
     top: 50%;
+    
+    text-align: center;
     border-radius: 3px;
 }
 
@@ -30,14 +35,15 @@
 
 .attachment-filename {
     word-wrap: break-word;
-    font-weight: 700;
+    font-weight: 650;
+    font-size: 13px;
 }
 
 .attachment-open {
-    height: 12px;
-    width: 12px;
+    height: 8px;
+    width: 8px;
     line-height: 20px;
-    margin: 0px 6px;
+    margin: 0px 7px;
     vertical-align: text-middle;
 }
 
@@ -45,6 +51,8 @@
     display: block;
     margin-block-end: 8px;
     color: #65738A;
+
+    font-size: 11px;
 }
 
 

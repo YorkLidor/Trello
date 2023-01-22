@@ -1,6 +1,6 @@
 import { SET_MODAL_DATA } from "./app.reducer"
 import { store } from "./store"
-import {MODAL_ATTACH, MODAL_LABELS, MODAL_ATTACH_EDIT, MODAL_ATTACH_OPEN} from '../cmps/modal.jsx'
+import {MODAL_ATTACH, MODAL_LABELS, MODAL_ATTACH_EDIT, MODAL_ATTACH_OPEN} from '../cmps/modal/modal.jsx'
 
 export function setModalData(modalType, props) {
     let newModalData
@@ -29,7 +29,7 @@ export function setModalData(modalType, props) {
             break
         case MODAL_ATTACH_OPEN:
             newModalData = {
-                className: ' ',
+                className: 'attach-viewer-modal',
                 cmpType: MODAL_ATTACH_OPEN,
                 props
             }

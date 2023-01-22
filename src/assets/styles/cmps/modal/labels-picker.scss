@@ -91,13 +91,13 @@
 
     .remove-color {
         @include labels-picker-main-button;
-        margin-block-end: 25px;
+        margin-block-end: 24px;
     }
 
     .remove-color-icon {
-        height: 13px;
-        width: 13px;
-        vertical-align: middle;
+        height: 12px;
+        width: 12px;
+        vertical-align: baseline;
         font-weight: 900;
         margin-inline-start: 2px;
         margin-inline-end: 4px;
@@ -112,13 +112,13 @@
         font-size: 12px;
         font-weight: 600;
         line-height: 16px;
-        margin: 2px 0px 8px;
+        margin: 12px 0px 8px;
     }
 
     .label-editor-title {
         width: 100%;
-        margin-inline-start: 2px;
-        margin-block-end: 5px;
+        font-size: 14px;
+        margin: 0;
     }
 
     .label-editor-title:focus {
@@ -144,19 +144,27 @@
 }
 
 .color-tab-wrapper {
-    height: 32px;
-    padding: 1.5px;
+    width: 100%;
+    inset: 0;
+    border: 2px solid #FFF;
 
     .color-tab {
+        margin: 0px;
+        height: 28px;
         border-radius: 3px;
         cursor: pointer;
-        height: 100%;
-        width: 100%;
     }
 
     &.active-color {
         border-radius: 3px;
         border: 2px solid #0079BF;
+
+        .color-tab {
+            margin: 2px;
+            border-radius: 0px;
+            height: 24px;
+
+        }
     }
 }
 
@@ -170,12 +178,14 @@
 
 
 .create-label {
-    @include labels-picker-main-button
+    @include labels-picker-main-button;
+    padding: 6.5px 12px;
 }
 
 .delete-label {
     @include button-filled($button-filled , #FFF);
     background-color: #B04632;
+    padding: 6.5px 12px;
 
     &:hover {
         background-color: #933B27;
@@ -183,23 +193,31 @@
 }
 
 .label-editor-preview-box {
-    margin-block: 8px;
-    padding: 32px 16px 34px 24px;
+    margin: 8px -12px 5px;
+    padding: 32px;
 
     .label-editor-preview {
 
         @include label-preview;
-        margin-inline-start: 1px;
+        margin: 0 0 0 0;
         display: block;
 
+        padding: 0 12px 0 15px;
+
         .label-title-editor-preview {
-            margin-inline-start: 7px;
+            margin-inline-start: 8px;
         }
 
         .label-circle {
-            margin-inline-start: -5px;
+            margin-inline-start: -8px;
             font-size: 17px;
             vertical-align: text-bottom;
         }
     }
+}
+
+.delete-msg {
+    margin-block: 8px;
+    font-size: 14px;
+    line-height: 20px;
 }

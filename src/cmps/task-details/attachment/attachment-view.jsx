@@ -1,13 +1,13 @@
 import { AiOutlineClose } from 'react-icons/ai'
 import { BsArrowUpRight } from 'react-icons/bs'
 
-import { CLOSE_MODAL } from '../store/app.reducer'
-import { store } from '../store/store'
+import { CLOSE_MODAL } from '../../../store/app.reducer'
+import { store } from '../../../store/store'
 
 import { useState } from 'react'
 
 export function AttachmentView({ cmpProps }) {
-    const { attachment, onRemoveAttachment } = cmpProps
+    const { attachment, deletion: onRemoveAttachment } = cmpProps
     const [deleteState, setDeleteState] = useState(false)
 
     function toggleDelete(state) {
@@ -20,11 +20,14 @@ export function AttachmentView({ cmpProps }) {
     }
 
     return <div className="attachment-viewer" onClick={() => store.dispatch({ type: CLOSE_MODAL })}>
-
-        <div className="attachment-viewer-preview">
+        <div className='attach-viewer-closer-layout'>
             <AiOutlineClose className='close-attach-viewer' onClick={() => store.dispatch({ type: CLOSE_MODAL })} />
-            <div className='viewer-img-container'>
-            <img className="attachment-viewer-img" src={attachment.url} onClick={(ev) => ev.stopPropagation()} />
+        </div>
+        <div className='viewer-scroller'>
+            <div className="attachment-viewer-preview">
+                <div className='viewer-img-container'>
+                    <img className="attachment-viewer-img" src={attachment.url} onClick={(ev) => ev.stopPropagation()} />
+                </div>
             </div>
         </div>
 

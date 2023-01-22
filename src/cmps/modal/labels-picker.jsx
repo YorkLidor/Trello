@@ -2,7 +2,7 @@
 import { useState, useRef, useEffect } from 'react'
 import { GrFormEdit } from 'react-icons/gr'
 
-import { boardService } from '../services/board.service'
+import { boardService } from '../../services/board.service'
 
 import { AiOutlineClose } from 'react-icons/ai'
 import { BsFillCircleFill } from 'react-icons/bs'
@@ -11,8 +11,8 @@ import { ImCheckboxChecked, ImCheckboxUnchecked } from 'react-icons/im'
 
 
 import { useSelector } from 'react-redux'
-import { store } from '../store/store'
-import { CLOSE_MODAL } from '../store/app.reducer'
+import { store } from '../../store/store'
+import { CLOSE_MODAL } from '../../store/app.reducer'
 
 
 export function LabelsPicker({ cmpProps }) {
@@ -121,7 +121,7 @@ export function LabelsPicker({ cmpProps }) {
     }
 
     function saveTask(action) {
-        const activity =  boardService.getActivity(member, { id: task.id, title: task.title }, action)
+        const activity = boardService.getActivity(member, { id: task.id, title: task.title }, action)
         boardService.saveTask(boardId, groupId, task, activity)
     }
 
@@ -220,7 +220,7 @@ export function LabelsPicker({ cmpProps }) {
             </section>
         </div>
         <div className='delete-label-msg' ref={deleteScreenRef}>
-            <p>
+            <p className='delete-msg'>
                 This will remove this label from all cards.
                 There is no undo.
             </p>

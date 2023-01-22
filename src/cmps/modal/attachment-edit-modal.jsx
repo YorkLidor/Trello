@@ -1,7 +1,7 @@
-import { boardService } from '../services/board.service'
-import { uploadImg } from '../services/upload-img.service'
-import { CLOSE_MODAL } from '../store/app.reducer'
-import { store } from '../store/store'
+import { boardService } from '../../services/board.service'
+import { uploadImg } from '../../services/upload-img.service'
+import { CLOSE_MODAL } from '../../store/app.reducer'
+import { store } from '../../store/store'
 import { AiOutlineClose } from 'react-icons/ai'
 import { useRef } from 'react'
 

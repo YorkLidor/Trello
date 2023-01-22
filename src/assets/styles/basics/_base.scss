@@ -7,19 +7,26 @@
 //     color: $clr6;
 // }
 
+html, body, #root {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+}
+
 html {
-    // font-family: -apple-system, BlinkMacSystemFont, segoe UI, roboto, noto-sans, ubuntu, droid-sans, helvetica-neue, sans-serif;
-    font-family: Charlie;
+    font-family: -apple-system, BlinkMacSystemFont, segoe UI, roboto, noto-sans, ubuntu, droid-sans, helvetica-neue, sans-serif;
+    // font-family: Charlie;
     line-height: 1.6;
 }
 
 body {
-    height: 100vh;
+    min-height: 100%;
     font-size: rem(16px);
     margin: 0;
     margin: auto;
     background-color: #fff;
     color: #FFF;
+    overflow-y: hidden;
 
     &>* {
         height: calc(100% - 44px);

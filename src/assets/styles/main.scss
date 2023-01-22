@@ -41,16 +41,19 @@
 //label-picker CMP
 
 // Attachments
-@import "cmps/attachment-preview.scss";
-@import "cmps/attachment-list.scss";
-
-@import 'cmps/modals/attachment-edit-modal.scss';
-@import "cmps/modals/attachment-modal.scss";
-@import "cmps/modals/attachment-view.scss";
-@import "cmps/modals/labels-picker.scss";
+@import "cmps/task-details/attachment/attachment-preview.scss";
+@import "cmps/task-details/attachment/attachment-list.scss";
+@import "cmps/task-details/attachment/attachment-view.scss";
+@import "cmps/task-details/comment-preview.scss";
 
 
-@import "cmps/modals/modal.scss";
+
+@import 'cmps/modal/attachment-edit-modal.scss';
+@import "cmps/modal/attachment-modal.scss";
+@import "cmps/modal/labels-picker.scss";
+
+
+@import "cmps/modal/modal.scss";
 
 
 

@@ -1,5 +1,8 @@
 .modal-container{
     position: fixed;
+    &:has(.attach-viewer-modal) {
+        height: 100%;
+    }
 }
 
 .modal {
@@ -32,4 +35,8 @@
 
 .close-modal {
     @include close-modal;
+}
+
+.attach-viewer-modal {
+    height: 100%;
 }

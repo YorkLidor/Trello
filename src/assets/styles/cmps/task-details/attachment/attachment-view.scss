@@ -2,51 +2,76 @@
     position: fixed;
     top: 0;
     right: 0;
+    bottom: 0;
+    right: 0;
 
-    width: 100vw;
-    height: 100vh;
-    margin-inline: 24px;
     transition: transform .15s;
 
     background-color: #000000a3;
     z-index: 12;
-}
 
-.attachment-viewer-preview {
-    position: relative;
-    margin-inline: 24px;
+    width: 100%;
 
-
-    .close-attach-viewer {
-        cursor: pointer;
-        color: #9EA0A3;
-        position: absolute;
-        right: 0;
+    .attach-viewer-closer-layout {
+        position: fixed;
         top: 0;
-        transition-duration: .15s;
-        transition-property: transform, color;
+        right: 0;
+        height: 48px;
+        width: 100%;
+        z-index: 40;
 
 
-        height: 18px;
-        width: 18px;
+        & .close-attach-viewer {
+            cursor: pointer;
+            color: #9EA0A3;
 
-        &:hover {
-            color: #FFFFFF;
-            transform: scale(1.2);
+            transition-duration: .15s;
+            transition-property: transform, color;
+
+
+            height: 18px;
+            width: 18px;
+
+            position: absolute;
+            top: 0;
+            right: 0;
+            margin: 9px;
+
+
+            &:hover {
+                color: #FFFFFF;
+                transform: scale(1.2);
+            }
         }
     }
+}
+
+.viewer-scroller {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+
+    margin: 48px 8px 112px 24px;
 
 
+    max-width: 100%;
+
+    @include scrollbar;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+
+    .attachment-viewer-preview {
+        margin-inline-end: 20px;
+        height: auto;
+    }
 }
 
 .viewer-img-container {
-    overflow-y: auto;
-    overflow-x: hidden;
-    padding: 48px 24px 112px;
+    position: relative;
 
     .attachment-viewer-img {
         max-width: 100%;
-        height: auto;
         border-radius: 3px;
         z-index: 12;
 
@@ -69,14 +94,13 @@
 
     text-align: center;
     place-content: center;
-
-
-
+    background-color: #000000a3;
+    z-index: 13;
 
     .attach-viewer-filename {
         display: block;
         margin: 0 0 6px;
-        font-size: 18px;
+        font-size: 20px;
         line-height: 22px;
     }
 

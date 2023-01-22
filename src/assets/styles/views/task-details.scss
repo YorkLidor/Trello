@@ -8,18 +8,26 @@
     justify-content: center;
     background-color: #000000a3;
     padding: 0;
+
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    @include scrollbar;
 }
 
 .task-details {
+
     color: $clr_font_blue;
     background-color: #FFFFFF;
 
     max-width: 768px;
-    min-height: 600px;
+    min-height: 800px;
+
     padding: 0px;
-    overflow: hidden visible;
     margin: 48px 0 80px;
     padding-block-start: 12px;
+
+
 }
 
 .task-icon {
@@ -66,7 +74,7 @@
 
         height: 32px;
         color: #172b4d;
-        
+
 
         &.is-editing {
             box-shadow: 0 0 0 2px $color_input_shadow;
@@ -81,6 +89,8 @@
         margin: 0px;
 
         line-height: 20px;
+
+        color: #5E6C84;
 
 
     }
@@ -119,11 +129,7 @@
     margin-block-end: 31px;
 
     .desc-icon {
-        position: absolute;
-        left: -33px;
-        top: 5px;
-
-
+        @include task-details-field-icon;
     }
 
     .description-header {
@@ -165,6 +171,7 @@
 
 .description-editor-tools {
     margin: 8px 0 0;
+
     &.show {
         display: block;
     }
@@ -177,10 +184,8 @@
     margin: 0 0 4px 40px;
 
     .activity-icon {
-        position: absolute;
-        left: -33px;
-        top: 5px;
-
+        @include task-details-field-icon;
+        top: 6px;
         height: 23px;
     }
 
@@ -197,30 +202,25 @@
     }
 }
 
-
 .task-activity {
-
-    font-size: 14px;
-    border-radius: 3px;
-    padding: 8px 12px;
-    box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 2px -1px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
-    
-    &.comment-typing {
-        box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
-    }
-    
+    @include text-area-form;
     .task-activity-input {
         outline: none;
         resize: none;
         border: none;
         line-height: 20px;
-        height: fit-content;
+        height: auto;
         width: 100%;
-    }
-}
 
-.commentor-logo {
-    @include user-logo-circle
+        font-size: 14px;
+        vertical-align: center;
+        margin: -8px -12px -6px;
+        padding: 8px 12px 0;
+    }
+
+    &.comment-typing {
+        box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+    }
 }
 
 
@@ -243,13 +243,14 @@
     .sidebar-title {
         font-weight: 600;
         font-size: 12px;
-        color: #5e6c84;
+        color: #66748B;
     }
 }
 
 .button-link {
     @include task-nav-button;
     position: relative;
+
     &-header {
         @include task-nav-button;
         margin: 0 0 0 8px;
@@ -301,14 +302,17 @@
 
 .comment-btn {
     display: none;
+    margin-block-end: 8px;
+
     &.show {
         display: block;
     }
 }
 
-.task-info{
+.task-info {
     flex-wrap: wrap;
 }
+
 .task-labels-box {
     max-width: 100%;
     flex-wrap: wrap;
@@ -318,11 +322,31 @@
 .task-label {
     @include label-preview;
 
-    &.task-add-label{
+
+    &.task-add-label {
         text-align: center;
+        background-color: #EAECF0;
+        color: #172B4D;
+        min-width: 32px;
+        padding: 8px;
+
+        &:hover {
+            background-color: #e2e5e9;
+        }
+
+    }
+
+    &.add-label-icon {
+        padding: 0px;
+        height: 16px;
+        max-width: 16px;
+
+        margin-inline-end: -32px;
+
+
     }
 }
 
-.task-label::before{
+.task-label::before {
     @include label-preview-before;
 }
