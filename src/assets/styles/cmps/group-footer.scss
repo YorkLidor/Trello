@@ -3,7 +3,8 @@
 
     .add-card-container {
         color: var(--ds-text-subtle, #5e6c84);
-        flex: 1 0 auto;
+        display: inline-flex;
+        align-items: center;
         margin: -1px 0px 8px 0px;
         padding: 4px 8px;
         display: none;
@@ -74,7 +75,7 @@
         }
 
         .add-card-container {
-            display: block;
+            display: inline-flex;
         }
     }
 }
