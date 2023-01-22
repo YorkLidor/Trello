@@ -7,14 +7,18 @@ export function GroupAdd({ onAddGroup, handleChange, groupToEdit }) {
     const [isIdleClass, setIsIdle] = useState('is-idle')
     const isLoading = useRef(false)
 
-    async function onSubmitForm(ev){
+    async function onSubmitForm(ev) {
         ev.preventDefault()
-        if(isLoading.current === true) return
+        if (isLoading.current) return
         isLoading.current = true
-        const isEmpty = await onAddGroup(ev)
-        if(isEmpty) return
-        isLoading.current = false
-        setIsIdle('is-idle')
+        try {
+            await onAddGroup(ev)
+            setIsIdle('is-idle')
+        } catch (err) {
+            console.error('somthing went wrong:', err.message)
+        } finally {
+            isLoading.current = false
+        }
     }
 
     return <li className={`group-item-container mod-add ${isIdleClass}`}>

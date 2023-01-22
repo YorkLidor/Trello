@@ -21,7 +21,7 @@ export function BoardIndex() {
     useEffect(() => {
         onLoadBoards()
 
-        return closeModal
+        return () => closeModal()
     }, [])
 
     async function onLoadBoards() {

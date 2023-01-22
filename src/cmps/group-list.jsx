@@ -7,22 +7,24 @@ import { saveBoard, setBoard } from "../store/board.actions";
 import { GroupAdd } from "./group-add";
 import { utilService } from "../services/util.service";
 import { useSelector } from "react-redux";
+import { dndService } from "../services/dnd.service";
+import { useForm } from "../customHooks/useForm";
 
 export function GroupList() {
     const board = useSelector(state => state.boardModule.board)
-    const [groupToEdit, setGroupToEdit] = useState(boardService.getEmptyGroup())
+    const [groupToEdit, setGroupToEdit, handleChange] = useForm(boardService.getEmptyGroup())
+
 
     async function onAddGroup(ev) {
         ev.preventDefault()
-        if (!groupToEdit.title) return true
+        if (!groupToEdit.title) throw new Error('Must enter title!')
         try {
             board.groups.push(groupToEdit)
             await saveBoard({ ...board })
-            setBoard({ ...board })
             setGroupToEdit(boardService.getEmptyGroup())
-            return 'done'
         } catch (err) {
             console.log('err', err)
+            throw err
         }
     }
 
@@ -35,35 +37,31 @@ export function GroupList() {
         }
     }
 
-    function handleChange(ev) {
-        const { value } = ev.target
-        setGroupToEdit({ ...groupToEdit, title: value })
-    }
-
     function onDragEnd({ source, destination, type }) {
         if (!destination) return
+        const { droppableId: destinationId, index: destinationIdx } = destination
+        const { droppableId: sourceId, index: sourceIdx } = source
+
 
         if (type === 'task-list') {
-            const groupToEdit = board.groups.find(group => group.id === destination.droppableId)
-            const groupFrom = board.groups.find(group => group.id === source.droppableId)
-            const tasks = groupToEdit.tasks
+            const sourceGroups = boardService.getGroupById(board, destinationId)
+            const destinationGroups = boardService.getGroupById(board, sourceId)
+            const tasks = sourceGroups.tasks
 
-            if (source.droppableId === destination.droppableId) {
-                groupToEdit.tasks = utilService.reorder(tasks, source.index, destination.index)
+            if (sourceId === destinationId) {
+                sourceGroups.tasks = utilService.reorder(tasks, sourceIdx, destinationIdx)
             } else {
-                const deletedTask = groupFrom.tasks.splice(source.index, 1)
-                groupToEdit.tasks.push(...deletedTask)
-                groupToEdit.tasks = utilService.reorder(tasks, tasks.length - 1, destination.index)
+                sourceGroups.tasks = dndService.swapItemBetweenLists(destinationGroups, sourceGroups, sourceIdx, destinationIdx)
             }
-        } else {
-            board.groups = utilService.reorder(board.groups, source.index, destination.index)
+        } else if (type === 'group-list') {
+            board.groups = utilService.reorder(board.groups, sourceIdx, destinationIdx)
         }
         setBoard({ ...board })
         saveBoard({ ...board })
     }
 
     return <DragDropContext onDragEnd={onDragEnd} >
-        <Droppable droppableId={board._id} direction='horizontal' type="grooup-list">
+        <Droppable droppableId={board._id} direction='horizontal' type="group-list">
             {provided =>
                 <ul className="group-list-container" ref={provided.innerRef}>
                     {

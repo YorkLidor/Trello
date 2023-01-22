@@ -24,7 +24,8 @@ export const boardService = {
     getLabelDeaultColor,
     saveBoardLabel,
     removeBoardLabel,
-    getAttachment
+    getAttachment,
+    getGroupById
 }
 
 async function query(filterBy = grtDefaultFilter()) {
@@ -167,4 +168,8 @@ function getAttachment(url, filename) {
         filename,
         createdAt: Date.now()
     }
+}
+
+function getGroupById(board, groupId) {
+    return board.groups.find(group => group.id === groupId)
 }
