@@ -158,11 +158,7 @@
         font-family: unset;
         min-height: 40px;
 
-        &.is-editing {
-            background-color: #FFFFFF;
-            box-shadow: 0 0 0 2px #0079bf;
-            height: 223px;
-        }
+
 
         &.filled {
             background-color: #FFF;
@@ -172,16 +168,19 @@
             margin-block-start: -3px;
             margin-block-end: -23px;
 
+            &.is-editing {
+                background-color: #FFFFFF;
+                box-shadow: 0 0 0 2px #0079bf;
+                height: 223px;
+                padding: 8px 12px 0 12px;
+            }
         }
     }
 
-    .description-editor-tools {
-        display: none;
-    }
 }
-
 .description-editor-tools {
     margin: 8px 0 0;
+    display: none;
 
     &.show {
         display: block;
