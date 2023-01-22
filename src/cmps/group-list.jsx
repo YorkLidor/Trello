@@ -14,11 +14,13 @@ export function GroupList() {
 
     async function onAddGroup(ev) {
         ev.preventDefault()
+        if(!groupToEdit.title) return true
         try {
             board.groups.push(groupToEdit)
             await saveBoard({ ...board })
             setBoard({ ...board })
             setGroupToEdit(boardService.getEmptyGroup())
+            return 'done' 
         } catch (err) {
             console.log('err', err)
         }

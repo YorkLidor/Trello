@@ -39,6 +39,6 @@ export function GroupHeader({ group, board, onRemoveGroup }) {
         >
         </section>
 
-        <button onClick={() => onRemoveGroup(group.id)}>...</button>
+        <button onClick={() => onRemoveGroup(group.id)}>x</button>
     </section>
 }
