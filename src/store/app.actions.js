@@ -6,7 +6,8 @@ import {
     MODAL_ATTACH_EDIT,
     MODAL_ATTACH_OPEN,
     MODAL_MEMBERS,
-    MODAL_MEMBER_OPEN
+    MODAL_MEMBER_OPEN,
+    BOARD_CREATOR
 } from '../cmps/modal/modal.jsx'
 
 export function setModalData(modalType, props) {
@@ -54,7 +55,16 @@ export function setModalData(modalType, props) {
                 cmpType: MODAL_MEMBER_OPEN,
                 props
             }
-            break
+            break;
+        case BOARD_CREATOR:
+            newModalData = {
+                className: 'modal',
+                cmpType: BOARD_CREATOR,
+                props
+            }
+            break;
+        default:
+            break;
     }
     store.dispatch({ type: SET_MODAL_DATA, modalData: newModalData })
 }

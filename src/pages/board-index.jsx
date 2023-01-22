@@ -8,10 +8,18 @@ import { RxPerson } from 'react-icons/rx'
 
 import { boardService } from "../services/board.service"
 import { loadBoards, saveBoard } from "../store/board.actions";
+import { setModalData } from "../store/app.actions"
+import { BOARD_CREATOR, Modal } from "../cmps/modal/modal";
+import { utilService } from "../services/util.service";
+import { store } from "../store/store";
+import { CLOSE_MODAL, TOGGLE_MODAL } from "../store/app.reducer";
 
 export function BoardIndex() {
     const boards = useSelector(state => state.boardModule.boards)
+    const elModal = useRef()
     const navigate = useNavigate()
+    const modalData = useSelector((storeState) => storeState.appModule.app.modalData)
+
 
     useEffect(() => {
         onLoadBoards()
@@ -25,19 +33,18 @@ export function BoardIndex() {
         }
     }
 
-    function onBoardClick(boardId) {
+    function onBoardClick(ev, boardId) {
         if (boardId) navigate(`/board/${boardId}`)
-        else onCreateBoard()
+        else onToggleModal(ev)
     }
 
-    function onCreateBoard() {
-        const boardToEdit = boardService.getEmptyBoard()
-        boardToEdit.title = prompt("Enter Title:")
-        if (boardToEdit.title) onSaveBoard(boardToEdit)
+    function onCreateBoard(ev, board) {
+        if (board.title) onSaveBoard(board)
     }
 
     async function onSaveBoard(board) {
         try {
+            store.dispatch({ type: CLOSE_MODAL })
             await saveBoard(board)
             console.log('Board Saved successesfuly')
         } catch (err) {
@@ -57,6 +64,17 @@ export function BoardIndex() {
                 visible={true}
             />
         </main>
+    }
+
+    function onToggleModal({ target }) {
+        const props = { onBoardClick, onCreateBoard }
+        setModalData(BOARD_CREATOR, props)
+        const pos = utilService.getElementPosition(target)
+        elModal.current.style.top = pos.top + 'px'
+        elModal.current.style.left = pos.right + 'px'
+
+        store.dispatch({ type: TOGGLE_MODAL })
+        console.log('toggle', modalData)
     }
 
     if (!boards) return getLoader()
@@ -79,5 +97,10 @@ export function BoardIndex() {
                 </ul>
             </section>
         </section>
+        <div className="modal-container" ref={elModal}>
+            {
+                modalData && <Modal cmpProps={modalData.props} cmpType={modalData.cmpType} className={modalData.className} />
+            }
+        </div>
     </main >
 }

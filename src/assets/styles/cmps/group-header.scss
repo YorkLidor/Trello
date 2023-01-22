@@ -38,7 +38,10 @@
         justify-content: center;
         line-height: 20px;
         width: 32px;
-        // font-weight: 600;
+
+        &:hover{
+            background-color: $clr22;
+        }
     }
 
 }
