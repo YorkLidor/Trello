@@ -20,7 +20,7 @@
     color: $clr_font_blue;
     background-color: #FFFFFF;
 
-    max-width: 768px;
+    width: 768px;
     min-height: 800px;
 
     padding: 0px;
@@ -127,7 +127,7 @@
 
     .desc-icon {
         @include task-details-field-icon;
-        top: 8px;
+        top: 7px;
         left: -36px;
 
         width: 22px;
@@ -158,21 +158,29 @@
         font-family: unset;
         min-height: 40px;
 
-        &.is-editing {
-            background-color: #FFFFFF;
-            box-shadow: 0 0 0 2px #0079bf;
-            height: 223px;
 
+
+        &.filled {
+            background-color: #FFF;
+            padding: 0px;
+            min-height: unset;
+            line-height: initial;
+            margin-block-start: -3px;
+            margin-block-end: -23px;
+
+            &.is-editing {
+                background-color: #FFFFFF;
+                box-shadow: 0 0 0 2px #0079bf;
+                height: 223px;
+                padding: 8px 12px 0 12px;
+            }
         }
     }
 
-    .description-editor-tools {
-        display: none;
-    }
 }
-
 .description-editor-tools {
     margin: 8px 0 0;
+    display: none;
 
     &.show {
         display: block;
@@ -324,17 +332,25 @@
     gap: 4px;
 }
 
+
+
+.task-label::before {
+    content: '';
+    position: absolute;
+    top: 6px;
+    bottom: 6px;
+    left: 6px;
+    border-radius: 50%;
+}
+
 .task-label {
     @include task-details-list;
 }
 
-.task-label::before {
-    @include label-preview-before;
-}
-
 .task-info {
     margin-inline-start: 40px;
-    margin-block-start: 8px;
+    margin-block-start: 7px;
+    margin-block-end: 13px;
     flex-wrap: wrap;
     padding: 0;
 

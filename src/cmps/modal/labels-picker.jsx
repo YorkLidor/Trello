@@ -220,7 +220,7 @@ export function LabelsPicker({ cmpProps }) {
 
             </section>
         </div>
-        <div className=' ' ref={deleteScreenRef}>
+        <div className='delete-label-msg' ref={deleteScreenRef}>
             <p className='delete-msg'>
                 This will remove this label from all cards.
                 There is no undo.
