@@ -1,16 +1,20 @@
 .group-footer-container {
-
+    padding: 0;
 
     .add-card-container {
-        color: var(--ds-text-subtle, #5e6c84);
-        flex: 1 0 auto;
-        margin: -1px 0px 8px 0px;
+        color: #5e6c84;
+        display: inline-flex;
+        align-items: center;
+        margin: 2px 0 8px 8px;
         padding: 4px 8px;
         display: none;
+        width: calc(100% - 16px);
+        border-radius: 3px;
 
         .add-icon-container {
             color: var(--ds-icon-subtle, #6b778c);
             margin-right: 2px;
+            height: 20px;
 
             .add-icon {
                 font-size: 16px;
@@ -18,7 +22,8 @@
         }
 
         .add-txt-container {
-            font-size: 15px;
+            font-size: rem(14px);
+            height: 19px;
         }
 
         &:hover {
@@ -74,7 +79,7 @@
         }
 
         .add-card-container {
-            display: block;
+            display: inline-flex;
         }
     }
 }
