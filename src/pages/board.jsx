@@ -6,7 +6,6 @@ import { Blocks } from 'react-loader-spinner'
 import { BoardHeader } from "../cmps/board-header";
 import { GroupList } from "../cmps/group-list";
 import { boardService } from "../services/board.service";
-import { useSelector } from "react-redux";
 import { setBoard } from "../store/board.actions";
 import { useEffectUpdate } from "../customHooks/useEffectUpdate";
 

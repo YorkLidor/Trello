@@ -2,6 +2,7 @@ import { useForm } from "../customHooks/useForm"
 import { boardService } from "../services/board.service"
 import { CLOSE_MODAL } from "../store/app.reducer"
 import { store } from "../store/store"
+import { AiOutlineClose } from "react-icons/ai";
 
 export function BoardCreator({ cmpProps }) {
     const [boardToEdit, setBoardToEdit, handleChange] = useForm(boardService.getEmptyBoard())
@@ -16,17 +17,34 @@ export function BoardCreator({ cmpProps }) {
     return <section className="board-creator">
         <header className="creator-header">
             <h2 className="creator-title">Create board</h2>
-            <button className="btn-remove" onClick={() => store.dispatch({ type: CLOSE_MODAL })}>X</button>
+            <button
+                className="btn-remove"
+                onClick={() => store.dispatch({ type: CLOSE_MODAL })}
+            >
+                <AiOutlineClose />
+            </button>
         </header>
-        <div>
-            <div>
-                <img src="" alt="" />
+
+        <main className="creator-body">
+            <div className="board-skeleton-container">
+                <div className="board-preview-skeleton-background">
+                    <img src="https://a.trellocdn.com/prgb/assets/images/board-preview-skeleton.14cda5dc635d1f13bc48.svg" alt="" />
+                </div>
             </div>
-            <form action="" onSubmit={createBoard} className="creator-form">
-                <label htmlFor="title" className="creator-label">Board title</label>
-                <input onChange={handleChange} className="title-input" id="title" type="text" name="title" value={boardToEdit.title} />
-                <button className="btn-create">Create</button>
-            </form>
-        </div>
+
+            <div>
+                <form action="" onSubmit={createBoard} className="creator-form">
+                    <label 
+                    htmlFor="title" 
+                    className="creator-label"
+                    >
+                        Board title
+                        <span className="star">*</span>
+                        </label>
+                    <input onChange={handleChange} className="title-input" id="title" type="text" name="title" value={boardToEdit.title} />
+                    <button className="btn-create">Create</button>
+                </form>
+            </div>
+        </main>
     </section>
 }

@@ -89,7 +89,7 @@
     width: $width;
 }
 
-@mixin button-filled($color, $text-color) {
+@mixin button-filled($color: rgba(9, 30, 66, 0.04), $text-color: #172b4d) {
     display: inline-flex;
     font-family: inherit;
     background-color: $color;
@@ -104,7 +104,7 @@
     transition-duration: 85ms;
 
     &:hover {
-        background-color: darken($color, 10%);
+        background-color: opacify($color, .08);
     }
 }
 
