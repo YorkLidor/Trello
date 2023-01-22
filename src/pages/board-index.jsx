@@ -6,7 +6,6 @@ import { Bars } from 'react-loader-spinner'
 
 import { RxPerson } from 'react-icons/rx'
 
-import { boardService } from "../services/board.service"
 import { loadBoards, saveBoard } from "../store/board.actions";
 import { setModalData } from "../store/app.actions"
 import { BOARD_CREATOR, Modal } from "../cmps/modal/modal";
