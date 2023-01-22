@@ -6,7 +6,7 @@ import { store } from "../store/store"
 export function BoardCreator({ cmpProps }) {
     const [boardToEdit, setBoardToEdit, handleChange] = useForm(boardService.getEmptyBoard())
     console.log('onCreateBoard:', cmpProps.onCreateBoard)
-    function createBoard(ev){
+    function createBoard(ev) {
         store.dispatch({ type: CLOSE_MODAL })
         console.log('boardToEdit:', boardToEdit)
         ev.preventDefault()
@@ -16,7 +16,7 @@ export function BoardCreator({ cmpProps }) {
     return <section className="board-creator">
         <header className="creator-header">
             <h2 className="creator-title">Create board</h2>
-            <button className="btn-remove">X</button>
+            <button className="btn-remove" onClick={() => store.dispatch({ type: CLOSE_MODAL })}>X</button>
         </header>
         <div>
             <div>

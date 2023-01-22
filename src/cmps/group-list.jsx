@@ -14,13 +14,13 @@ export function GroupList() {
 
     async function onAddGroup(ev) {
         ev.preventDefault()
-        if(!groupToEdit.title) return true
+        if (!groupToEdit.title) return true
         try {
             board.groups.push(groupToEdit)
             await saveBoard({ ...board })
             setBoard({ ...board })
             setGroupToEdit(boardService.getEmptyGroup())
-            return 'done' 
+            return 'done'
         } catch (err) {
             console.log('err', err)
         }
@@ -73,7 +73,7 @@ export function GroupList() {
                                 key={group.id}
                                 index={idx}
                             >
-                                {provided =>
+                                {(provided, snapshot) =>
                                     <div
                                         ref={provided.innerRef}
                                         {...provided.draggableProps}
@@ -85,6 +85,7 @@ export function GroupList() {
                                             board={board}
                                             onRemoveGroup={onRemoveGroup}
                                             idx={idx}
+                                            isDragging={snapshot.isDragging && !snapshot.isDropAnimating}
                                         />
                                     </div>
                                 }

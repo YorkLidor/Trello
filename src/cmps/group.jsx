@@ -4,11 +4,11 @@ import { GroupFooter } from "./group-footer"
 import { GroupHeader } from "./group-header"
 import { TaskList } from "./task-list"
 
-export function Group({ group, board, provided, onRemoveGroup }) {
+export function Group({ group, board, provided, onRemoveGroup, isDragging }) {
 
     return <Droppable droppableId={group.id} direction="vertical" type="task-list">
         {prov =>
-            <li className="group-item-container" ref={prov.innerRef}>
+            <li className={`group-item-container ${isDragging && 'is-dragging'}` } ref={prov.innerRef} >
                 <div className="group-item">
                     <div {...provided.dragHandleProps}>
                         <GroupHeader group={group} board={board} onRemoveGroup={onRemoveGroup} />
