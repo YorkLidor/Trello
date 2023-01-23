@@ -189,23 +189,27 @@
     box-shadow: rgb(0, 121, 191) 0px 0px 0px 2px inset;
 }
 
-@mixin scrollbar($width: 8px,$thumb-radius: 2rem, $thumb-bgclr: #72727635, $track-bgclr: #72727615) {
+@mixin scrollbar($width: 8px, $thumb-radius: 2rem, $thumb-bgclr: rgba(9,30,66,.13), $track-bgclr: rgba(9,30,66,.08)) {
     &::-webkit-scrollbar {
         width: $width;
         height: $width;
-        background-color: $track-bgclr;
+        background-color: transparent;
         border-radius: 2rem;
     }
 
     &::-webkit-scrollbar-thumb {
         background: $thumb-bgclr;
         border-radius: $thumb-radius;
+
     }
 
     &::-webkit-scrollbar-track {
+        margin-inline: 3rem;
+        // margin-inline-start: 1.5rem;
         background-color: $track-bgclr;
-        border-radius: 2rem;
+        border-radius: $thumb-radius;
     }
+
 }
 
 @mixin task-details-field-icon {
