@@ -3,14 +3,20 @@ import { boardService } from "../services/board.service"
 import { CLOSE_MODAL } from "../store/app.reducer"
 import { store } from "../store/store"
 import { AiOutlineClose } from "react-icons/ai";
+import { useEffect, useRef } from "react";
+import { closeModal } from "../store/app.actions";
 
 export function BoardCreator({ cmpProps }) {
     const [boardToEdit, setBoardToEdit, handleChange] = useForm(boardService.getEmptyBoard())
-    console.log('onCreateBoard:', cmpProps.onCreateBoard)
+    const elTitleInput = useRef()
+
+    useEffect(() => {
+        elTitleInput.current.focus()
+    }, [])
+
     function createBoard(ev) {
-        store.dispatch({ type: CLOSE_MODAL })
-        console.log('boardToEdit:', boardToEdit)
         ev.preventDefault()
+        closeModal()
         cmpProps.onCreateBoard(ev, boardToEdit)
     }
 
@@ -34,15 +40,28 @@ export function BoardCreator({ cmpProps }) {
 
             <div>
                 <form action="" onSubmit={createBoard} className="creator-form">
-                    <label 
-                    htmlFor="title" 
-                    className="creator-label"
+                    <label
+                        htmlFor="title"
+                        className="creator-label"
                     >
                         Board title
                         <span className="star">*</span>
-                        </label>
-                    <input onChange={handleChange} className="title-input" id="title" type="text" name="title" value={boardToEdit.title} />
-                    <button className="btn-create">Create</button>
+                    </label>
+                    <input
+                        onChange={handleChange}
+                        className="title-input"
+                        id="title" type="text"
+                        name="title"
+                        value={boardToEdit.title}
+                        ref={elTitleInput}
+
+                    />
+                    <button
+                        className="btn-create"
+                        disabled={!boardToEdit.title}
+                    >
+                        Create
+                    </button>
                 </form>
             </div>
         </main>

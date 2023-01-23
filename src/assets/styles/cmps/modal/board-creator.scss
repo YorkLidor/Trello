@@ -86,11 +86,19 @@
             @include input-focus;
             color: #172b4d;
             width: 100%;
+
         }
     }
 
-    .btn-create{
-        @include button-filled;
+    .btn-create {
+        @include button-filled(#0079bf, #ffffff);
         width: 100%;
+
+        &:disabled {
+            cursor: not-allowed;
+            box-shadow: none;
+            background-color: rgba(9, 30, 66, 0.04);
+            color: #a5adba;
+        }
     }
 }

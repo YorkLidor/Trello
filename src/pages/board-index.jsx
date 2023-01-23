@@ -20,8 +20,7 @@ export function BoardIndex() {
 
     useEffect(() => {
         onLoadBoards()
-
-        return () => closeModal()
+        return closeModal
     }, [])
 
     async function onLoadBoards() {
@@ -51,7 +50,7 @@ export function BoardIndex() {
         }
     }
 
-    function getLoader() {
+    function Loader() {
         console.log('loader');
         return <main className="boards-index-container flex column justify-center">
             <Audio
@@ -76,7 +75,7 @@ export function BoardIndex() {
         toggleModal()
     }
 
-    if (!boards || !boards.length) return getLoader()
+    if (!boards || !boards.length) return <Loader />
     else return <main className="boards-index-container">
         <section className="boards-index flex column">
             <header className="main-header">
