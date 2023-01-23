@@ -1,17 +1,18 @@
+import { useEffect } from "react";
+import { useRef } from "react";
+
 import { IoCloseOutline } from "react-icons/io5";
 import { useSelector } from "react-redux";
 import { useForm } from "../customHooks/useForm";
 import { boardService } from "../services/board.service";
 import { saveBoard } from "../store/board.actions";
-import { useRef } from "react";
-import { useEffect } from "react";
 
 export function TaskAdd({ group, isAddCardOpen, setIsAddCardOpen }) {
     let board = useSelector(storeState => storeState.boardModule.board)
-    const [taskToSet, setTaskTitleToSet, handleChange] = useForm(boardService.getEmptyTask())
-    const textAreaRef = useRef();
-
     useEffect(() => { textAreaRef.current.focus() }, [isAddCardOpen])
+    const textAreaRef = useRef();
+    const [taskToSet, setTaskTitleToSet, handleChange] = useForm(boardService.getEmptyTask())
+
 
     async function onAddNewTask(ev) {
         ev.preventDefault()
@@ -27,7 +28,7 @@ export function TaskAdd({ group, isAddCardOpen, setIsAddCardOpen }) {
         }
     }
 
-    function onblurForm(){
+    function onblurForm() {
         setTimeout(() => {
             setIsAddCardOpen(false)
         }, 100)
