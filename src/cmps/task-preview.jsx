@@ -37,7 +37,7 @@ export function TaskPreview({ task, group, isDragging }) {
 
         {/* EDIT ICON */}
         <section className={`edit-task-icon-container ${isEditShow}`} onClick={onEditClick}>
-            <img className='edit-task-icon' src="https://frello-app.onrender.com/dist/edit.dce7ff98.svg" alt="" />
+            <img className='edit-task-icon' src="http://res.cloudinary.com/dk2geeubr/image/upload/v1674474594/xln3wronhmxmwxpucark.svg" alt="" />
         </section>
 
         {/* COVER COLOR */}
