@@ -1,17 +1,15 @@
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useRef } from "react"
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { BoardPreview } from "../cmps/board-preview";
-import { Bars } from 'react-loader-spinner'
+import { Audio } from 'react-loader-spinner'
 
 import { RxPerson } from 'react-icons/rx'
 
 import { loadBoards, saveBoard } from "../store/board.actions";
-import { setModalData } from "../store/app.actions"
+import { closeModal, setModalData, toggleModal } from "../store/app.actions"
 import { BOARD_CREATOR, Modal } from "../cmps/modal/modal";
 import { utilService } from "../services/util.service";
-import { store } from "../store/store";
-import { CLOSE_MODAL, TOGGLE_MODAL } from "../store/app.reducer";
 
 export function BoardIndex() {
     const boards = useSelector(state => state.boardModule.boards)
@@ -22,6 +20,8 @@ export function BoardIndex() {
 
     useEffect(() => {
         onLoadBoards()
+
+        return () => closeModal()
     }, [])
 
     async function onLoadBoards() {
@@ -37,13 +37,13 @@ export function BoardIndex() {
         else onToggleModal(ev)
     }
 
-    function onCreateBoard(ev, board) {
+    function onCreateBoard(board) {
         if (board.title) onSaveBoard(board)
     }
 
     async function onSaveBoard(board) {
         try {
-            store.dispatch({ type: CLOSE_MODAL })
+            closeModal()
             await saveBoard(board)
             console.log('Board Saved successesfuly')
         } catch (err) {
@@ -52,14 +52,15 @@ export function BoardIndex() {
     }
 
     function getLoader() {
+        console.log('loader');
         return <main className="boards-index-container flex column justify-center">
-            <Bars
+            <Audio
                 height="100"
                 width="100"
-                color="#026AA7"
-                ariaLabel="bars-loading"
+                color="#091e4214"
+                ariaLabel="audio-loading"
                 wrapperStyle={{ margin: '0 auto' }}
-                wrapperClass=""
+                wrapperClass="wrapper-class"
                 visible={true}
             />
         </main>
@@ -72,11 +73,10 @@ export function BoardIndex() {
         elModal.current.style.top = pos.top + 'px'
         elModal.current.style.left = pos.right + 'px'
 
-        store.dispatch({ type: TOGGLE_MODAL })
-        console.log('toggle', modalData)
+        toggleModal()
     }
 
-    if (!boards) return getLoader()
+    if (!boards || !boards.length) return getLoader()
     else return <main className="boards-index-container">
         <section className="boards-index flex column">
             <header className="main-header">
@@ -90,7 +90,11 @@ export function BoardIndex() {
                     className="boards-preview-list clean-list"
                 >
                     {boards?.map(board =>
-                        <BoardPreview key={board._id} board={board} onBoardClick={onBoardClick} />
+                        <BoardPreview
+                            key={board._id}
+                            board={board}
+                            onBoardClick={onBoardClick}
+                        />
                     )}
                     <BoardPreview key={'new'} board={null} onBoardClick={onBoardClick} />
                 </ul>
@@ -98,7 +102,11 @@ export function BoardIndex() {
         </section>
         <div className="modal-container" ref={elModal}>
             {
-                modalData && <Modal cmpProps={modalData.props} cmpType={modalData.cmpType} className={modalData.className} />
+                modalData && <Modal
+                    cmpProps={modalData.props}
+                    cmpType={modalData.cmpType}
+                    className={modalData.className}
+                />
             }
         </div>
     </main >
