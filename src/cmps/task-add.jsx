@@ -27,9 +27,13 @@ export function TaskAdd({ group, isAddCardOpen, setIsAddCardOpen }) {
         }
     }
 
-    return <form onSubmit={onAddNewTask} onBlur={() => setTimeout(() => {
-        setIsAddCardOpen(false)
-    }, 100)}
+    function onblurForm(){
+        setTimeout(() => {
+            setIsAddCardOpen(false)
+        }, 100)
+    }
+
+    return <form onSubmit={onAddNewTask} onBlur={onblurForm}
         className={`add-card-form-container ${!isAddCardOpen && 'add-card-close'}`}>
         <div className="task-preview-container">
 

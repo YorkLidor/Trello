@@ -27,7 +27,7 @@ export function GroupAdd({ onAddGroup, handleChange, groupToEdit }) {
                 className="open-add-group flex justify-center"
                 onClick={() => setIsIdle('')}
             >
-                <IoMdAdd />
+                <IoMdAdd className="add-list-icon"/>
                 Add another list
             </span>
 

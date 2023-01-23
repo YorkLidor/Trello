@@ -1,4 +1,6 @@
 import { useSelector } from "react-redux"
+import { BsPencil } from 'react-icons/bs'
+
 import { useNavigate } from "react-router-dom"
 import { SET_ACTIVE_BOARD } from "../store/board.reducer"
 import { store } from "../store/store"
@@ -24,9 +26,12 @@ export function TaskPreview({ task, group, boardId, isDragging }) {
 
     const labelsStyle = isLabelsLarge ? 'labels-large' : ''
 
-    return <div className={`task-preview-container ${isDragging && 'is-dragging'}` } onClick={() => navigate(`/card/${boardId}/${groupId}/${task.id}`)}>
+    return <div className={`task-preview-container ${isDragging && 'is-dragging'}`} onClick={() => navigate(`/card/${boardId}/${groupId}/${task.id}`)}>
+
+        {/* <BsPencil /> */}
+
         {/* COVER COLOR */}
-        {(style && style.background || style.backgroundImage) &&
+        {((style && style.background) || style.backgroundImage) &&
             <header
                 className="cover-color"
                 style={style}
