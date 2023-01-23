@@ -106,8 +106,6 @@
 
 }
 
-
-
 .title-main-col {
     font-size: 16px;
     line-height: 20px;
@@ -158,8 +156,6 @@
         font-family: unset;
         min-height: 40px;
 
-
-
         &.filled {
             background-color: #FFF;
             padding: 0px;
@@ -178,6 +174,7 @@
     }
 
 }
+
 .description-editor-tools {
     margin: 8px 0 0;
     display: none;
@@ -235,8 +232,6 @@
     }
 }
 
-
-
 .window-sidebar-box {
 
     width: 192px;
@@ -283,13 +278,6 @@
     margin: 0 8px 4px 0;
 }
 
-
-
-
-
-
-
-
 .user-logo {
     @include user-logo-circle;
 
@@ -331,8 +319,6 @@
     flex-wrap: wrap;
     gap: 4px;
 }
-
-
 
 .task-label::before {
     content: '';
