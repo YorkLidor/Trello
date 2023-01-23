@@ -25,7 +25,7 @@ export const boardService = {
     saveBoardLabel,
     removeBoardLabel,
     getAttachment,
-    getGroupById
+    getGroupById,
 }
 
 async function query(filterBy = grtDefaultFilter()) {
@@ -67,11 +67,12 @@ async function saveTask(boardId, groupId, task, activity) {
     // return task
 }
 
-
-async function getLabelsById(boardId, labelIds) {
-    const board = await getById(boardId)
-    return board.labels.filter(label => labelIds.includes(label.id))
+function getLabelsById(boardLabels, labelIds) {
+    if (boardLabels && labelIds?.length) {
+        return boardLabels.filter(label => labelIds.includes(label.id))
+    } else return null
 }
+
 
 function getEmptyTask() {
     return {

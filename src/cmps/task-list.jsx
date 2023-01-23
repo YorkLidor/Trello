@@ -22,7 +22,7 @@ export function TaskList({ group, provided, isAddCardOpen, setIsAddCardOpen }) {
                     >
                         <TaskPreview
                             task={task}
-                            group={group}
+                            groupId={group.id}
                             isDragging={snapshot.isDragging && !snapshot.isDropAnimating}
                         />
                     </div>
