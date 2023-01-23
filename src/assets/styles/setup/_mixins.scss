@@ -204,6 +204,7 @@
     
     &::-webkit-scrollbar-track {
         margin-inline: 3rem;
+        margin-inline-start: 1.5rem;
         background-color: $track-bgclr;
         border-radius: 2rem;
     }

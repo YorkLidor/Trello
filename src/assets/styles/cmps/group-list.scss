@@ -2,17 +2,13 @@
 
     @include scrollbar(12px, 4px, #f4f5f763, #091e4214);
 
-    &::-webkit-scrollbar-track {
-        margin-block: 10em;
-    }
-
     display: flex;
     flex-grow: 1;
     margin: 0;
     margin-bottom: 8px;
     overflow-x: auto;
     overflow-y: hidden;
-    padding: 0 0 rem(8px) rem(24px);
+    padding: 0 0 rem(8px) rem(4px);
 
     .add-group-form {
         box-sizing: border-box;
