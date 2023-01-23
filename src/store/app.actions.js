@@ -1,4 +1,4 @@
-import { SET_MODAL_DATA } from "./app.reducer"
+import { CLOSE_MODAL, SET_MODAL_DATA, TOGGLE_MODAL } from "./app.reducer"
 import { store } from "./store"
 import {
     MODAL_ATTACH,
@@ -9,6 +9,14 @@ import {
     MODAL_MEMBER_OPEN,
     BOARD_CREATOR
 } from '../cmps/modal/modal.jsx'
+
+export function closeModal() {
+    store.dispatch({ type: CLOSE_MODAL })
+}
+
+export function toggleModal(){
+    store.dispatch({ type: TOGGLE_MODAL })
+}
 
 export function setModalData(modalType, props) {
     let newModalData

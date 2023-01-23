@@ -7,8 +7,33 @@
     border-radius: 3px;
     box-shadow: var(--ds-shadow-raised, 0 1px 0 $clr23);
     margin-bottom: rem(8px);
+    position: relative;
+    
 }
 
+.edit-task-icon-container{
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    background-color: #f4f5f7;
+    // align-items: center;
+    // border-radius: 3px;
+    // color: #42526e;
+    // font-size: 12px;
+    // height: 28px;
+    // justify-content: center;
+    // opacity: .8;
+    // width: 28px;
+
+    .edit-task-icon{
+        color: red;
+    }
+
+    // &.hidden-icon{
+    //     display: none;
+    // }
+
+}
 .task-preview {
     color: var(--ds-text, inherit);
     cursor: pointer;
@@ -16,7 +41,7 @@
     padding: rem(6px) rem(8px) rem(2px);
     max-width: 300px;
     min-height: 20px;
-    position: relative;
+
 
     &.is-dragging {
         transform: rotate(5deg);
@@ -106,3 +131,56 @@
         transition: rotate(5deg);
     }
 }
+
+.add-card-form-container{
+    padding-bottom: rem(8px);
+    &.add-card-close {
+        display: none;
+    }
+
+    .task-preview-container{
+    
+      
+        .textarea-container {
+            .form-textarea {
+                overflow: hidden;
+                overflow-wrap: break-word;
+                resize: none;
+                height: 54px;
+                border: none;
+                border-radius: 3px;
+                width: 100%;
+                
+        
+                &:focus {
+                    outline: none;
+                }
+            }
+        }
+        
+        
+        
+    }
+    .btn-controls-container {
+        display: flex;
+        align-items: center;
+    
+        .add-btn {
+            @include button-filled(#0079bf, #fff);
+            height: 32px;
+        }
+    
+        .btn-cancel {
+            @include button-filled(rgba(255, 255, 255, 0), #6b778c);
+            font-size: 2rem;
+            padding: 0;
+            height: 28px;
+            width: 28px;
+    
+            &:hover {
+                color: var(--ds-icon, #172b4d);
+            }
+        }
+    }
+}
+

@@ -24,13 +24,8 @@ export function GroupHeader({ group, board, onRemoveGroup }) {
         document.execCommand('selectAll', false, null);
     }
 
-    // function toggleModal(ev){
-
-    // }
-
     return <section className="group-header">
         <section
-            tabIndex={0}
             className="group-title focused"
             onInput={handleFormChange}
             onBlur={onSaveTitle}

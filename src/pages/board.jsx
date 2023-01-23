@@ -1,13 +1,14 @@
 import { useState, useEffect, useRef } from "react";
 import { useParams, useNavigate } from 'react-router-dom'
+import { useEffectUpdate } from "../customHooks/useEffectUpdate";
 
-import { Blocks } from 'react-loader-spinner'
+import { boardService } from "../services/board.service";
+
+import { setBoard } from "../store/board.actions";
 
 import { BoardHeader } from "../cmps/board-header";
 import { GroupList } from "../cmps/group-list";
-import { boardService } from "../services/board.service";
-import { setBoard } from "../store/board.actions";
-import { useEffectUpdate } from "../customHooks/useEffectUpdate";
+import { Audio } from 'react-loader-spinner'
 
 export function Board() {
     const elBoard = useRef()
@@ -50,14 +51,17 @@ export function Board() {
     }
 
     function getLoader() {
-        return <Blocks
-            visible={true}
-            height="80"
-            width="80"
-            ariaLabel="blocks-loading"
-            wrapperStyle={{}}
-            wrapperClass="blocks-wrapper"
-        />
+        return <main className="board flex column justify-center">
+            <Audio
+                height="100"
+                width="100"
+                color="#091e4214"
+                ariaLabel="audio-loading"
+                wrapperStyle={{ margin: '0 auto' }}
+                wrapperClass="wrapper-class"
+                visible={true}
+            />
+        </main >
     }
 
     if (!board) return getLoader()

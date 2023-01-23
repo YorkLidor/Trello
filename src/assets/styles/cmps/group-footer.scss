@@ -7,7 +7,6 @@
         align-items: center;
         margin: 2px 0 8px 8px;
         padding: 4px 8px;
-        display: none;
         width: calc(100% - 16px);
         border-radius: 3px;
 
@@ -35,121 +34,12 @@
         }
     }
 
-    .textarea-container {
-
-        .form-textarea {
-            overflow: hidden;
-            overflow-wrap: break-word;
-            resize: none;
-            height: 54px;
-            border: none;
-            border-radius: 3px;
-            width: 100%;
-            box-shadow: var(--ds-shadow-raised, 0 1px 0 rgba(9, 30, 66, 0.2509803922));
-
-            &:focus {
-                outline: none;
-            }
-        }
-    }
-
-    .btn-controls-container {
-        display: flex;
-        align-items: center;
-
-        .add-btn {
-            @include button-filled(#0079bf, #fff);
-        }
-
-        .btn-cancel {
-            @include button-filled(rgba(255, 255, 255, 0), #42526e);
-            font-size: 2rem;
-            padding: 0;
-
-            &:hover {
-                color: var(--ds-icon, #172b4d);
-            }
-        }
-    }
-
-
     &.add-card-close {
-        form {
+        .add-card-container {
             display: none;
         }
-
-        .add-card-container {
-            display: inline-flex;
-        }
-    }
-}
-
-.group-footer-container-open {
-
-    textarea {
-        overflow: hidden;
-        overflow-wrap: break-word;
-        height: 40px;
-        width: 100%;
-    }
-
-    .textarea-container {
-        overflow: hidden;
-        padding: 6px 8px 2px;
-        position: relative;
-        z-index: 10;
     }
 }
 
 
 
-//     .group-footer-close {
-//         display: flex;
-//         align-items: center;
-//         width: 100%;
-//         color: $clr20;
-
-//         .add-card-btn {
-//             color: $clr20;
-//             border-radius: 3px;
-//             display: block;
-//             flex: 1 0 auto;
-//             padding: 4px 8px;
-//             position: relative;
-//             text-decoration: none;
-//             -webkit-user-select: none;
-//             user-select: none;
-
-//             &:hover {
-//                 color: $clr21
-//             }
-//         }
-
-//         &:hover {
-//             background-color: $clr22;
-//             color: $clr21
-//         }
-//     }
-
-
-//     .group-footer-open {
-//         display: flex;
-//         align-items: center;
-//     }
-
-//     .add-card-btn-second {
-//         border: none;
-//         border-radius: 3px;
-//         height: 32px;
-//         padding: 6px 12px;
-//         background-color: #0079bf;
-//         color: #fff;
-//         margin-right: 4px;
-//     }
-
-//     .close-btn {
-//         color: $clr20;
-//         height: 25px;
-//         width: 25px;
-//     }
-// }

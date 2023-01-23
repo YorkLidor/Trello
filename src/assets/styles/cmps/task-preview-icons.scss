@@ -6,7 +6,7 @@
   justify-content: space-between;
   width: 100%;
   padding: 0;
-  align-items: baseline;
+  // align-items: baseline;
 
   .icons-container {
     display: flex;
@@ -16,7 +16,7 @@
     margin-left: -2px;
     padding-bottom: 4px;
     max-width: 100%;
-    color: var(--ds-text-subtle,#5e6c84);
+    color: var(--ds-text-subtle, #5e6c84);
     display: inline-block;
     max-width: 100%;
     min-height: 20px;
@@ -26,7 +26,7 @@
     text-overflow: ellipsis;
     vertical-align: top;
 
-    .attachments-container{
+    .attachments-container {
       display: flex;
       gap: 6px;
       align-items: center;
@@ -34,10 +34,22 @@
       border-radius: 3px;
       color: #5e6c84;
       padding: 0;
+
+      .attachment-icon {
+        height: 13px;
+        width: 13px;
+      }
+
+      .attachment-number {
+        color: #5e6c84;
+        font-weight: 400;
+
+      }
+
     }
   }
 
-  
+
 
 
   //**MEMBERS**//

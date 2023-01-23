@@ -8,5 +8,5 @@
     overflow-y: auto;
     padding: 0 rem(4px);
 
-    @include scrollbar(8px, 2rem);
+    @include scrollbar(8px, 2rem, rgba(9,30,66,.13), rgba(9,30,66,.08));
 }
