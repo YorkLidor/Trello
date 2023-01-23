@@ -1,6 +1,8 @@
+
 import { FaRegStar } from 'react-icons/fa'
 
-export function BoardPreview({ board, onBoardClick, onToggleStaredBoard }) {
+export function BoardPreview({ boardId, board, onBoardClick, onToggleStaredBoard, isStared }) {
+
 
     return <li
         className={`board-preview ${!board && 'mod-add'}`}
@@ -14,7 +16,7 @@ export function BoardPreview({ board, onBoardClick, onToggleStaredBoard }) {
             {board && <span className='details-container flex' >
                 <span
                     className='star-container flex'
-                    onClick={(ev) => onToggleStaredBoard(ev, board._Id)}
+                    onClick={(ev) => onToggleStaredBoard(ev, board, isStared)}
                 >
                     <FaRegStar />
                 </span>
