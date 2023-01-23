@@ -216,6 +216,8 @@
     position: absolute;
     left: -33px;
     top: 5px;
+    color: $task-details-icon;
+
 }
 
 @mixin text-area-form {
@@ -258,4 +260,9 @@
         margin-inline-end: -32px;
     }
 
+}
+
+@mixin task-details-module-box {
+    position: relative;
+    margin: 0 0 4px 40px;
 }

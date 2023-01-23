@@ -1,0 +1,28 @@
+.task-labels-box {
+    max-width: 100%;
+    flex-wrap: wrap;
+    gap: 4px;
+}
+
+.task-label::before {
+    content: '';
+    position: absolute;
+    top: 6px;
+    bottom: 6px;
+    left: 6px;
+    border-radius: 50%;
+}
+
+.task-label {
+    @include task-details-list;
+}
+
+.task-labels-box,
+.task-info {
+    margin-block-end: 8px;
+}
+
+.labels-label {
+    @include details-label;
+    margin: 0 8px 4px 0;
+}
