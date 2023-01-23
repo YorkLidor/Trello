@@ -15,19 +15,14 @@
         white-space: nowrap;
     }
 
-    .btn {}
-
     .btn-filter,
     .btn-star {
         @include button-filled($dynamic-button, #FFF);
     }
 
-
-
-
     .btn-menu {
         @include button-filled($dynamic-button, #FFF);
-        padding: 6px;
+        padding: 8px;
         line-height: 20px;
 
         span {

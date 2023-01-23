@@ -4,6 +4,7 @@ import { useForm } from "../customHooks/useForm"
 import { saveBoard } from "../store/board.actions"
 import { FaRegStar } from 'react-icons/fa';
 import { useSelector } from "react-redux";
+import { BsThreeDots } from "react-icons/bs";
 
 export function BoardHeader({ onDeleteBoard }) {
     const board = useSelector(state => state.boardModule.board)
@@ -85,7 +86,7 @@ export function BoardHeader({ onDeleteBoard }) {
             </button>
             <span className="btn-divider"></span>
             <button className="btn btn-menu">
-                <span>...</span>
+                <BsThreeDots/>
             </button>
         </div>
     </section>
