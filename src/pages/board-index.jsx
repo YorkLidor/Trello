@@ -8,7 +8,9 @@ import { RxPerson } from 'react-icons/rx'
 
 import { loadBoards, saveBoard } from "../store/board.actions";
 import { closeModal, setModalData, toggleModal } from "../store/app.actions"
+
 import { BOARD_CREATOR, Modal } from "../cmps/modal/modal";
+
 import { utilService } from "../services/util.service";
 
 export function BoardIndex() {
@@ -42,7 +44,7 @@ export function BoardIndex() {
     }
 
     function onCreateBoard(board) {
-        if (board.title) onSaveBoard(board)
+         onSaveBoard(board)
     }
 
     async function onSaveBoard(board) {
