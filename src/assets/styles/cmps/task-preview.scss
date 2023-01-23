@@ -7,8 +7,33 @@
     border-radius: 3px;
     box-shadow: var(--ds-shadow-raised, 0 1px 0 $clr23);
     margin-bottom: rem(8px);
+    position: relative;
+    
 }
 
+.edit-task-icon-container{
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    background-color: #f4f5f7;
+    // align-items: center;
+    // border-radius: 3px;
+    // color: #42526e;
+    // font-size: 12px;
+    // height: 28px;
+    // justify-content: center;
+    // opacity: .8;
+    // width: 28px;
+
+    .edit-task-icon{
+        color: red;
+    }
+
+    // &.hidden-icon{
+    //     display: none;
+    // }
+
+}
 .task-preview {
     color: var(--ds-text, inherit);
     cursor: pointer;
@@ -16,7 +41,7 @@
     padding: rem(6px) rem(8px) rem(2px);
     max-width: 300px;
     min-height: 20px;
-    position: relative;
+
 
     &.is-dragging {
         transform: rotate(5deg);

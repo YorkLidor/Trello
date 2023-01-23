@@ -6,13 +6,14 @@ import { SET_ACTIVE_BOARD } from "../store/board.reducer"
 import { store } from "../store/store"
 import { TaskPreviewIcons } from "./task-preview-icons"
 
-export function TaskPreview({ task, group, boardId, isDragging }) {
+export function TaskPreview({ task, group, isDragging }) {
+    const board = useSelector((storeState) => storeState.boardModule.board)
+    const navigate = useNavigate()
+
     const groupId = group.id
     let style = { background: task?.style?.bgColor }
-    if (task.attachments && task.attachments.length && task.attachments[0].url) style = { backgroundImage: `url(${task.attachments[0].url})`, height: '107.8px' }
-    const navigate = useNavigate()
-    const board = useSelector((storeState) => storeState.boardModule.board)
     const labels = board.labels.filter(label => task?.labelIds?.includes(label.id))
+    if (task.attachments && task.attachments.length && task.attachments[0].url) style = { backgroundImage: `url(${task.attachments[0].url})`, height: '107.8px' }
 
     let isLabelsLarge = board.style.isLabelsLarge
 
@@ -26,9 +27,9 @@ export function TaskPreview({ task, group, boardId, isDragging }) {
 
     const labelsStyle = isLabelsLarge ? 'labels-large' : ''
 
-    return <div className={`task-preview-container ${isDragging && 'is-dragging'}`} onClick={() => navigate(`/card/${boardId}/${groupId}/${task.id}`)}>
+    return <div onMouseEnter={() => console.log('enter')} onMouseLeave={() => console.log('leve')} className={`task-preview-container ${isDragging && 'is-dragging'}`} onClick={() => navigate(`/card/${board._id}/${groupId}/${task.id}`)}>
 
-        {/* <BsPencil /> */}
+
 
         {/* COVER COLOR */}
         {((style && style.background) || style.backgroundImage) &&
@@ -37,6 +38,7 @@ export function TaskPreview({ task, group, boardId, isDragging }) {
                 style={style}
             />
         }
+
         <li className={`task-preview`} >
 
 
@@ -68,6 +70,10 @@ export function TaskPreview({ task, group, boardId, isDragging }) {
             </section>
 
             <TaskPreviewIcons board={board} groupId={groupId} task={task} />
+
+            <section className="edit-task-icon-container">
+                <BsPencil className="edit-task-icon" />
+            </section>
 
         </li>
     </div>

@@ -15,7 +15,6 @@ export function GroupList() {
     const board = useSelector(state => state.boardModule.board)
     const [groupToEdit, setGroupToEdit, handleChange] = useForm(boardService.getEmptyGroup())
 
-
     async function onAddGroup(ev) {
         ev.preventDefault()
         if (!groupToEdit.title) throw new Error('Must enter title!')
@@ -30,6 +29,7 @@ export function GroupList() {
     }
 
     async function onRemoveGroup(groupId) {
+        if (window.confirm("Are you sure?") === false) return
         try {
             board.groups = board.groups.filter((group) => group.id !== groupId)
             await saveBoard({ ...board })

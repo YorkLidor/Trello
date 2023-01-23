@@ -26,7 +26,6 @@ export function GroupHeader({ group, board, onRemoveGroup }) {
 
     return <section className="group-header">
         <section
-            tabIndex={0}
             className="group-title focused"
             onInput={handleFormChange}
             onBlur={onSaveTitle}
