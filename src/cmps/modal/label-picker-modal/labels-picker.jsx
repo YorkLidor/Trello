@@ -51,6 +51,8 @@ export function LabelsPicker({ cmpProps }) {
                 return labelToEdit.current?.id ? 'Edit label' : 'Create label'
             case PAGE_DELETE:
                 return 'Delete label'
+            default:
+                break
         }
     }
 
@@ -60,9 +62,11 @@ export function LabelsPicker({ cmpProps }) {
             case PAGE_LIST:
                 return { member, boardId: board._id, task, groupId, onEditLabel, labels: board.labels, setModalPage }
             case PAGE_EDIT:
-                return { editorLabel: labelToEdit.current , onSaveLabel, setModalPage }
+                return { editorLabel: labelToEdit.current, onSaveLabel, setModalPage }
             case PAGE_DELETE:
                 return { board, labelId: labelToEdit.current.id, setModalPage, setModalPage }
+            default:
+                break
         }
     }
 
@@ -84,5 +88,7 @@ function getDynamicModalPage(modalPage, props) {
             return <LabelPickerEditor {...props} />
         case PAGE_DELETE:
             return <LabelPickerDelete {...props} />
+        default:
+            break
     }
 }
