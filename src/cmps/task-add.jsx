@@ -11,7 +11,7 @@ import { IoCloseOutline } from "react-icons/io5";
 export function TaskAdd({ group, isAddCardOpen, setIsAddCardOpen }) {
     let board = useSelector(storeState => storeState.boardModule.board)
     useEffect(() => { textAreaRef.current.focus() }, [isAddCardOpen])
-    const textAreaRef = useRef();
+    const textAreaRef = useRef()
     const [taskToSet, setTaskTitleToSet, handleChange] = useForm(boardService.getEmptyTask())
 
 

@@ -8,6 +8,7 @@ import { TaskDetails } from './pages/task-details'
 import { BoardIndex } from './pages/board-index'
 import { Provider } from 'react-redux'
 import { store } from './store/store'
+import { QuickTaskEdit } from './cmps/quick-task-edit'
 
 export function RootCmp() {
 
@@ -17,7 +18,11 @@ export function RootCmp() {
             <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/workspace" element={<BoardIndex />} />
-                <Route path="/board/:boardId" element={<Board />} />
+
+                <Route path="/board/:boardId" element={<Board />}>
+                    <Route path="/board/:boardId/:taskId" element={<QuickTaskEdit />} />
+                </Route>
+
                 <Route path="/card/:boardId/:groupId/:taskId" element={<TaskDetails />} />
             </Routes>
         </Provider>

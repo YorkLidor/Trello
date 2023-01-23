@@ -1,0 +1,49 @@
+<mxfile host="65bd71144e">
+    <diagram id="M9ZhQZCSr-ldLnzc6Uqc" name="Page-1">
+        <mxGraphModel dx="793" dy="528" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="445" value="" style="edgeStyle=none;html=1;" edge="1" parent="1" source="443" target="444">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="447" value="" style="edgeStyle=none;html=1;" edge="1" parent="1" source="443" target="446">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="448" value="" style="edgeStyle=none;html=1;" edge="1" parent="1" source="443" target="446">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="449" value="" style="edgeStyle=none;html=1;" edge="1" parent="1" source="443" target="446">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="451" value="" style="edgeStyle=none;html=1;" edge="1" parent="1" source="443" target="450">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="443" value="nesting rout &amp;lt;div&amp;gt;&amp;lt;/div&amp;gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#60a917;fontColor=#ffffff;strokeColor=#2D7600;" vertex="1" parent="1">
+                    <mxGeometry x="330" y="90" width="230" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="444" value="X" style="whiteSpace=wrap;html=1;rounded=1;fillColor=#0050ef;fontColor=#ffffff;strokeColor=#001DBC;" vertex="1" parent="1">
+                    <mxGeometry x="120" y="240" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="453" value="" style="edgeStyle=none;html=1;" edge="1" parent="1" source="446" target="452">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="446" value="&lt;span style=&quot;text-align: left;&quot;&gt;its the original task preview&lt;/span&gt;&lt;br&gt;task &amp;lt;div&amp;gt;" style="whiteSpace=wrap;html=1;rounded=1;fillColor=#0050ef;fontColor=#ffffff;strokeColor=#001DBC;" vertex="1" parent="1">
+                    <mxGeometry x="385" y="240" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="457" value="" style="edgeStyle=none;html=1;" edge="1" parent="1" source="450" target="456">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="450" value="buttons &amp;lt;div&amp;gt;" style="whiteSpace=wrap;html=1;rounded=1;fillColor=#0050ef;fontColor=#ffffff;strokeColor=#001DBC;" vertex="1" parent="1">
+                    <mxGeometry x="680" y="240" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="452" value="save btn" style="whiteSpace=wrap;html=1;rounded=1;fillColor=#0050ef;fontColor=#ffffff;strokeColor=#001DBC;" vertex="1" parent="1">
+                    <mxGeometry x="385" y="360" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="456" value="dynamic modal for each button click" style="whiteSpace=wrap;html=1;fillColor=#d80073;strokeColor=#A50040;fontColor=#ffffff;rounded=1;" vertex="1" parent="1">
+                    <mxGeometry x="680" y="480" width="120" height="60" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
