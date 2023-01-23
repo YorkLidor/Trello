@@ -24,10 +24,10 @@ export function GroupHeader({ group, board, onRemoveGroup }) {
     async function onSaveTitle() {
         setEditClass('')
         if (!groupToEdit.title) {
-            groupToEdit.title = group.title
+            setGroupToEdit(group)
             return
         }
-        if (!groupToEdit.title || groupToEdit.title === group.title) return
+        if (groupToEdit.title === group.title) return
         group.title = groupToEdit.title
         try {
             await saveBoard(board)
