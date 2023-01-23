@@ -14,7 +14,7 @@ export function GroupHeader({ group, board, onRemoveGroup }) {
         group.title = groupTitleToSet
         board.groups.forEach(group => { (group.id === groupId) && (group.title = groupTitleToSet) })
         try {
-            await saveBoard({ ...board })
+            await saveBoard(board)
         } catch (err) {
             console.error('Can\'t save board!', err)
         }

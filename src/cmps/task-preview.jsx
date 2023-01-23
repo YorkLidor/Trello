@@ -2,9 +2,8 @@ import { useState } from "react"
 import { useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
 
-import { store } from "../store/store"
-import { SET_ACTIVE_BOARD } from "../store/board.reducer"
 import { TaskPreviewIcons } from "./task-preview-icons"
+import { setBoard } from "../store/board.actions"
 
 export function TaskPreview({ task, group, isDragging }) {
     const board = useSelector((storeState) => storeState.boardModule.board)
@@ -24,7 +23,7 @@ export function TaskPreview({ task, group, isDragging }) {
         ev.stopPropagation()
         board.style.isLabelsLarge = !isLabelsLarge
         const newBoard = { ...board }
-        store.dispatch({ type: SET_ACTIVE_BOARD, board: newBoard })
+        setBoard(newBoard)
     }
 
     function onEditClick(ev) {

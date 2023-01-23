@@ -21,7 +21,7 @@ export function TaskAdd({ group, isAddCardOpen, setIsAddCardOpen }) {
         try {
             group.tasks.push(taskToSet)
             board = { ...board, groups: [...board.groups] }
-            await saveBoard({ ...board })
+            await saveBoard(board)
             setTaskTitleToSet(boardService.getEmptyTask())
             setIsAddCardOpen(false)
         } catch (err) {
