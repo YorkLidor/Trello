@@ -1,7 +1,6 @@
-
 import { FiPaperclip } from 'react-icons/fi'
 
-export function TaskPreviewIcons({ board, task, groupId }) {
+export function TaskPreviewIcons({ board, task }) {
     const membersToRender = board.members.filter((member) => task.memberIds?.includes(member._id))
 
     return <section className="task-preview-icons-container">
@@ -9,7 +8,7 @@ export function TaskPreviewIcons({ board, task, groupId }) {
             < section className="icons-container">
                 {task.attachments?.length > 0 && (
                     <section className="attachments-container">
-                        <FiPaperclip className='attachment-icon'/>
+                        <FiPaperclip className='attachment-icon' />
                         <span className='attachment-number'>{task.attachments.length}</span>
                     </section>
                 )}

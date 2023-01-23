@@ -1,15 +1,14 @@
-import { useSelector } from "react-redux"
-import { BsPencil } from 'react-icons/bs'
-
-import { useNavigate } from "react-router-dom"
-import { SET_ACTIVE_BOARD } from "../store/board.reducer"
-import { store } from "../store/store"
-import { TaskPreviewIcons } from "./task-preview-icons"
 import { useState } from "react"
+import { useSelector } from "react-redux"
+import { useNavigate } from "react-router-dom"
+
+import { store } from "../store/store"
+import { SET_ACTIVE_BOARD } from "../store/board.reducer"
+import { TaskPreviewIcons } from "./task-preview-icons"
 
 export function TaskPreview({ task, group, isDragging }) {
     const board = useSelector((storeState) => storeState.boardModule.board)
-    const [isEditShow,setIsEditShow] = useState('')
+    const [isEditShow, setIsEditShow] = useState('')
     const navigate = useNavigate()
 
     const groupId = group.id
@@ -28,12 +27,12 @@ export function TaskPreview({ task, group, isDragging }) {
         store.dispatch({ type: SET_ACTIVE_BOARD, board: newBoard })
     }
 
-    function onEditClick(ev){
+    function onEditClick(ev) {
         ev.stopPropagation()
         alert('click')
     }
 
-    return <div onMouseEnter={()=> setIsEditShow('hidden-icon')} onMouseLeave={() =>setIsEditShow('')} className={`task-preview-container ${isDragging && 'is-dragging'}`} onClick={() => navigate(`/card/${board._id}/${groupId}/${task.id}`)}>
+    return <div onMouseEnter={() => setIsEditShow('hidden-icon')} onMouseLeave={() => setIsEditShow('')} className={`task-preview-container ${isDragging && 'is-dragging'}`} onClick={() => navigate(`/card/${board._id}/${groupId}/${task.id}`)}>
 
         {/* EDIT ICON */}
         <section className={`edit-task-icon-container ${isEditShow}`} onClick={onEditClick}>

@@ -1,10 +1,12 @@
-import { IoCloseOutline } from "react-icons/io5";
-import { useSelector } from "react-redux";
-import { useForm } from "../customHooks/useForm";
-import { boardService } from "../services/board.service";
-import { saveBoard } from "../store/board.actions";
 import { useRef } from "react";
 import { useEffect } from "react";
+import { useSelector } from "react-redux";
+import { useForm } from "../customHooks/useForm";
+
+import { boardService } from "../services/board.service";
+
+import { saveBoard } from "../store/board.actions";
+import { IoCloseOutline } from "react-icons/io5";
 
 export function TaskAdd({ group, isAddCardOpen, setIsAddCardOpen }) {
     let board = useSelector(storeState => storeState.boardModule.board)
@@ -27,7 +29,7 @@ export function TaskAdd({ group, isAddCardOpen, setIsAddCardOpen }) {
         }
     }
 
-    function onblurForm(){
+    function onblurForm() {
         setTimeout(() => {
             setIsAddCardOpen(false)
         }, 100)
