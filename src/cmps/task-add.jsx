@@ -1,11 +1,12 @@
-import { useEffect } from "react";
 import { useRef } from "react";
-
-import { IoCloseOutline } from "react-icons/io5";
+import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useForm } from "../customHooks/useForm";
+
 import { boardService } from "../services/board.service";
+
 import { saveBoard } from "../store/board.actions";
+import { IoCloseOutline } from "react-icons/io5";
 
 export function TaskAdd({ group, isAddCardOpen, setIsAddCardOpen }) {
     let board = useSelector(storeState => storeState.boardModule.board)
@@ -20,7 +21,7 @@ export function TaskAdd({ group, isAddCardOpen, setIsAddCardOpen }) {
         try {
             group.tasks.push(taskToSet)
             board = { ...board, groups: [...board.groups] }
-            await saveBoard({ ...board })
+            await saveBoard(board)
             setTaskTitleToSet(boardService.getEmptyTask())
             setIsAddCardOpen(false)
         } catch (err) {
