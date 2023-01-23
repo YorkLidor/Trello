@@ -9,7 +9,7 @@ export function BoardPreview({ boardId, board, onBoardClick, onToggleStaredBoard
         onClick={(ev) => onBoardClick(ev, board?._id)}
         style={board && board.style}
     >
-        <span className={`board-preview-fade ${!board ? 'add' : ''} flex column justify-between`}>
+        <span className={`board-preview-fade ${!board ? 'add' : ''} ${board?.isStared ? 'light' : ''} flex column justify-between`}>
             {board && <h4 className="board-title">{board.title}</h4>}
             {!board && <p><span>Create new board</span></p>}
 

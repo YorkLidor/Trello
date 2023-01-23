@@ -124,9 +124,9 @@ export function BoardIndex() {
                             key={board._id}
                             boardId={board._id}
                             board={board}
-                            isStared={false}
-                            onBoardClick={onBoardClick}
                             onToggleStaredBoard={onToggleStaredBoard}
+                            isStared={board.isStared}
+                            onBoardClick={onBoardClick}
                         />
                     )}
                     <BoardPreview
