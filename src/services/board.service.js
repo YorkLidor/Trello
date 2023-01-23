@@ -1,4 +1,4 @@
-import { SET_ACTIVE_BOARD } from '../store/board.reducer.js'
+import { SET_ACTIVE_BOARD } from '../store/reducers/board.reducer.js'
 import { store } from '../store/store.js'
 import { storageService } from './async-storage.service.js'
 import { jBoard, jBoards } from './jsons/board.js'

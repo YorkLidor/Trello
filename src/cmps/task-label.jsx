@@ -1,4 +1,4 @@
-import { setBoard } from "../store/board.actions"
+import { setBoard } from "../store/actions/board.actions"
 
 export function TaskLabels({ labels, board }) {
     let isLabelsLarge = board?.style.isLabelsLarge

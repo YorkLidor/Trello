@@ -2,7 +2,7 @@
 import { IoIosArrowBack } from "react-icons/io"
 import { AiOutlineClose } from "react-icons/ai"
 
-import { closeModal } from "../../store/app.actions"
+import { closeModal } from "../../store/actions/app.actions"
 
 
 export function ModalHeader({ header, allowBack, onModalClickBack }) {

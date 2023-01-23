@@ -1,7 +1,7 @@
 import { AiOutlineClose } from 'react-icons/ai'
 import { BsArrowUpRight } from 'react-icons/bs'
 
-import { CLOSE_MODAL } from '../../../store/app.reducer'
+import { CLOSE_MODAL } from '../../../store/reducers/app.reducer'
 import { store } from '../../../store/store'
 
 import { useState } from 'react'

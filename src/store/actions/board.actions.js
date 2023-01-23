@@ -1,6 +1,6 @@
-import { boardService } from '../services/board.service'
-import { store } from '../store/store.js'
-import { SET_BOARDS, ADD_BOARD, REMOVE_BOARD, EDIT_BOARD, SET_ACTIVE_BOARD } from './board.reducer'
+import { boardService } from '../../services/board.service'
+import { store } from '../store.js'
+import { SET_BOARDS, ADD_BOARD, REMOVE_BOARD, EDIT_BOARD, SET_ACTIVE_BOARD } from '../reducers/board.reducer'
 
 export async function loadBoards() {
     try {

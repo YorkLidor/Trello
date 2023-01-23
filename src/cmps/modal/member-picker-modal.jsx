@@ -1,11 +1,11 @@
 import { useSelector } from "react-redux";
 import { store } from "../../store/store";
-import { CLOSE_MODAL } from "../../store/app.reducer";
+import { CLOSE_MODAL } from "../../store/reducers/app.reducer";
 
 import { AiOutlineClose } from "react-icons/ai";
 import { AiOutlineCheck } from "react-icons/ai";
 
-import { SET_ACTIVE_BOARD } from "../../store/board.reducer";
+import { SET_ACTIVE_BOARD } from "../../store/reducers/board.reducer";
 
 import { boardService } from "../../services/board.service";
 

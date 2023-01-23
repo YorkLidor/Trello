@@ -4,14 +4,14 @@ import { useNavigate } from "react-router-dom";
 import { BoardPreview } from "../cmps/board-preview";
 import { Audio } from 'react-loader-spinner'
 
-import { RxPerson } from 'react-icons/rx'
+import { utilService } from "../services/util.service";
 
-import { loadBoards, saveBoard } from "../store/board.actions";
-import { closeModal, setModalData, toggleModal } from "../store/app.actions"
+import { loadBoards, saveBoard } from "../store/actions/board.actions";
+import { closeModal, setModalData, toggleModal } from "../store/actions/app.actions"
 
 import { BOARD_CREATOR, Modal } from "../cmps/modal/modal";
 
-import { utilService } from "../services/util.service";
+import { RxPerson } from 'react-icons/rx'
 
 export function BoardIndex() {
     const boards = useSelector(state => state.boardModule.boards)
@@ -28,6 +28,7 @@ export function BoardIndex() {
 
     function onToggleStaredBoard(ev, boardId) {
         ev.stopPropagation()
+        user.favBoards.push(boardId)
     }
 
     async function onLoadBoards() {
@@ -44,7 +45,7 @@ export function BoardIndex() {
     }
 
     function onCreateBoard(board) {
-         onSaveBoard(board)
+        onSaveBoard(board)
     }
 
     async function onSaveBoard(board) {

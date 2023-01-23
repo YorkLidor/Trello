@@ -4,7 +4,7 @@ import { useEffectUpdate } from "../customHooks/useEffectUpdate";
 
 import { boardService } from "../services/board.service";
 
-import { setBoard } from "../store/board.actions";
+import { setBoard } from "../store/actions/board.actions";
 
 import { BoardHeader } from "../cmps/board-header";
 import { GroupList } from "../cmps/group-list";

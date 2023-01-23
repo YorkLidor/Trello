@@ -1,10 +1,10 @@
 import { useForm } from "../customHooks/useForm"
 import { boardService } from "../services/board.service"
-import { CLOSE_MODAL } from "../store/app.reducer"
+import { CLOSE_MODAL } from "../store/reducers/app.reducer"
 import { store } from "../store/store"
 import { AiOutlineClose } from "react-icons/ai";
 import { useEffect, useRef } from "react";
-import { closeModal } from "../store/app.actions";
+import { closeModal } from "../store/actions/app.actions";
 
 export function BoardCreator({ cmpProps }) {
     const [boardToEdit, setBoardToEdit, handleChange] = useForm(boardService.getEmptyBoard())

@@ -5,7 +5,7 @@ import { boardService } from "../services/board.service";
 import { utilService } from "../services/util.service";
 import { dndService } from "../services/dnd.service";
 
-import { saveBoard, setBoard } from "../store/board.actions";
+import { saveBoard, setBoard } from "../store/actions/board.actions"
 
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 import { GroupAdd } from "./group-add";

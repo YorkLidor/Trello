@@ -2,9 +2,9 @@ import { useEffect, useRef, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom";
 
 import { store } from "../store/store";
-import { setModalData } from "../store/app.actions"
-import { SET_ACTIVE_BOARD } from "../store/board.reducer";
-import { TOGGLE_MODAL, CLOSE_MODAL } from "../store/app.reducer";
+import { setModalData } from "../store/actions/app.actions"
+import { SET_ACTIVE_BOARD } from "../store/reducers/board.reducer";
+import { TOGGLE_MODAL, CLOSE_MODAL } from "../store/reducers/app.reducer";
 
 import { MODAL_ATTACH, MODAL_LABELS, MODAL_ATTACH_EDIT, MODAL_ATTACH_OPEN, MODAL_MEMBERS, MODAL_MEMBER_OPEN } from '../cmps/modal/modal.jsx'
 
@@ -15,7 +15,7 @@ import { LabelList } from "../cmps/task-details/label/label-list";
 import { Blocks } from "react-loader-spinner";
 import { Modal } from "../cmps/modal/modal";
 
-import { saveTask } from '../store/board.actions'
+import { saveTask } from '../store/actions/board.actions'
 
 import { utilService } from '../services/util.service'
 import { boardService } from "../services/board.service";

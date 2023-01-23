@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react"
 import { useEffectUpdate } from "../customHooks/useEffectUpdate"
 import { useForm } from "../customHooks/useForm"
-import { saveBoard } from "../store/board.actions"
+import { saveBoard } from "../store/actions/board.actions";
 import { FaRegStar } from 'react-icons/fa';
 import { useSelector } from "react-redux";
 import { BsThreeDots } from "react-icons/bs";
@@ -86,7 +86,7 @@ export function BoardHeader({ onDeleteBoard }) {
             </button>
             <span className="btn-divider"></span>
             <button className="btn btn-menu">
-                <BsThreeDots/>
+                <BsThreeDots />
             </button>
         </div>
     </section>

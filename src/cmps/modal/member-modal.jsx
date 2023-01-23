@@ -1,6 +1,6 @@
 import { AiOutlineClose } from "react-icons/ai"
 import { store } from "../../store/store"
-import { CLOSE_MODAL } from "../../store/app.reducer"
+import { CLOSE_MODAL } from "../../store/reducers/app.reducer"
 
 export function MemberModal({ cmpProps }) {
     const { member, onRemoveFromCard } = cmpProps

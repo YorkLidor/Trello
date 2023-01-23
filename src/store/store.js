@@ -1,8 +1,8 @@
 import { combineReducers, legacy_createStore as createStore } from "redux"
 
-import { boardReducer } from './board.reducer'
-import { appReducer } from './app.reducer'
-import { userReducer } from "./user.reducer"
+import { boardReducer } from './reducers/board.reducer'
+import { appReducer } from './reducers/app.reducer'
+import { userReducer } from "./reducers/user.reducer"
 
 const middleware = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__()
 
