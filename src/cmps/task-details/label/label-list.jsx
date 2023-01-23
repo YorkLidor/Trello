@@ -8,11 +8,11 @@ export function LabelList({ board, task, toggleModal }) {
         <span className="labels-label">Labels</span>
         <div className="task-labels-box flex row">
             {
-                labels.map(label => <LabelPreview label={label} toggleModal={toggleModal} />)
+                labels.map(label => <LabelPreview key={label.id} label={label} toggleModal={toggleModal} />)
             }
             {
                 labels.length > 0 && <button key='task-label-add' className='task-label task-label-add' onClick={(ev) => toggleModal(ev, MODAL_LABELS)}>
-                    <span className='task-label task-label-add-icon'><AiOutlinePlus /></span></button>
+                    <AiOutlinePlus className='task-label-add-icon' /></button>
             }
         </div>
     </div>

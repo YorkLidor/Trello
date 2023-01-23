@@ -39,6 +39,7 @@
 @import "cmps/task-preview-icons.scss";
 
 //label-picker CMP
+@import "cmps/modal/label-picker-modal/label-picker-main.scss";
 
 // Attachments
 @import "cmps/task-details/attachment/attachment-preview.scss";
@@ -50,7 +51,6 @@
 
 @import 'cmps/modal/attachment-edit-modal.scss';
 @import "cmps/modal/attachment-modal.scss";
-@import "cmps/modal/labels-picker.scss";
 @import "cmps/modal/member-picker-modal.scss";
 @import "cmps/modal/member-modal.scss";
 @import "cmps/modal/board-creator.scss";

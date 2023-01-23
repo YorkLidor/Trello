@@ -17,6 +17,10 @@
     @include task-details-list;
 }
 
+.task-label-add-icon{
+    @include add-icon;
+}
+
 .task-labels-box,
 .task-info {
     margin-block-end: 8px;

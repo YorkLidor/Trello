@@ -12,7 +12,6 @@ export const boardService = {
     query,
     saveBoard,
     grtDefaultFilter,
-    saveTask,
     removeBoard,
     getById,
     getLabelsById,
@@ -46,25 +45,6 @@ function removeBoard(boardId) {
 
 function getById(boardId) {
     return storageService.get(STORAGE_KEY, boardId)
-}
-
-async function saveTask(boardId, groupId, task, activity) {
-    const board = await getById(boardId)
-    if (!board) throw new Error('No such board with this id')
-    // PUT /api/board/b123/task/t678
-
-    // TODO: find the task, and update
-    const group = board.groups.find(group => group.id === groupId)
-    if (!group) throw new Error('No such a group in board')
-
-    const tasks = group.tasks.map(t => t.id === task.id ? task : t)
-    group.tasks = tasks
-
-    board.activities.unshift(activity)
-    saveBoard(board)
-    store.dispatch({ type: SET_ACTIVE_BOARD, board })
-    // return board
-    // return task
 }
 
 

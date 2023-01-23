@@ -189,7 +189,7 @@
     box-shadow: rgb(0, 121, 191) 0px 0px 0px 2px inset;
 }
 
-@mixin scrollbar($width: 8px, $thumb-radius: 2rem, $thumb-bgclr: rgba(9,30,66,.13), $track-bgclr: rgba(9,30,66,.08)) {
+@mixin scrollbar($width: 8px, $thumb-radius: 2rem, $thumb-bgclr: rgba(9, 30, 66, .13), $track-bgclr: rgba(9, 30, 66, .08)) {
     &::-webkit-scrollbar {
         width: $width;
         height: $width;
@@ -246,20 +246,20 @@
         color: #172B4D;
         min-width: 32px;
         padding: 8px;
+        
+        justify-content: center;
 
         &:hover {
             background-color: #e2e5e9;
         }
     }
 
-    &-add-icon {
-        padding: 0px;
-        height: 16px;
-        max-width: 16px;
+}
 
-        margin-inline-end: -32px;
-    }
-
+@mixin add-icon {
+    padding: 0px;
+    height: 16px;
+    width: 16px;
 }
 
 @mixin task-details-module-box {

@@ -14,3 +14,7 @@
     @include task-details-list;
     border-radius: 50%;
 }
+.task-member-add-icon {
+    @include add-icon;
+    border-radius: 50%;
+}

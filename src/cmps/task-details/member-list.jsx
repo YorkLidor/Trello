@@ -18,7 +18,7 @@ export function MemberList({ members, toggleModal }) {
             {members.length > 0 && members.map(member => <img key={member._id} alt={member.fullname} src={member.imgUrl} onClick={(ev) => onMemberClick(ev, member)} className='list-member' />)}
 
             {members.length > 0 && <button key='task-member-add' className='task-member task-member-add' onClick={(ev) => toggleModal(ev, MODAL_MEMBERS)}>
-                <span className='task-member task-member-add-icon' ><AiOutlinePlus /></span>
+                <AiOutlinePlus className='task-member-add-icon' />
             </button>}
         </div>
     </div>

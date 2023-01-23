@@ -1,0 +1,134 @@
+.editor-colors {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 4px;
+    margin-block-end: 8px;
+}
+
+.remove-color {
+    @include labels-picker-main-button;
+    margin-block-end: 24px;
+}
+
+.remove-color-icon {
+    height: 12px;
+    width: 12px;
+    vertical-align: baseline;
+    font-weight: 900;
+    margin-inline-start: 2px;
+    margin-inline-end: 4px;
+}
+
+.save-label {
+    @include button-filled($button-filled , #FFF);
+}
+
+.label-title {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 16px;
+    margin: 12px 0px 8px;
+}
+
+.label-editor-preview-box {
+    margin: 8px -12px 5px;
+    padding: 32px;
+
+    .label-editor-preview {
+
+        @include label-preview;
+        margin: 0 0 0 0;
+        display: block;
+
+        padding: 0 12px 0 15px;
+
+        .label-title-editor-preview {
+            margin-inline-start: 8px;
+        }
+
+        .label-circle {
+            margin-inline-start: -8px;
+            font-size: 17px;
+            vertical-align: text-bottom;
+        }
+    }
+}
+
+.label-editor-title {
+    width: 100%;
+    font-size: 14px;
+    margin: 0;
+}
+
+.label-editor-title:focus {
+    @include input-focus;
+}
+
+.label-picker-page>hr {
+    border: 0;
+    background-color: #091e4221;
+    height: 1px;
+    box-sizing: initial;
+    margin: 16px 0;
+}
+
+.label-editor-tools {
+    justify-content: space-between;
+    padding: 0;
+
+    &>* {
+        margin: 0;
+    }
+}
+
+
+.color-tab-wrapper {
+    width: 100%;
+    inset: 0;
+    border: 2px solid #FFF;
+
+    .color-tab {
+        margin: 0px;
+        height: 28px;
+        border-radius: 3px;
+        cursor: pointer;
+    }
+
+    &.active-color {
+        border-radius: 3px;
+        border: 2px solid #0079BF;
+
+        .color-tab {
+            margin: 2px;
+            border-radius: 0px;
+            height: 24px;
+
+        }
+    }
+}
+
+.create-label {
+    @include labels-picker-main-button;
+    padding: 6.5px 12px;
+}
+
+.delete-label {
+    @include button-filled($button-filled , #FFF);
+    background-color: #B04632;
+    padding: 6.5px 12px;
+
+
+    &:hover {
+        background-color: #933B27;
+    }
+
+    &-editor {
+        visibility: hidden;
+
+        &.visible {
+            visibility: visible;
+        }
+    }
+
+}

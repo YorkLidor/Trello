@@ -1,0 +1,56 @@
+.labels-picker-list {
+    list-style: none;
+    margin: 0;
+    padding: 4px 0 8px;
+}
+
+.label-picker-line {
+    display: inline-flex;
+    margin-block-end: 5px;
+    width: 100%;
+
+    .label-box-preview {
+        border-radius: 3px;
+        position: relative;
+        flex-grow: 1;
+        line-height: 32px;
+        padding: 0 rem(12px) 0 rem(8px);
+
+        display: inline-flex;
+        align-items: center;
+        gap: rem(8px);
+    }
+
+    input[name="add-label"] {
+        appearance: checkbox;
+        display: none;
+        scale: 1.4;
+        border-radius: 3px;
+        border: 0px;
+        line-height: 16px;
+    }
+
+
+}
+
+.label-line-container {
+    display: inline-flex;
+    flex-grow: 1;
+
+    .label-picker-row {
+        flex-grow: 1;
+        gap: 4px;
+        margin-inline-start: 12px;
+
+        .edit-label-button {
+            cursor: pointer;
+            min-height: 32px;
+            min-width: 32px;
+            padding: 8px;
+
+            &:hover {
+                background-color: $btn-background-cyan;
+            }
+        }
+    }
+}

@@ -1,4 +1,4 @@
-import { LabelsPicker } from "./labels-picker"
+import { LabelsPicker } from "./label-picker-modal/labels-picker"
 import { AttachmentModal } from "./attachment-modal"
 
 import { useSelector } from "react-redux"

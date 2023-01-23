@@ -1,47 +1,44 @@
 import { useEffect, useRef, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom";
 
-import { FaPager } from 'react-icons/fa'
-import { GrTextAlignFull } from 'react-icons/gr'
-import { FiList } from "react-icons/fi";
-import { IoPricetagOutline } from 'react-icons/io5'
-import { RiAttachment2 } from 'react-icons/ri'
-import { HiOutlineUser } from 'react-icons/hi'
-
-
-import { Blocks } from "react-loader-spinner";
-import { Modal } from "../cmps/modal/modal";
-
-import { utilService } from '../services/util.service'
-import { boardService } from "../services/board.service";
-import { useSelector } from "react-redux";
-
+import { store } from "../store/store";
+import { setModalData } from "../store/app.actions"
 import { SET_ACTIVE_BOARD } from "../store/board.reducer";
 import { TOGGLE_MODAL, CLOSE_MODAL } from "../store/app.reducer";
 
-import { store } from "../store/store";
-import { setModalData } from "../store/app.actions"
-
-import { MODAL_ATTACH,MODAL_LABELS, MODAL_ATTACH_EDIT, MODAL_ATTACH_OPEN, MODAL_MEMBERS, MODAL_MEMBER_OPEN } from '../cmps/modal/modal.jsx'
+import { MODAL_ATTACH, MODAL_LABELS, MODAL_ATTACH_EDIT, MODAL_ATTACH_OPEN, MODAL_MEMBERS, MODAL_MEMBER_OPEN } from '../cmps/modal/modal.jsx'
 
 import { AttachmentList } from "../cmps/task-details/attachment/attachment-list";
 import { CommentList } from "../cmps/task-details/comment/comment-list";
 import { MemberList } from "../cmps/task-details/member-list";
 import { LabelList } from "../cmps/task-details/label/label-list";
+import { Blocks } from "react-loader-spinner";
+import { Modal } from "../cmps/modal/modal";
 
+import { saveTask } from '../store/board.actions'
+
+import { utilService } from '../services/util.service'
+import { boardService } from "../services/board.service";
+import { useSelector } from "react-redux";
+
+import { FaPager as IconHeader } from 'react-icons/fa'
+import { GrTextAlignFull } from 'react-icons/gr'
+import { FiList } from "react-icons/fi";
+import { RiAttachment2 } from 'react-icons/ri'
+import { TaskDetailsSideBar } from "../cmps/task-details/task-details-sidebar";
 
 export function TaskDetails() {
     const user = useSelector((storeState) => storeState.userModule.user)
+    const isModalOpen = useSelector((storeState) => storeState.appModule.app.isModalOpen)
+    const board = useSelector((storeState) => storeState.boardModule.board)
+    const modalData = useSelector((storeState) => storeState.appModule.app.modalData)
 
     const { boardId, groupId, taskId } = useParams()
     const [taskToEdit, setTaskToEdit] = useState(null)
 
-    const isModalOpen = useSelector((storeState) => storeState.appModule.app.isModalOpen)
-    const board = useSelector((storeState) => storeState.boardModule.board)
-    const modalData = useSelector((storeState) => storeState.appModule.app.modalData)
-    
+
     const navigate = useNavigate()
-    
+
     const modalBoxRef = useRef()
     const descToolsRef = useRef()
     const elDescInputRef = useRef()
@@ -52,9 +49,6 @@ export function TaskDetails() {
 
     var group = useRef()
     group.current = groupId ? board?.groups?.find(g => g.id === groupId) : null
-    
-    
-    
 
     useEffect(() => {
         if (!boardId || !groupId || !taskId) return errorRedirect()
@@ -84,8 +78,7 @@ export function TaskDetails() {
             setTaskToEdit(task)
 
             if (!board) store.dispatch({ type: SET_ACTIVE_BOARD, board: boardModel })
-        }
-        catch {
+        } catch {
             errorRedirect()
         }
     }
@@ -133,9 +126,11 @@ export function TaskDetails() {
         setTaskToEdit({ ...taskToEdit, description: elDescInputRef.current.value })
     }
 
-    function onSaveComment({ target }) {
+    function onSaveComment() {
         const value = elCommentInputRef.current.value
         if (!value.length) return
+
+        // TODO:  move to service
         const comment = {
             id: utilService.makeId(),
             createdAt: Date.now(),
@@ -159,7 +154,7 @@ export function TaskDetails() {
         let action = `Removed attachment ${attachment.filename} from card ${taskToEdit.title}.`
 
         const activity = boardService.getActivity(user, { id: taskToEdit.id, title: taskToEdit.title }, action)
-        await boardService.saveTask(board._id, groupId, taskToEdit, activity)
+        await saveTask(board._id, groupId, taskToEdit, activity)
         store.dispatch({ type: SET_ACTIVE_BOARD, board })
     }
 
@@ -169,7 +164,7 @@ export function TaskDetails() {
         taskToEdit.memberIds = taskToEdit.memberIds?.filter(memberId => memberId !== member._id)
 
         const activity = boardService.getActivity(user, { id: taskToEdit.id, title: taskToEdit.title }, action)
-        await boardService.saveTask(board._id, groupId, taskToEdit, activity)
+        await saveTask(board._id, groupId, taskToEdit, activity)
         store.dispatch({ type: SET_ACTIVE_BOARD, board })
     }
 
@@ -204,7 +199,7 @@ export function TaskDetails() {
             <section className="task-details" onClick={closeModal}>
 
                 <div className="task-header">
-                    <FaPager className="header-icon task-icon" /><input type='text' className="task-title" defaultValue={taskToEdit.title} onFocus={handleEdit} onBlur={handleEdit} data-type='header' />
+                    <IconHeader className="header-icon task-icon" /><input type='text' className="task-title" defaultValue={taskToEdit.title} onFocus={handleEdit} onBlur={handleEdit} data-type='header' />
                     <p className="header-subtitle">in list <span style={{ textDecoration: 'underline' }}>{group.current.title}</span></p>
                 </div>
 
@@ -229,7 +224,7 @@ export function TaskDetails() {
                         </div>
                     </div>
 
-                    { taskToEdit?.attachments?.length > 0 &&
+                    {taskToEdit?.attachments?.length > 0 &&
 
                         <div className="task-attachment-box flex column">
                             <RiAttachment2 className="attach-icon task-icon" />
@@ -250,18 +245,11 @@ export function TaskDetails() {
                             <button onClick={onSaveComment} className="save-btn comment-btn" ref={commentBtnRef}>Save</button>
                         </div>
 
-                        {<CommentList task={taskToEdit} /> }
+                        {<CommentList task={taskToEdit} />}
                     </div>
                 </section>
 
-                <div className="window-sidebar-box">
-                    <nav className="window-sidebar flex column">
-                        <span className="sidebar-title">Add to card</span>
-                        <a className='button-link' href='#' onClick={(ev) => toggleModal(ev, MODAL_MEMBERS)}><HiOutlineUser data-type='icon' /><span className="nav-btn-txt" data-type='icon'>Members</span></a>
-                        <a className='button-link' href='#' onClick={(ev) => toggleModal(ev, MODAL_LABELS)}><IoPricetagOutline data-type='icon' /><span className="nav-btn-txt" data-type='icon'>Labels</span></a>
-                        <a className='button-link' href='#' onClick={(ev) => toggleModal(ev, MODAL_ATTACH)}><RiAttachment2 data-type='icon' /><span className="nav-btn-txt" data-type='icon'>Attachment</span></a>
-                    </nav>
-                </div>
+                <TaskDetailsSideBar modal={toggleModal} />
 
             </section>
 
