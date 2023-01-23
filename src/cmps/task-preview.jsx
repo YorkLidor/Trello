@@ -5,9 +5,11 @@ import { useNavigate } from "react-router-dom"
 import { SET_ACTIVE_BOARD } from "../store/board.reducer"
 import { store } from "../store/store"
 import { TaskPreviewIcons } from "./task-preview-icons"
+import { useState } from "react"
 
 export function TaskPreview({ task, group, isDragging }) {
     const board = useSelector((storeState) => storeState.boardModule.board)
+    const [isEditShow,setIsEditShow] = useState('')
     const navigate = useNavigate()
 
     const groupId = group.id
@@ -16,6 +18,7 @@ export function TaskPreview({ task, group, isDragging }) {
     if (task.attachments && task.attachments.length && task.attachments[0].url) style = { backgroundImage: `url(${task.attachments[0].url})`, height: '107.8px' }
 
     let isLabelsLarge = board.style.isLabelsLarge
+    const labelsStyle = isLabelsLarge ? 'labels-large' : ''
 
 
     const toggleLabelsSize = (ev) => {
@@ -25,11 +28,17 @@ export function TaskPreview({ task, group, isDragging }) {
         store.dispatch({ type: SET_ACTIVE_BOARD, board: newBoard })
     }
 
-    const labelsStyle = isLabelsLarge ? 'labels-large' : ''
+    function onEditClick(ev){
+        ev.stopPropagation()
+        alert('click')
+    }
 
-    return <div onMouseEnter={() => console.log('enter')} onMouseLeave={() => console.log('leve')} className={`task-preview-container ${isDragging && 'is-dragging'}`} onClick={() => navigate(`/card/${board._id}/${groupId}/${task.id}`)}>
+    return <div onMouseEnter={()=> setIsEditShow('hidden-icon')} onMouseLeave={() =>setIsEditShow('')} className={`task-preview-container ${isDragging && 'is-dragging'}`} onClick={() => navigate(`/card/${board._id}/${groupId}/${task.id}`)}>
 
-
+        {/* EDIT ICON */}
+        <section className={`edit-task-icon-container ${isEditShow}`} onClick={onEditClick}>
+            <img className='edit-task-icon' src="http://res.cloudinary.com/dk2geeubr/image/upload/v1674474594/xln3wronhmxmwxpucark.svg" alt="" />
+        </section>
 
         {/* COVER COLOR */}
         {((style && style.background) || style.backgroundImage) &&
@@ -40,8 +49,6 @@ export function TaskPreview({ task, group, isDragging }) {
         }
 
         <li className={`task-preview`} >
-
-
             {/* LABELS */}
             {(task.labelIds && task.labelIds.length) &&
                 <div className="labels-container" >
@@ -64,16 +71,13 @@ export function TaskPreview({ task, group, isDragging }) {
                 </div>
             }
 
-
+            {/* TASK BODY */}
             <section className="task-body" >
                 <p>{task.title}</p>
             </section>
 
             <TaskPreviewIcons board={board} groupId={groupId} task={task} />
 
-            <section className="edit-task-icon-container">
-                <BsPencil className="edit-task-icon" />
-            </section>
 
         </li>
     </div>
