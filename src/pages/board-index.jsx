@@ -13,15 +13,20 @@ import { utilService } from "../services/util.service";
 
 export function BoardIndex() {
     const boards = useSelector(state => state.boardModule.boards)
+    const modalData = useSelector((storeState) => storeState.appModule.app.modalData)
+    const user = useSelector(state => state.userModule.boards)
     const elModal = useRef()
     const navigate = useNavigate()
-    const modalData = useSelector((storeState) => storeState.appModule.app.modalData)
 
 
     useEffect(() => {
         onLoadBoards()
         return closeModal
     }, [])
+
+    function onToggleStaredBoard(ev, boardId) {
+        ev.stopPropagation()
+    }
 
     async function onLoadBoards() {
         try {
@@ -93,9 +98,13 @@ export function BoardIndex() {
                             key={board._id}
                             board={board}
                             onBoardClick={onBoardClick}
+                            onToggleStaredBoard={onToggleStaredBoard}
                         />
                     )}
-                    <BoardPreview key={'new'} board={null} onBoardClick={onBoardClick} />
+                    <BoardPreview
+                        key={'new'}
+                        board={null}
+                        onBoardClick={onBoardClick} />
                 </ul>
             </section>
         </section>
