@@ -1,7 +1,18 @@
 import { BsArrowUpRight } from 'react-icons/bs'
+import { MODAL_ATTACH_EDIT, MODAL_ATTACH_OPEN } from '../../modal/modal'
 
-export function AttachmentPreview({ attachment, attachmentProps }) {
-    const { onRemoveAttachment, onEditAttachment, onOpenAttachment } = attachmentProps
+
+export function AttachmentPreview({ attachment, toggleModal, onRemoveAttachment }) {
+
+    function onEditAttachment(ev, attachment) {
+        ev.stopPropagation()
+        toggleModal(ev, MODAL_ATTACH_EDIT, { attachment })
+    }
+
+    function onOpenAttachment(ev, attachment) {
+        if (ev) ev.stopPropagation()
+        toggleModal(ev, MODAL_ATTACH_OPEN, { attachment })
+    }
 
     return attachment && <div className="attachment-preview">
         <img className="attachment-preview-img" src={attachment.url} alt={attachment.filename} onClick={(ev) => onOpenAttachment(ev, attachment)} />

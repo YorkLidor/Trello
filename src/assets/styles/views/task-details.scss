@@ -114,10 +114,6 @@
     font-weight: 600;
 }
 
-.task-labels-box,
-.task-info {
-    margin-block-end: 8px;
-}
 
 
 .task-description-box {
@@ -190,8 +186,7 @@
 
 
 .task-activity-box {
-    position: relative;
-    margin: 0 0 4px 40px;
+    @include task-details-module-box;
 
     .activity-icon {
         @include task-details-field-icon;
@@ -278,12 +273,6 @@
     }
 }
 
-.labels-label {
-    @include details-label;
-    margin: 0 8px 4px 0;
-}
-
-
 
 
 
@@ -322,29 +311,6 @@
     &.show {
         display: block;
     }
-}
-
-
-
-.task-labels-box {
-    max-width: 100%;
-    flex-wrap: wrap;
-    gap: 4px;
-}
-
-
-
-.task-label::before {
-    content: '';
-    position: absolute;
-    top: 6px;
-    bottom: 6px;
-    left: 6px;
-    border-radius: 50%;
-}
-
-.task-label {
-    @include task-details-list;
 }
 
 .task-info {
