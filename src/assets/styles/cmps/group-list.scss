@@ -1,6 +1,10 @@
 .group-list-container {
 
-    @include scrollbar(12px, 4px, #f4f5f763, #1c1c1d15);
+    @include scrollbar(12px, 4px, #f4f5f763, #091e4214);
+
+    &::-webkit-scrollbar-track {
+        margin-block: 10em;
+    }
 
     display: flex;
     flex-grow: 1;
