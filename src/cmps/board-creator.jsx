@@ -33,7 +33,7 @@ export function BoardCreator({ cmpProps }) {
 
         <main className="creator-body">
             <div className="board-skeleton-container">
-                <div className="board-preview-skeleton-background">
+                <div className="board-preview-skeleton-background" style={boardToEdit.style}>
                     <img src="https://a.trellocdn.com/prgb/assets/images/board-preview-skeleton.14cda5dc635d1f13bc48.svg" alt="" />
                 </div>
             </div>
