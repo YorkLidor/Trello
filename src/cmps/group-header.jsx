@@ -1,42 +1,62 @@
 import { saveBoard } from "../store/board.actions.js"
 import { useRef, useState } from "react"
+import { useForm } from "../customHooks/useForm.js"
+import { useEffectUpdate } from "../customHooks/useEffectUpdate.js"
 
 export function GroupHeader({ group, board, onRemoveGroup }) {
-    const groupId = group.id
-    const [groupTitleToSet, setGroupTitleToSet] = useState(group.title)
-    const contentEditableRef = useRef(null)
+    const [groupToEdit, setGroupToEdit, handleChange] = useForm(group)
+    const elTitleInput = useRef()
+    const elTitle = useRef()
+    const [editClass, setEditClass] = useState('')
 
-    function handleFormChange(ev) {
-        setGroupTitleToSet(ev.target.innerHTML)
+    useEffectUpdate(() => {
+        setElTitleInputFocus()
+    }, [editClass])
+
+    function onHandleChange(ev) {
+        handleChange(ev)
+    }
+
+    function setElTitleInputFocus() {
+        elTitleInput.current?.focus()
     }
 
     async function onSaveTitle() {
-        group.title = groupTitleToSet
-        board.groups.forEach(group => { (group.id === groupId) && (group.title = groupTitleToSet) })
+        setEditClass('')
+        if (!groupToEdit.title) {
+            groupToEdit.title = group.title
+            return
+        }
+        if (!groupToEdit.title || groupToEdit.title === group.title) return
+        group.title = groupToEdit.title
         try {
-            await saveBoard({ ...board })
+            await saveBoard(board)
         } catch (err) {
             console.error('Can\'t save board!', err)
         }
     }
 
-    function handleClick() {
-        document.execCommand('selectAll', false, null);
-    }
-
     return <section className="group-header">
-        <section
-            className="group-title focused"
-            onInput={handleFormChange}
-            onBlur={onSaveTitle}
-            onClick={handleClick}
-            ref={contentEditableRef}
-            contentEditable={true}
-            suppressContentEditableWarning={true}
-            dangerouslySetInnerHTML={{ __html: group.title }}
-            name="title"
+        <div
+            className={`title-container ${editClass}`}
         >
-        </section>
+            <input
+                className="group-title-input"
+                type="text"
+                value={groupToEdit?.title || ''}
+                name="title"
+                onChange={onHandleChange}
+                ref={elTitleInput}
+                onBlur={onSaveTitle}
+            />
+            <h1
+                className="group-title-header"
+                onClick={() => setEditClass('editable')}
+                ref={elTitle}
+            >
+                {groupToEdit?.title || ''}
+            </h1>
+        </div>
 
         <button onClick={() => onRemoveGroup(group.id)}>...</button>
     </section>

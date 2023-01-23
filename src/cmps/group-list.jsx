@@ -1,11 +1,11 @@
 import { useSelector } from "react-redux";
+import { useForm } from "../customHooks/useForm";
 
 import { boardService } from "../services/board.service";
 import { utilService } from "../services/util.service";
 import { dndService } from "../services/dnd.service";
 
 import { saveBoard, setBoard } from "../store/board.actions";
-import { useForm } from "../customHooks/useForm";
 
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 import { GroupAdd } from "./group-add";
@@ -20,7 +20,7 @@ export function GroupList() {
         if (!groupToEdit.title) throw new Error('Must enter title!')
         try {
             board.groups.push(groupToEdit)
-            await saveBoard({ ...board })
+            await saveBoard(board)
             setGroupToEdit(boardService.getEmptyGroup())
         } catch (err) {
             console.log('err', err)
@@ -32,7 +32,7 @@ export function GroupList() {
         if (window.confirm("Are you sure?") === false) return
         try {
             board.groups = board.groups.filter((group) => group.id !== groupId)
-            await saveBoard({ ...board })
+            await saveBoard(board)
         } catch (err) {
             console.error('Cannot remove group', err)
         }
@@ -57,8 +57,8 @@ export function GroupList() {
         } else if (type === 'group-list') {
             board.groups = utilService.reorder(board.groups, sourceIdx, destinationIdx)
         }
-        setBoard({ ...board })
-        saveBoard({ ...board })
+        setBoard(board)
+        saveBoard(board)
     }
 
     return <DragDropContext onDragEnd={onDragEnd} >

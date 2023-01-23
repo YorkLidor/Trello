@@ -189,18 +189,18 @@
     box-shadow: rgb(0, 121, 191) 0px 0px 0px 2px inset;
 }
 
-@mixin scrollbar($width: 8px, $thumb-radius: 2rem, $thumb-bgclr: rgba(9, 30, 66, .13), $track-bgclr: rgba(9, 30, 66, .08)) {
+@mixin scrollbar($width: 8px, $thumb-radius: 2rem, $thumb-bgclr: rgba(9, 30, 66, .13), $track-bgclr: rgba(9, 30, 66, .08), $display: block) {
     &::-webkit-scrollbar {
         width: $width;
         height: $width;
         background-color: transparent;
         border-radius: 2rem;
+        display: $display;
     }
 
     &::-webkit-scrollbar-thumb {
         background: $thumb-bgclr;
         border-radius: $thumb-radius;
-
     }
 
     &::-webkit-scrollbar-track {

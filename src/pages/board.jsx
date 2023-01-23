@@ -50,7 +50,7 @@ export function Board() {
         }
     }
 
-    function getLoader() {
+    function Loader() {
         return <main className="board flex column justify-center">
             <Audio
                 height="100"
@@ -64,7 +64,7 @@ export function Board() {
         </main >
     }
 
-    if (!board) return getLoader()
+    if (!board) return <Loader/>
     else return <main className="board flex column" ref={elBoard}>
         <BoardHeader
             board={board}

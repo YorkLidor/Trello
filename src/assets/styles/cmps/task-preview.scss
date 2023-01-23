@@ -8,30 +8,36 @@
     box-shadow: var(--ds-shadow-raised, 0 1px 0 $clr23);
     margin-bottom: rem(8px);
     position: relative;
-    
 }
 
 .edit-task-icon-container{
     position: absolute;
     top: 2px;
     right: 2px;
+    border-radius: 3px;
     background-color: #f4f5f7;
-    // align-items: center;
-    // border-radius: 3px;
-    // color: #42526e;
-    // font-size: 12px;
-    // height: 28px;
-    // justify-content: center;
-    // opacity: .8;
-    // width: 28px;
-
-    .edit-task-icon{
-        color: red;
+    opacity: 0.8;
+    align-items: center;
+    height: 28px;
+    justify-content: center;
+    width: 28px;
+    display: none;
+    
+    &:hover{
+        opacity: 1;
+        .edit-task-icon{
+            opacity: 0.8;
+        }
     }
-
-    // &.hidden-icon{
-    //     display: none;
-    // }
+    
+    .edit-task-icon{
+        opacity: 0.6;
+    }
+    
+    &.hidden-icon{
+        display: flex;
+        display: block;
+    }
 
 }
 .task-preview {

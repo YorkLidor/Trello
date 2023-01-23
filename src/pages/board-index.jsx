@@ -8,21 +8,27 @@ import { RxPerson } from 'react-icons/rx'
 
 import { loadBoards, saveBoard } from "../store/board.actions";
 import { closeModal, setModalData, toggleModal } from "../store/app.actions"
+
 import { BOARD_CREATOR, Modal } from "../cmps/modal/modal";
+
 import { utilService } from "../services/util.service";
 
 export function BoardIndex() {
     const boards = useSelector(state => state.boardModule.boards)
+    const modalData = useSelector((storeState) => storeState.appModule.app.modalData)
+    const user = useSelector(state => state.userModule.boards)
     const elModal = useRef()
     const navigate = useNavigate()
-    const modalData = useSelector((storeState) => storeState.appModule.app.modalData)
 
 
     useEffect(() => {
         onLoadBoards()
-
-        return () => closeModal()
+        return closeModal
     }, [])
+
+    function onToggleStaredBoard(ev, boardId) {
+        ev.stopPropagation()
+    }
 
     async function onLoadBoards() {
         try {
@@ -38,7 +44,7 @@ export function BoardIndex() {
     }
 
     function onCreateBoard(board) {
-        if (board.title) onSaveBoard(board)
+         onSaveBoard(board)
     }
 
     async function onSaveBoard(board) {
@@ -51,7 +57,7 @@ export function BoardIndex() {
         }
     }
 
-    function getLoader() {
+    function Loader() {
         console.log('loader');
         return <main className="boards-index-container flex column justify-center">
             <Audio
@@ -76,7 +82,7 @@ export function BoardIndex() {
         toggleModal()
     }
 
-    if (!boards || !boards.length) return getLoader()
+    if (!boards || !boards.length) return <Loader />
     else return <main className="boards-index-container">
         <section className="boards-index flex column">
             <header className="main-header">
@@ -94,9 +100,13 @@ export function BoardIndex() {
                             key={board._id}
                             board={board}
                             onBoardClick={onBoardClick}
+                            onToggleStaredBoard={onToggleStaredBoard}
                         />
                     )}
-                    <BoardPreview key={'new'} board={null} onBoardClick={onBoardClick} />
+                    <BoardPreview
+                        key={'new'}
+                        board={null}
+                        onBoardClick={onBoardClick} />
                 </ul>
             </section>
         </section>

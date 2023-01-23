@@ -13,7 +13,9 @@ const initialState = {
             "id": "m101",
             "boardId": "m101",
             "taskId": "t101"
-        }]
+        }],
+        boards: [],
+        favBoards:[]
     },
     users: [
         {
