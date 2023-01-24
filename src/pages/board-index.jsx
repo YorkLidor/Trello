@@ -81,13 +81,13 @@ export function BoardIndex() {
     }
 
     function onToggleModal({ target }) {
-        const props = { onBoardClick, onCreateBoard }
-        setModalData(BOARD_CREATOR, props)
-        const pos = utilService.getElementPosition(target)
-        elModal.current.style.top = pos.top + 'px'
-        elModal.current.style.left = pos.right + 'px'
+        // const props = { onBoardClick, onCreateBoard }
+        // setModalData(BOARD_CREATOR, props)
+        // const pos = utilService.getElementPosition(target)
+        // elModal.current.style.top = pos.top + 'px'
+        // elModal.current.style.left = pos.right + 'px'
 
-        toggleModal()
+        // toggleModal()
     }
 
     if (!boards && !boards.length) return <Loader />

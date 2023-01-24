@@ -1,18 +1,21 @@
-import { onRemoveFromCard } from "../../store/actions/board.actions"
+import { useSelector } from "react-redux"
+
 import { closeModal } from "../../store/actions/app.actions"
+import { onRemoveFromCard } from "../../store/actions/board.actions"
 
 import { AiOutlineClose } from "react-icons/ai"
 
-export function MemberModal({ cmpProps }) {
+export function MemberModal({ id, cmpProps }) {
+    const modals = useSelector((storeState) => storeState.appModule.app.modals)
     const { member, task, boardId, groupId } = cmpProps
 
     function onRemoveMember() {
         onRemoveFromCard(member, task, boardId, groupId)
-        closeModal()
+        closeModal(modals, id)
     }
 
     return <div className="modal-member">
-        <AiOutlineClose className='close-modal-member' onClick={closeModal} />
+        <AiOutlineClose className='close-modal-member' onClick={()=> closeModal(modals, id)} />
 
         <div className="modal-member-header">
             <img className="member-logo" src={member.imgUrl} />

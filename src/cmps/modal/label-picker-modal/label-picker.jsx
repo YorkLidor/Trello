@@ -13,7 +13,7 @@ export const PAGE_LIST = 'PAGE_LIST'
 export const PAGE_EDIT = 'PAGE_EDIT'
 export const PAGE_DELETE = 'PAGE_DELETE'
 
-export function LabelsPicker({ cmpProps }) {
+export function LabelsPicker({ id , cmpProps }) {
     const { groupId, task } = cmpProps
 
     const board = useSelector((storeState) => storeState.boardModule.board)
@@ -76,7 +76,7 @@ export function LabelsPicker({ cmpProps }) {
     }
 
     return board.labels && <div className='modal-label-picker'>
-        <ModalHeader onModalClickBack={modalGoBack} allowBack={allowBack} header={_getPickerHeaderText()} />
+        <ModalHeader id={id} onModalClickBack={modalGoBack} allowBack={allowBack} header={_getPickerHeaderText()} />
 
         <div className='label-picker-page'>
             {getDynamicModalPage(modalPage, _getProps())}

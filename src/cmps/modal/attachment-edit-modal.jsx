@@ -3,7 +3,7 @@ import { useRef } from 'react'
 import { closeModal } from '../../store/actions/app.actions'
 import { boardService } from '../../services/board.service'
 
-import { AiOutlineClose } from 'react-icons/ai'
+import { ModalHeader } from './modal-header'
 
 export function AttachmentEditModal({ cmpProps, id }) {
     const { boardId, groupId, task, attachment } = cmpProps
@@ -38,11 +38,7 @@ export function AttachmentEditModal({ cmpProps, id }) {
     }
 
     return <div className='attach-modal-box'>
-        <div className='modal-header-container flex row'>
-            <span style={{ margin: 0, padding: 0 }} />
-            <span className='modal-header'>Edit attachment</span>
-            <AiOutlineClose className='close-modal' onClick={() => closeModal(id)} />
-        </div>
+        <ModalHeader id={id} header={'Edit attachment'} allowBack={false} />
 
         <div className='attach-editor-box'>
             <label htmlFor='edit-attach' className='attach-editor-label'>Link</label>

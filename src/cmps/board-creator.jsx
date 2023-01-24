@@ -1,6 +1,5 @@
 import { useForm } from "../customHooks/useForm"
 import { boardService } from "../services/board.service"
-import { CLOSE_MODAL } from "../store/reducers/app.reducer"
 import { store } from "../store/store"
 import { AiOutlineClose } from "react-icons/ai";
 import { useEffect, useRef } from "react";
@@ -41,7 +40,7 @@ export function BoardCreator({ cmpProps }) {
             <h2 className="creator-title">Create board</h2>
             <button
                 className="btn-remove"
-                onClick={() => store.dispatch({ type: CLOSE_MODAL })}
+                onClick={() => closeModal()}
             >
                 <AiOutlineClose />
             </button>

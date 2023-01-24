@@ -1,14 +1,11 @@
 import { store } from "../store/store"
 import { utilService } from "./util.service"
 import { SET_MODALS, SET_MODAL } from "../store/reducers/app.reducer"
-import { useSelector } from "react-redux"
 
 import {
     MODAL_LABELS, MODAL_ATTACH, MODAL_ATTACH_EDIT, MODAL_ATTACH_OPEN,
     MODAL_MEMBERS, MODAL_MEMBER_OPEN, MODAL_TASK_QUICK_EDIT, BOARD_CREATOR
 } from '../cmps/modal/modal'
-
-const modals = []
 
 export const modalService = {
     addNewModal,
@@ -20,22 +17,23 @@ export const modalService = {
     removeModal
 }
 
-function addNewModal() {
+function addNewModal(modals) {
     const newModal = {
         id: 'modal-' + utilService.makeId(),
         isOpen: false,
         modalData: null
     }
     modals.unshift(newModal)
-    _updateModalsInStore()
+    console.log(modals)
+    _updateModalsInStore(modals)
     return newModal
 }
 
-function getModalById(id) {
+function getModalById(modals, id) {
     return modals.find(modal => modal.id === id)
 }
 
-function openModal(id) {
+function openModal(modals, id) {
     const modal = modals.find(modal => modal.id === id)
     if(!modal) throw new Error('Modal not found')
 
@@ -43,7 +41,7 @@ function openModal(id) {
     _updateStore(modal)
 }
 
-function closeModal(id) {
+function closeModal(modals, id) {
     const modal = modals.find(modal => modal.id === id)
     if(!modal) throw new Error('Modal not found')
 
@@ -51,7 +49,7 @@ function closeModal(id) {
     _updateStore(modal)
 }
 
-function toggleModal(id) {
+function toggleModal(modals, id) {
     const modal = modals.find(modal => modal.id === id)
     if(!modal) throw new Error('Modal not found')
 
@@ -59,7 +57,7 @@ function toggleModal(id) {
     _updateStore(modal)
 }
 
-function setModalData(id, modalType, props) {
+function setModalData(modals, id, modalType, props) {
     const modal = modals.find(modal => modal.id === id)
     if(!modal) throw new Error('Modal not found')
 
@@ -70,7 +68,7 @@ function setModalData(id, modalType, props) {
     return modal
 }
 
-function removeModal(id) {
+function removeModal(modals, id) {
     modals = modals.filter(modal => modal.id !== id)
     _updateModalsInStore(modals)
 }
@@ -79,7 +77,7 @@ function _updateStore(modal) {
     store.dispatch({type: SET_MODAL, modal })
 }
 
-function _updateModalsInStore() {
+function _updateModalsInStore(modals) {
     store.dispatch({type: SET_MODALS, modals })
 }
 

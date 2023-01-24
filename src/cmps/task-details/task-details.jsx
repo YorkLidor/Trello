@@ -35,6 +35,7 @@ import { modalService } from "../../services/modal.service"
 export function TaskDetails() {
     const user = useSelector((storeState) => storeState.userModule.user)
     const board = useSelector((storeState) => storeState.boardModule.board)
+    const modals = useSelector((storeState) => storeState.appModule.app.modals)
     const [modal, setModal] = useState(null)
     const [taskToEdit, setTaskToEdit] = useState(null)
 
@@ -44,13 +45,14 @@ export function TaskDetails() {
     const modalBoxRef = useRef()
 
     var group = groupId ? board?.groups?.find(g => g.id === groupId) : null
+    console.log(modal)
+
 
     useEffectInit(() => {
         if (!boardId || !groupId || !taskId) return errorRedirect()
         loadBoard()
-        setModal(modalService.addNewModal())
+        setModal(modalService.addNewModal(modals))
     }, [])
-
 
     useEffectUpdate(() => {
         if (board && taskToEdit && group) {
@@ -81,13 +83,14 @@ export function TaskDetails() {
 
     function errorRedirect() {
         console.log('ERROR: Failed to load board')
+        modalService.removeModal(modals, modal.id)
         return navigate('/workspace')
     }
 
     function closePage() {
         if (modal?.isOpen) onCloseModal()
         else {
-            modalService.removeModal(modal.id)
+            modalService.removeModal(modals, modal.id)
             navigate(`/${boardId}`)
         }
     }
@@ -96,7 +99,7 @@ export function TaskDetails() {
         if (ev) ev.stopPropagation()
 
         if (!modal?.id) return
-        closeModal(modal.id)
+        closeModal(modals, modal.id)
     }
 
     function handleEditHeader(ev) {
@@ -110,7 +113,7 @@ export function TaskDetails() {
     }
 
     // Toggle modal visibility and set it's pos under element
-    function toggleModal(ev, modalType, ex = null) {
+    function onToggleModal(ev, modalType, ex = null) {
         if (!modal) return
         let element
         if (ev) {
@@ -131,7 +134,9 @@ export function TaskDetails() {
         modalBoxRef.current.style.top = pos.bottom + 'px'
         modalBoxRef.current.style.left = pos.left + 'px'
 
-        setModal(setModalData(modal.id, modalType, props))
+        setModal(modalService.setModalData(modals, modal.id, modalType, props))
+        toggleModal(modals, modal.id)
+
     }
 
     return (!taskToEdit || !group) ? <Blocks visible={true} height="80" width="80" ariaLabel="blocks-loading" wrapperStyle={{}} wrapperClass="blocks-wrapper" /> : <>
@@ -147,8 +152,8 @@ export function TaskDetails() {
 
                 <section className="task-main-col">
                     <section className="task-info flex row">
-                        {taskToEdit?.memberIds?.length > 0 && <MemberList members={board.members?.filter(member => taskToEdit.memberIds?.includes(member._id))} toggleModal={toggleModal} />}
-                        {taskToEdit?.labelIds?.length > 0 && <LabelList board={board} task={taskToEdit} toggleModal={toggleModal} />}
+                        {taskToEdit?.memberIds?.length > 0 && <MemberList members={board.members?.filter(member => taskToEdit.memberIds?.includes(member._id))} toggleModal={onToggleModal} />}
+                        {taskToEdit?.labelIds?.length > 0 && <LabelList board={board} task={taskToEdit} toggleModal={onToggleModal} />}
                     </section>
 
                     <TaskDescription user={user} groupId={groupId} task={taskToEdit} />
@@ -158,15 +163,15 @@ export function TaskDetails() {
                             <RiAttachment2 className="attach-icon task-icon" />
                             <div className="activity-header"> <span className="title-main-col">Attachments</span> </div>
 
-                            <AttachmentList task={taskToEdit} toggleModal={toggleModal} groupId={groupId} user={user} boardId={boardId} />
-                            <a className='button-link add-attachment' href='#' onClick={(ev) => toggleModal(ev, MODAL_ATTACH)}>Add an attachment</a>
+                            <AttachmentList task={taskToEdit} toggleModal={onToggleModal} groupId={groupId} user={user} boardId={boardId} />
+                            <a className='button-link add-attachment' href='#' onClick={(ev) => onToggleModal(ev, MODAL_ATTACH)}>Add an attachment</a>
                         </div>
                     }
 
                     <Activity user={user} boardId={boardId} groupId={groupId} taskToEdit={taskToEdit} />
                 </section>
 
-                <TaskDetailsSideBar modal={toggleModal} />
+                <TaskDetailsSideBar onToggleModal={onToggleModal} />
                 <button className='close-task-details'>
                     <IoClose onClick={closePage} />
                 </button>
@@ -175,7 +180,7 @@ export function TaskDetails() {
         </section >
         <div ref={modalBoxRef} className='modal-container'>
             {
-                modal.isOpen && <Modal id={modal.id} cmpProps={modal.modalData.props} cmpType={modal.modalData.cmpType} className={modal.modalData.className} />
+                modal.isOpen && <Modal modal={modal} cmpProps={modal.modalData.props} cmpType={modal.modalData.cmpType} className={modal.modalData.className} />
             }
         </div>
     </>

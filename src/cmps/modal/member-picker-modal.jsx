@@ -10,7 +10,7 @@ import { AiOutlineCheck } from "react-icons/ai";
 
 import { SET_ACTIVE_BOARD } from "../../store/reducers/board.reducer";
 
-export function MemberPicker({ cmpProps }) {
+export function MemberPicker({ id, cmpProps }) {
     const { groupId, task } = cmpProps
 
     const user = useSelector((storeState) => storeState.userModule.user)
@@ -35,7 +35,7 @@ export function MemberPicker({ cmpProps }) {
     }
 
     return board && <div className="modal-members-box">
-        <ModalHeader header={'Members'} allowBack={false} />
+        <ModalHeader id={id} header={'Members'} allowBack={false} />
         <span className="modal-label">Board members</span>
         
         <ul className="members-picker-list">

@@ -4,7 +4,7 @@ import { saveTask } from '../../store/actions/board.actions'
 import { uploadImg } from '../../services/upload-img.service'
 import { boardService } from '../../services/board.service'
 
-import { AiOutlineClose } from 'react-icons/ai'
+import { ModalHeader } from './modal-header'
 
 export function AttachmentModal({ id, cmpProps }) {
     const { boardId, groupId, task } = cmpProps
@@ -28,11 +28,7 @@ export function AttachmentModal({ id, cmpProps }) {
     }
 
     return <div className='attach-modal-box'>
-        <div className='modal-header-container flex row'>
-            <span style={{ margin: 0, padding: 0 }} />
-            <span className='modal-header'>Attach from...</span>
-            <AiOutlineClose className='close-modal' onClick={() => closeModal(id)} />
-        </div>
+        <ModalHeader id={id} header={'Attach from...'} allowBack={false} />
         <ul className="attachment-list">
             <li>
                 <label htmlFor='uploadAttach' className='attachment-modal-option'>Computer</label>
