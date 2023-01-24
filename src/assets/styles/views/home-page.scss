@@ -2,7 +2,6 @@
     min-height: 100%;
     padding: 0;
     margin: 0 auto;
-    overflow-y: scroll;
 
     .background-container{
         background: url("//images.ctfassets.net/rz1oowkt5gyp/7lTGeXbBRNRLaVk2MdBjtJ/99c266ed4cb8cc63bd0c388071f01ff6/white-wave-bg.svg") center bottom -0.5px/100% 14% no-repeat scroll padding-box border-box, linear-gradient(60deg, rgb(82, 67, 170), rgb(237, 80, 180)) 0% 0%/auto repeat scroll padding-box border-box rgb(82, 67, 170);
@@ -58,6 +57,7 @@
 
     .secondary-content{
         display: flex;
+        flex-direction: column;
         justify-content: flex-start;
         color: rgb(9, 30, 66);
         text-align: left;
@@ -74,10 +74,27 @@
             line-height: rem(48px);
             padding-bottom: rem(16px);
         }
-        .sss{
+        .second-p{
             font-size: rem(20px);
             font-weight: 400;
             line-height: 30px;
+        }
+
+        .secondary-header-1{
+            margin-bottom: rem(30px);
+        }
+
+        .secondary-header-2{
+            display: flex;
+            margin-bottom: rem(55px);
+        }
+
+        .cards-container{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            max-width: 20rem;
+            margin-right: rem(45px);
         }
 
     }

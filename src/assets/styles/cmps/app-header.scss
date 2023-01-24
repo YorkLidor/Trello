@@ -1,37 +1,82 @@
-.main-nav {
-    background-color: $clr1;
-    color: #FFF;
-    height: 44px;
+.app-header {
+    display: flex;
+    height: 60px;
+    margin: 0 auto;
+    justify-content: space-between;
+    max-width: 1300px;
 
-    &>* {
-        padding: 6px 4px;
-    }
+    .nav-container {
+        display: flex;
+        align-items: center;
 
-    a {
-        line-height: 1.9;
-        text-decoration: none;
-        padding: 6px 12px 6px 10px;
-        border-radius: 3px;
+        .logo-container {
+            font-family: sans-serif;
 
-        &:hover {
-            background-color: $dynamic-button-background-color-hover;
+            .logo {
+                margin-left: 10px;
+                img{
+                    height: 30px;
+                }
+            }
         }
+
+        .navlinks-container {
+
+            .workspace-link {
+                align-self: stretch;
+                color: rgb(23, 43, 77);
+                cursor: pointer;
+                display: flex;
+                padding: 1.25rem 1rem 1rem;
+                text-decoration: none;
+            }
+        }
+
     }
 
-    a:visited {
-        color: #FFF;
-    }
+    .login-container {
 
-    .logo-container {
-        font-family: sans-serif;
-
-        .logo {
-            padding: 0 rem(10px);
-            display: inline-flex;
-            font-weight: 700;
+        .login {
+            -webkit-box-align: center;
             align-items: center;
-            gap: rem(4.5px);
+            align-self: stretch;
+            color: rgb(23, 43, 77);
+            display: flex;
+            font-size: 1.2rem;
+            font-weight: 400;
+            height: 100%;
+            padding: 0.5rem 1.5rem;
+            text-decoration: none;
+            font-size: rem(19.2px);
+            cursor: pointer;
         }
+
+        .get-shmello {
+            -webkit-box-align: center;
+            align-items: center;
+            align-self: stretch;
+            color: rgb(23, 43, 77);
+            display: flex;
+            font-size: 1.2rem;
+            height: 100%;
+            padding: 0.5rem 1.5rem;
+            text-decoration: none;
+
+            cursor: pointer;
+            font-family: Charlie;
+            font-size: rem(19.2px);
+            line-height: 28.8px;
+            font-weight: 400;
+
+            background-color: rgb(0, 101, 255);
+            color: rgb(255, 255, 255);
+
+            &:hover {
+                background-color: rgb(7, 71, 166);
+            }
+        }
+
     }
 
+    
 }
