@@ -64,7 +64,13 @@
         .btn-star {
             padding: 8px;
             font-size: rem(16px);
+            &.active{
+                color: #f2d600;
 
+                &:hover{
+                    background-color: $dynamic-button;
+                }
+            }
         }
 
         .board-title-header {

@@ -8,6 +8,7 @@ import { setBoard } from "../store/actions/board.actions";
 
 import { BoardHeader } from "../cmps/board-header";
 import { GroupList } from "../cmps/group-list";
+
 import { Audio } from 'react-loader-spinner'
 
 export function Board() {

@@ -5,6 +5,7 @@ import { saveBoard } from "../store/actions/board.actions";
 import { FaRegStar } from 'react-icons/fa';
 import { useSelector } from "react-redux";
 import { BsThreeDots } from "react-icons/bs";
+import { TiStarOutline, TiStar } from 'react-icons/ti'
 
 export function BoardHeader({ onDeleteBoard }) {
     const board = useSelector(state => state.boardModule.board)
@@ -69,8 +70,8 @@ export function BoardHeader({ onDeleteBoard }) {
             >
                 {boardToEdit?.title || ''}
             </h1>
-            <button className="btn-star">
-                <FaRegStar />
+            <button className={`btn-star ${board.isStared ? 'active' : ''}`}>
+                {!board.isStared ? <TiStarOutline /> : <TiStar/>}
             </button>
         </div>
         <div className="actions-container">
