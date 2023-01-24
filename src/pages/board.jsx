@@ -12,7 +12,6 @@ import { GroupList } from "../cmps/group-list";
 import { Audio } from 'react-loader-spinner'
 
 export function Board() {
-    const elBoard = useRef()
     const [board, setCurrBoard] = useState(null)
     const { boardId } = useParams()
     const navigate = useNavigate()
@@ -20,15 +19,8 @@ export function Board() {
 
     useEffect(() => {
         loadBoard()
-
-        //TODO: when task preview be in nested route we need to set board to null in cmp return state
-        // return () => setBoard(null)
+        return () => setBoard(null)
     }, [])
-
-    useEffectUpdate(() => {
-        if (board.style.backgroundImage && board.style.backgroundImage !== elBoard.current.style.backgroundImage)
-            elBoard.current.style.backgroundImage = board.style.backgroundImage
-    }, [board])
 
     async function onDeleteBoard() {
         const isWantDelete = window.confirm('Are you sure?')
@@ -65,8 +57,8 @@ export function Board() {
         </main >
     }
 
-    if (!board) return <Loader/>
-    else return <main className="board flex column" ref={elBoard}>
+    if (!board) return <Loader />
+    else return <main className="board flex column" style={board.style}>
         <BoardHeader
             board={board}
             onDeleteBoard={onDeleteBoard}
@@ -77,7 +69,7 @@ export function Board() {
             board={board}
         />
         <>
-        <Outlet />
+            <Outlet />
         </>
     </main>
 }

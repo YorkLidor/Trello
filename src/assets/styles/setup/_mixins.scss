@@ -185,7 +185,7 @@
 
     font-weight: bolder;
 
-    &:hover{
+    &:hover {
         color: #172b4d;
     }
 }
@@ -201,6 +201,12 @@
 
 @mixin input-focus {
     box-shadow: rgb(0, 121, 191) 0px 0px 0px 2px inset;
+}
+
+@mixin label {
+    font-size: rem(12px);
+    color: #5e6c84;
+    font-weight: 700;
 }
 
 @mixin scrollbar($width: 8px, $thumb-radius: 2rem, $thumb-bgclr: rgba(9, 30, 66, .13), $track-bgclr: rgba(9, 30, 66, .08), $display: block) {
@@ -260,7 +266,7 @@
         color: #172B4D;
         min-width: 32px;
         padding: 8px;
-        
+
         justify-content: center;
 
         &:hover {

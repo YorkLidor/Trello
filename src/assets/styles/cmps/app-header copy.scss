@@ -1,0 +1,37 @@
+.main-nav {
+    background-color: $clr1;
+    color: #FFF;
+    height: 44px;
+
+    &>* {
+        padding: 6px 4px;
+    }
+
+    a {
+        line-height: 1.9;
+        text-decoration: none;
+        padding: 6px 12px 6px 10px;
+        border-radius: 3px;
+
+        &:hover {
+            background-color: $dynamic-button-background-color-hover;
+        }
+    }
+
+    a:visited {
+        color: #FFF;
+    }
+
+    .logo-container {
+        font-family: sans-serif;
+
+        .logo {
+            padding: 0 rem(10px);
+            display: inline-flex;
+            font-weight: 700;
+            align-items: center;
+            gap: rem(4.5px);
+        }
+    }
+
+}
