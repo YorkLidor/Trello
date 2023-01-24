@@ -15,6 +15,7 @@ import { BOARD_CREATOR, Modal } from "../cmps/modal/modal";
 import { RxPerson } from 'react-icons/rx'
 import { boardService } from "../services/board.service";
 import { useState } from "react";
+import { TiStarOutline } from "react-icons/ti";
 
 export function BoardIndex() {
     const boards = useSelector(state => state.boardModule.boards)
@@ -93,6 +94,10 @@ export function BoardIndex() {
     else return <main className="boards-index-container">
         <section className="boards-index flex column">
 
+            {!!getStaredBoards()?.length && <header className="main-header">
+                <TiStarOutline />
+                <h3>Starred boards</h3>
+            </header>}
             <ul
                 className="boards-preview-list clean-list"
             >
