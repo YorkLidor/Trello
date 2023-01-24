@@ -1,12 +1,11 @@
 import { useRef } from "react"
 
-import { saveTask } from "../../store/actions/board.actions"
 import { CommentList } from "./comment/comment-list"
 
 import { boardService } from "../../services/board.service"
-import { utilService } from "../../services/util.service"
 
-import { FiList as ActivityIcon } from "react-icons/fi"
+import { BiAlignLeft as ActivityIcon } from "react-icons/bi"
+
 
 export function Activity({ user, boardId, groupId, taskToEdit }) {
     const elCommentRef = useRef()
