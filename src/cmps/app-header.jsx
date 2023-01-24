@@ -5,7 +5,13 @@ import { GiHamburgerMenu } from "react-icons/gi";
 
 
 export function AppHeader() {
-    const [isHidden,setIsHidden] = useState(true)
+    const [isHidden, setIsHidden] = useState(true)
+
+    function handleClick(){
+        setIsHidden(!isHidden)
+        document.body.style.overflow = isHidden ? "hidden" : "visible";
+    }
+
 
     return <header className="app-header main-layout">
 
@@ -26,8 +32,26 @@ export function AppHeader() {
             <a className="get-shmello" href="#">
                 Get Shmello for free
             </a>
+        </div>
 
-            {/* <GiHamburgerMenu className="hamburger"/> */}
+        <GiHamburgerMenu className="hamburger" onClick={handleClick} />
+
+
+
+        <div className={`nav-modal ${isHidden && 'hidden'}`}>
+            <div className="nav-links-container">
+                <NavLink onClick={handleClick} className='workspace-link' to="/workspace">Workspaces</NavLink>
+            </div>
+
+            <div className="login-container flex">
+                <a className="get-shmello" href="#">
+                    Get  Shmello  for  free
+                </a>
+
+                <a className="login" href="#">
+                    Log in
+                </a>
+            </div>
         </div>
 
 
