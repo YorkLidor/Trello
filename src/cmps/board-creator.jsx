@@ -53,7 +53,6 @@ export function BoardCreator({ cmpProps }) {
                     <img src="https://a.trellocdn.com/prgb/assets/images/board-preview-skeleton.14cda5dc635d1f13bc48.svg" alt="" />
                 </div>
             </div>
-
             <div>
                 <form
                     action=""
