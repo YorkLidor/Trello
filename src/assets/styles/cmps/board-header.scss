@@ -19,6 +19,7 @@
     .btn-filter,
     .btn-star {
         @include button-filled($dynamic-button, #FFF);
+        
     }
 
     .btn-menu {
@@ -66,7 +67,7 @@
             padding: 8px;
             font-size: rem(16px);
             &.active{
-                color: #f2d600;
+                color: $icon-yellow;
 
                 &:hover{
                     background-color: $dynamic-button;

@@ -1,5 +1,5 @@
 
-import { TiStarOutline, TiStar } from 'react-icons/ti'
+import { FaStar, FaRegStar } from 'react-icons/fa'
 
 export function BoardPreview({ boardId, board, onBoardClick, onToggleStaredBoard, isStared }) {
 
@@ -18,7 +18,7 @@ export function BoardPreview({ boardId, board, onBoardClick, onToggleStaredBoard
                     className='star-container flex'
                     onClick={(ev) => onToggleStaredBoard(ev, board, isStared)}
                 >
-                    {isStared ? <TiStar /> : <TiStarOutline />}
+                    {isStared ? <FaStar /> : <FaRegStar />}
                 </span>
             </span>
             }

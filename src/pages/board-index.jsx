@@ -11,7 +11,7 @@ import { loadBoards, saveBoard } from "../store/actions/board.actions";
 
 import { BOARD_CREATOR, Modal } from "../cmps/modal/modal";
 
-import { TiStarOutline } from "react-icons/ti";
+import { FaRegStar } from "react-icons/fa";
 import { BsPerson } from 'react-icons/bs'
 
 export function BoardIndex() {
@@ -92,7 +92,7 @@ export function BoardIndex() {
         <section className="boards-index flex column">
 
             {!!getStaredBoards()?.length && <header className="main-header">
-                <TiStarOutline />
+                <FaRegStar />
                 <h3>Starred boards</h3>
             </header>}
             <ul
