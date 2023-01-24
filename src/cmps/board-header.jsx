@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react"
 import { useEffectUpdate } from "../customHooks/useEffectUpdate"
 import { useForm } from "../customHooks/useForm"
 import { saveBoard } from "../store/actions/board.actions";
-import { FaRegStar } from 'react-icons/fa';
+
 import { useSelector } from "react-redux";
 import { BsThreeDots } from "react-icons/bs";
 import { TiStarOutline, TiStar } from 'react-icons/ti'
