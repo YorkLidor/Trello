@@ -135,17 +135,18 @@
                     color: yellow;
 
                     &:hover {
-                        transform: scale(1);
+                        @include for-narrow-layout {
+                            transform: scale(1);
+                        }
                     }
                 }
 
                 &:hover {
-                    background-color: #0000004d;
+                    @include for-narrow-layout {
+                        background-color: #0000004d;
+                    }
                 }
 
-                @include for-narrow-layout {
-                    background-color: #0000004d;
-                }
             }
         }
 
@@ -210,8 +211,7 @@
                     }
                 }
 
-                .star-container {
-                    margin-right: em(6px);
+                .star-container { 
                     opacity: 1;
                     width: em(18px);
 
