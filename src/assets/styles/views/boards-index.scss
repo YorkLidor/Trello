@@ -81,6 +81,21 @@
             right: 0;
             top: 0;
             border-radius: inherit;
+
+            &.light{
+                background-color: #0000004d;
+
+                .star-container {
+                    margin-right: em(6px);
+                    opacity: 1;
+                    width: em(18px);
+                    color: yellow;
+                }
+
+                &:hover{
+                    background-color: #0000004d;
+                }
+            }
         }
 
 

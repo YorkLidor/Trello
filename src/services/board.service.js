@@ -32,7 +32,8 @@ export const boardService = {
 }
 
 async function query(filterBy = grtDefaultFilter()) {
-    return storageService.query(STORAGE_KEY)
+    return await storageService.query(STORAGE_KEY)
+
 }
 
 function save(board) {
@@ -65,7 +66,7 @@ function getEmptyTask() {
 }
 
 function grtDefaultFilter() {
-    return { boardId: '' }
+    return { boardId: '', isStared: false }
 }
 
 function getEmptyGroup() {
