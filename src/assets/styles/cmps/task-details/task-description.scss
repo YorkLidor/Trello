@@ -1,0 +1,79 @@
+.task-description-box {
+    position: relative;
+    margin: 0 0 4px 40px;
+    margin-block-end: 35px;
+
+    .desc-icon {
+        @include task-details-field-icon;
+        top: 8px;
+        left: -36px;
+
+        width: 22px;
+    }
+
+    .description-header {
+        display: flex;
+        flex-direction: row;
+
+        padding: 8px 0px;
+        margin-block-end: 4px;
+        min-height: 44px;
+        align-items: flex-start;
+    }
+
+    .task-description {
+        box-shadow: none;
+        resize: none;
+        background-color: #eaecf0;
+        border: none;
+        width: 100%;
+        font-size: 14px;
+        border-radius: 3px;
+        padding: 8px 12px;
+        outline: unset;
+        transition-duration: 85ms;
+
+        font-family: unset;
+        min-height: 40px;
+        
+
+        &.filled {
+            background-color: #FFF;
+            padding: 0px;
+            min-height: unset;
+            line-height: initial;
+            margin-block-start: -3px;
+            margin-block-end: -23px;
+
+
+        }
+
+        &.is-editing {
+            background-color: #FFFFFF;
+            box-shadow: 0 0 0 2px #0079bf;
+            height: 223px;
+            padding: 8px 12px 0 12px;
+            margin: 0;
+        }
+    }
+
+}
+
+.description-editor-tools {
+    margin: 8px 0 0;
+    display: none;
+
+    &.show {
+        display: block;
+    }
+}
+
+.cancel-btn {
+    @include button-filled(#FFF, #2B2B2C);
+    font-size: 10px;
+
+    &:hover {
+        color: #2B2B2C;
+        background-color: #EAECF0;
+    }
+}

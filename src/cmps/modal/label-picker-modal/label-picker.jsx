@@ -37,7 +37,12 @@ export function LabelsPicker({ cmpProps }) {
 
     // Saving the label in board service
     async function onSaveLabel(label) {
-        await boardService.saveBoardLabel(board, label)
+        try {
+            await boardService.saveBoardLabel(board, label)
+        }
+        catch {
+            console.error('failed save label')
+        }
         labelToEdit.current = boardService.getEmptyLabel()
         setModalPage(PAGE_LIST)
     }

@@ -31,7 +31,7 @@ export function TaskPreview({ task, groupId, isDragging }) {
         alert('click')
     }
 
-    return <div onMouseEnter={() => setIsEditBtnShow('hidden-icon')} onMouseLeave={() => setIsEditBtnShow('')} className={`task-preview-container ${isDragging && 'is-dragging'}`} onClick={() => navigate(`/card/${board._id}/${groupId}/${task.id}`)}>
+    return <div onMouseEnter={() => setIsEditBtnShow('hidden-icon')} onMouseLeave={() => setIsEditBtnShow('')} className={`task-preview-container ${isDragging && 'is-dragging'}`} onClick={() => navigate(`/${board._id}/${groupId}/${task.id}`)}>
 
         {/* EDIT ICON */}
         <section className={`edit-task-icon-container ${isEditBtnShow}`} onClick={onEditClick}>

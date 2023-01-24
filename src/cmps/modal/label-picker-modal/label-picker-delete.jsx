@@ -1,6 +1,6 @@
 
 import { boardService } from '../../../services/board.service'
-import { PAGE_LIST } from './labels-picker'
+import { PAGE_LIST } from './label-picker'
 
 export function LabelPickerDelete({ board, labelId , setModalPage}) {
 

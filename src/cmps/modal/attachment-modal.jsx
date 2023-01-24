@@ -1,8 +1,12 @@
-import { boardService } from '../../services/board.service'
-import { uploadImg } from '../../services/upload-img.service'
-import { CLOSE_MODAL } from '../../store/reducers/app.reducer'
 import { store } from '../../store/store'
+
+import { saveTask } from '../../store/actions/board.actions'
+
+import { uploadImg } from '../../services/upload-img.service'
+import { boardService } from '../../services/board.service'
+
 import { AiOutlineClose } from 'react-icons/ai'
+import { CLOSE_MODAL } from '../../store/reducers/app.reducer'
 
 export function AttachmentModal({ cmpProps }) {
     const { boardId, groupId, task } = cmpProps
@@ -21,7 +25,7 @@ export function AttachmentModal({ cmpProps }) {
 
         if (task.attachments?.length > 0) task.attachments.unshift(boardService.getAttachment(url, filename))
         else task.attachments = [boardService.getAttachment(url, filename)]
-        await boardService.saveTask(boardId, groupId, task, activity)
+        await saveTask(boardId, groupId, task, activity)
 
     }
 

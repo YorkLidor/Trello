@@ -1,0 +1,15 @@
+.back-modal {
+    @include back-modal;
+}
+
+.close-modal {
+    @include close-modal;
+}
+
+.modal-header-container {
+    @include modal-header-container;
+}
+
+.modal-header {
+    @include modal-header;
+}

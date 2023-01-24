@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { useParams, useNavigate } from 'react-router-dom'
+import { useParams, useNavigate, Outlet } from 'react-router-dom'
 import { useEffectUpdate } from "../customHooks/useEffectUpdate";
 
 import { boardService } from "../services/board.service";
@@ -76,5 +76,8 @@ export function Board() {
             setBoard={setCurrBoard}
             board={board}
         />
+        <>
+        <Outlet />
+        </>
     </main>
 }

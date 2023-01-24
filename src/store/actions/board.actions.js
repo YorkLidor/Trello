@@ -29,7 +29,7 @@ export async function removeBoard(boardId) {
 export async function saveBoard(board) {
     try {
         const actionType = (board._id) ? EDIT_BOARD : ADD_BOARD
-        const savedBoard = await boardService.saveBoard(board)
+        const savedBoard = await boardService.save(board)
         store.dispatch({ type: actionType, board: savedBoard })
         return savedBoard
     }
@@ -71,8 +71,30 @@ export async function saveTask(boardId, groupId, task, activity) {
     group.tasks = tasks
 
     board.activities.unshift(activity)
-    saveBoard(board)
+    await saveBoard(board)
     store.dispatch({ type: SET_ACTIVE_BOARD, board })
-    // return board
-    // return task
+}
+
+export async function onRemoveAttachment(user, boardId, groupId, task, attachment) {
+    task.attachments = [...task.attachments?.filter(attach => attach.id !== attachment.id)]
+    let action = `Removed attachment ${attachment.filename} from card ${task.title}.`
+
+    const activity = boardService.getActivity(user, { id: task.id, title: task.title }, action)
+    await saveTask(boardId, groupId, task, activity)
+}
+
+export async function onRemoveFromCard(user, task, boardId, groupId) {
+    let action = 'Removed member ' + user.fullname + ' from board members.'
+    task.memberIds = task.memberIds?.filter(memberId => memberId !== user._id)
+
+    const activity = boardService.getActivity(user, { id: task.id, title: task.title }, action)
+    await saveTask(boardId, groupId, task, activity)
+}
+
+export async function saveDescription(task, boardId, groupId, text) {
+    if (!task.description && !text.length) return
+    console.log(text, boardId, groupId, task.description)
+
+    task = ({ ...task, description: text })
+    await saveTask(boardId, groupId, task, {})
 }
