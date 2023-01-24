@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react"
+import { useRef, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 
 import { utilService } from '../../services/util.service'
@@ -6,12 +6,15 @@ import { boardService } from "../../services/board.service"
 import { useSelector } from "react-redux"
 
 import { store } from "../../store/store"
-import { setModalData } from "../../store/actions/app.actions"
-import { saveTask, saveBoard } from '../../store/actions/board.actions'
+import { closeModal, toggleModal } from "../../store/actions/app.actions"
+import { saveBoard } from '../../store/actions/board.actions'
 
 import { SET_ACTIVE_BOARD } from "../../store/reducers/board.reducer"
-import { TOGGLE_MODAL, CLOSE_MODAL } from "../../store/reducers/app.reducer"
-import { MODAL_ATTACH, MODAL_LABELS, MODAL_ATTACH_EDIT, MODAL_ATTACH_OPEN, MODAL_MEMBERS, MODAL_MEMBER_OPEN } from '../modal/modal.jsx'
+
+import {
+    MODAL_ATTACH, MODAL_LABELS, MODAL_ATTACH_EDIT,
+    MODAL_ATTACH_OPEN, MODAL_MEMBERS, MODAL_MEMBER_OPEN
+} from '../modal/modal.jsx'
 
 import { AttachmentList } from "./attachment/attachment-list"
 import { MemberList } from "./member-list"
@@ -25,12 +28,14 @@ import { TaskDescription } from "./task-description"
 import { IoClose } from "react-icons/io5"
 import { FaPager as IconHeader } from 'react-icons/fa'
 import { RiAttachment2 } from 'react-icons/ri'
+import { useEffectUpdate } from "../../customHooks/useEffectUpdate"
+import { useEffectInit } from "../../customHooks/useEffectInit"
+import { modalService } from "../../services/modal.service"
 
 export function TaskDetails() {
     const user = useSelector((storeState) => storeState.userModule.user)
-    const isModalOpen = useSelector((storeState) => storeState.appModule.app.isModalOpen)
     const board = useSelector((storeState) => storeState.boardModule.board)
-    const modalData = useSelector((storeState) => storeState.appModule.app.modalData)
+    const [modal, setModal] = useState(null)
     const [taskToEdit, setTaskToEdit] = useState(null)
 
     const { boardId, groupId, taskId } = useParams()
@@ -40,13 +45,14 @@ export function TaskDetails() {
 
     var group = groupId ? board?.groups?.find(g => g.id === groupId) : null
 
-    useEffect(() => {
+    useEffectInit(() => {
         if (!boardId || !groupId || !taskId) return errorRedirect()
         loadBoard()
+        setModal(modalService.addNewModal())
     }, [])
 
 
-    useEffect(() => {
+    useEffectUpdate(() => {
         if (board && taskToEdit && group) {
             group.tasks = [...group.tasks.filter(task => task.id !== taskToEdit.id), taskToEdit]
             const newBoard = { ...board, groups: board.groups.map(grp => grp.id === group.id ? group : grp) }
@@ -79,13 +85,18 @@ export function TaskDetails() {
     }
 
     function closePage() {
-        if (isModalOpen) closeModal()
-        else navigate(`/${boardId}`)
+        if (modal?.isOpen) onCloseModal()
+        else {
+            modalService.removeModal(modal.id)
+            navigate(`/${boardId}`)
+        }
     }
 
-    function closeModal(ev = null) {
+    function onCloseModal(ev = null) {
         if (ev) ev.stopPropagation()
-        store.dispatch({ type: CLOSE_MODAL })
+
+        if (!modal?.id) return
+        closeModal(modal.id)
     }
 
     function handleEditHeader(ev) {
@@ -100,6 +111,7 @@ export function TaskDetails() {
 
     // Toggle modal visibility and set it's pos under element
     function toggleModal(ev, modalType, ex = null) {
+        if (!modal) return
         let element
         if (ev) {
             ev.stopPropagation()
@@ -115,19 +127,17 @@ export function TaskDetails() {
         else if (modalType === MODAL_MEMBERS) props = { groupId, task: taskToEdit }
         else if (modalType === MODAL_MEMBER_OPEN) props = { member: ex.member, user, boardId, groupId, task: taskToEdit }
 
-        setModalData(modalType, props)
-
         const pos = utilService.getElementPosition(element)
         modalBoxRef.current.style.top = pos.bottom + 'px'
         modalBoxRef.current.style.left = pos.left + 'px'
 
-        store.dispatch({ type: TOGGLE_MODAL })
+        setModal(setModalData(modal.id, modalType, props))
     }
 
     return (!taskToEdit || !group) ? <Blocks visible={true} height="80" width="80" ariaLabel="blocks-loading" wrapperStyle={{}} wrapperClass="blocks-wrapper" /> : <>
-        <section className="task-window flex" onMouseDown={closePage}>
+        <section className="task-window flex" onMouseDown={onCloseModal}>
 
-            <section className="task-details" onClick={closeModal} onMouseDown={(ev) => ev.stopPropagation()}>
+            <section className="task-details" onClick={onCloseModal} onMouseDown={(ev) => ev.stopPropagation()}>
 
 
                 <div className="task-header">
@@ -165,7 +175,7 @@ export function TaskDetails() {
         </section >
         <div ref={modalBoxRef} className='modal-container'>
             {
-                modalData && <Modal cmpProps={modalData.props} cmpType={modalData.cmpType} className={modalData.className} />
+                modal.isOpen && <Modal id={modal.id} cmpProps={modal.modalData.props} cmpType={modal.modalData.cmpType} className={modal.modalData.className} />
             }
         </div>
     </>

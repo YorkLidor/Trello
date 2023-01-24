@@ -6,9 +6,9 @@ import { onRemoveAttachment } from '../../../store/actions/board.actions'
 import { BsArrowUpRight } from 'react-icons/bs'
 import { AiOutlineClose } from 'react-icons/ai'
 
-import { CLOSE_MODAL } from '../../../store/reducers/app.reducer'
+import { closeModal } from '../../../store/actions/app.actions'
 
-export function AttachmentView({ cmpProps }) {
+export function AttachmentView({ id, cmpProps }) {
     const { attachment, user, boardId, groupId, task } = cmpProps
     const [deleteState, setDeleteState] = useState(false)
 
@@ -18,12 +18,12 @@ export function AttachmentView({ cmpProps }) {
 
     function onRemoveAttach(ev) {
         onRemoveAttachment(user, boardId, groupId, task, attachment)
-        store.dispatch({ type: CLOSE_MODAL })
+        closeModal(id)
     }
 
-    return <div className="attachment-viewer" onClick={() => store.dispatch({ type: CLOSE_MODAL })}>
+    return <div className="attachment-viewer" onClick={() => closeModal(id)}>
         <div className='attach-viewer-closer-layout'>
-            <AiOutlineClose className='close-attach-viewer' onClick={() => store.dispatch({ type: CLOSE_MODAL })} />
+            <AiOutlineClose className='close-attach-viewer' onClick={() => closeModal(id)} />
         </div>
         
         <div className='viewer-scroller'>

@@ -1,14 +1,12 @@
-import { store } from '../../store/store'
-
+import { closeModal } from '../../store/actions/app.actions'
 import { saveTask } from '../../store/actions/board.actions'
 
 import { uploadImg } from '../../services/upload-img.service'
 import { boardService } from '../../services/board.service'
 
 import { AiOutlineClose } from 'react-icons/ai'
-import { CLOSE_MODAL } from '../../store/reducers/app.reducer'
 
-export function AttachmentModal({ cmpProps }) {
+export function AttachmentModal({ id, cmpProps }) {
     const { boardId, groupId, task } = cmpProps
 
     const member = {
@@ -18,7 +16,7 @@ export function AttachmentModal({ cmpProps }) {
     }
 
     async function uploadAttach(ev) {
-        store.dispatch({ type: CLOSE_MODAL })
+        closeModal(id)
         const { url, filename } = await uploadImg(ev)
         const action = 'Added attachment ' + filename
         const activity = boardService.getActivity(member, { id: task.id, title: task.title }, action)
@@ -33,7 +31,7 @@ export function AttachmentModal({ cmpProps }) {
         <div className='modal-header-container flex row'>
             <span style={{ margin: 0, padding: 0 }} />
             <span className='modal-header'>Attach from...</span>
-            <AiOutlineClose className='close-modal' onClick={() => store.dispatch({ type: CLOSE_MODAL })} />
+            <AiOutlineClose className='close-modal' onClick={() => closeModal(id)} />
         </div>
         <ul className="attachment-list">
             <li>
