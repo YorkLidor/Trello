@@ -1,24 +1,28 @@
-import { useState, useEffect, useRef } from "react";
+import { useEffect } from "react";
 import { useParams, useNavigate, Outlet } from 'react-router-dom'
 
 import { boardService } from "../services/board.service";
 
-import { setBoard } from "../store/actions/board.actions";
+import { saveBoard, setBoard } from "../store/actions/board.actions";
 
 import { BoardHeader } from "../cmps/board-header";
 import { GroupList } from "../cmps/group-list";
 
 import { Audio } from 'react-loader-spinner'
+import { useSelector } from "react-redux";
 
 export function Board() {
-    const [board, setCurrBoard] = useState(null)
+    const board = useSelector(state => state.boardModule.board)
     const { boardId } = useParams()
     const navigate = useNavigate()
 
 
     useEffect(() => {
         loadBoard()
-        return () => setBoard(null)
+        return async () => {
+            await saveBoard(board)
+            setBoard(null)
+        }
     }, [])
 
     async function onDeleteBoard() {
@@ -35,8 +39,7 @@ export function Board() {
     async function loadBoard() {
         try {
             const board = await boardService.getById(boardId)
-            setCurrBoard(board)
-            setBoard(board)
+            saveBoard(board)
         } catch (err) {
             console.error('No Board!', err)
         }
@@ -63,9 +66,6 @@ export function Board() {
             onDeleteBoard={onDeleteBoard}
         />
         <GroupList
-            groups={board.groups}
-            setBoard={setCurrBoard}
-            board={board}
         />
         <>
             <Outlet />
