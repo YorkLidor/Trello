@@ -1,6 +1,6 @@
 import { boardService } from '../../services/board.service'
 import { store } from '../store.js'
-import { SET_BOARDS, ADD_BOARD, REMOVE_BOARD, EDIT_BOARD, SET_ACTIVE_BOARD } from '../reducers/board.reducer'
+import { SET_BOARDS, ADD_BOARD, REMOVE_BOARD, EDIT_BOARD, SET_ACTIVE_BOARD, UNDO_EDIT_BOARD } from '../reducers/board.reducer'
 
 export async function loadBoards() {
     try {
@@ -28,12 +28,21 @@ export async function removeBoard(boardId) {
 
 export async function saveBoard(board) {
     try {
-        const actionType = (board._id) ? EDIT_BOARD : ADD_BOARD
-        const savedBoard = await boardService.save(board)
-        store.dispatch({ type: actionType, board: savedBoard })
+        let actionType
+        let savedBoard
+        if (board._id) {
+            actionType = EDIT_BOARD
+            store.dispatch({ type: actionType, board: { ...board } })
+            savedBoard = await boardService.save(board)
+        } else {
+            actionType = ADD_BOARD
+            savedBoard = await boardService.save({ ...board })
+            store.dispatch({ type: actionType, board: savedBoard })
+        }
         return savedBoard
     }
     catch {
+        if (board._id) store.dispatch({ type: UNDO_EDIT_BOARD })
         console.error('Cannot save board')
         throw new Error('Cannot save board')
     }

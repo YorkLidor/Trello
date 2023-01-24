@@ -11,7 +11,7 @@ import { loadBoards, saveBoard } from "../store/actions/board.actions";
 
 import { BOARD_CREATOR, Modal } from "../cmps/modal/modal";
 
-import { TiStarOutline } from "react-icons/ti";
+import { FaRegStar } from "react-icons/fa";
 import { BsPerson } from 'react-icons/bs'
 
 export function BoardIndex() {
@@ -25,14 +25,14 @@ export function BoardIndex() {
         // return closeModal
     }, [])
 
-    function onToggleStaredBoard(ev, board, isStared) {
+    function onToggleStaredBoard(ev, board, isStarred) {
         ev.stopPropagation()
-        board.isStared = !isStared
+        board.isStarred = !isStarred
         onSaveBoard({ ...board })
     }
 
     function getStaredBoards() {
-        return boards.filter(board => board.isStared)
+        return boards.filter(board => board.isStarred)
     }
 
     async function onLoadBoards() {
@@ -92,7 +92,7 @@ export function BoardIndex() {
         <section className="boards-index flex column">
 
             {!!getStaredBoards()?.length && <header className="main-header">
-                <TiStarOutline />
+                <FaRegStar />
                 <h3>Starred boards</h3>
             </header>}
             <ul
@@ -103,7 +103,7 @@ export function BoardIndex() {
                         key={board._id + 'fav'}
                         boardId={board._id}
                         board={board}
-                        isStared={board.isStared}
+                        isStarred={board.isStarred}
                         onBoardClick={onBoardClick}
                         onToggleStaredBoard={onToggleStaredBoard}
                     />
@@ -127,7 +127,7 @@ export function BoardIndex() {
                             boardId={board._id}
                             board={board}
                             onToggleStaredBoard={onToggleStaredBoard}
-                            isStared={board.isStared}
+                            isStarred={board.isStarred}
                             onBoardClick={onBoardClick}
                         />
                     )}

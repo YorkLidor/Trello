@@ -19,6 +19,7 @@
     .btn-filter,
     .btn-star {
         @include button-filled($dynamic-button, #FFF);
+
     }
 
     .btn-menu {
@@ -33,6 +34,13 @@
 
     .btn-share {
         @include button-filled(rgba(255, 255, 255, 0.90), #091e42);
+        line-height: 17px;
+
+        svg {
+            width: 16px;
+            height: 16px;
+            margin-inline-end: rem(4px);
+        }
 
         &:hover {
             background-color: rgba(255, 255, 255, 0.80);
@@ -65,10 +73,11 @@
         .btn-star {
             padding: 8px;
             font-size: rem(16px);
-            &.active{
-                color: #f2d600;
 
-                &:hover{
+            &.active {
+                color: $icon-yellow;
+
+                &:hover {
                     background-color: $dynamic-button;
                 }
             }

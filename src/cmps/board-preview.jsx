@@ -1,7 +1,7 @@
 
-import { TiStarOutline, TiStar } from 'react-icons/ti'
+import { FaStar, FaRegStar } from 'react-icons/fa'
 
-export function BoardPreview({ boardId, board, onBoardClick, onToggleStaredBoard, isStared }) {
+export function BoardPreview({ boardId, board, onBoardClick, onToggleStaredBoard, isStarred }) {
 
 
     return <li
@@ -9,16 +9,16 @@ export function BoardPreview({ boardId, board, onBoardClick, onToggleStaredBoard
         onClick={(ev) => onBoardClick(ev, board?._id)}
         style={board && board.style}
     >
-        <span className={`board-preview-fade ${!board ? 'add' : ''} ${board?.isStared ? 'light' : ''} flex column justify-between`}>
+        <span className={`board-preview-fade ${!board ? 'add' : ''} ${board?.isStarred ? 'light' : ''} flex column justify-between`}>
             {board && <h4 className="board-title">{board.title}</h4>}
             {!board && <p><span>Create new board</span></p>}
 
             {board && <span className='details-container flex' >
                 <span
                     className='star-container flex'
-                    onClick={(ev) => onToggleStaredBoard(ev, board, isStared)}
+                    onClick={(ev) => onToggleStaredBoard(ev, board, isStarred)}
                 >
-                    {isStared ? <TiStar /> : <TiStarOutline />}
+                    {isStarred ? <FaStar /> : <FaRegStar />}
                 </span>
             </span>
             }
