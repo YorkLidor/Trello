@@ -3,13 +3,22 @@
     float: right;
     overflow-y: visible;
     padding: 0 16px 8px 8px;
+
+    @media (max-width: 750px) {
+        padding: 8px;
+        max-width: 100%;
+    }
 }
 
 .window-sidebar {
     position: relative;
     overflow-y: visible;
     margin-block-end: 24px;
-
+    @media (max-width: 750px) {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+    
     .sidebar-title {
         @include details-label;
     }

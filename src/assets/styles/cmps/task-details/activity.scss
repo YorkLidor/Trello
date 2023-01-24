@@ -12,7 +12,7 @@
         flex-direction: row;
 
         padding: 8px 0px;
-        margin-block-end: 11px;
+        margin-block-end: 5px;
         min-height: 32px;
 
         justify-content: space-between;
@@ -28,7 +28,7 @@
     @include text-area-form;
     position: relative;
     border-radius: 3px;
-    margin: 4px 0 12px 0;
+    margin: 4px 2.5px 5px 0;
     padding: 0;
     transition: box-shadow 85ms ease;
     overflow: hidden;
@@ -63,7 +63,7 @@
 }
 
 .comment-input-container {
-    padding: 6.8px 9px 6.8px 0;
+    padding: 5.14px 9px 5.14px 0;
     z-index: 14;
 
     .task-activity-input {
@@ -79,11 +79,15 @@
         height: 20px;
         overflow: hidden;
         padding: 0;
+        padding-block-start: 2px;
+        padding-inline-start: 3px;
         margin-inline-start: 9px;
 
         z-index: 15;
 
         color: #172b4d;
+
+        background-color: #FFFFFF;
 
         &.comment-typing {
             height: unset;
@@ -102,6 +106,6 @@
     @include user-logo-circle;
 
     position: absolute;
-    top: 3px;
+    top: 4px;
     left: -40px;
 }

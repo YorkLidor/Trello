@@ -1,10 +1,9 @@
 import { useForm } from "../customHooks/useForm"
 import { boardService } from "../services/board.service"
-import { CLOSE_MODAL } from "../store/reducers/app.reducer"
 import { store } from "../store/store"
 import { AiOutlineClose } from "react-icons/ai";
 import { useEffect, useRef } from "react";
-import { closeModal } from "../store/actions/app.actions";
+// import { closeModal } from "../store/actions/app.actions";
 import { useState } from "react";
 import { useEffectUpdate } from "../customHooks/useEffectUpdate";
 
@@ -32,7 +31,7 @@ export function BoardCreator({ cmpProps }) {
 
     function createBoard(ev) {
         ev.preventDefault()
-        closeModal()
+        // closeModal()
         cmpProps.onCreateBoard(boardToEdit)
     }
 
@@ -41,7 +40,8 @@ export function BoardCreator({ cmpProps }) {
             <h2 className="creator-title">Create board</h2>
             <button
                 className="btn-remove"
-                onClick={() => store.dispatch({ type: CLOSE_MODAL })}
+            
+                // onClick={() => store.dispatch({ type: CLOSE_MODAL })}
             >
                 <AiOutlineClose />
             </button>
@@ -53,7 +53,6 @@ export function BoardCreator({ cmpProps }) {
                     <img src="https://a.trellocdn.com/prgb/assets/images/board-preview-skeleton.14cda5dc635d1f13bc48.svg" alt="" />
                 </div>
             </div>
-
             <div>
                 <form
                     action=""

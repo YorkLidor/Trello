@@ -19,31 +19,31 @@ export const MODAL_MEMBERS = 'MODAL_MEMBERS'
 export const MODAL_MEMBER_OPEN = 'MODAL_MEMBER_OPEN'
 export const MODAL_TASK_QUICK_EDIT = 'MODAL_TASK_QUICK_EDIT'
 
-export function Modal({ cmpProps, cmpType, className }) {
-    const isModalOpen = useSelector((storeState) => storeState.appModule.app.isModalOpen)
-    return isModalOpen && <div className={className ? className : 'modal'}>
-        <GetCmp cmpProps={cmpProps} cmpType={cmpType} />
+export function Modal({ modal, cmpProps, cmpType, className }) {
+    console.log(modal)
+    return modal.isOpen && <div className={className ? className : 'modal'}>
+        <GetCmp id={modal.id} cmpProps={cmpProps} cmpType={cmpType} />
     </div>
 }
 
-function GetCmp({ cmpProps, cmpType }) {
+function GetCmp({ id, cmpProps, cmpType }) {
     switch (cmpType) {
         case MODAL_LABELS:
-            return <LabelsPicker cmpProps={cmpProps} />
+            return <LabelsPicker cmpProps={cmpProps} id={id} />
         case MODAL_ATTACH:
-            return <AttachmentModal cmpProps={cmpProps} />
+            return <AttachmentModal cmpProps={cmpProps} id={id} />
         case BOARD_CREATOR:
-            return <BoardCreator cmpProps={cmpProps} />
+            return <BoardCreator cmpProps={cmpProps} id={id} />
         case MODAL_ATTACH_EDIT:
-            return <AttachmentEditModal cmpProps={cmpProps} />
+            return <AttachmentEditModal cmpProps={cmpProps} id={id} />
         case MODAL_ATTACH_OPEN:
-            return <AttachmentView cmpProps={cmpProps} />
+            return <AttachmentView cmpProps={cmpProps} id={id} />
         case MODAL_MEMBERS:
-            return <MemberPicker cmpProps={cmpProps} />
+            return <MemberPicker cmpProps={cmpProps} id={id} />
         case MODAL_MEMBER_OPEN:
-            return <MemberModal cmpProps={cmpProps} />
+            return <MemberModal cmpProps={cmpProps} id={id} />
         case MODAL_TASK_QUICK_EDIT:
-            return <TaskQuickEdit cmpProps={cmpProps} />
+            return <TaskQuickEdit cmpProps={cmpProps} id={id} />
         default:
             return ''
     }
