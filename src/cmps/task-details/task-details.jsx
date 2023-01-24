@@ -131,7 +131,7 @@ export function TaskDetails() {
         modalBoxRef.current.style.top = pos.bottom + 'px'
         modalBoxRef.current.style.left = pos.left + 'px'
 
-        setModal(setModalData(modal.id, modalType, props))
+        // setModal(setModalData(modal.id, modalType, props))
     }
 
     return (!taskToEdit || !group) ? <Blocks visible={true} height="80" width="80" ariaLabel="blocks-loading" wrapperStyle={{}} wrapperClass="blocks-wrapper" /> : <>

@@ -4,10 +4,10 @@ import { useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import { boardService } from "../services/board.service"
 import { utilService } from "../services/util.service"
-import { setModalData } from "../store/actions/app.actions"
-import { TOGGLE_MODAL } from "../store/reducers/app.reducer"
+// import { setModalData } from "../store/actions/app.actions"
+// import { TOGGLE_MODAL } from "../store/reducers/app.reducer"
 import { store } from "../store/store"
-import { Modal, MODAL_TASK_QUICK_EDIT } from "./modal/modal"
+// import { Modal, MODAL_TASK_QUICK_EDIT } from "./modal/modal"
 
 import { TaskLabels } from "./task-label"
 
@@ -41,17 +41,17 @@ export function TaskPreview({ task, groupId, isDragging }) {
         const pos = utilService.getElementPosition(taskRef.current)
 
         let props = {}
-        if (modalType === MODAL_TASK_QUICK_EDIT) props = { taskPos: pos }
+        // if (modalType === MODAL_TASK_QUICK_EDIT) props = { taskPos: pos }
 
         //Change the modal data in store
-        setModalData(modalType, props)
+        // setModalData(modalType, props)
 
-        store.dispatch({ type: TOGGLE_MODAL })
+        // store.dispatch({ type: TOGGLE_MODAL })
     }
 
     function onEditClick(ev) {
         ev.stopPropagation()
-        toggleModal(MODAL_TASK_QUICK_EDIT)
+        // toggleModal(MODAL_TASK_QUICK_EDIT)
     }
 
     return <> <div onMouseEnter={() => setIsEditBtnShow('hidden-icon')} onMouseLeave={() => setIsEditBtnShow('')} className={`task-preview-container ${isDragging && 'is-dragging'}`} onClick={() => navigate(`/${board._id}/${groupId}/${task.id}`)}>
@@ -86,7 +86,7 @@ export function TaskPreview({ task, groupId, isDragging }) {
 
         <div ref={modalBoxRef} className='modal-container'>
             {
-                modalData && <Modal cmpProps={modalData.props} cmpType={modalData.cmpType} className={modalData.className} />
+                // modalData && <Modal cmpProps={modalData.props} cmpType={modalData.cmpType} className={modalData.className} />
             }
         </div>
     </>

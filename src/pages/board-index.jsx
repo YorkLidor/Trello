@@ -7,15 +7,12 @@ import { Audio } from 'react-loader-spinner'
 import { utilService } from "../services/util.service";
 
 import { loadBoards, saveBoard } from "../store/actions/board.actions";
-import { setUser } from "../store/actions/user.actions";
-import { closeModal, setModalData, toggleModal } from "../store/actions/app.actions"
+// import { closeModal, setModalData, toggleModal } from "../store/actions/app.actions"
 
 import { BOARD_CREATOR, Modal } from "../cmps/modal/modal";
 
-import { RxPerson } from 'react-icons/rx'
-import { boardService } from "../services/board.service";
-import { useState } from "react";
 import { TiStarOutline } from "react-icons/ti";
+import { BsPerson } from 'react-icons/bs'
 
 export function BoardIndex() {
     const boards = useSelector(state => state.boardModule.boards)
@@ -25,7 +22,7 @@ export function BoardIndex() {
 
     useEffect(() => {
         onLoadBoards()
-        return closeModal
+        // return closeModal
     }, [])
 
     function onToggleStaredBoard(ev, board, isStared) {
@@ -57,7 +54,7 @@ export function BoardIndex() {
 
     async function onSaveBoard(board) {
         try {
-            closeModal()
+            // closeModal()
             await saveBoard(board)
             console.log('Board Saved successesfuly')
         } catch (err) {
@@ -82,12 +79,12 @@ export function BoardIndex() {
 
     function onToggleModal({ target }) {
         const props = { onBoardClick, onCreateBoard }
-        setModalData(BOARD_CREATOR, props)
+        // setModalData(BOARD_CREATOR, props)
         const pos = utilService.getElementPosition(target)
         elModal.current.style.top = pos.top + 'px'
         elModal.current.style.left = pos.right + 'px'
 
-        toggleModal()
+        // toggleModal()
     }
 
     if (!boards && !boards.length) return <Loader />
@@ -114,7 +111,7 @@ export function BoardIndex() {
             </ul>
 
             <header className="main-header">
-                <RxPerson />
+                <BsPerson />
                 <h3>Your boards</h3>
             </header>
             <section
