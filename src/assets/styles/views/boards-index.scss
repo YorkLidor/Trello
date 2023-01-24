@@ -1,38 +1,35 @@
 .boards-index-container {
     width: 100vw;
     min-height: 100%;
-    max-width: 1266px;
+    max-width: 100vw;
     background-color: #fff;
     margin: 0 auto;
 
-    @include for-narrow-layout {
-        .boards-index {
-            max-width: 695px;
-        }
-    }
 
-    @include for-normal-layout {
-        .boards-index {
-            max-width: 695px;
-        }
-    }
-
-    @include for-wide-layout {
-        .boards-index {
-            max-width: 52.7625rem;
-        }
-    }
 }
 
 .boards-index {
     padding: 0;
-    margin: rem(40px) auto 0;
+    margin: 0 auto;
     min-height: 100%;
     max-width: rem(400px);
     min-width: rem(288px);
     width: 100%;
     color: #172b4d;
-    // margin: 0 auto;
+
+    @include for-narrow-layout {
+        max-width: 695px;
+        margin: rem(40px) auto 0;
+    }
+
+    @include for-normal-layout {
+        max-width: 695px;
+    }
+
+    @include for-wide-layout {
+        max-width: 52.7625rem;
+
+    }
 
 
 
@@ -84,9 +81,9 @@
         background-position: 50%;
         cursor: pointer;
         position: relative;
-        margin: 0 8px 4px 0;
+        margin: 0 8px 8px 0;
 
-        &:nth-child(even){
+        &:nth-child(even) {
             margin-right: 0;
         }
 
@@ -96,7 +93,7 @@
             height: rem(96px);
             margin-bottom: 27.453px;
 
-            &:nth-child(even){
+            &:nth-child(even) {
                 margin-right: 8px;
             }
         }
@@ -133,7 +130,6 @@
                 background-color: #00000026;
 
                 .star-container {
-                    margin-right: em(6px);
                     opacity: 1;
                     width: em(18px);
                     color: yellow;
@@ -181,35 +177,47 @@
 
         .star-container {
             color: #fff;
-            font-size: em(14px);
+            font-size: em(26px);
             height: em(18px);
             line-height: em(18px);
-            opacity: 0;
             right: 0;
             top: 0;
             transition-duration: .15s;
             transition-property: color, background, opacity, transform, width, margin;
-            width: 0;
             -webkit-transform: translateZ(0);
+            opacity: 1;
+            width: em(18px);
         }
 
-
-        &:hover {
-            .board-preview-fade {
-                background-color: rgba(0, 0, 0, 0.4);
-
-                &.add {
-                    background-color: #091e4214;
-                }
+        @include for-narrow-layout {
+            p {
+                margin: 0;
             }
 
             .star-container {
-                margin-right: em(6px);
-                opacity: 1;
-                width: em(18px);
+                opacity: 0;
+                width: 0;
+                font-size: 16px;
+            }
 
-                &:hover {
-                    transform: scale(1.2);
+            &:hover {
+
+                .board-preview-fade {
+                    background-color: rgba(0, 0, 0, 0.4);
+
+                    &.add {
+                        background-color: rgba(9, 30, 66, 0.078);
+                    }
+                }
+
+                .star-container {
+                    margin-right: em(6px);
+                    opacity: 1;
+                    width: em(18px);
+
+                    &:hover {
+                        transform: scale(1.2);
+                    }
                 }
             }
         }
