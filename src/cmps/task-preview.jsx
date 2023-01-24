@@ -6,7 +6,7 @@ import { boardService } from "../services/board.service"
 import { utilService } from "../services/util.service"
 // import { setModalData } from "../store/actions/app.actions"
 import { store } from "../store/store"
-import { Modal, MODAL_TASK_QUICK_EDIT } from "./modal/modal"
+// import { Modal, MODAL_TASK_QUICK_EDIT } from "./modal/modal"
 
 import { TaskLabels } from "./task-label"
 
@@ -39,11 +39,11 @@ export function TaskPreview({ task, groupId, isDragging }) {
 
         // const pos = utilService.getElementPosition(taskRef.current)
 
-        // let props = {}
-        // if (modalType === MODAL_TASK_QUICK_EDIT) props = { taskPos: pos }
+        let props = {}
+        if (modalType === MODAL_TASK_QUICK_EDIT) props = { taskPos: pos }
 
-        // //Change the modal data in store
-        // setModalData(modalType, props)
+        //Change the modal data in store
+        setModalData(modalType, props)
 
         // store.dispatch({ type: TOGGLE_MODAL })
     }
@@ -85,7 +85,7 @@ export function TaskPreview({ task, groupId, isDragging }) {
 
         <div ref={modalBoxRef} className='modal-container'>
             {
-                modal && <Modal cmpProps={modal.modalData.props} cmpType={modal.modalData.cmpType} className={modal.modalData.className} />
+                modalData && <Modal cmpProps={modalData.props} cmpType={modalData.cmpType} className={modalData.className} />
             }
         </div>
     </>
