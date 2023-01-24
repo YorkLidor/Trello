@@ -5,19 +5,35 @@ import { store } from "../store/store"
 import { AiOutlineClose } from "react-icons/ai";
 import { useEffect, useRef } from "react";
 import { closeModal } from "../store/actions/app.actions";
+import { useState } from "react";
+import { useEffectUpdate } from "../customHooks/useEffectUpdate";
 
 export function BoardCreator({ cmpProps }) {
     const [boardToEdit, setBoardToEdit, handleChange] = useForm(boardService.getEmptyBoard())
     const elTitleInput = useRef()
+    const [isRequired, setIsRequired] = useState(true)
+
 
     useEffect(() => {
         elTitleInput.current.focus()
     }, [])
 
+    useEffectUpdate(() => {
+        setIsRequired(!boardToEdit.title ? true : false)
+        console.log('isRequired:', isRequired)
+    }, [boardToEdit])
+
+    function onColorClick(ev) {
+        ev.preventDefault()
+        const { target } = ev
+        const bgColor = target.style.backgroundColor
+        setBoardToEdit(board => ({ ...boardToEdit, style: { backgroundColor: bgColor } }))
+    }
+
     function createBoard(ev) {
         ev.preventDefault()
         closeModal()
-        cmpProps.onCreateBoard(ev, boardToEdit)
+        cmpProps.onCreateBoard(boardToEdit)
     }
 
     return <section className="board-creator">
@@ -39,7 +55,70 @@ export function BoardCreator({ cmpProps }) {
             </div>
 
             <div>
-                <form action="" onSubmit={createBoard} className="creator-form">
+                <form
+                    action=""
+                    onSubmit={createBoard}
+                    className={`creator-form ${isRequired ? 'input-required' : ''}`}
+                >
+                    <div className="bg-picker-container">
+                        <label className="bg-label">Background</label>
+                        <ul className="bg-img-picker clean-list flex"></ul>
+                        <ul className="bg-color-comtainer clean-list flex justify-between">
+                            <li><button
+                                type="button"
+                                className="btn-clr"
+                                style={{ backgroundColor: '#0079bf' }}
+                                onClick={onColorClick}
+                            >
+                            </button>
+                            </li>
+                            <li>
+                                <button
+                                    type="button"
+                                    className="btn-clr"
+                                    style={{ backgroundColor: '#d29034' }}
+                                    onClick={onColorClick}
+                                >
+                                </button>
+                            </li>
+                            <li>
+                                <button
+                                    type="button"
+                                    className="btn-clr"
+                                    style={{ backgroundColor: '#519839' }}
+                                    onClick={onColorClick}
+                                >
+                                </button>
+                            </li>
+                            <li>
+                                <button
+                                    type="button"
+                                    className="btn-clr"
+                                    style={{ backgroundColor: '#b04632' }}
+                                    onClick={onColorClick}
+                                >
+                                </button>
+                            </li>
+                            <li>
+                                <button
+                                    type="button"
+                                    className="btn-clr"
+                                    style={{ backgroundColor: '#89609e' }}
+                                    onClick={onColorClick}
+                                >
+                                </button>
+                            </li>
+                            <li>
+                                <button
+                                    type="button"
+                                    className="btn-clr"
+                                >
+                                    <span>...</span>
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+
                     <label
                         htmlFor="title"
                         className="creator-label"
@@ -47,6 +126,8 @@ export function BoardCreator({ cmpProps }) {
                         Board title
                         <span className="star">*</span>
                     </label>
+
+
                     <input
                         onChange={handleChange}
                         className="title-input"
@@ -56,7 +137,12 @@ export function BoardCreator({ cmpProps }) {
                         ref={elTitleInput}
 
                     />
+                    <span className="required">
+                        <span>👋</span>
+                        Board title is required
+                    </span>
                     <button
+                        type="submit"
                         className="btn-create"
                         disabled={!boardToEdit.title}
                     >
@@ -65,5 +151,5 @@ export function BoardCreator({ cmpProps }) {
                 </form>
             </div>
         </main>
-    </section>
+    </section >
 }

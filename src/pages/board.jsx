@@ -25,11 +25,6 @@ export function Board() {
         // return () => setBoard(null)
     }, [])
 
-    useEffectUpdate(() => {
-        if (board.style.backgroundImage && board.style.backgroundImage !== elBoard.current.style.backgroundImage)
-            elBoard.current.style.backgroundImage = board.style.backgroundImage
-    }, [board])
-
     async function onDeleteBoard() {
         const isWantDelete = window.confirm('Are you sure?')
         if (!isWantDelete) return
@@ -66,7 +61,7 @@ export function Board() {
     }
 
     if (!board) return <Loader/>
-    else return <main className="board flex column" ref={elBoard}>
+    else return <main className="board flex column" style={board.style}>
         <BoardHeader
             board={board}
             onDeleteBoard={onDeleteBoard}
