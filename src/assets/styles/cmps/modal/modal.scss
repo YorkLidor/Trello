@@ -21,22 +21,6 @@
     box-shadow: rgba(9, 30, 66, 0.25) 0px 8px 16px -4px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
 }
 
-.modal-header-container {
-    @include modal-header-container;
-}
-
-.modal-header {
-    @include modal-header;
-}
-
-.back-modal {
-    @include back-modal;
-}
-
-.close-modal {
-    @include close-modal;
-}
-
 .attach-viewer-modal {
     height: 100%;
 }

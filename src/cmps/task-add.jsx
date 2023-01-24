@@ -5,7 +5,7 @@ import { useForm } from "../customHooks/useForm";
 
 import { boardService } from "../services/board.service";
 
-import { saveBoard } from "../store/board.actions";
+import { saveBoard } from "../store/actions/board.actions";
 import { IoCloseOutline } from "react-icons/io5";
 
 export function TaskAdd({ group, isAddCardOpen, setIsAddCardOpen }) {

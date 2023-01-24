@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 
-import { saveTask } from '../../../store/board.actions'
+import { saveTask } from '../../../store/actions/board.actions'
 
 import { boardService } from '../../../services/board.service'
 

@@ -81,6 +81,25 @@
             right: 0;
             top: 0;
             border-radius: inherit;
+
+            &.light {
+                background-color: #0000004d;
+
+                .star-container {
+                    margin-right: em(6px);
+                    opacity: 1;
+                    width: em(18px);
+                    color: yellow;
+
+                    &:hover {
+                        transform: scale(1);
+                    }
+                }
+
+                &:hover {
+                    background-color: #0000004d;
+                }
+            }
         }
 
 
@@ -124,7 +143,7 @@
             .board-preview-fade {
                 background-color: rgba(0, 0, 0, 0.4);
 
-                &.add{
+                &.add {
                     background-color: #091e4214;
                 }
             }
@@ -133,6 +152,10 @@
                 margin-right: em(6px);
                 opacity: 1;
                 width: em(18px);
+
+                &:hover {
+                    transform: scale(1.2);
+                }
             }
         }
     }

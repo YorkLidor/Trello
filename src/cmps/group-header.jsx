@@ -1,4 +1,4 @@
-import { saveBoard } from "../store/board.actions.js"
+import { saveBoard } from "../store/actions/board.actions.js"
 import { useRef, useState } from "react"
 import { useForm } from "../customHooks/useForm.js"
 import { useEffectUpdate } from "../customHooks/useEffectUpdate.js"

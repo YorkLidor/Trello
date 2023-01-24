@@ -4,30 +4,37 @@ import { useNavigate } from "react-router-dom";
 import { BoardPreview } from "../cmps/board-preview";
 import { Audio } from 'react-loader-spinner'
 
-import { RxPerson } from 'react-icons/rx'
+import { utilService } from "../services/util.service";
 
-import { loadBoards, saveBoard } from "../store/board.actions";
-import { closeModal, setModalData, toggleModal } from "../store/app.actions"
+import { loadBoards, saveBoard } from "../store/actions/board.actions";
+import { setUser } from "../store/actions/user.actions";
+import { closeModal, setModalData, toggleModal } from "../store/actions/app.actions"
 
 import { BOARD_CREATOR, Modal } from "../cmps/modal/modal";
 
-import { utilService } from "../services/util.service";
+import { RxPerson } from 'react-icons/rx'
+import { boardService } from "../services/board.service";
+import { useState } from "react";
 
 export function BoardIndex() {
     const boards = useSelector(state => state.boardModule.boards)
     const modalData = useSelector((storeState) => storeState.appModule.app.modalData)
-    const user = useSelector(state => state.userModule.boards)
     const elModal = useRef()
     const navigate = useNavigate()
-
 
     useEffect(() => {
         onLoadBoards()
         return closeModal
     }, [])
 
-    function onToggleStaredBoard(ev, boardId) {
+    function onToggleStaredBoard(ev, board, isStared) {
         ev.stopPropagation()
+        board.isStared = !isStared
+        onSaveBoard({ ...board })
+    }
+
+    function getStaredBoards() {
+        return boards.filter(board => board.isStared)
     }
 
     async function onLoadBoards() {
@@ -39,12 +46,12 @@ export function BoardIndex() {
     }
 
     function onBoardClick(ev, boardId) {
-        if (boardId) navigate(`/board/${boardId}`)
+        if (boardId) navigate(`/${boardId}`)
         else onToggleModal(ev)
     }
 
     function onCreateBoard(board) {
-         onSaveBoard(board)
+        onSaveBoard(board)
     }
 
     async function onSaveBoard(board) {
@@ -82,9 +89,25 @@ export function BoardIndex() {
         toggleModal()
     }
 
-    if (!boards || !boards.length) return <Loader />
+    if (!boards && !boards.length) return <Loader />
     else return <main className="boards-index-container">
         <section className="boards-index flex column">
+
+            <ul
+                className="boards-preview-list clean-list"
+            >
+                {getStaredBoards()?.map(board =>
+                    < BoardPreview
+                        key={board._id + 'fav'}
+                        boardId={board._id}
+                        board={board}
+                        isStared={board.isStared}
+                        onBoardClick={onBoardClick}
+                        onToggleStaredBoard={onToggleStaredBoard}
+                    />
+                )}
+            </ul>
+
             <header className="main-header">
                 <RxPerson />
                 <h3>Your Boards</h3>
@@ -92,15 +115,18 @@ export function BoardIndex() {
             <section
                 className="recently-boards-container"
             >
+
                 <ul
                     className="boards-preview-list clean-list"
                 >
                     {boards?.map(board =>
                         <BoardPreview
                             key={board._id}
+                            boardId={board._id}
                             board={board}
-                            onBoardClick={onBoardClick}
                             onToggleStaredBoard={onToggleStaredBoard}
+                            isStared={board.isStared}
+                            onBoardClick={onBoardClick}
                         />
                     )}
                     <BoardPreview

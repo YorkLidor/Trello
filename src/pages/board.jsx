@@ -1,13 +1,14 @@
 import { useState, useEffect, useRef } from "react";
-import { useParams, useNavigate } from 'react-router-dom'
+import { useParams, useNavigate, Outlet } from 'react-router-dom'
 import { useEffectUpdate } from "../customHooks/useEffectUpdate";
 
 import { boardService } from "../services/board.service";
 
-import { setBoard } from "../store/board.actions";
+import { setBoard } from "../store/actions/board.actions";
 
 import { BoardHeader } from "../cmps/board-header";
 import { GroupList } from "../cmps/group-list";
+
 import { Audio } from 'react-loader-spinner'
 
 export function Board() {
@@ -75,5 +76,8 @@ export function Board() {
             setBoard={setCurrBoard}
             board={board}
         />
+        <>
+        <Outlet />
+        </>
     </main>
 }

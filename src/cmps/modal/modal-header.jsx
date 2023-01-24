@@ -1,8 +1,8 @@
 
 import { IoIosArrowBack } from "react-icons/io"
-import { AiOutlineClose } from "react-icons/ai"
+import { IoClose } from "react-icons/io5"
 
-import { closeModal } from "../../store/app.actions"
+import { closeModal } from "../../store/actions/app.actions"
 
 
 export function ModalHeader({ header, allowBack, onModalClickBack }) {
@@ -11,6 +11,6 @@ export function ModalHeader({ header, allowBack, onModalClickBack }) {
             allowBack && onModalClickBack ? <IoIosArrowBack className='back-modal' onClick={onModalClickBack} /> : <span />
         }
         <span className='modal-header'>{header}</span>
-        <AiOutlineClose className='close-modal' onClick={closeModal} />
+        <IoClose className='close-modal' onClick={closeModal} />
     </div>
 }

@@ -1,5 +1,5 @@
-import { CLOSE_MODAL, SET_MODAL_DATA, TOGGLE_MODAL } from "./app.reducer"
-import { store } from "./store"
+import { CLOSE_MODAL, SET_MODAL_DATA, TOGGLE_MODAL } from "../reducers/app.reducer"
+import { store } from "../store"
 import {
     MODAL_ATTACH,
     MODAL_LABELS,
@@ -7,9 +7,14 @@ import {
     MODAL_ATTACH_OPEN,
     MODAL_MEMBERS,
     MODAL_MEMBER_OPEN,
+<<<<<<< HEAD:src/store/app.actions.js
     BOARD_CREATOR,
     MODAL_TASK_QUICK_EDIT
 } from '../cmps/modal/modal.jsx'
+=======
+    BOARD_CREATOR
+} from '../../cmps/modal/modal.jsx'
+>>>>>>> 5b393dbaf3cb47f20c6936ac9ea2cb4aeb064ee8:src/store/actions/app.actions.js
 
 export function closeModal() {
     store.dispatch({ type: CLOSE_MODAL })

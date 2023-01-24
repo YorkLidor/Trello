@@ -15,7 +15,7 @@ const initialState = {
             "taskId": "t101"
         }],
         boards: [],
-        favBoards:[]
+        favBoards:["b201"]
     },
     users: [
         {
@@ -49,6 +49,7 @@ const initialState = {
 export function userReducer(state = initialState, action) {
     switch (action.type) {
         case SET_USER:
+            console.log('action.user:', action.user.favBoards)
             return { ...state, user: action.user }
         default:
             return state

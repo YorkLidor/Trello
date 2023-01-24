@@ -167,20 +167,7 @@ export const jBoard = {
                     "title": "Do that",
                     "archivedAt": 1589983468418,
                     "labelIds": ["l101"],
-                    "memberIds": ["u103", "u104", "u105",],
-                    "attachments": [{
-                        "id": 'att' + utilService.makeId(),
-                        "url": "",
-                        "filename": "puki",
-                        "createdAt": Date.now()
-                    },
-                    {
-                        "id": 'att' + utilService.makeId(),
-                        "url": "",
-                        "filename": "nuki",
-                        "createdAt": Date.now()
-                    }
-                    ]
+                    "memberIds": ["u103", "u104", "u105",]
                 },
                 {
                     "id": "c104",
@@ -225,14 +212,7 @@ export const jBoard = {
                     },
                     "style": {
                         "bgColor": "#7bc86c"
-                    },
-                    "attachments": [{
-                        "id": 'att' + utilService.makeId(),
-                        "url": "",
-                        "filename": "puki",
-                        "createdAt": Date.now()
                     }
-                    ]
 
                 }
             ],
@@ -477,13 +457,7 @@ export const jBoards = [{
                     "memberIds": ["u102"],
                     "style": {
                         "bgColor": "#29cce5"
-                    },
-                    "attachments": [{
-                        "id": 'sdsadfa1',
-                        "url": "https://www.aljazeera.com/wp-content/uploads/2022/12/SSS10794_1-1.jpg?resize=770%2C513&quality=80",
-                        "filename": "Design.png",
-                        "createdAt": Date.now()
-                    }],
+                    }
 
                 },
                 {
@@ -510,20 +484,7 @@ export const jBoards = [{
                     "title": "Do that",
                     "archivedAt": 1589983468418,
                     "labelIds": ["l101"],
-                    "memberIds": ["u103", "u104", "u105",],
-                    "attachments": [{
-                        "id": 'att' + utilService.makeId(),
-                        "url": "",
-                        "filename": "puki",
-                        "createdAt": Date.now()
-                    },
-                    {
-                        "id": 'att' + utilService.makeId(),
-                        "url": "",
-                        "filename": "nuki",
-                        "createdAt": Date.now()
-                    }
-                    ]
+                    "memberIds": ["u103", "u104", "u105",]
                 },
                 {
                     "id": "c104",
@@ -568,14 +529,7 @@ export const jBoards = [{
                     },
                     "style": {
                         "bgColor": "#7bc86c"
-                    },
-                    "attachments": [{
-                        "id": 'att' + utilService.makeId(),
-                        "url": "",
-                        "filename": "puki",
-                        "createdAt": Date.now()
                     }
-                    ]
 
                 }
             ],
@@ -719,13 +673,7 @@ export const jBoards = [{
                     "memberIds": ["u102"],
                     "style": {
                         "bgColor": "#047cbc"
-                    },
-                    "attachments": [{
-                        "id": 'attvdfv51',
-                        "url": "https://trello.com/1/cards/63cc5786d799a303d3225a60/attachments/63cc5787d799a303d3225c53/download/Backlog.png",
-                        "filename": "Backlog.png",
-                        "createdAt": Date.now()
-                    }]
+                    }
 
                 },
                 {
@@ -756,13 +704,7 @@ export const jBoards = [{
                     "memberIds": ["u103", "u104", "u105",],
                     "style": {
                         "bgColor": "#c474e4"
-                    },
-                    "attachments": [{
-                        "id": 'fsdfsd165',
-                        "url": "https://trello.com/1/cards/63cc5786d799a303d3225a62/attachments/63cc5787d799a303d3225c5c/download/Design.png",
-                        "filename": "Design.png",
-                        "createdAt": Date.now()
-                    }]
+                    }
                 },
                 {
                     "id": "c104",
@@ -807,14 +749,7 @@ export const jBoards = [{
                     },
                     "style": {
                         "bgColor": "#7bc86c"
-                    },
-                    "attachments": [{
-                        "id": 'att' + utilService.makeId(),
-                        "url": "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202210/AP22271096428610_1200x768.jpeg?VersionId=DH2Lq1kxChXtScHrOOwXbZI4lCsh3.cv&size=690:388",
-                        "filename": "MEsiii",
-                        "createdAt": Date.now()
                     }
-                    ]
 
                 }
             ],
@@ -1055,14 +990,6 @@ export const jBoards = [{
                 "memberIds":[
                    "u103",
                    "u104"
-                ],
-                "attachments":[
-                   {
-                      "id":"attPTpBSO",
-                      "url":"http://res.cloudinary.com/dk2geeubr/image/upload/v1674377376/mueknlhorsodbzmjq5a2.png",
-                      "filename":"alarm watch.png",
-                      "createdAt":1674377376663
-                   }
                 ]
              }
           ],
@@ -1086,15 +1013,7 @@ export const jBoards = [{
                 ],
                 "style":{
                    "bgColor":"#c474e4"
-                },
-                "attachments":[
-                   {
-                      "id":"attdCsR5J",
-                      "url":"https://akm-img-a-in.tosshub.com/indiatoday/images/story/202210/AP22271096428610_1200x768.jpeg?VersionId=DH2Lq1kxChXtScHrOOwXbZI4lCsh3.cv&size=690:388",
-                      "filename":"sss.png",
-                      "createdAt":1674377574564
-                   }
-                ]
+                }
              },
              {
                 "id":"c104",
@@ -1144,10 +1063,7 @@ export const jBoards = [{
                 },
                 "style":{
                    "bgColor":"#7bc86c"
-                },
-                "attachments":[
-                   
-                ]
+                }
              },
              {
                 "id":"c202",
@@ -1159,15 +1075,7 @@ export const jBoards = [{
              },
              {
                 "id":"Mmfsfh",
-                "title":"Implement Sass",
-                "attachments":[
-                   {
-                      "id":"attQ0ojim",
-                      "url":"http://res.cloudinary.com/dk2geeubr/image/upload/v1674378587/swyxwbsbs1szbsisarhl.jpg",
-                      "filename":"implement sass.jpg",
-                      "createdAt":1674378587599
-                   }
-                ]
+                "title":"Implement Sass"
              },
              {
                 "id":"Dakqya",
@@ -1175,14 +1083,6 @@ export const jBoards = [{
                 "labelIds":[
                    "l104",
                    "l106"
-                ],
-                "attachments":[
-                   {
-                      "id":"attSetsTE",
-                      "url":"http://res.cloudinary.com/dk2geeubr/image/upload/v1674378659/chls77a9itnswxoruokw.jpg",
-                      "filename":"game.jpg",
-                      "createdAt":1674378659135
-                   }
                 ]
              }
           ],
@@ -1222,29 +1122,13 @@ export const jBoards = [{
                 ],
                 "style":{
                    "bgColor":"#047cbc"
-                },
-                "attachments":[
-                   {
-                      "id":"attUMUwtX",
-                      "url":"http://res.cloudinary.com/dk2geeubr/image/upload/v1674378839/tvqilo1m8vradoaritmm.jpg",
-                      "filename":"space.jpg",
-                      "createdAt":1674378839930
-                   }
-                ]
+                }
              },
              {
                 "id":"c201",
                 "title":"Routing Directory",
                 "memberIds":[
                    "u106"
-                ],
-                "attachments":[
-                   {
-                      "id":"attthOmSe",
-                      "url":"http://res.cloudinary.com/dk2geeubr/image/upload/v1674378975/mhoi8uuwpnfvmunmcpyh.jpg",
-                      "filename":"routing.jpg",
-                      "createdAt":1674378975508
-                   }
                 ]
              },
              {
@@ -1252,14 +1136,6 @@ export const jBoards = [{
                 "title":"Connecting to PWA",
                 "memberIds":[
                    "u103"
-                ],
-                "attachments":[
-                   {
-                      "id":"attZJpIkv",
-                      "url":"http://res.cloudinary.com/dk2geeubr/image/upload/v1674379052/vsmd2enm1oj6qmagihbt.jpg",
-                      "filename":"pwa.jpg",
-                      "createdAt":1674379052404
-                   }
                 ]
              },
              {
@@ -1308,15 +1184,7 @@ export const jBoards = [{
              },
              {
                 "id":"18CfBv",
-                "title":"NPM",
-                "attachments":[
-                   {
-                      "id":"attaTE99I",
-                      "url":"http://res.cloudinary.com/dk2geeubr/image/upload/v1674379360/f0llhnyhwuzgyclinxvl.jpg",
-                      "filename":"npm.jpg",
-                      "createdAt":1674379361026
-                   }
-                ]
+                "title":"NPM"
              }
           ],
           "style":{
@@ -1351,27 +1219,11 @@ export const jBoards = [{
              },
              {
                 "id":"8jlnZ6",
-                "title":"Chacking bugs",
-                "attachments":[
-                   {
-                      "id":"att30bquM",
-                      "url":"http://res.cloudinary.com/dk2geeubr/image/upload/v1674379882/sspjuzfrsekms0s74o1d.jpg",
-                      "filename":"bug.jpg",
-                      "createdAt":1674379882354
-                   }
-                ]
+                "title":"Chacking bugs"
              },
              {
                 "id":"VDKxQj",
-                "title":"Creating data base with mongo",
-                "attachments":[
-                   {
-                      "id":"attzTsWBN",
-                      "url":"http://res.cloudinary.com/dk2geeubr/image/upload/v1674379956/tdu7kg8soiajx6ervfey.jpg",
-                      "filename":"code.jpg",
-                      "createdAt":1674379956480
-                   }
-                ]
+                "title":"Creating data base with mongo"
              },
              {
                 "id":"DNIjDP",
@@ -1387,14 +1239,6 @@ export const jBoards = [{
              {
                 "id":"3Fz0Nm",
                 "title":"Advice from heead maneger",
-                "attachments":[
-                   {
-                      "id":"attb1elIb",
-                      "url":"http://res.cloudinary.com/dk2geeubr/image/upload/v1674380074/cphyvceky4mlcawhkqwe.jpg",
-                      "filename":"advice.jpg",
-                      "createdAt":1674380075015
-                   }
-                ],
                 "labelIds":[
                    "l102",
                    "l104"
