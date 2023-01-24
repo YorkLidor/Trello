@@ -14,7 +14,7 @@
         padding-top: 80px;
         max-width: 1200px;
 
-        .left-hero-container {
+        .demo-container {
             max-width: 600px;
             
             h1 {
@@ -47,6 +47,11 @@
                 font-size: rem(28px);
                 padding: 0.7rem 2rem 0.8rem;
                 color: rgb(255, 255, 255) !important;
+
+                &:hover{
+                    background-color: rgb(7, 71, 166);
+                    border-color: rgb(7, 71, 166);
+                }
             }
         }
 
@@ -98,4 +103,48 @@
         }
 
     }
+
+
+
+     @media (max-width: 1280px) {
+        .main-layout {
+            max-width:  1000px;
+
+        }
+    }
+
+     @media (max-width: 1090px) {
+        .main-layout {
+            flex-direction: column;
+            align-items: center;
+            max-width: 750px;
+            padding-left: 16px;
+            padding-right: 16px;
+
+            .demo-container{
+                margin-bottom: rem(30px);
+                text-align: center;
+                .text-container{
+                    width: 101%;
+                    text-align: center;
+                    h1{
+                        text-align: center;
+                    }
+                    p{
+                        font-size: 1.45rem;
+                    }
+                }
+                .signup-btn{
+                    display: block;
+                    width: 100%;
+                    text-align: center;
+                }
+            }
+            .right-hero-container{
+                max-width: 650px;
+            }
+        }
+    }
+
+
 }

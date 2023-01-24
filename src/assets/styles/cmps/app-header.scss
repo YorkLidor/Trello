@@ -1,40 +1,38 @@
 .app-header {
     display: flex;
+    justify-content: space-between;
     height: 60px;
     margin: 0 auto;
-    justify-content: space-between;
     max-width: 1300px;
+    align-items: center;
 
-    .nav-container {
-        display: flex;
-        align-items: center;
-
-        .logo-container {
-            font-family: sans-serif;
-
-            .logo {
-                margin-left: 10px;
-                img{
-                    height: 30px;
-                }
+    .logo-container {
+        .logo {
+            margin-left: 10px;
+            img {
+                height: 30px;
             }
         }
+    }
 
-        .navlinks-container {
+    .navlinks-container {
+        position: absolute;
+        margin-left: 200px;
 
-            .workspace-link {
-                align-self: stretch;
-                color: rgb(23, 43, 77);
-                cursor: pointer;
-                display: flex;
-                padding: 1.25rem 1rem 1rem;
-                text-decoration: none;
-            }
+        .workspace-link {
+            align-self: stretch;
+            color: rgb(23, 43, 77);
+            cursor: pointer;
+            display: flex;
+            padding: 1.25rem 1rem 1rem;
+            text-decoration: none;
+        
         }
 
     }
 
     .login-container {
+        height: 100%;
 
         .login {
             -webkit-box-align: center;
@@ -78,5 +76,31 @@
 
     }
 
-    
+
+    @media (max-width: 800px) {
+        .main-nav {
+            position: absolute;
+            // transform: translateY(100%);
+            bottom: 0;
+            left: 0;
+            flex-direction: column;
+            align-items: center;
+            background: #292929f7;
+            border-inline-start: 1px solid var(--clr0);
+            width: 100%;
+            justify-content: flex-end;
+            max-height: 0;
+
+            overflow: hidden;
+            transition: max-height 0.6s, box-shadow 0.6s;
+            ;
+        }
+
+        .hamburger{
+            font-size: 30px;
+            height: 30px;
+            color: aquamarine;
+        }
+
+    }
 }

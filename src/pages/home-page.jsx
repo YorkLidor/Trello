@@ -13,10 +13,10 @@ export function HomePage() {
 
             <div className="background-container">
                 <div className="main-layout">
-                    <div className="left-hero-container">
-                        <div>
-                            <h1>Shmello brings all your <br /> tasks, teammates, and tools together</h1>
-                            <p>Keep everything in the same place—even if your team <br /> isn’t.</p>
+                    <div className="demo-container">
+                        <div className="text-container">
+                            <h1>Shmello brings all your  tasks, teammates, and tools together</h1>
+                            <p>Keep everything in the same place—even if your team isn’t.</p>
                         </div>
 
                         <button onClick={onSginup} className="signup-btn">Start Demo</button>
@@ -35,7 +35,7 @@ export function HomePage() {
                     <p>SMELLO 101</p>
                     <h2>A productivity powerhouse</h2>
                     <p className="second-p">
-                        Simple, flexible, and powerful. All it takes are boards, lists, and <br /> cards to get a clear view of who’s doing what and what needs to <br /> get done. Learn more in our guide for getting started.
+                        Simple, flexible, and powerful. All it takes are boards, lists, and cards to get a clear view of who`s doing what and what needs to get done. Learn more in our guide for getting started.
                     </p>
                 </div>
 
