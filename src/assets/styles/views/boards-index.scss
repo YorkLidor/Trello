@@ -1,9 +1,9 @@
 .boards-index-container {
     width: 100vw;
-    min-height: 100%;
     max-width: 100vw;
     background-color: #fff;
     margin: 16px auto 0;
+    padding: 0;
 
     @include for-narrow-layout {
         margin-top: 0;
@@ -95,6 +95,7 @@
             height: rem(96px);
             margin-bottom: 27.453px;
             margin-right: 2%;
+
             &:nth-child(even) {
                 margin-right: 2%;
             }
