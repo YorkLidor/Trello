@@ -40,10 +40,10 @@ export function TaskPreview({ task, groupId, isDragging }) {
         // const pos = utilService.getElementPosition(taskRef.current)
 
         let props = {}
-        if (modalType === MODAL_TASK_QUICK_EDIT) props = { taskPos: pos }
+        // if (modalType === MODAL_TASK_QUICK_EDIT) props = { taskPos: pos }
 
         //Change the modal data in store
-        setModalData(modalType, props)
+        // setModalData(modalType, props)
 
         // store.dispatch({ type: TOGGLE_MODAL })
     }
@@ -85,7 +85,7 @@ export function TaskPreview({ task, groupId, isDragging }) {
 
         <div ref={modalBoxRef} className='modal-container'>
             {
-                modalData && <Modal cmpProps={modalData.props} cmpType={modalData.cmpType} className={modalData.className} />
+                // modalData && <Modal cmpProps={modalData.props} cmpType={modalData.cmpType} className={modalData.className} />
             }
         </div>
     </>
