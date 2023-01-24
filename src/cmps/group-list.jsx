@@ -5,7 +5,7 @@ import { boardService } from "../services/board.service";
 import { utilService } from "../services/util.service";
 import { dndService } from "../services/dnd.service";
 
-import { saveBoard, setBoard } from "../store/actions/board.actions"
+import { saveBoard } from "../store/actions/board.actions"
 
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 import { GroupAdd } from "./group-add";
@@ -57,7 +57,6 @@ export function GroupList() {
         } else if (type === 'group-list') {
             board.groups = utilService.reorder(board.groups, sourceIdx, destinationIdx)
         }
-        setBoard(board)
         saveBoard(board)
     }
 
