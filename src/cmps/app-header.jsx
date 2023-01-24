@@ -1,9 +1,6 @@
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 
-import { GiHamburgerMenu } from "react-icons/gi";
-
-
 export function AppHeader() {
     const [isHidden, setIsHidden] = useState(true)
 
@@ -17,7 +14,7 @@ export function AppHeader() {
 
         <div className="logo-container">
             <Link to="/" className="logo">
-                <img src="https://frello-app.onrender.com/dist/Frello.8d010d74.svg" alt="" />
+                <img src="../../src/assets/img/shmello-logo.jpg" alt="" />
             </Link>
         </div>
 
@@ -34,7 +31,14 @@ export function AppHeader() {
             </a>
         </div>
 
-        <GiHamburgerMenu className="hamburger" onClick={handleClick} />
+        <div className="container nav-container hamburger" onClick={handleClick}>
+            <input className="checkbox" type="checkbox" name="" id="" />
+            <div className="hamburger-lines">
+              <span className="line line1"></span>
+              <span className="line line2"></span>
+              <span className="line line3"></span>
+            </div>  
+        </div>
 
 
 
