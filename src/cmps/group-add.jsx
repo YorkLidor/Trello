@@ -1,19 +1,25 @@
 import { useRef } from "react"
 import { useState } from "react"
 import { IoMdAdd } from "react-icons/io"
+import { useEffectUpdate } from "../customHooks/useEffectUpdate"
 
 
 export function GroupAdd({ onAddGroup, handleChange, groupToEdit }) {
     const [isIdleClass, setIsIdle] = useState('is-idle')
     const isLoading = useRef(false)
+    const elInput = useRef()
+
+    useEffectUpdate(()=>{
+        if (!isIdleClass.current) elInput.current.focus()
+    },[isIdleClass])
 
     async function onSubmitForm(ev) {
         ev.preventDefault()
         if (isLoading.current) return
         isLoading.current = true
         try {
-            await onAddGroup(ev)
             setIsIdle('is-idle')
+            await onAddGroup(ev)
         } catch (err) {
             console.error('somthing went wrong:', err.message)
         } finally {
@@ -34,6 +40,7 @@ export function GroupAdd({ onAddGroup, handleChange, groupToEdit }) {
             <form
                 className="add-list-form"
                 onSubmit={onSubmitForm}
+            
             >
                 <input
                     className="list-title-input"
@@ -43,6 +50,7 @@ export function GroupAdd({ onAddGroup, handleChange, groupToEdit }) {
                     placeholder="Enter list title..."
                     autoComplete="off"
                     onChange={handleChange}
+                    ref={elInput}
                 />
                 <div className="btn-controls-container">
                     <button
