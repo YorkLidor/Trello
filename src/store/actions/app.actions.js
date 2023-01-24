@@ -7,20 +7,15 @@ import {
     MODAL_ATTACH_OPEN,
     MODAL_MEMBERS,
     MODAL_MEMBER_OPEN,
-<<<<<<< HEAD:src/store/app.actions.js
     BOARD_CREATOR,
     MODAL_TASK_QUICK_EDIT
-} from '../cmps/modal/modal.jsx'
-=======
-    BOARD_CREATOR
-} from '../../cmps/modal/modal.jsx'
->>>>>>> 5b393dbaf3cb47f20c6936ac9ea2cb4aeb064ee8:src/store/actions/app.actions.js
+} from "../../cmps/modal/modal"
 
 export function closeModal() {
     store.dispatch({ type: CLOSE_MODAL })
 }
 
-export function toggleModal(){
+export function toggleModal() {
     store.dispatch({ type: TOGGLE_MODAL })
 }
 
