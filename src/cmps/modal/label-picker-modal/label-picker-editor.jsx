@@ -4,7 +4,7 @@ import { boardService } from "../../../services/board.service"
 
 import { AiOutlineClose } from "react-icons/ai"
 import { BsFillCircleFill } from 'react-icons/bs'
-import { PAGE_DELETE } from './labels-picker'
+import { PAGE_DELETE } from './label-picker'
 
 export function LabelPickerEditor({ editorLabel, onSaveLabel, setModalPage }) {
 
@@ -48,7 +48,7 @@ export function LabelPickerEditor({ editorLabel, onSaveLabel, setModalPage }) {
         </div>
 
         <label className='label-title' htmlFor='label-title'>Title</label>
-        <input className="label-editor-title" type='text' id="label-title" value={label.title} onChange={handleEditorChange} />
+        <input className="label-editor-title" type='text' id="label-title" value={label.title? label.title : ''} onChange={handleEditorChange} />
 
         <label className='label-title' htmlFor='label-title'>Select a color</label>
         <div className='editor-colors'>

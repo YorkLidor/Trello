@@ -87,6 +87,10 @@
     border-radius: 50%;
     height: $height;
     width: $width;
+
+    &:hover {
+        opacity: 0.8;
+    }
 }
 
 @mixin button-filled($color: rgba(9, 30, 66, 0.04), $text-color: #172b4d) {
@@ -104,7 +108,8 @@
     transition-duration: 85ms;
 
     &:hover {
-        background-color: opacify($color, .08);
+        // background-color: darken($button-filled, 10%);
+        background-color: opacify($color, .05);
     }
 }
 
@@ -121,7 +126,8 @@
 
 // include to .label-box
 @mixin label-preview {
-    border: hidden;
+    border: none;
+    outline: none;
     display: inline-flex;
     align-items: center;
     position: relative;
@@ -172,8 +178,16 @@
     align-self: center;
     line-height: 20px;
     grid-column: 0 / 1;
-    font-weight: 400;
     color: #6b778c;
+
+    width: 16px;
+    height: 22px;
+
+    font-weight: bolder;
+
+    &:hover{
+        color: #172b4d;
+    }
 }
 
 @mixin back-modal {

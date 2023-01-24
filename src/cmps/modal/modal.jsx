@@ -1,4 +1,4 @@
-import { LabelsPicker } from "./label-picker-modal/labels-picker"
+import { LabelsPicker } from "./label-picker-modal/label-picker"
 import { AttachmentModal } from "./attachment-modal"
 
 import { useSelector } from "react-redux"
@@ -43,5 +43,4 @@ function GetCmp({ cmpProps, cmpType }) {
         default:
             return ''
     }
-    return ''
 }

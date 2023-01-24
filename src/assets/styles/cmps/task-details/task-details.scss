@@ -1,0 +1,188 @@
+.task-window {
+    flex-direction: row;
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    align-items: flex-start;
+    justify-content: center;
+    background-color: #000000a3;
+    padding: 0;
+
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    @include scrollbar;
+}
+
+.task-details {
+    position: relative;
+    color: $clr_font_blue;
+    background-color: #F4F5F7;
+
+    width: 768px;
+    min-height: 800px;
+
+    padding: 0px;
+    margin: 48px 0 80px;
+
+    padding-block-start: 12px;
+
+    @media (max-width: 768px) {
+        width: auto;
+        max-width:  768px;
+    }
+}
+
+.close-task-details{
+    position: absolute;
+    display: flex;
+    top: 0;
+    right: 0;
+    margin: 4px;
+
+    height: 36px;
+    width: 36px;
+    font-size: 23px;
+
+    border-radius: 50%;
+    border: 0;
+
+    align-items: center;
+    justify-content: center;
+
+    color: #42526E;
+    
+    &:hover{
+        background-color: #091e4214;
+        color: #42526e;   
+    }
+    &.on-cover {
+        background-color: #0000001a;
+    }
+
+}
+
+.task-icon {
+    vertical-align: middle;
+    font-family: unset;
+    height: 18px;
+    width: 19px;
+    line-height: 25px;
+    text-align: center;
+    font-weight: 400;
+
+    color: $task-details-icon;
+}
+
+.task-header {
+    height: fit-content;
+    float: left;
+    padding: 12px 40px 8px 56px;
+    width: 100%;
+    position: relative;
+
+    .header-icon {
+        position: absolute;
+        left: 22px;
+        top: 15px;
+    }
+
+    .task-title {
+        border: none;
+        outline: none;
+        box-shadow: none;
+        font-family: unset;
+        font-size: 20px;
+        font-weight: 600;
+        width: 100%;
+        padding: 4px 8px;
+        margin: -5px -8px;
+
+        min-height: 24px;
+        line-height: 24px;
+
+        height: 32px;
+        color: #172b4d;
+
+
+        &.is-editing {
+            box-shadow: 0 0 0 2px $color_input_shadow;
+        }
+    }
+
+    .header-subtitle {
+        font-size: 14px;
+        display: inline-block;
+        width: fit-content;
+        margin: 0px 8px 9px 2px;
+        padding-block-start: 8px;
+
+        line-height: 20px;
+
+        color: #5E6C84;
+    }
+}
+
+.task-main-col {
+    position: relative;
+    width: 576px;
+    overflow: hidden;
+    margin: 0;
+    display: inline-block;
+
+    padding: 0px 8px 8px 16px;
+
+
+    vertical-align: top;
+
+}
+
+.title-main-col {
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 600;
+}
+
+.button-link {
+    @include task-nav-button;
+    position: relative;
+
+    &-header {
+        @include task-nav-button;
+        margin: 0 0 0 8px;
+        padding-inline: 12px;
+
+        &:hover {
+            background-color: #e2e5e9;
+            text-decoration: none;
+        }
+    }
+
+    &:hover {
+        background-color: #e2e5e9;
+        text-decoration: none;
+    }
+}
+
+.save-btn {
+    @include button-filled($button-filled , #FFF);
+    font-size: 10px;
+}
+
+.task-info {
+    margin-inline-start: 40px;
+    margin-block-start: 7px;
+    margin-block-end: 13px;
+    flex-wrap: wrap;
+    padding: 0;
+
+    .info-tab {
+        margin: 0 8px 8px 0;
+    }
+}
+
+.cover-color {
+    background-position: 50%;
+    background-size: cover;
+}

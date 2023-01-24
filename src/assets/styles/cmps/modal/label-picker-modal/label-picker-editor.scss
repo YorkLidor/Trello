@@ -13,8 +13,10 @@
 .remove-color-icon {
     height: 12px;
     width: 12px;
-    vertical-align: baseline;
+    vertical-align: middle;
     font-weight: 900;
+
+    margin-block-start: -3px;
     margin-inline-start: 2px;
     margin-inline-end: 4px;
 }

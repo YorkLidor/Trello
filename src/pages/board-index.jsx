@@ -40,7 +40,7 @@ export function BoardIndex() {
     }
 
     function onBoardClick(ev, boardId) {
-        if (boardId) navigate(`/board/${boardId}`)
+        if (boardId) navigate(`/${boardId}`)
         else onToggleModal(ev)
     }
 

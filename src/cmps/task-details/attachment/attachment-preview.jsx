@@ -2,7 +2,7 @@ import { BsArrowUpRight } from 'react-icons/bs'
 import { MODAL_ATTACH_EDIT, MODAL_ATTACH_OPEN } from '../../modal/modal'
 
 
-export function AttachmentPreview({ attachment, toggleModal, onRemoveAttachment }) {
+export function AttachmentPreview({ attachment, toggleModal, removeAttachment}) {
 
     function onEditAttachment(ev, attachment) {
         ev.stopPropagation()
@@ -23,7 +23,7 @@ export function AttachmentPreview({ attachment, toggleModal, onRemoveAttachment 
             <span className='attachment-info'>
                 <span className="attachment-date">Added {new Date(attachment.createdAt).toLocaleDateString()}</span>
                 <span className='attachment-info-break' />
-                <span className="action-attachment" onClick={(ev) => onRemoveAttachment(ev, attachment.id)}>Delete</span>
+                <span className="action-attachment" onClick={(ev) => removeAttachment(ev, attachment)}>Delete</span>
                 <span className='attachment-info-break' />
                 <span className="action-attachment" onClick={(ev) => onEditAttachment(ev, attachment)}>Edit</span>
             </span>

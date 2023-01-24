@@ -13,7 +13,6 @@
 // // Views
 @import "views/board";
 @import "views/home-page";
-@import "views/task-details";
 
 // Components
 
@@ -58,7 +57,12 @@
 @import "cmps/task-details/label-list.scss";
 
 @import "cmps/modal/modal.scss";
+@import "cmps/modal/modal-header.scss";
+
+@import "./cmps/task-details-sidebar.scss";
+@import "./cmps/task-details/activity.scss";
+@import "./cmps/task-details/task-description.scss";
 
 
-
-
+@import "cmps/task-details/task-details.scss";
+@import "cmps/modal/member-modal.scss";

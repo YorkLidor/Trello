@@ -1,13 +1,15 @@
-import { AiOutlineClose } from 'react-icons/ai'
-import { BsArrowUpRight } from 'react-icons/bs'
-
-import { CLOSE_MODAL } from '../../../store/reducers/app.reducer'
 import { store } from '../../../store/store'
-
 import { useState } from 'react'
 
+import { onRemoveAttachment } from '../../../store/actions/board.actions'
+
+import { BsArrowUpRight } from 'react-icons/bs'
+import { AiOutlineClose } from 'react-icons/ai'
+
+import { CLOSE_MODAL } from '../../../store/reducers/app.reducer'
+
 export function AttachmentView({ cmpProps }) {
-    const { attachment, deletion: onRemoveAttachment } = cmpProps
+    const { attachment, user, boardId, groupId, task } = cmpProps
     const [deleteState, setDeleteState] = useState(false)
 
     function toggleDelete(state) {
@@ -15,7 +17,7 @@ export function AttachmentView({ cmpProps }) {
     }
 
     function onRemoveAttach(ev) {
-        onRemoveAttachment(ev, attachment.id)
+        onRemoveAttachment(user, boardId, groupId, task, attachment)
         store.dispatch({ type: CLOSE_MODAL })
     }
 
@@ -23,6 +25,7 @@ export function AttachmentView({ cmpProps }) {
         <div className='attach-viewer-closer-layout'>
             <AiOutlineClose className='close-attach-viewer' onClick={() => store.dispatch({ type: CLOSE_MODAL })} />
         </div>
+        
         <div className='viewer-scroller'>
             <div className="attachment-viewer-preview">
                 <div className='viewer-img-container'>
@@ -56,7 +59,7 @@ export function AttachmentView({ cmpProps }) {
                     deleteState &&
                     <span>
                         Are you sure you want to delete? There is no undo.
-                        <span className='viewer-info-action' style={{ marginInline: '6px 0px' }} onClick={onRemoveAttach}>Delete forever</span>
+                        <span className='viewer-info-action' style={{ marginInline: '6px 0px' }} onClick={(onRemoveAttach)}>Delete forever</span>
                         <span className='viewer-info-action' onClick={() => toggleDelete(false)} data-state={false} style={{ marginInline: '12px 14px' }}>Nevermind</span>
                     </span>
                 }

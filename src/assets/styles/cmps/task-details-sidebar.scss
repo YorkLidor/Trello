@@ -1,0 +1,16 @@
+.window-sidebar-box {
+    width: 192px;
+    float: right;
+    overflow-y: visible;
+    padding: 0 16px 8px 8px;
+}
+
+.window-sidebar {
+    position: relative;
+    overflow-y: visible;
+    margin-block-end: 24px;
+
+    .sidebar-title {
+        @include details-label;
+    }
+}
