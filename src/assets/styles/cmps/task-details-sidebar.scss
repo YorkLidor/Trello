@@ -3,6 +3,11 @@
     float: right;
     overflow-y: visible;
     padding: 0 16px 8px 8px;
+
+    @media (max-width: 768px) {
+        padding: 8px;
+        max-width: 100%;
+    }
 }
 
 .window-sidebar {

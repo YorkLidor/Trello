@@ -8,17 +8,19 @@
     @include user-logo-circle;
     position: absolute;
     left: -40px;
-    top: 12px;
+    top: 15px;
 }
 
 
 .comment-box {
     width: 100%;
+    padding-block-start: 3.5px;
 
     .comment-by-member {
         font-weight: 700;
-        margin-inline-end: 6px;
-        font-size: 15px;
+        margin-inline-start: 0px;
+        margin-inline-end: 4px;
+        font-size: 14px;
     }
 
     .comment-time {
@@ -33,9 +35,11 @@
 
     .task-activity {
         @include text-area-form;
-        margin: 4px 2px 4px 0;
-        padding: 8px 12px;
+        margin: 4px 0 4px 0;
+        padding: 7px 12px;
         font-size: 14px;
+
+        background-color: #FFFFFF;
 
         .comment-text {
             text-overflow: ellipsis;

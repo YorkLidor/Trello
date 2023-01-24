@@ -5,3 +5,10 @@
 .attachment-list{
     list-style-type: none;
 }
+
+.attachment-modal-option {
+    background-color: inherit;
+    &:hover{
+        background-color: #F5F6F8;
+    }
+}

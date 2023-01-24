@@ -37,7 +37,7 @@ export function AttachmentModal({ cmpProps }) {
         </div>
         <ul className="attachment-list">
             <li>
-                <label htmlFor='uploadAttach'>Computer</label>
+                <label htmlFor='uploadAttach' className='attachment-modal-option'>Computer</label>
                 <input type='file' id='uploadAttach' name='uploadAttach' onChange={uploadAttach} style={{ display: 'none' }} />
             </li>
         </ul>
