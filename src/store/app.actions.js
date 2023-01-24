@@ -7,7 +7,8 @@ import {
     MODAL_ATTACH_OPEN,
     MODAL_MEMBERS,
     MODAL_MEMBER_OPEN,
-    BOARD_CREATOR
+    BOARD_CREATOR,
+    MODAL_TASK_QUICK_EDIT
 } from '../cmps/modal/modal.jsx'
 
 export function closeModal() {
@@ -68,6 +69,13 @@ export function setModalData(modalType, props) {
             newModalData = {
                 className: 'modal',
                 cmpType: BOARD_CREATOR,
+                props
+            }
+            break;
+        case MODAL_TASK_QUICK_EDIT:
+            newModalData = {
+                className: 'task-quick-edit-container',
+                cmpType: MODAL_TASK_QUICK_EDIT,
                 props
             }
             break;
