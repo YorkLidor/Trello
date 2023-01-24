@@ -1,19 +1,21 @@
 import React from 'react'
-import { Routes, Route } from 'react-router'
+import { Routes, Route, useLocation } from 'react-router'
 
-import { AppHeader } from './cmps/app-header'
 import { Board } from './pages/board'
 import { HomePage } from './pages/home-page'
 import { TaskDetails } from './cmps/task-details/task-details'
 import { BoardIndex } from './pages/board-index'
 import { Provider } from 'react-redux'
 import { store } from './store/store'
+import { HomeAppHeader } from './cmps/home-app-header'
+import { AppHeader } from './cmps/app-header'
 
 export function RootCmp() {
+    const location = useLocation()
 
     return (
         <Provider store={store}>
-            <AppHeader />
+            {location.pathname === '/' ? <HomeAppHeader /> : <AppHeader />}
             <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/workspace" element={<BoardIndex />} />

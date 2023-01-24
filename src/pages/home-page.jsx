@@ -40,7 +40,7 @@ export function HomePage() {
                 </div>
 
                 <div className="secondary-header-2">
-                    <div className="cards-container">
+                    <div className="cards-container import another">
                         <div className="card-1">
                             <h3>Boards</h3>
                             <p>
