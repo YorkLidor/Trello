@@ -71,20 +71,41 @@
     .board-preview {
         font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans, Ubuntu, Droid Sans, Helvetica Neue, sans-serif;
         color: #fff;
-        width: calc(50% - 8px);
-        height: rem(96px);
+        width: calc(50% - 4px);
+        height: rem(116px);
         font-size: rem(16px);
         font-weight: 700;
         line-height: 20px;
         word-spacing: 0px;
-        border-radius: 3px;
+        border-radius: 8px;
         background-color: #97a0af;
         transition: .11s;
         background-size: cover;
         background-position: 50%;
         cursor: pointer;
         position: relative;
-        margin: 0 8px 8px 0;
+        margin: 0 8px 4px 0;
+
+        &:nth-child(even){
+            margin-right: 0;
+        }
+
+        @include for-narrow-layout {
+            border-radius: 3px;
+            width: 32%;
+            height: rem(96px);
+            margin-bottom: 27.453px;
+
+            &:nth-child(even){
+                margin-right: 8px;
+            }
+        }
+
+
+        @include for-wide-layout {
+            margin: 0 2% 32px 0;
+            width: 23%;
+        }
 
         .board-title {
             margin: 0;
@@ -94,16 +115,22 @@
 
         .board-preview-fade {
             padding: rem(10px) rem(8px) rem(8px);
-            background-color: #00000026;
+            background-color: transparent;
             bottom: 0;
             left: 0;
             position: absolute;
             right: 0;
             top: 0;
             border-radius: inherit;
+            flex-direction: column-reverse;
+
+            @include for-narrow-layout {
+                flex-direction: column;
+                background-color: #00000026;
+            }
 
             &.light {
-                background-color: #0000004d;
+                background-color: #00000026;
 
                 .star-container {
                     margin-right: em(6px);
@@ -117,6 +144,10 @@
                 }
 
                 &:hover {
+                    background-color: #0000004d;
+                }
+
+                @include for-narrow-layout {
                     background-color: #0000004d;
                 }
             }
@@ -137,6 +168,10 @@
 
             p {
                 margin: 0;
+            }
+
+            .board-preview-fade {
+                background-color: transparent;
             }
         }
 
@@ -182,17 +217,5 @@
 
 
 
-    @include for-narrow-layout {
-        .board-preview {
-            width: 32%;
-            margin-bottom: 27.453px;
-        }
-    }
 
-    @include for-wide-layout {
-        .board-preview {
-            margin: 0 2% 32px 0;
-            width: 23%;
-        }
-    }
 }

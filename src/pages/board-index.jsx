@@ -115,7 +115,7 @@ export function BoardIndex() {
 
             <header className="main-header">
                 <RxPerson />
-                <h3>Your Boards</h3>
+                <h3>Your boards</h3>
             </header>
             <section
                 className="recently-boards-container"
