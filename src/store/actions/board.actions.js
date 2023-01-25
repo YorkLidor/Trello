@@ -8,8 +8,8 @@ export async function loadBoards() {
         const boards = await boardService.query()
         store.dispatch({ type: SET_BOARDS, boards })
     }
-    catch {
-        console.log('Had issues loading boards')
+    catch (error) {
+        console.log('Had issues loading boards', error)
         throw new Error('Had issues loading boards')
     }
 }
@@ -20,8 +20,8 @@ export async function removeBoard(boardId) {
         store.dispatch({ type: REMOVE_BOARD, boardId })
         await boardService.remove(boardId)
     }
-    catch {
-        console.log('Had issues Removing board')
+    catch (error) {
+        console.log('Had issues Removing board', error)
         throw new Error('Had issues Removing board')
     }
 }
@@ -68,20 +68,27 @@ export async function addNewTask(boardId, groupId, newTask) {
 }
 
 export async function saveTask(boardId, groupId, task, activity) {
-    const board = await boardService.getById(boardId)
-    if (!board) throw new Error('No such board with this id')
-    // PUT /api/board/b123/task/t678
+    try {
 
-    // TODO: find the task, and update
-    const group = board.groups?.find(group => group.id === groupId)
-    if (!group) throw new Error('No such a group in board')
+        const board = await boardService.getById(boardId)
+        if (!board) throw new Error('No such board with this id')
+        // PUT /api/board/b123/task/t678
 
-    const tasks = group.tasks?.map(t => t.id === task.id ? task : t)
-    group.tasks = tasks
+        // TODO: find the task, and update
+        const group = board.groups?.find(group => group.id === groupId)
+        if (!group) throw new Error('No such a group in board')
 
-    board.activities.unshift(activity)
-    await saveBoard(board)
-    store.dispatch({ type: SET_ACTIVE_BOARD, board })
+        const tasks = group.tasks?.map(t => t.id === task.id ? task : t)
+        group.tasks = tasks
+
+        board.activities.unshift(activity)
+        await saveBoard(board)
+        store.dispatch({ type: SET_ACTIVE_BOARD, board })
+    }
+    catch (error) {
+        console.error('ERROR: Failed to save task', error)
+        throw new Error('ERROR: Failed to save task')
+    }
 }
 
 export async function onRemoveAttachment(user, boardId, groupId, task, attachment) {
@@ -94,6 +101,7 @@ export async function onRemoveAttachment(user, boardId, groupId, task, attachmen
     }
     catch (error) {
         console.error('ERROR: Failed to remove attachment', error)
+        throw new Error('ERROR: Failed to remove attachment')
     }
 }
 
@@ -106,7 +114,8 @@ export async function onRemoveFromCard(user, task, boardId, groupId) {
         await saveTask(boardId, groupId, task, activity)
     }
     catch (error) {
-        console.error('ERROR: Failed to remove attachment', error)
+        console.error('ERROR: Failed to remove card', error)
+        throw new Error('ERROR: Failed to remove card')
     }
 }
 
@@ -119,6 +128,7 @@ export async function saveDescription(task, boardId, groupId, text) {
         await saveTask(boardId, groupId, task, {})
     }
     catch (error) {
-        console.error('ERROR: Failed to remove attachment', error)
+        console.error('ERROR: Failed to save description', error)
+        throw new Error('ERROR: Failed to save description')
     }
 }
