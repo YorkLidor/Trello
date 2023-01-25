@@ -4,7 +4,7 @@ import { useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import { boardService } from "../services/board.service"
 import { utilService } from "../services/util.service"
-import { Modal, MODAL_TASK_QUICK_EDIT } from "./modal/modal"
+import { Modal } from "./modal/modal"
 
 import { TaskLabels } from "./task-label"
 
@@ -51,33 +51,33 @@ export function TaskPreview({ task, groupId, isDragging }) {
 
     return <> <div onMouseEnter={() => setIsEditBtnShow('hidden-icon')} onMouseLeave={() => setIsEditBtnShow('')} className={`task-preview-container ${isDragging && 'is-dragging'}`} onClick={() => navigate(`/${board._id}/${groupId}/${task.id}`)}>
 
-            {/* EDIT ICON */}
-            <section className={`edit-task-icon-container ${isEditBtnShow}`} onClick={onEditClick}>
-                <img className='edit-task-icon' src="http://res.cloudinary.com/dk2geeubr/image/upload/v1674474594/xln3wronhmxmwxpucark.svg" alt="" />
+        {/* EDIT ICON */}
+        <section className={`edit-task-icon-container ${isEditBtnShow}`} onClick={onEditClick}>
+            <img className='edit-task-icon' src="http://res.cloudinary.com/dk2geeubr/image/upload/v1674474594/xln3wronhmxmwxpucark.svg" alt="" />
+        </section>
+
+        {/* COVER */}
+        {((taskStyle && taskStyle.background) || taskStyle.backgroundImage) &&
+            <header
+                className="cover-color"
+                style={taskStyle}
+            />
+        }
+
+        <li className="task-preview" >
+            {/* LABELS */}
+            {taskLabels && <TaskLabels labels={taskLabels} board={board} />}
+
+            {/* BODY */}
+            <section className="task-body" >
+                <p>{task.title}</p>
             </section>
 
-            {/* COVER */}
-            {((taskStyle && taskStyle.background) || taskStyle.backgroundImage) &&
-                <header
-                    className="cover-color"
-                    style={taskStyle}
-                />
-            }
+            {/* ICONS */}
+            <TaskPreviewIcons board={board} task={task} />
+        </li>
 
-            <li className="task-preview" >
-                {/* LABELS */}
-                {taskLabels && <TaskLabels labels={taskLabels} board={board} />}
-
-                {/* BODY */}
-                <section className="task-body" >
-                    <p>{task.title}</p>
-                </section>
-
-                {/* ICONS */}
-                <TaskPreviewIcons board={board} task={task} />
-            </li>
-
-        </div>
+    </div>
 
         <div ref={modalBoxRef} className='modal-container'>
             {
