@@ -1,0 +1,17 @@
+.task-details-cover {
+    position: relative;
+    height: 160px;
+    min-height: 160px;
+    padding: 0px;
+
+    background-position: center center;
+    background-size: contain;
+    background-origin: content-box;
+    background-repeat: no-repeat;
+}
+
+.btn-cover {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+}

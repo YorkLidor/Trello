@@ -31,6 +31,8 @@ export const boardService = {
     addComment,
     removeTask,
     copyTask,
+    getCoverAttachStyle,
+    getCoverColorStyle
 }
 
 async function copyTask(board, groupId, task ) {
@@ -50,7 +52,9 @@ async function removeTask(board, groupId, taskId) {
     group.tasks.splice(taskIndex, 1)
     const groupIndex = board.groups.findIndex(g => g.id === groupId)
     board.groups[groupIndex] = group
-    return board
+    return board,
+    getCoverColorStyle,
+    getCoverAttachStyle
 }
 
 async function query(filterBy = grtDefaultFilter()) {
@@ -195,4 +199,12 @@ async function addComment(user, boardId, groupId, task, text) {
     }
     task.comments = task.comments ? [...task.comments, comment] : [comment]
     await saveTask(boardId, groupId, task, boardService.getActivity(user, task, `User ${user.fullname} posted comment on task ${task.title}`))
+}
+
+function getCoverColorStyle(color) {
+    return { backgroundColor: color }
+}
+
+function getCoverAttachStyle(url) {
+    return { backgroundImage: `url(${url})` }
 }
