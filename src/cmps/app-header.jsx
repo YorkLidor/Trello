@@ -3,7 +3,7 @@ import { SiTrello } from 'react-icons/si'
 
 export function AppHeader() {
 
-    return <header className="app-header">
+    return <header className="app-header-regular">
         <nav className="main-nav flex">
             <div className="logo-container">
                 <Link to="/" className="logo">

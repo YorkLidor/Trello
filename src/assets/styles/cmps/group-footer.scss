@@ -3,27 +3,43 @@
 
     .add-card-container {
         color: #5e6c84;
+        font-weight: 500;
         display: inline-flex;
         align-items: center;
+        justify-content: center;
         margin: 2px 0 8px 8px;
         padding: 4px 8px;
         width: calc(100% - 16px);
         border-radius: 3px;
 
+        @include for-narrow-layout {
+            justify-content: unset;
+            font-weight: 400;
+        }
+
         .add-icon-container {
             color: var(--ds-icon-subtle, #6b778c);
             margin-right: 2px;
             height: 20px;
+            font-size: 1rem;
 
             .add-icon {
-                font-size: 16px;
+                color: #5e6c84;
+                font-size: 14px;
+
+                @include for-narrow-layout {
+                    font-size: 16px;
+                }
             }
         }
 
         .add-txt-container {
             font-size: rem(14px);
             height: 19px;
+
         }
+
+
 
         &:hover {
             background-color: var(--ds-background-neutral-hovered, #091e4214);
@@ -40,6 +56,3 @@
         }
     }
 }
-
-
-

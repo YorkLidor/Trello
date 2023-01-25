@@ -1,6 +1,9 @@
 .group-list-container {
+    font-size: 1.3rem;
     background: linear-gradient(to bottom, #0000003d, #0000 80px, #0000);
 
+
+    
     @include scrollbar(12px, 4px, #f4f5f763, #00000026);
 
     display: flex;
@@ -10,6 +13,20 @@
     overflow-x: auto;
     overflow-y: hidden;
     padding: 0 0 rem(8px) rem(4px);
+    scroll-snap-type: x mandatory;
+
+    @include for-narrow-layout{
+        font-size: 1rem;
+        scroll-snap-type: unset;
+
+        >*{
+            scroll-snap-align: unset;
+        }
+    }
+
+    >*{
+        scroll-snap-align: start;
+    }
 
     .add-group-form {
         box-sizing: border-box;
@@ -17,7 +34,7 @@
         white-space: nowrap;
         width: 272px;
         height: fit-content;
-        min-height: 34px;
+        min-height: em(34px);
         background-color: #ebecf0;
         cursor: pointer;
         font-weight: 400;
@@ -31,8 +48,8 @@
         &.editable {
             background-color: #ebecf0;
             cursor: inherit;
-            min-height: rem(80px);
-            padding: rem(4px);
+            min-height: em(80px);
+            padding: em(4px);
             transition: background 85ms ease-in, opacity 40ms ease-in, border-color 85ms ease-in;
         }
     }
@@ -40,7 +57,7 @@
     .new-group-title {
         background-color: var(--ds-background-input, #fff);
         margin: 0;
-        margin-bottom: rem(4px);
+        margin-bottom: em(4px);
         width: 100%;
         box-shadow: inset 0 0 0 2px var(--ds-border-focused, #0079bf);
         transition: margin 85ms ease-in, background 85ms ease-in;

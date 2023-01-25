@@ -58,6 +58,8 @@ export function GroupHeader({ group, board, onRemoveGroup }) {
             </h1>
         </div>
 
-        <button onClick={() => onRemoveGroup(group.id)}>...</button>
+        <button className="btn-remove" onClick={() => onRemoveGroup(group.id)}>
+            <span>...</span>
+            </button>
     </section>
 }

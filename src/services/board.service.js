@@ -66,7 +66,7 @@ function getEmptyTask() {
 }
 
 function grtDefaultFilter() {
-    return { boardId: '', isStared: false }
+    return { boardId: '', isStarred: false }
 }
 
 function getEmptyGroup() {

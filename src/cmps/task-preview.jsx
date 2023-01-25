@@ -38,7 +38,7 @@ export function TaskPreview({ task, groupId, isDragging }) {
         const pos = utilService.getElementPosition(taskRef.current)
 
         let props = {}
-        if (modalType === MODAL_TASK_QUICK_EDIT) props = { taskPos: pos }
+        // if (modalType === MODAL_TASK_QUICK_EDIT) props = { taskPos: pos }
 
         //Change the modal data in store
         // setModalData(modalType, props)

@@ -5,37 +5,41 @@
     color: #172b4d;
     align-items: center;
     font-weight: 600;
-    padding: rem(10px) rem(5px) rem(10px) rem(8px);
+    padding: em(1px) em(5px) em(10px) em(8px);
     overflow: hidden;
     overflow-wrap: break-word;
-    height: rem(40px);
-    line-height: 20px;
+    height: em(40px);
+    line-height: em(20px);
     cursor: pointer;
+
+    @include for-narrow-layout {
+        padding: em(10px) em(5px) em(10px) em(8px);
+    }
 
     .title-container {
         height: 28px;
         flex-grow: 1;
 
-        .group-title-header {
-            font-size: rem(14px);
+        .group-title-header,
+        .group-title-input {
+            font-size: em(13px);
             line-height: em(24px);
             font-weight: 600;
-            padding: 4px 8px;
             color: #172b4d;
+            padding: 0 0 3.5px 2px;
             margin: 0;
-            
+            height: 100%;
+
+
+            @include for-narrow-layout {
+                font-size: em(14px);
+                padding: 4px 8px;
+            }
         }
 
         .group-title-input {
             display: none;
-            padding: 4px 8px;
-            font-size: rem(14px);
-            line-height: em(24px);
             border-radius: 3px;
-            font-weight: 600;
-            color: #172b4d;
-            height: 29px;
-            margin: 0;
             width: 100%;
 
             @include input-focus;
@@ -57,17 +61,39 @@
         align-items: flex-start;
         background-color: transparent;
         border: none;
-        border-radius: 3px;
+        border-radius: em(3px);
         color: #6d788a;
         display: flex;
-        font-size: 18px;
-        height: 32px;
+        font-size: em(18px);
         justify-content: center;
         line-height: 20px;
-        width: 32px;
+        width: em(10px);
+        padding: 0;
+
+        @include for-narrow-layout {
+            height: 32px;
+        }
+
+        span {
+            writing-mode: vertical-lr;
+            text-orientation: mixed;
+            width: 0;
+
+            @include for-narrow-layout {
+                writing-mode: unset;
+                text-orientation: unset;
+                width: unset;
+            }
+        }
+
+        @include for-narrow-layout {
+            width: 32px;
+        }
 
         &:hover {
-            background-color: $clr22;
+            @include for-narrow-layout {
+                background-color: $clr22;
+            }
         }
     }
 
