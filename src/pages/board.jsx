@@ -20,7 +20,7 @@ export function Board() {
     useEffect(() => {
         loadBoard()
         return async () => {
-            await saveBoard(board)
+            await board && saveBoard(board)
             setBoard(null)
         }
     }, [])
@@ -59,7 +59,7 @@ export function Board() {
         </main >
     }
 
-    if (!board) return <Loader />
+    if (!board || !board._id) return <Loader />
     else return <main className="board flex column" style={board.style}>
         <BoardHeader
             board={board}

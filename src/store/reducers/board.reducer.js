@@ -13,7 +13,6 @@ const initialState = {
 
 export function boardReducer(state = initialState, action) {
     let boards
-    let board
     let lastEditedBoard
 
     switch (action.type) {
@@ -24,7 +23,8 @@ export function boardReducer(state = initialState, action) {
             return { ...state, boards: state.boards.filter(board => board._id !== action.boardId) }
 
         case EDIT_BOARD:
-            lastEditedBoard = action.board
+            lastEditedBoard = state.boards.find(board => board._id === action.board._id)
+            lastEditedBoard = JSON.stringify(lastEditedBoard)
             return {
 
                 ...state,
@@ -44,10 +44,10 @@ export function boardReducer(state = initialState, action) {
             }
 
         case UNDO_EDIT_BOARD:
-            board = lastEditedBoard;
-            ({ lastEditedBoard } = state)
-            boards = [lastEditedBoard, ...state.boards]
-            return { ...state, boards, board, lastEditedBoard: null }
+            lastEditedBoard = JSON.parse(state.lastEditedBoard)
+            boards = state.boards.filter(board => board._id !== lastEditedBoard._id)
+            boards = [lastEditedBoard, ...boards]
+            return { ...state, boards, board: { ...lastEditedBoard }, lastEditedBoard: null }
 
         default:
             return state

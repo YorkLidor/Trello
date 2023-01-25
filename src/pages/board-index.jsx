@@ -25,10 +25,10 @@ export function BoardIndex() {
         // return closeModal
     }, [])
 
-    function onToggleStaredBoard(ev, board, isStarred) {
+    function onToggleStaredBoard(ev, board) {
         ev.stopPropagation()
-        board.isStarred = !isStarred
-        onSaveBoard({ ...board })
+        const boardToSave = { ...board, isStarred: !board.isStarred }
+        onSaveBoard(boardToSave)
     }
 
     function getStaredBoards() {
@@ -39,7 +39,7 @@ export function BoardIndex() {
         try {
             await loadBoards()
         } catch (err) {
-            console.error('something went wrong!', err)
+            console.error('something went wrong!', err.message)
         }
     }
 
@@ -56,9 +56,9 @@ export function BoardIndex() {
         try {
             // closeModal()
             await saveBoard(board)
-            console.log('Board Saved successesfuly')
+            console.info('Board Saved successesfuly')
         } catch (err) {
-            console.error('Can\'t save board!', err)
+            console.error(err.name, err.message)
         }
     }
 

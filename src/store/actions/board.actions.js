@@ -27,9 +27,9 @@ export async function removeBoard(boardId) {
 }
 
 export async function saveBoard(board) {
+    let actionType
+    let savedBoard
     try {
-        let actionType
-        let savedBoard
         if (board._id) {
             actionType = EDIT_BOARD
             store.dispatch({ type: actionType, board: { ...board } })
@@ -41,10 +41,10 @@ export async function saveBoard(board) {
         }
         return savedBoard
     }
-    catch {
-        if (board._id) store.dispatch({ type: UNDO_EDIT_BOARD })
+    catch (err){
+        if (actionType === EDIT_BOARD) store.dispatch({ type: UNDO_EDIT_BOARD })
         console.error('Cannot save board')
-        throw new Error('Cannot save board')
+        throw err
     }
 }
 
