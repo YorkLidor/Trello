@@ -1,10 +1,12 @@
 .task-window {
     @include scrollbar;
+
     @include for-native-layout-details {
         &::-webkit-scrollbar {
             display: none;
         }
     }
+
     flex-direction: row;
     position: fixed;
     top: 0;
@@ -20,7 +22,8 @@
 }
 
 .task-details {
-    background-color: #F4F5F7;
+    background-color: #fff;
+
     @include for-none-native-layout-details {
         position: relative;
         color: $clr_font_blue;
@@ -104,13 +107,13 @@
     width: 100%;
     position: relative;
 
-    background-color: #FFF;
+    background-color: #fff;
 
     .header-icon {
         position: absolute;
         left: 24px;
         top: 26px;
-        
+
         @include for-native-layout-details {
             left: 22px;
             display: none;
@@ -127,13 +130,12 @@
         width: 100%;
         padding: 4px 8px;
         margin: -5px -8px;
-
+        background-color: inherit;
         min-height: 24px;
         line-height: 24px;
 
         height: 32px;
         color: #172b4d;
-        background-color: #F4F5F7;
 
         &::placeholder {
             color: $task-details-icon;
@@ -219,7 +221,7 @@
 }
 
 .task-info {
-    
+
     margin-inline-start: 40px;
     margin-block-start: 7px;
     margin-block-end: 13px;
@@ -232,13 +234,14 @@
     .info-tab {
         position: relative;
         margin: 0 8px 8px 0;
+
         @include for-native-layout-details {
             width: 100%;
             background-color: #fff;
             margin: 0;
             padding: 8px 4px 8px 40px;
             @include task-details-border-outset;
-            
+
         }
     }
 

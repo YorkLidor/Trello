@@ -25,6 +25,9 @@ export function AttachmentModal({ id, cmpProps }) {
 
         if (task.attachments?.length > 0) task.attachments.unshift(boardService.getAttachment(url, filename))
         else task.attachments = [boardService.getAttachment(url, filename)]
+
+        if(!task.cover) task.cover = { style: boardService.getCoverAttachStyle(url), fullSize: task.cover?.fullSize ? task.cover.fullSize : false }
+
         await saveTask(boardId, groupId, task, activity)
     }
 

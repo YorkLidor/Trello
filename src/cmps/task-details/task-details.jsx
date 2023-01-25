@@ -13,7 +13,7 @@ import { SET_ACTIVE_BOARD } from "../../store/reducers/board.reducer"
 
 import {
     MODAL_ATTACH, MODAL_LABELS, MODAL_ATTACH_EDIT,
-    MODAL_ATTACH_OPEN, MODAL_MEMBERS, MODAL_MEMBER_OPEN , MODAL_TASK_DATE
+    MODAL_ATTACH_OPEN, MODAL_MEMBERS, MODAL_MEMBER_OPEN , MODAL_TASK_DATE , MODAL_TASK_COVER
 } from '../modal/modal.jsx'
 
 import { AttachmentList } from "./attachment/attachment-list"
@@ -32,6 +32,7 @@ import { RiAttachment2 } from 'react-icons/ri'
 import { useEffectUpdate } from "../../customHooks/useEffectUpdate"
 import { useEffectInit } from "../../customHooks/useEffectInit"
 import { modalService } from "../../services/modal.service"
+import { TaskCover } from "./task-cover"
 
 export function TaskDetails() {
     const user = useSelector((storeState) => storeState.userModule.user)
@@ -139,6 +140,7 @@ export function TaskDetails() {
         else if (modalType === MODAL_MEMBERS) props = { groupId, task: taskToEdit }
         else if (modalType === MODAL_MEMBER_OPEN) props = { member: extras.member, user, boardId, groupId, task: taskToEdit }
         else if (modalType === MODAL_TASK_DATE) props = { user, boardId, groupId ,task: taskToEdit }
+        else if (modalType === MODAL_TASK_COVER) props = { user, boardId, groupId ,task: taskToEdit }
 
         const pos = utilService.getElementPosition(element)
         modalBoxRef.current.style.top = pos.bottom + 'px'
@@ -158,6 +160,7 @@ export function TaskDetails() {
         <section className="task-window flex" onMouseDown={closePage}>
 
             <section className="task-details" onClick={onCloseModal} onMouseDown={(ev) => ev.stopPropagation()}>
+                <TaskCover task={taskToEdit} onToggleModal={onToggleModal} />
 
                 <div className="task-header">
                     <IconHeader className="header-icon task-icon" /><input type='text' className="task-title" defaultValue={taskToEdit.title} onFocus={handleEditHeader} onBlur={handleEditHeader} />
@@ -188,7 +191,7 @@ export function TaskDetails() {
                     <Activity user={user} boardId={boardId} groupId={groupId} taskToEdit={taskToEdit} />
                 </section>
 
-                <TaskDetailsSideBar onToggleModal={onToggleModal} />
+                <TaskDetailsSideBar task={taskToEdit} onToggleModal={onToggleModal} />
                 <button onClick={closePage} className='close-task-details'>
                     <IoClose />
                 </button>

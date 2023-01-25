@@ -10,15 +10,22 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { saveBoard } from "../store/actions/board.actions";
 import { boardService } from "../services/board.service";
+import { useState } from "react";
 
 
 
 
 export function TaskQuickEdit({ task, groupId, pos }) {
-
     const board = useSelector(state => state.boardModule.board)
     const navigate = useNavigate()
     const taskPos = { top: pos.top + 'px', left: pos.left + 'px' }
+    const [classIsFadeIn, setClassIsFadeIn] = useState(false)
+
+    useState(() => {
+        setTimeout(() => {
+            setClassIsFadeIn(true)
+        }, 50);
+    }, [])
 
     function onCloseQuickEdit(ev) {
         store.dispatch({ type: SET_TASK_QUICK_EDIT, taskQuickEdit: null })
@@ -50,7 +57,7 @@ export function TaskQuickEdit({ task, groupId, pos }) {
                 isQuickEdit={true}
             />
 
-            <div className="quick-edit-buttons" onClick={(ev) => ev.stopPropagation()}>
+            <div className={`quick-edit-buttons ${classIsFadeIn ? 'fade-in' : ''}`} onClick={(ev) => ev.stopPropagation()}>
 
                 <a href="#" onClick={() => { navigate(`/${board._id}/${groupId}/${task.id}`); onCloseQuickEdit() }}>
                     <BsCardHeading />
