@@ -47,6 +47,7 @@ export function TaskQuickEdit({ task, groupId, pos }) {
             <TaskPreview
                 task={task}
                 groupId={groupId}
+                isQuickEdit={true}
             />
 
             <div className="quick-edit-buttons" onClick={(ev) => ev.stopPropagation()}>

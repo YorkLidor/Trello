@@ -1,5 +1,4 @@
-import { useRef } from "react"
-import { useState } from "react"
+import { useRef,useState } from "react"
 import { useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import { boardService } from "../services/board.service"
@@ -11,7 +10,7 @@ import { TaskLabels } from "./task-label"
 
 import { TaskPreviewIcons } from "./task-preview-icons"
 
-export function TaskPreview({ task, groupId, isDragging }) {
+export function TaskPreview({ task, groupId, isDragging, isQuickEdit }) {
     const board = useSelector((storeState) => storeState.boardModule.board)
     const [isEditBtnShow, setIsEditBtnShow] = useState('')
     const elTaskPreview = useRef()
