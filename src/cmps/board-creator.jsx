@@ -1,13 +1,14 @@
 import { useForm } from "../customHooks/useForm"
 import { boardService } from "../services/board.service"
-import { store } from "../store/store"
-import { AiOutlineClose } from "react-icons/ai";
-import { useEffect, useRef } from "react";
-// import { closeModal } from "../store/actions/app.actions";
-import { useState } from "react";
-import { useEffectUpdate } from "../customHooks/useEffectUpdate";
+import { AiOutlineClose } from "react-icons/ai"
+import { useEffect, useRef } from "react"
+import { closeModal } from "../store/actions/app.actions"
+import { useState } from "react"
+import { useEffectUpdate } from "../customHooks/useEffectUpdate"
+import { useSelector } from "react-redux"
 
 export function BoardCreator({ cmpProps }) {
+    const modals = useSelector((storeState) => storeState.appModule.app.modals)
     const [boardToEdit, setBoardToEdit, handleChange] = useForm(boardService.getEmptyBoard())
     const elTitleInput = useRef()
     const [isRequired, setIsRequired] = useState(true)
@@ -40,7 +41,7 @@ export function BoardCreator({ cmpProps }) {
             <button
                 className="btn-remove"
 
-            // onClick={() => store.dispatch({ type: CLOSE_MODAL })}
+                onClick={() => closeModal(modals, cmpProps.id)}
             >
                 <AiOutlineClose />
             </button>

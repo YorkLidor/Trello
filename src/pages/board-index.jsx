@@ -1,24 +1,29 @@
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { BoardPreview } from "../cmps/board-preview";
 import { Audio } from 'react-loader-spinner'
 
-import { utilService } from "../services/util.service";
-
 import { loadBoards, saveBoard } from "../store/actions/board.actions";
-// import { closeModal, setModalData, toggleModal } from "../store/actions/app.actions"
-
-import { BOARD_CREATOR, Modal } from "../cmps/modal/modal";
 
 import { FaRegStar } from "react-icons/fa";
 import { BsPerson } from 'react-icons/bs'
+import { BOARD_CREATOR, Modal } from "../cmps/modal/modal";
+import { useEffectInit } from "../customHooks/useEffectInit";
+import { modalService } from "../services/modal.service";
+import { utilService } from "../services/util.service";
+import { toggleModal } from "../store/actions/app.actions";
 
 export function BoardIndex() {
-    const boards = useSelector(state => state.boardModule.boards)
-    const modalData = useSelector((storeState) => storeState.appModule.app.modalData)
-    const elModal = useRef()
     const navigate = useNavigate()
+    const modals = useSelector((storeState) => storeState.appModule.app.modals)
+    const boards = useSelector(state => state.boardModule.boards)
+    const [modal, setModal] = useState(null)
+    const elModal = useRef()
+
+    useEffectInit(() => {
+        setModal(modalService.addNewModal(modals))
+    }, [])
 
     useEffect(() => {
         onLoadBoards()
@@ -78,13 +83,14 @@ export function BoardIndex() {
     }
 
     function onToggleModal({ target }) {
-        // const props = { onBoardClick, onCreateBoard }
-        // setModalData(BOARD_CREATOR, props)
-        // const pos = utilService.getElementPosition(target)
-        // elModal.current.style.top = pos.top + 'px'
-        // elModal.current.style.left = pos.right + 'px'
+        if (!modal) return
+        const props = { onBoardClick, onCreateBoard, id: modal.id }
+        const pos = utilService.getElementPosition(target)
+        elModal.current.style.top = pos.top + 'px'
+        elModal.current.style.left = pos.right + 'px'
 
-        // toggleModal()
+        setModal(modalService.setModalData(modals, modal.id, BOARD_CREATOR, props))
+        toggleModal(modals, modal.id)
     }
 
     if (!boards && !boards.length) return <Loader />
@@ -140,10 +146,11 @@ export function BoardIndex() {
         </section>
         <div className="modal-container" ref={elModal}>
             {
-                modalData && <Modal
-                    cmpProps={modalData.props}
-                    cmpType={modalData.cmpType}
-                    className={modalData.className}
+                modal?.isOpen && <Modal
+                    modal={modal}
+                    cmpProps={modal.modalData.props}
+                    cmpType={modal.modalData.cmpType}
+                    className={modal.modalData.className}
                 />
             }
         </div>

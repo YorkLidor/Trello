@@ -3,7 +3,7 @@
     background: linear-gradient(to bottom, #0000003d, #0000 80px, #0000);
 
 
-    
+
     @include scrollbar(12px, 4px, #f4f5f763, #00000026);
 
     display: flex;
@@ -15,17 +15,17 @@
     padding: 0 0 rem(8px) rem(4px);
     scroll-snap-type: x mandatory;
 
-    @include for-narrow-layout{
+    @include for-narrow-layout {
         scroll-behavior: smooth;
         font-size: 1rem;
         scroll-snap-type: unset;
 
-        >*{
+        >* {
             scroll-snap-align: unset;
         }
     }
 
-    >*{
+    >* {
         scroll-snap-align: start;
     }
 

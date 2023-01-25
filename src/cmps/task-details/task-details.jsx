@@ -180,7 +180,12 @@ export function TaskDetails() {
         </section >
         <div ref={modalBoxRef} className='modal-container'>
             {
-                modal.isOpen && <Modal modal={modal} cmpProps={modal.modalData.props} cmpType={modal.modalData.cmpType} className={modal.modalData.className} />
+                modal.isOpen && <Modal
+                    modal={modal}
+                    cmpProps={modal.modalData.props}
+                    cmpType={modal.modalData.cmpType}
+                    className={modal.modalData.className}
+                />
             }
         </div>
     </>
