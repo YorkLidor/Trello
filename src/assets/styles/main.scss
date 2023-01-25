@@ -18,7 +18,7 @@
 
 //main app cmps
 @import "cmps/app-header";
-@import "cmps/home-app-header.scss";
+@import "cmps/home-app-header";
 @import "cmps/app-footer";
 
 //pages
@@ -31,39 +31,40 @@
 @import "cmps/group-header";
 @import "cmps/group-footer";
 @import "cmps/group-list";
-@import "cmps/group-add-card-form.scss";
+@import "cmps/group-add-card-form";
 
 //tasks
 @import "cmps/task-list";
 @import "cmps/task-preview";
-@import "cmps/task-preview-icons.scss";
+@import "cmps/task-preview-icons";
+@import "cmps/task-quick-edit";
 
 //label-picker CMP
-@import "cmps/modal/label-picker-modal/label-picker-main.scss";
+@import "cmps/modal/label-picker-modal/label-picker-main";
 
 // Attachments
-@import "cmps/task-details/attachment/attachment-preview.scss";
-@import "cmps/task-details/attachment/attachment-list.scss";
-@import "cmps/task-details/attachment/attachment-view.scss";
-@import "cmps/task-details/comment-preview.scss";
-@import "cmps/task-details/member-list.scss";
+@import "cmps/task-details/attachment/attachment-preview";
+@import "cmps/task-details/attachment/attachment-list";
+@import "cmps/task-details/attachment/attachment-view";
+@import "cmps/task-details/comment-preview";
+@import "cmps/task-details/member-list";
 
 
-@import 'cmps/modal/attachment-edit-modal.scss';
-@import "cmps/modal/attachment-modal.scss";
-@import "cmps/modal/member-picker-modal.scss";
-@import "cmps/modal/member-modal.scss";
-@import "cmps/modal/board-creator.scss";
+@import 'cmps/modal/attachment-edit-modal';
+@import "cmps/modal/attachment-modal";
+@import "cmps/modal/member-picker-modal";
+@import "cmps/modal/member-modal";
+@import "cmps/modal/board-creator";
 
-@import "cmps/task-details/label-list.scss";
+@import "cmps/task-details/label-list";
 
-@import "cmps/modal/modal.scss";
-@import "cmps/modal/modal-header.scss";
+@import "cmps/modal/modal";
+@import "cmps/modal/modal-header";
 
-@import "./cmps/task-details/task-details-sidebar.scss";
-@import "./cmps/task-details/activity.scss";
-@import "./cmps/task-details/task-description.scss";
+@import "./cmps/task-details/task-details-sidebar";
+@import "./cmps/task-details/activity";
+@import "./cmps/task-details/task-description";
 
 
-@import "cmps/task-details/task-details.scss";
-@import "cmps/modal/member-modal.scss";
+@import "cmps/task-details/task-details";
+@import "cmps/modal/member-modal";

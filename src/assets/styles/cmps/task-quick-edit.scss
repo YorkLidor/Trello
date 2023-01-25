@@ -1,0 +1,14 @@
+.quick-edit-container {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(90, 24, 24, 0.555);
+    z-index: 10;
+
+    .task-preview-container.quick-edit-task {
+        // height: 264px;
+        width: 256px;
+    }
+}

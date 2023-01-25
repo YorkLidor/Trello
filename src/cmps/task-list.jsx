@@ -1,6 +1,7 @@
 import { Draggable } from "react-beautiful-dnd";
 import { TaskAdd } from "./task-add";
 import { TaskPreview } from "./task-preview";
+import { TaskQuickEdit } from "./task-quick-edit";
 
 export function TaskList({ group, provided, isAddCardOpen, setIsAddCardOpen }) {
 
@@ -31,6 +32,7 @@ export function TaskList({ group, provided, isAddCardOpen, setIsAddCardOpen }) {
             </Draggable>
         )}
         {provided.placeholder}
+
 
         {<TaskAdd group={group} isAddCardOpen={isAddCardOpen} setIsAddCardOpen={setIsAddCardOpen} />}
     </ul>
