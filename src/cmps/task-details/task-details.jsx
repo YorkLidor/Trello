@@ -139,7 +139,7 @@ export function TaskDetails() {
     }
 
     return (!taskToEdit || !group) ? <Blocks visible={true} height="80" width="80" ariaLabel="blocks-loading" wrapperStyle={{}} wrapperClass="blocks-wrapper" /> : <>
-        <section className="task-window flex" onMouseDown={onCloseModal} onClick={closePage}>
+        <section className="task-window flex" onMouseDown={closePage}>
 
             <section className="task-details" onClick={onCloseModal} onMouseDown={(ev) => ev.stopPropagation()}>
 
