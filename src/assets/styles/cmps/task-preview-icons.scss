@@ -6,18 +6,16 @@
   justify-content: space-between;
   width: 100%;
   padding: 0;
-  // align-items: baseline;
 
   .icons-container {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    gap: 4px;
+    gap: 10px;
     margin-left: -2px;
     padding-bottom: 4px;
     max-width: 100%;
     color: var(--ds-text-subtle, #5e6c84);
-    display: inline-block;
     max-width: 100%;
     min-height: 20px;
     overflow: hidden;
