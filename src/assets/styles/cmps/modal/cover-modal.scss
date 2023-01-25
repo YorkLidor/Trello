@@ -1,0 +1,75 @@
+.modal-cover-box{
+    padding: 12px;
+    padding-block-start: 0;
+}
+
+.size-select {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+}
+
+.btn-small-cover {
+    cursor: pointer;
+    height: 62px;
+    border-radius: 8px;
+    overflow: hidden;
+    
+    .small-cover{
+        height: 28px;
+        background-color: #c1c7d0;
+    }
+}
+
+.btn-full-cover{
+    cursor: pointer;
+    position: relative;
+    height: 62px;
+    border-radius: 8px;
+    background-color: #c1c7d0;
+}
+
+.colors-tab {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 4px;
+
+    .color-tab-wrapper {
+        width: 100%;
+        inset: 0;
+        border: 2px solid #FFF;
+    
+        .color-tab {
+            margin: 0px;
+            height: 32px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+    
+        &.active-color {
+            border-radius: 3px;
+            border: 2px solid #0079BF;
+    
+            .color-tab {
+                margin: 2px;
+                border-radius: 0px;
+                height: 30px;
+    
+            }
+        }
+    }
+}
+
+.attachment-cover-picker {
+    width: 88px;
+    height: 48px;
+    background-position: center;
+    background-size: contain;
+    background-origin: content-box;
+    background-repeat: no-repeat;
+}
+
+.cover-task-attachments {
+    flex-wrap: wrap;
+    gap: 6px;
+}
