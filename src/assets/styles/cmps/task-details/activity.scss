@@ -21,11 +21,23 @@
 
     @include for-native-layout-details {
         order: 99;
+        margin: 0;
     }
 }
 
 .new-comment-box {
     position: relative;
+
+    @include for-native-layout-details {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        margin: 0;
+
+        background-color: #F4F5F7;
+        padding-inline-start: 50px;
+        z-index: 50;
+    }
 }
 
 .task-activity {
@@ -112,6 +124,6 @@
     @include user-logo-circle;
 
     position: absolute;
-    top: 4px;
-    left: -40px;
+    top: 7px;
+    left: 7px;
 }

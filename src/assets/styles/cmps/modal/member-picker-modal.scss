@@ -24,6 +24,10 @@
     margin: 0;
     padding: 0;
 
+    &:hover {
+        background-color: #F5F6F8;
+    }
+
     & .member-picker {
         display: block;
         width: 100%;
@@ -52,7 +56,7 @@
     right: 0;
     top: 0;
     padding-inline-end: 11px;
-    
+
     .is-checked-icon {
         height: 13px;
         width: 13px;
