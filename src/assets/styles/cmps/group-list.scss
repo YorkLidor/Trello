@@ -2,9 +2,7 @@
     font-size: 1.3rem;
     background: linear-gradient(to bottom, #0000003d, #0000 80px, #0000);
 
-@include for-narrow-layout{
-    font-size: 1rem;
-}
+
     
     @include scrollbar(12px, 4px, #f4f5f763, #00000026);
 
@@ -15,7 +13,20 @@
     overflow-x: auto;
     overflow-y: hidden;
     padding: 0 0 rem(8px) rem(4px);
-    
+    scroll-snap-type: x mandatory;
+
+    @include for-narrow-layout{
+        font-size: 1rem;
+        scroll-snap-type: unset;
+
+        >*{
+            scroll-snap-align: unset;
+        }
+    }
+
+    >*{
+        scroll-snap-align: start;
+    }
 
     .add-group-form {
         box-sizing: border-box;
