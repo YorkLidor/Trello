@@ -11,6 +11,7 @@ export function CoverModal({ id, cmpProps }) {
     const { user, boardId, groupId, task } = cmpProps
     const [activeCover, setActiveCover] = useState(null)
     const activeColorRef = useRef()
+    const fontColor = {light: '#fcfcfc', dark: '#293a57'}
     let colorIdx = 0
 
     useEffect(() => {
@@ -62,9 +63,9 @@ export function CoverModal({ id, cmpProps }) {
     }
 
     async function saveCoverColor(colorIdx) {
-        
+
         if (!task.cover) task.cover = { fullSize: false, style: null }
-        task.cover= { fullSize: task.cover?.fullSize | false, style: boardService.getCoverColorStyle(coverColors[colorIdx]) }
+        task.cover = { fullSize: task.cover?.fullSize? true : false, style: boardService.getCoverColorStyle(coverColors[colorIdx]) }
         const newCover = { fullSize: activeCover.fullSize, style: boardService.getCoverColorStyle(coverColors[colorIdx]) }
 
         setActiveCover(newCover)
@@ -79,15 +80,22 @@ export function CoverModal({ id, cmpProps }) {
     }
 
     async function onSetAttachmentCover(url) {
-        const filename = url.substring(url.lastIndexOf('/')+1)
+        const filename = url.substring(url.lastIndexOf('/') + 1)
         const action = `Added attachment ${filename} as cover to task ${task.title}`
         const activity = boardService.getActivity(user, { id: task.id, title: task.title }, action)
-        
+
         task.cover = { style: boardService.getCoverAttachStyle(url), fullSize: task.cover?.fullSize ? task.cover.fullSize : false }
         await saveTask(boardId, groupId, task, activity)
     }
 
-    return  <div className="modal-cover-box">
+
+    async function onPickTextColor(light) {
+        const color = (light) ? fontColor.light : fontColor.dark
+        task.cover.style = { ...task.cover.style, color }
+        await saveTask(boardId, groupId, task, boardService.getActivity(user, task, `${user.fullname} changed task ${task.title} cover font color to ${color}`))
+    }
+
+    return task && <div className="modal-cover-box">
         <ModalHeader id={id} header={'Cover'} allowBack={false} />
         <span className="modal-label">Size</span>
 
@@ -101,8 +109,17 @@ export function CoverModal({ id, cmpProps }) {
 
             <div className="btn-full-cover" style={activeCover?.style} onClick={() => onPickCoverSize(true)}>
             </div>
-            {task.cover && <button onClick={removeCover}>Remove Cover</button>}
+            {task.cover && <button className="btn-remove-cover" onClick={removeCover}>Remove Cover</button>}
         </div>
+
+
+        {
+            (!!task.cover?.fullSize &&
+            <div className="choose-text-color-box">
+                <div className="color-text-light" onClick={() => onPickTextColor(true)} style={{color: fontColor.light, backgroundColor: fontColor.dark}}>Color Text Light</div>
+                <div className="color-text-dark" onClick={() => onPickTextColor(false)} style={{color: fontColor.dark, backgroundColor: fontColor.light}}>Color Text Dark</div>
+            </div>)
+        }
 
         <span className="modal-label">Colors</span>
         <div className="colors-tab">
@@ -118,13 +135,13 @@ export function CoverModal({ id, cmpProps }) {
 
         <span className="modal-label">Attachments</span>
         <div className="cover-task-attachments flex row">
-        {
-            task.attachments?.map(attachment => <div className="attachment-cover-picker" style={boardService.getCoverAttachStyle(attachment.url)} onClick={() => onSetAttachmentCover(attachment.url)} />)
-        }
+            {
+                task.attachments?.map(attachment => <div key={attachment.filename} className="attachment-cover-picker" style={boardService.getCoverAttachStyle(attachment.url)} onClick={() => onSetAttachmentCover(attachment.url)} />)
+            }
         </div>
 
         <label className="upload-cover" htmlFor="uploadAttach">Upload a cover image
-        <input type='file' id='uploadAttach' name='uploadAttach' onChange={onUploadCover} />
+            <input type='file' id='uploadAttach' name='uploadAttach' onChange={onUploadCover} />
         </label>
     </div>
 

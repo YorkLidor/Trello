@@ -50,6 +50,7 @@
 .button-link {
     @include task-nav-button;
     position: relative;
+    text-align: left;
 
     &-header {
         @include task-nav-button;
