@@ -32,6 +32,7 @@ export function TaskList({ group, provided, isAddCardOpen, setIsAddCardOpen }) {
         )}
         {provided.placeholder}
 
+
         {<TaskAdd group={group} isAddCardOpen={isAddCardOpen} setIsAddCardOpen={setIsAddCardOpen} />}
     </ul>
 

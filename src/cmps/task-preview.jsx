@@ -4,6 +4,8 @@ import { useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import { boardService } from "../services/board.service"
 import { utilService } from "../services/util.service"
+import { SET_TASK_QUICK_EDIT } from "../store/reducers/app.reducer"
+import { store } from "../store/store"
 import { Modal } from "./modal/modal"
 
 import { TaskLabels } from "./task-label"
@@ -15,7 +17,7 @@ export function TaskPreview({ task, groupId, isDragging }) {
     const [modal, setModal] = useState(null)
     const [isEditBtnShow, setIsEditBtnShow] = useState('')
     const modalBoxRef = useRef()
-    const taskRef = useRef()
+    const elTaskPreview = useRef()
     const navigate = useNavigate()
     const taskStyle = getStyle()
     const taskLabels = getLabels()
@@ -33,51 +35,44 @@ export function TaskPreview({ task, groupId, isDragging }) {
         return style
     }
 
-    function toggleModal(modalType) {
-
-        const pos = utilService.getElementPosition(taskRef.current)
-
-        let props = {}
-        // if (modalType === MODAL_TASK_QUICK_EDIT) props = { taskPos: pos }
-
-        //Change the modal data in store
-        // setModalData(modalType, props)
-
-    }
-
-    function onEditClick(ev) {
+    function onTaskQuickEdit(ev) {
         ev.stopPropagation()
+        ev.preventDefault()
+        
+        const pos = utilService.getElementPosition(elTaskPreview.current)
+        store.dispatch({ type: SET_TASK_QUICK_EDIT, taskQuickEdit: {task,groupId,pos} })
     }
 
-    return <> <div onMouseEnter={() => setIsEditBtnShow('hidden-icon')} onMouseLeave={() => setIsEditBtnShow('')} className={`task-preview-container ${isDragging && 'is-dragging'}`} onClick={() => navigate(`/${board._id}/${groupId}/${task.id}`)}>
+    return <>
+        <div ref={elTaskPreview}  onMouseEnter={() => setIsEditBtnShow('hidden-icon')} onMouseLeave={() => setIsEditBtnShow('')} className={`task-preview-container ${isDragging && 'is-dragging'}`} onClick={() => navigate(`/${board._id}/${groupId}/${task.id}`)}>
 
-        {/* EDIT ICON */}
-        <section className={`edit-task-icon-container ${isEditBtnShow}`} onClick={onEditClick}>
-            <img className='edit-task-icon' src="http://res.cloudinary.com/dk2geeubr/image/upload/v1674474594/xln3wronhmxmwxpucark.svg" alt="" />
-        </section>
-
-        {/* COVER */}
-        {((taskStyle && taskStyle.background) || taskStyle.backgroundImage) &&
-            <header
-                className="cover-color"
-                style={taskStyle}
-            />
-        }
-
-        <li className="task-preview" >
-            {/* LABELS */}
-            {taskLabels && <TaskLabels labels={taskLabels} board={board} />}
-
-            {/* BODY */}
-            <section className="task-body" >
-                <p>{task.title}</p>
+            {/* EDIT ICON */}
+            <section className={`edit-task-icon-container ${isEditBtnShow}`} onClick={onTaskQuickEdit} onContextMenu={onTaskQuickEdit} onrig>
+                <img className='edit-task-icon' src="http://res.cloudinary.com/dk2geeubr/image/upload/v1674474594/xln3wronhmxmwxpucark.svg" alt="" />
             </section>
 
-            {/* ICONS */}
-            <TaskPreviewIcons board={board} task={task} />
-        </li>
+            {/* COVER */}
+            {((taskStyle && taskStyle.background) || taskStyle.backgroundImage) &&
+                <header
+                    className="cover-color"
+                    style={taskStyle}
+                />
+            }
 
-    </div>
+            <li className="task-preview" >
+                {/* LABELS */}
+                {taskLabels && <TaskLabels labels={taskLabels} board={board} />}
+
+                {/* BODY */}
+                <section className="task-body" >
+                    <p>{task.title}</p>
+                </section>
+
+                {/* ICONS */}
+                <TaskPreviewIcons board={board} task={task} />
+            </li>
+
+        </div>
 
         <div ref={modalBoxRef} className='modal-container'>
             {
