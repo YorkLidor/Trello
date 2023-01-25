@@ -13,7 +13,7 @@ export function TaskDate({ task, onToggleModal }) {
 
         if (checked) return 'complete'
         else if (task.dueDate.date < now) return 'overdue'
-        else if (now - task.dueDate.date / (60 * 60 * 1000) < 24) return 'due-soon'
+        else if ((task.dueDate.date - now) / (60 * 60 * 1000) < 24) return 'due-soon'
         return 'later'
     }
 

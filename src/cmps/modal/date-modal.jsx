@@ -16,7 +16,6 @@ export function DateModal({ cmpProps, id }) {
     const [endDate, setEndDate] = useState(task?.dueDate?.date ? task.dueDate.date : new Date().now)
 
     function onChangeDate(date) {
-        console.log(date)
         setEndDate(date)
     }
 
