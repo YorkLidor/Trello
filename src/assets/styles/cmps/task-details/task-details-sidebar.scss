@@ -7,6 +7,7 @@
     @media (max-width: 750px) {
         padding: 8px;
         width: 100%;
+
     }
 
     .sidebar-title {
@@ -15,6 +16,9 @@
 
     @include for-native-layout-details {
         order: 1;
+        margin-bottom: 2px;
+        border-block-end: 1px solid rgb(219, 218, 218);
+
     }
 }
 
@@ -28,6 +32,17 @@
         grid-template-columns: 1fr 1fr;
         gap: 4px;
         max-width: 100%;
+        margin: 0;
+    }
+
+
+    @include for-native-layout-details {
+        .window-sidebar.flex {
+            display: flex;
+            flex-direction: unset;
+            flex-wrap: wrap;
+            width: 100%
+        }
     }
 }
 
@@ -53,7 +68,9 @@
     }
 
     @include for-native-layout-details {
-        background-color: rgb(236, 232, 232);
+        @include button-filled;
+        margin: 0;
+        width: 100%;
     }
 }
 
@@ -62,5 +79,6 @@
         color: #fff;
         background-color: $button-filled;
         border-radius: 50%;
+        padding-block: 16px;
     }
 }
