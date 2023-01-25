@@ -42,7 +42,7 @@ export function HomeAppHeader() {
         </nav >
 
         <div className="login-container flex">
-            <a className="login" href="#">
+            <a className="login" href="/login">
                 Log in
             </a>
             <a className="get-shmello" href="#">
@@ -71,7 +71,7 @@ export function HomeAppHeader() {
                     Get  Shmello  for  free
                 </a>
 
-                <a className="login" href="#">
+                <a className="login" href="/login">
                     Log in
                 </a>
             </div>
