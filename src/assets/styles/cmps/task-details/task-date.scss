@@ -1,0 +1,66 @@
+.due-date-label {
+    @include for-native-layout-details {
+        display: none;
+    }
+
+    @include details-label;
+    margin: 0 8px 4px 0;
+    margin-block-end:  8px;;
+}
+
+.checkbox-date {
+    align-self: center;
+    margin-inline-end: 3px;
+}
+
+.task-due-date-preview {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 4px;
+
+    background-color: $btn-background-cyan;
+    line-height: 20px;
+    font-weight: 400;
+
+    justify-content: center;
+    cursor: pointer;
+    padding: 6px 12px;
+    border-radius: 3px;
+    width: fit-content;
+}
+
+input#date-done {
+    display: none;
+}
+
+
+.date-done-preview {
+    width: fit-content;
+    height: fit-content;
+    font-size: 12px;
+    padding: 0 4px;
+    margin: auto 0 auto 8px;
+    border-radius: 5px;
+    color: white;
+
+    &.due-soon {
+        background-color: #f2d600;
+        color: #4e563a;
+    }
+
+    &.overdue {
+        background-color: #eb5a46;
+    }
+
+    &.complete {
+        background-color: #61bd4f;
+    }
+}
+
+.date-modal-button{
+    height: 18px;
+    justify-items: center;
+    margin-inline-start: 2px;
+    margin-block-start: 1px;
+}
