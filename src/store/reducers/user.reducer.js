@@ -6,7 +6,33 @@ export const CLEAR_CART = 'CLEAR_CART'
 
 
 const initialState = {
-    user: userService.getLoggedinUser()
+    user: userService.getLoggedinUser(),
+    users: [
+        {
+            "_id": "u101",
+            "fullname": "Gal Zohar",
+            "username": "galzo@ggmail.com",
+            "password": "aBambi123",
+            "imgUrl": "https://res.cloudinary.com/dk2geeubr/image/upload/v1673873845/g2gqvov30haxc8adehvi.jpg",
+            "mentions": [{ //optional
+                "id": "m101",
+                "boardId": "m101",
+                "taskId": "t101"
+            }]
+        },
+        {
+            "_id": "u102",
+            "fullname": "Abi Abambi",
+            "username": "abi@ababmi.com",
+            "password": "aBambi123",
+            "imgUrl": "http://some-img.jpg",
+            "mentions": [{ //optional
+                "id": "m101",
+                "boardId": "m101",
+                "taskId": "t101"
+            }]
+        }],
+    userAction: null
 }
 
 

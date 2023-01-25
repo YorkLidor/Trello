@@ -3,6 +3,7 @@ import { storageService } from "./async-storage.service"
 const STORAGE_KEY = 'userDB'
 const STORAGE_KEY_LOGGEDIN = 'loggedinUser'
 
+
 export const userService = {
     getById,
     login,
@@ -11,6 +12,8 @@ export const userService = {
     getLoggedinUser,
     getEmptyCredentials
 }
+
+window.us = userService
 
 function getById(userId) {
     return storageService.get(STORAGE_KEY, userId)
@@ -25,8 +28,8 @@ async function login({ username, password }) {
         })
 }
 
-async function signup({ username, password, fullname }) {
-    const user = { username, password, fullname }
+async function signup({ username, password, fullname, imgUrl = "http://some-img.jpg", mentions = [] }) {
+    const user = { username, password, fullname, imgUrl, mentions }
     return storageService.post(STORAGE_KEY, user)
         .then(_setLoggedinUser)
 }
@@ -40,7 +43,7 @@ function getLoggedinUser() {
 }
 
 function _setLoggedinUser(user) {
-    const userToSave = { _id: user._id, fullname: user.fullname}
+    const userToSave = { _id: user._id, fullname: user.fullname }
     sessionStorage.setItem(STORAGE_KEY_LOGGEDIN, JSON.stringify(userToSave))
     return userToSave
 }
@@ -54,3 +57,4 @@ function getEmptyCredentials() {
         mentions: []
     }
 }
+

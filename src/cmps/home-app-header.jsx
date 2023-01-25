@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { Link, NavLink } from "react-router-dom";
 
 export function HomeAppHeader() {
@@ -6,23 +7,15 @@ export function HomeAppHeader() {
     const [width, setWidth] = useState(window.innerWidth)
 
     useEffect(() => {
-        function handleWidthChange() {
-            setWidth(window.innerWidth);
-        }
-
-        window.addEventListener("resize", handleWidthChange);
-        return () => window.removeEventListener("resize", handleWidthChange);
-    }, []);
+        const handleWidthChange = () => { setWidth(window.innerWidth) }
+        window.addEventListener("resize", handleWidthChange)
+        return () => window.removeEventListener("resize", handleWidthChange)
+    }, [])
 
     useEffect(() => {
-        if (width > 801) {
-          console.log("Viewport width is greater than or equal to 800px");
-          setIsHidden(true)
-        } else if (width === 800) {
-          console.log("Viewport width is less than 800px");
-          setIsHidden(false)
-        }
-      }, [width]);
+        if (width > 801) setIsHidden(true)
+        else if (width === 800) setIsHidden(false)
+    }, [width])
 
     function handleClick() {
         setIsHidden(!isHidden)
@@ -38,7 +31,12 @@ export function HomeAppHeader() {
         </div>
 
         <nav className="navlinks-container flex" >
-            <NavLink className='workspace-link' to="/workspace">Workspaces</NavLink>
+            <NavLink
+                className='workspace-link'
+                to="/workspace"
+            >
+                Workspaces
+            </NavLink>
         </nav >
 
         <div className="login-container flex">
@@ -51,7 +49,13 @@ export function HomeAppHeader() {
         </div>
 
         <div className="container nav-container hamburger" onClick={handleClick}>
-            <input className="checkbox" type="checkbox" name=""  checked={!isHidden} onChange={handleClick}/>
+            <input
+                className="checkbox"
+                type="checkbox"
+                name=""
+                checked={!isHidden}
+                onChange={handleClick}
+            />
             <div className="hamburger-lines">
                 <span className="line line1"></span>
                 <span className="line line2"></span>
@@ -63,7 +67,13 @@ export function HomeAppHeader() {
 
         <div className={`nav-modal ${isHidden && 'hidden'}`}>
             <div className="nav-links-container">
-                <NavLink onClick={handleClick} className='workspace-link' to="/workspace">Workspaces</NavLink>
+                <NavLink
+                    onClick={handleClick}
+                    className='workspace-link'
+                    to="/workspace"
+                >
+                    Workspaces
+                </NavLink>
             </div>
 
             <div className="login-container flex">
