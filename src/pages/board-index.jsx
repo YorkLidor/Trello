@@ -13,6 +13,7 @@ import { useEffectInit } from "../customHooks/useEffectInit";
 import { modalService } from "../services/modal.service";
 import { utilService } from "../services/util.service";
 import { toggleModal } from "../store/actions/app.actions";
+import { boardService } from "../services/board.service";
 
 export function BoardIndex() {
     const navigate = useNavigate()
@@ -48,8 +49,18 @@ export function BoardIndex() {
         }
     }
 
+    async function loadBoard(boardId) {
+        try {
+            const board = await boardService.getById(boardId)
+            saveBoard(board)
+            navigate(`/${boardId}`)
+        } catch (err) {
+            console.error('No Board!', err)
+        }
+    }
+
     function onBoardClick(ev, boardId) {
-        if (boardId) navigate(`/${boardId}`)
+        if (boardId) loadBoard(boardId)
         else onToggleModal(ev)
     }
 
