@@ -17,16 +17,18 @@
         .logo {
             vertical-align: middle;
             width: 197px;
-            height: 43px;
+            margin-block: rem(40px);
         }
     }
 
     .login-form {
+        flex-grow: 1;
         background-color: #fff;
         width: 100%;
         max-width: 400px;
         padding: rem(10px) rem(40px) rem(25px);
         box-shadow: rgb(0 0 0 / 10%) 0 0 10px;
+        margin-bottom: rem(24px);
 
         >* {
             width: 100%;
@@ -56,28 +58,38 @@
         }
 
         .input-password,
-        .btn-Login {
+        .btn-login {
             display: none;
         }
 
         &.filled {
 
-            .input-email{
+            .input-email {
                 background-color: #fff;
                 border-color: transparent;
                 box-shadow: unset;
 
-                &:hover{
+                &:hover {
                     background-color: #fafbfc;
                     border-color: #f4f5f7;
                 }
-                
+
             }
 
-            .input-password {
+            .btn-continue {
+                display: none;
+            }
+
+            .input-password,
+            .btn-login {
                 display: unset;
             }
         }
 
+    }
+
+    .atlassian-img{
+        width: 150px;
+        margin-bottom: 20px;
     }
 }
