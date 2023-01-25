@@ -9,11 +9,19 @@
     position: absolute;
     left: -40px;
     top: 15px;
+    @include for-native-layout-details {
+        left: 6px;
+    }
 }
 
 .comment-box {
     width: 100%;
     padding-block-start: 3.5px;
+
+    @include for-native-layout-details {
+        padding-inline-start: 50px;
+        padding-inline-end: 13px;
+    }
 
     .comment-by-member {
         font-weight: 700;
@@ -43,5 +51,11 @@
         .comment-text {
             text-overflow: ellipsis;
         }
+
+        @include for-native-layout-details {
+            max-width: 100%;
+            background-color: #fff;
+        }
+
     }
 }

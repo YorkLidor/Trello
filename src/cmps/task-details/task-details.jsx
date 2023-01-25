@@ -1,4 +1,4 @@
-import { useRef, useState } from "react"
+import { useRef, useState, useEffect } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 
 import { utilService } from '../../services/util.service'
@@ -13,7 +13,7 @@ import { SET_ACTIVE_BOARD } from "../../store/reducers/board.reducer"
 
 import {
     MODAL_ATTACH, MODAL_LABELS, MODAL_ATTACH_EDIT,
-    MODAL_ATTACH_OPEN, MODAL_MEMBERS, MODAL_MEMBER_OPEN
+    MODAL_ATTACH_OPEN, MODAL_MEMBERS, MODAL_MEMBER_OPEN , MODAL_TASK_DATE
 } from '../modal/modal.jsx'
 
 import { AttachmentList } from "./attachment/attachment-list"
@@ -61,6 +61,15 @@ export function TaskDetails() {
         }
     }, [taskToEdit])
 
+    useEffectUpdate(() => {
+        if (modalBoxRef.current && modal) {
+            const windowWidth = window.visualViewport.width
+            const modalPos = utilService.getElementPosition(modalBoxRef.current)
+
+            if (modalPos.right > windowWidth) modalBoxRef.current.style.left = (modalPos.left - (modalPos.right - windowWidth) - 20) + 'px'
+            else if (modalPos.left < 0) modalBoxRef.current.style.left = '10px'
+        }
+    }, [modals])
 
     async function loadBoard() {
         try {
@@ -128,10 +137,16 @@ export function TaskDetails() {
         else if (modalType === MODAL_ATTACH_OPEN) props = { user, boardId, groupId, task: taskToEdit, attachment: extras.attachment }
         else if (modalType === MODAL_MEMBERS) props = { groupId, task: taskToEdit }
         else if (modalType === MODAL_MEMBER_OPEN) props = { member: extras.member, user, boardId, groupId, task: taskToEdit }
+        else if (modalType === MODAL_TASK_DATE) props = { task: taskToEdit }
 
         const pos = utilService.getElementPosition(element)
         modalBoxRef.current.style.top = pos.bottom + 'px'
         modalBoxRef.current.style.left = pos.left + 'px'
+
+        if (window.visualViewport.width < 550) {
+            modalBoxRef.current.style.left = '0px'
+            modalBoxRef.current.style.top = '0px'
+        }
 
         setModal(modalService.setModalData(modals, modal.id, modalType, props))
         toggleModal(modals, modal.id)
