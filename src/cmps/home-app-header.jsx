@@ -1,14 +1,33 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 
 export function HomeAppHeader() {
     const [isHidden, setIsHidden] = useState(true)
+    const [width, setWidth] = useState(window.innerWidth)
 
-    function handleClick(){
+    useEffect(() => {
+        function handleWidthChange() {
+            setWidth(window.innerWidth);
+        }
+
+        window.addEventListener("resize", handleWidthChange);
+        return () => window.removeEventListener("resize", handleWidthChange);
+    }, []);
+
+    useEffect(() => {
+        if (width > 801) {
+          console.log("Viewport width is greater than or equal to 800px");
+          setIsHidden(true)
+        } else if (width === 800) {
+          console.log("Viewport width is less than 800px");
+          setIsHidden(false)
+        }
+      }, [width]);
+
+    function handleClick() {
         setIsHidden(!isHidden)
         document.body.style.overflow = isHidden ? "hidden" : "visible";
     }
-
 
     return <header className="app-header main-layout">
 
@@ -32,12 +51,12 @@ export function HomeAppHeader() {
         </div>
 
         <div className="container nav-container hamburger" onClick={handleClick}>
-            <input className="checkbox" type="checkbox" name="" id="" />
+            <input className="checkbox" type="checkbox" name=""  checked={!isHidden} onChange={handleClick}/>
             <div className="hamburger-lines">
-              <span className="line line1"></span>
-              <span className="line line2"></span>
-              <span className="line line3"></span>
-            </div>  
+                <span className="line line1"></span>
+                <span className="line line2"></span>
+                <span className="line line3"></span>
+            </div>
         </div>
 
 

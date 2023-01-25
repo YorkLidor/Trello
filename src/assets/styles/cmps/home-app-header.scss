@@ -35,6 +35,11 @@
             display: flex;
             padding: 1.25rem 1rem 1rem;
             text-decoration: none;
+            font-weight: 500;
+            &:hover{
+                color: rgb(0, 101, 255);
+
+            }
 
         }
 
@@ -42,6 +47,8 @@
 
     .login-container {
         height: 100%;
+        font-family: Charlie;
+
 
         .login {
             -webkit-box-align: center;
@@ -50,7 +57,7 @@
             color: rgb(23, 43, 77);
             display: flex;
             font-size: 1.2rem;
-            font-weight: 400;
+            font-weight: 500;
             height: 100%;
             padding: 0.5rem 1.5rem;
             text-decoration: none;
@@ -70,7 +77,6 @@
             text-decoration: none;
 
             cursor: pointer;
-            font-family: Charlie;
             font-size: rem(19.2px);
             line-height: 28.8px;
             font-weight: 400;
@@ -181,10 +187,13 @@
 
 }
 
+
+
 .hidden {
     display: none;
 }
 
+// Hamburger //
 .nav-container {
     position: absolute;
     right: 80px;
