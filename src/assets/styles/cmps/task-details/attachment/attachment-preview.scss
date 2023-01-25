@@ -68,12 +68,11 @@
     width: 8px;
     line-height: 20px;
     margin: 0px 7px;
-    vertical-align: text-middle;
+    vertical-align: middle;
 }
 
 .attachment-info {
     display: block;
-    margin-block-end: 8px;
     color: #65738A;
 
     font-size: 12px;
@@ -83,7 +82,10 @@
     }
 }
 
-
+.make-attach-cover{
+    text-decoration: underline;
+    font-size: 14px;
+}
 
 .attachment-info-break::after {
     content: ' • ';
