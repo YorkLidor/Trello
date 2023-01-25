@@ -16,6 +16,7 @@
     scroll-snap-type: x mandatory;
 
     @include for-narrow-layout{
+        scroll-behavior: smooth;
         font-size: 1rem;
         scroll-snap-type: unset;
 
