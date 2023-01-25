@@ -112,7 +112,7 @@ export function TaskDetails() {
     }
 
     // Toggle modal visibility and set it's pos under element
-    function onToggleModal(ev, modalType, ex = null) {
+    function onToggleModal(ev, modalType, extras = null) {
         if (!modal) return
         let element
         if (ev) {
@@ -124,10 +124,10 @@ export function TaskDetails() {
         let props
         if (modalType === MODAL_LABELS) props = { groupId, task: taskToEdit }
         else if (modalType === MODAL_ATTACH) props = { boardId, groupId, task: taskToEdit }
-        else if (modalType === MODAL_ATTACH_EDIT) props = { boardId, groupId, task: taskToEdit, attachment: ex.attachment }
-        else if (modalType === MODAL_ATTACH_OPEN) props = { user, boardId, groupId, task: taskToEdit, attachment: ex.attachment }
+        else if (modalType === MODAL_ATTACH_EDIT) props = { boardId, groupId, task: taskToEdit, attachment: extras.attachment }
+        else if (modalType === MODAL_ATTACH_OPEN) props = { user, boardId, groupId, task: taskToEdit, attachment: extras.attachment }
         else if (modalType === MODAL_MEMBERS) props = { groupId, task: taskToEdit }
-        else if (modalType === MODAL_MEMBER_OPEN) props = { member: ex.member, user, boardId, groupId, task: taskToEdit }
+        else if (modalType === MODAL_MEMBER_OPEN) props = { member: extras.member, user, boardId, groupId, task: taskToEdit }
 
         const pos = utilService.getElementPosition(element)
         modalBoxRef.current.style.top = pos.bottom + 'px'
@@ -142,7 +142,6 @@ export function TaskDetails() {
         <section className="task-window flex" onMouseDown={closePage}>
 
             <section className="task-details" onClick={onCloseModal} onMouseDown={(ev) => ev.stopPropagation()}>
-
 
                 <div className="task-header">
                     <IconHeader className="header-icon task-icon" /><input type='text' className="task-title" defaultValue={taskToEdit.title} onFocus={handleEditHeader} onBlur={handleEditHeader} />
