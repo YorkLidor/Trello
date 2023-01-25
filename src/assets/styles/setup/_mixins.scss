@@ -1,5 +1,17 @@
 /* Breakpoint mixins */
 
+@mixin for-native-layout-details {
+    @media ( max-width: $native-breakpoint-details) {
+        @content;
+    }
+}
+
+@mixin for-none-native-layout-details {
+    @media ( min-width: calc($native-breakpoint-details + 1px)) {
+        @content;
+    }
+}
+
 @mixin for-mobile-layout {
     @media (max-width: calc($mobile-breakpoint + 40px)) {
         @content;
@@ -232,11 +244,28 @@
 
 }
 
+@mixin native-icon-details {
+    position: absolute;
+    display: none;
+    color: $task-details-icon;
+    font-size: 20px;
+
+    @include for-native-layout-details {
+        display: block;
+        top: 15px;
+        left: 10px;
+    }
+}
+
 @mixin task-details-field-icon {
     position: absolute;
     left: -33px;
     top: 5px;
     color: $task-details-icon;
+
+    @include for-native-layout-details {
+        left: 8px;
+    }
 
 }
 
@@ -285,4 +314,15 @@
 @mixin task-details-module-box {
     position: relative;
     margin: 0 0 4px 40px;
+}
+
+
+@mixin task-details-border-line{
+    border-block-end: 1px solid rgb(231, 229, 229);
+}
+
+@mixin task-details-border-outset{
+    margin-block-start: 5px;
+    border-block-start: 1px solid rgb(219, 218, 218);
+    border-block-end: 1px solid rgb(219, 218, 218);
 }

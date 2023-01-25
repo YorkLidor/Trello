@@ -1,4 +1,5 @@
 .task-labels-box {
+    position: relative;
     max-width: 100%;
     flex-wrap: wrap;
     gap: 4px;
@@ -17,16 +18,26 @@
     @include task-details-list;
 }
 
-.task-label-add-icon{
+.task-label-add-icon {
     @include add-icon;
 }
 
 .task-labels-box,
 .task-info {
-    margin-block-end: 8px;
+    @include for-none-native-layout-details {
+        margin-block-end: 8px;
+    }
 }
 
 .labels-label {
     @include details-label;
     margin: 0 8px 4px 0;
+
+    @include for-native-layout-details {
+        display: none;
+    }
+}
+
+.label-native-icon {
+    @include native-icon-details;
 }

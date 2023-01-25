@@ -1,29 +1,47 @@
 .attachment-preview {
     position: relative;
-    overflow: hidden;
     min-height: 80px;
     margin: -3px 0 8px;
     border-radius: 3px;
+    overflow: hidden;
+
+    @include for-native-layout-details {
+        border-radius: 0px;
+    }
 
     &:hover {
         background-color: $btn-background-cyan;
     }
 }
 
+.attach-img-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    height: 82px;
+    width: 112px;
+    background-color: #262A2A;
+    padding: 0;
+    border-radius: 3px;
+    text-align: center;
+    
+    display: block;
+    align-items: center;
+
+    @include for-native-layout-details {
+        position: relative;
+        border-radius: 0px;
+    }
+}
 
 .attachment-preview-img {
     height: 82px;
-    width: 112px;
-
-    position: absolute;
-    padding: 0;
-    left: 0;
-    top: 50%;
-
-    text-align: center;
-    border-radius: 3px;
-
-    margin-block-start: -41px;
+    width: auto;
+    max-width: 112px;
+    @include for-native-layout-details {
+        border-radius: 0px;
+    }
 }
 
 .attachment-details {
@@ -31,6 +49,10 @@
     min-height: 80px;
     padding: 8px 8px 8px 128px;
     cursor: pointer;
+
+    @include for-native-layout-details {
+        display: none;
+    }
 }
 
 .attachment-filename {
@@ -53,6 +75,10 @@
     color: #65738A;
 
     font-size: 12px;
+    
+    @include for-native-layout-details {
+        display: none;
+    }
 }
 
 

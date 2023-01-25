@@ -139,14 +139,14 @@ export function TaskDetails() {
     }
 
     return (!taskToEdit || !group) ? <Blocks visible={true} height="80" width="80" ariaLabel="blocks-loading" wrapperStyle={{}} wrapperClass="blocks-wrapper" /> : <>
-        <section className="task-window flex" onMouseDown={onCloseModal} onClick={closePage}>
+        <section className="task-window flex" onMouseDown={closePage}>
 
             <section className="task-details" onClick={onCloseModal} onMouseDown={(ev) => ev.stopPropagation()}>
 
 
                 <div className="task-header">
                     <IconHeader className="header-icon task-icon" /><input type='text' className="task-title" defaultValue={taskToEdit.title} onFocus={handleEditHeader} onBlur={handleEditHeader} />
-                    <p className="header-subtitle">in list <span style={{ textDecoration: 'underline' }}>{group.title}</span></p>
+                    <p className="header-subtitle"><span className='board-name'>{board.title} </span>in list <span className='group-name'>{group.title}</span></p>
                 </div>
 
                 <section className="task-main-col">
@@ -160,9 +160,11 @@ export function TaskDetails() {
                     {taskToEdit?.attachments?.length > 0 &&
                         <div className="task-attachment-box flex column">
                             <RiAttachment2 className="attach-icon task-icon" />
-                            <div className="activity-header"> <span className="title-main-col">Attachments</span> </div>
+                            <div className="attachment-header"> <span className="title-main-col">Attachments</span> </div>
 
-                            <AttachmentList task={taskToEdit} toggleModal={onToggleModal} groupId={groupId} user={user} boardId={boardId} />
+                            <div className="attach-list-box">
+                                <AttachmentList task={taskToEdit} toggleModal={onToggleModal} groupId={groupId} user={user} boardId={boardId} />
+                            </div>
                             <a className='button-link add-attachment' href='#' onClick={(ev) => onToggleModal(ev, MODAL_ATTACH)}>Add an attachment</a>
                         </div>
                     }
@@ -171,8 +173,8 @@ export function TaskDetails() {
                 </section>
 
                 <TaskDetailsSideBar onToggleModal={onToggleModal} />
-                <button className='close-task-details'>
-                    <IoClose onClick={closePage} />
+                <button onClick={closePage} className='close-task-details'>
+                    <IoClose />
                 </button>
             </section>
 

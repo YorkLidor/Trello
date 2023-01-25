@@ -1,20 +1,40 @@
 .members-label {
+    @include for-native-layout-details {
+        display: none;
+    }
+
     @include details-label;
     margin: 0 8px 4px 0;
 }
 
+.member-native-icon {
+    @include native-icon-details;
+}
 
 .list-member {
     @include user-logo-circle;
     cursor: pointer;
-    margin: 0 4px 4px 0;
+
+    @include for-none-native-layout-details {
+        margin: 0 4px 4px 0;
+    }
+    @include for-native-layout-details {
+        margin: 0 4px 0 0;
+    }
+
 }
 
 .task-member {
     @include task-details-list;
     border-radius: 50%;
 }
+
 .task-member-add-icon {
     @include add-icon;
     border-radius: 50%;
+}
+
+.task-member-box {
+    flex-wrap: wrap;
+    height: fit-content;
 }

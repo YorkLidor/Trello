@@ -20,7 +20,6 @@ export const MODAL_MEMBER_OPEN = 'MODAL_MEMBER_OPEN'
 export const MODAL_TASK_QUICK_EDIT = 'MODAL_TASK_QUICK_EDIT'
 
 export function Modal({ modal, cmpProps, cmpType, className }) {
-    console.log(modal)
     return modal.isOpen && <div className={className ? className : 'modal'}>
         <GetCmp id={modal.id} cmpProps={cmpProps} cmpType={cmpType} />
     </div>

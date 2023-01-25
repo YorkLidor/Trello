@@ -4,26 +4,28 @@ import { CommentList } from "./comment/comment-list"
 
 import { boardService } from "../../services/board.service"
 
-import { BiAlignLeft as ActivityIcon } from "react-icons/bi"
+import { GrSort as ActivityIcon } from "react-icons/gr"
 
 
 export function Activity({ user, boardId, groupId, taskToEdit }) {
     const elCommentRef = useRef()
-    const elCommentInputRef = useRef()
-    const commentBtnRef = useRef()
 
-    async function onSaveComment() {
-        const value = elCommentInputRef.current.value
+    async function onSaveComment(ev) {
+        ev.preventDefault()
+       
+        
+        const value = ev.target[0].value
         if (!value.length) return
 
-        elCommentInputRef.current.value = ''
+        ev.target[0].value = ''
         await boardService.addComment(user, boardId, groupId, taskToEdit, value)
     }
 
-    function handleEdit({ target }) {
+    function handleEdit({ target }, state) {
+        target.dataset.state = state
+        console.log(target.dataset.state)
         if (target.value.length) return
         elCommentRef.current.classList.toggle('comment-typing')
-        commentBtnRef.current.classList.toggle('show')
     }
 
     return <div className="task-activity-box flex column">
@@ -31,12 +33,12 @@ export function Activity({ user, boardId, groupId, taskToEdit }) {
         <div className="activity-header"><span className="title-main-col">Activity</span></div>
         <div className="new-comment-box">
             <img className="user-logo" src={user.imgUrl ? user.imgUrl : 'https://res.cloudinary.com/dk2geeubr/image/upload/v1673890694/profileDefault_khqx4r.png'} />
-            <div className="task-activity">
+            <form ref={elCommentRef} className="task-activity" onSubmit={onSaveComment}>
                 <div className="comment-input-container" ref={elCommentRef}>
-                    <textarea ref={elCommentInputRef} className="task-activity-input" placeholder={'Write a comment...'} onFocus={handleEdit} onBlur={handleEdit} />
+                    <textarea data-state={false} className="task-activity-input" placeholder={'Write a comment...'} onFocus={(ev) => handleEdit(ev, true)} onBlur={(ev) => !ev.target.dataset.state? '' : handleEdit(ev, false)} />
                 </div>
-                <button onClick={onSaveComment} className="comment-btn" ref={commentBtnRef}>Save</button>
-            </div>
+                <button className="comment-btn">Save</button>
+            </form>
         </div>
 
         {<CommentList task={taskToEdit} />}
