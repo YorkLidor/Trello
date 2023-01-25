@@ -3,12 +3,26 @@
     margin: 0 0 4px 40px;
     margin-block-end: 35px;
 
+
+    @include for-native-layout-details {
+        background-color: #F4F5F7;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        padding-inline: 30px;
+        @include task-details-border-outset;
+    }
+
     .desc-icon {
         @include task-details-field-icon;
         top: 8px;
-        left: -36px;
-
+        left: -32px;
         width: 22px;
+        @include for-native-layout-details {
+            left: 6px;
+        }
+
+        
     }
 
     .description-header {
@@ -19,6 +33,10 @@
         margin-block-end: 4px;
         min-height: 44px;
         align-items: flex-start;
+
+        @include for-native-layout-details {
+            display: none;
+        }
     }
 
     .task-description {
@@ -35,37 +53,58 @@
 
         font-family: unset;
         min-height: 40px;
-        
+
+        @include for-native-layout-details {
+            background-color: #F4F5F7;
+        }
 
         &.filled {
-            background-color: #FFF;
-            padding: 0px;
-            min-height: unset;
-            line-height: initial;
-            margin-block-start: -3px;
-            margin-block-end: -23px;
-
+            @include for-none-native-layout-details {
+                background-color: #FFF;
+                padding: 0px;
+                min-height: unset;
+                line-height: initial;
+                margin-block-start: -3px;
+                margin-block-end: -23px;
+            }
 
         }
 
         &.is-editing {
-            background-color: #FFFFFF;
-            box-shadow: 0 0 0 2px #0079bf;
-            height: 223px;
-            padding: 8px 12px 0 12px;
-            margin: 0;
+            @include for-none-native-layout-details {
+                background-color: #FFFFFF;
+                box-shadow: 0 0 0 2px #0079bf;
+                height: 223px;
+                padding: 8px 12px 0 12px;
+                margin: 0;
+            }
+
+            @include for-native-layout-details {
+                box-shadow: none;
+                border-block-end: 3px solid green;
+            }
+
+
         }
+    }
+
+
+    @include for-native-layout-details {
+        order: 1;
     }
 
 }
 
 .description-editor-tools {
-    margin: 8px 0 0;
     display: none;
+    @include for-none-native-layout-details {
+        margin: 8px 0 0;
 
-    &.show {
-        display: block;
+        &.show {
+            display: block;
+        }
     }
+
 }
 
 .cancel-btn {

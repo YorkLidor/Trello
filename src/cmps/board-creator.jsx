@@ -40,7 +40,7 @@ export function BoardCreator({ cmpProps }) {
             <h2 className="creator-title">Create board</h2>
             <button
                 className="btn-remove"
-                onClick={() => store.dispatch({ type: CLOSE_MODAL })}
+                // onClick={() => store.dispatch({ type: CLOSE_MODAL })}
             >
                 <AiOutlineClose />
             </button>

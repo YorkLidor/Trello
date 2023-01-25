@@ -1,10 +1,11 @@
-import { AiOutlinePlus } from 'react-icons/ai'
-import { MODAL_MEMBERS } from '../modal/modal'
 
+import { MODAL_MEMBERS } from '../modal/modal'
 import { MODAL_MEMBER_OPEN } from '../modal/modal'
 
-export function MemberList({ members, toggleModal }) {
+import { HiOutlineUser } from 'react-icons/hi'
+import { AiOutlinePlus } from 'react-icons/ai'
 
+export function MemberList({ members, toggleModal }) {
     function onMemberClick(ev, member) {
         ev.stopPropagation()
         toggleModal(ev, MODAL_MEMBER_OPEN, { member })
@@ -12,6 +13,7 @@ export function MemberList({ members, toggleModal }) {
 
 
     return <div className="info-tab flex-col">
+        <HiOutlineUser className='member-native-icon' />
         <span className="members-label">Members</span>
 
         <div className="task-members-box flex row">

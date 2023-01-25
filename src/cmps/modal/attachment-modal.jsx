@@ -5,8 +5,10 @@ import { uploadImg } from '../../services/upload-img.service'
 import { boardService } from '../../services/board.service'
 
 import { ModalHeader } from './modal-header'
+import { useSelector } from 'react-redux'
 
 export function AttachmentModal({ id, cmpProps }) {
+    const modals = useSelector((storeState) => storeState.appModule.app.modals)
     const { boardId, groupId, task } = cmpProps
 
     const member = {
@@ -16,7 +18,7 @@ export function AttachmentModal({ id, cmpProps }) {
     }
 
     async function uploadAttach(ev) {
-        closeModal(id)
+        closeModal(modals, id)
         const { url, filename } = await uploadImg(ev)
         const action = 'Added attachment ' + filename
         const activity = boardService.getActivity(member, { id: task.id, title: task.title }, action)
@@ -24,7 +26,6 @@ export function AttachmentModal({ id, cmpProps }) {
         if (task.attachments?.length > 0) task.attachments.unshift(boardService.getAttachment(url, filename))
         else task.attachments = [boardService.getAttachment(url, filename)]
         await saveTask(boardId, groupId, task, activity)
-
     }
 
     return <div className='attach-modal-box'>
@@ -32,7 +33,7 @@ export function AttachmentModal({ id, cmpProps }) {
         <ul className="attachment-list">
             <li>
                 <label htmlFor='uploadAttach' className='attachment-modal-option'>Computer</label>
-                <input type='file' id='uploadAttach' name='uploadAttach' onChange={uploadAttach} style={{ display: 'none' }} />
+                <input type='file' id='uploadAttach' name='uploadAttach' onChange={uploadAttach} />
             </li>
         </ul>
     </div>
