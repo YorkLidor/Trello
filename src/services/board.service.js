@@ -31,6 +31,8 @@ export const boardService = {
     addComment,
     removeTask,
     copyTask,
+    getCoverAttachStyle,
+    getCoverColorStyle
 }
 
 async function copyTask(board, groupId, task ) {
