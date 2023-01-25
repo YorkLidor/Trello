@@ -6,7 +6,6 @@ import { boardService } from "../services/board.service"
 import { utilService } from "../services/util.service"
 import { SET_TASK_QUICK_EDIT } from "../store/reducers/app.reducer"
 import { store } from "../store/store"
-import { Modal } from "./modal/modal"
 
 import { TaskLabels } from "./task-label"
 
@@ -14,9 +13,7 @@ import { TaskPreviewIcons } from "./task-preview-icons"
 
 export function TaskPreview({ task, groupId, isDragging }) {
     const board = useSelector((storeState) => storeState.boardModule.board)
-    const [modal, setModal] = useState(null)
     const [isEditBtnShow, setIsEditBtnShow] = useState('')
-    const modalBoxRef = useRef()
     const elTaskPreview = useRef()
     const navigate = useNavigate()
     const taskStyle = getStyle()
@@ -38,16 +35,24 @@ export function TaskPreview({ task, groupId, isDragging }) {
     function onTaskQuickEdit(ev) {
         ev.stopPropagation()
         ev.preventDefault()
-        
         const pos = utilService.getElementPosition(elTaskPreview.current)
-        store.dispatch({ type: SET_TASK_QUICK_EDIT, taskQuickEdit: {task,groupId,pos} })
+        store.dispatch({ type: SET_TASK_QUICK_EDIT, taskQuickEdit: { task, groupId, pos } })
     }
 
     return <>
-        <div ref={elTaskPreview}  onMouseEnter={() => setIsEditBtnShow('hidden-icon')} onMouseLeave={() => setIsEditBtnShow('')} className={`task-preview-container ${isDragging && 'is-dragging'}`} onClick={() => navigate(`/${board._id}/${groupId}/${task.id}`)}>
+        <div
+            ref={elTaskPreview}
+            onMouseEnter={() => setIsEditBtnShow('hidden-icon')}
+            onMouseLeave={() => setIsEditBtnShow('')} className={`task-preview-container ${isDragging && 'is-dragging'}`}
+            onClick={() => navigate(`/${board._id}/${groupId}/${task.id}`)}
+            onContextMenu={onTaskQuickEdit}
+        >
 
             {/* EDIT ICON */}
-            <section className={`edit-task-icon-container ${isEditBtnShow}`} onClick={onTaskQuickEdit} onContextMenu={onTaskQuickEdit} onrig>
+            <section
+                className={`edit-task-icon-container ${isEditBtnShow}`}
+                onClick={onTaskQuickEdit}
+            >
                 <img className='edit-task-icon' src="http://res.cloudinary.com/dk2geeubr/image/upload/v1674474594/xln3wronhmxmwxpucark.svg" alt="" />
             </section>
 
@@ -72,12 +77,6 @@ export function TaskPreview({ task, groupId, isDragging }) {
                 <TaskPreviewIcons board={board} task={task} />
             </li>
 
-        </div>
-
-        <div ref={modalBoxRef} className='modal-container'>
-            {
-                modal && <Modal modal={modal} cmpProps={modal.modalData.props} cmpType={modal.modalData.cmpType} className={modal.modalData.className} />
-            }
         </div>
     </>
 }

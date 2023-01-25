@@ -4,10 +4,40 @@
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: rgba(90, 24, 24, 0.555);
+    background: rgb(0 0 0 / 60%);
     z-index: 10;
 
     .task-preview-container.quick-edit-task {
         width: 256px;
+    }
+
+    .quick-edit-buttons {
+        position: absolute;
+        top: 0;
+        left: 100%;
+        transform: translateX(0);
+        width: 240px;
+
+        &>* {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: #0009;
+            border-radius: 3px;
+            clear: both;
+            color: #c7d1db;
+            float: left;
+            margin: 0 0 4px 8px;
+            padding: 6px 12px 6px 8px;
+            text-decoration: none;
+            transition: transform 85ms ease-in;
+
+            &:hover {
+                background: #000c;
+                color: #fff;
+                text-decoration: none;
+                transform: translateX(5px);
+            }
+        }
     }
 }

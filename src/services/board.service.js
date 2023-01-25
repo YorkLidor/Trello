@@ -29,6 +29,28 @@ export const boardService = {
     getAttachment,
     getGroupById,
     addComment,
+    removeTask,
+    copyTask,
+}
+
+async function copyTask(board, groupId, task ) {
+    const group = board.groups.find(g => g.id === groupId)
+    const taskIndex = group.tasks.findIndex(t => t.id === task.id)
+    const newTask = { ...task }
+    newTask.id = utilService.makeId()
+    group.tasks.splice(taskIndex + 1, 0, newTask)
+    const groupIndex = board.groups.findIndex(g => g.id === groupId)
+    board.groups[groupIndex] = group
+    return board
+}
+
+async function removeTask(board, groupId, taskId) {
+    const group = board.groups.find(g => g.id === groupId)
+    const taskIndex = group.tasks.findIndex(t => t.id === taskId)
+    group.tasks.splice(taskIndex, 1)
+    const groupIndex = board.groups.findIndex(g => g.id === groupId)
+    board.groups[groupIndex] = group
+    return board,
     getCoverColorStyle,
     getCoverAttachStyle
 }

@@ -1,18 +1,29 @@
 .attach-modal-box {
-    padding-inline: 12px;
+    padding-inline: 0;
+
+    .modal-header-container {
+        padding-inline: rem(12px)
+    }
 }
 
-.attachment-list{
+.attachment-list {
     list-style-type: none;
+
+    li {
+        padding: rem(6px) rem(12px);
+    }
+
+    &:hover {
+        li {
+            background-color: #F5F6F8;
+        }
+    }
 }
 
 .attachment-modal-option {
     background-color: inherit;
-    &:hover{
-        background-color: #F5F6F8;
-    }
 }
 
-input#uploadAttach{
+input#uploadAttach {
     display: none;
 }

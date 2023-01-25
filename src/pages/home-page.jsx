@@ -1,10 +1,25 @@
+import { useEffect } from "react"
+import { useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
+import { userService } from "../services/user.service"
+import { signup } from "../store/actions/user.actions"
+
+const guest = userService.getEmptyCredentials()
+guest.fullname = 'guest'
+guest.password = 'guest'
+guest.imgUrl = 'https://res.cloudinary.com/dk2geeubr/image/upload/v1673873845/g2gqvov30haxc8adehvi.jpg'
 
 export function HomePage() {
     const navigate = useNavigate()
+    const user = useSelector(state => state.userModule.user)
 
-    function onSginup(ev) {
+    useEffect(() => {
+        if (user) navigate('/workspace')
+    }, [])
+
+    async function onGuestSignin(ev) {
         ev.preventDefault()
+        await signup(guest)
         navigate('/workspace')
     }
 
@@ -19,7 +34,7 @@ export function HomePage() {
                             <p>Keep everything in the same place—even if your team isn’t.</p>
                         </div>
 
-                        <button onClick={onSginup} className="signup-btn">Start Demo</button>
+                        <button onClick={onGuestSignin} className="signup-btn">Start Demo</button>
                     </div>
 
                     <div className="right-hero-container">

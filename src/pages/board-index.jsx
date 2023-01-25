@@ -17,6 +17,7 @@ import { boardService } from "../services/board.service";
 
 export function BoardIndex() {
     const navigate = useNavigate()
+    const user = useSelector(state => state.userModule.user)
     const modals = useSelector((storeState) => storeState.appModule.app.modals)
     const boards = useSelector(state => state.boardModule.boards)
     const [modal, setModal] = useState(null)
@@ -27,6 +28,7 @@ export function BoardIndex() {
     }, [])
 
     useEffect(() => {
+        if (!user) navigate('/')
         onLoadBoards()
         // return closeModal
     }, [])
