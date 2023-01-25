@@ -38,16 +38,20 @@ export function TaskPreview({ task, groupId, isDragging }) {
     function onTaskQuickEdit(ev) {
         ev.stopPropagation()
         ev.preventDefault()
-        
+
         const pos = utilService.getElementPosition(elTaskPreview.current)
-        store.dispatch({ type: SET_TASK_QUICK_EDIT, taskQuickEdit: {task,groupId,pos} })
+        store.dispatch({ type: SET_TASK_QUICK_EDIT, taskQuickEdit: { task, groupId, pos } })
     }
 
     return <>
-        <div ref={elTaskPreview}  onMouseEnter={() => setIsEditBtnShow('hidden-icon')} onMouseLeave={() => setIsEditBtnShow('')} className={`task-preview-container ${isDragging && 'is-dragging'}`} onClick={() => navigate(`/${board._id}/${groupId}/${task.id}`)}>
+        <div ref={elTaskPreview} onMouseEnter={() => setIsEditBtnShow('hidden-icon')} onMouseLeave={() => setIsEditBtnShow('')} className={`task-preview-container ${isDragging && 'is-dragging'}`} onClick={() => navigate(`/${board._id}/${groupId}/${task.id}`)}>
 
             {/* EDIT ICON */}
-            <section className={`edit-task-icon-container ${isEditBtnShow}`} onClick={onTaskQuickEdit} onContextMenu={onTaskQuickEdit} onrig>
+            <section
+                className={`edit-task-icon-container ${isEditBtnShow}`}
+                onClick={onTaskQuickEdit}
+                onContextMenu={onTaskQuickEdit}
+            >
                 <img className='edit-task-icon' src="http://res.cloudinary.com/dk2geeubr/image/upload/v1674474594/xln3wronhmxmwxpucark.svg" alt="" />
             </section>
 
