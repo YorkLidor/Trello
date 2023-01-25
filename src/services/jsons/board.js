@@ -264,11 +264,11 @@ export const jBoard = {
     "cmpsOrder": ["status-picker", "member-picker", "date-picker"]
 }
 
-const user = {
+export const jUser = {
     "_id": "u101",
-    "fullname": "Abi Abambi",
-    "username": "abi@ababmi.com",
-    "password": "aBambi123",
+    "fullname": "Matan Adi",
+    "username": "matan@gmail.com",
+    "password": "matan123",
     "imgUrl": "http://some-img.jpg",
     "mentions": [{ //optional
         "id": "m101",

@@ -8,7 +8,7 @@ export const utilService = {
     debounce,
     getElementPosition,
     reorder,
-    shadeColor
+    shadeColor,
 }
 
 function reorder(arr, startIdx, endIdx) {

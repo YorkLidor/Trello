@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from "react"
+import { useRef, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 
 import { utilService } from '../../services/util.service'
@@ -24,6 +24,7 @@ import { Modal } from "../modal/modal"
 import { Activity } from "./activity"
 import { TaskDetailsSideBar } from "./task-details-sidebar"
 import { TaskDescription } from "./task-description"
+import { TaskDate } from "../task-date"
 
 import { IoClose } from "react-icons/io5"
 import { FaPager as IconHeader } from 'react-icons/fa'
@@ -137,7 +138,7 @@ export function TaskDetails() {
         else if (modalType === MODAL_ATTACH_OPEN) props = { user, boardId, groupId, task: taskToEdit, attachment: extras.attachment }
         else if (modalType === MODAL_MEMBERS) props = { groupId, task: taskToEdit }
         else if (modalType === MODAL_MEMBER_OPEN) props = { member: extras.member, user, boardId, groupId, task: taskToEdit }
-        else if (modalType === MODAL_TASK_DATE) props = { task: taskToEdit }
+        else if (modalType === MODAL_TASK_DATE) props = { user, boardId, groupId ,task: taskToEdit }
 
         const pos = utilService.getElementPosition(element)
         modalBoxRef.current.style.top = pos.bottom + 'px'
@@ -167,6 +168,7 @@ export function TaskDetails() {
                     <section className="task-info flex row">
                         {taskToEdit?.memberIds?.length > 0 && <MemberList members={board.members?.filter(member => taskToEdit.memberIds?.includes(member._id))} toggleModal={onToggleModal} />}
                         {taskToEdit?.labelIds?.length > 0 && <LabelList board={board} task={taskToEdit} toggleModal={onToggleModal} />}
+                        {taskToEdit?.dueDate && <TaskDate task={taskToEdit} onToggleModal={onToggleModal} />}
                     </section>
 
                     <TaskDescription user={user} groupId={groupId} task={taskToEdit} />

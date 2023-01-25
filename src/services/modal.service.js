@@ -144,7 +144,7 @@ function getModalData(id, modalType, props) {
                 break;
             case MODAL_TASK_DATE:
                 newModalData = {
-                    className: 'modal',
+                    className: 'modal date-modal',
                     cmpType: MODAL_TASK_DATE,
                     props
                 }

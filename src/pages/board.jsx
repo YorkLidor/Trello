@@ -13,14 +13,15 @@ import { useSelector } from "react-redux";
 import { TaskQuickEdit } from "../cmps/task-quick-edit";
 
 export function Board() {
+    const user = useSelector(state => state.userModule.user)
     const board = useSelector(state => state.boardModule.board)
     const taskQuickEdit = useSelector((storeState) => storeState.appModule.taskQuickEdit)
 
     const { boardId } = useParams()
     const navigate = useNavigate()
 
-
     useEffect(() => {
+        if (!user) navigate('/')
         loadBoard()
         return async () => {
             await board && saveBoard(board)
@@ -73,8 +74,8 @@ export function Board() {
         <>
             <Outlet />
         </>
-        
-        {taskQuickEdit && <TaskQuickEdit task={taskQuickEdit.task} groupId={taskQuickEdit.groupId} pos={taskQuickEdit.pos}/>}
+
+        {taskQuickEdit && <TaskQuickEdit task={taskQuickEdit.task} groupId={taskQuickEdit.groupId} pos={taskQuickEdit.pos} />}
 
     </main>
 }
