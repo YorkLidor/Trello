@@ -15,8 +15,15 @@
         position: absolute;
         top: 0;
         left: 100%;
-        transform: translateX(0);
+        transform: translateX(-20px);
+        opacity: 0;
         width: 240px;
+        transition: transform 85ms ease-in, opacity 85ms ease-in;
+
+        &.fade-in{
+            transform: translateX(0px);
+            opacity: 1;
+        }
 
         &>* {
             display: flex;
