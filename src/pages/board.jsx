@@ -10,9 +10,12 @@ import { GroupList } from "../cmps/group-list";
 
 import { Audio } from 'react-loader-spinner'
 import { useSelector } from "react-redux";
+import { TaskQuickEdit } from "../cmps/task-quick-edit";
 
 export function Board() {
     const board = useSelector(state => state.boardModule.board)
+    const taskQuickEdit = useSelector((storeState) => storeState.appModule.taskQuickEdit)
+
     const { boardId } = useParams()
     const navigate = useNavigate()
 
@@ -70,5 +73,8 @@ export function Board() {
         <>
             <Outlet />
         </>
+        
+        {taskQuickEdit && <TaskQuickEdit task={taskQuickEdit.task} groupId={taskQuickEdit.groupId} pos={taskQuickEdit.pos}/>}
+
     </main>
 }

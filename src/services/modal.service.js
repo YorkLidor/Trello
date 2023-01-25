@@ -4,7 +4,7 @@ import { SET_MODALS, SET_MODAL } from "../store/reducers/app.reducer"
 
 import {
     MODAL_LABELS, MODAL_ATTACH, MODAL_ATTACH_EDIT, MODAL_ATTACH_OPEN,
-    MODAL_MEMBERS, MODAL_MEMBER_OPEN, MODAL_TASK_QUICK_EDIT, BOARD_CREATOR
+    MODAL_MEMBERS, MODAL_MEMBER_OPEN, MODAL_TASK_QUICK_EDIT, BOARD_CREATOR, MODAL_TASK_DATE
 } from '../cmps/modal/modal'
 
 export const modalService = {
@@ -139,6 +139,13 @@ function getModalData(id, modalType, props) {
                 newModalData = {
                     className: 'task-quick-edit-container',
                     cmpType: MODAL_TASK_QUICK_EDIT,
+                    props
+                }
+                break;
+            case MODAL_TASK_DATE:
+                newModalData = {
+                    className: 'modal date-modal',
+                    cmpType: MODAL_TASK_DATE,
                     props
                 }
                 break;

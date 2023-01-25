@@ -1,16 +1,18 @@
 import { HiOutlineUser } from "react-icons/hi"
 import { RiAttachment2 } from "react-icons/ri"
 import { IoPricetagOutline } from "react-icons/io5"
+import { HiOutlineClock } from "react-icons/hi"
 
-import { MODAL_MEMBERS, MODAL_LABELS, MODAL_ATTACH } from '../modal/modal'
+import { MODAL_MEMBERS, MODAL_LABELS, MODAL_ATTACH, MODAL_TASK_DATE } from '../modal/modal'
 
 export function TaskDetailsSideBar({ onToggleModal }) {
     return <div className="window-sidebar-box">
         <span className="sidebar-title">Add to card</span>
         <nav className="window-sidebar flex column">
-            <a className='button-link' href='#' onClick={(ev) => onToggleModal(ev, MODAL_MEMBERS)}><HiOutlineUser data-type='icon' /><span className="nav-btn-txt" data-type='icon'>Members</span></a>
-            <a className='button-link' href='#' onClick={(ev) => onToggleModal(ev, MODAL_LABELS)}><IoPricetagOutline data-type='icon' /><span className="nav-btn-txt" data-type='icon'>Labels</span></a>
-            <a className='button-link' href='#' onClick={(ev) => onToggleModal(ev, MODAL_ATTACH)}><RiAttachment2 data-type='icon' /><span className="nav-btn-txt" data-type='icon'>Attachment</span></a>
+            <button className='button-link' onClick={(ev) => onToggleModal(ev, MODAL_MEMBERS)}><HiOutlineUser data-type='icon' className="sidebar-icon" /><span className="nav-btn-txt" data-type='icon'>Members</span></button>
+            <button className='button-link' onClick={(ev) => onToggleModal(ev, MODAL_LABELS)}><IoPricetagOutline data-type='icon' className="sidebar-icon" /><span className="nav-btn-txt" data-type='icon'>Labels</span></button>
+            <button className='button-link' onClick={(ev) => onToggleModal(ev, MODAL_ATTACH)}><RiAttachment2 data-type='icon' className="sidebar-icon" /><span className="nav-btn-txt" data-type='icon'>Attachment</span></button>
+            <button className='button-link' onClick={(ev) => onToggleModal(ev, MODAL_TASK_DATE)}><HiOutlineClock data-type='icon' className="sidebar-icon" /><span className="nav-btn-txt" data-type='icon'>Dates</span></button>
             {/* <a className='button-link' href='#'><MdWallpaper data-type='icon' /> Cover</a> */}
         </nav>
     </div>

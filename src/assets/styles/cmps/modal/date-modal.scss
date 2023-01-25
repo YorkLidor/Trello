@@ -1,0 +1,32 @@
+div.react-datepicker {
+    border: none;
+    width: 100%;
+
+    & .react-datepicker__month-container {
+        width: 80%;
+    }
+    
+    & .react-datepicker-time__header {
+        margin-block: 12.5px;    
+    }
+
+    .react-datepicker__time-container {
+        width: 20%;
+        border: none;
+    }
+}
+
+.react-datepicker__time-list {
+    @include scrollbar;
+}
+
+.date-actions {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    .save-date,
+    .remove-date {
+        font-size: 16px;
+    }
+}

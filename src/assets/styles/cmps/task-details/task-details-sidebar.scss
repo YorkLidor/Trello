@@ -8,8 +8,13 @@
         padding: 8px;
         width: 100%;
     }
+
     .sidebar-title {
         @include details-label;
+    }
+
+    @include for-native-layout-details {
+        order: 1;
     }
 }
 
@@ -17,11 +22,45 @@
     position: relative;
     overflow-y: visible;
     margin-block-end: 24px;
+
     @media (max-width: 750px) {
         display: grid;
         grid-template-columns: 1fr 1fr;
+        gap: 4px;
         max-width: 100%;
     }
-    
-    
+}
+
+
+.button-link {
+    @include task-nav-button;
+    position: relative;
+
+    &-header {
+        @include task-nav-button;
+        margin: 0 0 0 8px;
+        padding-inline: 12px;
+
+        &:hover {
+            background-color: #e2e5e9;
+            text-decoration: none;
+        }
+    }
+
+    &:hover {
+        background-color: #e2e5e9;
+        text-decoration: none;
+    }
+
+    @include for-native-layout-details {
+        background-color: rgb(236, 232, 232);
+    }
+}
+
+.sidebar-icon {
+    @include for-native-layout-details {
+        color: #fff;
+        background-color: $button-filled;
+        border-radius: 50%;
+    }
 }

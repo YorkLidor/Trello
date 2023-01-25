@@ -18,10 +18,12 @@ export function Activity({ user, boardId, groupId, taskToEdit }) {
         if (!value.length) return
 
         ev.target[0].value = ''
+        elCommentRef.current.classList.toggle('comment-typing')
         await boardService.addComment(user, boardId, groupId, taskToEdit, value)
     }
 
     function handleEdit({ target }, state) {
+        console.log(state)
         target.dataset.state = state
         console.log(target.dataset.state)
         if (target.value.length) return

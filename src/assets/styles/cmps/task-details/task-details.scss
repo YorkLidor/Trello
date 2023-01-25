@@ -1,5 +1,10 @@
 .task-window {
     @include scrollbar;
+    @include for-native-layout-details {
+        &::-webkit-scrollbar {
+            display: none;
+        }
+    }
     flex-direction: row;
     position: fixed;
     top: 0;
@@ -15,19 +20,16 @@
 }
 
 .task-details {
+    background-color: #F4F5F7;
     @include for-none-native-layout-details {
-
         position: relative;
         color: $clr_font_blue;
-        background-color: #F4F5F7;
 
         width: 768px;
         min-height: 800px;
 
         padding: 0px;
         margin: 48px 0 80px;
-
-        padding-block-start: 12px;
 
         @media (max-width: 768px) {
             width: auto;
@@ -41,7 +43,10 @@
         overflow-y: auto;
         margin: 0;
         padding: 0;
-        background-color: #c6c6c6;
+        padding-block-end: 80px;
+
+        display: flex;
+        flex-direction: column;
     }
 }
 
@@ -95,16 +100,16 @@
 .task-header {
     height: fit-content;
     float: left;
-    padding: 12px 40px 8px 56px;
+    padding: 24px 40px 8px 56px;
     width: 100%;
     position: relative;
 
-    background-color: #F4F5F7;
+    background-color: #FFF;
 
     .header-icon {
         position: absolute;
-        left: 15px;
-        top: 15px;
+        left: 24px;
+        top: 26px;
         
         @include for-native-layout-details {
             left: 22px;
@@ -197,6 +202,7 @@
         flex-direction: column;
         width: 100%;
         padding: 0;
+        order: 2;
     }
 }
 
@@ -205,27 +211,6 @@
     line-height: 20px;
     font-weight: 600;
     color: $task-details-icon;
-}
-
-.button-link {
-    @include task-nav-button;
-    position: relative;
-
-    &-header {
-        @include task-nav-button;
-        margin: 0 0 0 8px;
-        padding-inline: 12px;
-
-        &:hover {
-            background-color: #e2e5e9;
-            text-decoration: none;
-        }
-    }
-
-    &:hover {
-        background-color: #e2e5e9;
-        text-decoration: none;
-    }
 }
 
 .save-btn {
@@ -249,7 +234,7 @@
         margin: 0 8px 8px 0;
         @include for-native-layout-details {
             width: 100%;
-            background-color: #F4F5F7;
+            background-color: #fff;
             margin: 0;
             padding: 8px 4px 8px 40px;
             @include task-details-border-outset;

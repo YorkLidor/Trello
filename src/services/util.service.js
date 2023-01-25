@@ -83,7 +83,9 @@ function debounce(func, timeout = 300) {
 
 
 function getElementPosition(element) {
+    console.log('element:', element)
     var clientRect = element.getBoundingClientRect();
+    console.log('clientRect:', clientRect)
     return {
         left: clientRect.left + document.body.scrollLeft,
         top: clientRect.top + document.body.scrollTop,

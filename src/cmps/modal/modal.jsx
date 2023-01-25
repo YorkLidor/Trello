@@ -9,6 +9,7 @@ import { AttachmentView } from "../task-details/attachment/attachment-view"
 import { MemberPicker } from "./member-picker-modal"
 import { MemberModal } from "./member-modal"
 import { TaskQuickEdit } from "./task-quick-edit-modl"
+import { DateModal } from "./date-modal"
 
 export const MODAL_LABELS = 'MODAL_LABELS'
 export const MODAL_ATTACH = 'MODAL_ATTACH'
@@ -18,6 +19,7 @@ export const BOARD_CREATOR = 'BOARD_CREATOR'
 export const MODAL_MEMBERS = 'MODAL_MEMBERS'
 export const MODAL_MEMBER_OPEN = 'MODAL_MEMBER_OPEN'
 export const MODAL_TASK_QUICK_EDIT = 'MODAL_TASK_QUICK_EDIT'
+export const MODAL_TASK_DATE = 'MODAL_TASK_DATE'
 
 export function Modal({ modal, cmpProps, cmpType, className }) {
     return modal.isOpen && <div className={className ? className : 'modal'}>
@@ -43,6 +45,8 @@ function GetCmp({ id, cmpProps, cmpType }) {
             return <MemberModal cmpProps={cmpProps} id={id} />
         case MODAL_TASK_QUICK_EDIT:
             return <TaskQuickEdit cmpProps={cmpProps} id={id} />
+        case MODAL_TASK_DATE:
+            return <DateModal cmpProps={cmpProps} id={id} />
         default:
             return ''
     }
