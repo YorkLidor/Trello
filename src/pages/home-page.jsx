@@ -7,6 +7,7 @@ import { signup } from "../store/actions/user.actions"
 const guest = userService.getEmptyCredentials()
 guest.fullname = 'guest'
 guest.password = 'guest'
+guest.imgUrl = 'https://res.cloudinary.com/dk2geeubr/image/upload/v1673873845/g2gqvov30haxc8adehvi.jpg'
 
 export function HomePage() {
     const navigate = useNavigate()
