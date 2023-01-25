@@ -168,7 +168,7 @@ export function TaskDetails() {
                     <section className="task-info flex row">
                         {taskToEdit?.memberIds?.length > 0 && <MemberList members={board.members?.filter(member => taskToEdit.memberIds?.includes(member._id))} toggleModal={onToggleModal} />}
                         {taskToEdit?.labelIds?.length > 0 && <LabelList board={board} task={taskToEdit} toggleModal={onToggleModal} />}
-                        <TaskDate task={taskToEdit} onToggleModal={onToggleModal} />
+                        {taskToEdit?.dueDate && <TaskDate task={taskToEdit} onToggleModal={onToggleModal} />}
                     </section>
 
                     <TaskDescription user={user} groupId={groupId} task={taskToEdit} />
