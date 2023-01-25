@@ -44,7 +44,7 @@ export function TaskDetails() {
 
     const modalBoxRef = useRef()
 
-    var group = groupId ? board?.groups?.find(g => g.id === groupId) : null
+    let group = groupId ? board?.groups?.find(g => g.id === groupId) : null
 
     useEffectInit(() => {
         if (!boardId || !groupId || !taskId) return errorRedirect()
@@ -54,8 +54,9 @@ export function TaskDetails() {
 
     useEffectUpdate(() => {
         if (board && taskToEdit && group) {
-            group.tasks = [...group.tasks.filter(task => task.id !== taskToEdit.id), taskToEdit]
-            const newBoard = { ...board, groups: board.groups.map(grp => grp.id === group.id ? group : grp) }
+            const taskIdx = group.tasks.findIndex(task => task.id === taskToEdit.id)
+            group.tasks[taskIdx] = taskToEdit
+            const newBoard = board
             saveBoard(newBoard)
         }
     }, [taskToEdit])
