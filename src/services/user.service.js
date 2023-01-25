@@ -8,7 +8,8 @@ export const userService = {
     login,
     signup,
     logout,
-    getLoggedinUser
+    getLoggedinUser,
+    getEmptyCredentials
 }
 
 function getById(userId) {
@@ -24,8 +25,8 @@ async function login({ username, password }) {
         })
 }
 
-function signup({ username, password, fullname }) {
-    const user = { username, password, fullname, score: 10000 }
+async function signup({ username, password, fullname }) {
+    const user = { username, password, fullname }
     return storageService.post(STORAGE_KEY, user)
         .then(_setLoggedinUser)
 }
@@ -39,7 +40,17 @@ function getLoggedinUser() {
 }
 
 function _setLoggedinUser(user) {
-    const userToSave = { _id: user._id, fullname: user.fullname, score: user.score }
+    const userToSave = { _id: user._id, fullname: user.fullname}
     sessionStorage.setItem(STORAGE_KEY_LOGGEDIN, JSON.stringify(userToSave))
     return userToSave
+}
+
+function getEmptyCredentials() {
+    return {
+        fullname: '',
+        username: '',
+        password: '',
+        imgUrl: "http://some-img.jpg",
+        mentions: []
+    }
 }
