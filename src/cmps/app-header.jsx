@@ -13,6 +13,7 @@ export function AppHeader() {
 
     useEffect(() => {
         if (board) setThemeColor()
+        else setStyle({ '--dynamic-background': '#026AA7' })
     }, [board])
 
     const fac = new FastAverageColor()
