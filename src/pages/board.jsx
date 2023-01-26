@@ -12,7 +12,7 @@ import { Audio } from 'react-loader-spinner'
 import { useSelector } from "react-redux";
 import { TaskQuickEdit } from "../cmps/task-quick-edit";
 import { modalService } from "../services/modal.service";
-import { Modal, MODAL_LABELS, MODAL_MEMBERS, MODAL_TASK_COVER, MODAL_TASK_DATE } from "../cmps/modal/modal";
+import { Modal, MODAL_LABELS, MODAL_MEMBERS, MODAL_MEMBER_OPEN, MODAL_TASK_COVER, MODAL_TASK_DATE } from "../cmps/modal/modal";
 import { utilService } from "../services/util.service";
 import { closeModal, toggleModal } from "../store/actions/app.actions";
 import { FastAverageColor } from "fast-average-color";
@@ -91,7 +91,7 @@ export function Board() {
         closeModal(modals, modal.id)
     }
 
-    function onToggleModal(ev, modalType, groupId, task) {
+    function onToggleModal(ev, modalType, { groupId, task, member }) {
         if (!modal) return
         let element
         if (ev) {
@@ -103,6 +103,7 @@ export function Board() {
         let props
         if (modalType === MODAL_LABELS) props = { groupId, task }
         else if (modalType === MODAL_MEMBERS) props = { groupId, task }
+        else if (modalType === MODAL_MEMBER_OPEN) props = { member: member, user, boardId, groupId }
         else if (modalType === MODAL_TASK_COVER) props = { user, boardId, groupId, task }
         else if (modalType === MODAL_TASK_DATE) props = { user, boardId, groupId, task }
 
@@ -121,38 +122,44 @@ export function Board() {
     }
 
     if (!board || !board._id) return <Loader />
-    else return <main
-        className="board flex column"
-        ref={elBoard}
-    >
-        <BoardHeader
-            board={board}
-            onDeleteBoard={onDeleteBoard}
-        />
-        <GroupList
-        />
-        <>
-            <Outlet />
-        </>
+    else return <div className="board-container">
+        <main
+            className="board flex column"
+            ref={elBoard}
+        >
+            <BoardHeader
+                board={board}
+                onDeleteBoard={onDeleteBoard}
+                onToggleModal={onToggleModal}
+            />
+            <GroupList
+            />
+            <>
+                <Outlet />
+            </>
 
-        {taskQuickEdit && <TaskQuickEdit
-            task={taskQuickEdit.task}
-            groupId={taskQuickEdit.groupId}
-            pos={taskQuickEdit.pos}
-            onToggleModal={onToggleModal}
-            onCloseModal={onCloseModal}
-        />}
+            {taskQuickEdit && <TaskQuickEdit
+                task={taskQuickEdit.task}
+                groupId={taskQuickEdit.groupId}
+                pos={taskQuickEdit.pos}
+                onToggleModal={onToggleModal}
+                onCloseModal={onCloseModal}
+            />}
 
 
-        <div ref={elModal} className='modal-container'>
-            {
-                modal?.isOpen && <Modal
-                    modal={modal}
-                    cmpProps={modal.modalData.props}
-                    cmpType={modal.modalData.cmpType}
-                    className={modal.modalData.className}
-                />
-            }
-        </div>
-    </main>
+            <div ref={elModal} className='modal-container'>
+                {
+                    modal?.isOpen && <Modal
+                        modal={modal}
+                        cmpProps={modal.modalData.props}
+                        cmpType={modal.modalData.cmpType}
+                        className={modal.modalData.className}
+                    />
+                }
+            </div>
+        </main>
+        <section className="board-menu">
+
+        </section>
+    </div>
 }

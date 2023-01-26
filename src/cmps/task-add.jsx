@@ -2,7 +2,7 @@ import { useRef } from "react";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useForm } from "../customHooks/useForm";
-import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition'
+// import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition'
 
 import { boardService } from "../services/board.service";
 
@@ -14,7 +14,7 @@ export function TaskAdd({ group, isAddCardOpen, setIsAddCardOpen }) {
     useEffect(() => { textAreaRef.current.focus() }, [isAddCardOpen])
     const textAreaRef = useRef()
     const [taskToSet, setTaskTitleToSet, handleChange] = useForm(boardService.getEmptyTask())
-    const { transcript, resetTranscript,finalTranscript } = useSpeechRecognition()
+    // const { transcript, resetTranscript,finalTranscript } = useSpeechRecognition()
 
 
 
@@ -32,16 +32,16 @@ export function TaskAdd({ group, isAddCardOpen, setIsAddCardOpen }) {
         }
     }
 
-    function Dictaphone(){
-        SpeechRecognition.startListening()
-        setTaskTitleToSet(...taskToSet, {title: finalTranscript})
-        console.log('finalTranscript:', finalTranscript)
-        console.log('taskToSet:', taskToSet)
-        console.log('transcript:', transcript)
-        if (!SpeechRecognition.browserSupportsSpeechRecognition()) {
-            return <p>Sorry, your browser does not support speech recognition.</p>
-        }
-    }
+    // function Dictaphone(){
+    //     SpeechRecognition.startListening()
+    //     setTaskTitleToSet(...taskToSet, {title: finalTranscript})
+    //     console.log('finalTranscript:', finalTranscript)
+    //     console.log('taskToSet:', taskToSet)
+    //     console.log('transcript:', transcript)
+    //     if (!SpeechRecognition.browserSupportsSpeechRecognition()) {
+    //         return <p>Sorry, your browser does not support speech recognition.</p>
+    //     }
+    // }
 
     function onblurForm() {
         setTimeout(() => {
