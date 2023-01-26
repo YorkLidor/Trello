@@ -35,7 +35,8 @@ export const boardService = {
     getCoverColorStyle,
     saveTaskTitle,
     getNewChecklist,
-    sortChecklistTodos
+    sortChecklistTodos,
+    setCoverImage
 }
 
 async function saveTaskTitle(board, groupId, task) {
@@ -160,10 +161,12 @@ function getEmptyLabel() {
 }
 
 async function saveBoardLabel(board, newLabel) {
+    
     const labelId = newLabel.id ? newLabel.id : 'l' + utilService.makeId()
     board = newLabel.id ?
         { ...board, labels: board.labels.map(label => label.id === labelId ? newLabel : label) }
         : { ...board, labels: [...board.labels, { ...newLabel, id: labelId }] }
+
 
     saveBoard(board)
     store.dispatch({ type: SET_ACTIVE_BOARD, board })
@@ -178,7 +181,7 @@ async function removeBoardLabel(board, labelId) {
 }
 
 function getLabelDeaultColor() {
-    return '#DFE1E6'
+    return '#c1c7d0'
 }
 
 function getAttachment(url, filename) {
@@ -232,4 +235,10 @@ function getNewChecklist(title) {
         title,
         todos: []
     }
+}
+
+function setCoverImage(task, attachment) {
+    if(attachment) task.cover = { style: getCoverAttachStyle(attachment.url), fullSize: task.cover?.fullSize ? task.cover.fullSize : false, attachmentId: attachment.id }
+    else task.cover = null
+    return task
 }

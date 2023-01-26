@@ -37,6 +37,8 @@
     margin: 8px -12px 5px;
     padding: 32px;
 
+    background-color: #172b4d;
+
     .label-editor-preview {
 
         @include label-preview;
@@ -132,4 +134,3 @@
         }
     }
 }
-
