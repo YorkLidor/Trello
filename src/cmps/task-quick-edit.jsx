@@ -10,19 +10,15 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { saveBoard } from "../store/actions/board.actions";
 import { boardService } from "../services/board.service";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export function TaskQuickEdit({ task, groupId, pos }) {
     const navigate = useNavigate()
-    const modals = useSelector((storeState) => storeState.appModule.app.modals)
     const board = useSelector(state => state.boardModule.board)
     const [classIsFadeIn, setClassIsFadeIn] = useState(false)
-    const [modal, setModal] = useState(null)
-    const elModal = useRef()
     const taskPos = { top: pos.top + 'px', left: pos.left + 'px' }
 
     useEffect(() => {
-        setModal(modalService.addNewModal(modals))
         setTimeout(() => {
             setClassIsFadeIn(true)
         }, 50);
@@ -50,17 +46,6 @@ export function TaskQuickEdit({ task, groupId, pos }) {
         }
     }
 
-    function onToggleModal({ target }, modalType) {
-        if (!modal) return
-        const props = { groupId, task }
-        const pos = utilService.getElementPosition(target)
-        elModal.current.style.top = pos.top + 'px'
-        elModal.current.style.left = pos.right + 'px'
-
-        setModal(modalService.setModalData(modals, modal.id, modalType, props))
-        toggleModal(modals, modal.id)
-    }
-
     return <div className="quick-edit-container " onClick={onCloseQuickEdit} >
         <div className="task-preview-container quick-edit-task" style={taskPos}>
             <TaskPreview
@@ -81,11 +66,7 @@ export function TaskQuickEdit({ task, groupId, pos }) {
                     <span>Edit labels</span>
                 </button>
 
-<<<<<<< HEAD
-                <a href="#" onClick={(ev) => onToggleModal(ev, MODAL_LABELS)}>
-=======
                 <button href="#">
->>>>>>> d873beb2ba471d0e9a757655e3158383dd121231
                     <BsPerson />
                     <span>Change members</span>
                 </button>
@@ -115,16 +96,6 @@ export function TaskQuickEdit({ task, groupId, pos }) {
                     <span>Archive</span>
                 </button>
             </div>
-        </div>
-        <div className="modal-container" ref={elModal}>
-            {
-                modal?.isOpen && <Modal
-                    modal={modal}
-                    cmpProps={modal.modalData.props}
-                    cmpType={modal.modalData.cmpType}
-                    className={modal.modalData.className}
-                />
-            }
         </div>
 
     </div>
