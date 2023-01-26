@@ -29,13 +29,14 @@ export function AppHeader() {
             try {
                 color = await fac.getColorAsync(sourceColor);
                 setStyle({ '--dynamic-background': color.rgba })
-                document.documentElement.style.setProperty('--dynamic-text', color.isLight ? '#172B4D' : '#FFFFF');
+                document.documentElement.style.setProperty('--dynamic-text', color.isLight ? '#172B4D' : '#FFFFF')
             } catch (err) {
                 console.log(err);
             }
         } else {
             sourceColor = style.backgroundColor
             setStyle({ '--dynamic-background': 'hsla(0,0%,0%,0.16)' })
+            document.documentElement.style.setProperty('--dynamic-text', '#FFFFF')
         }
     }
 
