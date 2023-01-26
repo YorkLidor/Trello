@@ -33,7 +33,7 @@ import { useEffectUpdate } from "../../customHooks/useEffectUpdate"
 import { useEffectInit } from "../../customHooks/useEffectInit"
 import { modalService } from "../../services/modal.service"
 import { TaskCover } from "./task-cover"
-import { Checklists } from "./checklist/checklists"
+// import { Checklists } from "./checklist/checklists"
 
 export function TaskDetails() {
     const user = useSelector((storeState) => storeState.userModule.user)

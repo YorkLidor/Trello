@@ -47,10 +47,7 @@ export function TaskPreview({ task, groupId, isDragging, isQuickEdit }) {
     }
 
     function getStyle() {
-        let style = { background: task?.style?.bgColor }
-        if (task.attachments && task.attachments.length && task.attachments[0].url) {
-            style = { backgroundImage: `url(${task.attachments[0].url})`, height: '107.8px' }
-        }
+        let style = task?.cover?.style
         return style
     }
 
@@ -79,7 +76,7 @@ export function TaskPreview({ task, groupId, isDragging, isQuickEdit }) {
             </section>
 
             {/* COVER */}
-            {((taskStyle && taskStyle.background) || taskStyle.backgroundImage) &&
+            {taskStyle &&
                 <header
                     className="cover-color"
                     style={taskStyle}
