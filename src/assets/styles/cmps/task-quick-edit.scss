@@ -26,6 +26,7 @@
         }
 
         &>* {
+            font-size: rem(14px);
             display: flex;
             align-items: center;
             gap: 10px;
@@ -38,6 +39,7 @@
             padding: 6px 12px 6px 8px;
             text-decoration: none;
             transition: transform 85ms ease-in;
+            border: none;
 
             &:hover {
                 background: #000c;
@@ -45,6 +47,13 @@
                 text-decoration: none;
                 transform: translateX(5px);
             }
+
+          
+            svg{
+                font-size: 16px;
+            }
+
+
         }
     }
 }

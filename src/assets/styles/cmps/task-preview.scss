@@ -150,8 +150,6 @@
     }
 
     .task-preview-container {
-
-
         .textarea-container {
             .form-textarea {
                 overflow: hidden;
@@ -162,15 +160,11 @@
                 border-radius: 3px;
                 width: 100%;
 
-
                 &:focus {
                     outline: none;
                 }
             }
         }
-
-
-
     }
 
     .btn-controls-container {
@@ -193,5 +187,41 @@
                 color: var(--ds-icon, #172b4d);
             }
         }
+    }
+}
+
+.quick-edit-container {
+    .task-preview-container {
+        &:hover {
+            .task-preview:hover {
+                background-color: inherit;
+            }
+        }
+    }
+}
+
+.quick-edit-container {
+    .edit-task-icon-container.hidden-icon {
+        display: none;
+        opacity: 0;
+    }
+
+    .add-btn {
+        @include button-filled(#0079bf, #fff);
+        height: 32px;
+        position: absolute;
+        bottom: -72px;
+    }
+
+    .task-preview-container {
+       
+        box-shadow: none;
+        &:hover {
+            .edit-task-icon-container.hidden-icon {
+                display: none;
+                opacity: 0;
+            }
+        }
+
     }
 }

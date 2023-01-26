@@ -12,9 +12,6 @@ import { saveBoard } from "../store/actions/board.actions";
 import { boardService } from "../services/board.service";
 import { useState } from "react";
 
-
-
-
 export function TaskQuickEdit({ task, groupId, pos }) {
     const board = useSelector(state => state.boardModule.board)
     const navigate = useNavigate()
@@ -59,45 +56,45 @@ export function TaskQuickEdit({ task, groupId, pos }) {
 
             <div className={`quick-edit-buttons ${classIsFadeIn ? 'fade-in' : ''}`} onClick={(ev) => ev.stopPropagation()}>
 
-                <a href="#" onClick={() => { navigate(`/${board._id}/${groupId}/${task.id}`); onCloseQuickEdit() }}>
+                <button href="#" onClick={() => { navigate(`/${board._id}/${groupId}/${task.id}`); onCloseQuickEdit() }}>
                     <BsCardHeading />
                     <span>Open card</span>
-                </a>
+                </button>
 
-                <a href="#">
+                <button href="#">
                     <BiPurchaseTagAlt style={{ transform: `rotate(-90deg)` }} />
                     <span>Edit labels</span>
-                </a>
+                </button>
 
-                <a href="#">
+                <button href="#">
                     <BsPerson />
                     <span>Change members</span>
-                </a>
+                </button>
 
-                <a href="#">
+                <button href="#">
                     <BsSquareHalf style={{ transform: `rotate(-90deg)` }} />
                     <span>Change cover</span>
-                </a>
+                </button>
 
-                <a href="#">
+                <button href="#">
                     <AiOutlineArrowRight />
                     <span>Move</span>
-                </a>
+                </button>
 
-                <a href="#" onClick={() => { onCopyTask(board, groupId, task); onCloseQuickEdit() }}>
+                <button href="#" onClick={() => { onCopyTask(board, groupId, task); onCloseQuickEdit() }}>
                     <BsCardHeading />
                     <span>Copy</span>
-                </a>
+                </button>
 
-                <a href="#">
+                <button href="#">
                     <MdOutlineWatchLater />
                     <span>Edit dates</span>
-                </a>
+                </button>
 
-                <a href="#" onClick={() => { onRemoveTask(board, groupId, task.id); onCloseQuickEdit() }}>
+                <button href="#" onClick={() => { onRemoveTask(board, groupId, task.id); onCloseQuickEdit() }}>
                     <BsArchive />
                     <span>Archive</span>
-                </a>
+                </button>
             </div>
         </div>
 
