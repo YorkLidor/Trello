@@ -30,7 +30,7 @@ export function BoardIndex() {
     useEffect(() => {
         if (!user) navigate('/')
         onLoadBoards()
-        return () => {if(modal?.id) closeModal(modals, modal.id)}
+        return onCloseModal
     }, [])
 
     function onToggleStaredBoard(ev, board) {
@@ -49,6 +49,13 @@ export function BoardIndex() {
         } catch (err) {
             console.error('something went wrong!', err.message)
         }
+    }
+
+    function onCloseModal(ev = null) {
+        if (ev) ev.stopPropagation()
+
+        if (!modal?.id) return
+        closeModal(modals, modal.id)
     }
 
     async function loadBoard(boardId) {
@@ -72,7 +79,7 @@ export function BoardIndex() {
 
     async function onSaveBoard(board) {
         try {
-            closeModal()
+            onCloseModal()
             await saveBoard(board)
             console.info('Board Saved successesfuly')
         } catch (err) {
