@@ -13,22 +13,47 @@ import { boardService } from "../services/board.service";
 import { useEffect, useState } from "react";
 import { MODAL_LABELS, MODAL_MEMBERS, MODAL_TASK_COVER, MODAL_TASK_DATE } from "./modal/modal";
 import { useRef } from "react";
-import { closeModal } from "../store/actions/app.actions";
 
 export function TaskQuickEdit({ task, groupId, pos, onToggleModal, onCloseModal }) {
     const navigate = useNavigate()
     const board = useSelector(state => state.boardModule.board)
     const [classIsFadeIn, setClassIsFadeIn] = useState(false)
-    const taskPos = { top: pos.top + 'px', left: pos.left + 'px' }
+    const [isModalCloseToRight, setIsModalCloseToRight] = useState(false)
+    const [isModalCloseToBottom, setIsModalCloseToBottom] = useState(false)
+    const [taskPos,setTaskPos] = useState({ top: pos.top + 'px', left: pos.left + 'px' })
     const elTaskPreview = useRef()
 
     useEffect(() => {
+        getDistance()
         setTimeout(() => {
             setClassIsFadeIn(true)
         }, 50);
-
         return onCloseModal
-    }, [])
+    }, [pos])
+
+    function getDistance() {
+        if (pos) {
+            const distanceFromRight = window.innerWidth - pos.left
+            const distanceFromBottom = window.innerHeight - pos.bottom
+            console.log('window.innerHeight:', window.innerHeight)
+            console.log('distanceFromBottom:', distanceFromBottom)
+            if (distanceFromRight > 450) {
+                setIsModalCloseToRight(false)
+            } else {
+                setIsModalCloseToRight(true)
+            }
+            
+            if (distanceFromBottom < 140) {
+                setIsModalCloseToBottom(true)
+                setTaskPos({ left: pos.left + 'px', bottom: '120px' })
+            } else {
+                setTaskPos({ top: pos.top + 'px', left: pos.left + 'px' })
+                setIsModalCloseToBottom(false)
+            }
+        }
+    }
+
+
 
     function onCloseQuickEdit(ev) {
         onCloseModal(ev)
@@ -58,14 +83,14 @@ export function TaskQuickEdit({ task, groupId, pos, onToggleModal, onCloseModal 
     }
 
     return <div className="quick-edit-container " onClick={onCloseQuickEdit} >
-        <div className="task-preview-container quick-edit-task" style={taskPos} ref={elTaskPreview}>
+        <div className={`task-preview-container quick-edit-task ${isModalCloseToBottom ? 'absolute' : ''}`} style={taskPos} ref={elTaskPreview}>
             <TaskPreview
                 task={task}
                 groupId={groupId}
                 isQuickEdit={true}
             />
 
-            <div className={`quick-edit-buttons ${classIsFadeIn ? 'fade-in' : ''}`} onClick={(ev) => ev.stopPropagation()}>
+            <div className={`quick-edit-buttons  ${isModalCloseToRight ? 'left' : ''}  ${classIsFadeIn ? 'fade-in' : ''}`} onClick={(ev) => ev.stopPropagation()}>
 
                 <button href="#" onClick={() => { navigate(`/${board._id}/${groupId}/${task.id}`); onCloseQuickEdit() }}>
                     <BsCardHeading />
