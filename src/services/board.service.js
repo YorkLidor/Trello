@@ -122,7 +122,7 @@ function getEmptyBoard() {
         isStarred: false,
         createdBy: {},
         style: {
-            backgroundImage: "url(https://trello-backgrounds.s3.amazonaws.com/SharedBackground/2386x1600/47f09f0e3910259568294477d0bdedac/photo-1576502200916-3808e07386a5.jpg)"
+            backgroundColor: '#0079bf'
         },
         labels: [],
         groups: [],

@@ -33,6 +33,7 @@ export function BoardIndex() {
         return onCloseModal
     }, [])
 
+
     function onToggleStaredBoard(ev, board) {
         ev.stopPropagation()
         const boardToSave = { ...board, isStarred: !board.isStarred }
@@ -82,6 +83,7 @@ export function BoardIndex() {
             onCloseModal()
             await saveBoard(board)
             console.info('Board Saved successesfuly')
+            navigate(`/${board._id}`)
         } catch (err) {
             console.error(err.name, err.message)
         }
@@ -107,18 +109,15 @@ export function BoardIndex() {
         if (target.dataset?.type === 'icon') target = target.parentNode
         const props = { onBoardClick, onCreateBoard, id: modal.id }
         const pos = utilService.getElementPosition(target)
-        elModal.current.style.top = pos.top + 'px'
-        elModal.current.style.left = pos.right + 'px'
+        elModal.current.style.bottom = pos.top - 200 + 'px'
+        elModal.current.style.left = pos.right + 4 + 'px'
 
         if (window.visualViewport.width < 550) {
-            elModal.current.style.left = '0px'
-            elModal.current.style.top = '0px'
+            // elModal.current.style.left = '0px'
+            // elModal.current.style.top = '0px'
         }
         console.log('elModal.current.style.top:', elModal.current.style.top)
-        if (pos.top > 700) {
-            elModal.current.style.left = '0px'
-            elModal.current.style.top = pos.top - 300 + 'px'
-        }
+
 
         setModal(modalService.setModalData(modals, modal.id, BOARD_CREATOR, props))
         toggleModal(modals, modal.id)

@@ -381,8 +381,7 @@ export const jBoards = [
          "imgUrl": "http://some-img"
       },
       "style": {
-         "backgroundImage": "url(https://trello-backgrounds.s3.amazonaws.com/SharedBackground/2048x1152/17c10de18b89807a945d83325a9002eb/photo-1647831597506-3f9071cbbd6f.jpg)",
-         "bg": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/2048x1152/17c10de18b89807a945d83325a9002eb/photo-1647831597506-3f9071cbbd6f.jpg",
+         "backgroundImage": "url(\"https://res.cloudinary.com/dk2geeubr/image/upload/v1674763946/japn9kwloh9bkgbw94tr.jpg\")",
          "isLabelsLarge": false
       },
       "labels": [
@@ -633,8 +632,7 @@ export const jBoards = [
          "imgUrl": "http://some-img"
       },
       "style": {
-         "backgroundImage": "url(https://trello-backgrounds.s3.amazonaws.com/SharedBackground/2386x1600/47f09f0e3910259568294477d0bdedac/photo-1576502200916-3808e07386a5.jpg)",
-         "bg": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/2386x1600/47f09f0e3910259568294477d0bdedac/photo-1576502200916-3808e07386a5.jpg",
+         "backgroundImage": "url(\"http://res.cloudinary.com/dk2geeubr/image/upload/v1674764019/nq6rjztq7moy3xh4jjhk.jpg\")",
          "isLabelsLarge": false
       },
       "labels": [
@@ -936,8 +934,7 @@ export const jBoards = [
          "imgUrl": "http://some-img"
       },
       "style": {
-         "backgroundImage": "url(https://trello-backgrounds.s3.amazonaws.com/SharedBackground/2386x1600/47f09f0e3910259568294477d0bdedac/photo-1576502200916-3808e07386a5.jpg)",
-         "bg": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/2386x1600/47f09f0e3910259568294477d0bdedac/photo-1576502200916-3808e07386a5.jpg",
+         "backgroundImage": "url(\"https://res.cloudinary.com/dk2geeubr/image/upload/v1674764197/i1xk5f2wegeb3pfbt8mw.png\")",
          "isLabelsLarge": false
       },
       "labels": [
@@ -1274,7 +1271,7 @@ export const jBoards = [
                   ],
                   "cover": {
                      "style": {
-                        "backgroundImage": "url(http://res.cloudinary.com/dk2geeubr/image/upload/v1674733679/zg12ptcvfw7nrgvatun3.jpg)"
+                        "backgroundImage": "url(\"http://res.cloudinary.com/dk2geeubr/image/upload/v1674733679/zg12ptcvfw7nrgvatun3.jpg\")"
                      },
                      "fullSize": false
                   }
@@ -1346,7 +1343,7 @@ export const jBoards = [
                   "title": "Fix bug",
                   "cover": {
                      "style": {
-                        "backgroundImage": "url(http://res.cloudinary.com/dk2geeubr/image/upload/v1674733626/dvyaq05jawerk60bsi1e.jpg)"
+                        "backgroundImage": "url(\"http://res.cloudinary.com/dk2geeubr/image/upload/v1674733626/dvyaq05jawerk60bsi1e.jpg\")"
                      },
                      "fullSize": false
                   },

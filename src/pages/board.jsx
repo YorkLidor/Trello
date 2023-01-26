@@ -15,6 +15,8 @@ import { modalService } from "../services/modal.service";
 import { Modal, MODAL_LABELS, MODAL_MEMBERS, MODAL_TASK_COVER, MODAL_TASK_DATE } from "../cmps/modal/modal";
 import { utilService } from "../services/util.service";
 import { closeModal, toggleModal } from "../store/actions/app.actions";
+import { FastAverageColor } from "fast-average-color";
+import { useEffectUpdate } from "../customHooks/useEffectUpdate";
 
 export function Board() {
     const user = useSelector(state => state.userModule.user)
@@ -24,6 +26,8 @@ export function Board() {
     const modals = useSelector((storeState) => storeState.appModule.app.modals)
     const [modal, setModal] = useState(null)
     const elModal = useRef()
+
+    const elBoard = useRef()
 
     const { boardId } = useParams()
     const navigate = useNavigate()
@@ -36,8 +40,15 @@ export function Board() {
         return async () => {
             await board && saveBoard(board)
             setBoard(null)
+            document.body.style.backgroundColor = "unset"
+            document.body.style.backgroundImage = "unset"
         }
     }, [])
+
+    useEffectUpdate(() => {
+        document.body.style.backgroundColor = board.style?.backgroundColor
+        document.body.style.backgroundImage = board.style?.backgroundImage
+    }, [board])
 
     async function onDeleteBoard() {
         const isWantDelete = window.confirm('Are you sure?')
@@ -112,7 +123,7 @@ export function Board() {
     if (!board || !board._id) return <Loader />
     else return <main
         className="board flex column"
-        style={board.style}
+        ref={elBoard}
     >
         <BoardHeader
             board={board}
