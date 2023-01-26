@@ -1,10 +1,10 @@
 .app-header-regular {
     --dynamic-background: #026AA7;
-    background-color: hsla(0,0%,0%,0.16);
+    background-color: hsla(0, 0%, 0%, 0.16);
 
     .main-nav {
         background-color: var(--dynamic-background);
-        color: #FFF;
+        color: var(--dynamic-text);
         height: 44px;
 
         &>* {
@@ -23,7 +23,7 @@
         }
 
         a:visited {
-            color: #FFF;
+            color: var(--dynamic-text);
         }
 
         .logo-container {
