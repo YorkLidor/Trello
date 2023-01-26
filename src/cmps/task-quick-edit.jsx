@@ -11,12 +11,15 @@ import { useNavigate } from "react-router-dom";
 import { saveBoard } from "../store/actions/board.actions";
 import { boardService } from "../services/board.service";
 import { useEffect, useState } from "react";
+import { MODAL_LABELS } from "./modal/modal";
+import { useRef } from "react";
 
-export function TaskQuickEdit({ task, groupId, pos }) {
+export function TaskQuickEdit({ task, groupId, pos, onToggleModal ,onCloseModal}) {
     const navigate = useNavigate()
     const board = useSelector(state => state.boardModule.board)
     const [classIsFadeIn, setClassIsFadeIn] = useState(false)
     const taskPos = { top: pos.top + 'px', left: pos.left + 'px' }
+    const elTaskPreview = useRef()
 
     useEffect(() => {
         setTimeout(() => {
@@ -25,6 +28,7 @@ export function TaskQuickEdit({ task, groupId, pos }) {
     }, [])
 
     function onCloseQuickEdit(ev) {
+        onCloseModal(ev)
         store.dispatch({ type: SET_TASK_QUICK_EDIT, taskQuickEdit: null })
     }
 
@@ -47,7 +51,7 @@ export function TaskQuickEdit({ task, groupId, pos }) {
     }
 
     return <div className="quick-edit-container " onClick={onCloseQuickEdit} >
-        <div className="task-preview-container quick-edit-task" style={taskPos}>
+        <div className="task-preview-container quick-edit-task" style={taskPos} ref={elTaskPreview}>
             <TaskPreview
                 task={task}
                 groupId={groupId}
@@ -61,7 +65,7 @@ export function TaskQuickEdit({ task, groupId, pos }) {
                     <span>Open card</span>
                 </button>
 
-                <button href="#">
+                <button onClick={(ev) => onToggleModal(elTaskPreview, MODAL_LABELS, groupId, task)}>
                     <BiPurchaseTagAlt style={{ transform: `rotate(-90deg)` }} />
                     <span>Edit labels</span>
                 </button>

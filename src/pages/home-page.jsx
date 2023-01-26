@@ -1,7 +1,6 @@
 import { useEffect } from "react"
 import { useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
-import { userService } from "../services/user.service"
 import { login } from "../store/actions/user.actions"
 
 const guest = {
