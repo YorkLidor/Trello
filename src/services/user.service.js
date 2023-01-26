@@ -1,8 +1,11 @@
+import { func } from "prop-types"
 import { storageService } from "./async-storage.service"
+import { jUser } from "./jsons/board"
+import { utilService } from "./util.service"
 
 const STORAGE_KEY = 'userDB'
 const STORAGE_KEY_LOGGEDIN = 'loggedinUser'
-
+_createUsers()
 
 export const userService = {
     getById,
@@ -25,9 +28,11 @@ async function login({ username, password }) {
         const users = await storageService.query(STORAGE_KEY)
         user = users.find(user => user.username === username)
         if (!user) throw new Error('Invalid login')
+        if (user.password !== password) throw new Error('Invalid password')
+        _setLoggedinUser(user)
         return user
     } catch (err) {
-        return err
+        throw err
     }
 
 }
@@ -66,3 +71,17 @@ function getEmptyCredentials() {
     }
 }
 
+function _createUsers(){
+    let users = utilService.loadFromStorage(STORAGE_KEY)
+    if (!users || !users.length) {
+        users = [jUser]
+        users.push({
+            fullname: 'guest',
+            username: 'guest',
+            password: 'guest',
+            imgUrl: "https://res.cloudinary.com/dk2geeubr/image/upload/v1673873845/g2gqvov30haxc8adehvi.jpg",
+            mentions: []
+        })
+        utilService.saveToStorage(STORAGE_KEY, users)
+    }
+}
