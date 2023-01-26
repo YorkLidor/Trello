@@ -12,8 +12,6 @@ export function Activity({ user, boardId, groupId, taskToEdit }) {
 
     async function onSaveComment(ev) {
         ev.preventDefault()
-       
-        
         const value = ev.target[0].value
         if (!value.length) return
 
@@ -23,9 +21,7 @@ export function Activity({ user, boardId, groupId, taskToEdit }) {
     }
 
     function handleEdit({ target }, state) {
-        console.log(state)
         target.dataset.state = state
-        console.log(target.dataset.state)
         if (target.value.length) return
         elCommentRef.current.classList.toggle('comment-typing')
     }

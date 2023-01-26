@@ -89,7 +89,7 @@ export function CoverModal({ id, cmpProps }) {
             activeSizeRef.current.parentNode.classList.toggle('active')
             activeSizeRef.current = null
         }
-        
+
         if (activeFontColorRef.current) {
             activeFontColorRef.current.parentNode.classList.toggle('active')
             activeFontColorRef.current = null
@@ -174,7 +174,8 @@ export function CoverModal({ id, cmpProps }) {
 
 
         {
-            (!!task.cover?.fullSize &&
+            (!!task.cover?.fullSize && <>
+                <span className="modal-label">Font color</span>
                 <div className="choose-text-color-box">
                     <div className="button-wrapper">
                         <div className="color-text-light" onClick={(ev) => onPickTextColor(ev, true)} style={{ color: fontColor.light, backgroundColor: fontColor.dark }}>Color Text Light</div>
@@ -182,7 +183,8 @@ export function CoverModal({ id, cmpProps }) {
                     <div className="button-wrapper">
                         <div className="color-text-dark" onClick={(ev) => onPickTextColor(ev, false)} style={{ color: fontColor.dark, backgroundColor: fontColor.light }}>Color Text Dark</div>
                     </div>
-                </div>)
+                </div>
+            </>)
         }
 
         <span className="modal-label">Colors</span>

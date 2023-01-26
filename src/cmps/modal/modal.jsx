@@ -11,6 +11,7 @@ import { MemberModal } from "./member-modal"
 import { TaskQuickEdit } from "./task-quick-edit-modl"
 import { DateModal } from "./date-modal"
 import { CoverModal } from "./cover-modal"
+import { ChecklistModal } from "./checklist-modal"
 
 export const MODAL_LABELS = 'MODAL_LABELS'
 export const MODAL_ATTACH = 'MODAL_ATTACH'
@@ -22,6 +23,7 @@ export const MODAL_MEMBER_OPEN = 'MODAL_MEMBER_OPEN'
 export const MODAL_TASK_QUICK_EDIT = 'MODAL_TASK_QUICK_EDIT'
 export const MODAL_TASK_DATE = 'MODAL_TASK_DATE'
 export const MODAL_TASK_COVER = 'MODAL_TASK_COVER'
+export const MODAL_CHECKLIST = 'MODAL_CHECKLIST'
 
 
 export function Modal({ modal, cmpProps, cmpType, className }) {
@@ -52,6 +54,8 @@ function GetCmp({ id, cmpProps, cmpType }) {
             return <DateModal cmpProps={cmpProps} id={id} />
         case MODAL_TASK_COVER:
             return <CoverModal cmpProps={cmpProps} id={id} />
+        case MODAL_CHECKLIST:
+            return <ChecklistModal cmpProps={cmpProps} id={id} />
         default:
             return ''
     }

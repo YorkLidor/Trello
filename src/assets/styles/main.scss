@@ -56,20 +56,19 @@
 @import "cmps/modal/member-picker-modal";
 @import "cmps/modal/member-modal";
 @import "cmps/modal/board-creator";
+@import "cmps/modal/date-modal.scss";
+@import "cmps/modal/modal-header";
+@import "cmps/modal/member-modal.scss";
+@import "cmps/modal/cover-modal.scss";
+@import "cmps/modal/checklist-modal.scss";
+@import "cmps/modal/modal";
 
 @import "cmps/task-details/label-list";
-
-@import "cmps/modal/modal";
-@import "cmps/modal/modal-header";
-
 @import "./cmps/task-details/task-details-sidebar";
 @import "./cmps/task-details/activity";
 @import "./cmps/task-details/task-description";
-
-
 @import "cmps/task-details/task-details.scss";
-@import "cmps/modal/member-modal.scss";
-@import "cmps/modal/date-modal.scss";
 @import "cmps/task-details/task-date.scss";
-@import "cmps/modal/cover-modal.scss";
 @import "cmps/task-details/task-cover.scss";
+@import "cmps/task-details/checklists.scss";
+@import "cmps/task-details/checklist.scss";

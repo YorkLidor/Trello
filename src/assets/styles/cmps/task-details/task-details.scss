@@ -121,30 +121,7 @@
     }
 
     .task-title {
-        border: none;
-        outline: none;
-        box-shadow: none;
-        font-family: unset;
-        font-size: 20px;
-        font-weight: 600;
-        width: 100%;
-        padding: 4px 8px;
-        margin: -5px -8px;
-        background-color: inherit;
-        min-height: 24px;
-        line-height: 24px;
-
-        height: 32px;
-        color: #172b4d;
-
-        &::placeholder {
-            color: $task-details-icon;
-        }
-
-
-        &.is-editing {
-            box-shadow: 0 0 0 2px $color_input_shadow;
-        }
+        @include input-as-title;
     }
 
     .header-subtitle {

@@ -5,7 +5,7 @@ import { SET_MODALS, SET_MODAL } from "../store/reducers/app.reducer"
 import {
     MODAL_LABELS, MODAL_ATTACH, MODAL_ATTACH_EDIT, MODAL_ATTACH_OPEN,
     MODAL_MEMBERS, MODAL_MEMBER_OPEN, MODAL_TASK_QUICK_EDIT, BOARD_CREATOR, 
-    MODAL_TASK_DATE, MODAL_TASK_COVER
+    MODAL_TASK_DATE, MODAL_TASK_COVER, MODAL_CHECKLIST
 } from '../cmps/modal/modal'
 
 export const modalService = {
@@ -154,6 +154,13 @@ function getModalData(id, modalType, props) {
                 newModalData = {
                     className: 'modal',
                     cmpType: MODAL_TASK_COVER,
+                    props
+                }
+                break;
+            case MODAL_CHECKLIST:
+                newModalData = {
+                    className: 'modal',
+                    cmpType: MODAL_CHECKLIST,
                     props
                 }
                 break;

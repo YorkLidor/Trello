@@ -12,8 +12,8 @@ import { saveBoard } from '../../store/actions/board.actions'
 import { SET_ACTIVE_BOARD } from "../../store/reducers/board.reducer"
 
 import {
-    MODAL_ATTACH, MODAL_LABELS, MODAL_ATTACH_EDIT,
-    MODAL_ATTACH_OPEN, MODAL_MEMBERS, MODAL_MEMBER_OPEN , MODAL_TASK_DATE , MODAL_TASK_COVER
+    MODAL_ATTACH, MODAL_LABELS, MODAL_ATTACH_EDIT, MODAL_CHECKLIST,
+    MODAL_ATTACH_OPEN, MODAL_MEMBERS, MODAL_MEMBER_OPEN, MODAL_TASK_DATE, MODAL_TASK_COVER
 } from '../modal/modal.jsx'
 
 import { AttachmentList } from "./attachment/attachment-list"
@@ -33,6 +33,7 @@ import { useEffectUpdate } from "../../customHooks/useEffectUpdate"
 import { useEffectInit } from "../../customHooks/useEffectInit"
 import { modalService } from "../../services/modal.service"
 import { TaskCover } from "./task-cover"
+import { Checklists } from "./checklist/checklists"
 
 export function TaskDetails() {
     const user = useSelector((storeState) => storeState.userModule.user)
@@ -139,8 +140,9 @@ export function TaskDetails() {
         else if (modalType === MODAL_ATTACH_OPEN) props = { user, boardId, groupId, task: taskToEdit, attachment: extras.attachment }
         else if (modalType === MODAL_MEMBERS) props = { groupId, task: taskToEdit }
         else if (modalType === MODAL_MEMBER_OPEN) props = { member: extras.member, user, boardId, groupId, task: taskToEdit }
-        else if (modalType === MODAL_TASK_DATE) props = { user, boardId, groupId ,task: taskToEdit }
-        else if (modalType === MODAL_TASK_COVER) props = { user, boardId, groupId ,task: taskToEdit }
+        else if (modalType === MODAL_TASK_DATE) props = { user, boardId, groupId, task: taskToEdit }
+        else if (modalType === MODAL_TASK_COVER) props = { user, boardId, groupId, task: taskToEdit }
+        else if (modalType === MODAL_CHECKLIST) props = { user, boardId, groupId, task: taskToEdit, modals }
 
         const pos = utilService.getElementPosition(element)
         modalBoxRef.current.style.top = pos.bottom + 'px'
@@ -187,7 +189,7 @@ export function TaskDetails() {
                             <a className='button-link add-attachment' href='#' onClick={(ev) => onToggleModal(ev, MODAL_ATTACH)}>Add an attachment</a>
                         </div>
                     }
-
+                    <Checklists task={taskToEdit} user={user} groupId={groupId} />
                     <Activity user={user} boardId={boardId} groupId={groupId} taskToEdit={taskToEdit} />
                 </section>
 

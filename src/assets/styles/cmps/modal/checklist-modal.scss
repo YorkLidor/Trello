@@ -1,0 +1,12 @@
+.add-checklist-box {
+    padding: 12px;
+    padding-block-start: 0px;
+}
+
+.checklist-title {
+    width: 100%;
+
+    &:focus {
+        @include input-focus;
+    }
+}

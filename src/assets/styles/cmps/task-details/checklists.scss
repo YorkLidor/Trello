@@ -1,0 +1,45 @@
+.checklist-box {
+    margin-block-end: 24px;
+}
+
+.checklist-title-box {
+    position: relative;
+    margin-inline-start: 27px;
+}
+
+.checklist-title-container {
+    position: relative;
+    padding-inline-start: 10px;
+
+    .checklist-title {
+        @include input-as-title;
+        font-size: 15px;
+
+        &:focus {
+            @include input-focus;
+        }
+    }
+}
+
+.checklist-logo {
+    position: absolute;
+    top: -1px;
+    left: -26px;
+    height: 24px;
+    width: 24px;
+
+    @include for-native-layout-details {
+        left: 7px;
+        top: 5px;
+    }
+}
+
+.save-checklist {
+    display: none;
+    margin-block-start: 15px;
+    margin-inline-start: -6px;
+    
+    &.active {
+        display: block;
+    }
+}
