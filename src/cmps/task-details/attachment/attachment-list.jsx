@@ -13,14 +13,15 @@ export function AttachmentList({ task, toggleModal, user, boardId, groupId }) {
     }
 
     async function onTaskUpdateCover(attachment) {
-        task.cover = { style: boardService.getCoverAttachStyle(attachment.url), fullSize: task.cover?.fullSize ? task.cover.fullSize : false }
-        await saveTask(boardId, groupId, task, boardService.getActivity(user, task, `${user.fullname} changed task ${task.title} cover to attachment ${attachment.filename}`))
+        task = boardService.setCoverImage(task, attachment)
+        const action = attachment ? `${user.fullname} changed task ${task.title} cover to attachment ${attachment?.filename}` : `${user.fullname} removed task ${task.title} cover`
+        await saveTask(boardId, groupId, task, boardService.getActivity(user, task, action))
     }
 
     return task?.attachments?.length > 0 && <ul className="attachment-list">
         {task.attachments.map(attachment =>
-            <li className="attachment-preview" key={attachment.id}>
-                <AttachmentPreview attachment={attachment} toggleModal={toggleModal} removeAttachment={removeAttachment} onTaskUpdateCover={onTaskUpdateCover}/>
+            <li className="attachment-preview-list" key={attachment.id}>
+                <AttachmentPreview task={task} attachment={attachment} toggleModal={toggleModal} removeAttachment={removeAttachment} onTaskUpdateCover={onTaskUpdateCover}/>
             </li>)}
     </ul>
 }

@@ -8,13 +8,12 @@
 
 .attachment-list-modal {
     list-style-type: none;
+    padding: 0;
 
     li {
         padding: rem(6px) rem(12px);
-    }
-
-    &:hover {
-        li {
+        &:hover {
+            
             background-color: #F5F6F8;
         }
     }

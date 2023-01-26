@@ -23,12 +23,12 @@ export function AttachmentModal({ id, cmpProps }) {
         const action = 'Added attachment ' + filename
         const activity = boardService.getActivity(member, { id: task.id, title: task.title }, action)
 
-        if (task.attachments?.length > 0) task.attachments.unshift(boardService.getAttachment(url, filename))
+        const attachment = boardService.getAttachment(url, filename)
+        if (task.attachments?.length > 0) task.attachments.unshift(attachment)
         else task.attachments = [boardService.getAttachment(url, filename)]
 
-        if(!task.cover) task.cover = { style: boardService.getCoverAttachStyle(url), fullSize: task.cover?.fullSize ? task.cover.fullSize : false }
-
-        await saveTask(boardId, groupId, task, activity)
+        const taskToSave = task.cover ? task : boardService.setCoverImage(task, attachment)
+        await saveTask(boardId, groupId, taskToSave , activity)
     }
 
     return <div className='attach-modal-box'>

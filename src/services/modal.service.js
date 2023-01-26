@@ -25,7 +25,6 @@ function addNewModal(modals) {
         modalData: null
     }
     modals.unshift(newModal)
-    console.log(modals)
     _updateModalsInStore(modals)
     return newModal
 }
