@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom"
 import { useForm } from "../customHooks/useForm"
 import { userService } from "../services/user.service"
 import { signup } from "../store/actions/user.actions"
+import logo from "../assets/img/smello-no-bg.png"
 
 export function Login() {
     const [user, setUser, handleChange] = useForm(userService.getEmptyCredentials())
@@ -30,7 +31,7 @@ export function Login() {
         <header className="header">
             <img
                 className="logo"
-                src="https://www.linkpicture.com/q/shmello-logo.jpg"
+                src={logo}
                 alt="logo"
             />
         </header>

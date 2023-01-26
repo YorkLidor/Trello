@@ -19,7 +19,7 @@
     .btn-filter,
     .btn-star {
         @include button-filled($dynamic-button, #FFF);
-
+        align-items: center
     }
 
     .btn-menu {

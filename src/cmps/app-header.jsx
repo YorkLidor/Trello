@@ -7,8 +7,8 @@ export function AppHeader() {
         <nav className="main-nav flex">
             <div className="logo-container">
                 <Link to="/" className="logo">
-                    <SiTrello/>
-                        Shmello
+                    <SiTrello />
+                    <span>Shmello</span>
                 </Link>
             </div>
             <nav className="navlinks-container">

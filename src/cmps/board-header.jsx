@@ -6,6 +6,7 @@ import { saveBoard } from "../store/actions/board.actions";
 import { useSelector } from "react-redux";
 import { BsThreeDots } from "react-icons/bs";
 import { FaStar, FaRegStar } from 'react-icons/fa'
+import Filter from '../assets/img/filter.svg'
 
 export function BoardHeader({ onDeleteBoard }) {
     const board = useSelector(state => state.boardModule.board)
@@ -83,7 +84,10 @@ export function BoardHeader({ onDeleteBoard }) {
             </button>
         </div>
         <div className="actions-container">
-            <button className="btn-filter">Filter</button>
+            <button className="btn-filter">
+                <img src={Filter} alt="" />
+                Filter
+                </button>
             <span className="btn-divider"></span>
             <button className="btn btn-share">
                 <span>
