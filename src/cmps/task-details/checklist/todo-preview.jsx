@@ -12,7 +12,7 @@ export function Todo({ todo, onUpdateTodo }) {
     return <>
         <label>
             <input type='checkbox' className='todo-done-input' checked={todo.isDone} onChange={handleChange} />
-            <span className='checkbox-container'>
+            <span className='todo-checkbox-container'>
                 {todo.isDone ? <ImCheckboxChecked className='checkbox checkbox-checked' /> : <ImCheckboxUnchecked className='checkbox checkbox-unchecked' />}
             </span>
         </label>

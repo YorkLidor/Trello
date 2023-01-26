@@ -5,8 +5,6 @@ import { saveTask } from "../../store/actions/board.actions";
 import { boardService } from "../../services/board.service";
 import { useState } from "react";
 import { useEffect } from "react";
-import { func } from "prop-types";
-import { useSelector } from "react-redux";
 
 export function CoverModal({ id, cmpProps }) {
     const { user, boardId, groupId, task } = cmpProps
@@ -41,10 +39,11 @@ export function CoverModal({ id, cmpProps }) {
     async function onUploadCover(ev) {
         const { url, filename } = await uploadImg(ev)
 
-        if (task.attachments?.length > 0) task.attachments.unshift(boardService.getAttachment(url, filename))
-        else task.attachments = [boardService.getAttachment(url, filename)]
+        const attachment = boardService.getAttachment(url, filename)
+        if (task.attachments?.length > 0) task.attachments.unshift(attachment)
+        else task.attachments = [attachment]
 
-        onSetAttachmentCover(url)
+        onSetAttachmentCover(attachment)
     }
 
     function handleColorPick({ target }) {
@@ -211,7 +210,7 @@ export function CoverModal({ id, cmpProps }) {
         </div>
 
         <label className="upload-cover" htmlFor="uploadAttach">Upload a cover image
-            <input type='file' id='uploadAttach' name='uploadAttach' onChange={onUploadCover} />
+            <input type='file' id='uploadAttach' name='uploadAttach' onChange={(ev) => onUploadCover(ev)} />
         </label>
     </div>
 
