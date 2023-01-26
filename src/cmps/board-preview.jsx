@@ -10,11 +10,12 @@ export function BoardPreview({ boardId = null, board, onBoardClick, onToggleStar
         style={board && board.style}
     >
         <span 
+        data-type="icon"
         className={`board-preview-fade
          ${!board ? 'add' : ''} ${board?.isStarred ? 'light' : ''} flex column justify-between`}
          >
             {board && <h4 className="board-title">{board.title}</h4>}
-            {!board && <p><span>Create new board</span></p>}
+            {!board && <p data-type="icon"><span data-type="icon">Create new board</span></p>}
 
             {board && <span className='details-container flex' >
                 <span

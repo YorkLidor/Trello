@@ -104,6 +104,7 @@ export function BoardIndex() {
 
     function onToggleModal({ target }) {
         if (!modal) return
+        if (target.dataset?.type === 'icon') target = target.parentNode
         const props = { onBoardClick, onCreateBoard, id: modal.id }
         const pos = utilService.getElementPosition(target)
         elModal.current.style.top = pos.top + 'px'
