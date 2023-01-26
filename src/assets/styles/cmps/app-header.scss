@@ -4,7 +4,7 @@
 
     .main-nav {
         background-color: var(--dynamic-background);
-        color: #FFF;
+        color: var(--dynamic-text);
         height: 44px;
 
         &>* {
@@ -23,7 +23,7 @@
         }
 
         a:visited {
-            color: #FFF;
+            color: var(--dynamic-text);
         }
 
         .logo-container {
