@@ -22,13 +22,11 @@ export function AppHeader() {
         let sourceColor
         let color
         if (style.backgroundImage) {
-            console.log('bggggggggggggg');
             sourceColor = style.backgroundImage.slice(4, -1).replace(/"/g, "")
             try {
                 color = await fac.getColorAsync(sourceColor);
-                console.log('color:', color.rgba)
-                console.log('style:', color)
-                setStyle({ '--dynamic-background': (color.rgba || color) + '' })
+                setStyle({ '--dynamic-background': color.rgba })
+                document.documentElement.style.setProperty('--dynamic-text', color.isLight ? '#172B4D' : '#FFFFF');
             } catch (err) {
                 console.log(err);
             }
