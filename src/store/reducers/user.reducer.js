@@ -1,7 +1,7 @@
 import { userService } from "../../services/user.service"
 
 export const SET_USER = 'SET_USER'
-export const CLEAR_CART = 'CLEAR_CART'
+export const LOGIN_USER = 'LOGIN_USER'
 
 
 
@@ -39,6 +39,8 @@ const initialState = {
 export function userReducer(state = initialState, action) {
     switch (action.type) {
         case SET_USER:
+            return { ...state, user: action.user }
+        case LOGIN_USER:
             return { ...state, user: action.user }
         default:
             return state
