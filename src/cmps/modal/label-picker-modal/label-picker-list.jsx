@@ -6,9 +6,9 @@ import { saveTask } from '../../../store/actions/board.actions'
 
 import { boardService } from '../../../services/board.service'
 
-import { ImCheckboxChecked, ImCheckboxUnchecked} from "react-icons/im"
+import { ImCheckboxChecked, ImCheckboxUnchecked } from "react-icons/im"
 import { BsFillCircleFill } from 'react-icons/bs'
-import { GrFormEdit } from 'react-icons/gr'
+import { BiPencil } from 'react-icons/bi'
 
 export function LabelPickerList({ member, boardId, task, groupId, labels, onEditLabel }) {
 
@@ -63,10 +63,12 @@ export function LabelPickerList({ member, boardId, task, groupId, labels, onEdit
                                     />
                                     {label.title}
                                 </div>
-                                <GrFormEdit
-                                    className="edit-label-button"
-                                    onClick={() => onEditLabel(label)}
-                                />
+                                <div className='edit-btn-box' onClick={() => onEditLabel(label)}>
+                                    
+                                    <BiPencil
+                                        className="edit-label-button"
+                                    />
+                                </div>
                             </div>
                         </label>
                     </li>

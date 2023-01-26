@@ -8,18 +8,19 @@
 .remove-color {
     @include labels-picker-main-button;
     margin-block-end: 24px;
+
+    & .remove-color-icon {
+        color: #42526E;
+        height: 15px;
+        width: 15px;
+        vertical-align: text-top;
+        font-weight: 900;
+        margin-block-start: 2px;
+
+    }
 }
 
-.remove-color-icon {
-    height: 12px;
-    width: 12px;
-    vertical-align: middle;
-    font-weight: 900;
 
-    margin-block-start: -3px;
-    margin-inline-start: 2px;
-    margin-inline-end: 4px;
-}
 
 .save-label {
     @include button-filled($button-filled , #FFF);
@@ -36,8 +37,6 @@
 .label-editor-preview-box {
     margin: 8px -12px 5px;
     padding: 32px;
-
-    background-color: #172b4d;
 
     .label-editor-preview {
 
@@ -106,7 +105,6 @@
             margin: 2px;
             border-radius: 0px;
             height: 24px;
-
         }
     }
 }

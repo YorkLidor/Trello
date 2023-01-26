@@ -2,7 +2,7 @@ import { useState, useRef } from 'react'
 
 import { boardService } from "../../../services/board.service"
 
-import { AiOutlineClose } from "react-icons/ai"
+import { IoMdClose } from "react-icons/io"
 import { BsFillCircleFill } from 'react-icons/bs'
 import { PAGE_DELETE } from './label-picker'
 
@@ -54,14 +54,14 @@ export function LabelPickerEditor({ editorLabel, onSaveLabel, setModalPage }) {
         <div className='editor-colors'>
             {
                 labelColors.map(color => {
-                    return <div className='color-tab-wrapper' key={color}>
+                    return <div className='color-tab-wrapper' key={color} style={{ backgroundColor: label.color + '25' }}>
                         <div className='color-tab' style={{ backgroundColor: color }} onClick={(ev) => handleEditorChange(ev, color)}></div>
                     </div>
                 })
             }
         </div>
 
-        <button className='remove-color' onClick={resetColor}><AiOutlineClose className='remove-color-icon' /> Remove color</button>
+        <button className='remove-color' onClick={resetColor}><IoMdClose className='remove-color-icon' /> Remove color</button>
 
         <hr />
 

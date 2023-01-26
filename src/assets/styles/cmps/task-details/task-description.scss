@@ -16,13 +16,11 @@
     .desc-icon {
         @include task-details-field-icon;
         top: 8px;
-        left: -32px;
+        left: -35px;
         width: 22px;
         @include for-native-layout-details {
             left: 6px;
         }
-
-        
     }
 
     .description-header {
@@ -74,7 +72,7 @@
             @include for-none-native-layout-details {
                 background-color: #FFFFFF;
                 box-shadow: 0 0 0 2px #0079bf;
-                height: 223px;
+                height: 103px;
                 padding: 8px 12px 0 12px;
                 margin: 0;
             }

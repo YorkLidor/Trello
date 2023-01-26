@@ -28,12 +28,12 @@ import { TaskDate } from "../task-date"
 
 import { IoClose } from "react-icons/io5"
 import { FaPager as IconHeader } from 'react-icons/fa'
-import { RiAttachment2 } from 'react-icons/ri'
+import { RiAttachment2 as IconAttachment} from 'react-icons/ri'
 import { useEffectUpdate } from "../../customHooks/useEffectUpdate"
 import { useEffectInit } from "../../customHooks/useEffectInit"
 import { modalService } from "../../services/modal.service"
 import { TaskCover } from "./task-cover"
-// import { Checklists } from "./checklist/checklists"
+import { Checklists } from "./checklist/checklists"
 
 export function TaskDetails() {
     const user = useSelector((storeState) => storeState.userModule.user)
@@ -184,7 +184,7 @@ export function TaskDetails() {
 
                     {taskToEdit?.attachments?.length > 0 &&
                         <div className="task-attachment-box flex column">
-                            <RiAttachment2 className="attach-icon task-icon" />
+                            <IconAttachment className="attach-icon" />
                             <div className="attachment-header"> <span className="title-main-col">Attachments</span> </div>
 
                             <div className="attach-list-box">
@@ -193,7 +193,7 @@ export function TaskDetails() {
                             <a className='button-link add-attachment' href='#' onClick={(ev) => onToggleModal(ev, MODAL_ATTACH)}>Add an attachment</a>
                         </div>
                     }
-                    {/* <Checklists task={taskToEdit} user={user} groupId={groupId} /> */}
+                    <Checklists task={taskToEdit} user={user} groupId={groupId} />
                     <Activity user={user} boardId={boardId} groupId={groupId} taskToEdit={taskToEdit} />
                 </section>
 

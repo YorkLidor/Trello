@@ -36,7 +36,8 @@ export const boardService = {
     saveTaskTitle,
     getNewChecklist,
     sortChecklistTodos,
-    setCoverImage
+    setCoverImage,
+    getTodoEmpty
 }
 
 async function saveTaskTitle(board, groupId, task) {
@@ -221,13 +222,7 @@ function getCoverAttachStyle(url) {
     return { backgroundImage: `url(${url})` }
 }
 
-function sortChecklistTodos(checklist) {
-    if (!checklist.todos) return null
-    const unDone = checklist.todos.filter(todo => !todo.isDone)
-    const done = checklist.todos.filter(todo => todo.isDone)
-    done.push(...unDone)
-    return unDone
-}
+
 
 function getNewChecklist(title) {
     return {
@@ -241,4 +236,20 @@ function setCoverImage(task, attachment) {
     if(attachment) task.cover = { style: getCoverAttachStyle(attachment.url), fullSize: task.cover?.fullSize ? task.cover.fullSize : false, attachmentId: attachment.id }
     else task.cover = null
     return task
+}
+
+function sortChecklistTodos(checklist) {
+    if (!checklist.todos) return null
+    const unDone = checklist.todos.filter(todo => !todo.isDone)
+    const done = checklist.todos.filter(todo => todo.isDone)
+    done.push(...unDone)
+    return unDone
+}
+
+function getTodoEmpty() {
+    return {
+        id: 'td'+utilService.makeId(),
+        title: '',
+        isDone: false
+    }
 }

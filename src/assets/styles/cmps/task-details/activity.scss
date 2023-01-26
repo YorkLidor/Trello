@@ -4,6 +4,7 @@
     .activity-icon {
         @include task-details-field-icon;
         top: 6px;
+        left: -34px;
         height: 23px;
 
         @include for-native-layout-details {

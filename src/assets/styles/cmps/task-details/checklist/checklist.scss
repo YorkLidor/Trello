@@ -1,0 +1,15 @@
+.checklist-list {
+    list-style-type: none;
+}
+
+.todo-done {
+    display: none;
+}
+
+.add-todo-box {
+    margin-inline-start: 40px;
+
+    .add-todo-btn {
+        @include task-nav-button;
+    }
+}

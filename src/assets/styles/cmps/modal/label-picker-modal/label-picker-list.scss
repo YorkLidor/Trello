@@ -47,11 +47,15 @@
         gap: 4px;
         margin-inline-start: 12px;
 
-        .edit-label-button {
-            cursor: pointer;
-            min-height: 32px;
-            min-width: 32px;
-            padding: 8px;
+        .edit-btn-box {
+            padding: 6px;
+
+            .edit-label-button {
+                cursor: pointer;
+                height: 17px;
+                width: 17px;
+                color: #6d7a90;
+            }
 
             &:hover {
                 background-color: $btn-background-cyan;
