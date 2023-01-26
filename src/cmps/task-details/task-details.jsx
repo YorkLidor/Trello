@@ -56,6 +56,8 @@ export function TaskDetails() {
         if (!boardId || !groupId || !taskId) return errorRedirect()
         loadBoard()
         setModal(modalService.addNewModal(modals))
+
+        return () => setStyle({ '--cover-color': '#ffff' })
     }, [])
 
     useEffectUpdate(() => {
@@ -179,6 +181,7 @@ export function TaskDetails() {
                 setStyle({ '--cover-color': color.rgba })
             } catch (err) {
                 console.log(err);
+                setStyle({ '--cover-color': '#ffff' })
             }
         }
     }
