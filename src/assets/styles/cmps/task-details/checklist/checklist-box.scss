@@ -1,5 +1,9 @@
-.checklist-list {
-    list-style-type: none;
+.checklist-box {
+    width: 100%;
+    .checklist-list {
+        width: 100%;
+        list-style-type: none;
+    }
 }
 
 .todo-done {
