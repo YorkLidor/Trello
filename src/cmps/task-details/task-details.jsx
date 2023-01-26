@@ -67,7 +67,6 @@ export function TaskDetails() {
             group.tasks[taskIdx] = taskToEdit
             const newBoard = board
             saveBoard(newBoard)
-
         }
     }, [taskToEdit])
 
@@ -84,6 +83,10 @@ export function TaskDetails() {
             else if (modalPos.top < 0) modalBoxRef.current.style.top = '10px'
         }
     }, [modals])
+
+    useEffectUpdate(() => {
+        setThemeColor()
+    }, [board])
 
     async function loadBoard() {
         try {
