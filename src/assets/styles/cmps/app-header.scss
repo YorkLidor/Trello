@@ -1,6 +1,7 @@
 .app-header-regular {
 
     background-color: $clr1;
+
     .main-nav {
         color: #FFF;
         height: 44px;
@@ -27,12 +28,18 @@
         .logo-container {
             font-family: sans-serif;
 
+
             .logo {
-                padding: 0 rem(10px);
+                display: inline-flex;
+                align-items: center;
+                font-size: 1rem;
+                padding: rem(6px) rem(10px);
                 display: inline-flex;
                 font-weight: 700;
                 align-items: center;
                 gap: rem(4.5px);
+                line-height: 34px;
+
             }
         }
 
