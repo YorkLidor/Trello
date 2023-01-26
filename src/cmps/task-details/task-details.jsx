@@ -67,10 +67,6 @@ export function TaskDetails() {
             group.tasks[taskIdx] = taskToEdit
             const newBoard = board
             saveBoard(newBoard)
-<<<<<<< HEAD
-=======
-
->>>>>>> a94da08697a347448245105aeb12ec955dbb17e8
         }
     }, [taskToEdit])
 
