@@ -71,10 +71,6 @@ export function TaskDetails() {
         }
     }, [taskToEdit])
 
-    useEffect(() => {
-        if (board) setThemeColor()
-    }, [board])
-
     useEffectUpdate(() => {
         if (modalBoxRef.current && modal) {
             const windowWidth = window.visualViewport.width
