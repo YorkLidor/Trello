@@ -67,10 +67,14 @@ export function TaskDetails() {
     useEffectUpdate(() => {
         if (modalBoxRef.current && modal) {
             const windowWidth = window.visualViewport.width
+            const windowHeight = window.visualViewport.height
             const modalPos = utilService.getElementPosition(modalBoxRef.current)
 
             if (modalPos.right > windowWidth) modalBoxRef.current.style.left = (modalPos.left - (modalPos.right - windowWidth) - 20) + 'px'
             else if (modalPos.left < 0) modalBoxRef.current.style.left = '10px'
+
+            if (modalPos.bottom > windowHeight) modalBoxRef.current.style.top = (modalPos.top - (modalPos.bottom - windowWidth) - 20) + 'px'
+            else if (modalPos.top < 0) modalBoxRef.current.style.top = '10px'
         }
     }, [modals])
 

@@ -82,8 +82,8 @@ export async function saveTask(boardId, groupId, task, activity) {
         group.tasks = tasks
 
         board.activities.unshift(activity)
-        await saveBoard(board)
         store.dispatch({ type: SET_ACTIVE_BOARD, board })
+        await saveBoard(board)
     }
     catch (error) {
         console.error('ERROR: Failed to save task', error)
