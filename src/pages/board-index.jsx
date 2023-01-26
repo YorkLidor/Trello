@@ -81,9 +81,9 @@ export function BoardIndex() {
     async function onSaveBoard(board) {
         try {
             onCloseModal()
-            await saveBoard(board)
+            const savedBoard = await saveBoard(board)
             console.info('Board Saved successesfuly')
-            navigate(`/${board._id}`)
+            navigate(`/${savedBoard._id}`)
         } catch (err) {
             console.error(err.name, err.message)
         }

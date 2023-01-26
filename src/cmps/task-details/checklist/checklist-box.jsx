@@ -62,7 +62,7 @@ export function Checklist({ task, checklist, onSaveChecklist }) {
 
 
 
-    return list && <section className="checklist-box">
+    return list && <section className="checklist-container">
         <div className='checklist-title-box flex row'>
             <TbCheckbox className="checklist-logo" />
             <div className="checklist-title-container ">
@@ -72,7 +72,7 @@ export function Checklist({ task, checklist, onSaveChecklist }) {
         <div className="checklist-box flex col">
             <ul className="checklist-list">
                 {
-                    list.todos?.length > 0 && list.todos.map(todo => <li key={todo.id} >
+                    list.todos?.length > 0 && list.todos.map(todo => <li key={todo.id} className='todo-list-box' >
                         <Todo todo={todo} onUpdateTodo={onUpdateTodo} />
                     </li>)
                 }

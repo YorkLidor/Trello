@@ -1,11 +1,12 @@
 .board-header {
-    
+
 
     height: auto;
     padding: 8px 4px 4px 12px;
     position: relative;
     z-index: 0;
     background-color: #0000003d;
+    color: var(--dynamic-text);
 
     .board-title-header {
         cursor: default;
@@ -21,11 +22,19 @@
     .btn-filter,
     .btn-star {
         @include button-filled($dynamic-button, #FFF);
-        align-items: center
+        color: var(--dynamic-text);
+
+        align-items: center;
+
+    }
+
+    .btn-filter svg path {
+        color: var(--dynamic-text);
     }
 
     .btn-menu {
         @include button-filled($dynamic-button, #FFF);
+        color: var(--dynamic-text);
         padding: 8px;
         line-height: 20px;
 
@@ -42,6 +51,7 @@
             width: 16px;
             height: 16px;
             margin-inline-end: rem(4px);
+            color: var(--dynamic-text);
         }
 
         &:hover {
@@ -51,6 +61,7 @@
 
     .btn-delete {
         @include button-filled($red, #FFF);
+
     }
 
     .btn-divider {
