@@ -28,19 +28,22 @@ import { TaskDate } from "../task-date"
 
 import { IoClose } from "react-icons/io5"
 import { FaPager as IconHeader } from 'react-icons/fa'
-import { RiAttachment2 as IconAttachment} from 'react-icons/ri'
+import { RiAttachment2 as IconAttachment } from 'react-icons/ri'
 import { useEffectUpdate } from "../../customHooks/useEffectUpdate"
 import { useEffectInit } from "../../customHooks/useEffectInit"
 import { modalService } from "../../services/modal.service"
 import { TaskCover } from "./task-cover"
 import { Checklists } from "./checklist/checklists"
+import { FastAverageColor } from "fast-average-color"
 
 export function TaskDetails() {
+    const fac = new FastAverageColor()
     const user = useSelector((storeState) => storeState.userModule.user)
     const board = useSelector((storeState) => storeState.boardModule.board)
     const modals = useSelector((storeState) => storeState.appModule.app.modals)
     const [modal, setModal] = useState(null)
     const [taskToEdit, setTaskToEdit] = useState(null)
+    const [style, setStyle] = useState({})
 
     const { boardId, groupId, taskId } = useParams()
     const navigate = useNavigate()
@@ -61,6 +64,7 @@ export function TaskDetails() {
             group.tasks[taskIdx] = taskToEdit
             const newBoard = board
             saveBoard(newBoard)
+            setThemeColor()
         }
     }, [taskToEdit])
 
@@ -162,8 +166,25 @@ export function TaskDetails() {
 
     }
 
+
+    async function setThemeColor() {
+        const { style } = taskToEdit.cover
+        let sourceColor
+        let color
+        if (style.backgroundImage) {
+            sourceColor = style.backgroundImage.slice(4, -1).replace(/"/g, "")
+            console.log('sourceColor:', sourceColor)
+            try {
+                color = await fac.getColorAsync(sourceColor);
+                setStyle({ '--cover-color': color.rgba })
+            } catch (err) {
+                console.log(err);
+            }
+        }
+    }
+
     return (!taskToEdit || !group) ? <Blocks visible={true} height="80" width="80" ariaLabel="blocks-loading" wrapperStyle={{}} wrapperClass="blocks-wrapper" /> : <>
-        <section className="task-window flex" onMouseDown={closePage}>
+        <section className="task-window flex" onMouseDown={closePage} style={style}>
 
             <section className="task-details" onClick={onCloseModal} onMouseDown={(ev) => ev.stopPropagation()}>
                 <TaskCover task={taskToEdit} onToggleModal={onToggleModal} />
