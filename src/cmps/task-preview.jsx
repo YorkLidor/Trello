@@ -48,6 +48,7 @@ export function TaskPreview({ task, groupId, isDragging, isQuickEdit }) {
 
     function getStyle() {
         let style = task?.cover?.style
+        if(style?.backgroundImage) style = { ...style, height: '107.8px' }
         return style
     }
 
