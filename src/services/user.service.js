@@ -1,4 +1,7 @@
+import { func } from "prop-types"
 import { storageService } from "./async-storage.service"
+import { jUser } from "./jsons/board"
+import { utilService } from "./util.service"
 
 const STORAGE_KEY = 'userDB'
 const STORAGE_KEY_LOGGEDIN = 'loggedinUser'
@@ -66,3 +69,17 @@ function getEmptyCredentials() {
     }
 }
 
+function _createUsers(){
+    let users = utilService.loadFromStorage(STORAGE_KEY)
+    if (!users || !users.length) {
+        users = [jUser]
+        users.push({
+            fullname: 'guest',
+            username: 'guest',
+            password: 'guest',
+            imgUrl: "https://res.cloudinary.com/dk2geeubr/image/upload/v1673873845/g2gqvov30haxc8adehvi.jpg",
+            mentions: []
+        })
+        utilService.saveToStorage(STORAGE_KEY, users)
+    }
+}
