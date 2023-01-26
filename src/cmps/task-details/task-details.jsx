@@ -189,7 +189,7 @@ export function TaskDetails() {
                             <a className='button-link add-attachment' href='#' onClick={(ev) => onToggleModal(ev, MODAL_ATTACH)}>Add an attachment</a>
                         </div>
                     }
-                    <Checklists task={taskToEdit} user={user} groupId={groupId} />
+                    {/* <Checklists task={taskToEdit} user={user} groupId={groupId} /> */}
                     <Activity user={user} boardId={boardId} groupId={groupId} taskToEdit={taskToEdit} />
                 </section>
 

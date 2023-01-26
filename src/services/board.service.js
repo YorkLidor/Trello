@@ -33,7 +33,9 @@ export const boardService = {
     copyTask,
     getCoverAttachStyle,
     getCoverColorStyle,
-    saveTaskTitle
+    saveTaskTitle,
+    getNewChecklist,
+    sortChecklistTodos
 }
 
 async function saveTaskTitle(board, groupId, task) {
