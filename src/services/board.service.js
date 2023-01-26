@@ -33,7 +33,11 @@ export const boardService = {
     copyTask,
     getCoverAttachStyle,
     getCoverColorStyle,
-    saveTaskTitle
+    saveTaskTitle,
+    sortChecklistTodos,
+    getNewChecklist,
+    getCoverColorStyle,
+    getCoverAttachStyle,
 }
 
 async function saveTaskTitle(board, groupId, task) {
@@ -41,9 +45,7 @@ async function saveTaskTitle(board, groupId, task) {
     const taskIndex = group.tasks.findIndex(t => t.id === task.id)
     const groupIndex = board.groups.findIndex(g => g.id === groupId)
     board.groups[groupIndex].tasks[taskIndex] = task
-    return board,
-    sortChecklistTodos,
-    getNewChecklist
+    return board
 }
 
 async function copyTask(board, groupId, task) {
@@ -63,9 +65,7 @@ async function removeTask(board, groupId, taskId) {
     group.tasks.splice(taskIndex, 1)
     const groupIndex = board.groups.findIndex(g => g.id === groupId)
     board.groups[groupIndex] = group
-    return board,
-        getCoverColorStyle,
-        getCoverAttachStyle
+    return board
 }
 
 async function query(filterBy = grtDefaultFilter()) {
