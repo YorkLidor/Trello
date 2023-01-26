@@ -25,8 +25,11 @@ export function BoardCreator({ cmpProps }) {
     function onColorClick(ev) {
         ev.preventDefault()
         const { target } = ev
-        const bgColor = target.style.backgroundColor
-        setBoardToEdit(board => ({ ...boardToEdit, style: { backgroundColor: bgColor } }))
+        const style = {
+            backgroundColor: target.style.backgroundColor,
+            backgroundImage: target.style.backgroundImage
+        }
+        setBoardToEdit(board => ({ ...boardToEdit, style: { ...style } }))
     }
 
     function createBoard(ev) {
@@ -61,15 +64,49 @@ export function BoardCreator({ cmpProps }) {
                 >
                     <div className="bg-picker-container">
                         <label className="bg-label">Background</label>
-                        <ul className="bg-img-picker clean-list flex"></ul>
-                        <ul className="bg-color-comtainer clean-list flex justify-between">
-                            <li><button
-                                type="button"
-                                className="btn-clr"
-                                style={{ backgroundColor: '#0079bf' }}
-                                onClick={onColorClick}
-                            >
-                            </button>
+                        <ul className="bg-img-picker clean-list flex">
+                            <li>
+                                <button
+                                    type="button"
+                                    className="btn-img"
+                                    style={{ backgroundImage: 'url(https://res.cloudinary.com/dk2geeubr/image/upload/v1674753160/ztsiw7jboerwrvuvizgl.jpg)' }}
+                                    onClick={onColorClick}
+                                />
+                            </li>
+                            <li>
+                                <button
+                                    type="button"
+                                    className="btn-img"
+                                    style={{ backgroundImage: 'url(https://trello-backgrounds.s3.amazonaws.com/SharedBackground/2048x1152/17c10de18b89807a945d83325a9002eb/photo-1647831597506-3f9071cbbd6f.jpg)' }}
+                                    onClick={onColorClick}
+                                />
+                            </li>
+                            <li>
+                                <button
+                                    type="button"
+                                    className="btn-img"
+                                    style={{ backgroundImage: 'url(https://trello-backgrounds.s3.amazonaws.com/SharedBackground/2386x1600/47f09f0e3910259568294477d0bdedac/photo-1576502200916-3808e07386a5.jpg)' }}
+                                    onClick={onColorClick}
+                                />
+                            </li>
+                            <li>
+                                <button
+                                    type="button"
+                                    className="btn-img"
+                                    style={{ backgroundImage: 'url(https://res.cloudinary.com/dk2geeubr/image/upload/v1674756348/aj6jsv2ifzu6tq0z9pua.jpg)' }}
+                                    onClick={onColorClick}
+                                />
+                            </li>
+                        </ul>
+                        <ul className="bg-color-container clean-list flex justify-between">
+                            <li>
+                                <button
+                                    type="button"
+                                    className="btn-clr"
+                                    style={{ backgroundColor: '#0079bf' }}
+                                    onClick={onColorClick}
+                                >
+                                </button>
                             </li>
                             <li>
                                 <button
