@@ -549,7 +549,7 @@ export const jBoards = [
                      "l103",
                      "l104"
                   ],
-                  "dueDate":16156215211,
+                  "dueDate":{ date: 16156215211,  done: false },
                   "byMember":{
                      "_id":"u101",
                      "username":"Tal",
@@ -811,7 +811,7 @@ export const jBoards = [
                      "l103",
                      "l104"
                   ],
-                  "dueDate":16156215211,
+                  "dueDate": {date: 16156215211,  done: false },
                   "byMember":{
                      "_id":"u101",
                      "username":"Tal",
@@ -1252,7 +1252,7 @@ export const jBoards = [
                "labelIds": [
                   "l101"
                ],
-               "dueDate": 16156215211,
+               "dueDate": {date: 16156215211, done: false },
                "byMember": {
                   "_id": "u101",
                   "username": "Tal",
