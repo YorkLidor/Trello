@@ -16,7 +16,7 @@ export function MemberList({ members, toggleModal, isBoardCall = false }) {
 
     return <div className="info-tab flex-col">
         <HiOutlineUser className='member-native-icon' />
-        <span className="members-label">Members</span>
+        {!isBoardCall && <span className="members-label">Members</span>}
 
         <div className="task-members-box flex row">
             {members.length > 0 && members.map(member =>
@@ -28,7 +28,7 @@ export function MemberList({ members, toggleModal, isBoardCall = false }) {
                     className='list-member'
                 />)}
 
-            {(members.length > 0 && !isBoardCall)&& <button
+            {(members.length > 0 && !isBoardCall) && <button
                 key='task-member-add'
                 className='task-member task-member-add'
                 onClick={(ev) => toggleModal(ev, MODAL_MEMBERS)}

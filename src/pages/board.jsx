@@ -46,8 +46,8 @@ export function Board() {
     }, [])
 
     useEffectUpdate(() => {
-        document.body.style.backgroundColor = board.style?.backgroundColor
-        document.body.style.backgroundImage = board.style?.backgroundImage
+        document.body.style.backgroundColor = board?.style?.backgroundColor
+        document.body.style.backgroundImage = board?.style?.backgroundImage
     }, [board])
 
     async function onDeleteBoard() {
@@ -98,18 +98,39 @@ export function Board() {
             ev.stopPropagation()
             element = ev.target
         }
-        if (ev?.target.dataset?.type === 'icon') element = ev.target.parentNode
+        if (ev?.target.dataset?.type === 'icon' || modalType === MODAL_MEMBER_OPEN) element = ev.target.parentNode
 
         let props
-        if (modalType === MODAL_LABELS) props = { groupId, task }
-        else if (modalType === MODAL_MEMBERS) props = { groupId, task }
-        else if (modalType === MODAL_MEMBER_OPEN) props = { member: member, user, boardId, groupId }
-        else if (modalType === MODAL_TASK_COVER) props = { user, boardId, groupId, task }
-        else if (modalType === MODAL_TASK_DATE) props = { user, boardId, groupId, task }
+        let pos = utilService.getElementPosition(element)
 
-        const pos = utilService.getElementPosition(element)
-        elModal.current.style.top = pos.top + 'px'
-        elModal.current.style.left = pos.left + 'px'
+        switch (modalType) {
+            case MODAL_LABELS:
+            case MODAL_MEMBERS:
+                props = { groupId, task }
+                elModal.current.style.top = pos.top + 'px'
+                elModal.current.style.left = pos.left + 'px'
+                break;
+            case MODAL_MEMBER_OPEN:
+                props = { member, user, boardId, groupId }
+                elModal.current.style.top = pos.bottom - 6 + 'px'
+                elModal.current.style.right = '4px'
+                break;
+            case MODAL_TASK_COVER:
+                props = { user, boardId, groupId, task }
+                elModal.current.style.top = pos.top + 'px'
+                elModal.current.style.left = pos.left + 'px'
+                break;
+            case MODAL_TASK_DATE:
+                props = { user, boardId, groupId, task }
+                elModal.current.style.top = pos.top + 'px'
+                elModal.current.style.left = pos.left + 'px'
+                break;
+
+            default:
+                break;
+        }
+
+
 
         if (window.visualViewport.width < 550) {
             elModal.current.style.left = '0px'
