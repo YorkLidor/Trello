@@ -1,6 +1,7 @@
 .modal-container{
     position: fixed;
     width: fit-content;
+    z-index: 15;
     &:has(.attach-viewer-modal) {
         height: 100%;
         width: 100%;
