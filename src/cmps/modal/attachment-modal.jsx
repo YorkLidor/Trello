@@ -33,7 +33,7 @@ export function AttachmentModal({ id, cmpProps }) {
 
     return <div className='attach-modal-box'>
         <ModalHeader id={id} header={'Attach from...'} allowBack={false} />
-        <ul className="attachment-list">
+        <ul className="attachment-list-modal">
             <li>
                 <label htmlFor='uploadAttach' className='attachment-modal-option'>Computer</label>
                 <input type='file' id='uploadAttach' name='uploadAttach' onChange={uploadAttach} />

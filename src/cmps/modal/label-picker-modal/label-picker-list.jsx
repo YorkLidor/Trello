@@ -73,6 +73,6 @@ export function LabelPickerList({ member, boardId, task, groupId, labels, onEdit
                 })
             }
         </ul>
-        <button className='create-label' onClick={onEditLabel}>Create a new label</button>
+        <button className='create-label' onClick={() => onEditLabel()}>Create a new label</button>
     </>
 }
