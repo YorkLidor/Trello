@@ -12,7 +12,7 @@ import { Audio } from 'react-loader-spinner'
 import { useSelector } from "react-redux";
 import { TaskQuickEdit } from "../cmps/task-quick-edit";
 import { modalService } from "../services/modal.service";
-import { Modal, MODAL_LABELS } from "../cmps/modal/modal";
+import { Modal, MODAL_LABELS, MODAL_MEMBERS, MODAL_TASK_COVER, MODAL_TASK_DATE } from "../cmps/modal/modal";
 import { utilService } from "../services/util.service";
 import { closeModal, toggleModal } from "../store/actions/app.actions";
 
@@ -80,15 +80,24 @@ export function Board() {
         closeModal(modals, modal.id)
     }
 
-    function onToggleModal(element, modalType, groupId, task, extras = null) {
+    function onToggleModal(ev, modalType, groupId, task) {
         if (!modal) return
+        let element
+        if (ev) {
+            ev.stopPropagation()
+            element = ev.target
+        }
+        if (ev?.target.dataset?.type === 'icon') element = ev.target.parentNode
 
         let props
         if (modalType === MODAL_LABELS) props = { groupId, task }
+        else if (modalType === MODAL_MEMBERS) props = { groupId, task }
+        else if (modalType === MODAL_TASK_COVER) props = { user, boardId, groupId, task }
+        else if (modalType === MODAL_TASK_DATE) props = { user, boardId, groupId, task }
 
-        const pos = utilService.getElementPosition(element.current)
+        const pos = utilService.getElementPosition(element)
         elModal.current.style.top = pos.top + 'px'
-        elModal.current.style.left = pos.right + 'px'
+        elModal.current.style.left = pos.left + 'px'
 
         if (window.visualViewport.width < 550) {
             elModal.current.style.left = '0px'

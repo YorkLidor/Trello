@@ -11,10 +11,11 @@ import { useNavigate } from "react-router-dom";
 import { saveBoard } from "../store/actions/board.actions";
 import { boardService } from "../services/board.service";
 import { useEffect, useState } from "react";
-import { MODAL_LABELS } from "./modal/modal";
+import { MODAL_LABELS, MODAL_MEMBERS, MODAL_TASK_COVER, MODAL_TASK_DATE } from "./modal/modal";
 import { useRef } from "react";
+import { closeModal } from "../store/actions/app.actions";
 
-export function TaskQuickEdit({ task, groupId, pos, onToggleModal ,onCloseModal}) {
+export function TaskQuickEdit({ task, groupId, pos, onToggleModal, onCloseModal }) {
     const navigate = useNavigate()
     const board = useSelector(state => state.boardModule.board)
     const [classIsFadeIn, setClassIsFadeIn] = useState(false)
@@ -25,6 +26,8 @@ export function TaskQuickEdit({ task, groupId, pos, onToggleModal ,onCloseModal}
         setTimeout(() => {
             setClassIsFadeIn(true)
         }, 50);
+
+        return onCloseModal
     }, [])
 
     function onCloseQuickEdit(ev) {
@@ -50,6 +53,10 @@ export function TaskQuickEdit({ task, groupId, pos, onToggleModal ,onCloseModal}
         }
     }
 
+    function onOptionClick(ev, modalType) {
+        onToggleModal(ev, modalType, groupId, task)
+    }
+
     return <div className="quick-edit-container " onClick={onCloseQuickEdit} >
         <div className="task-preview-container quick-edit-task" style={taskPos} ref={elTaskPreview}>
             <TaskPreview
@@ -65,22 +72,22 @@ export function TaskQuickEdit({ task, groupId, pos, onToggleModal ,onCloseModal}
                     <span>Open card</span>
                 </button>
 
-                <button onClick={(ev) => onToggleModal(elTaskPreview, MODAL_LABELS, groupId, task)}>
-                    <BiPurchaseTagAlt style={{ transform: `rotate(-90deg)` }} />
-                    <span>Edit labels</span>
+                <button onClick={(ev) => onOptionClick(ev, MODAL_LABELS)}>
+                    <BiPurchaseTagAlt data-type="icon" style={{ transform: `rotate(-90deg)` }} type="icon" />
+                    <span data-type="icon">Edit labels</span>
                 </button>
 
-                <button href="#">
-                    <BsPerson />
-                    <span>Change members</span>
+                <button onClick={(ev) => onOptionClick(ev, MODAL_MEMBERS)}>
+                    <BsPerson data-type="icon" />
+                    <span data-type="icon">Change members</span>
                 </button>
 
-                <button href="#">
-                    <BsSquareHalf style={{ transform: `rotate(-90deg)` }} />
-                    <span>Change cover</span>
+                <button onClick={(ev) => onOptionClick(ev, MODAL_TASK_COVER)}>
+                    <BsSquareHalf data-type="icon" style={{ transform: `rotate(-90deg)` }} />
+                    <span data-type="icon">Change cover</span>
                 </button>
 
-                <button href="#">
+                <button >
                     <AiOutlineArrowRight />
                     <span>Move</span>
                 </button>
@@ -90,9 +97,9 @@ export function TaskQuickEdit({ task, groupId, pos, onToggleModal ,onCloseModal}
                     <span>Copy</span>
                 </button>
 
-                <button href="#">
-                    <MdOutlineWatchLater />
-                    <span>Edit dates</span>
+                <button onClick={(ev) => onOptionClick(ev, MODAL_TASK_DATE)}>
+                    <MdOutlineWatchLater data-type="icon" />
+                    <span data-type="icon">Edit dates</span>
                 </button>
 
                 <button href="#" onClick={() => { onRemoveTask(board, groupId, task.id); onCloseQuickEdit() }}>
