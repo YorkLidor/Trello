@@ -203,7 +203,7 @@ export const jBoard = {
                ],
                "memberIds": ["u101"],
                "labelIds": ["l101", "l102", "l103", "l104"],
-               "dueDate": 16156215211,
+               "dueDate": { date: 16156215211, done: false },
                "byMember": {
                   "_id": "u101",
                   "username": "Tal",
@@ -265,16 +265,16 @@ export const jBoard = {
 }
 
 export const jUser = {
-    "_id": "u101",
-    "fullname": "Matan Adi",
-    "username": "matan@gmail.com",
-    "password": "matan123",
-    "imgUrl": "http://some-img.jpg",
-    "mentions": [{ //optional
-        "id": "m101",
-        "boardId": "m101",
-        "taskId": "t101"
-    }]
+   "_id": "u101",
+   "fullname": "Matan Adi",
+   "username": "matan@gmail.com",
+   "password": "matan123",
+   "imgUrl": "http://some-img.jpg",
+   "mentions": [{ //optional
+      "id": "m101",
+      "boardId": "m101",
+      "taskId": "t101"
+   }]
 }
 
 // <LabelPicker info={} onUpdate={} />
@@ -520,7 +520,7 @@ export const jBoards = [{
                ],
                "memberIds": ["u101"],
                "labelIds": ["l101", "l102", "l103", "l104"],
-               "dueDate": 16156215211,
+               "dueDate": { date: 16156215211, done: false },
                "byMember": {
                   "_id": "u101",
                   "username": "Tal",
@@ -740,7 +740,7 @@ export const jBoards = [{
                ],
                "memberIds": ["u101", "u102", "u104"],
                "labelIds": ["l101", "l102", "l103", "l104"],
-               "dueDate": 16156215211,
+               "dueDate": { date: 16156215211, done: false },
                "byMember": {
                   "_id": "u101",
                   "username": "Tal",
@@ -1054,7 +1054,7 @@ export const jBoards = [{
                "labelIds": [
                   "l101"
                ],
-               "dueDate": 16156215211,
+               "dueDate": {date: 16156215211, done: false},
                "byMember": {
                   "_id": "u101",
                   "username": "Tal",
