@@ -1,8 +1,9 @@
 .app-header-regular {
-
-    background-color: $clr1;
+    --dynamic-background: #026AA7;
+    background-color: hsla(0,0%,0%,0.16);
 
     .main-nav {
+        background-color: var(--dynamic-background);
         color: #FFF;
         height: 44px;
 
