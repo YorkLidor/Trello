@@ -1,10 +1,13 @@
-import { Todo } from './todo-preview'
-import { TbCheckbox } from 'react-icons/tb'
 import { useRef } from 'react'
 import { useState } from 'react'
+
+import { Todo } from './todo-preview'
 import { boardService } from '../../../services/board.service'
 
-export function Checklist({ task, checklist, onSaveChecklist }) {
+import { TbCheckbox } from 'react-icons/tb'
+import { MODAL_CHECKLIST_DELETE } from '../../modal/modal'
+
+export function Checklist({ task, checklist, onSaveChecklist, onToggleModal }) {
     const [list, setChecllist] = useState(checklist)
     const [editMode, setEditMode] = useState(false)
 
@@ -62,12 +65,13 @@ export function Checklist({ task, checklist, onSaveChecklist }) {
 
 
 
-    return list && <section className="checklist-container">
+    return list && <section className="checklist-container" key={list.id}>
         <div className='checklist-title-box flex row'>
             <TbCheckbox className="checklist-logo" />
-            <div className="checklist-title-container ">
+            <div className="checklist-title-container flex row">
                 <input ref={elInputRef} data-state={false} className="checklist-title" defaultValue={list.title} onFocus={(ev) => handleEdit(ev, true)} onBlur={(ev) => !ev.target.dataset.state ? '' : handleEdit(ev, false)} />
             </div>
+            <button className='remove-checklist' onClick={(ev) => onToggleModal(ev, MODAL_CHECKLIST_DELETE, { checklist })}>Delete</button>
         </div>
         <div className="checklist-box flex col">
             <ul className="checklist-list">

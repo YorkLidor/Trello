@@ -37,7 +37,8 @@ export const boardService = {
     getNewChecklist,
     sortChecklistTodos,
     setCoverImage,
-    getTodoEmpty
+    getTodoEmpty,
+    removeChecklist
 }
 
 async function saveTaskTitle(board, groupId, task) {
@@ -162,7 +163,7 @@ function getEmptyLabel() {
 }
 
 async function saveBoardLabel(board, newLabel) {
-    
+
     const labelId = newLabel.id ? newLabel.id : 'l' + utilService.makeId()
     board = newLabel.id ?
         { ...board, labels: board.labels.map(label => label.id === labelId ? newLabel : label) }
@@ -233,7 +234,7 @@ function getNewChecklist(title) {
 }
 
 function setCoverImage(task, attachment) {
-    if(attachment) task.cover = { style: getCoverAttachStyle(attachment.url), fullSize: task.cover?.fullSize ? task.cover.fullSize : false, attachmentId: attachment.id }
+    if (attachment) task.cover = { style: getCoverAttachStyle(attachment.url), fullSize: task.cover?.fullSize ? task.cover.fullSize : false, attachmentId: attachment.id }
     else task.cover = null
     return task
 }
@@ -248,8 +249,13 @@ function sortChecklistTodos(checklist) {
 
 function getTodoEmpty() {
     return {
-        id: 'td'+utilService.makeId(),
+        id: 'td' + utilService.makeId(),
         title: '',
         isDone: false
     }
+}
+
+function removeChecklist(task, checklist) {
+    task.checklists = task.checklists.filter(list => list.id !== checklist.id)
+    return task
 }

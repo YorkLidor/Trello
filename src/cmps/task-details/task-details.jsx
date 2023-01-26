@@ -13,7 +13,7 @@ import { SET_ACTIVE_BOARD } from "../../store/reducers/board.reducer"
 
 import {
     MODAL_ATTACH, MODAL_LABELS, MODAL_ATTACH_EDIT, MODAL_CHECKLIST,
-    MODAL_ATTACH_OPEN, MODAL_MEMBERS, MODAL_MEMBER_OPEN, MODAL_TASK_DATE, MODAL_TASK_COVER
+    MODAL_ATTACH_OPEN, MODAL_MEMBERS, MODAL_MEMBER_OPEN, MODAL_TASK_DATE, MODAL_TASK_COVER, MODAL_CHECKLIST_DELETE
 } from '../modal/modal.jsx'
 
 import { AttachmentList } from "./attachment/attachment-list"
@@ -35,7 +35,6 @@ import { modalService } from "../../services/modal.service"
 import { TaskCover } from "./task-cover"
 import { Checklists } from "./checklist/checklists"
 import { FastAverageColor } from "fast-average-color"
-import { useEffect } from "react"
 
 export function TaskDetails() {
     const fac = new FastAverageColor()
@@ -157,6 +156,7 @@ export function TaskDetails() {
         else if (modalType === MODAL_TASK_DATE) props = { user, boardId, groupId, task: taskToEdit }
         else if (modalType === MODAL_TASK_COVER) props = { user, boardId, groupId, task: taskToEdit }
         else if (modalType === MODAL_CHECKLIST) props = { user, boardId, groupId, task: taskToEdit, modals }
+        else if (modalType === MODAL_CHECKLIST_DELETE) props = { user, boardId, groupId, task: taskToEdit , checklist: extras.checklist }
 
         const pos = utilService.getElementPosition(element)
         modalBoxRef.current.style.top = pos.bottom + 'px'
@@ -222,7 +222,7 @@ export function TaskDetails() {
                             <a className='button-link add-attachment' href='#' onClick={(ev) => onToggleModal(ev, MODAL_ATTACH)}>Add an attachment</a>
                         </div>
                     }
-                    <Checklists task={taskToEdit} user={user} groupId={groupId} />
+                    <Checklists task={taskToEdit} user={user} groupId={groupId} onToggleModal={onToggleModal} />
                     <Activity user={user} boardId={boardId} groupId={groupId} taskToEdit={taskToEdit} />
                 </section>
 

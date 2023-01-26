@@ -2,9 +2,23 @@
     position: absolute;
     left: 23px;
 
-    & > .checkbox {
+    .checkbox {
         height: 18px;
         width: 18px;
+
+        &.checkbox-checked {
+            color: $button-filled;
+            box-shadow: inset 0 0 0 2px #0079bf;
+
+            &:hover {
+                color: #5AA4CF;
+            }
+        }
+
+        &.checkbox-unchecked {
+            color: transparent;
+            box-shadow: inset 0 0 0 2px #dfe1e6;
+        }
     }
 }
 
@@ -16,7 +30,7 @@
     display: none;
 }
 
-.todo-title{
+.todo-title {
     width: 100%;
     font-size: 14px;
 }
