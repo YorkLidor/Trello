@@ -4,8 +4,8 @@ import { useNavigate } from "react-router-dom"
 import { login } from "../store/actions/user.actions"
 
 const guest = {
-    username: 'guest',
-    password: 'guest'
+    username: 'gal',
+    password: 'gal'
 }
 export function HomePage() {
     const navigate = useNavigate()

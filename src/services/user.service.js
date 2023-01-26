@@ -76,9 +76,9 @@ function _createUsers(){
     if (!users || !users.length) {
         users = [jUser]
         users.push({
-            fullname: 'guest',
-            username: 'guest',
-            password: 'guest',
+            fullname: 'Gal Zohar',
+            username: 'gal',
+            password: 'gal',
             imgUrl: "https://res.cloudinary.com/dk2geeubr/image/upload/v1673873845/g2gqvov30haxc8adehvi.jpg",
             mentions: []
         })

@@ -39,7 +39,7 @@ export function Login() {
             <h1 className="login-title">Log in to Shmello</h1>
             <input
                 className="input-email"
-                type="email"
+                type="text"
                 name="username"
                 placeholder="Enter email"
                 onChange={handleChange}
