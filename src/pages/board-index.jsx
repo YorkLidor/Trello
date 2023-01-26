@@ -32,6 +32,7 @@ export function BoardIndex() {
         onLoadBoards()
         return onCloseModal
     }, [])
+    
 
     function onToggleStaredBoard(ev, board) {
         ev.stopPropagation()
@@ -82,6 +83,7 @@ export function BoardIndex() {
             onCloseModal()
             await saveBoard(board)
             console.info('Board Saved successesfuly')
+            navigate(`/${board._id}`)
         } catch (err) {
             console.error(err.name, err.message)
         }

@@ -1,7 +1,7 @@
 import { BsArrowUpRight } from 'react-icons/bs'
 import { MODAL_ATTACH_EDIT, MODAL_ATTACH_OPEN } from '../../modal/modal'
 
-export function AttachmentPreview({ attachment, toggleModal, removeAttachment, onTaskUpdateCover }) {
+export function AttachmentPreview({ task, attachment, toggleModal, removeAttachment, onTaskUpdateCover }) {
 
     function onEditAttachment(ev, attachment) {
         ev.stopPropagation()
@@ -12,10 +12,14 @@ export function AttachmentPreview({ attachment, toggleModal, removeAttachment, o
         if (ev) ev.stopPropagation()
         toggleModal(ev, MODAL_ATTACH_OPEN, { attachment })
     }
-    
+
     function setAttachAsCover(ev, attachment) {
         if (ev) ev.stopPropagation()
         onTaskUpdateCover(attachment)
+    }
+    function unsetAttachAsCover(ev){
+        if (ev) ev.stopPropagation()
+        onTaskUpdateCover(null)
     }
 
     return attachment && <div className="attachment-preview">
@@ -33,7 +37,11 @@ export function AttachmentPreview({ attachment, toggleModal, removeAttachment, o
                 <span className='attachment-info-break' />
                 <span className="action-attachment" onClick={(ev) => onEditAttachment(ev, attachment)}>Edit</span>
             </span>
-            <span className='make-attach-cover' onClick={(ev)=>setAttachAsCover(ev, attachment)}>Make Cover</span>
+            {
+                (task.cover?.attachmentId === attachment.id) ?
+                <span className='make-attach-cover' onClick={unsetAttachAsCover}>Remove Cover</span> :
+                <span className='make-attach-cover' onClick={(ev) => setAttachAsCover(ev, attachment)}>Make Cover</span>
+            }
         </p>
 
     </div>
