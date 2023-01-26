@@ -8,12 +8,19 @@ import { ModalHeader } from "./modal-header";
 export function ChecklistModal({ id, cmpProps }) {
     const { boardId, groupId, task, user, modals } = cmpProps
     const elTitleInputRef = useRef()
-
+    const debounceRef = useRef()
+    
     async function onSave() {
-        if(!task.checklists) task.checklists = []
+        if (debounceRef.current || !elTitleInputRef.current.value.length) return
+        if (!task.checklists) task.checklists = []
         task.checklists.unshift(boardService.getNewChecklist(elTitleInputRef.current.value))
-        await saveTask(boardId, groupId, task, boardService.getActivity(user, task, `${user} added new checklist ${elTitleInputRef.current.value}`))
         closeModal(modals, id)
+
+        debounceRef.current = setTimeout(() => {
+            debounceRef.current = null
+        }, 1500)
+
+        await saveTask(boardId, groupId, task, boardService.getActivity(user, task, `${user} added new checklist ${elTitleInputRef.current.value}`))
     }
 
     return <div className='add-checklist-box'>

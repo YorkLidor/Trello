@@ -1,9 +1,6 @@
 import { LabelsPicker } from "./label-picker-modal/label-picker"
 import { AttachmentModal } from "./attachment-modal"
-
-import { useSelector } from "react-redux"
 import { BoardCreator } from "../board-creator"
-
 import { AttachmentEditModal } from "./attachment-edit-modal"
 import { AttachmentView } from "../task-details/attachment/attachment-view"
 import { MemberPicker } from "./member-picker-modal"
@@ -12,6 +9,7 @@ import { TaskQuickEdit } from "./task-quick-edit-modl"
 import { DateModal } from "./date-modal"
 import { CoverModal } from "./cover-modal"
 import { ChecklistModal } from "./checklist-modal"
+import { DeleteChecklistModal } from './checklist-delete-modal'
 
 export const MODAL_LABELS = 'MODAL_LABELS'
 export const MODAL_ATTACH = 'MODAL_ATTACH'
@@ -24,6 +22,7 @@ export const MODAL_TASK_QUICK_EDIT = 'MODAL_TASK_QUICK_EDIT'
 export const MODAL_TASK_DATE = 'MODAL_TASK_DATE'
 export const MODAL_TASK_COVER = 'MODAL_TASK_COVER'
 export const MODAL_CHECKLIST = 'MODAL_CHECKLIST'
+export const MODAL_CHECKLIST_DELETE = 'MODAL_CHECKLIST_DELETE'
 
 
 export function Modal({ modal, cmpProps, cmpType, className }) {
@@ -56,6 +55,8 @@ function GetCmp({ id, cmpProps, cmpType }) {
             return <CoverModal cmpProps={cmpProps} id={id} />
         case MODAL_CHECKLIST:
             return <ChecklistModal cmpProps={cmpProps} id={id} />
+        case MODAL_CHECKLIST_DELETE:
+            return <DeleteChecklistModal cmpProps={cmpProps} id={id} />
         default:
             return ''
     }
