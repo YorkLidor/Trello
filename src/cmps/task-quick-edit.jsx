@@ -10,14 +10,7 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { saveBoard } from "../store/actions/board.actions";
 import { boardService } from "../services/board.service";
-import { useRef, useState } from "react";
-import { utilService } from "../services/util.service";
-import { modalService } from "../services/modal.service";
-import { toggleModal } from "../store/actions/app.actions";
-import { MODAL_LABELS, Modal } from "../cmps/modal/modal";
-import { useEffect } from "react";
-
-
+import { useState } from "react";
 
 export function TaskQuickEdit({ task, groupId, pos }) {
     const navigate = useNavigate()
@@ -78,45 +71,49 @@ export function TaskQuickEdit({ task, groupId, pos }) {
 
             <div className={`quick-edit-buttons ${classIsFadeIn ? 'fade-in' : ''}`} onClick={(ev) => ev.stopPropagation()}>
 
-                <a href="#" onClick={() => { navigate(`/${board._id}/${groupId}/${task.id}`); onCloseQuickEdit() }}>
+                <button href="#" onClick={() => { navigate(`/${board._id}/${groupId}/${task.id}`); onCloseQuickEdit() }}>
                     <BsCardHeading />
                     <span>Open card</span>
-                </a>
+                </button>
 
-                <a href="#">
+                <button href="#">
                     <BiPurchaseTagAlt style={{ transform: `rotate(-90deg)` }} />
                     <span>Edit labels</span>
-                </a>
+                </button>
 
+<<<<<<< HEAD
                 <a href="#" onClick={(ev) => onToggleModal(ev, MODAL_LABELS)}>
+=======
+                <button href="#">
+>>>>>>> d873beb2ba471d0e9a757655e3158383dd121231
                     <BsPerson />
                     <span>Change members</span>
-                </a>
+                </button>
 
-                <a href="#">
+                <button href="#">
                     <BsSquareHalf style={{ transform: `rotate(-90deg)` }} />
                     <span>Change cover</span>
-                </a>
+                </button>
 
-                <a href="#">
+                <button href="#">
                     <AiOutlineArrowRight />
                     <span>Move</span>
-                </a>
+                </button>
 
-                <a href="#" onClick={() => { onCopyTask(board, groupId, task); onCloseQuickEdit() }}>
+                <button href="#" onClick={() => { onCopyTask(board, groupId, task); onCloseQuickEdit() }}>
                     <BsCardHeading />
                     <span>Copy</span>
-                </a>
+                </button>
 
-                <a href="#">
+                <button href="#">
                     <MdOutlineWatchLater />
                     <span>Edit dates</span>
-                </a>
+                </button>
 
-                <a href="#" onClick={() => { onRemoveTask(board, groupId, task.id); onCloseQuickEdit() }}>
+                <button href="#" onClick={() => { onRemoveTask(board, groupId, task.id); onCloseQuickEdit() }}>
                     <BsArchive />
                     <span>Archive</span>
-                </a>
+                </button>
             </div>
         </div>
         <div className="modal-container" ref={elModal}>

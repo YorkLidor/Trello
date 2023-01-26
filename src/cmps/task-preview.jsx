@@ -1,8 +1,10 @@
-import { useRef,useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
+import { useForm } from "../customHooks/useForm"
 import { boardService } from "../services/board.service"
 import { utilService } from "../services/util.service"
+import { saveBoard } from "../store/actions/board.actions"
 import { SET_TASK_QUICK_EDIT } from "../store/reducers/app.reducer"
 import { store } from "../store/store"
 
@@ -12,11 +14,32 @@ import { TaskPreviewIcons } from "./task-preview-icons"
 
 export function TaskPreview({ task, groupId, isDragging, isQuickEdit }) {
     const board = useSelector((storeState) => storeState.boardModule.board)
+    const [taskToSet, setTaskTitleToSet, handleChange] = useForm({ title: task.title })
     const [isEditBtnShow, setIsEditBtnShow] = useState('')
     const elTaskPreview = useRef()
     const navigate = useNavigate()
     const taskStyle = getStyle()
     const taskLabels = getLabels()
+
+    const textAreaRef = useRef()
+
+    useEffect(() => {
+        textAreaRef.current?.select()
+    }, []);
+
+    async function onChaneTitle(ev) {
+        ev.preventDefault()
+        ev.stopPropagation()
+        try {
+            task.title = taskToSet.title
+            const boardToSave = await boardService.saveTaskTitle(board, groupId, task)
+            store.dispatch({ type: SET_TASK_QUICK_EDIT, taskQuickEdit: null })
+            await saveBoard(boardToSave)
+
+        } catch (err) {
+            console.log('cannot set new title', err)
+        }
+    }
 
 
     function getLabels() {
@@ -68,9 +91,32 @@ export function TaskPreview({ task, groupId, isDragging, isQuickEdit }) {
                 {taskLabels && <TaskLabels labels={taskLabels} board={board} />}
 
                 {/* BODY */}
-                <section className="task-body" >
-                    <p>{task.title}</p>
-                </section>
+                {!isQuickEdit && (
+                    <section className="task-body" >
+                        <p>{task.title}</p>
+                    </section>
+                )
+                }
+
+                {isQuickEdit && (
+                    <form onSubmit={onChaneTitle} className="add-card-form-container" onClick={(ev) => ev.stopPropagation()}>
+                        <div className="task-preview-container">
+                            <div className="textarea-container">
+                                <textarea
+                                    ref={textAreaRef}
+                                    onChange={handleChange}
+                                    value={taskToSet.title}
+                                    name='title'
+                                    placeholder="Enter a title for this card..."
+                                    className="form-textarea"
+                                >
+                                </textarea>
+                            </div>
+                        </div>
+                        <button className="add-btn" type="submit">Save</button>
+                    </form>
+                )
+                }
 
                 {/* ICONS */}
                 <TaskPreviewIcons board={board} task={task} />
