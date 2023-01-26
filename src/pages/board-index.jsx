@@ -72,7 +72,7 @@ export function BoardIndex() {
 
     async function onSaveBoard(board) {
         try {
-            // closeModal()
+            closeModal()
             await saveBoard(board)
             console.info('Board Saved successesfuly')
         } catch (err) {
