@@ -20,18 +20,26 @@ function getById(userId) {
 }
 
 async function login({ username, password }) {
-    return storageService.query(STORAGE_KEY)
-        .then(users => {
-            const user = users.find(user => user.username === username)
-            if (user) return _setLoggedinUser(user)
-            else return Promise.reject('Invalid login')
-        })
+    let user
+    try {
+        const users = await storageService.query(STORAGE_KEY)
+        user = users.find(user => user.username === username)
+        if (!user) throw new Error('Invalid login')
+        return user
+    } catch (err) {
+        return err
+    }
+
 }
 
 async function signup({ username, password, fullname, imgUrl = "http://some-img.jpg", mentions = [] }) {
     const user = { username, password, fullname, imgUrl, mentions }
-    return storageService.post(STORAGE_KEY, user)
-        .then(_setLoggedinUser)
+    try {
+        const signedUser = await storageService.post(STORAGE_KEY, user)
+        _setLoggedinUser(signedUser)
+    } catch (err) {
+        return err
+    }
 }
 
 function logout() {

@@ -2,7 +2,7 @@ import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { useForm } from "../customHooks/useForm"
 import { userService } from "../services/user.service"
-import { signup } from "../store/actions/user.actions"
+import { login } from "../store/actions/user.actions"
 import logo from "../assets/img/smello-no-bg.png"
 
 export function Login() {
@@ -15,7 +15,7 @@ export function Login() {
         console.log('user:', user)
         if (!user.username || !user.password) return
         try {
-            await signup(user)
+            await login(user)
             navigate('/')
         } catch (err) {
             console.error(err.massage)
