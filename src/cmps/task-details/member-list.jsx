@@ -6,8 +6,10 @@ import { HiOutlineUser } from 'react-icons/hi'
 import { AiOutlinePlus } from 'react-icons/ai'
 
 export function MemberList({ members, toggleModal }) {
+
     function onMemberClick(ev, member) {
         ev.stopPropagation()
+        if (!member) return
         toggleModal(ev, MODAL_MEMBER_OPEN, { member })
     }
 
@@ -17,9 +19,20 @@ export function MemberList({ members, toggleModal }) {
         <span className="members-label">Members</span>
 
         <div className="task-members-box flex row">
-            {members.length > 0 && members.map(member => <img key={member._id} alt={member.fullname} src={member.imgUrl} onClick={(ev) => onMemberClick(ev, member)} className='list-member' />)}
+            {members.length > 0 && members.map(member =>
+                <img
+                    key={member._id}
+                    alt={member.fullname}
+                    src={member.imgUrl}
+                    onClick={(ev) => onMemberClick(ev, member)}
+                    className='list-member'
+                />)}
 
-            {members.length > 0 && <button key='task-member-add' className='task-member task-member-add' onClick={(ev) => toggleModal(ev, MODAL_MEMBERS)}>
+            {members.length > 0 && <button
+                key='task-member-add'
+                className='task-member task-member-add'
+                onClick={(ev) => toggleModal(ev, MODAL_MEMBERS)}
+            >
                 <AiOutlinePlus className='task-member-add-icon' />
             </button>}
         </div>
