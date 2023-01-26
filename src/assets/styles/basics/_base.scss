@@ -25,7 +25,8 @@ body {
     margin: auto;
     background-color: #fff;
     color: #FFF;
-    // overflow-y: hidden;
+    background-position: center;
+    background-size: cover;
 
     &>* {
         height: calc(100% - 44px);
