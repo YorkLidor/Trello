@@ -5,7 +5,7 @@ import { utilService } from "./util.service"
 
 const STORAGE_KEY = 'userDB'
 const STORAGE_KEY_LOGGEDIN = 'loggedinUser'
-
+_createUsers()
 
 export const userService = {
     getById,
@@ -28,9 +28,11 @@ async function login({ username, password }) {
         const users = await storageService.query(STORAGE_KEY)
         user = users.find(user => user.username === username)
         if (!user) throw new Error('Invalid login')
+        if (user.password !== password) throw new Error('Invalid password')
+        _setLoggedinUser(user)
         return user
     } catch (err) {
-        return err
+        throw err
     }
 
 }

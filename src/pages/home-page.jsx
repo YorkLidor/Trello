@@ -5,7 +5,7 @@ import { userService } from "../services/user.service"
 import { login } from "../store/actions/user.actions"
 
 const guest = {
-    fullname: 'guest',
+    username: 'guest',
     password: 'guest'
 }
 export function HomePage() {
@@ -13,13 +13,19 @@ export function HomePage() {
     const user = useSelector(state => state.userModule.user)
 
     useEffect(() => {
+        console.log(user);
         if (user) navigate('/workspace')
     }, [])
 
     async function onGuestLogin(ev) {
         ev.preventDefault()
-        await login(guest)
-        navigate('/workspace')
+        try {
+            const user = await login(guest)
+            console.log('user:', user)
+            if (user) navigate('/workspace')
+        } catch (error) {
+            console.error('cant login')
+        }
     }
 
     return <>
