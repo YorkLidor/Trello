@@ -10,6 +10,11 @@
     box-shadow: var(--ds-shadow-raised, 0 1px 0 $clr23);
     margin-bottom: rem(8px);
     position: relative;
+
+    &.absolute{
+        position: absolute;
+
+    }
 }
 
 .edit-task-icon-container {
@@ -212,7 +217,9 @@
         @include button-filled(#0079bf, #fff);
         height: 32px;
         position: absolute;
-        bottom: -72px;
+        left: 0;
+        bottom: -45px;
+        padding: 6px 24px;
     }
 
     .task-preview-container {

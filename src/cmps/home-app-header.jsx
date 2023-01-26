@@ -44,7 +44,7 @@ export function HomeAppHeader() {
                 Log in
             </a>
             <a className="get-shmello" href="#">
-                Get Shmello for free
+                Sign up here
             </a>
         </div>
 
