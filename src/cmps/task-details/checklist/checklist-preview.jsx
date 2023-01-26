@@ -20,8 +20,8 @@ export function ChecklistPreview({ checklist, onUpdateChecklist }) {
         <ul className="checklist-list">
             {
                 todos.map(todo => {
-                    let spanClass = 'todo-item-text'
-                    spanClass += todo.isDone ? ' done' : ''
+                    const spanClass = ('todo-item-text' + todo.isDone ? ' done' : '')
+                    console.log(spanClass, todo)
                     return <li key={todo.id} >
                         <label>
                             <input type='checkbox' name='todo-done' className='todo-done' checked={todo.isDone} onChange={handleChange} data-id={todo.id} />

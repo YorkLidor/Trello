@@ -12,7 +12,7 @@ import { BOARD_CREATOR, Modal } from "../cmps/modal/modal";
 import { useEffectInit } from "../customHooks/useEffectInit";
 import { modalService } from "../services/modal.service";
 import { utilService } from "../services/util.service";
-import { toggleModal } from "../store/actions/app.actions";
+import { closeModal, toggleModal } from "../store/actions/app.actions";
 import { boardService } from "../services/board.service";
 
 export function BoardIndex() {
@@ -30,7 +30,7 @@ export function BoardIndex() {
     useEffect(() => {
         if (!user) navigate('/')
         onLoadBoards()
-        // return closeModal
+        return () => {if(modal?.id) closeModal(modals, modal.id)}
     }, [])
 
     function onToggleStaredBoard(ev, board) {

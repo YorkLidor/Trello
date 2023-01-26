@@ -34,10 +34,8 @@ export const boardService = {
     getCoverAttachStyle,
     getCoverColorStyle,
     saveTaskTitle,
-    sortChecklistTodos,
     getNewChecklist,
-    getCoverColorStyle,
-    getCoverAttachStyle,
+    sortChecklistTodos
 }
 
 async function saveTaskTitle(board, groupId, task) {

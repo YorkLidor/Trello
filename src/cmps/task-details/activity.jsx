@@ -4,7 +4,7 @@ import { CommentList } from "./comment/comment-list"
 
 import { boardService } from "../../services/board.service"
 
-import { GrSort as ActivityIcon } from "react-icons/gr"
+import { AiOutlineUnorderedList as ActivityIcon } from "react-icons/ai"
 
 
 export function Activity({ user, boardId, groupId, taskToEdit }) {

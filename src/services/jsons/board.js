@@ -203,7 +203,7 @@ export const jBoard = {
                ],
                "memberIds": ["u101"],
                "labelIds": ["l101", "l102", "l103", "l104"],
-               "dueDate": 16156215211,
+               "dueDate": { date: 16156215211, done: false },
                "byMember": {
                   "_id": "u101",
                   "username": "Tal",
@@ -265,16 +265,16 @@ export const jBoard = {
 }
 
 export const jUser = {
-    "_id": "u101",
-    "fullname": "Matan Adi",
-    "username": "matan@gmail.com",
-    "password": "matan123",
-    "imgUrl": "http://some-img.jpg",
-    "mentions": [{ //optional
-        "id": "m101",
-        "boardId": "m101",
-        "taskId": "t101"
-    }]
+   "_id": "u101",
+   "fullname": "Matan Adi",
+   "username": "matan@gmail.com",
+   "password": "matan123",
+   "imgUrl": "http://some-img.jpg",
+   "mentions": [{ //optional
+      "id": "m101",
+      "boardId": "m101",
+      "taskId": "t101"
+   }]
 }
 
 // <LabelPicker info={} onUpdate={} />
@@ -1229,376 +1229,218 @@ export const jBoards = [
                         "filename":"3.jpg",
                         "createdAt":1674733916977
                      }
-                  ],
-                  "cover":{
-                     "style":{
-                        "backgroundImage":"url(http://res.cloudinary.com/dk2geeubr/image/upload/v1674733917/gzhq5q0d81m5ksk0kkny.jpg)"
-                     },
-                     "fullSize":false
                   }
-               }
-            ],
-            "style":{
-               
-            }
-         },
-         {
-            "id":"g104",
-            "title":"Done",
-            "archivedAt":1589983468418,
-            "tasks":[
-               {
-                  "id":"c301",
-                  "title":"CSS variables",
-                  "memberIds":[
-                     "u105"
-                  ],
-                  "labelIds":[
-                     "l101",
-                     "l102"
-                  ]
-               },
-               {
-                  "id":"GBpgcI",
-                  "title":"NPM",
-                  "memberIds":[
-                     "u104"
-                  ],
-                  "attachments":[
-                     {
-                        "id":"attIIHJJv",
-                        "url":"http://res.cloudinary.com/dk2geeubr/image/upload/v1674733679/zg12ptcvfw7nrgvatun3.jpg",
-                        "filename":"5.jpg",
-                        "createdAt":1674733679540
-                     }
-                  ],
-                  "cover":{
-                     "style":{
-                        "backgroundImage":"url(http://res.cloudinary.com/dk2geeubr/image/upload/v1674733679/zg12ptcvfw7nrgvatun3.jpg)"
-                     },
-                     "fullSize":false
-                  }
-               },
-               {
-                  "id":"c104",
-                  "title":"Planing the components tree",
-                  "status":"in-progress",
-                  "priority":"high",
-                  "description":"description",
-                  "comments":[
-                     {
-                        "id":"ZdPnm",
-                        "txt":"also @yaronb please CR this",
-                        "createdAt":1590999817436,
-                        "byMember":{
-                           "_id":"u101",
-                           "fullname":"Tal Tarablus",
-                           "imgUrl":"http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+               ],
+               "checklists": [
+                  {
+                     "id": "YEhmF",
+                     "title": "Checklist",
+                     "todos": [
+                        {
+                           "id": "212jX",
+                           "title": "To Do 1",
+                           "isDone": false
                         }
-                     }
-                  ],
-                  "checklists":[
-                     {
-                        "id":"YEhmF",
-                        "title":"Checklist",
-                        "todos":[
-                           {
-                              "id":"212jX",
-                              "title":"To Do 1",
-                              "isDone":false
-                           }
-                        ]
-                     }
-                  ],
-                  "memberIds":[
-                     "u105",
-                     "u103",
-                     "u102"
-                  ],
-                  "labelIds":[
-                     "l101"
-                  ],
-                  "dueDate":16156215211,
-                  "byMember":{
-                     "_id":"u101",
-                     "username":"Tal",
-                     "fullname":"Tal Tarablus",
-                     "imgUrl":"http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
-                  },
-                  "style":{
-                     "bgColor":"#7bc86c"
+                     ]
                   }
+               ],
+               "memberIds": [
+                  "u105",
+                  "u103",
+                  "u102"
+               ],
+               "labelIds": [
+                  "l101"
+               ],
+               "dueDate": 16156215211,
+               "byMember": {
+                  "_id": "u101",
+                  "username": "Tal",
+                  "fullname": "Tal Tarablus",
+                  "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
                },
-               {
-                  "id":"c302",
-                  "title":"Social media assets",
-                  "labelIds":[
-                     "l104",
-                     "l106"
-                  ],
-                  "memberIds":[
-                     "u104",
-                     "u103"
-                  ]
-               },
-               {
-                  "id":"18CfBv",
-                  "title":"Fix bug",
-                  "cover":{
-                     "style":{
-                        "backgroundImage":"url(http://res.cloudinary.com/dk2geeubr/image/upload/v1674733626/dvyaq05jawerk60bsi1e.jpg)"
-                     },
-                     "fullSize":false
-                  },
-                  "attachments":[
-                     {
-                        "id":"attgN01X7",
-                        "url":"http://res.cloudinary.com/dk2geeubr/image/upload/v1674733626/dvyaq05jawerk60bsi1e.jpg",
-                        "filename":"777.jpg",
-                        "createdAt":1674733626024
-                     }
-                  ]
-               },
-               {
-                  "id":"Xp3zgy",
-                  "title":"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Esse quidem, nam quaerat cupiditate blanditiis facere deleniti, a nemo laborum maiores consequuntur. Architecto, eveniet cumque. Deleniti eveniet nam sequi facere consequatur?"
-               },
-               {
-                  "id":"EYWdkD",
-                  "title":"App header",
-                  "labelIds":[
-                     "l103"
-                  ],
-                  "memberIds":[
-                     "u105",
-                     "u103"
-                  ]
+               "style": {
+                  "bgColor": "#7bc86c"
                }
-            ],
-            "style":{
-               
+            },
+            {
+               "id": "c202",
+               "title": "Build basic tamplate",
+               "labelIds": [
+                  "l103",
+                  "l104"
+               ]
+            },
+            {
+               "id": "Mmfsfh",
+               "title": "Implement Sass"
+            },
+            {
+               "id": "Dakqya",
+               "title": "Add social media links",
+               "labelIds": [
+                  "l104",
+                  "l106"
+               ]
             }
-         },
-         {
-            "id":"g103",
-            "title":"In development",
-            "archivedAt":1589983468418,
-            "tasks":[
-               {
-                  "id":"c303",
-                  "title":"Sanity test for new component",
-                  "labelIds":[
-                     "l102"
-                  ],
-                  "style":{
-                     "bgColor":"#ef7564"
-                  },
-                  "memberIds":[
-                     "u104"
-                  ]
-               },
-               {
-                  "id":"c101",
-                  "title":"functional testing for app header",
-                  "labelIds":[
-                     "l102",
-                     "l103",
-                     "l104",
-                     "lXgrU9x"
-                  ],
-                  "memberIds":[
-                     
-                  ],
-                  "style":{
-                     "bgColor":"#047cbc"
-                  }
-               },
-               {
-                  "id":"4Uo7Yx",
-                  "title":"Connecting to PWA",
-                  "memberIds":[
-                     "u103"
-                  ],
-                  "attachments":[
-                     {
-                        "id":"att26GEwx",
-                        "url":"http://res.cloudinary.com/dk2geeubr/image/upload/v1674733965/uz0azypwhwynhuosq8vv.jpg",
-                        "filename":"6.jpg",
-                        "createdAt":1674733965229
-                     }
-                  ],
-                  "cover":{
-                     "style":{
-                        "backgroundImage":"url(http://res.cloudinary.com/dk2geeubr/image/upload/v1674733965/uz0azypwhwynhuosq8vv.jpg)"
-                     },
-                     "fullSize":false
-                  }
-               }
-            ],
-            "style":{
-               
-            }
-         },
-         {
-            "id":"4bfOFG",
-            "title":"Ready for production",
-            "archivedAt":null,
-            "tasks":[
-               {
-                  "id":"MJ5qJz",
-                  "title":"Creating data base with mongo",
-                  "attachments":[
-                     {
-                        "id":"attjKIQKZ",
-                        "url":"http://res.cloudinary.com/dk2geeubr/image/upload/v1674734002/uzex9sgdfxibglidmse6.jpg",
-                        "filename":"1.jpg",
-                        "createdAt":1674734002425
-                     }
-                  ],
-                  "cover":{
-                     "style":{
-                        "backgroundImage":"url(http://res.cloudinary.com/dk2geeubr/image/upload/v1674734002/uzex9sgdfxibglidmse6.jpg)"
-                     },
-                     "fullSize":false
-                  }
-               }
-            ]
-         },
-         {
-            "id":"3DmSTt",
-            "title":"For scroll",
-            "archivedAt":null,
-            "tasks":[
-               {
-                  "id":"9WyUo5",
-                  "title":"Sanity test for new component",
-                  "labelIds":[
-                     "l102"
-                  ],
-                  "style":{
-                     "bgColor":"#ef7564"
-                  },
-                  "memberIds":[
-                     "u104"
-                  ]
-               },
-               {
-                  "id":"VDKxQj",
-                  "title":"Creating data base with mongo"
-               },
-               {
-                  "id":"8jlnZ6",
-                  "title":"Chacking bugs"
-               }
-            ]
-         },
-         {
-            "id":"8HaY4D",
-            "title":"For scroll",
-            "archivedAt":null,
-            "tasks":[
-               {
-                  "id":"Mmfsfh",
-                  "title":"Implement Sass"
-               }
-            ]
+         ],
+         "style": {
+
          }
-      ],
-      "activities":[
-         {
-            "id":"an7lBwR",
-            "txt":"Added attachment 1.jpg",
-            "createdAt":1674734002425,
-            "byMember":{
-               "imgUrl":"https://res.cloudinary.com/dk2geeubr/image/upload/v1673890694/profileDefault_khqx4r.png"
+      },
+      {
+         "id": "g103",
+         "title": "In development",
+         "archivedAt": 1589983468418,
+         "tasks": [
+            {
+               "id": "c303",
+               "title": "Sanity test for new component",
+               "labelIds": [
+                  "l102"
+               ],
+               "style": {
+                  "bgColor": "#ef7564"
+               },
+               "memberIds": [
+                  "u104"
+               ]
             },
-            "task":{
-               "id":"MJ5qJz",
-               "title":"gg"
+            {
+               "id": "c101",
+               "title": "functional testing for app header",
+               "labelIds": [
+                  "l102",
+                  "l103",
+                  "l104",
+                  "lXgrU9x"
+               ],
+               "memberIds": [
+
+               ],
+               "style": {
+                  "bgColor": "#047cbc"
+               }
+            },
+            {
+               "id": "c201",
+               "title": "Routing Directory",
+               "memberIds": [
+                  "u106"
+               ]
+            },
+            {
+               "id": "4Uo7Yx",
+               "title": "Connecting to PWA",
+               "memberIds": [
+                  "u103"
+               ]
+            },
+            {
+               "id": "Xp3zgy",
+               "title": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Esse quidem, nam quaerat cupiditate blanditiis facere deleniti, a nemo laborum maiores consequuntur. Architecto, eveniet cumque. Deleniti eveniet nam sequi facere consequatur?"
             }
-         },
-         {
-            "id":"aFkd8hE",
-            "txt":"Added attachment 6.jpg",
-            "createdAt":1674733965229,
-            "byMember":{
-               "imgUrl":"https://res.cloudinary.com/dk2geeubr/image/upload/v1673890694/profileDefault_khqx4r.png"
+         ],
+         "style": {
+
+         }
+      },
+      {
+         "id": "g104",
+         "title": "Done",
+         "archivedAt": 1589983468418,
+         "tasks": [
+            {
+               "id": "c301",
+               "title": "CSS variables",
+               "memberIds": [
+                  "u105"
+               ],
+               "labelIds": [
+                  "l101",
+                  "l102"
+               ]
             },
-            "task":{
-               "id":"4Uo7Yx",
-               "title":"Connecting to PWA"
+            {
+               "id": "GBpgcI",
+               "title": "Making functions and mixins",
+               "memberIds": [
+                  "u104"
+               ]
+            },
+            {
+               "id": "c302",
+               "title": "Social media assets",
+               "labelIds": [
+                  "l104",
+                  "l106"
+               ],
+               "memberIds": [
+                  "u104",
+                  "u103"
+               ]
+            },
+            {
+               "id": "18CfBv",
+               "title": "NPM"
             }
-         },
-         {
-            "id":"a0QmDJk",
-            "txt":"Added attachment 3.jpg",
-            "createdAt":1674733916977,
-            "byMember":{
-               "imgUrl":"https://res.cloudinary.com/dk2geeubr/image/upload/v1673890694/profileDefault_khqx4r.png"
+         ],
+         "style": {
+
+         }
+      },
+      {
+         "id": "hqUdrN",
+         "title": "QA",
+         "archivedAt": null,
+         "tasks": [
+            {
+               "id": "bvmUwD",
+               "title": "End day code review with all members",
+               "labelIds": [
+                  "l102",
+                  "l104"
+               ],
+               "memberIds": [
+                  "u105",
+                  "u104",
+                  "u103"
+               ]
             },
-            "task":{
-               "id":"Dakqya",
-               "title":"Add social media links"
-            }
-         },
-         {
-            "id":"a92XtAC",
-            "txt":"Added attachment 7.jpg",
-            "createdAt":1674733838676,
-            "byMember":{
-               "imgUrl":"https://res.cloudinary.com/dk2geeubr/image/upload/v1673890694/profileDefault_khqx4r.png"
+            {
+               "id": "SU2bKv",
+               "title": "Meeting with head maneger for planning the code progress",
+               "labelIds": [
+                  "l103",
+                  "l104"
+               ]
             },
-            "task":{
-               "id":"c102",
-               "title":"Create a server with express"
-            }
-         },
-         {
-            "id":"a4kTCYi",
-            "txt":"Added attachment 2.jpg",
-            "createdAt":1674733822401,
-            "byMember":{
-               "imgUrl":"https://res.cloudinary.com/dk2geeubr/image/upload/v1673890694/profileDefault_khqx4r.png"
+            {
+               "id": "8jlnZ6",
+               "title": "Chacking bugs"
             },
-            "task":{
-               "id":"3Fz0Nm",
-               "title":"Advice from heead maneger"
-            }
-         },
-         {
-            "id":"a3VDQYe",
-            "txt":"Added attachment 4.jpg",
-            "createdAt":1674733802986,
-            "byMember":{
-               "imgUrl":"https://res.cloudinary.com/dk2geeubr/image/upload/v1673890694/profileDefault_khqx4r.png"
+            {
+               "id": "VDKxQj",
+               "title": "Creating data base with mongo"
             },
-            "task":{
-               "id":"c201",
-               "title":"Routing Directory"
-            }
-         },
-         {
-            "id":"a6fTgKA",
-            "txt":"Added attachment 5.jpg",
-            "createdAt":1674733679540,
-            "byMember":{
-               "imgUrl":"https://res.cloudinary.com/dk2geeubr/image/upload/v1673890694/profileDefault_khqx4r.png"
+            {
+               "id": "DNIjDP",
+               "title": "App header",
+               "labelIds": [
+                  "l103"
+               ],
+               "memberIds": [
+                  "u105",
+                  "u103"
+               ]
             },
-            "task":{
-               "id":"GBpgcI",
-               "title":"NPM"
-            }
-         },
-         {
-            "id":"azYh0Rb",
-            "txt":"Added attachment 777.jpg",
-            "createdAt":1674733626024,
-            "byMember":{
-               "imgUrl":"https://res.cloudinary.com/dk2geeubr/image/upload/v1673890694/profileDefault_khqx4r.png"
-            },
-            "task":{
-               "id":"18CfBv",
-               "title":"NPM"
+            {
+               "id": "3Fz0Nm",
+               "title": "Advice from heead maneger",
+               "labelIds": [
+                  "l102",
+                  "l104"
+               ]
             }
          },
          {
