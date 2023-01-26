@@ -121,38 +121,43 @@ export function Board() {
     }
 
     if (!board || !board._id) return <Loader />
-    else return <main
-        className="board flex column"
-        ref={elBoard}
-    >
-        <BoardHeader
-            board={board}
-            onDeleteBoard={onDeleteBoard}
-        />
-        <GroupList
-        />
-        <>
-            <Outlet />
-        </>
+    else return <div className="board-container">
+        <main
+            className="board flex column"
+            ref={elBoard}
+        >
+            <BoardHeader
+                board={board}
+                onDeleteBoard={onDeleteBoard}
+            />
+            <GroupList
+            />
+            <>
+                <Outlet />
+            </>
 
-        {taskQuickEdit && <TaskQuickEdit
-            task={taskQuickEdit.task}
-            groupId={taskQuickEdit.groupId}
-            pos={taskQuickEdit.pos}
-            onToggleModal={onToggleModal}
-            onCloseModal={onCloseModal}
-        />}
+            {taskQuickEdit && <TaskQuickEdit
+                task={taskQuickEdit.task}
+                groupId={taskQuickEdit.groupId}
+                pos={taskQuickEdit.pos}
+                onToggleModal={onToggleModal}
+                onCloseModal={onCloseModal}
+            />}
 
 
-        <div ref={elModal} className='modal-container'>
-            {
-                modal?.isOpen && <Modal
-                    modal={modal}
-                    cmpProps={modal.modalData.props}
-                    cmpType={modal.modalData.cmpType}
-                    className={modal.modalData.className}
-                />
-            }
-        </div>
-    </main>
+            <div ref={elModal} className='modal-container'>
+                {
+                    modal?.isOpen && <Modal
+                        modal={modal}
+                        cmpProps={modal.modalData.props}
+                        cmpType={modal.modalData.cmpType}
+                        className={modal.modalData.className}
+                    />
+                }
+            </div>
+        </main>
+        <section className="board-menu">
+
+        </section>
+    </div>
 }
