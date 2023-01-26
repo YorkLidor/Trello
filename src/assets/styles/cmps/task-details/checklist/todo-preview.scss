@@ -1,0 +1,22 @@
+.checkbox-container {
+    position: absolute;
+    left: 23px;
+
+    & > .checkbox {
+        height: 18px;
+        width: 18px;
+    }
+}
+
+.todo-list-box {
+    padding: 6px 0;
+}
+
+.todo-done-input {
+    display: none;
+}
+
+.todo-title{
+    width: 100%;
+    font-size: 14px;
+}
