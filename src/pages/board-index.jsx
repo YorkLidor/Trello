@@ -109,6 +109,16 @@ export function BoardIndex() {
         elModal.current.style.top = pos.top + 'px'
         elModal.current.style.left = pos.right + 'px'
 
+        if (window.visualViewport.width < 550) {
+            elModal.current.style.left = '0px'
+            elModal.current.style.top = '0px'
+        }
+        console.log('elModal.current.style.top:', elModal.current.style.top)
+        if (pos.top > 700) {
+            elModal.current.style.left = '0px'
+            elModal.current.style.top = pos.top - 300 + 'px'
+        }
+
         setModal(modalService.setModalData(modals, modal.id, BOARD_CREATOR, props))
         toggleModal(modals, modal.id)
     }
