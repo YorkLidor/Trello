@@ -35,6 +35,7 @@ import { modalService } from "../../services/modal.service"
 import { TaskCover } from "./task-cover"
 import { Checklists } from "./checklist/checklists"
 import { FastAverageColor } from "fast-average-color"
+import { useEffect } from "react"
 
 export function TaskDetails() {
     const fac = new FastAverageColor()
@@ -66,6 +67,10 @@ export function TaskDetails() {
             group.tasks[taskIdx] = taskToEdit
             const newBoard = board
             saveBoard(newBoard)
+<<<<<<< HEAD
+=======
+
+>>>>>>> a94da08697a347448245105aeb12ec955dbb17e8
         }
     }, [taskToEdit])
 
@@ -173,6 +178,7 @@ export function TaskDetails() {
 
 
     async function setThemeColor() {
+        if (!taskToEdit.cover) return
         const { style } = taskToEdit.cover
         let sourceColor
         let color
