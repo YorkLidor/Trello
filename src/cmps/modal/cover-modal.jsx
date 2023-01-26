@@ -6,6 +6,7 @@ import { boardService } from "../../services/board.service";
 import { useState } from "react";
 import { useEffect } from "react";
 import { func } from "prop-types";
+import { useSelector } from "react-redux";
 
 export function CoverModal({ id, cmpProps }) {
     const { user, boardId, groupId, task } = cmpProps
@@ -100,7 +101,7 @@ export function CoverModal({ id, cmpProps }) {
 
         if (!task.cover) task.cover = { fullSize: false, style: null }
         task.cover = { fullSize: task.cover?.fullSize ? true : false, style: boardService.getCoverColorStyle(coverColors[colorIdx]) }
-        const newCover = { fullSize: activeCover.fullSize, style: boardService.getCoverColorStyle(coverColors[colorIdx]) }
+        const newCover = { fullSize: task.cover.fullSize, style: boardService.getCoverColorStyle(coverColors[colorIdx]) }
 
         setActiveCover(newCover)
         await saveTask(boardId, groupId, task, boardService.getActivity(user, task, `${user.fullname} changed task ${task.title} cover color to ${coverColors[colorIdx]}`))
