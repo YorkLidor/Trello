@@ -5,8 +5,17 @@ import { useRef } from "react";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useState } from "react";
+import { Modal, USER_QUICK_MENU } from "./modal/modal";
+import { utilService } from "../services/util.service";
+import { modalService } from "../services/modal.service";
+import { toggleModal } from "../store/actions/app.actions";
 
 export function AppHeader() {
+    const modals = useSelector((storeState) => storeState.appModule.app.modals)
+    const [modal, setModal] = useState(null)
+    const elModal = useRef()
+
+
     const board = useSelector(state => state.boardModule.board)
     const user = useSelector(state => state.userModule.user)
     const elHeader = useRef()
@@ -14,6 +23,7 @@ export function AppHeader() {
     const fastAveColor = new FastAverageColor()
 
     useEffect(() => {
+        setModal(modalService.addNewModal(modals))
         if (board) setThemeColor()
         else {
             setStyle({ '--dynamic-background': '#026AA7' })
@@ -41,6 +51,33 @@ export function AppHeader() {
         }
     }
 
+    function onToggleModal(ev, modalType) {
+        console.log('toggle');
+        if (!modal) return
+        let element
+        if (ev) {
+            ev.stopPropagation()
+            element = ev.target
+        }
+        if (ev?.target.dataset?.type === 'icon' || modalType === USER_QUICK_MENU) element = ev.target.parentNode
+
+        let props
+        let pos = utilService.getElementPosition(element)
+
+        switch (modalType) {
+            case USER_QUICK_MENU:
+                props = { user }
+                elModal.current.style.top = pos.bottom + 'px'
+                elModal.current.style.right = 4 + 'px'
+                break;
+            default:
+                break;
+        }
+
+        setModal(modalService.setModalData(modals, modal.id, modalType, props))
+        toggleModal(modals, modal.id)
+    }
+
     return <header className="app-header-regular flex justify-between" ref={elHeader} style={style}>
         <nav className="main-nav flex">
             <div className="logo-container">
@@ -53,12 +90,22 @@ export function AppHeader() {
                 <NavLink to="/workspace">Workspaces</NavLink>
             </nav>
         </nav >
-        
+
         <img
             alt={user.fullname}
             src={user.imgUrl}
-            // onClick={(ev) => onMemberClick(ev, user)}
             className='list-member'
+            onClick={(ev) => onToggleModal(ev, USER_QUICK_MENU)}
         />
+        <div ref={elModal} className='modal-container'>
+            {
+                modal?.isOpen && <Modal
+                    modal={modal}
+                    cmpProps={modal.modalData.props}
+                    cmpType={modal.modalData.cmpType}
+                    className={modal.modalData.className}
+                />
+            }
+        </div>
     </header >
 }
