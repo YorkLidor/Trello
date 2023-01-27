@@ -26,7 +26,7 @@ export function AttachmentEditModal({ cmpProps, id }) {
             const activity = boardService.getActivity(member, { id: task.id, title: task.title }, action)
             
             task.attachments = task.attachments.map(attach => attach.id === attachment.id ? attachment : attach)
-            await boardService.saveTask(boardId, groupId, task, activity)
+            await boardService.saveTask(groupId, task, activity)
             closeModal(id)
         }
         catch {

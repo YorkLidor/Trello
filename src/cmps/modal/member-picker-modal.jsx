@@ -30,7 +30,7 @@ export function MemberPicker({ id, cmpProps }) {
             action = 'Removed member ' + member.fullname + ' from board members.'
         }
         const activity = boardService.getActivity(user, { id: task.id, title: task.title }, action)
-        await saveTask(board._id, groupId, task, activity)
+        await saveTask(groupId, task, activity)
         store.dispatch({ type: SET_ACTIVE_BOARD, board })
     }
 

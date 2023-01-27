@@ -12,7 +12,7 @@ import { saveBoard } from '../../store/actions/board.actions'
 import { SET_ACTIVE_BOARD } from "../../store/reducers/board.reducer"
 
 import {
-    MODAL_ATTACH, MODAL_LABELS, MODAL_ATTACH_EDIT, MODAL_CHECKLIST,
+    MODAL_ATTACH, MODAL_LABELS, MODAL_ATTACH_EDIT, MODAL_CHECKLIST, MODAL_TODO,
     MODAL_ATTACH_OPEN, MODAL_MEMBERS, MODAL_MEMBER_OPEN, MODAL_TASK_DATE, MODAL_TASK_COVER, MODAL_CHECKLIST_DELETE
 } from '../modal/modal.jsx'
 
@@ -156,7 +156,8 @@ export function TaskDetails() {
         else if (modalType === MODAL_TASK_DATE) props = { user, boardId, groupId, task: taskToEdit }
         else if (modalType === MODAL_TASK_COVER) props = { user, boardId, groupId, task: taskToEdit }
         else if (modalType === MODAL_CHECKLIST) props = { user, boardId, groupId, task: taskToEdit, modals }
-        else if (modalType === MODAL_CHECKLIST_DELETE) props = { user, boardId, groupId, task: taskToEdit , checklist: extras.checklist }
+        else if (modalType === MODAL_CHECKLIST_DELETE) props = { user, boardId, groupId, task: taskToEdit, checklist: extras.checklist }
+        else if (modalType === MODAL_TODO) props = { user, boardId, groupId, task: taskToEdit, todo: extras.todo, checklist: extras.checklist }
 
         const pos = utilService.getElementPosition(element)
         modalBoxRef.current.style.top = pos.bottom + 'px'

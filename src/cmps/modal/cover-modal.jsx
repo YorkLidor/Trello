@@ -70,7 +70,7 @@ export function CoverModal({ id, cmpProps }) {
 
         task.cover = null
         setActiveCover(null)
-        await saveTask(boardId, groupId, task, boardService.getActivity(user, task, `${user.fullname} removed task ${task.title} cover`))
+        await saveTask(groupId, task, boardService.getActivity(user, task, `${user.fullname} removed task ${task.title} cover`))
     }
 
 
@@ -103,7 +103,7 @@ export function CoverModal({ id, cmpProps }) {
         const newCover = { fullSize: task.cover.fullSize, style: boardService.getCoverColorStyle(coverColors[colorIdx]) }
 
         setActiveCover(newCover)
-        await saveTask(boardId, groupId, task, boardService.getActivity(user, task, `${user.fullname} changed task ${task.title} cover color to ${coverColors[colorIdx]}`))
+        await saveTask(task, boardService.getActivity(user, task, `${user.fullname} changed task ${task.title} cover color to ${coverColors[colorIdx]}`))
     }
 
     async function onPickCoverSize(ev, size) {
@@ -140,7 +140,7 @@ export function CoverModal({ id, cmpProps }) {
 
         const newTask = boardService.setCoverImage(task, attachment)
         setActiveCover(newTask.cover)
-        await saveTask(boardId, groupId, newTask, activity)
+        await saveTask(groupId, newTask, activity)
     }
 
 
@@ -151,7 +151,7 @@ export function CoverModal({ id, cmpProps }) {
 
         const color = (light) ? fontColor.light : fontColor.dark
         task.cover.style = { ...task.cover.style, color }
-        await saveTask(boardId, groupId, task, boardService.getActivity(user, task, `${user.fullname} changed task ${task.title} cover font color to ${color}`))
+        await saveTask(groupId, task, boardService.getActivity(user, task, `${user.fullname} changed task ${task.title} cover font color to ${color}`))
     }
 
     return task && <div className="modal-cover-box">

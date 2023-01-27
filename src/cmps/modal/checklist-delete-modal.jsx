@@ -15,7 +15,7 @@ export function DeleteChecklistModal({ cmpProps, id }) {
         closeModal(modals, id)
         const newTask = boardService.removeChecklist(task, checklist)
         console.log(newTask)
-        await saveTask(boardId, groupId, task, boardService.getActivity(user, task, `${user} removed checklist ${checklist.title}`))
+        await saveTask(groupId, task, boardService.getActivity(user, task, `${user} removed checklist ${checklist.title}`))
     }
 
     return <div className='delete-checklist-modal'>

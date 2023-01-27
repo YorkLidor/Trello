@@ -84,6 +84,8 @@
             font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans, Ubuntu, Droid Sans, Helvetica Neue, sans-serif;
         }
     }
+
+    
 }
 
 .cover-color {
@@ -98,6 +100,10 @@
     @include background-image;
 }
 
+
+
+
+
 .labels-container {
     display: flex;
     flex-wrap: wrap;
@@ -110,15 +116,11 @@
         margin-bottom: 4px;
     }
 
-    .label-container {
-        height: 16px;
-    }
-
     .labels-preview {
         height: 8px;
         border-radius: 4px;
         min-width: 40px;
-        transition: width, height 0.45s ease-out;
+        transition: min-width 0.45s, ease-out 0.45s;
         display: flex;
         align-items: center;
         padding-inline-end: 8px;
@@ -136,7 +138,7 @@
         width: 8px;
     }
 
-    .label-title {
+    .label-title-task-preview {
         font-size: 12px;
         color: #172b4d;
         font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
