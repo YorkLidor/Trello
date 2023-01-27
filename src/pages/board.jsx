@@ -17,6 +17,7 @@ import { utilService } from "../services/util.service";
 import { closeModal, toggleModal } from "../store/actions/app.actions";
 import { FastAverageColor } from "fast-average-color";
 import { useEffectUpdate } from "../customHooks/useEffectUpdate";
+import { Spinner } from "../cmps/apinner";
 
 export function Board() {
     const user = useSelector(state => state.userModule.user)
@@ -143,7 +144,7 @@ export function Board() {
 
     }
 
-    if (!board || !board._id) return <Loader />
+    if (!board || !board._id) return <Spinner />
     else return <div className="board-container">
         <main
             className="board flex column"
