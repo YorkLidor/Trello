@@ -1,12 +1,37 @@
 .checklist-container {
+    max-width: 100%;
+
     .checklist-title-box {
-        width: 100%;
+        max-width: 100%;
         justify-content: space-between;
+        margin-block-end: 8px;
+
+        .checklist-title-container {
+            flex-grow: 1;
+            padding-inline-end: 0px;
+
+            .checklist-title {
+                max-width: 100%;
+                height: fit-content;
+
+            }
+
+            .text-area-editor-box.checklist-title {
+                padding-inline-end: 0px;
+                max-width: 100%;
+
+                .text-area-editor.checklist-title {
+                    max-width: 100%;
+                    padding-block-start: 0
+                }
+            }
+        }
 
         .remove-checklist {
             @include task-nav-button;
         }
     }
+
 
     .checklist-box {
         width: 100%;

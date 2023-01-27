@@ -15,6 +15,7 @@
 @import "views/home-page";
 
 // Components
+@import "cmps/textarea-editor.scss";
 
 //main app cmps
 @import "cmps/app-header";
@@ -74,5 +75,3 @@
 @import "cmps/task-details/checklist/checklists.scss";
 @import "cmps/task-details/checklist/checklist-box.scss";
 @import "cmps/task-details/checklist/todo-preview.scss";
-
-@import "cmps/textarea-editor.scss";

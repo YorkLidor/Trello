@@ -4,34 +4,25 @@ import { useState } from 'react'
 import { Todo } from './todo-preview'
 import { boardService } from '../../../services/board.service'
 
+import { TextareaEditor } from '../../textarea-editor'
+
 import { TbCheckbox } from 'react-icons/tb'
 import { MODAL_CHECKLIST_DELETE } from '../../modal/modal'
 
 export function Checklist({ task, checklist, onSaveChecklist, onToggleModal }) {
     const [list, setChecklist] = useState(checklist)
+    const [addTodoMode, setAddTodoMode] = useState(false)
     const [editMode, setEditMode] = useState(false)
-
-    const elInputRef = useRef()
     const elEditTodoRef = useRef()
 
     console.log(list)
 
-    function handleEdit({ target }, state) {
-        target.dataset.state = state
-        if (!target.value.length) return
-        elInputRef.current.classList.toggle('active')
-        onSaveTitle()
-    }
-
-    function onSaveTitle() {
-        console.log(elInputRef.current.value)
-        const value = elInputRef.current.value
-
-        elInputRef.current.classList.toggle('active')
-
-        list.title = value
+    function onTitleEdit(title) {
+        if (!title.length) return
+        list.title = title
         onUpdateChecklist(list)
         setChecklist(list)
+        setEditMode(false)
     }
 
     function onUpdateChecklist() {
@@ -42,19 +33,14 @@ export function Checklist({ task, checklist, onSaveChecklist, onToggleModal }) {
     }
 
     function onAddTodo() {
-        setEditMode(true)
-    }
-    function onSaveTodo(todoToSave = null) {
-        if (!todoToSave) {
-            if (!elEditTodoRef.current.value.length) return
-            const todo = boardService.getTodoEmpty()
-            todo.title = elEditTodoRef.current.value
+        if (!elEditTodoRef.current.value.length) return
+        const todo = boardService.getTodoEmpty()
+        todo.title = elEditTodoRef.current.value
 
-            if (!list.todos) list.todos = []
-            list.todos.unshift(todo)
-            onUpdateChecklist()
-        }
-        setEditMode(false)
+        if (!list.todos) list.todos = []
+        list.todos.unshift(todo)
+        onUpdateChecklist()
+        setAddTodoMode(false)
     }
 
     function onUpdateTodo(todo) {
@@ -73,9 +59,14 @@ export function Checklist({ task, checklist, onSaveChecklist, onToggleModal }) {
         <div className='checklist-title-box flex row'>
             <TbCheckbox className="checklist-logo" />
             <div className="checklist-title-container flex row">
-                <input ref={elInputRef} data-state={false} className="checklist-title" defaultValue={list.title} onFocus={(ev) => handleEdit(ev, true)} onBlur={(ev) => !ev.target.dataset.state ? '' : handleEdit(ev, false)} />
+                {
+                    editMode ?
+                        <TextareaEditor defaultText={checklist.title} onTextSubmit={onTitleEdit} className={"checklist-title"} />
+                        :
+                        <span className='checklist-title-span' onClick={() => setEditMode(true)}>{checklist.title}</span>
+                }
             </div>
-            <button className='remove-checklist' onClick={(ev) => onToggleModal(ev, MODAL_CHECKLIST_DELETE, { checklist })}>Delete</button>
+            {!editMode && <button className='remove-checklist' onClick={(ev) => onToggleModal(ev, MODAL_CHECKLIST_DELETE, { checklist })}>Delete</button>}
         </div>
 
         <div className="checklist-box flex col">
@@ -88,10 +79,10 @@ export function Checklist({ task, checklist, onSaveChecklist, onToggleModal }) {
                 <li className='todo-list-box'>
                     <div className='add-todo-box'>
                         {
-                            editMode ? <div className='add-todo-input-box'>
+                            addTodoMode ? <div className='add-todo-input-box'>
                                 <input type='text' placeholder='Add an item' ref={elEditTodoRef} />
-                                <button className='save-btn add-todo-input-btn' onClick={() => onSaveTodo()} >Add</button>
-                            </div> : <button className='add-todo-btn' onClick={onAddTodo}>Add an item</button>
+                                <button className='save-btn add-todo-input-btn' onClick={() => onAddTodo()} >Add</button>
+                            </div> : <button className='add-todo-btn' onClick={() => setAddTodoMode(true)}>Add an item</button>
                         }
                     </div>
                 </li>
