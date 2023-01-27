@@ -1,8 +1,6 @@
-
-
 import { useState } from 'react'
 
-import { saveTask } from '../../../store/actions/board.actions'
+import { saveTask, getActivityText, ADD_LABEL, REMOVE_LABEL } from '../../../store/actions/board.actions'
 
 import { boardService } from '../../../services/board.service'
 
@@ -10,7 +8,7 @@ import { ImCheckboxChecked, ImCheckboxUnchecked } from "react-icons/im"
 import { BsFillCircleFill } from 'react-icons/bs'
 import { BiPencil } from 'react-icons/bi'
 
-export function LabelPickerList({ member, task, groupId, labels, onEditLabel }) {
+export function LabelPickerList({ member, boardId, task, groupId, labels, onEditLabel }) {
 
     const [taskLabelIds, setTaskLabels] = useState(task.labelIds ? task.labelIds : [])
 
@@ -20,11 +18,11 @@ export function LabelPickerList({ member, task, groupId, labels, onEditLabel }) 
 
         if (!target.checked) {
             newLabelIds = taskLabelIds.filter(labelIdToEdit => labelIdToEdit !== labelId)
-            action = 'Removed label ' + labels.filter(label => label.id === labelId).title
+            action = `${getActivityText(REMOVE_LABEL)} ${labels.filter(label => label.id === labelId).title}`
             setTaskLabels(newLabelIds)
         } else {
             newLabelIds = [...taskLabelIds, labelId]
-            action = 'Added label ' + labels.filter(label => label.id === labelId).title
+            action = `${getActivityText(ADD_LABEL)} ${labels.filter(label => label.id === labelId).title}`
             setTaskLabels(newLabelIds)
         }
 

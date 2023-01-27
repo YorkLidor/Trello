@@ -1,6 +1,7 @@
 import { closeModal } from '../../store/actions/app.actions'
 import { addNewTask, saveTask } from '../../store/actions/board.actions'
 
+import { getActivityText, REMOVE_TODO_A, REMOVE_TODO_B } from '../../store/actions/board.actions'
 import { boardService } from '../../services/board.service'
 
 import { ModalHeader } from './modal-header'
@@ -14,7 +15,9 @@ export function TodoModal({ id, cmpProps }) {
         const newList = boardService.removeTodo(checklist, todo)
         task.checklists = task.checklists.map(list => (list.id === newList.id) ? newList : list)
         closeModal(modals, id)
-        await saveTask(groupId, task, boardService.getActivity(user, task, `${user.fullname} has removed the todo ${todo.title} from checklist ${checklist.title}`))
+
+        const action = `${getActivityText(REMOVE_TODO_A)} ${todo.title} ${getActivityText(REMOVE_TODO_B)} ${checklist.title}`
+        await saveTask(groupId, task, boardService.getActivity(user, task, action))
     }
 
     async function onConvertToCard() {

@@ -3,7 +3,7 @@ import { store } from "../../store/store";
 
 import { ModalHeader } from "./modal-header";
 
-import { saveTask } from "../../store/actions/board.actions";
+import { ADD_MEMBER_A, ADD_MEMBER_B , getActivityText, saveTask , REMOVE_MEMBER_A, REMOVE_MEMBER_B } from "../../store/actions/board.actions";
 import { boardService } from "../../services/board.service";
 
 import { AiOutlineCheck } from "react-icons/ai";
@@ -24,11 +24,12 @@ export function MemberPicker({ id, cmpProps }) {
         if (checkedIdx == null || checkedIdx === -1) {
             if (checkedIdx) task.memberIds.unshift(member._id)
             else task.memberIds = [member._id]
-            action = 'Added member ' + member.fullname + ' to board members.'
+            action = `${getActivityText(ADD_MEMBER_A)} ${member.fullname} ${getActivityText(ADD_MEMBER_B)}`
         } else {
             task.memberIds.splice(checkedIdx, 1)
-            action = 'Removed member ' + member.fullname + ' from board members.'
+            action = `${getActivityText(REMOVE_MEMBER_A)} ${member.fullname}  ${getActivityText(REMOVE_MEMBER_B)}`
         }
+
         const activity = boardService.getActivity(user, { id: task.id, title: task.title }, action)
         await saveTask(groupId, task, activity)
         store.dispatch({ type: SET_ACTIVE_BOARD, board })

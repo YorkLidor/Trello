@@ -25,7 +25,6 @@ export function Checklist({ task, checklist, onSaveChecklist, onToggleModal }) {
         ev.stopPropagation()
         if (!title.length) return
         list.title = title
-        console.log(list.title)
         onUpdateChecklist(list)
         setChecklist(list)
         clearEditMode()
