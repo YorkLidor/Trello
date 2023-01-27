@@ -71,11 +71,12 @@ function getEmptyCredentials() {
     }
 }
 
-function _createUsers(){
+function _createUsers() {
     let users = utilService.loadFromStorage(STORAGE_KEY)
     if (!users || !users.length) {
         users = [jUser]
         users.push({
+            _id: utilService.makeId(),
             fullname: 'Shauli',
             username: 'shauli',
             password: 'pitaAlHagaz',
