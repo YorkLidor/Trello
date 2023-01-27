@@ -15,29 +15,36 @@ export function TaskAdd({ group, isAddCardOpen, setIsAddCardOpen }) {
     let board = useSelector(storeState => storeState.boardModule.board)
     useEffect(() => { textAreaRef.current.focus() }, [isAddCardOpen])
     const textAreaRef = useRef()
-    const [taskToSet, setTaskTitleToSet] = useState(boardService.getEmptyTask())
+    const [taskToEdit, setTaskToEdit, handleChange] = useForm(boardService.getEmptyTask())
     const { resetTranscript } = useSpeechRecognition()
+    const startListening = SpeechRecognition.startListening
 
-    const handleChange = ev => {
-        const { name, value } = ev.target
-        setTaskTitleToSet({ ...taskToSet, [name]: value })
-    }
+    const commands = useRef([
+        {
+            command: '*',
+            name: "fdsf",
+            callback: console.log
+        }
+    ]
+    )
 
-    useEffect(()=>{
-        resetTranscript()
-        setTaskTitleToSet(boardService.getEmptyTask())
-    },[])
+    const { transcript, browserSupportsSpeechRecognition } = useSpeechRecognition()
+
+    useEffect(() => {
+        console.log(group.id, transcript)
+    }, [transcript])
+
 
     async function onAddNewTask(ev) {
         ev.preventDefault()
-        if (!taskToSet.title) return
+        if (!taskToEdit.title) return
         try {
             setIsAddCardOpen(false)
-            group.tasks.push(taskToSet)
+            resetTranscript()
+            group.tasks.push(taskToEdit)
             board = { ...board, groups: [...board.groups] }
             await saveBoard(board)
-            setTaskTitleToSet(boardService.getEmptyTask())
-            resetTranscript()
+            setTaskToEdit(boardService.getEmptyTask())
         } catch (err) {
             console.error('Cannot add new task', err)
         }
@@ -49,15 +56,10 @@ export function TaskAdd({ group, isAddCardOpen, setIsAddCardOpen }) {
         }, 100)
     }
 
-    const commands = [
-        {
-            command: '*',
-            callback: (title) => { setTaskTitleToSet({ id: taskToSet.id, title }) }
-        }
-    ]
-
-    const { transcript, browserSupportsSpeechRecognition } = useSpeechRecognition({ commands })
-
+    async function onStartListening() {
+        const what = await SpeechRecognition.startListening()
+        console.log('what:', what)
+    }
 
     return <form onSubmit={onAddNewTask}
         className={`add-card-form-container ${!isAddCardOpen && 'add-card-close'}`}>
@@ -67,7 +69,8 @@ export function TaskAdd({ group, isAddCardOpen, setIsAddCardOpen }) {
                 <textarea
                     ref={textAreaRef}
                     onChange={handleChange}
-                    value={taskToSet.title}
+                    // value={transcript}
+                    value={taskToEdit.title}
                     name='title'
                     placeholder="Enter a title for this card..."
                     className="form-textarea "
@@ -93,7 +96,7 @@ export function TaskAdd({ group, isAddCardOpen, setIsAddCardOpen }) {
                 <IoCloseOutline />
             </button>
 
-            <HiMicrophone className="btn-cancel" onClick={SpeechRecognition.startListening} />
+            <HiMicrophone className="btn-cancel" onClick={onStartListening} />
         </div>
 
     </form>

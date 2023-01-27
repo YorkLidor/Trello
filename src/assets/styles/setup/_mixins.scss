@@ -237,7 +237,7 @@
 
     &::-webkit-scrollbar-track {
         margin-inline: 3rem;
-        // margin-inline-start: 1.5rem;
+        margin-block-end: 4px;
         background-color: $track-bgclr;
         border-radius: $thumb-radius;
     }
