@@ -180,12 +180,11 @@ export function TaskDetails() {
         let color
         if (style.backgroundImage) {
             sourceColor = style.backgroundImage.slice(4, -1).replace(/"/g, "")
-            console.log('sourceColor:', sourceColor)
             try {
                 color = await fac.getColorAsync(sourceColor);
                 setStyle({ '--cover-color': color.rgba })
             } catch (err) {
-                console.log(err);
+                console.error(err);
                 setStyle({ '--cover-color': '#ffff' })
             }
         }
