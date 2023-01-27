@@ -16,6 +16,7 @@ import { userService } from "../services/user.service"
 
 import { FaRegStar } from "react-icons/fa"
 import { BsPerson } from 'react-icons/bs'
+import { Spinner } from "../cmps/spinner";
 
 export function BoardIndex() {
     const navigate = useNavigate()
@@ -138,7 +139,7 @@ export function BoardIndex() {
         toggleModal(modals, modal.id)
     }
 
-    if (!boards && !boards.length) return <Loader />
+    if (!boards || !boards.length ) return <Spinner />
     else return <main className="boards-index-container">
         <section className="boards-index flex column">
 
