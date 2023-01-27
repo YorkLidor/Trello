@@ -74,7 +74,7 @@ function getEmptyCredentials() {
 function _createUsers() {
     let users = utilService.loadFromStorage(STORAGE_KEY)
     if (!users || !users.length) {
-        users = [jUser]
+        users = [{ ...jUser, _id: utilService.makeId() }]
         users.push({
             _id: utilService.makeId(),
             fullname: 'Shauli',

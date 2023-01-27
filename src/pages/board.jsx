@@ -66,6 +66,7 @@ export function Board() {
             const board = await boardService.getById(boardId)
             saveBoard(board)
         } catch (err) {
+            navigate('/workspace')
             console.error('No Board!', err)
         }
     }

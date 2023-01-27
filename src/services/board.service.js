@@ -87,8 +87,12 @@ function removeBoard(boardId) {
     return storageService.remove(STORAGE_KEY, boardId)
 }
 
-function getById(boardId) {
-    return storageService.get(STORAGE_KEY, boardId)
+async function getById(boardId) {
+    try {
+        return storageService.get(STORAGE_KEY, boardId)
+    } catch (err) {
+        throw err
+    }
 }
 
 function getLabelsById(boardLabels, labelIds) {
