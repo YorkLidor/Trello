@@ -115,6 +115,7 @@ export function CoverModal({ id, cmpProps }) {
 
 
         task.cover = { ...task.cover, fullSize: size }
+        if(task.cover.style.fullSize && !task.cover.style.color) task.cover.style.color = fontColor.light
         setActiveCover((prevCover) => ({ ...prevCover, fullSize: size }))
         await saveTask(groupId, task, boardService.getActivity(user, task, `${getActivityText(CHANGE_COVER_SIZE)} ${task.title}`))
     }

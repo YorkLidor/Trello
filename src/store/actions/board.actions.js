@@ -159,7 +159,7 @@ export async function saveDescription(task, boardId, groupId, text) {
     }
 }
 
-export async function getActivityText(action) {
+export function getActivityText(action) {
     switch(action) {
         case ADD_CHECKLIST:
             return 'added Checklist'

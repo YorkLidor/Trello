@@ -28,7 +28,7 @@ export function DateModal({ cmpProps, id }) {
 
     async function onRemoveDate() {
         task.dueDate = null
-        await saveTask(groupId, task, boardService.getActivity(user, task, `${getActivityText(REMOVE_DUE_DATE)}  ${endDate}`))
+        await saveTask(groupId, task, boardService.getActivity(user, task, `${getActivityText(REMOVE_DUE_DATE)}`))
         closeModal(modals, id)
     }
 

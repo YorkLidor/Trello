@@ -19,66 +19,115 @@ export const modalService = {
 }
 
 function addNewModal(modals) {
-    const newModal = {
-        id: 'modal-' + utilService.makeId(),
-        isOpen: false,
-        modalData: null
+    try {
+
+        const newModal = {
+            id: 'modal-' + utilService.makeId(),
+            isOpen: false,
+            modalData: null
+        }
+        modals.unshift(newModal)
+        _updateModalsInStore(modals)
+        return newModal
     }
-    modals.unshift(newModal)
-    _updateModalsInStore(modals)
-    return newModal
+    catch (error) {
+        console.error('Failed to add modal')
+    }
 }
 
 function getModalById(modals, id) {
-    return modals.find(modal => modal.id === id)
+    try {
+        return modals.find(modal => modal.id === id)
+    }
+    catch (error) {
+        console.error('Failed find modal')
+    }
 }
 
 function openModal(modals, id) {
-    const modal = modals.find(modal => modal.id === id)
-    if (!modal) throw new Error('Modal not found')
+    try {
 
-    modal.isOpen = true
-    _updateStore(modal)
+        const modal = modals.find(modal => modal.id === id)
+        if (!modal) throw new Error('Modal not found')
+
+        modal.isOpen = true
+        _updateStore(modal)
+    }
+    catch (error) {
+        console.error('Failed to open modal')
+    }
 }
 
 function closeModal(modals, id) {
-    const modal = modals.find(modal => modal.id === id)
-    if (!modal) throw new Error('Modal not found')
+    try {
+        const modal = modals.find(modal => modal.id === id)
+        if (!modal) throw new Error('Modal not found')
 
-    modal.isOpen = false
-    _updateStore(modal)
+        modal.isOpen = false
+        _updateStore(modal)
+    }
+    catch (err) {
+        console.error('Failed close modal')
+    }
 }
 
 function toggleModal(modals, id) {
-    const modal = modals.find(modal => modal.id === id)
-    if (!modal) throw new Error('Modal not found')
+    try {
 
-    modal.isOpen = !modal.isOpen
-    _updateStore(modal)
+        const modal = modals.find(modal => modal.id === id)
+        if (!modal) throw new Error('Modal not found')
+
+        modal.isOpen = !modal.isOpen
+        _updateStore(modal)
+    }
+    catch (err) {
+        console.error('Cannot toggle modal')
+    }
 }
 
 function setModalData(modals, id, modalType, props) {
-    const modal = modals.find(modal => modal.id === id)
-    if (!modal) throw new Error('Modal not found')
+    try {
+        const modal = modals.find(modal => modal.id === id)
+        if (!modal) throw new Error('Modal not found')
 
-    const data = getModalData(id, modalType, props)
+        const data = getModalData(id, modalType, props)
 
-    modal.modalData = data
-    _updateStore(modal)
-    return modal
+        modal.modalData = data
+        _updateStore(modal)
+        return modal
+    }
+    catch (err) {
+        console.error('Cannot set modal data')
+    }
 }
 
 function removeModal(modals, id) {
-    modals = modals.filter(modal => modal.id !== id)
-    _updateModalsInStore(modals)
+    try {
+
+        modals = modals.filter(modal => modal.id !== id)
+        _updateModalsInStore(modals)
+    }
+    catch (err) {
+        console.error('Cannot remove modal')
+    }
 }
 
 function _updateStore(modal) {
-    store.dispatch({ type: SET_MODAL, modal })
+    try {
+        store.dispatch({ type: SET_MODAL, modal })
+    }
+    catch(err) {
+        console.error('Cannot update store')
+    }
 }
 
 function _updateModalsInStore(modals) {
-    store.dispatch({ type: SET_MODALS, modals })
+    try {
+        store.dispatch({ type: SET_MODALS, modals })
+    }
+    catch(err) {
+        console.error('Cannot update modal in store')
+    }
 }
 
 function getModalData(id, modalType, props) {

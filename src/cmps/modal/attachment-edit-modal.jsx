@@ -6,17 +6,15 @@ import { boardService } from '../../services/board.service'
 
 import { ModalHeader } from './modal-header'
 import { EDIT_ATTACH } from '../../store/actions/board.actions'
+import { useSelector } from 'react-redux'
 
 export function AttachmentEditModal({ cmpProps, id }) {
+    const modals = useSelector((storeState) => storeState.appModule.app.modals)
+    const member = useSelector((storeState) => storeState.userModule.user)
     const { groupId, task, attachment } = cmpProps
     const editInputRef = useRef()
-    const member = {
-        id: 101,
-        fullName: 'Gal Zohar',
-        imgUrl: 'https://res.cloudinary.com/dk2geeubr/image/upload/v1673890694/profileDefault_khqx4r.png'
-    }
 
-    async function editAttach(ev) {
+    async function editAttach() {
         const value = editInputRef.current.value
         if(!value) return
         
@@ -29,12 +27,12 @@ export function AttachmentEditModal({ cmpProps, id }) {
             
             task.attachments = task.attachments.map(attach => attach.id === attachment.id ? attachment : attach)
             await boardService.saveTask(groupId, task, activity)
-            closeModal(id)
+            closeModal(modals, id)
         }
         catch {
             // TODO: Replace to user message
             console.log('Edit task attachment failed')
-            closeModal(id)
+            closeModal(modals, id)
         }
 
     }
