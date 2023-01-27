@@ -17,22 +17,16 @@ export function TaskAdd({ group, isAddCardOpen, setIsAddCardOpen }) {
     const textAreaRef = useRef()
     const [taskToEdit, setTaskToEdit, handleChange] = useForm(boardService.getEmptyTask())
     const { resetTranscript } = useSpeechRecognition()
-    const startListening = SpeechRecognition.startListening
 
-    const commands = useRef([
+    const commands = [
         {
             command: '*',
-            name: "fdsf",
-            callback: console.log
+            callback: (title) => setTaskToEdit(...taskToEdit, title)
         }
     ]
-    )
 
-    const { transcript, browserSupportsSpeechRecognition } = useSpeechRecognition()
 
-    useEffect(() => {
-        console.log(group.id, transcript)
-    }, [transcript])
+    const { transcript, browserSupportsSpeechRecognition } = useSpeechRecognition({ commands })
 
 
     async function onAddNewTask(ev) {
@@ -57,8 +51,7 @@ export function TaskAdd({ group, isAddCardOpen, setIsAddCardOpen }) {
     }
 
     async function onStartListening() {
-        const what = await SpeechRecognition.startListening()
-        console.log('what:', what)
+        SpeechRecognition.startListening()
     }
 
     return <form onSubmit={onAddNewTask}
@@ -69,13 +62,11 @@ export function TaskAdd({ group, isAddCardOpen, setIsAddCardOpen }) {
                 <textarea
                     ref={textAreaRef}
                     onChange={handleChange}
-                    // value={transcript}
                     value={taskToEdit.title}
                     name='title'
                     placeholder="Enter a title for this card..."
                     className="form-textarea "
                 >
-
                 </textarea>
             </div>
         </div>

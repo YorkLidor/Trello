@@ -12,7 +12,7 @@ import { GroupAdd } from "./group-add";
 import { Group } from "./group";
 import { TaskQuickEdit } from "./task-quick-edit";
 
-export function GroupList() {
+export function GroupList({ onToggleModal }) {
     const board = useSelector(state => state.boardModule.board)
     const [groupToEdit, setGroupToEdit, handleChange] = useForm(boardService.getEmptyGroup())
 
@@ -78,6 +78,7 @@ export function GroupList() {
                                         {...provided.draggableProps}
                                     >
                                         <Group
+                                            onToggleModal={onToggleModal}
                                             provided={provided}
                                             key={group.id}
                                             group={group}

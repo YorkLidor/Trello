@@ -12,7 +12,7 @@ import { Audio } from 'react-loader-spinner'
 import { useSelector } from "react-redux";
 import { TaskQuickEdit } from "../cmps/task-quick-edit";
 import { modalService } from "../services/modal.service";
-import { Modal, MODAL_LABELS, MODAL_MEMBERS, MODAL_MEMBER_OPEN, MODAL_TASK_COVER, MODAL_TASK_DATE } from "../cmps/modal/modal";
+import { Modal, MODAL_GROUP_QUICK_EDIT, MODAL_LABELS, MODAL_MEMBERS, MODAL_MEMBER_OPEN, MODAL_TASK_COVER, MODAL_TASK_DATE } from "../cmps/modal/modal";
 import { utilService } from "../services/util.service";
 import { closeModal, toggleModal } from "../store/actions/app.actions";
 import { FastAverageColor } from "fast-average-color";
@@ -127,10 +127,16 @@ export function Board() {
                 elModal.current.style.top = pos.top + 'px'
                 elModal.current.style.left = pos.left + 'px'
                 break;
-
+            case MODAL_GROUP_QUICK_EDIT:
+                props = { groupId }
+                elModal.current.style.top = pos.top + 'px'
+                elModal.current.style.left = pos.left + 'px'
+                console.log('props:', props)
+                break;
             default:
                 break;
         }
+
 
 
 
@@ -140,6 +146,7 @@ export function Board() {
         }
 
         setModal(modalService.setModalData(modals, modal.id, modalType, props))
+        console.log('modal:', modal,"props", props)
         toggleModal(modals, modal.id)
 
     }
@@ -156,6 +163,7 @@ export function Board() {
                 onToggleModal={onToggleModal}
             />
             <GroupList
+                onToggleModal={onToggleModal}
             />
             <>
                 <Outlet />
