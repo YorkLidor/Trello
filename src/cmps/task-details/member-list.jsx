@@ -26,7 +26,7 @@ export function MemberList({ members, toggleModal, isBoardCall = false }) {
                     src={member.imgUrl}
                     onClick={(ev) => onMemberClick(ev, member)}
                     className='list-member'
-                    style={isBoardCall && { zIndex: members.length - idx + '' }}
+                    style={isBoardCall ? { zIndex: members.length - idx + '' } : { zIndex: 0 }}
                 />)}
 
             {(members.length > 0 && !isBoardCall) && <button
