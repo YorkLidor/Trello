@@ -4,8 +4,11 @@ import { TextareaEditor } from '../../textarea-editor'
 import { TbDots } from 'react-icons/tb'
 import { ImCheckboxChecked, ImCheckboxUnchecked } from 'react-icons/im'
 import { MODAL_TODO } from '../../modal/modal'
+import { useState } from 'react'
 
-export function Todo({ checklist, todo, onUpdateTodo, onRemoveTodo, setTodoToEdit, toolInEdit, onToggleModal }) {
+export function Todo({ checklist, todoItem, onUpdateTodo, onRemoveTodo, setTodoToEdit, toolInEdit, onToggleModal }) {
+
+    const [todo, setTodo] = useState(todoItem)
 
     const todoTitleClassname = todo.isDone ? 'todo-title done' : 'todo-title'
 
