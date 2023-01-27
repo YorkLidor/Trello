@@ -59,7 +59,7 @@
     max-width: 300px;
     min-height: 20px;
     position: relative;
-    z-index: 10;
+    z-index: 5;
 
     &.is-dragging {
         transform: rotate(5deg);
