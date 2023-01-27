@@ -10,6 +10,7 @@ import { DateModal } from "./date-modal"
 import { CoverModal } from "./cover-modal"
 import { ChecklistModal } from "./checklist-modal"
 import { DeleteChecklistModal } from './checklist-delete-modal'
+import { TodoModal } from './checklist-todo-modal'
 
 export const MODAL_LABELS = 'MODAL_LABELS'
 export const MODAL_ATTACH = 'MODAL_ATTACH'
@@ -23,6 +24,7 @@ export const MODAL_TASK_DATE = 'MODAL_TASK_DATE'
 export const MODAL_TASK_COVER = 'MODAL_TASK_COVER'
 export const MODAL_CHECKLIST = 'MODAL_CHECKLIST'
 export const MODAL_CHECKLIST_DELETE = 'MODAL_CHECKLIST_DELETE'
+export const MODAL_TODO = 'MODAL_TODO'
 
 
 export function Modal({ modal, cmpProps, cmpType, className }) {
@@ -57,6 +59,8 @@ function GetCmp({ id, cmpProps, cmpType }) {
             return <ChecklistModal cmpProps={cmpProps} id={id} />
         case MODAL_CHECKLIST_DELETE:
             return <DeleteChecklistModal cmpProps={cmpProps} id={id} />
+        case MODAL_TODO:
+            return <TodoModal cmpProps={cmpProps} id={id} />
         default:
             return ''
     }

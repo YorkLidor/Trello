@@ -52,22 +52,24 @@ export async function setBoard(board) {
     store.dispatch({ type: SET_ACTIVE_BOARD, board })
 }
 
-export async function addNewTask(boardId, groupId, newTask) {
+export async function addNewTask(groupId, newTask) {
     try {
-        const board = await boardService.getById(boardId)
-        board.groups.forEach(group => {
-            if (group.id === groupId) {
-                group.push(newTask)
-                return group
-            }
-        })
-        return store.dispatch({ type: SET_ACTIVE_BOARD, board })
-    } catch (error) {
+        const board = store.getState().boardModule.board
 
+        const group = board.groups?.find(group => group.id === groupId)
+        if (!group) throw new Error('No such a group in board')
+
+        if (!group.tasks) group.tasks = []
+        group.tasks.push(newTask)
+        await saveBoard(board)
+
+    } catch (error) {
+        console.error('ERROR: Failed to add task', error)
+        throw new Error('ERROR: Failed to add task')
     }
 }
 
-export async function saveTask(boardId, groupId, task, activity) {
+export async function saveTask(groupId, task, activity) {
     try {
 
         const board = store.getState().boardModule.board
@@ -93,11 +95,11 @@ export async function saveTask(boardId, groupId, task, activity) {
 export async function onRemoveAttachment(user, boardId, groupId, task, attachment) {
     try {
         task.attachments = [...task.attachments?.filter(attach => attach.id !== attachment.id)]
-        if(task.cover?.attachmentId === attachment.id) task.cover = null
+        if (task.cover?.attachmentId === attachment.id) task.cover = null
         const action = `Removed attachment ${attachment.filename} from card ${task.title}.`
 
         const activity = boardService.getActivity(user, { id: task.id, title: task.title }, action)
-        await saveTask(boardId, groupId, task, activity)
+        await saveTask(groupId, task, activity)
     }
     catch (error) {
         console.error('ERROR: Failed to remove attachment', error)
@@ -111,7 +113,7 @@ export async function onRemoveFromCard(user, task, boardId, groupId) {
         task.memberIds = task.memberIds?.filter(memberId => memberId !== user._id)
 
         const activity = boardService.getActivity(user, { id: task.id, title: task.title }, action)
-        await saveTask(boardId, groupId, task, activity)
+        await saveTask(groupId, task, activity)
     }
     catch (error) {
         console.error('ERROR: Failed to remove card', error)
@@ -125,7 +127,7 @@ export async function saveDescription(task, boardId, groupId, text) {
         console.log(text, boardId, groupId, task.description)
 
         task = ({ ...task, description: text })
-        await saveTask(boardId, groupId, task, {})
+        await saveTask(groupId, task, {})
     }
     catch (error) {
         console.error('ERROR: Failed to save description', error)

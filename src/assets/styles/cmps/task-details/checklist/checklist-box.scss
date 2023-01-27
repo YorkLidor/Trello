@@ -43,6 +43,21 @@
     }
 
     .add-todo-box {
+        margin-inline-start: 40px;
+        max-width: 100%;
+
+        .add-todo-input-box {
+            max-width: 100%;
+
+            .add-todo-input {
+                width: 100%;
+                margin-inline: 0px;
+                height: 56px;
+                padding: 8px 12px 9px;
+
+                resize: none;
+            }
+        }
 
         .add-todo-btn {
             @include task-nav-button;

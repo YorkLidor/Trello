@@ -19,7 +19,7 @@ export function AttachmentList({ task, toggleModal, user, boardId, groupId }) {
     async function onTaskUpdateCover(attachment) {
         task = boardService.setCoverImage(task, attachment)
         const action = attachment ? `${user.fullname} changed task ${task.title} cover to attachment ${attachment?.filename}` : `${user.fullname} removed task ${task.title} cover`
-        await saveTask(boardId, groupId, task, boardService.getActivity(user, task, action))
+        await saveTask(groupId, task, boardService.getActivity(user, task, action))
     }
 
     async function onDragEnd({ source, destination }) {
@@ -31,7 +31,7 @@ export function AttachmentList({ task, toggleModal, user, boardId, groupId }) {
         task.attachments = attachments
         console.log('task.:', attachments)
         const action = `${user.fullname} changed task ${task.title} location`
-        saveTask(boardId, groupId, { ...task }, boardService.getActivity(user, task, action))
+        saveTask(groupId, { ...task }, boardService.getActivity(user, task, action))
     }
 
     return task?.attachments?.length > 0 && <DragDropContext onDragEnd={onDragEnd}>

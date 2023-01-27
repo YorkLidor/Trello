@@ -218,7 +218,7 @@ async function addComment(user, boardId, groupId, task, text) {
 
     }
     task.comments = task.comments ? [...task.comments, comment] : [comment]
-    await saveTask(boardId, groupId, task, boardService.getActivity(user, task, `User ${user.fullname} posted comment on task ${task.title}`))
+    await saveTask(groupId, task, boardService.getActivity(user, task, `User ${user.fullname} posted comment on task ${task.title}`))
 }
 
 function getCoverColorStyle(color) {

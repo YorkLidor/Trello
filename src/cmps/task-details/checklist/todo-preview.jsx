@@ -1,9 +1,13 @@
-import { useState } from 'react'
+
 import { TextareaEditor } from '../../textarea-editor'
 
+import { TbDots } from 'react-icons/tb'
 import { ImCheckboxChecked, ImCheckboxUnchecked } from 'react-icons/im'
+import { MODAL_TODO } from '../../modal/modal'
 
-export function Todo({ todo, onUpdateTodo, onRemoveTodo , setTodoToEdit, toolInEdit }) {
+export function Todo({ checklist, todo, onUpdateTodo, onRemoveTodo, setTodoToEdit, toolInEdit, onToggleModal }) {
+
+    const todoTitleClassname = todo.isDone ? 'todo-title done' : 'todo-title'
 
     function handleChange(ev) {
         if (!todo) return
@@ -11,17 +15,17 @@ export function Todo({ todo, onUpdateTodo, onRemoveTodo , setTodoToEdit, toolInE
         onUpdateTodo(todo)
     }
 
-    function onTitleEdit(title) {
-        if(!title) {
+    function onTitleEdit(ev, title) {
+        ev.stopPropagation()
+        if (!title) {
             onRemoveTodo(todo)
         } else {
             todo.title = title
             onUpdateTodo(todo)
         }
-        setTodoToEdit(null)
+        setTodoToEdit(ev, null)
     }
-
-    return <div className='todo-box'>
+    return <div className='todo-box' >
         <label>
             <input type='checkbox' className='todo-done-input' checked={todo.isDone} onChange={handleChange} />
             <span className='todo-checkbox-container'>
@@ -30,9 +34,12 @@ export function Todo({ todo, onUpdateTodo, onRemoveTodo , setTodoToEdit, toolInE
         </label>
         {
             toolInEdit === todo.id ?
-                <TextareaEditor defaultText={todo.title} onTextSubmit={onTitleEdit} />
+                <TextareaEditor defaultText={todo.title} onTextSubmit={onTitleEdit} onEditorCancel={ev => setTodoToEdit(ev, null)} />
                 :
-                <span className='todo-title' onClick={() => setTodoToEdit(todo.id)}>{todo.title}</span>
+                <div className='todo-row flex row'>
+                    <span className={todoTitleClassname} onClick={(ev) => setTodoToEdit(ev, todo.id)}>{todo.title}</span>
+                    <TbDots className='todo-tools' onClick={(ev) => onToggleModal(ev, MODAL_TODO , { todo , checklist })}/>
+                </div>
         }
     </div>
 }
