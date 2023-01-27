@@ -3,7 +3,7 @@ import { uploadImg } from "../../services/upload-img.service";
 import { useState, useEffect, useRef } from "react";
 
 import { boardService } from "../../services/board.service";
-import { saveTask , CHANGE_COVER_ATTACH, CHANGE_COVER_COLOR, REMOVE_COVER, getActivityText, CHANGE_COVER_SIZE, CHANGE_COVER_TEXT_COLOR } from "../../store/actions/board.actions";
+import { saveTask, CHANGE_COVER_ATTACH, CHANGE_COVER_COLOR, REMOVE_COVER, getActivityText, CHANGE_COVER_SIZE, CHANGE_COVER_TEXT_COLOR } from "../../store/actions/board.actions";
 
 export function CoverModal({ id, cmpProps }) {
     const { user, boardId, groupId, task } = cmpProps
@@ -193,8 +193,14 @@ export function CoverModal({ id, cmpProps }) {
             {
                 coverColors.map(color => {
                     colorIdx++
-                    return <div key={`color-${colorIdx - 1}`} className="color-tab-wrapper">
-                        <div className="color-tab" style={{ backgroundColor: color }} data-idx={colorIdx - 1} onClick={handleColorPick}>
+                    return <div key={`color-${colorIdx - 1}`}
+                        className="color-tab-wrapper"
+                    >
+                        <div
+                            className="color-tab"
+                            style={{ backgroundColor: color }}
+                            data-idx={colorIdx - 1}
+                            onClick={handleColorPick}>
                         </div></div>
                 })
             }
@@ -204,8 +210,15 @@ export function CoverModal({ id, cmpProps }) {
         <div className="cover-task-attachments flex row">
             {
                 task.attachments?.map(attachment =>
-                    <div key={attachment.filename} className="attach-tab-wrapper">
-                        <div className="attachment-cover-picker" style={boardService.getCoverAttachStyle(attachment.url)} onClick={(ev) => onPickAttachCover(ev, attachment)} />
+                    <div
+                        key={attachment.filename}
+                        className="attach-tab-wrapper"
+                    >
+                        <div c
+                            lassName="attachment-cover-picker"
+                            style={boardService.getCoverAttachStyle(attachment.url)}
+                            onClick={(ev) => onPickAttachCover(ev, attachment)}
+                        />
                     </div>)
             }
         </div>
