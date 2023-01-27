@@ -1,7 +1,8 @@
 .checklist-container {
     .checklist-title-box {
-        max-width: 100%;
+        width: 100%;
         justify-content: space-between;
+
         .remove-checklist {
             @include task-nav-button;
         }
@@ -15,11 +16,11 @@
             list-style-type: none;
         }
     }
-    .add-todo-box {
-    margin-inline-start: 40px;
 
-    .add-todo-btn {
-        @include task-nav-button;
+    .add-todo-box {
+
+        .add-todo-btn {
+            @include task-nav-button;
+        }
     }
-}
 }

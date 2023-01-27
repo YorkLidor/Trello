@@ -1,36 +1,58 @@
-.todo-checkbox-container {
-    position: absolute;
-    left: 23px;
+.todo-list-box {
+    padding: 8px 0;
+    margin-inline-start: -40px;
+    transform-origin: left bottom;
+    transition: background-color 0.3s ease-in;
 
-    .checkbox {
-        height: 18px;
-        width: 18px;
+    &:hover {
+        background-color: #eaecf0;
+    }
 
-        &.checkbox-checked {
-            color: $button-filled;
-            box-shadow: inset 0 0 0 2px #0079bf;
+    .todo-box {
+        position: relative;
+        padding-inline-start: 40px;
+        height: inherit;
 
-            &:hover {
-                color: #5AA4CF;
+
+
+
+        .todo-done-input {
+            display: none;
+        }
+
+        .todo-title {
+            display: inline-block;
+            width: 100%;
+            font-size: 14px;
+        }
+
+        .todo-checkbox-container {
+            position: absolute;
+            left: 3px;
+            top: 5px;
+
+
+
+            .checkbox {
+                height: 18px;
+                width: 18px;
+
+                &.checkbox-checked {
+                    color: $button-filled;
+                    box-shadow: inset 0 0 0 2px #0079bf;
+
+                    &:hover {
+                        color: #5AA4CF;
+                    }
+                }
+
+                &.checkbox-unchecked {
+                    color: transparent;
+                    box-shadow: inset 0 0 0 2px #dfe1e6;
+                }
+
+
             }
         }
-
-        &.checkbox-unchecked {
-            color: transparent;
-            box-shadow: inset 0 0 0 2px #dfe1e6;
-        }
     }
-}
-
-.todo-list-box {
-    padding: 6px 0;
-}
-
-.todo-done-input {
-    display: none;
-}
-
-.todo-title {
-    width: 100%;
-    font-size: 14px;
 }
