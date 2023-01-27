@@ -5,7 +5,7 @@ import { MODAL_MEMBER_OPEN } from '../modal/modal'
 import { HiOutlineUser } from 'react-icons/hi'
 import { AiOutlinePlus } from 'react-icons/ai'
 
-export function MemberList({ members, toggleModal }) {
+export function MemberList({ members, toggleModal, isBoardCall = false }) {
 
     function onMemberClick(ev, member) {
         ev.stopPropagation()
@@ -16,19 +16,20 @@ export function MemberList({ members, toggleModal }) {
 
     return <div className="info-tab flex-col">
         <HiOutlineUser className='member-native-icon' />
-        <span className="members-label">Members</span>
+        {!isBoardCall && <span className="members-label">Members</span>}
 
         <div className="task-members-box flex row">
-            {members.length > 0 && members.map(member =>
+            {members.length > 0 && members.map((member, idx) =>
                 <img
                     key={member._id}
                     alt={member.fullname}
                     src={member.imgUrl}
                     onClick={(ev) => onMemberClick(ev, member)}
                     className='list-member'
+                    style={isBoardCall && { zIndex: members.length - idx + '' }}
                 />)}
 
-            {members.length > 0 && <button
+            {(members.length > 0 && !isBoardCall) && <button
                 key='task-member-add'
                 className='task-member task-member-add'
                 onClick={(ev) => toggleModal(ev, MODAL_MEMBERS)}

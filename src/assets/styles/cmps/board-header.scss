@@ -134,4 +134,18 @@
         }
 
     }
+
+    .actions-container {
+        display: flex;
+        align-items: flex-start;
+
+        .task-members-box {
+
+            .list-member {
+                width: rem(28px);
+                height: rem(28px);
+                margin-left: rem(-6px);
+            }
+        }
+    }
 }
