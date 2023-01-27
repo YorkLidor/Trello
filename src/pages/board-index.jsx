@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { BoardPreview } from "../cmps/board-preview";
 import { Audio } from 'react-loader-spinner'
 
-import { loadBoards, saveBoard } from "../store/actions/board.actions"
+import { loadBoards, saveBoard, setBoard } from "../store/actions/board.actions"
 
 import { BOARD_CREATOR, Modal } from "../cmps/modal/modal"
 import { useEffectInit } from "../customHooks/useEffectInit"
@@ -82,12 +82,15 @@ export function BoardIndex() {
 
     async function onSaveBoard(board) {
         try {
-            board.createdBy = userService.getLoggedinUser()
-            board.members.push(board.createdBy)
+            if (!board._id) {
+                board.members.push(board.createdBy)
+                board.createdBy = userService.getLoggedinUser()
+            }
             const savedBoard = await saveBoard(board)
             console.info('Board Saved successesfuly')
             onCloseModal()
-            navigate(`/${savedBoard._id}`)
+            if (board._id) setBoard(null)
+            else navigate(`/${savedBoard._id}`)
         } catch (err) {
             console.error(err.name, err.message)
         }
@@ -113,15 +116,23 @@ export function BoardIndex() {
         if (target.dataset?.type === 'icon') target = target.parentNode
         const props = { onBoardClick, onCreateBoard, id: modal.id }
         const pos = utilService.getElementPosition(target)
-        elModal.current.style.bottom = pos.top - 200 + 'px'
+        elModal.current.style.top = pos.top + 'px'
         elModal.current.style.left = pos.right + 4 + 'px'
 
-        if (window.visualViewport.width < 550) {
-            // elModal.current.style.left = '0px'
-            // elModal.current.style.top = '0px'
+        if (308 + pos.right > window.visualViewport.width) {
+            elModal.current.style.left = pos.left - (308) + 'px'
         }
-        console.log('elModal.current.style.top:', elModal.current.style.top)
 
+        // if (window.visualViewport.width < 1000) {
+        //     elModal.current.style.left = '0'
+        //     elModal.current.style.top = '0'
+        //     elModal.current.style.bottom = '0'
+        //     elModal.current.style.right = '0'
+        // }
+        // if (window.visualViewport.width < 800) {
+        //     elModal.current.style.left = '0px'
+        //     elModal.current.style.top = '0px'
+        // }
 
         setModal(modalService.setModalData(modals, modal.id, BOARD_CREATOR, props))
         toggleModal(modals, modal.id)
