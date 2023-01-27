@@ -67,7 +67,7 @@ export function AppHeader() {
         switch (modalType) {
             case USER_QUICK_MENU:
                 props = { user }
-                elModal.current.style.top = pos.bottom + 'px'
+                elModal.current.style.top = pos.bottom + 6 + 'px'
                 elModal.current.style.right = 4 + 'px'
                 break;
             default:

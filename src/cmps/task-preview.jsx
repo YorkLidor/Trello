@@ -48,7 +48,7 @@ export function TaskPreview({ task, groupId, isDragging, isQuickEdit }) {
 
     function getStyle() {
         let style = task?.cover?.style
-        if(style?.backgroundImage) style = { ...style, height: '107.8px' }
+        if (style?.backgroundImage) style = { ...style, height: '107.8px' }
         return style
     }
 
@@ -61,22 +61,28 @@ export function TaskPreview({ task, groupId, isDragging, isQuickEdit }) {
 
     return <>
         <div
+            className={`task-preview-container ${isDragging && 'is-dragging'}`}
             ref={elTaskPreview}
             onMouseEnter={() => setIsEditBtnShow('hidden-icon')}
-            onMouseLeave={() => setIsEditBtnShow('')} className={`task-preview-container ${isDragging && 'is-dragging'}`}
+            onMouseLeave={() => setIsEditBtnShow('')}
             onClick={() => navigate(`/${board._id}/${groupId}/${task.id}`)}
             onContextMenu={onTaskQuickEdit}
+            style={task?.cover?.fullSize ? task?.cover?.style : {}}
         >
 
-            {/* EDIT ICON */}
+
             <section
                 className={`edit-task-icon-container ${isEditBtnShow}`}
                 onClick={onTaskQuickEdit}
             >
-                <img className='edit-task-icon' src="http://res.cloudinary.com/dk2geeubr/image/upload/v1674474594/xln3wronhmxmwxpucark.svg" alt="" />
+                <img
+                    className='edit-task-icon'
+                    src="http://res.cloudinary.com/dk2geeubr/image/upload/v1674474594/xln3wronhmxmwxpucark.svg"
+                    alt=""
+                />
             </section>
 
-            {/* COVER */}
+
             {taskStyle &&
                 <header
                     className="cover-color"
@@ -85,12 +91,14 @@ export function TaskPreview({ task, groupId, isDragging, isQuickEdit }) {
             }
 
             <li className="task-preview" >
-                {/* LABELS */}
-                {taskLabels && <TaskLabels labels={taskLabels} board={board} />}
+                {(taskLabels && !task?.cover?.fullSize) &&
+                    <TaskLabels
+                        labels={taskLabels}
+                        board={board}
+                    />}
 
-                {/* BODY */}
                 {!isQuickEdit && (
-                    <section className="task-body" >
+                    <section className={`task-body ${task?.cover?.fullSize ? 'full' : ''}`} >
                         <p>{task.title}</p>
                     </section>
                 )
@@ -116,8 +124,7 @@ export function TaskPreview({ task, groupId, isDragging, isQuickEdit }) {
                 )
                 }
 
-                {/* ICONS */}
-                <TaskPreviewIcons board={board} task={task} />
+                {!task?.cover?.fullSize && <TaskPreviewIcons board={board} task={task} />}
             </li>
 
         </div>
