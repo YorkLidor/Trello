@@ -56,6 +56,8 @@
                 border-radius: 4px;
                 height: 8px;
                 background-color: #5ba4cf;
+
+                transition: background-color, width 0.14s ease-in;
                 
             }
         }

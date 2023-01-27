@@ -16,7 +16,8 @@ export function Checklist({ task, checklist, onSaveChecklist, onToggleModal }) {
     const elEditTodoRef = useRef()
 
     const doneTodosCount = list? list.todos.filter(todo => todo.isDone).length : 0
-    const donePrecentage = Math.round((doneTodosCount / list.todos.length)*100)
+
+    const donePrecentage = (list?.todos?.length) > 0 ? Math.round((doneTodosCount /list?.todos?.length)*100) : 0
     const checklistDoneBarStyle = (donePrecentage === 100) ? {width: `${donePrecentage}%`, backgroundColor: '#61bd4f' } : {width: `${donePrecentage}%` }
 
 
