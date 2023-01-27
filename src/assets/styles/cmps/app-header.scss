@@ -1,9 +1,10 @@
 .app-header-regular {
     --dynamic-background: #026AA7;
     background-color: hsla(0, 0%, 0%, 0.16);
+    background-color: var(--dynamic-background);
+    align-items: center;
 
     .main-nav {
-        background-color: var(--dynamic-background);
         color: var(--dynamic-text);
         height: 44px;
 
@@ -43,5 +44,13 @@
             }
         }
 
+    }
+
+    .list-member {
+        margin: 0 4px;
+
+        &:hover {
+            opacity: 1;
+        }
     }
 }

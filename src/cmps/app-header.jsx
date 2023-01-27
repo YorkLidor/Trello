@@ -41,7 +41,7 @@ export function AppHeader() {
         }
     }
 
-    return <header className="app-header-regular" ref={elHeader} style={style}>
+    return <header className="app-header-regular flex justify-between" ref={elHeader} style={style}>
         <nav className="main-nav flex">
             <div className="logo-container">
                 <Link to={!user ? "/" : "/workspace"} className="logo">
@@ -53,5 +53,12 @@ export function AppHeader() {
                 <NavLink to="/workspace">Workspaces</NavLink>
             </nav>
         </nav >
+        
+        <img
+            alt={user.fullname}
+            src={user.imgUrl}
+            // onClick={(ev) => onMemberClick(ev, user)}
+            className='list-member'
+        />
     </header >
 }
