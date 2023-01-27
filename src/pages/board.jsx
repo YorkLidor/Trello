@@ -66,6 +66,7 @@ export function Board() {
             const board = await boardService.getById(boardId)
             saveBoard(board)
         } catch (err) {
+            navigate('/workspace')
             console.error('No Board!', err)
         }
     }
@@ -179,8 +180,8 @@ export function Board() {
                 }
             </div>
         </main>
-        <section className="board-menu">
+        {/* <section className="board-menu">
 
-        </section>
+        </section> */}
     </div>
 }
