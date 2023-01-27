@@ -34,6 +34,18 @@
                 .task-body {
                     color: #ffff;
                 }
+
+                &::before {
+                    background: linear-gradient(180deg,#0000,#00000080);
+                    content: "";
+                    height: 32px;
+                    left: 0;
+                    mix-blend-mode: normal;
+                    position: absolute;
+                    right: 0;
+                    top: -32px;
+                    width: 100%;
+                }
             }
         }
     }
@@ -46,6 +58,8 @@
     padding: rem(6px) rem(8px) rem(2px);
     max-width: 300px;
     min-height: 20px;
+    position: relative;
+    z-index: 10;
 
     &.is-dragging {
         transform: rotate(5deg);
