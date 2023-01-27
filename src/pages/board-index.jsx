@@ -4,16 +4,18 @@ import { useNavigate } from "react-router-dom";
 import { BoardPreview } from "../cmps/board-preview";
 import { Audio } from 'react-loader-spinner'
 
-import { loadBoards, saveBoard } from "../store/actions/board.actions";
+import { loadBoards, saveBoard } from "../store/actions/board.actions"
 
-import { FaRegStar } from "react-icons/fa";
+import { BOARD_CREATOR, Modal } from "../cmps/modal/modal"
+import { useEffectInit } from "../customHooks/useEffectInit"
+import { modalService } from "../services/modal.service"
+import { utilService } from "../services/util.service"
+import { closeModal, toggleModal } from "../store/actions/app.actions"
+import { boardService } from "../services/board.service"
+import { userService } from "../services/user.service"
+
+import { FaRegStar } from "react-icons/fa"
 import { BsPerson } from 'react-icons/bs'
-import { BOARD_CREATOR, Modal } from "../cmps/modal/modal";
-import { useEffectInit } from "../customHooks/useEffectInit";
-import { modalService } from "../services/modal.service";
-import { utilService } from "../services/util.service";
-import { closeModal, toggleModal } from "../store/actions/app.actions";
-import { boardService } from "../services/board.service";
 
 export function BoardIndex() {
     const navigate = useNavigate()
@@ -80,9 +82,11 @@ export function BoardIndex() {
 
     async function onSaveBoard(board) {
         try {
-            onCloseModal()
+            board.createdBy = userService.getLoggedinUser()
+            board.members.push(board.createdBy)
             const savedBoard = await saveBoard(board)
             console.info('Board Saved successesfuly')
+            onCloseModal()
             navigate(`/${savedBoard._id}`)
         } catch (err) {
             console.error(err.name, err.message)
