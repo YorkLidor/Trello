@@ -15,18 +15,17 @@ export function Checklist({ task, checklist, onSaveChecklist, onToggleModal }) {
     const [editMode, setEditMode] = useState(false)
     const elEditTodoRef = useRef()
 
-    console.log(list)
 
     function onTitleEdit(title) {
         if (!title.length) return
         list.title = title
-        onUpdateChecklist(list)
-        setChecklist(list)
         setEditMode(false)
+        console.log('true')
+        setChecklist(list)
+        onUpdateChecklist(list)
     }
 
     function onUpdateChecklist() {
-        console.log(task, list);
         task.checklists = task.checklists.map(list => (list.id !== list.id) ? list : list)
         onSaveChecklist(list)
         setChecklist(list)
@@ -58,12 +57,12 @@ export function Checklist({ task, checklist, onSaveChecklist, onToggleModal }) {
     return list && <section className="checklist-container" key={list.id}>
         <div className='checklist-title-box flex row'>
             <TbCheckbox className="checklist-logo" />
-            <div className="checklist-title-container flex row">
+            <div className="checklist-title-container flex row" onClick={() => setEditMode(true)} >
                 {
                     editMode ?
                         <TextareaEditor defaultText={checklist.title} onTextSubmit={onTitleEdit} className={"checklist-title"} />
                         :
-                        <span className='checklist-title-span' onClick={() => setEditMode(true)}>{checklist.title}</span>
+                        <span className='checklist-title-span'>{checklist.title}</span>
                 }
             </div>
             {!editMode && <button className='remove-checklist' onClick={(ev) => onToggleModal(ev, MODAL_CHECKLIST_DELETE, { checklist })}>Delete</button>}
