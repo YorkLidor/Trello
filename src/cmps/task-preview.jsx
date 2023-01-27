@@ -67,7 +67,7 @@ export function TaskPreview({ task, groupId, isDragging, isQuickEdit }) {
             onMouseLeave={() => setIsEditBtnShow('')}
             onClick={() => navigate(`/${board._id}/${groupId}/${task.id}`)}
             onContextMenu={onTaskQuickEdit}
-            style={task?.cover?.fullSize ? task?.cover?.style : {}}
+
         >
 
 
@@ -90,11 +90,15 @@ export function TaskPreview({ task, groupId, isDragging, isQuickEdit }) {
                 />
             }
 
-            <li className="task-preview" >
+            <li
+                className="task-preview"
+                style={task?.cover?.fullSize && !isQuickEdit ? task?.cover?.style : {}}
+            >
                 {(taskLabels && !task?.cover?.fullSize) &&
                     <TaskLabels
                         labels={taskLabels}
                         board={board}
+
                     />}
 
                 {!isQuickEdit && (
