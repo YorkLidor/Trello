@@ -4,8 +4,8 @@ import { SET_MODALS, SET_MODAL } from "../store/reducers/app.reducer"
 
 import {
     MODAL_LABELS, MODAL_ATTACH, MODAL_ATTACH_EDIT, MODAL_ATTACH_OPEN,
-    MODAL_MEMBERS, MODAL_MEMBER_OPEN, MODAL_TASK_QUICK_EDIT, BOARD_CREATOR, 
-    MODAL_TASK_DATE, MODAL_TASK_COVER, MODAL_CHECKLIST, MODAL_CHECKLIST_DELETE, MODAL_TODO
+    MODAL_MEMBERS, MODAL_MEMBER_OPEN, MODAL_TASK_QUICK_EDIT, BOARD_CREATOR,
+    MODAL_TASK_DATE, MODAL_TASK_COVER, MODAL_CHECKLIST, MODAL_CHECKLIST_DELETE, MODAL_TODO, MODAL_GROUP_QUICK_EDIT
 } from '../cmps/modal/modal'
 
 export const modalService = {
@@ -35,7 +35,7 @@ function getModalById(modals, id) {
 
 function openModal(modals, id) {
     const modal = modals.find(modal => modal.id === id)
-    if(!modal) throw new Error('Modal not found')
+    if (!modal) throw new Error('Modal not found')
 
     modal.isOpen = true
     _updateStore(modal)
@@ -43,7 +43,7 @@ function openModal(modals, id) {
 
 function closeModal(modals, id) {
     const modal = modals.find(modal => modal.id === id)
-    if(!modal) throw new Error('Modal not found')
+    if (!modal) throw new Error('Modal not found')
 
     modal.isOpen = false
     _updateStore(modal)
@@ -51,7 +51,7 @@ function closeModal(modals, id) {
 
 function toggleModal(modals, id) {
     const modal = modals.find(modal => modal.id === id)
-    if(!modal) throw new Error('Modal not found')
+    if (!modal) throw new Error('Modal not found')
 
     modal.isOpen = !modal.isOpen
     _updateStore(modal)
@@ -59,7 +59,7 @@ function toggleModal(modals, id) {
 
 function setModalData(modals, id, modalType, props) {
     const modal = modals.find(modal => modal.id === id)
-    if(!modal) throw new Error('Modal not found')
+    if (!modal) throw new Error('Modal not found')
 
     const data = getModalData(id, modalType, props)
 
@@ -74,11 +74,11 @@ function removeModal(modals, id) {
 }
 
 function _updateStore(modal) {
-    store.dispatch({type: SET_MODAL, modal })
+    store.dispatch({ type: SET_MODAL, modal })
 }
 
 function _updateModalsInStore(modals) {
-    store.dispatch({type: SET_MODALS, modals })
+    store.dispatch({ type: SET_MODALS, modals })
 }
 
 function getModalData(id, modalType, props) {
@@ -170,6 +170,13 @@ function getModalData(id, modalType, props) {
                     props
                 }
                 break;
+            case MODAL_GROUP_QUICK_EDIT:
+                newModalData = {
+                    className: 'modal',
+                    cmpType: MODAL_GROUP_QUICK_EDIT,
+                    props
+                }
+                break;
             case MODAL_TODO:
                 newModalData = {
                     className: 'modal',
@@ -178,6 +185,11 @@ function getModalData(id, modalType, props) {
                 }
                 break;
             default:
+                newModalData = {
+                    className: 'modal',
+                    cmpType: modalType,
+                    props
+                }
                 break;
         }
         return newModalData

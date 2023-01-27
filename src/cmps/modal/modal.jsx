@@ -11,6 +11,7 @@ import { CoverModal } from "./cover-modal"
 import { ChecklistModal } from "./checklist-modal"
 import { DeleteChecklistModal } from './checklist-delete-modal'
 import { TodoModal } from './checklist-todo-modal'
+import { GroupQuickEdit } from "../group-quick-edit"
 
 export const MODAL_LABELS = 'MODAL_LABELS'
 export const MODAL_ATTACH = 'MODAL_ATTACH'
@@ -25,9 +26,11 @@ export const MODAL_TASK_COVER = 'MODAL_TASK_COVER'
 export const MODAL_CHECKLIST = 'MODAL_CHECKLIST'
 export const MODAL_CHECKLIST_DELETE = 'MODAL_CHECKLIST_DELETE'
 export const MODAL_TODO = 'MODAL_TODO'
+export const MODAL_GROUP_QUICK_EDIT = 'MODAL_GROUP_QUICK_EDIT'
 
 
 export function Modal({ modal, cmpProps, cmpType, className }) {
+    console.log('cmpProps:', cmpProps)
     return modal.isOpen && <div className={className ? className : 'modal'}>
         <GetCmp id={modal.id} cmpProps={cmpProps} cmpType={cmpType} />
     </div>
@@ -61,6 +64,8 @@ function GetCmp({ id, cmpProps, cmpType }) {
             return <DeleteChecklistModal cmpProps={cmpProps} id={id} />
         case MODAL_TODO:
             return <TodoModal cmpProps={cmpProps} id={id} />
+        case MODAL_GROUP_QUICK_EDIT:
+            return <GroupQuickEdit cmpProps={cmpProps} id={id} />
         default:
             return ''
     }
