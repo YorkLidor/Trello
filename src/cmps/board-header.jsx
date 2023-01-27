@@ -4,9 +4,7 @@ import { useForm } from "../customHooks/useForm"
 import { saveBoard } from "../store/actions/board.actions";
 
 import { useSelector } from "react-redux";
-import { BsThreeDots } from "react-icons/bs";
 import { FaStar, FaRegStar } from 'react-icons/fa'
-import Filter from '../assets/img/filter.svg'
 import { MemberList } from "./task-details/member-list";
 
 export function BoardHeader({ onDeleteBoard, onToggleModal }) {

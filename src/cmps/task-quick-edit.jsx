@@ -35,8 +35,6 @@ export function TaskQuickEdit({ task, groupId, pos, onToggleModal, onCloseModal 
         if (pos) {
             const distanceFromRight = window.innerWidth - pos.left
             const distanceFromBottom = window.innerHeight - pos.bottom
-            console.log('window.innerHeight:', window.innerHeight)
-            console.log('distanceFromBottom:', distanceFromBottom)
             if (distanceFromRight > 450) {
                 setIsModalCloseToRight(false)
             } else {

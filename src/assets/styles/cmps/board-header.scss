@@ -83,7 +83,7 @@
     }
 
     .title-container {
-        display: inline-flex;
+        display: none;
         align-items: center;
         gap: 16px;
         cursor: default;
@@ -94,6 +94,10 @@
         padding: 0 rem(12px);
         text-overflow: ellipsis;
         white-space: nowrap;
+
+        @include for-narrow-layout {
+            display: inline-flex;
+        }
 
         .btn-star {
             padding: 8px;
@@ -135,7 +139,6 @@
         &.editable {
 
             .board-title-header {
-                // display: none;
                 position: absolute;
                 opacity: 0;
             }
@@ -148,8 +151,12 @@
     }
 
     .actions-container {
-        display: flex;
+        display: none;
         align-items: flex-start;
+
+        @include for-narrow-layout {
+            display: flex;
+        }
 
         .task-members-box {
             margin-right: 8px;

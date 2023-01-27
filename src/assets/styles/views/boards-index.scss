@@ -41,6 +41,7 @@
         font-size: rem(24px);
         gap: rem(8px);
         padding-bottom: 11px;
+        margin-inline-start: 4px;
     }
 
     h3 {
@@ -95,6 +96,7 @@
             height: rem(96px);
             margin-bottom: 27.453px;
             margin-right: 2%;
+            margin-bottom: rem(24px);
 
             &:nth-child(even) {
                 margin-right: 2%;
@@ -103,7 +105,7 @@
 
 
         @include for-normal-layout {
-            margin: 0 2% 2% 0;
+            margin: 0 2% calc(2% + 16px)0;
             width: 23%;
 
             &:nth-child(even) {
