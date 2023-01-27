@@ -70,7 +70,7 @@ export async function addNewTask(boardId, groupId, newTask) {
 export async function saveTask(boardId, groupId, task, activity) {
     try {
 
-        const board = await boardService.getById(boardId)
+        const board = store.getState().boardModule.board
         if (!board) throw new Error('No such board with this id')
         // PUT /api/board/b123/task/t678
 
@@ -82,7 +82,6 @@ export async function saveTask(boardId, groupId, task, activity) {
         group.tasks = tasks
 
         board.activities.unshift(activity)
-        store.dispatch({ type: SET_ACTIVE_BOARD, board })
         await saveBoard(board)
     }
     catch (error) {

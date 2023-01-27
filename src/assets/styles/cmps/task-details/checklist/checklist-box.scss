@@ -1,19 +1,51 @@
-.checklist-box {
-    width: 100%;
-    .checklist-list {
-        width: 100%;
-        list-style-type: none;
+.checklist-container {
+    max-width: 100%;
+
+    .checklist-title-box {
+        max-width: 100%;
+        justify-content: space-between;
+        margin-block-end: 8px;
+
+        .checklist-title-container {
+            flex-grow: 1;
+            padding-inline-end: 0px;
+
+            .checklist-title {
+                max-width: 100%;
+                height: fit-content;
+
+            }
+
+            .text-area-editor-box.checklist-title {
+                padding-inline-end: 0px;
+                max-width: 100%;
+
+                .text-area-editor.checklist-title {
+                    max-width: 100%;
+                    padding-block-start: 0
+                }
+            }
+        }
+
+        .remove-checklist {
+            @include task-nav-button;
+        }
     }
-}
 
-.todo-done {
-    display: none;
-}
 
-.add-todo-box {
-    margin-inline-start: 40px;
+    .checklist-box {
+        width: 100%;
 
-    .add-todo-btn {
-        @include task-nav-button;
+        .checklist-list {
+            width: 100%;
+            list-style-type: none;
+        }
+    }
+
+    .add-todo-box {
+
+        .add-todo-btn {
+            @include task-nav-button;
+        }
     }
 }

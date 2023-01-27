@@ -40,6 +40,17 @@ export function TaskAdd({ group, isAddCardOpen, setIsAddCardOpen }) {
         }
     }
 
+    function Dictaphone(){
+        SpeechRecognition.startListening()
+        setTaskTitleToSet(...taskToSet, {title: finalTranscript})
+        console.log('finalTranscript:', finalTranscript)
+        console.log('taskToSet:', taskToSet)
+        console.log('transcript:', transcript)
+        if (!SpeechRecognition.browserSupportsSpeechRecognition()) {
+            return <p>Sorry, your browser does not support speech recognition.</p>
+        }
+    }
+
     function onblurForm() {
         setTimeout(() => {
             setIsAddCardOpen(false)

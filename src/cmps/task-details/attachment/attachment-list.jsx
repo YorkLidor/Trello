@@ -2,10 +2,14 @@ import { boardService } from '../../../services/board.service'
 
 import { saveTask } from '../../../store/actions/board.actions'
 
+import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd"
+
 import { AttachmentPreview } from "./attachment-preview"
 import { onRemoveAttachment } from '../../../store/actions/board.actions'
+import { utilService } from '../../../services/util.service'
 
 export function AttachmentList({ task, toggleModal, user, boardId, groupId }) {
+
 
     function removeAttachment(ev, attachment) {
         ev.stopPropagation()
@@ -18,10 +22,42 @@ export function AttachmentList({ task, toggleModal, user, boardId, groupId }) {
         await saveTask(boardId, groupId, task, boardService.getActivity(user, task, action))
     }
 
-    return task?.attachments?.length > 0 && <ul className="attachment-list">
-        {task.attachments.map(attachment =>
-            <li className="attachment-preview-list" key={attachment.id}>
-                <AttachmentPreview task={task} attachment={attachment} toggleModal={toggleModal} removeAttachment={removeAttachment} onTaskUpdateCover={onTaskUpdateCover}/>
-            </li>)}
-    </ul>
+    async function onDragEnd({ source, destination }) {
+        if (!destination) return
+        const { index: destinationIdx } = destination
+        const { index: sourceIdx } = source
+        console.log('sourceIdx:', sourceIdx, destinationIdx)
+        const attachments = utilService.reorder(task.attachments, sourceIdx, destinationIdx)
+        task.attachments = attachments
+        console.log('task.:', attachments)
+        const action = `${user.fullname} changed task ${task.title} location`
+        saveTask(boardId, groupId, { ...task }, boardService.getActivity(user, task, action))
+    }
+
+    return task?.attachments?.length > 0 && <DragDropContext onDragEnd={onDragEnd}>
+        <Droppable droppableId={task.id} type="attachment">
+            {provided =>
+                <ul className="attachment-list" ref={provided.innerRef}>
+                    {task.attachments.map((attachment, idx) =>
+                        <Draggable
+                            draggableId={attachment.id + 30}
+                            key={attachment.id}
+                            index={idx}
+                        >
+                            {provided =>
+                                <li
+                                    className="attachment-preview-list"
+                                    key={attachment.id}
+                                    ref={provided.innerRef}
+                                    {...provided.draggableProps}
+                                    {...provided.dragHandleProps}
+                                >
+                                    <AttachmentPreview task={task} attachment={attachment} toggleModal={toggleModal} removeAttachment={removeAttachment} onTaskUpdateCover={onTaskUpdateCover} />
+                                </li>}
+                        </Draggable >
+                    )}
+                    {provided.placeholder}
+                </ul>}
+        </Droppable>
+    </DragDropContext >
 }

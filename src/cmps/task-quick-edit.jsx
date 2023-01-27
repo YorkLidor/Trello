@@ -20,7 +20,7 @@ export function TaskQuickEdit({ task, groupId, pos, onToggleModal, onCloseModal 
     const [classIsFadeIn, setClassIsFadeIn] = useState(false)
     const [isModalCloseToRight, setIsModalCloseToRight] = useState(false)
     const [isModalCloseToBottom, setIsModalCloseToBottom] = useState(false)
-    const [taskPos,setTaskPos] = useState({ top: pos.top + 'px', left: pos.left + 'px' })
+    const [taskPos, setTaskPos] = useState({ top: pos.top + 'px', left: pos.left + 'px' })
     const elTaskPreview = useRef()
 
     useEffect(() => {
@@ -42,7 +42,7 @@ export function TaskQuickEdit({ task, groupId, pos, onToggleModal, onCloseModal 
             } else {
                 setIsModalCloseToRight(true)
             }
-            
+
             if (distanceFromBottom < 140) {
                 setIsModalCloseToBottom(true)
                 setTaskPos({ left: pos.left + 'px', bottom: '120px' })
@@ -79,7 +79,7 @@ export function TaskQuickEdit({ task, groupId, pos, onToggleModal, onCloseModal 
     }
 
     function onOptionClick(ev, modalType) {
-        onToggleModal(ev, modalType, groupId, task)
+        onToggleModal(ev, modalType, { groupId, task })
     }
 
     return <div className="quick-edit-container " onClick={onCloseQuickEdit} >

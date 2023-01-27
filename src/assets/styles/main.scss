@@ -15,6 +15,7 @@
 @import "views/home-page";
 
 // Components
+@import "cmps/textarea-editor.scss";
 
 //main app cmps
 @import "cmps/app-header";
@@ -61,6 +62,7 @@
 @import "cmps/modal/member-modal.scss";
 @import "cmps/modal/cover-modal.scss";
 @import "cmps/modal/checklist-modal.scss";
+@import "cmps/modal/checklist-delete-modal.scss";
 @import "cmps/modal/modal";
 
 @import "cmps/task-details/label-list";

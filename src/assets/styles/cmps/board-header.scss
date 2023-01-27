@@ -28,24 +28,35 @@
 
     }
 
-    .btn-filter svg path {
-        color: var(--dynamic-text);
+    .btn-filter {
+        padding: 6.5px 12px;
+        align-items: center;
+
+        svg {
+            margin-right: 8px;
+        }
+
+        svg path {
+            color: var(--dynamic-text);
+
+        }
     }
 
     .btn-menu {
         @include button-filled($dynamic-button, #FFF);
         color: var(--dynamic-text);
-        padding: 8px;
-        line-height: 20px;
+        padding: 14px 8px;
+        margin: 0 4px 0 0;
 
-        span {
-            line-height: 14px;
-        }
+
     }
 
     .btn-share {
         @include button-filled(rgba(255, 255, 255, 0.90), #091e42);
-        line-height: 17px;
+        line-height: 20px;
+        padding: 6px 12px;
+        padding-left: 8px;
+        align-items: center;
 
         svg {
             width: 16px;
@@ -61,6 +72,7 @@
 
     .btn-delete {
         @include button-filled($red, #FFF);
+        padding: 6.5px 12px;
 
     }
 
@@ -133,5 +145,20 @@
             }
         }
 
+    }
+
+    .actions-container {
+        display: flex;
+        align-items: flex-start;
+
+        .task-members-box {
+            margin-right: 8px;
+
+            .list-member {
+                width: rem(28px);
+                height: rem(28px);
+                margin: 0 0 rem(-6px);
+            }
+        }
     }
 }

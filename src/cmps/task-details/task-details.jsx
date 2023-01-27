@@ -13,7 +13,7 @@ import { SET_ACTIVE_BOARD } from "../../store/reducers/board.reducer"
 
 import {
     MODAL_ATTACH, MODAL_LABELS, MODAL_ATTACH_EDIT, MODAL_CHECKLIST,
-    MODAL_ATTACH_OPEN, MODAL_MEMBERS, MODAL_MEMBER_OPEN, MODAL_TASK_DATE, MODAL_TASK_COVER
+    MODAL_ATTACH_OPEN, MODAL_MEMBERS, MODAL_MEMBER_OPEN, MODAL_TASK_DATE, MODAL_TASK_COVER, MODAL_CHECKLIST_DELETE
 } from '../modal/modal.jsx'
 
 import { AttachmentList } from "./attachment/attachment-list"
@@ -66,7 +66,6 @@ export function TaskDetails() {
             group.tasks[taskIdx] = taskToEdit
             const newBoard = board
             saveBoard(newBoard)
-            setThemeColor()
         }
     }, [taskToEdit])
 
@@ -83,6 +82,10 @@ export function TaskDetails() {
             else if (modalPos.top < 0) modalBoxRef.current.style.top = '10px'
         }
     }, [modals])
+
+    useEffectUpdate(() => {
+        setThemeColor()
+    }, [board])
 
     async function loadBoard() {
         try {
@@ -153,6 +156,7 @@ export function TaskDetails() {
         else if (modalType === MODAL_TASK_DATE) props = { user, boardId, groupId, task: taskToEdit }
         else if (modalType === MODAL_TASK_COVER) props = { user, boardId, groupId, task: taskToEdit }
         else if (modalType === MODAL_CHECKLIST) props = { user, boardId, groupId, task: taskToEdit, modals }
+        else if (modalType === MODAL_CHECKLIST_DELETE) props = { user, boardId, groupId, task: taskToEdit , checklist: extras.checklist }
 
         const pos = utilService.getElementPosition(element)
         modalBoxRef.current.style.top = pos.bottom + 'px'
@@ -170,6 +174,7 @@ export function TaskDetails() {
 
 
     async function setThemeColor() {
+        if (!taskToEdit.cover) return
         const { style } = taskToEdit.cover
         let sourceColor
         let color
@@ -217,7 +222,7 @@ export function TaskDetails() {
                             <a className='button-link add-attachment' href='#' onClick={(ev) => onToggleModal(ev, MODAL_ATTACH)}>Add an attachment</a>
                         </div>
                     }
-                    <Checklists task={taskToEdit} user={user} groupId={groupId} />
+                    <Checklists task={taskToEdit} user={user} groupId={groupId} onToggleModal={onToggleModal} />
                     <Activity user={user} boardId={boardId} groupId={groupId} taskToEdit={taskToEdit} />
                 </section>
 
