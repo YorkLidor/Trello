@@ -103,7 +103,7 @@ export function CoverModal({ id, cmpProps }) {
         const newCover = { fullSize: task.cover.fullSize, style: boardService.getCoverColorStyle(coverColors[colorIdx]) }
 
         setActiveCover(newCover)
-        await saveTask(task, boardService.getActivity(user, task, `${getActivityText(CHANGE_COVER_COLOR)}`))
+        await saveTask(groupId, task, boardService.getActivity(user, task, `${getActivityText(CHANGE_COVER_COLOR)}`))
     }
 
     async function onPickCoverSize(ev, size) {
@@ -116,7 +116,7 @@ export function CoverModal({ id, cmpProps }) {
 
         task.cover = { ...task.cover, fullSize: size }
         setActiveCover((prevCover) => ({ ...prevCover, fullSize: size }))
-        await saveTask(boardId, groupId, task, boardService.getActivity(user, task, `${getActivityText(CHANGE_COVER_SIZE)} ${task.title}`))
+        await saveTask(groupId, task, boardService.getActivity(user, task, `${getActivityText(CHANGE_COVER_SIZE)} ${task.title}`))
     }
 
     function onPickAttachCover(ev, attachment) {
