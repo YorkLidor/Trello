@@ -1,0 +1,19 @@
+.textarea-editor-box {
+    padding-block-end: 9px;
+    height: fit-content;
+
+    .textarea-editor {
+        background-color: #e1e4ea;
+        width: 100%;
+        resize: none;
+        overflow: hidden;
+        min-height: 56px;
+        height: auto;
+        overflow-wrap: break-word;
+
+    }
+
+    .textarea-editor-save{
+        margin: 0 4px 0 0;
+    }
+}

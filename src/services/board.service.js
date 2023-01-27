@@ -38,7 +38,8 @@ export const boardService = {
     sortChecklistTodos,
     setCoverImage,
     getTodoEmpty,
-    removeChecklist
+    removeChecklist,
+    removeTodo
 }
 
 async function saveTaskTitle(board, groupId, task) {
@@ -258,4 +259,9 @@ function getTodoEmpty() {
 function removeChecklist(task, checklist) {
     task.checklists = task.checklists.filter(list => list.id !== checklist.id)
     return task
+}
+
+function removeTodo(checklist, todo) {
+    checklist.todos = checklist.todos.filter(t => t.id !== todo.id)
+    return checklist
 }
