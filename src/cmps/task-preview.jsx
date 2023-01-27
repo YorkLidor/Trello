@@ -61,13 +61,14 @@ export function TaskPreview({ task, groupId, isDragging, isQuickEdit }) {
 
     return <>
         <div
-            className={`task-preview-container ${isDragging && 'is-dragging'} ${task?.cover?.fullSize ? 'full' : ''}`}
+            className={`task-preview-container ${isDragging && 'is-dragging'} ${task?.cover?.fullSize ? 'full' : ''} ${task?.cover?.style?.backgroundImage ? 'img' : ''}`}
             ref={elTaskPreview}
             onMouseEnter={() => setIsEditBtnShow('hidden-icon')}
             onMouseLeave={() => setIsEditBtnShow('')}
             onClick={() => navigate(`/${board._id}/${groupId}/${task.id}`)}
             onContextMenu={onTaskQuickEdit}
             style={task?.cover?.fullSize && !isQuickEdit ? task?.cover?.style : {}}
+
         >
 
 
@@ -86,12 +87,12 @@ export function TaskPreview({ task, groupId, isDragging, isQuickEdit }) {
             {taskStyle &&
                 <header
                     className="cover-color"
-                    style={taskStyle}
+                    style={task?.cover?.fullSize && !isQuickEdit ? { backgroundColor: "transparent", height: taskStyle.height } : taskStyle}
                 />
             }
 
             <li
-                className={`task-preview ${task?.cover?.fullSize ? 'full' : ''}`}
+                className={`task-preview ${task?.cover?.fullSize && !isQuickEdit ? 'full' : ''}`}
 
             >
                 {(taskLabels && !task?.cover?.fullSize) &&

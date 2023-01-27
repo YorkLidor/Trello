@@ -5,6 +5,8 @@
 }
 
 .task-preview-container {
+    background-position: 50%;
+    background-size: cover;
     background-color: $clr6;
     border-radius: 3px;
     box-shadow: var(--ds-shadow-raised, 0 1px 0 $clr23);
@@ -15,38 +17,26 @@
         position: absolute;
 
     }
-}
 
-.edit-task-icon-container {
-    position: absolute;
-    top: 2px;
-    right: 2px;
-    border-radius: 3px;
-    background-color: #f4f5f7;
-    opacity: 0.8;
-    align-items: center;
-    height: 28px;
-    justify-content: center;
-    width: 28px;
-    display: none;
+    &.full {
+        &.img {
 
-    &:hover {
-        opacity: 1;
+            ::before {
+                background: linear-gradient(180deg, #0000, #00000080);
+                mix-blend-mode: normal;
+            }
 
-        .edit-task-icon {
-            opacity: 0.8;
+            .task-preview.full {
+                background: linear-gradient(180deg, #00000080, #000);
+
+
+
+                .task-body {
+                    color: #ffff;
+                }
+            }
         }
     }
-
-    .edit-task-icon {
-        opacity: 0.6;
-    }
-
-    &.hidden-icon {
-        display: flex;
-        display: block;
-    }
-
 }
 
 .task-preview {
@@ -91,7 +81,45 @@
     }
 
 
+
+
 }
+
+.edit-task-icon-container {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    border-radius: 3px;
+    background-color: #f4f5f7;
+    opacity: 0.8;
+    align-items: center;
+    height: 28px;
+    justify-content: center;
+    width: 28px;
+    display: none;
+
+    &:hover {
+        opacity: 1;
+
+        .edit-task-icon {
+            opacity: 0.8;
+        }
+    }
+
+    .edit-task-icon {
+        opacity: 0.6;
+    }
+
+    &.hidden-icon {
+        display: flex;
+        display: block;
+    }
+
+
+
+}
+
+
 
 .cover-color {
     align-items: flex-end;
@@ -181,7 +209,7 @@
             }
         }
 
-        &.full {}
+
     }
 
     .btn-controls-container {
