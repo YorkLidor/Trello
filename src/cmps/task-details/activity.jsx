@@ -5,6 +5,7 @@ import { CommentList } from "./comment/comment-list"
 import { boardService } from "../../services/board.service"
 
 import { AiOutlineUnorderedList as ActivityIcon } from "react-icons/ai"
+import { ActivityList } from "../activity-list"
 
 
 export function Activity({ user, boardId, groupId, taskToEdit }) {
@@ -29,6 +30,7 @@ export function Activity({ user, boardId, groupId, taskToEdit }) {
     return <div className="task-activity-box flex column">
         <ActivityIcon className="activity-icon task-icon" />
         <div className="activity-header"><span className="title-main-col">Activity</span></div>
+        
         <div className="new-comment-box">
             <img className="user-logo" src={user.imgUrl ? user.imgUrl : 'https://res.cloudinary.com/dk2geeubr/image/upload/v1673890694/profileDefault_khqx4r.png'} />
             <form ref={elCommentRef} className="task-activity" onSubmit={onSaveComment}>
@@ -38,7 +40,8 @@ export function Activity({ user, boardId, groupId, taskToEdit }) {
                 <button className="comment-btn">Save</button>
             </form>
         </div>
-
         {<CommentList task={taskToEdit} />}
+
+        <ActivityList taskId={taskToEdit.id} />
     </div>
 }

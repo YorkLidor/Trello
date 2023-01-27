@@ -1,12 +1,14 @@
 import { useRef } from 'react'
 
 import { closeModal } from '../../store/actions/app.actions'
+import { getActivityText } from '../../store/actions/board.actions'
 import { boardService } from '../../services/board.service'
 
 import { ModalHeader } from './modal-header'
+import { EDIT_ATTACH } from '../../store/actions/board.actions'
 
 export function AttachmentEditModal({ cmpProps, id }) {
-    const { boardId, groupId, task, attachment } = cmpProps
+    const { groupId, task, attachment } = cmpProps
     const editInputRef = useRef()
     const member = {
         id: 101,
@@ -22,7 +24,7 @@ export function AttachmentEditModal({ cmpProps, id }) {
             attachment.url = value
             attachment.filename = value.substring(value.lastIndexOf('/')+1)
             
-            const action = 'Edited attachment ' + value
+            const action = `${getActivityText(EDIT_ATTACH)} ${attachment.filename}`
             const activity = boardService.getActivity(member, { id: task.id, title: task.title }, action)
             
             task.attachments = task.attachments.map(attach => attach.id === attachment.id ? attachment : attach)

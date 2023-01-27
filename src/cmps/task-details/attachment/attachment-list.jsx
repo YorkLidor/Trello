@@ -1,6 +1,6 @@
 import { boardService } from '../../../services/board.service'
 
-import { saveTask } from '../../../store/actions/board.actions'
+import { getActivityText, saveTask, REMOVE_COVER, CHANGE_COVER_ATTACH, CHANGE_TASK_LOCATION } from '../../../store/actions/board.actions'
 
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd"
 
@@ -18,7 +18,7 @@ export function AttachmentList({ task, toggleModal, user, boardId, groupId }) {
 
     async function onTaskUpdateCover(attachment) {
         task = boardService.setCoverImage(task, attachment)
-        const action = attachment ? `${user.fullname} changed task ${task.title} cover to attachment ${attachment?.filename}` : `${user.fullname} removed task ${task.title} cover`
+        const action = attachment ? `${getActivityText(CHANGE_COVER_ATTACH)} ${attachment?.filename}` : `${getActivityText(REMOVE_COVER)}`
         await saveTask(groupId, task, boardService.getActivity(user, task, action))
     }
 
@@ -26,11 +26,10 @@ export function AttachmentList({ task, toggleModal, user, boardId, groupId }) {
         if (!destination) return
         const { index: destinationIdx } = destination
         const { index: sourceIdx } = source
-        console.log('sourceIdx:', sourceIdx, destinationIdx)
         const attachments = utilService.reorder(task.attachments, sourceIdx, destinationIdx)
         task.attachments = attachments
-        console.log('task.:', attachments)
-        const action = `${user.fullname} changed task ${task.title} location`
+
+        const action = `${getActivityText(CHANGE_TASK_LOCATION)} ${task.title}`
         saveTask(groupId, { ...task }, boardService.getActivity(user, task, action))
     }
 

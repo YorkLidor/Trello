@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux"
 import { useState } from "react"
-import { saveTask } from "../../store/actions/board.actions"
+import { getActivityText, saveTask, CHANGE_DUE_DATE, REMOVE_DUE_DATE } from "../../store/actions/board.actions"
 import { boardService } from "../../services/board.service"
 
 
@@ -22,13 +22,13 @@ export function DateModal({ cmpProps, id }) {
     async function onSaveDate() {
         if(!endDate) return
         task.dueDate = {date: endDate.getTime(), done: false}
-        await saveTask(groupId, task, boardService.getActivity(user, task, `${user.fullname} Changed task ${task.title} due date to ${endDate}`))
+        await saveTask(groupId, task, boardService.getActivity(user, task, `${getActivityText(CHANGE_DUE_DATE)} ${endDate}`))
         closeModal(modals, id)
     }
 
     async function onRemoveDate() {
         task.dueDate = null
-        await saveTask(groupId, task, boardService.getActivity(user, task, `${user.fullname} Changed task ${task.title} due date to ${endDate}`))
+        await saveTask(groupId, task, boardService.getActivity(user, task, `${getActivityText(REMOVE_DUE_DATE)}  ${endDate}`))
         closeModal(modals, id)
     }
 

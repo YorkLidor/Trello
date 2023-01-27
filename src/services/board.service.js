@@ -4,7 +4,7 @@ import { jBoards } from './jsons/board.js'
 import { utilService } from './util.service.js'
 import { storageService } from './async-storage.service.js'
 
-import { saveBoard, saveTask } from '../store/actions/board.actions.js'
+import { getActivityText, saveBoard, saveTask, POST_COMMENT } from '../store/actions/board.actions.js'
 import { SET_ACTIVE_BOARD } from '../store/reducers/board.reducer.js'
 
 const STORAGE_KEY = 'boardDB'
@@ -144,23 +144,6 @@ function _createBoards() {
     }
 }
 
-function getActivity(member, task, txt) {
-    return {
-        id: 'a' + utilService.makeId(),
-        txt,
-        createdAt: Date.now(),
-        byMember: {
-            _id: member._id,
-            fullname: member.fullname,
-            imgUrl: member.imgUrl
-        },
-        task: {
-            id: task.id,
-            title: task.title
-        }
-    }
-}
-
 function getEmptyLabel() {
     return {
         title: '',
@@ -218,7 +201,7 @@ async function addComment(user, boardId, groupId, task, text) {
 
     }
     task.comments = task.comments ? [...task.comments, comment] : [comment]
-    await saveTask(groupId, task, boardService.getActivity(user, task, `User ${user.fullname} posted comment on task ${task.title}`))
+    await saveTask(groupId, task, boardService.getActivity(user, task, `${getActivityText(POST_COMMENT)}`))
 }
 
 function getCoverColorStyle(color) {
@@ -228,8 +211,6 @@ function getCoverColorStyle(color) {
 function getCoverAttachStyle(url) {
     return { backgroundImage: `url(${url})` }
 }
-
-
 
 function getNewChecklist(title) {
     return {
@@ -269,4 +250,21 @@ function removeChecklist(task, checklist) {
 function removeTodo(checklist, todo) {
     checklist.todos = checklist.todos.filter(t => t.id !== todo.id)
     return checklist
+}
+
+function getActivity(member, task, txt) {
+    return {
+        id: 'a' + utilService.makeId(),
+        txt,
+        createdAt: Date.now(),
+        byMember: {
+            _id: member._id,
+            fullname: member.fullname,
+            imgUrl: member.imgUrl
+        },
+        task: {
+            id: task.id,
+            title: task.title
+        }
+    }
 }

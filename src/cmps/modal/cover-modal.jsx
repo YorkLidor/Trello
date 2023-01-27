@@ -1,10 +1,9 @@
 import { ModalHeader } from "./modal-header";
 import { uploadImg } from "../../services/upload-img.service";
-import { useRef } from "react";
-import { saveTask } from "../../store/actions/board.actions";
+import { useState, useEffect, useRef } from "react";
+
 import { boardService } from "../../services/board.service";
-import { useState } from "react";
-import { useEffect } from "react";
+import { saveTask , CHANGE_COVER_ATTACH, CHANGE_COVER_COLOR, REMOVE_COVER, getActivityText, CHANGE_COVER_SIZE, CHANGE_COVER_TEXT_COLOR } from "../../store/actions/board.actions";
 
 export function CoverModal({ id, cmpProps }) {
     const { user, boardId, groupId, task } = cmpProps
@@ -70,7 +69,8 @@ export function CoverModal({ id, cmpProps }) {
 
         task.cover = null
         setActiveCover(null)
-        await saveTask(groupId, task, boardService.getActivity(user, task, `${user.fullname} removed task ${task.title} cover`))
+        const action = `${getActivityText(REMOVE_COVER)} ${task.title}`
+        await saveTask(groupId, task, boardService.getActivity(user, task, action))
     }
 
 
@@ -103,7 +103,7 @@ export function CoverModal({ id, cmpProps }) {
         const newCover = { fullSize: task.cover.fullSize, style: boardService.getCoverColorStyle(coverColors[colorIdx]) }
 
         setActiveCover(newCover)
-        await saveTask(task, boardService.getActivity(user, task, `${user.fullname} changed task ${task.title} cover color to ${coverColors[colorIdx]}`))
+        await saveTask(task, boardService.getActivity(user, task, `${getActivityText(CHANGE_COVER_COLOR)}`))
     }
 
     async function onPickCoverSize(ev, size) {
@@ -116,7 +116,7 @@ export function CoverModal({ id, cmpProps }) {
 
         task.cover = { ...task.cover, fullSize: size }
         setActiveCover((prevCover) => ({ ...prevCover, fullSize: size }))
-        await saveTask(boardId, groupId, task, boardService.getActivity(user, task, `${user.fullname} changed task ${task.title} cover color to ${coverColors[colorIdx]}`))
+        await saveTask(boardId, groupId, task, boardService.getActivity(user, task, `${getActivityText(CHANGE_COVER_SIZE)} ${task.title}`))
     }
 
     function onPickAttachCover(ev, attachment) {
@@ -135,7 +135,7 @@ export function CoverModal({ id, cmpProps }) {
     async function onSetAttachmentCover(attachment) {
         const url = attachment.url
         const filename = url.substring(url.lastIndexOf('/') + 1)
-        const action = `Added attachment ${filename} as cover to task ${task.title}`
+        const action = `${getActivityText(CHANGE_COVER_ATTACH)} ${filename}`
         const activity = boardService.getActivity(user, { id: task.id, title: task.title }, action)
 
         const newTask = boardService.setCoverImage(task, attachment)
@@ -151,7 +151,7 @@ export function CoverModal({ id, cmpProps }) {
 
         const color = (light) ? fontColor.light : fontColor.dark
         task.cover.style = { ...task.cover.style, color }
-        await saveTask(groupId, task, boardService.getActivity(user, task, `${user.fullname} changed task ${task.title} cover font color to ${color}`))
+        await saveTask(groupId, task, boardService.getActivity(user, task, `${getActivityText(CHANGE_COVER_TEXT_COLOR)} ${color}`))
     }
 
     return task && <div className="modal-cover-box">
