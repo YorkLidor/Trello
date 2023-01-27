@@ -23,17 +23,21 @@ export function TaskAdd({ group, isAddCardOpen, setIsAddCardOpen }) {
         setTaskTitleToSet({ ...taskToSet, [name]: value })
     }
 
+    useEffect(()=>{
+        resetTranscript()
+        setTaskTitleToSet(boardService.getEmptyTask())
+    },[])
 
     async function onAddNewTask(ev) {
         ev.preventDefault()
         if (!taskToSet.title) return
         try {
             setIsAddCardOpen(false)
-            resetTranscript()
             group.tasks.push(taskToSet)
             board = { ...board, groups: [...board.groups] }
             await saveBoard(board)
             setTaskTitleToSet(boardService.getEmptyTask())
+            resetTranscript()
         } catch (err) {
             console.error('Cannot add new task', err)
         }
