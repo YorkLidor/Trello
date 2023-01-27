@@ -23,31 +23,19 @@ export function TaskAdd({ group, isAddCardOpen, setIsAddCardOpen }) {
         setTaskTitleToSet({ ...taskToSet, [name]: value })
     }
 
+
     async function onAddNewTask(ev) {
         ev.preventDefault()
         if (!taskToSet.title) return
         try {
-            group.tasks.push(taskToSet)
             setIsAddCardOpen(false)
             resetTranscript()
+            group.tasks.push(taskToSet)
             board = { ...board, groups: [...board.groups] }
             await saveBoard(board)
             setTaskTitleToSet(boardService.getEmptyTask())
-            SpeechRecognition.startListening()
-            SpeechRecognition.stopListening()
         } catch (err) {
             console.error('Cannot add new task', err)
-        }
-    }
-
-    function Dictaphone(){
-        SpeechRecognition.startListening()
-        setTaskTitleToSet(...taskToSet, {title: finalTranscript})
-        console.log('finalTranscript:', finalTranscript)
-        console.log('taskToSet:', taskToSet)
-        console.log('transcript:', transcript)
-        if (!SpeechRecognition.browserSupportsSpeechRecognition()) {
-            return <p>Sorry, your browser does not support speech recognition.</p>
         }
     }
 
@@ -67,13 +55,12 @@ export function TaskAdd({ group, isAddCardOpen, setIsAddCardOpen }) {
     const { transcript, browserSupportsSpeechRecognition } = useSpeechRecognition({ commands })
 
 
-    return <form onSubmit={onAddNewTask} onBlur={onblurForm}
+    return <form onSubmit={onAddNewTask}
         className={`add-card-form-container ${!isAddCardOpen && 'add-card-close'}`}>
         <div className="task-preview-container">
 
             <div className="textarea-container">
                 <textarea
-                    id={group.id}
                     ref={textAreaRef}
                     onChange={handleChange}
                     value={taskToSet.title}
