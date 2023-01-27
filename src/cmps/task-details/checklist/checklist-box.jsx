@@ -12,17 +12,16 @@ import { MODAL_CHECKLIST_DELETE } from '../../modal/modal'
 export function Checklist({ task, checklist, onSaveChecklist, onToggleModal }) {
     const [list, setChecklist] = useState(checklist)
     const [addTodoMode, setAddTodoMode] = useState(false)
-    const [editMode, setEditMode] = useState(false)
     const elEditTodoRef = useRef()
+
+    const [toolInEdit, setToolInEdit] = useState(null)
 
 
     function onTitleEdit(title) {
         if (!title.length) return
         list.title = title
-        setEditMode(false)
-        console.log('true')
-        setChecklist(list)
         onUpdateChecklist(list)
+        setChecklist(list)
     }
 
     function onUpdateChecklist() {
@@ -54,34 +53,40 @@ export function Checklist({ task, checklist, onSaveChecklist, onToggleModal }) {
 
     }
 
+    function setTitleToEdit() {
+        setToolInEdit(checklist.id)
+    }
+
+    function setTodoToEdit(todoId) {
+        setToolInEdit(todoId)
+    }
+    
     return list && <section className="checklist-container" key={list.id}>
         <div className='checklist-title-box flex row'>
             <TbCheckbox className="checklist-logo" />
-            <div className="checklist-title-container flex row" onClick={() => setEditMode(true)} >
+            <div className="checklist-title-container flex row" >
                 {
-                    editMode ?
-                        <TextareaEditor defaultText={checklist.title} onTextSubmit={onTitleEdit} className={"checklist-title"} />
-                        :
-                        <span className='checklist-title-span'>{checklist.title}</span>
+                    toolInEdit === checklist.id ? <TextareaEditor defaultText={checklist.title} onTextSubmit={onTitleEdit} className={"checklist-title"} />
+                        : <span className='checklist-title-span' onClick={setTitleToEdit}>{checklist.title}</span>
                 }
             </div>
-            {!editMode && <button className='remove-checklist' onClick={(ev) => onToggleModal(ev, MODAL_CHECKLIST_DELETE, { checklist })}>Delete</button>}
+            {toolInEdit !== checklist.id && <button className='remove-checklist' onClick={(ev) => onToggleModal(ev, MODAL_CHECKLIST_DELETE, { checklist })}>Delete</button>}
         </div>
 
         <div className="checklist-box flex col">
             <ul className="checklist-list">
                 {
                     list.todos?.length > 0 && list.todos.map(todo => <li key={todo.id} className='todo-list-box' >
-                        <Todo todo={todo} onUpdateTodo={onUpdateTodo} onRemoveTodo={onRemoveTodo} />
+                        <Todo todo={todo} onUpdateTodo={onUpdateTodo} onRemoveTodo={onRemoveTodo} setTodoToEdit={setTodoToEdit} toolInEdit={toolInEdit}/>
                     </li>)
                 }
                 <li className='todo-list-box'>
                     <div className='add-todo-box'>
                         {
-                            addTodoMode ? <div className='add-todo-input-box'>
+                            toolInEdit === -1 ? <div className='add-todo-input-box'>
                                 <input type='text' placeholder='Add an item' ref={elEditTodoRef} />
                                 <button className='save-btn add-todo-input-btn' onClick={() => onAddTodo()} >Add</button>
-                            </div> : <button className='add-todo-btn' onClick={() => setAddTodoMode(true)}>Add an item</button>
+                            </div> : <button className='add-todo-btn' onClick={() => setToolInEdit(-1)}>Add an item</button>
                         }
                     </div>
                 </li>

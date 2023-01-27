@@ -3,9 +3,7 @@ import { TextareaEditor } from '../../textarea-editor'
 
 import { ImCheckboxChecked, ImCheckboxUnchecked } from 'react-icons/im'
 
-export function Todo({ todo, onUpdateTodo, onRemoveTodo }) {
-
-    const [editState, setEditState] = useState(false)
+export function Todo({ todo, onUpdateTodo, onRemoveTodo , setTodoToEdit, toolInEdit }) {
 
     function handleChange(ev) {
         if (!todo) return
@@ -20,7 +18,7 @@ export function Todo({ todo, onUpdateTodo, onRemoveTodo }) {
             todo.title = title
             onUpdateTodo(todo)
         }
-        setEditState(false)
+        setTodoToEdit(null)
     }
 
     return <div className='todo-box'>
@@ -31,10 +29,10 @@ export function Todo({ todo, onUpdateTodo, onRemoveTodo }) {
             </span>
         </label>
         {
-            editState ?
+            toolInEdit === todo.id ?
                 <TextareaEditor defaultText={todo.title} onTextSubmit={onTitleEdit} />
                 :
-                <span className='todo-title' onClick={() => setEditState(!editState)}>{todo.title}</span>
+                <span className='todo-title' onClick={() => setTodoToEdit(todo.id)}>{todo.title}</span>
         }
     </div>
 }

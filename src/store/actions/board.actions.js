@@ -93,6 +93,7 @@ export async function saveTask(boardId, groupId, task, activity) {
 export async function onRemoveAttachment(user, boardId, groupId, task, attachment) {
     try {
         task.attachments = [...task.attachments?.filter(attach => attach.id !== attachment.id)]
+        if(task.cover?.attachmentId === attachment.id) task.cover = null
         const action = `Removed attachment ${attachment.filename} from card ${task.title}.`
 
         const activity = boardService.getActivity(user, { id: task.id, title: task.title }, action)
