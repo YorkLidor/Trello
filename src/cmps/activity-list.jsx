@@ -1,7 +1,4 @@
 import { useSelector } from "react-redux"
-import { getActivityText } from "../store/actions/board.actions"
-
-import { ADD_CHECKLIST } from "../store/actions/board.actions"
 
 export function ActivityList({ taskId }) {
     const board = useSelector((storeState) => storeState.boardModule.board)

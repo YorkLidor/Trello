@@ -17,12 +17,12 @@ export function LabelPickerList({ member, boardId, task, groupId, labels, onEdit
         let newLabelIds, action
 
         if (!target.checked) {
+            action = `${getActivityText(REMOVE_LABEL)}`
             newLabelIds = taskLabelIds.filter(labelIdToEdit => labelIdToEdit !== labelId)
-            action = `${getActivityText(REMOVE_LABEL)} ${labels.filter(label => label.id === labelId).title}`
             setTaskLabels(newLabelIds)
         } else {
+            action = `${getActivityText(ADD_LABEL)}`
             newLabelIds = [...taskLabelIds, labelId]
-            action = `${getActivityText(ADD_LABEL)} ${labels.filter(label => label.id === labelId).title}`
             setTaskLabels(newLabelIds)
         }
 
