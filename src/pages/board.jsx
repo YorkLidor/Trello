@@ -17,7 +17,7 @@ import { utilService } from "../services/util.service";
 import { closeModal, toggleModal } from "../store/actions/app.actions";
 import { FastAverageColor } from "fast-average-color";
 import { useEffectUpdate } from "../customHooks/useEffectUpdate";
-import { Spinner } from "../cmps/apinner";
+import { Spinner } from "../cmps/spinner";
 
 export function Board() {
     const user = useSelector(state => state.userModule.user)
