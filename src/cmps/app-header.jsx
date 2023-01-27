@@ -91,12 +91,16 @@ export function AppHeader() {
             </nav>
         </nav >
 
-        {user && <img
-            alt={user.fullname}
-            src={user.imgUrl}
-            className='list-member'
-            onClick={(ev) => onToggleModal(ev, USER_QUICK_MENU)}
-        />}
+        {user &&
+            <button className="btn-user">
+                <img
+                    alt={user.fullname}
+                    src={user.imgUrl}
+                    className='list-member'
+                    onClick={(ev) => onToggleModal(ev, USER_QUICK_MENU)}
+                />
+            </button>
+        }
         <div ref={elModal} className='modal-container'>
             {
                 modal?.isOpen && <Modal
