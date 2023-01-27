@@ -128,6 +128,7 @@ function getEmptyBoard() {
         },
         labels: [],
         groups: [],
+        members: []
     }
 }
 

@@ -179,8 +179,8 @@ export function Board() {
                 }
             </div>
         </main>
-        <section className="board-menu">
+        {/* <section className="board-menu">
 
-        </section>
+        </section> */}
     </div>
 }

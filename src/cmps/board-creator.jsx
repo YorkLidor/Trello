@@ -34,7 +34,6 @@ export function BoardCreator({ cmpProps }) {
 
     function createBoard(ev) {
         ev.preventDefault()
-        // closeModal()
         cmpProps.onCreateBoard(boardToEdit)
     }
 
