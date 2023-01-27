@@ -61,7 +61,7 @@ export function GroupList() {
         saveBoard(board)
     }
 
-    return <DragDropContext onDragEnd={onDragEnd} onDragUpdate={console.log} >
+    return <DragDropContext onDragEnd={onDragEnd} >
         <Droppable droppableId={board._id} direction='horizontal' type="group-list">
             {provided =>
                 <ul className="group-list-container" ref={provided.innerRef}>

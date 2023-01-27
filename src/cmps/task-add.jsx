@@ -61,8 +61,6 @@ export function TaskAdd({ group, isAddCardOpen, setIsAddCardOpen }) {
         console.log('what:', what)
     }
 
-
-
     return <form onSubmit={onAddNewTask}
         className={`add-card-form-container ${!isAddCardOpen && 'add-card-close'}`}>
         <div className="task-preview-container">
