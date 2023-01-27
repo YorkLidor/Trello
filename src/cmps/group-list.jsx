@@ -7,7 +7,7 @@ import { dndService } from "../services/dnd.service";
 
 import { saveBoard } from "../store/actions/board.actions"
 
-import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
+import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd"
 import { GroupAdd } from "./group-add";
 import { Group } from "./group";
 import { TaskQuickEdit } from "./task-quick-edit";
