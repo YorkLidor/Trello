@@ -17,17 +17,15 @@ export function TaskLabels({ labels, board }) {
     return <div className="labels-container" >
         {
             labels.map(label =>
-                <div className="label-container" key={label.id}>
-                    <div
-                        style={{ backgroundColor: isLabelsLarge ? label.color + '60' : label.color }}
-                        onClick={toggleLabelsSize}
-                        className={`labels-preview ${isLabelsLarge ? 'labels-large' : ''}`} >
-                        {isLabelsLarge && <>
-                            <div className="lable-circle" style={{ backgroundColor: label.color }}></div>
-                            <span className='label-title' >{label.title}</span>
-                        </>
-                        }
-                    </div>
+                <div
+                    style={{ backgroundColor: isLabelsLarge ? label.color + '60' : label.color }}
+                    onClick={toggleLabelsSize}
+                    className={`labels-preview ${isLabelsLarge ? 'labels-large' : ''}`} >
+                    {isLabelsLarge && <>
+                        <div className="lable-circle" style={{ backgroundColor: label.color }}></div>
+                        <span className='label-title-task-preview' >{label.title}</span>
+                    </>
+                    }
                 </div>
             )
         }
