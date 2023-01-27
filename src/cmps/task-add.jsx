@@ -1,47 +1,55 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useForm } from "../customHooks/useForm";
-// import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition'
+
+import SpeechRecognition, { useSpeechRecognition } from "react-speech-recognition";
 
 import { boardService } from "../services/board.service";
 
 import { saveBoard } from "../store/actions/board.actions";
 import { IoCloseOutline } from "react-icons/io5";
+import { HiMicrophone } from "react-icons/hi";
 
 export function TaskAdd({ group, isAddCardOpen, setIsAddCardOpen }) {
     let board = useSelector(storeState => storeState.boardModule.board)
     useEffect(() => { textAreaRef.current.focus() }, [isAddCardOpen])
     const textAreaRef = useRef()
-    const [taskToSet, setTaskTitleToSet, handleChange] = useForm(boardService.getEmptyTask())
-    // const { transcript, resetTranscript,finalTranscript } = useSpeechRecognition()
+    const [taskToSet, setTaskTitleToSet] = useState(boardService.getEmptyTask())
+    const { resetTranscript } = useSpeechRecognition()
 
-
+    const handleChange = ev => {
+        const { name, value } = ev.target
+        setTaskTitleToSet({ ...taskToSet, [name]: value })
+    }
 
     async function onAddNewTask(ev) {
         ev.preventDefault()
         if (!taskToSet.title) return
         try {
             group.tasks.push(taskToSet)
+            setIsAddCardOpen(false)
+            resetTranscript()
             board = { ...board, groups: [...board.groups] }
             await saveBoard(board)
             setTaskTitleToSet(boardService.getEmptyTask())
-            setIsAddCardOpen(false)
+            SpeechRecognition.startListening()
+            SpeechRecognition.stopListening()
         } catch (err) {
             console.error('Cannot add new task', err)
         }
     }
 
-    // function Dictaphone(){
-    //     SpeechRecognition.startListening()
-    //     setTaskTitleToSet(...taskToSet, {title: finalTranscript})
-    //     console.log('finalTranscript:', finalTranscript)
-    //     console.log('taskToSet:', taskToSet)
-    //     console.log('transcript:', transcript)
-    //     if (!SpeechRecognition.browserSupportsSpeechRecognition()) {
-    //         return <p>Sorry, your browser does not support speech recognition.</p>
-    //     }
-    // }
+    function Dictaphone(){
+        SpeechRecognition.startListening()
+        setTaskTitleToSet(...taskToSet, {title: finalTranscript})
+        console.log('finalTranscript:', finalTranscript)
+        console.log('taskToSet:', taskToSet)
+        console.log('transcript:', transcript)
+        if (!SpeechRecognition.browserSupportsSpeechRecognition()) {
+            return <p>Sorry, your browser does not support speech recognition.</p>
+        }
+    }
 
     function onblurForm() {
         setTimeout(() => {
@@ -49,12 +57,23 @@ export function TaskAdd({ group, isAddCardOpen, setIsAddCardOpen }) {
         }, 100)
     }
 
+    const commands = [
+        {
+            command: '*',
+            callback: (title) => { setTaskTitleToSet({ id: taskToSet.id, title }) }
+        }
+    ]
+
+    const { transcript, browserSupportsSpeechRecognition } = useSpeechRecognition({ commands })
+
+
     return <form onSubmit={onAddNewTask} onBlur={onblurForm}
         className={`add-card-form-container ${!isAddCardOpen && 'add-card-close'}`}>
         <div className="task-preview-container">
 
             <div className="textarea-container">
                 <textarea
+                    id={group.id}
                     ref={textAreaRef}
                     onChange={handleChange}
                     value={taskToSet.title}
@@ -75,7 +94,6 @@ export function TaskAdd({ group, isAddCardOpen, setIsAddCardOpen }) {
             >
                 Add card
             </button>
-
             <button
                 className="btn-cancel"
                 onClick={() => setIsAddCardOpen(false)}
@@ -84,7 +102,7 @@ export function TaskAdd({ group, isAddCardOpen, setIsAddCardOpen }) {
                 <IoCloseOutline />
             </button>
 
-            {/* <button onClick={Dictaphone}>Start</button> */}
+            <HiMicrophone className="btn-cancel" onClick={SpeechRecognition.startListening} />
         </div>
 
     </form>
