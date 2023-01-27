@@ -18,6 +18,7 @@ export function TaskLabels({ labels, board }) {
         {
             labels.map(label =>
                 <div
+                    key={label.id}
                     style={{ backgroundColor: isLabelsLarge ? label.color + '60' : label.color }}
                     onClick={toggleLabelsSize}
                     className={`labels-preview ${isLabelsLarge ? 'labels-large' : ''}`} >
