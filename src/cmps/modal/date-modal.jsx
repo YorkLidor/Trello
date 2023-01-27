@@ -12,7 +12,7 @@ import { closeModal } from "../../store/actions/app.actions"
 
 export function DateModal({ cmpProps, id }) {
     const modals = useSelector((storeState) => storeState.appModule.app.modals)
-    const { user, boardId, groupId, task } = cmpProps
+    const { user, groupId, task } = cmpProps
     const [endDate, setEndDate] = useState(task?.dueDate?.date ? task.dueDate.date : new Date().now)
 
     function onChangeDate(date) {
@@ -22,13 +22,13 @@ export function DateModal({ cmpProps, id }) {
     async function onSaveDate() {
         if(!endDate) return
         task.dueDate = {date: endDate.getTime(), done: false}
-        await saveTask(boardId, groupId, task, boardService.getActivity(user, task, `${user.fullname} Changed task ${task.title} due date to ${endDate}`))
+        await saveTask(groupId, task, boardService.getActivity(user, task, `${user.fullname} Changed task ${task.title} due date to ${endDate}`))
         closeModal(modals, id)
     }
 
     async function onRemoveDate() {
         task.dueDate = null
-        await saveTask(boardId, groupId, task, boardService.getActivity(user, task, `${user.fullname} Changed task ${task.title} due date to ${endDate}`))
+        await saveTask(groupId, task, boardService.getActivity(user, task, `${user.fullname} Changed task ${task.title} due date to ${endDate}`))
         closeModal(modals, id)
     }
 

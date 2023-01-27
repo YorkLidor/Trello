@@ -9,26 +9,21 @@ import { useSelector } from 'react-redux'
 
 export function AttachmentModal({ id, cmpProps }) {
     const modals = useSelector((storeState) => storeState.appModule.app.modals)
+    const user = useSelector((storeState) => storeState.userModule.user)
     const { boardId, groupId, task } = cmpProps
-
-    const member = {
-        id: 101,
-        fullName: 'Gal Zohar',
-        imgUrl: 'https://res.cloudinary.com/dk2geeubr/image/upload/v1673890694/profileDefault_khqx4r.png'
-    }
 
     async function uploadAttach(ev) {
         closeModal(modals, id)
         const { url, filename } = await uploadImg(ev)
         const action = 'Added attachment ' + filename
-        const activity = boardService.getActivity(member, { id: task.id, title: task.title }, action)
+        const activity = boardService.getActivity(user, { id: task.id, title: task.title }, action)
 
         const attachment = boardService.getAttachment(url, filename)
         if (task.attachments?.length > 0) task.attachments.unshift(attachment)
         else task.attachments = [boardService.getAttachment(url, filename)]
 
         const taskToSave = task.cover ? task : boardService.setCoverImage(task, attachment)
-        await saveTask(boardId, groupId, taskToSave , activity)
+        await saveTask(groupId, taskToSave , activity)
     }
 
     return <div className='attach-modal-box'>

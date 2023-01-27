@@ -35,12 +35,12 @@ const activity = {
 // TODO: Store - saveTask
 // function storeSaveTask(task, activity) {
 
-//     board = boardService.saveTask(boardId, groupId, task, activity)
+//     board = boardService.saveTask(groupId, task, activity)
 //     // commit(ACTION) // dispatch(ACTION)
 // }
 
 // boardService
-// function saveTask(boardId, groupId, task, activity) {
+// function saveTask(groupId, task, activity) {
 //     const board = getById(boardId)
 //     // PUT /api/board/b123/task/t678
 

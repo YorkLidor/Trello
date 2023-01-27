@@ -10,7 +10,7 @@ import { ImCheckboxChecked, ImCheckboxUnchecked } from "react-icons/im"
 import { BsFillCircleFill } from 'react-icons/bs'
 import { BiPencil } from 'react-icons/bi'
 
-export function LabelPickerList({ member, boardId, task, groupId, labels, onEditLabel }) {
+export function LabelPickerList({ member, task, groupId, labels, onEditLabel }) {
 
     const [taskLabelIds, setTaskLabels] = useState(task.labelIds ? task.labelIds : [])
 
@@ -30,7 +30,7 @@ export function LabelPickerList({ member, boardId, task, groupId, labels, onEdit
 
         task.labelIds = newLabelIds
         const activity = boardService.getActivity(member, { id: task.id, title: task.title }, action)
-        saveTask(boardId, groupId, task, activity)
+        saveTask(groupId, task, activity)
     }
 
     return labels.length > 0 && <>

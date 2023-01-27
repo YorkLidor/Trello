@@ -20,7 +20,7 @@ export function ChecklistModal({ id, cmpProps }) {
             debounceRef.current = null
         }, 1500)
 
-        await saveTask(boardId, groupId, task, boardService.getActivity(user, task, `${user} added new checklist ${elTitleInputRef.current.value}`))
+        await saveTask(groupId, task, boardService.getActivity(user, task, `${user} added new checklist ${elTitleInputRef.current.value}`))
     }
 
     return <div className='add-checklist-box'>
