@@ -56,7 +56,7 @@ function getLoggedinUser() {
 }
 
 function _setLoggedinUser(user) {
-    const userToSave = { _id: user._id, fullname: user.fullname, imgUrl: user.imgUrl }
+    const userToSave = { _id: user._id, fullname: user.fullname, email: user.email, imgUrl: user.imgUrl }
     sessionStorage.setItem(STORAGE_KEY_LOGGEDIN, JSON.stringify(userToSave))
     return userToSave
 }
@@ -79,6 +79,7 @@ function _createUsers() {
             _id: utilService.makeId(),
             fullname: 'Shauli',
             username: 'shauli',
+            email: 'shauli@gmail.com',
             password: 'pitaAlHagaz',
             imgUrl: "http://res.cloudinary.com/dk2geeubr/image/upload/v1674746367/qvbgfpwpobofvl5f6ocr.jpg",
             mentions: []
