@@ -2,8 +2,6 @@ import { useSelector } from "react-redux"
 import { ModalHeader } from "./modal/modal-header"
 import { closeModal } from "../../src/store/actions/app.actions"
 
-
-
 export function GroupQuickEdit({ id, groupId, onRemoveGroup, onCopyGroup }) {
     const board = useSelector(state => state.boardModule.board)
     const modals = useSelector((storeState) => storeState.appModule.app.modals)
