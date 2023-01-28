@@ -95,7 +95,7 @@ export async function addNewTask(groupId, newTask) {
 
 export async function saveTask(groupId, task, activity) {
     try {
-
+        console.log(activity)
         const board = store.getState().boardModule.board
         if (!board) throw new Error('No such board with this id')
         // PUT /api/board/b123/task/t678

@@ -190,7 +190,8 @@ function getGroupById(board, groupId) {
 
 async function addComment(user, boardId, groupId, task, text) {
     const comment = {
-        id: utilService.makeId(),
+        isComment: true,
+        id: 'cm' + utilService.makeId(),
         createdAt: Date.now(),
         txt: text,
         byMember: {
@@ -201,7 +202,13 @@ async function addComment(user, boardId, groupId, task, text) {
 
     }
     task.comments = task.comments ? [...task.comments, comment] : [comment]
-    await saveTask(groupId, task, boardService.getActivity(user, task, `${getActivityText(POST_COMMENT)}`))
+
+    comment.task = {
+        id: task.id,
+        title: task.title
+    }
+    
+    await saveTask(groupId, task, comment)
 }
 
 function getCoverColorStyle(color) {
@@ -254,6 +261,7 @@ function removeTodo(checklist, todo) {
 
 function getActivity(member, task, txt) {
     return {
+        isComment: false,
         id: 'a' + utilService.makeId(),
         txt,
         createdAt: Date.now(),

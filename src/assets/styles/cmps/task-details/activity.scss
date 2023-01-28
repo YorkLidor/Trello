@@ -27,6 +27,10 @@
             margin-inline-start: 15px;
             text-transform: uppercase;
         }
+
+        .button-show-details{
+            @include task-nav-button;
+        }
     }
 
     @include for-native-layout-details {
