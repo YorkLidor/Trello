@@ -1,0 +1,312 @@
+28.1.2023, 13:38:05 - INFO - Server is running on port: 3030 
+28.1.2023, 13:40:50 - ERROR - Failed to get boards | SyntaxError: Unexpected token u in JSON at position 0 
+28.1.2023, 13:49:17 - ERROR - Failed to get boards | SyntaxError: Unexpected token u in JSON at position 0 
+28.1.2023, 13:49:21 - ERROR - Failed to get boards | SyntaxError: Unexpected token u in JSON at position 0 
+28.1.2023, 13:50:56 - ERROR - Failed to get boards | SyntaxError: Unexpected token u in JSON at position 0 
+28.1.2023, 13:52:02 - ERROR - Failed to get boards | SyntaxError: Unexpected token u in JSON at position 0 
+28.1.2023, 14:14:58 - ERROR - Failed to get boards | SyntaxError: Unexpected token u in JSON at position 0 
+28.1.2023, 14:15:03 - ERROR - Failed to get boards | SyntaxError: Unexpected token u in JSON at position 0 
+28.1.2023, 14:15:05 - ERROR - Failed to get boards | SyntaxError: Unexpected token u in JSON at position 0 
+28.1.2023, 14:18:30 - INFO - Server is running on port: 3030 
+28.1.2023, 14:18:45 - ERROR - Failed to get boards | SyntaxError: Unexpected token u in JSON at position 0 
+28.1.2023, 14:23:21 - DEBUG - auth.service - login with username: matanad 
+28.1.2023, 14:23:22 - ERROR - Failed to Login Invalid username or password 
+28.1.2023, 14:25:18 - DEBUG - auth.service - signup with username: matanad, fullname: Matan Adi 
+28.1.2023, 14:25:18 - DEBUG - auth.route - new account created: {"username":"matanad","password":"$2b$10$oYdra8yrZIhU9MuUYIs8Cu8nPfyyLGGvmJDKCsQ7CPwkHiXbP1VxS","fullname":"Matan Adi","score":100,"_id":"63d5142ee0f5a5802de2780b"} 
+28.1.2023, 14:25:18 - DEBUG - auth.service - login with username: matanad 
+28.1.2023, 14:25:18 - INFO - User signup: | {"_id":"63d5142ee0f5a5802de2780b","username":"matanad","fullname":"Matan Adi","score":100} 
+28.1.2023, 14:25:35 - DEBUG - auth.service - login with username: matanad (userId: 63d5142ee0f5a5802de2780b)
+28.1.2023, 14:25:35 - INFO - User login:  | {"_id":"63d5142ee0f5a5802de2780b","username":"matanad","fullname":"Matan Adi","score":100} (userId: 63d5142ee0f5a5802de2780b)
+28.1.2023, 14:26:00 - ERROR - Failed to get boards | SyntaxError: Unexpected token u in JSON at position 0 (userId: 63d5142ee0f5a5802de2780b)
+28.1.2023, 14:28:04 - DEBUG - auth.service - login with username: matanad (userId: 63d5142ee0f5a5802de2780b)
+28.1.2023, 14:28:04 - INFO - User login:  | {"_id":"63d5142ee0f5a5802de2780b","username":"matanad","fullname":"Matan Adi","score":100} (userId: 63d5142ee0f5a5802de2780b)
+28.1.2023, 14:29:29 - DEBUG - auth.service - signup with username: moshe, fullname: Matan Adi (userId: 63d5142ee0f5a5802de2780b)
+28.1.2023, 14:29:29 - DEBUG - auth.route - new account created: {"username":"moshe","password":"$2b$10$i7D6Qg6D8s2rOYRAsCWL5e5KdZrwcyXDCiscaNjvihxi3caOIIgi2","fullname":"Matan Adi","score":100,"_id":"63d51529e0f5a5802de2780c"} (userId: 63d5142ee0f5a5802de2780b)
+28.1.2023, 14:29:29 - DEBUG - auth.service - login with username: moshe (userId: 63d5142ee0f5a5802de2780b)
+28.1.2023, 14:29:29 - INFO - User signup: | {"_id":"63d51529e0f5a5802de2780c","username":"moshe","fullname":"Matan Adi","score":100} (userId: 63d5142ee0f5a5802de2780b)
+28.1.2023, 14:30:41 - DEBUG - auth.service - login with username: moshe (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 14:30:41 - INFO - User login:  | {"_id":"63d51529e0f5a5802de2780c","username":"moshe","fullname":"Matan Adi","score":100} (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 14:34:11 - INFO - Server is running on port: 3030 
+28.1.2023, 14:34:18 - DEBUG - auth.service - login with username: moshe (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 14:34:48 - ERROR - while finding user moshe | ReferenceError: logger is not defined (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 14:34:48 - ERROR - Failed to Login ReferenceError: logger is not defined (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 14:35:16 - DEBUG - auth.service - login with username: matanad (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 14:35:46 - ERROR - while finding user matanad | ReferenceError: logger is not defined (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 14:35:46 - ERROR - Failed to Login ReferenceError: logger is not defined (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 14:36:15 - DEBUG - auth.service - login with username: matanad (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 14:36:45 - ERROR - while finding user matanad | ReferenceError: logger is not defined (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 14:36:45 - ERROR - Failed to Login ReferenceError: logger is not defined (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 14:38:50 - DEBUG - auth.service - signup with username: matanad, fullname: Matan Adi (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 14:39:20 - ERROR - while finding user matanad | ReferenceError: logger is not defined (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 14:39:20 - ERROR - Failed to signup ReferenceError: logger is not defined (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 14:41:17 - INFO - Server is running on port: 3030 
+28.1.2023, 14:41:20 - DEBUG - auth.service - signup with username: matanad, fullname: Matan Adi (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 14:41:50 - ERROR - while finding user matanad | ReferenceError: logger is not defined (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 14:41:50 - ERROR - Failed to signup ReferenceError: logger is not defined (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 14:46:53 - DEBUG - auth.service - signup with username: moshe, fullname: Matan Adi (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 14:47:23 - ERROR - while finding user moshe | ReferenceError: logger is not defined (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 14:47:23 - ERROR - Failed to signup ReferenceError: logger is not defined (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 14:50:00 - INFO - Server is running on port: 3030 
+28.1.2023, 14:50:01 - DEBUG - auth.service - signup with username: moshe, fullname: Matan Adi (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 14:50:31 - ERROR - while finding user moshe | ReferenceError: logger is not defined (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 14:50:31 - ERROR - Failed to signup ReferenceError: logger is not defined (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 14:51:16 - INFO - Server is running on port: 3030 
+28.1.2023, 14:51:31 - INFO - Server is running on port: 3030 
+28.1.2023, 14:51:35 - DEBUG - auth.service - signup with username: moshe, fullname: Matan Adi (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 14:51:52 - INFO - Server is running on port: 3030 
+28.1.2023, 14:51:55 - DEBUG - auth.service - signup with username: moshe, fullname: Matan Adi (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 14:52:25 - ERROR - while finding user moshe | ReferenceError: logger is not defined (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 14:52:25 - ERROR - Failed to signup ReferenceError: logger is not defined (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 14:55:48 - INFO - Server is running on port: 3030 
+28.1.2023, 14:56:50 - INFO - Server is running on port: 3030 
+28.1.2023, 14:57:00 - DEBUG - auth.service - signup with username: moshe, fullname: Matan Adi (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 14:57:30 - ERROR - while finding user moshe | ReferenceError: logger is not defined (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 14:57:30 - ERROR - Failed to signup ReferenceError: logger is not defined (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 14:58:04 - INFO - Server is running on port: 3030 
+28.1.2023, 14:58:31 - INFO - Server is running on port: 3030 
+28.1.2023, 14:58:35 - DEBUG - auth.service - signup with username: moshe, fullname: Matan Adi (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 14:58:35 - ERROR - while finding user moshe | ReferenceError: logger is not defined (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 14:58:35 - ERROR - Failed to signup ReferenceError: logger is not defined (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 14:59:04 - ERROR - Failed to get boards | SyntaxError: Unexpected token u in JSON at position 0 (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 15:00:08 - DEBUG - auth.service - login with username: moshe (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 15:00:08 - ERROR - while finding user moshe | ReferenceError: logger is not defined (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 15:00:08 - ERROR - Failed to Login ReferenceError: logger is not defined (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 15:00:13 - DEBUG - auth.service - login with username: moshe (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 15:00:13 - ERROR - while finding user moshe | ReferenceError: logger is not defined (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 15:00:13 - ERROR - Failed to Login ReferenceError: logger is not defined (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 15:01:53 - INFO - Server is running on port: 3030 
+28.1.2023, 15:01:55 - DEBUG - auth.service - login with username: moshe (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 15:01:55 - ERROR - Failed to Login ReferenceError: logger is not defined (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 15:01:55 - ERROR - while finding user moshe | ReferenceError: logger is not defined (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 15:02:34 - INFO - Server is running on port: 3030 
+28.1.2023, 15:02:36 - DEBUG - auth.service - login with username: moshe (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 15:02:36 - DEBUG - debug | moshe (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 15:02:36 - ERROR - Failed to Login ReferenceError: logger is not defined (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 15:02:36 - ERROR - while finding user moshe | ReferenceError: logger is not defined (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 15:02:45 - INFO - Server is running on port: 3030 
+28.1.2023, 15:02:46 - DEBUG - auth.service - login with username: moshe (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 15:02:46 - ERROR - while finding user moshe | ReferenceError: logger is not defined (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 15:02:46 - ERROR - Failed to Login ReferenceError: logger is not defined (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 15:04:42 - INFO - Server is running on port: 3030 
+28.1.2023, 15:04:45 - DEBUG - auth.service - login with username: moshe (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 15:04:45 - DEBUG - Connect to DB------------- (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 15:05:15 - ERROR - Cannot Connect to DB | MongoServerSelectionError: connect ECONNREFUSED ::1:27017 (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 15:05:15 - ERROR - Failed to get Mongo collection | MongoServerSelectionError: connect ECONNREFUSED ::1:27017 (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 15:05:15 - ERROR - while finding user moshe | MongoServerSelectionError: connect ECONNREFUSED ::1:27017 (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 15:05:15 - ERROR - Failed to Login MongoServerSelectionError: connect ECONNREFUSED ::1:27017 (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 15:06:37 - INFO - Server is running on port: 3030 
+28.1.2023, 15:06:45 - DEBUG - auth.service - login with username: moshe (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 15:06:45 - DEBUG - Connect to DB------------- (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 15:07:15 - ERROR - Cannot Connect to DB | MongoServerSelectionError: connect ECONNREFUSED ::1:27017 (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 15:07:15 - ERROR - Failed to get Mongo collection | MongoServerSelectionError: connect ECONNREFUSED ::1:27017 (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 15:07:15 - ERROR - while finding user moshe | MongoServerSelectionError: connect ECONNREFUSED ::1:27017 (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 15:07:15 - ERROR - Failed to Login MongoServerSelectionError: connect ECONNREFUSED ::1:27017 (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 15:07:43 - INFO - Server is running on port: 3030 
+28.1.2023, 15:07:45 - DEBUG - auth.service - login with username: moshe (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 15:07:45 - DEBUG - Connect to DB------------- (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 15:07:45 - DEBUG - Connect to DB------------- | mongodb://localhost:27017 (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 15:08:15 - ERROR - Cannot Connect to DB | MongoServerSelectionError: connect ECONNREFUSED ::1:27017 (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 15:08:15 - ERROR - Failed to get Mongo collection | MongoServerSelectionError: connect ECONNREFUSED ::1:27017 (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 15:08:15 - ERROR - while finding user moshe | MongoServerSelectionError: connect ECONNREFUSED ::1:27017 (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 15:08:15 - ERROR - Failed to Login MongoServerSelectionError: connect ECONNREFUSED ::1:27017 (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 15:09:24 - INFO - Server is running on port: 3030 
+28.1.2023, 15:09:26 - DEBUG - auth.service - login with username: moshe (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 15:09:26 - DEBUG - Connect to DB------------- (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 15:09:26 - ERROR - Cannot Connect to DB | MongoParseError: Invalid scheme, expected connection string to start with "mongodb://" or "mongodb+srv://" (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 15:09:26 - ERROR - Failed to get Mongo collection | MongoParseError: Invalid scheme, expected connection string to start with "mongodb://" or "mongodb+srv://" (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 15:09:26 - DEBUG - Connect to DB------------- | mongodb://localhost:27017 (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 15:09:26 - ERROR - while finding user moshe | MongoParseError: Invalid scheme, expected connection string to start with "mongodb://" or "mongodb+srv://" (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 15:09:26 - ERROR - Failed to Login MongoParseError: Invalid scheme, expected connection string to start with "mongodb://" or "mongodb+srv://" (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 15:10:05 - INFO - Server is running on port: 3030 
+28.1.2023, 15:10:06 - INFO - Server is running on port: 3030 
+28.1.2023, 15:10:08 - DEBUG - auth.service - login with username: moshe (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 15:10:08 - DEBUG - Connect to DB------------- (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 15:10:08 - DEBUG - Connect to DB------------- | mongodb://localhost:27017 (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 15:10:38 - ERROR - Cannot Connect to DB | MongoServerSelectionError: connect ECONNREFUSED ::1:27017 (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 15:10:38 - ERROR - Failed to get Mongo collection | MongoServerSelectionError: connect ECONNREFUSED ::1:27017 (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 15:10:38 - ERROR - while finding user moshe | MongoServerSelectionError: connect ECONNREFUSED ::1:27017 (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 15:10:38 - ERROR - Failed to Login MongoServerSelectionError: connect ECONNREFUSED ::1:27017 (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 15:10:41 - INFO - Server is running on port: 3030 
+28.1.2023, 15:10:42 - DEBUG - auth.service - login with username: moshe (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 15:10:42 - DEBUG - Connect to DB------------- (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 15:10:55 - INFO - Server is running on port: 3030 
+28.1.2023, 15:10:58 - DEBUG - auth.service - login with username: moshe (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 15:10:58 - DEBUG - Connect to DB------------- (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 15:11:12 - INFO - Server is running on port: 3030 
+28.1.2023, 15:11:14 - DEBUG - auth.service - login with username: moshe (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 15:11:14 - DEBUG - Connect to DB------------- (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 15:11:26 - INFO - Server is running on port: 3030 
+28.1.2023, 15:11:27 - DEBUG - auth.service - login with username: moshe (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 15:11:57 - ERROR - Cannot Connect to DB | MongoServerSelectionError: connect ECONNREFUSED ::1:27017 (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 15:11:57 - ERROR - Failed to get Mongo collection | MongoServerSelectionError: connect ECONNREFUSED ::1:27017 (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 15:11:57 - ERROR - Failed to Login MongoServerSelectionError: connect ECONNREFUSED ::1:27017 (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 15:11:57 - ERROR - while finding user moshe | MongoServerSelectionError: connect ECONNREFUSED ::1:27017 (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 15:12:16 - INFO - Server is running on port: 3030 
+28.1.2023, 15:12:17 - DEBUG - auth.service - login with username: moshe (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 15:12:17 - DEBUG - Connect to DB------------- | board_db (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 15:12:47 - ERROR - Cannot Connect to DB | MongoServerSelectionError: connect ECONNREFUSED ::1:27017 (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 15:12:47 - ERROR - Failed to get Mongo collection | MongoServerSelectionError: connect ECONNREFUSED ::1:27017 (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 15:12:47 - ERROR - while finding user moshe | MongoServerSelectionError: connect ECONNREFUSED ::1:27017 (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 15:12:47 - ERROR - Failed to Login MongoServerSelectionError: connect ECONNREFUSED ::1:27017 (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 15:14:34 - INFO - Server is running on port: 3030 
+28.1.2023, 15:14:35 - DEBUG - auth.service - login with username: moshe (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 15:14:35 - DEBUG - Connect to DB------------- | board_db (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 15:14:35 - DEBUG - debug | moshe (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 15:14:35 - ERROR - Failed to Login Invalid username or password (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 15:14:55 - DEBUG - auth.service - login with username: matanad (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 15:14:55 - DEBUG - debug | matanad (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 15:14:55 - INFO - User login:  | {"_id":"63d50f04973632ae413a7c1c","fullname":"Matan Adi","username":"matanad","email":"matan@gmail.com","imgUrl":"https://ca.slack-edge.com/T043N4KE97B-U045HE0SWR3-89a31180034c-512","mentions":[]} (userId: 63d51529e0f5a5802de2780c)
+28.1.2023, 15:15:16 - ERROR - Failed to get boards | SyntaxError: Unexpected token u in JSON at position 0 (userId: 63d50f04973632ae413a7c1c)
+28.1.2023, 15:15:30 - ERROR - Failed to get boards | SyntaxError: Unexpected token u in JSON at position 0 (userId: 63d50f04973632ae413a7c1c)
+28.1.2023, 15:17:19 - INFO - Server is running on port: 3030 
+28.1.2023, 15:17:34 - ERROR - Failed to get boards | SyntaxError: Unexpected token u in JSON at position 0 (userId: 63d50f04973632ae413a7c1c)
+28.1.2023, 15:18:01 - ERROR - Failed to get boards | SyntaxError: Unexpected token u in JSON at position 0 (userId: 63d50f04973632ae413a7c1c)
+28.1.2023, 15:18:37 - INFO - Server is running on port: 3030 
+28.1.2023, 15:18:40 - ERROR - Failed to get boards | SyntaxError: Unexpected token u in JSON at position 0 (userId: 63d50f04973632ae413a7c1c)
+28.1.2023, 15:18:59 - INFO - Server is running on port: 3030 
+28.1.2023, 15:19:00 - ERROR - Failed to get boards | TypeError: Converting circular structure to JSON
+    --> starting at object with constructor 'Socket'
+    |     property 'parser' -> object with constructor 'HTTPParser'
+    --- property 'socket' closes the circle (userId: 63d50f04973632ae413a7c1c)
+28.1.2023, 15:19:50 - INFO - Server is running on port: 3030 
+28.1.2023, 15:19:52 - ERROR - Failed to get boards | TypeError: Converting circular structure to JSON
+    --> starting at object with constructor 'Socket'
+    |     property 'parser' -> object with constructor 'HTTPParser'
+    --- property 'socket' closes the circle (userId: 63d50f04973632ae413a7c1c)
+28.1.2023, 15:20:06 - INFO - Server is running on port: 3030 
+28.1.2023, 15:20:19 - INFO - Server is running on port: 3030 
+28.1.2023, 15:20:21 - ERROR - Failed to get boards | TypeError: Converting circular structure to JSON
+    --> starting at object with constructor 'Socket'
+    |     property 'parser' -> object with constructor 'HTTPParser'
+    --- property 'socket' closes the circle (userId: 63d50f04973632ae413a7c1c)
+28.1.2023, 15:20:25 - INFO - Server is running on port: 3030 
+28.1.2023, 15:20:54 - INFO - Server is running on port: 3030 
+28.1.2023, 15:20:55 - DEBUG -  to get boards |  (userId: 63d50f04973632ae413a7c1c)
+28.1.2023, 15:20:55 - ERROR - Failed to get boards | SyntaxError: Unexpected token u in JSON at position 0 (userId: 63d50f04973632ae413a7c1c)
+28.1.2023, 15:21:31 - DEBUG -  to get boards |  (userId: 63d50f04973632ae413a7c1c)
+28.1.2023, 15:21:31 - ERROR - Failed to get boards | SyntaxError: Unexpected token u in JSON at position 0 (userId: 63d50f04973632ae413a7c1c)
+28.1.2023, 15:22:23 - INFO - Server is running on port: 3030 
+28.1.2023, 15:22:25 - DEBUG -  to get boards |  (userId: 63d50f04973632ae413a7c1c)
+28.1.2023, 15:22:25 - DEBUG - Connect to DB------------- | board_db (userId: 63d50f04973632ae413a7c1c)
+28.1.2023, 15:36:53 - INFO - Server is running on port: 3030 
+28.1.2023, 15:37:19 - INFO - Server is running on port: 3030 
+<<<<<<< HEAD
+28.1.2023, 15:47:26 - DEBUG - auth.service - login with username: shauli 
+28.1.2023, 15:47:26 - DEBUG - Connect to DB------------- | board_db 
+28.1.2023, 15:47:26 - DEBUG - debug | shauli 
+28.1.2023, 15:47:26 - ERROR - Failed to Login Invalid username or password 
+28.1.2023, 15:47:29 - DEBUG - debug | shauli 
+28.1.2023, 15:47:29 - DEBUG - auth.service - login with username: shauli 
+28.1.2023, 15:47:29 - ERROR - Failed to Login Invalid username or password 
+28.1.2023, 15:47:32 - DEBUG - auth.service - login with username: shauli 
+28.1.2023, 15:47:32 - DEBUG - debug | shauli 
+28.1.2023, 15:47:32 - ERROR - Failed to Login Invalid username or password 
+28.1.2023, 15:47:33 - DEBUG - debug | shauli 
+28.1.2023, 15:47:33 - DEBUG - auth.service - login with username: shauli 
+28.1.2023, 15:47:33 - ERROR - Failed to Login Invalid username or password 
+28.1.2023, 15:47:34 - DEBUG - auth.service - login with username: shauli 
+28.1.2023, 15:47:34 - DEBUG - debug | shauli 
+28.1.2023, 15:47:34 - ERROR - Failed to Login Invalid username or password 
+28.1.2023, 15:47:34 - DEBUG - auth.service - login with username: shauli 
+28.1.2023, 15:47:34 - DEBUG - debug | shauli 
+28.1.2023, 15:47:34 - ERROR - Failed to Login Invalid username or password 
+28.1.2023, 15:47:44 - DEBUG - auth.service - login with username: shauli 
+28.1.2023, 15:47:44 - DEBUG - debug | shauli 
+28.1.2023, 15:47:44 - ERROR - Failed to Login Invalid username or password 
+28.1.2023, 15:48:26 - INFO - Server is running on port: 3030 
+28.1.2023, 15:48:35 - DEBUG - auth.service - login with username: shauli 
+28.1.2023, 15:48:35 - DEBUG - Connect to DB------------- | board_db 
+28.1.2023, 15:48:35 - DEBUG - debug | shauli 
+28.1.2023, 15:48:35 - ERROR - Failed to Login Invalid username or password 
+28.1.2023, 15:48:52 - DEBUG - auth.service - login with username: shauli 
+28.1.2023, 15:48:52 - DEBUG - debug | shauli 
+28.1.2023, 15:48:52 - ERROR - Failed to Login Invalid username or password 
+28.1.2023, 15:49:31 - DEBUG - auth.service - login with username: shauli 
+28.1.2023, 15:49:31 - DEBUG - debug | shauli 
+28.1.2023, 15:49:31 - ERROR - Failed to Login Invalid username or password 
+28.1.2023, 15:53:21 - DEBUG - auth.service - login with username: shauli 
+28.1.2023, 15:53:21 - DEBUG - debug | shauli 
+28.1.2023, 15:53:21 - ERROR - Failed to Login Invalid username or password 
+28.1.2023, 15:56:39 - DEBUG - auth.service - login with username: shauli 
+28.1.2023, 15:56:39 - DEBUG - debug | shauli 
+28.1.2023, 15:56:39 - INFO - User login:  | {"_id":"63d529673ea947a3c4fe70ae","fullname":"Shauli","username":"shauli","email":"shauli@gmail.com","imgUrl":"http://res.cloudinary.com/dk2geeubr/image/upload/v1674746367/qvbgfpwpobofvl5f6ocr.jpg","mentions":[]} 
+28.1.2023, 15:56:39 - DEBUG -  to get boards |  (userId: 63d529673ea947a3c4fe70ae)
+28.1.2023, 15:56:49 - DEBUG -  to get boards |  (userId: 63d529673ea947a3c4fe70ae)
+=======
+28.1.2023, 15:44:56 - DEBUG -  to get boards |  
+28.1.2023, 15:44:56 - DEBUG - Connect to DB------------- | board_db 
+28.1.2023, 15:45:25 - DEBUG - auth.service - login with username: shauli 
+28.1.2023, 15:45:25 - DEBUG - debug | shauli 
+28.1.2023, 15:45:25 - INFO - User login:  | {"_id":"63d50ea3973632ae413a7c00","fullname":"Shauli","username":"shauli","email":"shauli@gmail.com","imgUrl":"http://res.cloudinary.com/dk2geeubr/image/upload/v1674746367/qvbgfpwpobofvl5f6ocr.jpg","mentions":[]} 
+28.1.2023, 15:45:25 - DEBUG -  to get boards |  (userId: 63d50ea3973632ae413a7c00)
+28.1.2023, 15:45:33 - WARN - Shauliattempted to perform admin action (userId: 63d50ea3973632ae413a7c00)
+28.1.2023, 15:45:47 - WARN - Shauliattempted to perform admin action (userId: 63d50ea3973632ae413a7c00)
+28.1.2023, 15:46:49 - INFO - Server is running on port: 3030 
+28.1.2023, 15:46:50 - DEBUG - Connect to DB------------- | board_db (userId: 63d50ea3973632ae413a7c00)
+28.1.2023, 15:46:50 - INFO - Broadcasting event: admin-update (userId: 63d50ea3973632ae413a7c00)
+28.1.2023, 15:46:50 - INFO - Emit to all (userId: 63d50ea3973632ae413a7c00)
+28.1.2023, 15:46:52 - DEBUG -  to get boards |  (userId: 63d50ea3973632ae413a7c00)
+28.1.2023, 15:46:52 - INFO - Broadcasting event: admin-update (userId: 63d50ea3973632ae413a7c00)
+28.1.2023, 15:46:52 - INFO - Emit to all (userId: 63d50ea3973632ae413a7c00)
+28.1.2023, 15:49:14 - DEBUG -  to get boards |  (userId: 63d50ea3973632ae413a7c00)
+28.1.2023, 15:52:33 - DEBUG -  to get boards |  (userId: 63d50ea3973632ae413a7c00)
+28.1.2023, 15:52:37 - INFO - Broadcasting event: admin-update (userId: 63d50ea3973632ae413a7c00)
+28.1.2023, 15:52:37 - INFO - Emit to all (userId: 63d50ea3973632ae413a7c00)
+28.1.2023, 15:52:37 - INFO - Broadcasting event: admin-update (userId: 63d50ea3973632ae413a7c00)
+28.1.2023, 15:52:37 - INFO - Emit to all (userId: 63d50ea3973632ae413a7c00)
+28.1.2023, 15:52:42 - INFO - Broadcasting event: admin-update (userId: 63d50ea3973632ae413a7c00)
+28.1.2023, 15:52:42 - INFO - Emit to all (userId: 63d50ea3973632ae413a7c00)
+28.1.2023, 15:52:55 - DEBUG -  to get boards |  (userId: 63d50ea3973632ae413a7c00)
+28.1.2023, 15:52:56 - INFO - Broadcasting event: admin-update (userId: 63d50ea3973632ae413a7c00)
+28.1.2023, 15:52:56 - INFO - Emit to all (userId: 63d50ea3973632ae413a7c00)
+28.1.2023, 15:52:56 - INFO - Broadcasting event: admin-update (userId: 63d50ea3973632ae413a7c00)
+28.1.2023, 15:52:56 - INFO - Emit to all (userId: 63d50ea3973632ae413a7c00)
+28.1.2023, 15:52:59 - INFO - Broadcasting event: admin-update (userId: 63d50ea3973632ae413a7c00)
+28.1.2023, 15:52:59 - INFO - Emit to all (userId: 63d50ea3973632ae413a7c00)
+28.1.2023, 15:53:00 - DEBUG -  to get boards |  (userId: 63d50ea3973632ae413a7c00)
+28.1.2023, 15:53:01 - INFO - Broadcasting event: admin-update (userId: 63d50ea3973632ae413a7c00)
+28.1.2023, 15:53:01 - INFO - Emit to all (userId: 63d50ea3973632ae413a7c00)
+28.1.2023, 15:53:01 - INFO - Broadcasting event: admin-update (userId: 63d50ea3973632ae413a7c00)
+28.1.2023, 15:53:01 - INFO - Emit to all (userId: 63d50ea3973632ae413a7c00)
+28.1.2023, 15:53:20 - DEBUG -  to get boards |  (userId: 63d50ea3973632ae413a7c00)
+28.1.2023, 15:53:20 - INFO - Broadcasting event: admin-update (userId: 63d50ea3973632ae413a7c00)
+28.1.2023, 15:53:20 - INFO - Emit to all (userId: 63d50ea3973632ae413a7c00)
+28.1.2023, 15:53:21 - INFO - Broadcasting event: admin-update (userId: 63d50ea3973632ae413a7c00)
+28.1.2023, 15:53:21 - INFO - Emit to all (userId: 63d50ea3973632ae413a7c00)
+28.1.2023, 15:53:21 - INFO - Broadcasting event: admin-update (userId: 63d50ea3973632ae413a7c00)
+28.1.2023, 15:53:21 - INFO - Emit to all (userId: 63d50ea3973632ae413a7c00)
+28.1.2023, 15:53:23 - INFO - Broadcasting event: admin-update (userId: 63d50ea3973632ae413a7c00)
+28.1.2023, 15:53:23 - INFO - Emit to all (userId: 63d50ea3973632ae413a7c00)
+28.1.2023, 15:53:24 - DEBUG -  to get boards |  (userId: 63d50ea3973632ae413a7c00)
+28.1.2023, 15:53:25 - INFO - Broadcasting event: admin-update (userId: 63d50ea3973632ae413a7c00)
+28.1.2023, 15:53:25 - INFO - Emit to all (userId: 63d50ea3973632ae413a7c00)
+28.1.2023, 15:53:25 - INFO - Broadcasting event: admin-update (userId: 63d50ea3973632ae413a7c00)
+28.1.2023, 15:53:25 - INFO - Emit to all (userId: 63d50ea3973632ae413a7c00)
+28.1.2023, 15:54:14 - INFO - Broadcasting event: admin-update (userId: 63d50ea3973632ae413a7c00)
+28.1.2023, 15:54:14 - INFO - Emit to all (userId: 63d50ea3973632ae413a7c00)
+28.1.2023, 15:54:22 - DEBUG -  to get boards |  (userId: 63d50ea3973632ae413a7c00)
+28.1.2023, 15:54:23 - INFO - Broadcasting event: admin-update (userId: 63d50ea3973632ae413a7c00)
+28.1.2023, 15:54:23 - INFO - Emit to all (userId: 63d50ea3973632ae413a7c00)
+28.1.2023, 15:54:23 - INFO - Broadcasting event: admin-update (userId: 63d50ea3973632ae413a7c00)
+28.1.2023, 15:54:23 - INFO - Emit to all (userId: 63d50ea3973632ae413a7c00)
+28.1.2023, 15:54:25 - DEBUG -  to get boards |  (userId: 63d50ea3973632ae413a7c00)
+28.1.2023, 15:54:25 - INFO - Broadcasting event: admin-update (userId: 63d50ea3973632ae413a7c00)
+28.1.2023, 15:54:25 - INFO - Emit to all (userId: 63d50ea3973632ae413a7c00)
+28.1.2023, 15:54:28 - INFO - Broadcasting event: admin-update (userId: 63d50ea3973632ae413a7c00)
+28.1.2023, 15:54:28 - INFO - Emit to all (userId: 63d50ea3973632ae413a7c00)
+28.1.2023, 15:54:29 - INFO - Broadcasting event: admin-update (userId: 63d50ea3973632ae413a7c00)
+28.1.2023, 15:54:29 - INFO - Emit to all (userId: 63d50ea3973632ae413a7c00)
+28.1.2023, 15:54:36 - DEBUG -  to get boards |  (userId: 63d50ea3973632ae413a7c00)
+28.1.2023, 15:54:36 - INFO - Broadcasting event: admin-update (userId: 63d50ea3973632ae413a7c00)
+28.1.2023, 15:54:36 - INFO - Emit to all (userId: 63d50ea3973632ae413a7c00)
+28.1.2023, 15:54:38 - INFO - Broadcasting event: admin-update (userId: 63d50ea3973632ae413a7c00)
+28.1.2023, 15:54:38 - INFO - Emit to all (userId: 63d50ea3973632ae413a7c00)
+28.1.2023, 15:56:02 - DEBUG -  to get boards |  (userId: 63d50ea3973632ae413a7c00)
+28.1.2023, 15:56:31 - DEBUG -  to get boards |  (userId: 63d50ea3973632ae413a7c00)
+28.1.2023, 15:56:45 - DEBUG -  to get boards |  (userId: 63d50ea3973632ae413a7c00)
+28.1.2023, 15:58:23 - DEBUG -  to get boards |  (userId: 63d50ea3973632ae413a7c00)
+28.1.2023, 15:59:30 - INFO - Server is running on port: 3030 
+>>>>>>> 94f6c1db45f49aa1b8ad260e3f0d79a0d74581c8
+28.1.2023, 16:00:41 - INFO - Server is running on port: 3030 
+28.1.2023, 16:00:43 - DEBUG -  to get boards |  (userId: 63d529673ea947a3c4fe70ae)
+28.1.2023, 16:00:43 - DEBUG - Connect to DB------------- | board_db (userId: 63d529673ea947a3c4fe70ae)

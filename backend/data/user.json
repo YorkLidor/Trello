@@ -1,0 +1,38 @@
+[
+  
+  {
+    "fullName": "Stav Yaar",
+    "username": "stu",
+    "password": "1234",
+    "isAdmin": false,
+    "_id": "lfcAO",
+    "createdAt": 1599074622555
+  },
+  
+  {
+    "fullName": "Ricky Lake",
+    "username": "rick",
+    "password": "1234",
+    "isAdmin": false,
+    "_id": "cb0HM",
+    "createdAt": 1599073368512
+  },
+  
+  
+  {
+    "_id": "u102",
+    "fullName": "Dainel",
+    "username": "dani",
+    "password": "secret",
+    "isAdmin": true,
+    "createdAt": 1598948593211
+  },
+  {
+    "_id": "u103",
+    "fullName": "Stav Yaar Bar",
+    "username": "stav",
+    "password": "secret",
+    "isAdmin": true,
+    "createdAt": 1598928573211
+  }
+]

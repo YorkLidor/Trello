@@ -21,7 +21,7 @@ export function MemberList({ members, toggleModal, isBoardCall = false }) {
         <div className="task-members-box flex row">
             {members.length > 0 && members.map((member, idx) =>
                 <img
-                    key={member._id}
+                    key={member._id + idx}
                     alt={member.fullname}
                     src={member.imgUrl}
                     onClick={(ev) => onMemberClick(ev, member)}

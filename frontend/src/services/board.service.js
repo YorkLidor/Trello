@@ -2,14 +2,12 @@ import { store } from '../store/store.js'
 import { jBoards } from './jsons/board.js'
 
 import { utilService } from './util.service.js'
-import { storageService } from './async-storage.service.js'
 
 import { getActivityText, saveBoard, saveTask, POST_COMMENT } from '../store/actions/board.actions.js'
 import { SET_ACTIVE_BOARD } from '../store/reducers/board.reducer.js'
+import { httpService } from './http.service.js'
 
 const STORAGE_KEY = 'boardDB'
-
-_createBoards()
 
 export const boardService = {
     query,
@@ -43,6 +41,12 @@ export const boardService = {
     removeComment
 }
 
+const ROUTE = 'board'
+
+function query(filterBy = {}) {
+    return httpService.get(ROUTE, { filterBy })
+}
+
 async function saveTaskTitle(board, groupId, task) {
     const group = board.groups.find(g => g.id === groupId)
     const taskIndex = group.tasks.findIndex(t => t.id === task.id)
@@ -71,29 +75,20 @@ async function removeTask(board, groupId, taskId) {
     return board
 }
 
-async function query(filterBy = grtDefaultFilter()) {
-    return await storageService.query(STORAGE_KEY)
-
-}
-
 function save(board) {
     if (board._id) {
-        return storageService.put(STORAGE_KEY, board)
+        return httpService.put(ROUTE, board)
     } else {
-        return storageService.post(STORAGE_KEY, board)
+        return httpService.post(ROUTE, board)
     }
 }
 
 function removeBoard(boardId) {
-    return storageService.remove(STORAGE_KEY, boardId)
+    return httpService.delete(`${ROUTE}/${boardId}`)
 }
 
-async function getById(boardId) {
-    try {
-        return storageService.get(STORAGE_KEY, boardId)
-    } catch (err) {
-        throw err
-    }
+function getById(boardId) {
+    return httpService.get(`${ROUTE}/${boardId}`)
 }
 
 function getLabelsById(boardLabels, labelIds) {
@@ -208,7 +203,7 @@ async function addComment(user, groupId, task, text) {
         id: task.id,
         title: task.title
     }
-    
+
     await saveTask(groupId, task, comment)
 }
 
