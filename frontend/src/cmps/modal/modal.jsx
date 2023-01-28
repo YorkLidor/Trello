@@ -71,7 +71,7 @@ function ModalCmp({ id, cmpProps, cmpType }) {
         case MODAL_GROUP_QUICK_EDIT:
             return <GroupQuickEdit {...cmpProps} id={id} />
         case USER_QUICK_MENU:
-            return <UserQuickMenu {...cmpProps} id={id} />
+            return <UserQuickMenu {...cmpProps} id={id}/>
         case MODAL_REMOVE_COMMENT:
             return <DeleteCommentModal {...cmpProps} id={id} />
         default:

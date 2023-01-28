@@ -128,10 +128,9 @@ export function Board() {
                 elModal.current.style.left = pos.left + 'px'
                 break;
             case MODAL_GROUP_QUICK_EDIT:
-                props = {board, groupId, onRemoveGroup,onCopyGroup }
+                props = { board, groupId, onRemoveGroup, onCopyGroup }
                 elModal.current.style.top = pos.top + 'px'
                 elModal.current.style.left = pos.left + 'px'
-                console.log('props:', props)
                 break;
             default:
                 break;
@@ -182,13 +181,13 @@ export function Board() {
 
             <div ref={elModal} className='modal-container'>
                 {
-                    modal?.isOpen && <> <Modal
-
-                        modal={modal}
-                        cmpProps={modal.modalData.props}
-                        cmpType={modal.modalData.cmpType}
-                        className={modal.modalData.className}
-                    />
+                    modal?.isOpen && <>
+                        <Modal
+                            modal={modal}
+                            cmpProps={modal.modalData.props}
+                            cmpType={modal.modalData.cmpType}
+                            className={modal.modalData.className}
+                        />
                         <div className="all-screen-modal" onClick={() => closeModal(modals, modal.id)}>
                         </div>
                     </>

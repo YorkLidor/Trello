@@ -57,6 +57,8 @@ async function saveTaskTitle(board, groupId, task) {
 }
 
 async function copyGroup(board, groupId) {
+    console.log('board:', board)
+    console.log('groupId:', groupId)
     const group = board.groups.find(g => g.id === groupId)
     const groupIndex = board.groups.findIndex(g => g.id === groupId)
     const newGroup = { ...group }
