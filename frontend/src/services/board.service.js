@@ -2,15 +2,12 @@ import { store } from '../store/store.js'
 import { jBoards } from './jsons/board.js'
 
 import { utilService } from './util.service.js'
-import { storageService } from './async-storage.service.js'
 
 import { getActivityText, saveBoard, saveTask, POST_COMMENT } from '../store/actions/board.actions.js'
 import { SET_ACTIVE_BOARD } from '../store/reducers/board.reducer.js'
 import { httpService } from './http.service.js'
 
 const STORAGE_KEY = 'boardDB'
-
-_createBoards()
 
 export const boardService = {
     query,
@@ -87,15 +84,11 @@ function save(board) {
 }
 
 function removeBoard(boardId) {
-    return storageService.remove(STORAGE_KEY, boardId)
+    return httpService.delete(`${ROUTE}/${boardId}`)
 }
 
-async function getById(boardId) {
-    try {
-        return storageService.get(STORAGE_KEY, boardId)
-    } catch (err) {
-        throw err
-    }
+function getById(boardId) {
+    return httpService.get(`${ROUTE}/${boardId}`)
 }
 
 function getLabelsById(boardLabels, labelIds) {
