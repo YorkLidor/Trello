@@ -61,7 +61,7 @@ export function TaskPreview({ task, groupId, isDragging, isQuickEdit }) {
 
     return <>
         <div
-            className={`task-preview-container ${isDragging && 'is-dragging'} ${task?.cover?.fullSize ? 'full' : ''} ${task?.cover?.style?.backgroundImage ? 'img' : ''}`}
+            className={`task-preview-container ${isDragging && 'is-dragging'} ${task?.cover?.fullSize ? 'full' : ''} ${task?.cover?.style?.backgroundImage ? 'img' : ''} ${task?.cover?.isDark ? 'dark' : ''}`}
             ref={elTaskPreview}
             onMouseEnter={() => setIsEditBtnShow('hidden-icon')}
             onMouseLeave={() => setIsEditBtnShow('')}

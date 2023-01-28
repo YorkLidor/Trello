@@ -36,7 +36,7 @@
                 }
 
                 &::before {
-                    background: linear-gradient(180deg,#0000,#00000080);
+                    background: linear-gradient(180deg, #0000, #00000080);
                     content: "";
                     height: 32px;
                     left: 0;
@@ -45,6 +45,12 @@
                     right: 0;
                     top: -32px;
                     width: 100%;
+                }
+            }
+
+            &.dark {
+                .task-body{
+                    color: #172b4d;
                 }
             }
         }

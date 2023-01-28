@@ -273,8 +273,30 @@ export function TaskDetails() {
                 <TaskCover task={taskToEdit} onToggleModal={onToggleModal} />
 
                 <div className="task-header">
-                    <IconHeader className="header-icon task-icon" /><input type='text' className="task-title" defaultValue={taskToEdit.title} onFocus={handleEditHeader} onBlur={handleEditHeader} />
-                    <p className="header-subtitle"><span className='board-name'>{board.title} </span>in list <span className='group-name'>{group.title}</span></p>
+                    <IconHeader
+                        className="header-icon task-icon"
+                    />
+                    <input type='text'
+                        className="task-title"
+                        defaultValue={taskToEdit.title}
+                        onFocus={handleEditHeader}
+                        onBlur={handleEditHeader}
+                    />
+                    <p
+                        className="header-subtitle"
+                    >
+                        <span
+                            className='board-name'
+                        >
+                            {board.title}
+                        </span>
+                        in list
+                        <span
+                            className='group-name'
+                        >
+                            {group.title}
+                        </span>
+                    </p>
                 </div>
 
                 <section className="task-main-col">
