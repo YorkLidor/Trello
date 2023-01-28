@@ -10,12 +10,17 @@ export function MemberModal({ id, cmpProps }) {
     const { member, task, boardId, groupId } = cmpProps
 
     function onRemoveMember() {
-        onRemoveFromCard(member, task, boardId, groupId)
-        closeModal(modals, id)
+        try {
+            onRemoveFromCard(member, task, boardId, groupId)
+            closeModal(modals, id)
+        }
+        catch (err) {
+            console.error('Failed remove member from task')
+        }
     }
 
     return <div className="modal-member">
-        <AiOutlineClose className='close-modal-member' onClick={()=> closeModal(modals, id)} />
+        <AiOutlineClose className='close-modal-member' onClick={() => closeModal(modals, id)} />
 
         <div className="modal-member-header">
             <img className="member-logo" src={member.imgUrl} />
@@ -28,7 +33,7 @@ export function MemberModal({ id, cmpProps }) {
             Member on this board
         </span>
 
-        <hr  />
+        <hr />
         <span className="action-member-card active" onClick={onRemoveMember}>Remove from card</span>
     </div>
 }

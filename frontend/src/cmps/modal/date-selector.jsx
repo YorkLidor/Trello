@@ -6,8 +6,13 @@ export function DateSelector({ onChangeDate, endDate }) {
   const [date, setDate] = useState(endDate ? endDate : new Date())
 
   function onSelect(date) {
-    setDate(date)
-    onChangeDate(date)
+    try {
+      setDate(date)
+      onChangeDate(date)
+    }
+    catch (err) {
+      console.error('Failed handle date changes')
+    }
   }
 
   return <>

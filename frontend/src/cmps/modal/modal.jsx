@@ -41,40 +41,45 @@ export function Modal({ modal, cmpProps, cmpType, className }) {
 }
 
 function ModalCmp({ id, cmpProps, cmpType }) {
-    switch (cmpType) {
-        case MODAL_LABELS:
-            return <LabelsPicker cmpProps={cmpProps} id={id} />
-        case MODAL_ATTACH:
-            return <AttachmentModal cmpProps={cmpProps} id={id} />
-        case BOARD_CREATOR:
-            return <BoardCreator cmpProps={cmpProps} id={id} />
-        case MODAL_ATTACH_EDIT:
-            return <AttachmentEditModal cmpProps={cmpProps} id={id} />
-        case MODAL_ATTACH_OPEN:
-            return <AttachmentView cmpProps={cmpProps} id={id} />
-        case MODAL_MEMBERS:
-            return <MemberPicker cmpProps={cmpProps} id={id} />
-        case MODAL_MEMBER_OPEN:
-            return <MemberModal cmpProps={cmpProps} id={id} />
-        case MODAL_TASK_QUICK_EDIT:
-            return <TaskQuickEdit cmpProps={cmpProps} id={id} />
-        case MODAL_TASK_DATE:
-            return <DateModal cmpProps={cmpProps} id={id} />
-        case MODAL_TASK_COVER:
-            return <CoverModal cmpProps={cmpProps} id={id} />
-        case MODAL_CHECKLIST:
-            return <ChecklistModal cmpProps={cmpProps} id={id} />
-        case MODAL_CHECKLIST_DELETE:
-            return <DeleteChecklistModal cmpProps={cmpProps} id={id} />
-        case MODAL_TODO:
-            return <TodoModal cmpProps={cmpProps} id={id} />
-        case MODAL_GROUP_QUICK_EDIT:
-            return <GroupQuickEdit {...cmpProps} id={id} />
-        case USER_QUICK_MENU:
-            return <UserQuickMenu {...cmpProps} id={id}/>
-        case MODAL_REMOVE_COMMENT:
-            return <DeleteCommentModal {...cmpProps} id={id} />
-        default:
-            return ''
+    try {
+        switch (cmpType) {
+            case MODAL_LABELS:
+                return <LabelsPicker cmpProps={cmpProps} id={id} />
+            case MODAL_ATTACH:
+                return <AttachmentModal cmpProps={cmpProps} id={id} />
+            case BOARD_CREATOR:
+                return <BoardCreator cmpProps={cmpProps} id={id} />
+            case MODAL_ATTACH_EDIT:
+                return <AttachmentEditModal cmpProps={cmpProps} id={id} />
+            case MODAL_ATTACH_OPEN:
+                return <AttachmentView cmpProps={cmpProps} id={id} />
+            case MODAL_MEMBERS:
+                return <MemberPicker cmpProps={cmpProps} id={id} />
+            case MODAL_MEMBER_OPEN:
+                return <MemberModal cmpProps={cmpProps} id={id} />
+            case MODAL_TASK_QUICK_EDIT:
+                return <TaskQuickEdit cmpProps={cmpProps} id={id} />
+            case MODAL_TASK_DATE:
+                return <DateModal cmpProps={cmpProps} id={id} />
+            case MODAL_TASK_COVER:
+                return <CoverModal cmpProps={cmpProps} id={id} />
+            case MODAL_CHECKLIST:
+                return <ChecklistModal cmpProps={cmpProps} id={id} />
+            case MODAL_CHECKLIST_DELETE:
+                return <DeleteChecklistModal cmpProps={cmpProps} id={id} />
+            case MODAL_TODO:
+                return <TodoModal cmpProps={cmpProps} id={id} />
+            case MODAL_GROUP_QUICK_EDIT:
+                return <GroupQuickEdit {...cmpProps} id={id} />
+            case USER_QUICK_MENU:
+                return <UserQuickMenu {...cmpProps} id={id} />
+            case MODAL_REMOVE_COMMENT:
+                return <DeleteCommentModal {...cmpProps} id={id} />
+            default:
+                return ''
+        }
+    }
+    catch (err) {
+        console.error('Failed resolve match cmp to modal')
     }
 }
