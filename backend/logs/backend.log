@@ -306,10 +306,49 @@
 28.1.2023, 15:56:45 - DEBUG -  to get boards |  (userId: 63d50ea3973632ae413a7c00)
 28.1.2023, 15:58:23 - DEBUG -  to get boards |  (userId: 63d50ea3973632ae413a7c00)
 28.1.2023, 15:59:30 - INFO - Server is running on port: 3030 
+<<<<<<< HEAD
+28.1.2023, 16:00:59 - DEBUG - Connect to DB------------- | board_db (userId: 63d50ea3973632ae413a7c00)
+28.1.2023, 16:00:59 - INFO - Broadcasting event: admin-update (userId: 63d50ea3973632ae413a7c00)
+28.1.2023, 16:00:59 - INFO - Emit to all (userId: 63d50ea3973632ae413a7c00)
+28.1.2023, 16:01:00 - INFO - Broadcasting event: admin-update (userId: 63d50ea3973632ae413a7c00)
+28.1.2023, 16:01:00 - INFO - Emit to all (userId: 63d50ea3973632ae413a7c00)
+28.1.2023, 16:01:01 - DEBUG -  to get boards |  (userId: 63d50ea3973632ae413a7c00)
+28.1.2023, 16:01:01 - INFO - Broadcasting event: admin-update (userId: 63d50ea3973632ae413a7c00)
+28.1.2023, 16:01:01 - INFO - Emit to all (userId: 63d50ea3973632ae413a7c00)
+28.1.2023, 16:01:02 - INFO - Broadcasting event: admin-update (userId: 63d50ea3973632ae413a7c00)
+28.1.2023, 16:01:02 - INFO - Emit to all (userId: 63d50ea3973632ae413a7c00)
+28.1.2023, 16:01:04 - INFO - Broadcasting event: admin-update (userId: 63d50ea3973632ae413a7c00)
+28.1.2023, 16:01:04 - INFO - Emit to all (userId: 63d50ea3973632ae413a7c00)
+28.1.2023, 16:01:07 - DEBUG -  to get boards |  (userId: 63d50ea3973632ae413a7c00)
+28.1.2023, 16:01:25 - DEBUG - auth.service - login with username: shauli (userId: 63d50ea3973632ae413a7c00)
+28.1.2023, 16:01:25 - DEBUG - debug | shauli (userId: 63d50ea3973632ae413a7c00)
+28.1.2023, 16:01:25 - INFO - User login:  | {"_id":"63d50ea3973632ae413a7c00","fullname":"Shauli","username":"shauli","email":"shauli@gmail.com","imgUrl":"http://res.cloudinary.com/dk2geeubr/image/upload/v1674746367/qvbgfpwpobofvl5f6ocr.jpg","mentions":[]} (userId: 63d50ea3973632ae413a7c00)
+28.1.2023, 16:01:26 - DEBUG -  to get boards |  (userId: 63d50ea3973632ae413a7c00)
+28.1.2023, 16:10:29 - DEBUG - auth.service - login with username: shauli (userId: 63d50ea3973632ae413a7c00)
+28.1.2023, 16:10:29 - DEBUG - debug | shauli (userId: 63d50ea3973632ae413a7c00)
+28.1.2023, 16:10:29 - INFO - User login:  | {"_id":"63d50ea3973632ae413a7c00","fullname":"Shauli","username":"shauli","email":"shauli@gmail.com","imgUrl":"http://res.cloudinary.com/dk2geeubr/image/upload/v1674746367/qvbgfpwpobofvl5f6ocr.jpg","mentions":[]} (userId: 63d50ea3973632ae413a7c00)
+28.1.2023, 16:10:29 - DEBUG -  to get boards |  (userId: 63d50ea3973632ae413a7c00)
+28.1.2023, 16:10:39 - DEBUG - auth.service - login with username: shauli 
+28.1.2023, 16:10:39 - DEBUG - debug | shauli 
+28.1.2023, 16:10:39 - INFO - User login:  | {"_id":"63d50ea3973632ae413a7c00","fullname":"Shauli","username":"shauli","email":"shauli@gmail.com","imgUrl":"http://res.cloudinary.com/dk2geeubr/image/upload/v1674746367/qvbgfpwpobofvl5f6ocr.jpg","mentions":[]} 
+28.1.2023, 16:10:39 - DEBUG -  to get boards |  (userId: 63d50ea3973632ae413a7c00)
+28.1.2023, 16:11:51 - DEBUG -  to get boards |  (userId: 63d50ea3973632ae413a7c00)
+28.1.2023, 16:13:28 - DEBUG -  to get boards |  (userId: 63d50ea3973632ae413a7c00)
+28.1.2023, 16:13:28 - DEBUG -  to get boards |  (userId: 63d50ea3973632ae413a7c00)
+28.1.2023, 16:14:03 - DEBUG -  to get boards |  (userId: 63d50ea3973632ae413a7c00)
+28.1.2023, 16:37:53 - INFO - Server is running on port: 3030 
+28.1.2023, 16:50:51 - DEBUG -  to get boards |  (userId: 63d50ea3973632ae413a7c00)
+28.1.2023, 16:50:51 - DEBUG - Connect to DB------------- | board_db (userId: 63d50ea3973632ae413a7c00)
+28.1.2023, 16:51:12 - INFO - Broadcasting event: admin-update (userId: 63d50ea3973632ae413a7c00)
+28.1.2023, 16:51:12 - INFO - Emit to all (userId: 63d50ea3973632ae413a7c00)
+28.1.2023, 16:51:16 - INFO - Broadcasting event: admin-update (userId: 63d50ea3973632ae413a7c00)
+28.1.2023, 16:51:16 - INFO - Emit to all (userId: 63d50ea3973632ae413a7c00)
+=======
 >>>>>>> 94f6c1db45f49aa1b8ad260e3f0d79a0d74581c8
 28.1.2023, 16:00:41 - INFO - Server is running on port: 3030 
 28.1.2023, 16:00:43 - DEBUG -  to get boards |  (userId: 63d529673ea947a3c4fe70ae)
 28.1.2023, 16:00:43 - DEBUG - Connect to DB------------- | board_db (userId: 63d529673ea947a3c4fe70ae)
+<<<<<<< HEAD
 28.1.2023, 16:01:06 - INFO - Broadcasting event: admin-update (userId: 63d529673ea947a3c4fe70ae)
 28.1.2023, 16:01:06 - INFO - Emit to all (userId: 63d529673ea947a3c4fe70ae)
 28.1.2023, 16:01:06 - INFO - Broadcasting event: admin-update (userId: 63d529673ea947a3c4fe70ae)
@@ -465,3 +504,7 @@
 28.1.2023, 17:09:54 - INFO - Emit to all (userId: 63d529673ea947a3c4fe70ae)
 28.1.2023, 17:11:52 - INFO - Broadcasting event: admin-update (userId: 63d529673ea947a3c4fe70ae)
 28.1.2023, 17:11:52 - INFO - Emit to all (userId: 63d529673ea947a3c4fe70ae)
+=======
+>>>>>>> 1e955a953d9ba34d56aa14b907858a2fba22f405
+>>>>>>> 491abaf661a9e263b17c87c5083c887fa1b0e847
+28.1.2023, 17:12:38 - INFO - Server is running on port: 3030 

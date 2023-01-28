@@ -10,6 +10,10 @@
     left: -40px;
     top: 15px;
 
+    &:hover{
+        opacity: unset;
+    }
+
     @include for-native-layout-details {
         left: 6px;
     }
@@ -79,4 +83,12 @@
         }
 
     }
+}
+
+.cancel-editor-comment {
+    margin-block-start: 3px;
+    margin-inline-start: 4px;
+    height: 24px;
+    width: 24px;
+    color: #42526e;
 }
