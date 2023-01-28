@@ -15,8 +15,10 @@ router.get('/:boardId', getBoard)
 // router.delete('/:boardId', removeBoard)
 
 // Only admin can do edit, add and delete!
-router.post('/', requireAuth, requireAdmin, addBoard)
-router.put('/', requireAuth, requireAdmin, updateBoard)
+// router.post('/', requireAuth, requireAdmin, addBoard)
+router.post('/', requireAuth, addBoard)
+// router.put('/', requireAuth, requireAdmin, updateBoard)
+router.put('/', requireAuth, updateBoard)
 router.delete('/:boardId', requireAuth, requireAdmin, removeBoard)
 
 
