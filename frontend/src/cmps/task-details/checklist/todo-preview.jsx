@@ -13,20 +13,30 @@ export function Todo({ checklist, todoItem, onUpdateTodo, onRemoveTodo, setTodoT
     const todoTitleClassname = todo.isDone ? 'todo-title done' : 'todo-title'
 
     function handleChange(ev) {
-        if (!todo) return
-        todo.isDone = ev.target.checked
-        onUpdateTodo(todo)
+        try {
+            if (!todo) return
+            todo.isDone = ev.target.checked
+            onUpdateTodo(todo)
+        }
+        catch (err) {
+            console.error('Failed hande changes in checklist item checked state')
+        }
     }
 
     function onTitleEdit(ev, title) {
-        ev.stopPropagation()
-        if (!title) {
-            onRemoveTodo(todo)
-        } else {
-            todo.title = title
-            onUpdateTodo(todo)
+        try {
+            ev.stopPropagation()
+            if (!title) {
+                onRemoveTodo(todo)
+            } else {
+                todo.title = title
+                onUpdateTodo(todo)
+            }
+            setTodoToEdit(ev, null)
         }
-        setTodoToEdit(ev, null)
+        catch (error) {
+            console.error('Failed change checklist item text')
+        }
     }
     return <div className='todo-box' >
         <label>
@@ -41,7 +51,7 @@ export function Todo({ checklist, todoItem, onUpdateTodo, onRemoveTodo, setTodoT
                 :
                 <div className='todo-row flex row'>
                     <span className={todoTitleClassname} onClick={(ev) => setTodoToEdit(ev, todo.id)}>{todo.title}</span>
-                    <TbDots className='todo-tools' onClick={(ev) => onToggleModal(ev, MODAL_TODO , { todo , checklist })}/>
+                    <TbDots className='todo-tools' onClick={(ev) => onToggleModal(ev, MODAL_TODO, { todo, checklist })} />
                 </div>
         }
     </div>

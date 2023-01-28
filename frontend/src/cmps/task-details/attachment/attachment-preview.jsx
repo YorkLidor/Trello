@@ -4,22 +4,43 @@ import { MODAL_ATTACH_EDIT, MODAL_ATTACH_OPEN } from '../../modal/modal'
 export function AttachmentPreview({ task, attachment, toggleModal, removeAttachment, onTaskUpdateCover }) {
 
     function onEditAttachment(ev, attachment) {
-        ev.stopPropagation()
-        toggleModal(ev, MODAL_ATTACH_EDIT, { attachment })
+        try {
+            ev.stopPropagation()
+            toggleModal(ev, MODAL_ATTACH_EDIT, { attachment })
+        }
+        catch (err) {
+            console.error('Failed edit attachment')
+        }
     }
 
     function onOpenAttachment(ev, attachment) {
-        if (ev) ev.stopPropagation()
-        toggleModal(ev, MODAL_ATTACH_OPEN, { attachment })
+        try {
+            if (ev) ev.stopPropagation()
+            toggleModal(ev, MODAL_ATTACH_OPEN, { attachment })
+        }
+        catch (err) {
+            console.error('Failed open attachment')
+        }
     }
 
     function setAttachAsCover(ev, attachment) {
-        if (ev) ev.stopPropagation()
-        onTaskUpdateCover(attachment)
+        try {
+            if (ev) ev.stopPropagation()
+            onTaskUpdateCover(attachment)
+        }
+        catch (err) {
+            console.error('Failed set attach as cover')
+        }
     }
-    function unsetAttachAsCover(ev){
-        if (ev) ev.stopPropagation()
-        onTaskUpdateCover(null)
+
+    function unsetAttachAsCover(ev) {
+        try {
+            if (ev) ev.stopPropagation()
+            onTaskUpdateCover(null)
+        }
+        catch(err) {
+            console.error('Failed to remove attachment from cover')
+        }
     }
 
     return attachment && <div className="attachment-preview">
@@ -39,8 +60,8 @@ export function AttachmentPreview({ task, attachment, toggleModal, removeAttachm
             </span>
             {
                 (task.cover?.attachmentId === attachment.id) ?
-                <span className='make-attach-cover' onClick={unsetAttachAsCover}>Remove Cover</span> :
-                <span className='make-attach-cover' onClick={(ev) => setAttachAsCover(ev, attachment)}>Make Cover</span>
+                    <span className='make-attach-cover' onClick={unsetAttachAsCover}>Remove Cover</span> :
+                    <span className='make-attach-cover' onClick={(ev) => setAttachAsCover(ev, attachment)}>Make Cover</span>
             }
         </p>
 

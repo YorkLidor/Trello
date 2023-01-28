@@ -17,15 +17,20 @@ export function CoverModal({ id, cmpProps }) {
     let colorIdx = 0
 
     useEffect(() => {
-        if (activeCover) return
-        const activeCoverSet = {}
-        if (task.cover?.style?.backgroundColor) activeCoverSet.style = { backgroundColor: task.cover?.style?.backgroundColor }
-        else if (task.cover?.style?.backgroundImage) activeCoverSet.style = { backgroundImage: task.cover?.style?.backgroundImage }
+        try {
+            if (activeCover) return
+            const activeCoverSet = {}
+            if (task.cover?.style?.backgroundColor) activeCoverSet.style = { backgroundColor: task.cover?.style?.backgroundColor }
+            else if (task.cover?.style?.backgroundImage) activeCoverSet.style = { backgroundImage: task.cover?.style?.backgroundImage }
 
-        if (task.cover?.fullSize) activeCoverSet.fullSize = true
-        else activeCoverSet.fullSize = false
+            if (task.cover?.fullSize) activeCoverSet.fullSize = true
+            else activeCoverSet.fullSize = false
 
-        setActiveCover(activeCoverSet)
+            setActiveCover(activeCoverSet)
+        }
+        catch (err) {
+            console.error('Failed handle cover style changes')
+        }
     }, [])
 
 
@@ -36,123 +41,168 @@ export function CoverModal({ id, cmpProps }) {
     ]
 
     async function onUploadCover(ev) {
-        const { url, filename } = await uploadImg(ev)
+        try {
+            const { url, filename } = await uploadImg(ev)
 
-        const attachment = boardService.getAttachment(url, filename)
-        if (task.attachments?.length > 0) task.attachments.unshift(attachment)
-        else task.attachments = [attachment]
+            const attachment = boardService.getAttachment(url, filename)
+            if (task.attachments?.length > 0) task.attachments.unshift(attachment)
+            else task.attachments = [attachment]
 
-        onSetAttachmentCover(attachment)
+            onSetAttachmentCover(attachment)
+        }
+        catch (err) {
+            console.error('Failed upload cover')
+        }
     }
 
     function handleColorPick({ target }) {
-        if (activeAttachRef.current) {
-            activeAttachRef.current.parentNode.classList.toggle('active')
-            activeAttachRef.current = null
-        }
+        try {
+            if (activeAttachRef.current) {
+                activeAttachRef.current.parentNode.classList.toggle('active')
+                activeAttachRef.current = null
+            }
 
-        target.parentNode.classList.toggle('active-color')
-        if (activeColorRef.current) activeColorRef.current.parentNode.classList.toggle('active-color')
+            target.parentNode.classList.toggle('active-color')
+            if (activeColorRef.current) activeColorRef.current.parentNode.classList.toggle('active-color')
 
-        if (activeColorRef.current === target) {
-            activeColorRef.current = null
-            removeCover()
+            if (activeColorRef.current === target) {
+                activeColorRef.current = null
+                removeCover()
+            }
+            else {
+                activeColorRef.current = target
+                saveCoverColor(target.dataset.idx)
+            }
         }
-        else {
-            activeColorRef.current = target
-            saveCoverColor(target.dataset.idx)
+        catch (err) {
+            console.error('Failed save selected color')
         }
     }
 
     async function removeCover() {
-        clearActiveButtons()
+        try {
+            clearActiveButtons()
 
-        task.cover = null
-        setActiveCover(null)
-        const action = `${getActivityText(REMOVE_COVER)} ${task.title}`
-        await saveTask(groupId, task, boardService.getActivity(user, task, action))
+            task.cover = null
+            setActiveCover(null)
+            const action = `${getActivityText(REMOVE_COVER)} ${task.title}`
+            await saveTask(groupId, task, boardService.getActivity(user, task, action))
+        }
+        catch (err) {
+            console.error('Failed to remove cover')
+        }
     }
 
 
     function clearActiveButtons() {
-        if (activeAttachRef.current) {
-            activeAttachRef.current.parentNode.classList.toggle('active')
-            activeAttachRef.current = null
-        }
+        try {
+            if (activeAttachRef.current) {
+                activeAttachRef.current.parentNode.classList.toggle('active')
+                activeAttachRef.current = null
+            }
 
-        if (activeColorRef.current) {
-            activeColorRef.current.parentNode.classList.toggle('active-color')
-            activeColorRef.current = null
-        }
+            if (activeColorRef.current) {
+                activeColorRef.current.parentNode.classList.toggle('active-color')
+                activeColorRef.current = null
+            }
 
-        if (activeSizeRef.current) {
-            activeSizeRef.current.parentNode.classList.toggle('active')
-            activeSizeRef.current = null
-        }
+            if (activeSizeRef.current) {
+                activeSizeRef.current.parentNode.classList.toggle('active')
+                activeSizeRef.current = null
+            }
 
-        if (activeFontColorRef.current) {
-            activeFontColorRef.current.parentNode.classList.toggle('active')
-            activeFontColorRef.current = null
+            if (activeFontColorRef.current) {
+                activeFontColorRef.current.parentNode.classList.toggle('active')
+                activeFontColorRef.current = null
+            }
+        }
+        catch (err) {
+            console.error('Failed clear active buttons')
         }
     }
 
     async function saveCoverColor(colorIdx) {
+        try {
+            if (!task.cover) task.cover = { fullSize: false, style: null }
+            task.cover = { fullSize: task.cover?.fullSize ? true : false, style: boardService.getCoverColorStyle(coverColors[colorIdx]) }
+            const newCover = { fullSize: task.cover.fullSize, style: boardService.getCoverColorStyle(coverColors[colorIdx]) }
 
-        if (!task.cover) task.cover = { fullSize: false, style: null }
-        task.cover = { fullSize: task.cover?.fullSize ? true : false, style: boardService.getCoverColorStyle(coverColors[colorIdx]) }
-        const newCover = { fullSize: task.cover.fullSize, style: boardService.getCoverColorStyle(coverColors[colorIdx]) }
-
-        setActiveCover(newCover)
-        await saveTask(groupId, task, boardService.getActivity(user, task, `${getActivityText(CHANGE_COVER_COLOR)}`))
+            setActiveCover(newCover)
+            await saveTask(groupId, task, boardService.getActivity(user, task, `${getActivityText(CHANGE_COVER_COLOR)}`))
+        }
+        catch (err) {
+            console.error('Failed save cover color')
+        }
     }
 
+
     async function onPickCoverSize(ev, size) {
-        if (!task.cover || task.cover.fullSize === size) return
-        if (activeSizeRef.current) activeSizeRef.current.parentNode.classList.toggle('active')
-        if (ev.target.classList.contains('small-cover')) ev.target = ev.target.parentNode
-        ev.target.parentNode.classList.toggle('active')
-        activeSizeRef.current = ev.target
+        try {
+            if (!task.cover || task.cover.fullSize === size) return
+            if (activeSizeRef.current) activeSizeRef.current.parentNode.classList.toggle('active')
+            if (ev.target.classList.contains('small-cover')) ev.target = ev.target.parentNode
+            ev.target.parentNode.classList.toggle('active')
+            activeSizeRef.current = ev.target
 
 
-        task.cover = { ...task.cover, fullSize: size }
-        if(task.cover.style.fullSize && !task.cover.style.color) task.cover.style.color = fontColor.light
-        setActiveCover((prevCover) => ({ ...prevCover, fullSize: size }))
-        await saveTask(groupId, task, boardService.getActivity(user, task, `${getActivityText(CHANGE_COVER_SIZE)} ${task.title}`))
+            task.cover = { ...task.cover, fullSize: size }
+            if (task.cover.style.fullSize && !task.cover.style.color) task.cover.style.color = fontColor.light
+            setActiveCover((prevCover) => ({ ...prevCover, fullSize: size }))
+            await saveTask(groupId, task, boardService.getActivity(user, task, `${getActivityText(CHANGE_COVER_SIZE)} ${task.title}`))
+        }
+        catch (err) {
+            console.error('Failed save cover size')
+        }
     }
 
     function onPickAttachCover(ev, attachment) {
-        if (activeAttachRef.current) activeAttachRef.current.parentNode.classList.toggle('active')
-        if (activeColorRef.current) {
-            activeColorRef.current.parentNode.classList.toggle('active-color')
-            activeColorRef.current = null
+        try {
+            if (activeAttachRef.current) activeAttachRef.current.parentNode.classList.toggle('active')
+            if (activeColorRef.current) {
+                activeColorRef.current.parentNode.classList.toggle('active-color')
+                activeColorRef.current = null
+            }
+
+            activeAttachRef.current = ev.target
+            activeAttachRef.current.parentNode.classList.toggle('active')
+
+            onSetAttachmentCover(attachment)
         }
-
-        activeAttachRef.current = ev.target
-        activeAttachRef.current.parentNode.classList.toggle('active')
-
-        onSetAttachmentCover(attachment)
+        catch (err) {
+            console.error('Failed set attachment as cover')
+        }
     }
 
     async function onSetAttachmentCover(attachment) {
-        const url = attachment.url
-        const filename = url.substring(url.lastIndexOf('/') + 1)
-        const action = `${getActivityText(CHANGE_COVER_ATTACH)} ${filename}`
-        const activity = boardService.getActivity(user, { id: task.id, title: task.title }, action)
+        try {
+            const url = attachment.url
+            const filename = url.substring(url.lastIndexOf('/') + 1)
+            const action = `${getActivityText(CHANGE_COVER_ATTACH)} ${filename}`
+            const activity = boardService.getActivity(user, { id: task.id, title: task.title }, action)
 
-        const newTask = boardService.setCoverImage(task, attachment)
-        setActiveCover(newTask.cover)
-        await saveTask(groupId, newTask, activity)
+            const newTask = boardService.setCoverImage(task, attachment)
+            setActiveCover(newTask.cover)
+            await saveTask(groupId, newTask, activity)
+        }
+        catch (err) {
+            console.error('Failed set attachment as cover')
+        }
     }
 
 
     async function onPickTextColor(ev, light) {
-        if (activeFontColorRef.current) activeFontColorRef.current.parentNode.classList.toggle('active')
-        ev.target.parentNode.classList.toggle('active')
-        activeFontColorRef.current = ev.target
+        try {
+            if (activeFontColorRef.current) activeFontColorRef.current.parentNode.classList.toggle('active')
+            ev.target.parentNode.classList.toggle('active')
+            activeFontColorRef.current = ev.target
 
-        const color = (light) ? 'light' : 'dark'
-        task.isDark = (light)
-        await saveTask(groupId, task, boardService.getActivity(user, task, `${getActivityText(CHANGE_COVER_TEXT_COLOR)} ${color}`))
+            const color = (light) ? 'light' : 'dark'
+            task.isDark = (light)
+            await saveTask(groupId, task, boardService.getActivity(user, task, `${getActivityText(CHANGE_COVER_TEXT_COLOR)} ${color}`))
+        }
+        catch (err) {
+            console.error('Failed set full cover text color')
+        }
     }
 
     return task && <div className="modal-cover-box">

@@ -13,17 +13,22 @@ export function DeleteCommentModal({ user, groupId, task, comment, id }) {
 
     // Delete label from board labels
     async function onDeleteChecklist() {
-        closeModal(modals, id)
-        const newTask = boardService.removeComment(task, comment)
-        
-        const action = `${getActivityText(REMOVE_COMMENT)} ${comment.txt}`
-        await saveTask(groupId, newTask, boardService.getActivity(user, newTask, action))
+        try {
+            closeModal(modals, id)
+            const newTask = boardService.removeComment(task, comment)
+
+            const action = `${getActivityText(REMOVE_COMMENT)} ${comment.txt}`
+            await saveTask(groupId, newTask, boardService.getActivity(user, newTask, action))
+        }
+        catch (err) {
+            console.error('Failed delete checklist')
+        }
     }
 
     return <div className='delete-checklist-modal'>
-        <ModalHeader id={id} header={'Delete Checklist'} allowBack={false}/>
+        <ModalHeader id={id} header={'Delete Checklist'} allowBack={false} />
         <p className='delete-msg'>
-            Deleting a comment is forever. There is no 
+            Deleting a comment is forever. There is no
             undo.
         </p>
         <button className='delete-label delete-page-btn' onClick={onDeleteChecklist}>Delete</button>
