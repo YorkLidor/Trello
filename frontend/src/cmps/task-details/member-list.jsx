@@ -8,9 +8,14 @@ import { AiOutlinePlus } from 'react-icons/ai'
 export function MemberList({ members, toggleModal, isBoardCall = false }) {
 
     function onMemberClick(ev, member) {
-        ev.stopPropagation()
-        if (!member) return
-        toggleModal(ev, MODAL_MEMBER_OPEN, { member })
+        try {
+            ev.stopPropagation()
+            if (!member) return
+            toggleModal(ev, MODAL_MEMBER_OPEN, { member })
+        }
+        catch(err) {
+            console.error('Failed to toggle member view modal')
+        }
     }
 
 

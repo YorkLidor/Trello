@@ -13,7 +13,12 @@ export function TaskDetailsSideBar({ task, onToggleModal }) {
     const board = useSelector((storeState) => storeState.boardModule.board)
 
     function onJoinBoard() {
-        task.memberIds.push(user._id)
+        try {
+            task.memberIds.push(user._id)
+        }
+        catch(error){
+            console.error('Failed join board')
+        }
     }
 
     return <div className="window-sidebar-box">

@@ -11,12 +11,17 @@ export function TaskDescription({ groupId, task }) {
     const elDescInputRef = useRef()
 
     function handleEdit(ev) {
-        ev.target.classList.toggle('is-editing')
-        descToolsRef.current.classList.toggle('show')
+        try {
+            ev.target.classList.toggle('is-editing')
+            descToolsRef.current.classList.toggle('show')
 
-        if (ev.type === 'blur') {
-            onSaveDescription()
-            setDescription(ev.target.value)
+            if (ev.type === 'blur') {
+                onSaveDescription()
+                setDescription(ev.target.value)
+            }
+        }
+        catch(err) {
+            console.error('Failed handle changes in description')
         }
     }
 

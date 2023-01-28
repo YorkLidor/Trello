@@ -56,38 +56,61 @@ export function TaskDetails() {
     let group = groupId ? board?.groups?.find(g => g.id === groupId) : null
 
     useEffectInit(() => {
-        if (!boardId || !groupId || !taskId) return errorRedirect()
-        loadBoard()
-        setModal(modalService.addNewModal(modals))
+        try {
 
-        return () => setStyle({ '--cover-color': '#ffff' })
+            if (!boardId || !groupId || !taskId) return errorRedirect()
+            loadBoard()
+            setModal(modalService.addNewModal(modals))
+
+            return () => setStyle({ '--cover-color': '#ffff' })
+        }
+        catch (err) {
+            console.error('Failed load task details')
+            errorRedirect()
+        }
     }, [])
 
     useEffectUpdate(() => {
-        if (board && taskToEdit && group) {
-            const taskIdx = group.tasks.findIndex(task => task.id === taskToEdit.id)
-            group.tasks[taskIdx] = taskToEdit
-            const newBoard = board
-            saveBoard(newBoard)
+        try {
+
+            if (board && taskToEdit && group) {
+                const taskIdx = group.tasks.findIndex(task => task.id === taskToEdit.id)
+                group.tasks[taskIdx] = taskToEdit
+                const newBoard = board
+                saveBoard(newBoard)
+            }
+        }
+        catch (err) {
+            console.error('failed save task details')
         }
     }, [taskToEdit])
 
     useEffectUpdate(() => {
-        if (modalBoxRef.current && modal) {
-            const windowWidth = window.visualViewport.width
-            const windowHeight = window.visualViewport.height
-            const modalPos = utilService.getElementPosition(modalBoxRef.current)
+        try {
+            if (modalBoxRef.current && modal) {
+                const windowWidth = window.visualViewport.width
+                const windowHeight = window.visualViewport.height
+                const modalPos = utilService.getElementPosition(modalBoxRef.current)
 
-            if (modalPos.right > windowWidth) modalBoxRef.current.style.left = (modalPos.left - (modalPos.right - windowWidth) - 20) + 'px'
-            else if (modalPos.left < 0) modalBoxRef.current.style.left = '10px'
+                if (modalPos.right > windowWidth) modalBoxRef.current.style.left = (modalPos.left - (modalPos.right - windowWidth) - 20) + 'px'
+                else if (modalPos.left < 0) modalBoxRef.current.style.left = '10px'
 
-            if (modalPos.bottom > windowHeight) modalBoxRef.current.style.top = (modalPos.top - (modalPos.bottom - windowWidth) - 20) + 'px'
-            else if (modalPos.top < 0) modalBoxRef.current.style.top = '10px'
+                if (modalPos.bottom > windowHeight) modalBoxRef.current.style.top = (modalPos.top - (modalPos.bottom - windowWidth) - 20) + 'px'
+                else if (modalPos.top < 0) modalBoxRef.current.style.top = '10px'
+            }
+        }
+        catch (err) {
+            console.error('Failed update modal position')
         }
     }, [modals])
 
     useEffectUpdate(() => {
-        setThemeColor()
+        try {
+            setThemeColor()
+        }
+        catch (err) {
+            console.error('Failed change theme color')
+        }
     }, [board])
 
     async function loadBoard() {
@@ -109,107 +132,137 @@ export function TaskDetails() {
     }
 
     function errorRedirect() {
-        console.log('ERROR: Failed to load board')
-        modalService.removeModal(modals, modal.id)
-        return navigate('/workspace')
+        try {
+            modalService.removeModal(modals, modal.id)
+        }
+        catch (err) {
+            console.error('Failed remove modal')
+        }
+        console.log('ERROR: errors occured. Redirected back to workspace.')
+        navigate('/workspace')
     }
 
     function closePage() {
-        if (modal?.isOpen) onCloseModal()
-        else {
-            modalService.removeModal(modals, modal.id)
-            navigate(`/${boardId}`)
+        try {
+            if (modal?.isOpen) onCloseModal()
+            else {
+                modalService.removeModal(modals, modal.id)
+            }
         }
+        catch (err) {
+            console.log('Failure while closing modal')
+        }
+        navigate(`/${boardId}`)
     }
 
     function onCloseModal(ev = null) {
-        if (ev) ev.stopPropagation()
+        try {
+            if (ev) ev.stopPropagation()
 
-        if (!modal?.id) return
-        closeModal(modals, modal.id)
+            if (!modal?.id) return
+            closeModal(modals, modal.id)
+        }
+        catch (err) {
+            console.error('Failed to close modal')
+        }
     }
 
     function handleEditHeader(ev) {
-        const { target } = ev
-        target.classList.toggle('is-editing')
+        try {
 
-        if (ev.type === 'blur') {
-            const val = target.value
-            setTaskToEdit({ ...taskToEdit, title: val })
+            const { target } = ev
+            target.classList.toggle('is-editing')
+
+            if (ev.type === 'blur') {
+                const val = target.value
+                setTaskToEdit({ ...taskToEdit, title: val })
+            }
+        }
+        catch (err) {
+            console.error('Failed handle changes in header')
         }
     }
 
     // Toggle modal visibility and set it's pos under element
     function onToggleModal(ev, modalType, extras = null) {
-        if (!modal) return
-        let element
-        if (ev) {
-            ev.stopPropagation()
-            element = ev.target
+        try {
+            if (!modal) return
+            let element
+            if (ev) {
+                ev.stopPropagation()
+                element = ev.target
+            }
+            if (ev?.target.dataset?.type === 'icon') element = ev.target.parentNode
+
+            let cmpProps
+            switch (modalType) {
+                case MODAL_TASK_COVER:
+                case MODAL_CHECKLIST:
+                case MODAL_TASK_DATE:
+                    cmpProps = { user, groupId, task: taskToEdit }
+                    break
+                case MODAL_CHECKLIST_DELETE:
+                    cmpProps = { user, groupId, task: taskToEdit, checklist: extras.checklist }
+                    break
+                case MODAL_MEMBERS:
+                case MODAL_LABELS:
+                case MODAL_ATTACH:
+                    cmpProps = { groupId, task: taskToEdit }
+                    break
+                case MODAL_ATTACH_EDIT:
+                    cmpProps = { groupId, task: taskToEdit, attachment: extras.attachment }
+                    break
+                case MODAL_ATTACH_OPEN:
+                    cmpProps = { user, boardId, groupId, task: taskToEdit, attachment: extras.attachment }
+                    break
+                case MODAL_MEMBER_OPEN:
+                    cmpProps = { member: extras.member, user, groupId, task: taskToEdit }
+                    break
+                case MODAL_TODO:
+                    cmpProps = { user, groupId, task: taskToEdit, todo: extras.todo, checklist: extras.checklist }
+                    break
+                case MODAL_REMOVE_COMMENT:
+                    cmpProps = { user, groupId, task: taskToEdit, comment: extras.comment }
+                    break
+            }
+
+            const pos = utilService.getElementPosition(element)
+            modalBoxRef.current.style.top = pos.bottom + 'px'
+            modalBoxRef.current.style.left = pos.left + 'px'
+
+            if (window.visualViewport.width < 550) {
+                modalBoxRef.current.style.left = '0px'
+                modalBoxRef.current.style.top = '0px'
+            }
+
+            setModal(modalService.setModalData(modals, modal.id, modalType, cmpProps))
+            toggleModal(modals, modal.id)
         }
-        if (ev?.target.dataset?.type === 'icon') element = ev.target.parentNode
-
-        let cmpProps
-        switch (modalType) {
-            case MODAL_TASK_COVER:
-            case MODAL_CHECKLIST:
-            case MODAL_TASK_DATE:
-                cmpProps = { user, groupId, task: taskToEdit }
-                break
-            case MODAL_CHECKLIST_DELETE:
-                cmpProps = { user, groupId, task: taskToEdit, checklist: extras.checklist }
-                break
-            case MODAL_MEMBERS:
-            case MODAL_LABELS:
-            case MODAL_ATTACH:
-                cmpProps = { groupId, task: taskToEdit }
-                break
-            case MODAL_ATTACH_EDIT:
-                cmpProps = { groupId, task: taskToEdit, attachment: extras.attachment }
-                break
-            case MODAL_ATTACH_OPEN:
-                cmpProps = { user, boardId, groupId, task: taskToEdit, attachment: extras.attachment }
-                break
-            case MODAL_MEMBER_OPEN:
-                cmpProps = { member: extras.member, user, groupId, task: taskToEdit }
-                break
-            case MODAL_TODO:
-                cmpProps = { user, groupId, task: taskToEdit, todo: extras.todo, checklist: extras.checklist }
-                break
-            case MODAL_REMOVE_COMMENT:
-                cmpProps = { user, groupId, task: taskToEdit, comment: extras.comment }
-                break
+        catch (err) {
+            console.error('Failed set modal data and load it.')
         }
-
-        const pos = utilService.getElementPosition(element)
-        modalBoxRef.current.style.top = pos.bottom + 'px'
-        modalBoxRef.current.style.left = pos.left + 'px'
-
-        if (window.visualViewport.width < 550) {
-            modalBoxRef.current.style.left = '0px'
-            modalBoxRef.current.style.top = '0px'
-        }
-
-        setModal(modalService.setModalData(modals, modal.id, modalType, cmpProps))
-        toggleModal(modals, modal.id)
-
     }
 
-
     async function setThemeColor() {
-        if (!taskToEdit.cover) return
-        const { style } = taskToEdit.cover
-        let sourceColor
-        let color
-        if (style.backgroundImage) {
-            sourceColor = style.backgroundImage.slice(4, -1).replace(/"/g, "")
-            try {
-                color = await fac.getColorAsync(sourceColor);
-                setStyle({ '--cover-color': color.rgba })
-            } catch (err) {
-                console.error(err);
-                setStyle({ '--cover-color': '#ffff' })
+        try {
+
+            if (!taskToEdit.cover) return
+            const { style } = taskToEdit.cover
+            let sourceColor
+            let color
+            if (style.backgroundImage) {
+                sourceColor = style.backgroundImage.slice(4, -1).replace(/"/g, "")
+                try {
+                    color = await fac.getColorAsync(sourceColor);
+                    setStyle({ '--cover-color': color.rgba })
+                } catch (err) {
+                    console.error(err);
+                    setStyle({ '--cover-color': '#ffff' })
+                }
             }
+        }
+        catch(err) {
+            console.error('Failed to set theme color')
         }
     }
 
