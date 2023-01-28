@@ -96,8 +96,8 @@ function _buildCriteria(filterBy = {}) {
     const criteria = {};
 
     console.log("function_buildCriteria -> filterBy", filterBy)
-    if (filterBy.name) {
-        criteria.name = { $regex: new RegExp(filterBy.name, 'ig') }
+    if (filterBy.title) {
+        criteria.title = { $regex: new RegExp(filterBy.title, 'ig') }
     }
     if (filterBy.type !== 'All' && filterBy.type) {
         criteria.labels = filterBy.type

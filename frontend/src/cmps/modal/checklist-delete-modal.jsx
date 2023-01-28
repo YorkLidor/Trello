@@ -10,7 +10,7 @@ import { REMOVE_CHECKLIST } from '../../store/actions/board.actions'
 
 export function DeleteChecklistModal({ cmpProps, id }) {
     const modals = useSelector((storeState) => storeState.appModule.app.modals)
-    const { user, boardId, groupId, task, checklist } = cmpProps
+    const { user, groupId, task, checklist } = cmpProps
 
     // Delete label from board labels
     async function onDeleteChecklist() {
@@ -18,7 +18,7 @@ export function DeleteChecklistModal({ cmpProps, id }) {
         const newTask = boardService.removeChecklist(task, checklist)
         
         const action = `${getActivityText(REMOVE_CHECKLIST)} ${checklist.title}`
-        await saveTask(groupId, task, boardService.getActivity(user, task, action))
+        await saveTask(groupId, newTask, boardService.getActivity(user, newTask, action))
     }
 
     return <div className='delete-checklist-modal'>

@@ -8,7 +8,7 @@ import { AiOutlineUnorderedList as ActivityIcon } from "react-icons/ai"
 import { ActivityList } from "../activity-list"
 
 
-export function Activity({ user, boardId, groupId, taskToEdit }) {
+export function Activity({ user, groupId, taskToEdit, onToggleModal }) {
     const [showDetails, setShowDetails] = useState(false)
     const elCommentRef = useRef()
 
@@ -19,7 +19,7 @@ export function Activity({ user, boardId, groupId, taskToEdit }) {
 
         ev.target[0].value = ''
         elCommentRef.current.classList.toggle('comment-typing')
-        await boardService.addComment(user, boardId, groupId, taskToEdit, value)
+        await boardService.addComment(user, groupId, taskToEdit, value)
     }
 
     function handleEdit({ target }, state) {
@@ -46,8 +46,8 @@ export function Activity({ user, boardId, groupId, taskToEdit }) {
         </div>
         {
             !showDetails
-                ? < CommentList task={taskToEdit} />
-                : <ActivityList taskId={taskToEdit.id} />
+                ? < CommentList task={taskToEdit} onToggleModal={onToggleModal}/>
+                : <ActivityList task={taskToEdit} onToggleModal={onToggleModal}/>
         }
     </div>
 }
