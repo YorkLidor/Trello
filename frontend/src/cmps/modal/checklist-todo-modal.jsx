@@ -12,22 +12,32 @@ export function TodoModal({ id, cmpProps }) {
     const { user, boardId, groupId, task, todo, checklist } = cmpProps
 
     async function onRemoveTodo() {
-        const newList = boardService.removeTodo(checklist, todo)
-        task.checklists = task.checklists.map(list => (list.id === newList.id) ? newList : list)
-        closeModal(modals, id)
+        try {
+            const newList = boardService.removeTodo(checklist, todo)
+            task.checklists = task.checklists.map(list => (list.id === newList.id) ? newList : list)
+            closeModal(modals, id)
 
-        const action = `${getActivityText(REMOVE_TODO_A)} ${todo.title} ${getActivityText(REMOVE_TODO_B)} ${checklist.title}`
-        await saveTask(groupId, task, boardService.getActivity(user, task, action))
+            const action = `${getActivityText(REMOVE_TODO_A)} ${todo.title} ${getActivityText(REMOVE_TODO_B)} ${checklist.title}`
+            await saveTask(groupId, task, boardService.getActivity(user, task, action))
+        }
+        catch (err) {
+            console.error('Failed remove checklist item')
+        }
     }
 
     async function onConvertToCard() {
-        const newTask = boardService.getEmptyTask()
-        newTask.title = todo.title
-        console.log(newTask, boardId, groupId)
+        try {
+            const newTask = boardService.getEmptyTask()
+            newTask.title = todo.title
+            console.log(newTask, boardId, groupId)
 
-        closeModal(modals, id)
-        await addNewTask(groupId, newTask)
-        await onRemoveTodo()
+            closeModal(modals, id)
+            await addNewTask(groupId, newTask)
+            await onRemoveTodo()
+        }
+        catch (err) {
+            console.error('Failed convert checklist item to card')
+        }
     }
 
 

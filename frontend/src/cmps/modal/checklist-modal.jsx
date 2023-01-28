@@ -18,17 +18,22 @@ export function ChecklistModal({ id, cmpProps }) {
     const elTitleInputRef = useRef()
     const debounceRef = useRef()
 
-    async function onSave() {
-        if (debounceRef.current || !elTitleInputRef.current.value.length) return
-        if (!task.checklists) task.checklists = []
-        task.checklists.unshift(boardService.getNewChecklist(elTitleInputRef.current.value))
-        closeModal(modals, id)
+    async function onSaveNewChecklist() {
+        try {
+            if (debounceRef.current || !elTitleInputRef.current.value.length) return
+            if (!task.checklists) task.checklists = []
+            task.checklists.unshift(boardService.getNewChecklist(elTitleInputRef.current.value))
+            closeModal(modals, id)
 
-        debounceRef.current = setTimeout(() => {
-            debounceRef.current = null
-        }, 1500)
+            debounceRef.current = setTimeout(() => {
+                debounceRef.current = null
+            }, 1500)
 
-        await saveTask(groupId, task, boardService.getActivity(user, task, `${getActivityText(ADD_CHECKLIST)} ${elTitleInputRef.current.value}`))
+            await saveTask(groupId, task, boardService.getActivity(user, task, `${getActivityText(ADD_CHECKLIST)} ${elTitleInputRef.current.value}`))
+        }
+        catch (err) {
+            console.error('Failed save new checklist')
+        }
     }
 
     return <div className='add-checklist-box'>
@@ -39,7 +44,7 @@ export function ChecklistModal({ id, cmpProps }) {
                 <input type='text' className='checklist-title' ref={elTitleInputRef} />
             </label>
 
-            <button className="save-btn" onClick={onSave}>Add</button>
+            <button className="save-btn" onClick={onSaveNewChecklist}>Add</button>
         </div>
     </div>
 }
