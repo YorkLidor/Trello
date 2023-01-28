@@ -4,7 +4,6 @@ import { useParams } from "react-router-dom"
 
 import { boardService } from "../../../services/board.service"
 
-import { IoMdClose } from "react-icons/io"
 import { MODAL_REMOVE_COMMENT } from '../../modal/modal'
 
 export function CommentPreview({ comment, onToggleModal, task }) {
