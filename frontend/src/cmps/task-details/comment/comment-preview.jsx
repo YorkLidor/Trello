@@ -4,7 +4,6 @@ import { useParams } from "react-router-dom"
 
 import { boardService } from "../../../services/board.service"
 
-import { IoMdClose } from "react-icons/io"
 import { MODAL_REMOVE_COMMENT } from '../../modal/modal'
 
 export function CommentPreview({ comment, onToggleModal, task }) {
@@ -21,7 +20,7 @@ export function CommentPreview({ comment, onToggleModal, task }) {
         ev.preventDefault()
         const value = ev.target[0].value
         if (!value.length) return
-
+        
         elCommentRef.current.classList.toggle('comment-typing')
         setEditComment(false)
         await boardService.addComment(user, groupId, task, value)
@@ -50,14 +49,12 @@ export function CommentPreview({ comment, onToggleModal, task }) {
                 </> :
                     <>
                         <div className="new-comment-box">
+                            <img className="user-logo" src={user.imgUrl ? user.imgUrl : 'https://res.cloudinary.com/dk2geeubr/image/upload/v1673890694/profileDefault_khqx4r.png'} />
                             <form ref={elCommentRef} className="task-activity comment-typing" onSubmit={onSaveComment}>
                                 <div className="comment-input-container" ref={elCommentRef}>
                                     <textarea className="task-activity-input" placeholder={'Write a comment...'} onChange={handleEdit} defaultValue={comment.txt} />
                                 </div>
-                                <div className="flex row">
-                                    <button className="comment-btn">Save</button>
-                                    <IoMdClose className="cancel-editor-comment" onClick={() => setEditComment(false)} />
-                                </div>
+                                <button className="comment-btn">Save</button>
                             </form>
                         </div>
                     </>

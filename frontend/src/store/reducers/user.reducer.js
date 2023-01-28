@@ -31,14 +31,6 @@ const initialState = {
                 "boardId": "m101",
                 "taskId": "t101"
             }]
-        },
-        {
-            "fullname": "Kochava Shavit",
-            "imgUrl": "https://res.cloudinary.com/dk2geeubr/image/upload/v1674765132/latest_c40bvk.png",
-            "mentions": [],
-            "password": "123",
-            "username": "kocavha",
-            "_id": "2OQJU"
         }],
     userAction: null
 }
