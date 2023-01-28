@@ -69,7 +69,7 @@ function GetCmp({ id, cmpProps, cmpType }) {
         case MODAL_TODO:
             return <TodoModal cmpProps={cmpProps} id={id} />
         case MODAL_GROUP_QUICK_EDIT:
-            return <GroupQuickEdit cmpProps={cmpProps} id={id} />
+            return <GroupQuickEdit {...cmpProps} id={id} />
         case USER_QUICK_MENU:
             return <UserQuickMenu {...cmpProps} id={id} />
         case MODAL_REMOVE_COMMENT:
