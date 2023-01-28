@@ -78,15 +78,13 @@ export function BoardIndex() {
     }
 
     function onCreateBoard(board) {
+        board.createdBy = userService.getLoggedinUser()
+        board.members.push(board.createdBy)
         onSaveBoard(board)
     }
 
     async function onSaveBoard(board) {
         try {
-            if (!board._id) {
-                board.members.push(board.createdBy)
-                board.createdBy = userService.getLoggedinUser()
-            }
             const savedBoard = await saveBoard(board)
             console.info('Board Saved successesfuly')
             onCloseModal()
@@ -187,12 +185,15 @@ export function BoardIndex() {
         </section>
         <div className="modal-container" ref={elModal}>
             {
-                modal?.isOpen && <Modal
-                    modal={modal}
-                    cmpProps={modal.modalData.props}
-                    cmpType={modal.modalData.cmpType}
-                    className={modal.modalData.className}
-                />
+                modal?.isOpen && <>
+                    <Modal
+                        modal={modal}
+                        cmpProps={modal.modalData.props}
+                        cmpType={modal.modalData.cmpType}
+                        className={modal.modalData.className}
+                    />
+                    <div className="all-screen-modal" onClick={() => closeModal(modals, modal.id)} />
+                </>
             }
         </div>
     </main >

@@ -36,7 +36,7 @@ export const MODAL_REMOVE_COMMENT = 'MODAL_REMOVE_COMMENT'
 export function Modal({ modal, cmpProps, cmpType, className }) {
     console.log('cmpProps:', cmpProps)
     return modal.isOpen && <div className={className ? className : 'modal'}>
-        <GetCmp id={modal.id} cmpProps={cmpProps} cmpType={cmpType} />
+        <GetCmp id={modal.id} cmpProps={cmpProps} cmpType={cmpType}/>
     </div>
 }
 
@@ -71,7 +71,7 @@ function GetCmp({ id, cmpProps, cmpType }) {
         case MODAL_GROUP_QUICK_EDIT:
             return <GroupQuickEdit {...cmpProps} id={id} />
         case USER_QUICK_MENU:
-            return <UserQuickMenu {...cmpProps} id={id} />
+            return <UserQuickMenu {...cmpProps} id={id}/>
         case MODAL_REMOVE_COMMENT:
             return <DeleteCommentModal {...cmpProps} id={id} />
         default:

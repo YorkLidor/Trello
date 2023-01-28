@@ -8,7 +8,7 @@ import { useState } from "react";
 import { Modal, USER_QUICK_MENU } from "./modal/modal";
 import { utilService } from "../services/util.service";
 import { modalService } from "../services/modal.service";
-import { toggleModal } from "../store/actions/app.actions";
+import { closeModal, toggleModal } from "../store/actions/app.actions";
 
 export function AppHeader() {
     const modals = useSelector((storeState) => storeState.appModule.app.modals)
@@ -41,6 +41,7 @@ export function AppHeader() {
                 color = await fastAveColor.getColorAsync(sourceColor);
                 setStyle({ '--dynamic-background': color.rgba })
                 document.documentElement.style.setProperty('--dynamic-text', color.isLight ? '#172B4D' : '#FFFFF')
+                document.documentElement.style.setProperty('--board-header-background-color', color.isLight ? '#ffffff3d' : '#0000003d')
             } catch (err) {
                 console.log(err);
             }
@@ -107,12 +108,16 @@ export function AppHeader() {
         }
         <div ref={elModal} className='modal-container'>
             {
-                modal?.isOpen && <Modal
-                    modal={modal}
-                    cmpProps={modal.modalData.props}
-                    cmpType={modal.modalData.cmpType}
-                    className={modal.modalData.className}
-                />
+                modal?.isOpen && <>
+                    <Modal
+                        modal={modal}
+                        cmpProps={modal.modalData.props}
+                        cmpType={modal.modalData.cmpType}
+                        className={modal.modalData.className}
+                    />
+                    <div className="all-screen-modal" onClick={() => closeModal(modals, modal.id)} />
+
+                </>
             }
         </div>
     </header >
