@@ -8,22 +8,31 @@
         gap: 4px;
 
         .checklist-title-container {
+            max-width: 100%;
             flex-grow: 1;
-            padding-inline-end: 0px;
+            padding-inline: 0px;
 
             .checklist-title {
                 max-width: 100%;
                 height: fit-content;
-
             }
 
-            .text-area-editor-box.checklist-title-editor {
-                padding-inline-end: 0px;
+            .checklist-title-span {
+                margin-inline-start: 9px;
                 max-width: 100%;
-
-                .text-area-editor.checklist-title {
+                height: fit-content;
+            }
+            
+            .textarea-editor-box.checklist-title-editor {
+                margin-inline-start: 8px;
+                padding-inline-end: 0px;
+                width: 100%;
+                
+                .textarea-editor.checklist-title-editor {
                     max-width: 100%;
-                    padding-block-start: 0
+                    font-size: 15px;
+                    font-weight: 700;
+                    padding-block-start: 6px;
                 }
             }
         }
@@ -89,6 +98,19 @@
                 padding: 8px 12px 9px;
 
                 resize: none;
+            }
+            .cancel-add-todo-btn {
+                background-color: transparent;
+                border: hidden;
+                font-size: 14px;
+                padding: 6px 12px;
+                margin: 0 4px 0 0;
+                color: #3b4b69;
+                border-radius: 3px;
+
+                &:hover{
+                    background-color: $btn-background-cyan;
+                }
             }
         }
 

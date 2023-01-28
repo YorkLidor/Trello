@@ -1,11 +1,13 @@
+import { useSelector } from "react-redux"
+import { store } from "../../store/store"
+
 import { useRef, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 
 import { utilService } from '../../services/util.service'
 import { boardService } from "../../services/board.service"
-import { useSelector } from "react-redux"
+import { modalService } from "../../services/modal.service"
 
-import { store } from "../../store/store"
 import { closeModal, toggleModal } from "../../store/actions/app.actions"
 import { saveBoard } from '../../store/actions/board.actions'
 
@@ -25,16 +27,17 @@ import { Activity } from "./activity"
 import { TaskDetailsSideBar } from "./task-details-sidebar"
 import { TaskDescription } from "./task-description"
 import { TaskDate } from "../task-date"
+import { TaskCover } from "./task-cover"
+import { Checklists } from "./checklist/checklists"
+import { FastAverageColor } from "fast-average-color"
 
 import { IoClose } from "react-icons/io5"
 import { FaPager as IconHeader } from 'react-icons/fa'
 import { RiAttachment2 as IconAttachment } from 'react-icons/ri'
 import { useEffectUpdate } from "../../customHooks/useEffectUpdate"
 import { useEffectInit } from "../../customHooks/useEffectInit"
-import { modalService } from "../../services/modal.service"
-import { TaskCover } from "./task-cover"
-import { Checklists } from "./checklist/checklists"
-import { FastAverageColor } from "fast-average-color"
+
+
 
 export function TaskDetails() {
     const fac = new FastAverageColor()
@@ -146,19 +149,37 @@ export function TaskDetails() {
         }
         if (ev?.target.dataset?.type === 'icon') element = ev.target.parentNode
 
-        let props
-        if (modalType === MODAL_LABELS) props = { groupId, task: taskToEdit }
-        else if (modalType === MODAL_ATTACH) props = { boardId, groupId, task: taskToEdit }
-        else if (modalType === MODAL_ATTACH_EDIT) props = { boardId, groupId, task: taskToEdit, attachment: extras.attachment }
-        else if (modalType === MODAL_ATTACH_OPEN) props = { user, boardId, groupId, task: taskToEdit, attachment: extras.attachment }
-        else if (modalType === MODAL_MEMBERS) props = { groupId, task: taskToEdit }
-        else if (modalType === MODAL_MEMBER_OPEN) props = { member: extras.member, user, groupId, task: taskToEdit }
-        else if (modalType === MODAL_TASK_DATE) props = { user, groupId, task: taskToEdit }
-        else if (modalType === MODAL_TASK_COVER) props = { user, groupId, task: taskToEdit }
-        else if (modalType === MODAL_CHECKLIST) props = { user, groupId, task: taskToEdit, modals }
-        else if (modalType === MODAL_CHECKLIST_DELETE) props = { user, groupId, task: taskToEdit, checklist: extras.checklist }
-        else if (modalType === MODAL_TODO) props = { user, groupId, task: taskToEdit, todo: extras.todo, checklist: extras.checklist }
-        else if (modalType === MODAL_REMOVE_COMMENT) props = { user, groupId, task: taskToEdit, comment: extras.comment }
+        let cmpProps
+        switch (modalType) {
+            case MODAL_TASK_COVER:
+            case MODAL_CHECKLIST:
+            case MODAL_TASK_DATE:
+                cmpProps = { user, groupId, task: taskToEdit }
+                break
+            case MODAL_CHECKLIST_DELETE:
+                cmpProps = { user, groupId, task: taskToEdit, checklist: extras.checklist }
+                break
+            case MODAL_MEMBERS:
+            case MODAL_LABELS:
+            case MODAL_ATTACH:
+                cmpProps = { groupId, task: taskToEdit }
+                break
+            case MODAL_ATTACH_EDIT:
+                cmpProps = { groupId, task: taskToEdit, attachment: extras.attachment }
+                break
+            case MODAL_ATTACH_OPEN:
+                cmpProps = { user, boardId, groupId, task: taskToEdit, attachment: extras.attachment }
+                break
+            case MODAL_MEMBER_OPEN:
+                cmpProps = { member: extras.member, user, groupId, task: taskToEdit }
+                break
+            case MODAL_TODO:
+                cmpProps = { user, groupId, task: taskToEdit, todo: extras.todo, checklist: extras.checklist }
+                break
+            case MODAL_REMOVE_COMMENT:
+                cmpProps = { user, groupId, task: taskToEdit, comment: extras.comment }
+                break
+        }
 
         const pos = utilService.getElementPosition(element)
         modalBoxRef.current.style.top = pos.bottom + 'px'
@@ -169,7 +190,7 @@ export function TaskDetails() {
             modalBoxRef.current.style.top = '0px'
         }
 
-        setModal(modalService.setModalData(modals, modal.id, modalType, props))
+        setModal(modalService.setModalData(modals, modal.id, modalType, cmpProps))
         toggleModal(modals, modal.id)
 
     }

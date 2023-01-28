@@ -4,8 +4,9 @@
     .activity-icon {
         @include task-details-field-icon;
         top: 6px;
-        left: -34px;
-        height: 23px;
+        left: -36px;
+        height: 24px;
+        width: 24px;
 
         @include for-native-layout-details {
             display: none;
@@ -141,7 +142,7 @@
 
     position: absolute;
     top: 3px;
-    left: -40px;
+    left: -41px;
 
     &:hover {
         opacity: unset;

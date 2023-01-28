@@ -15,10 +15,10 @@ export function Checklist({ task, checklist, onSaveChecklist, onToggleModal }) {
     const [toolInEdit, setToolInEdit] = useState(null)
     const elEditTodoRef = useRef()
 
-    const doneTodosCount = list? list.todos.filter(todo => todo.isDone).length : 0
+    const doneTodosCount = list ? list.todos.filter(todo => todo.isDone).length : 0
 
-    const donePrecentage = (list?.todos?.length) > 0 ? Math.round((doneTodosCount /list?.todos?.length)*100) : 0
-    const checklistDoneBarStyle = (donePrecentage === 100) ? {width: `${donePrecentage}%`, backgroundColor: '#61bd4f' } : {width: `${donePrecentage}%` }
+    const donePrecentage = (list?.todos?.length) > 0 ? Math.round((doneTodosCount / list?.todos?.length) * 100) : 0
+    const checklistDoneBarStyle = (donePrecentage === 100) ? { width: `${donePrecentage}%`, backgroundColor: '#61bd4f' } : { width: `${donePrecentage}%` }
 
 
     function onTitleEdit(ev, title) {
@@ -84,7 +84,7 @@ export function Checklist({ task, checklist, onSaveChecklist, onToggleModal }) {
         ev.stopPropagation()
         setShowChecked(!showChecked)
     }
-    
+
     return list && <section className="checklist-container" key={list.id} onMouseDown={clearEditMode}>
         <div className='checklist-title-box flex row'>
             <TbCheckbox className="checklist-logo" />
@@ -101,7 +101,7 @@ export function Checklist({ task, checklist, onSaveChecklist, onToggleModal }) {
         <div className='checklist-bar-container flex row'>
             <span className="done-precentage">{donePrecentage}%</span>
             <div className='checklist-bar'>
-                <div className="checklist-bar-done"  style={checklistDoneBarStyle}></div>
+                <div className="checklist-bar-done" style={checklistDoneBarStyle}></div>
             </div>
         </div>
 
@@ -117,7 +117,10 @@ export function Checklist({ task, checklist, onSaveChecklist, onToggleModal }) {
                         {
                             toolInEdit === -1 ? <div className='add-todo-input-box'>
                                 <textarea placeholder='Add an item' ref={elEditTodoRef} className='add-todo-input' onMouseDown={(ev) => ev.stopPropagation()} />
-                                <button className='save-btn add-todo-input-btn' onMouseDown={(ev) => onAddTodo(ev)} >Add</button>
+                                <>
+                                    <button className='save-btn' onMouseDown={(ev) => onAddTodo(ev)} >Add</button>
+                                    <button className='cancel-add-todo-btn' onMouseDown={clearEditMode}>Cancel</button>
+                                </>
                             </div> : <button className='add-todo-btn' onMouseDown={(ev) => setAddTodoToEdit(ev)}>Add an item</button>
                         }
                     </div>

@@ -17,7 +17,7 @@ export function AttachmentView({ id, cmpProps }) {
         setDeleteState(state)
     }
 
-    function onRemoveAttach(ev) {
+    function onRemoveAttach() {
         onRemoveAttachment(user, boardId, groupId, task, attachment)
         closeModal(modals, id)
     }

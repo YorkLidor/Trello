@@ -1,3 +1,5 @@
+import { useSelector } from "react-redux";
+
 import { useRef } from "react";
 
 import { boardService } from "../../services/board.service";
@@ -10,7 +12,9 @@ import { ModalHeader } from "./modal-header";
 import { ADD_CHECKLIST } from "../../store/actions/board.actions";
 
 export function ChecklistModal({ id, cmpProps }) {
-    const { boardId, groupId, task, user, modals } = cmpProps
+    const modals = useSelector((storeState) => storeState.appModule.app.modals)
+    const { groupId, task, user } = cmpProps
+
     const elTitleInputRef = useRef()
     const debounceRef = useRef()
 

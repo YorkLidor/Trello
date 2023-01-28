@@ -1,11 +1,11 @@
 import { LabelsPicker } from "./label-picker-modal/label-picker"
 import { AttachmentModal } from "./attachment-modal"
-import { BoardCreator } from "../board-creator"
+import { BoardCreator } from "./board-creator"
 import { AttachmentEditModal } from "./attachment-edit-modal"
 import { AttachmentView } from "../task-details/attachment/attachment-view"
 import { MemberPicker } from "./member-picker-modal"
 import { MemberModal } from "./member-modal"
-import { TaskQuickEdit } from "./task-quick-edit-modl"
+import { TaskQuickEdit } from "./task-quick-edit-modal"
 import { DateModal } from "./date-modal"
 import { CoverModal } from "./cover-modal"
 import { ChecklistModal } from "./checklist-modal"
@@ -36,11 +36,11 @@ export const MODAL_REMOVE_COMMENT = 'MODAL_REMOVE_COMMENT'
 export function Modal({ modal, cmpProps, cmpType, className }) {
     console.log('cmpProps:', cmpProps)
     return modal.isOpen && <div className={className ? className : 'modal'}>
-        <GetCmp id={modal.id} cmpProps={cmpProps} cmpType={cmpType} />
+        <ModalCmp id={modal.id} cmpProps={cmpProps} cmpType={cmpType} />
     </div>
 }
 
-function GetCmp({ id, cmpProps, cmpType }) {
+function ModalCmp({ id, cmpProps, cmpType }) {
     switch (cmpType) {
         case MODAL_LABELS:
             return <LabelsPicker cmpProps={cmpProps} id={id} />

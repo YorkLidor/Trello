@@ -2,11 +2,7 @@ import { store } from "../store/store"
 import { utilService } from "./util.service"
 import { SET_MODALS, SET_MODAL } from "../store/reducers/app.reducer"
 
-import {
-    MODAL_LABELS, MODAL_ATTACH, MODAL_ATTACH_EDIT, MODAL_ATTACH_OPEN, MODAL_REMOVE_COMMENT,
-    MODAL_MEMBERS, MODAL_MEMBER_OPEN, MODAL_TASK_QUICK_EDIT, BOARD_CREATOR,
-    MODAL_TASK_DATE, MODAL_TASK_COVER, MODAL_CHECKLIST, MODAL_CHECKLIST_DELETE, MODAL_TODO, MODAL_GROUP_QUICK_EDIT
-} from '../cmps/modal/modal'
+import { MODAL_ATTACH_OPEN, MODAL_TASK_QUICK_EDIT, MODAL_TASK_DATE } from '../cmps/modal/modal'
 
 export const modalService = {
     addNewModal,
@@ -85,21 +81,6 @@ function toggleModal(modals, id) {
     }
 }
 
-function setModalData(modals, id, modalType, props) {
-    try {
-        const modal = modals.find(modal => modal.id === id)
-        if (!modal) throw new Error('Modal not found')
-
-        const data = getModalData(id, modalType, props)
-
-        modal.modalData = data
-        _updateStore(modal)
-        return modal
-    }
-    catch (err) {
-        console.error('Cannot set modal data')
-    }
-}
 
 function removeModal(modals, id) {
     try {
@@ -130,7 +111,23 @@ function _updateModalsInStore(modals) {
     }
 }
 
-function getModalData(id, modalType, props) {
+function setModalData(modals, id, modalType, props) {
+    try {
+        const modal = modals.find(modal => modal.id === id)
+        if (!modal) throw new Error('Modal not found')
+
+        const data = _getModalData(modalType, props)
+
+        modal.modalData = data
+        _updateStore(modal)
+        return modal
+    }
+    catch (err) {
+        console.error('Cannot set modal data')
+    }
+}
+
+function _getModalData(modalType, props) {
     try {
         let newModalData
 

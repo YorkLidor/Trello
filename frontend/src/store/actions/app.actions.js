@@ -5,6 +5,5 @@ export function closeModal(modals, id) {
 }
 
 export function toggleModal(modals, id) {
-
     modalService.toggleModal(modals, id)
 }
