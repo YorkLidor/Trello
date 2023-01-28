@@ -90,7 +90,7 @@ export function Checklist({ task, checklist, onSaveChecklist, onToggleModal }) {
             <TbCheckbox className="checklist-logo" />
             <div className="checklist-title-container flex row" >
                 {
-                    toolInEdit === checklist.id ? <TextareaEditor defaultText={checklist.title} onTextSubmit={onTitleEdit} className={"checklist-title"} />
+                    toolInEdit === checklist.id ? <TextareaEditor defaultText={checklist.title} onTextSubmit={onTitleEdit} className={"checklist-title-editor"} />
                         : <span className='checklist-title-span' onMouseDown={(ev) => setTitleToEdit(ev)}>{checklist.title}</span>
                 }
             </div>

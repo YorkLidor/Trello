@@ -12,7 +12,7 @@ export function TextareaEditor({ className, defaultText, onTextSubmit, onEditorC
 
     return <div className={`textarea-editor-box ${className}`}>
         <textarea value={text} className={`textarea-editor ${className}`} onChange={onTextChange} onMouseDown={(ev) => ev.stopPropagation()} />
-        <div className='flex row'>
+        <div className='text-editor-tools flex row'>
             <button className="save-btn textarea-editor-save" onMouseDown={(ev) => onTextSubmit(ev, text)} >Save</button>
             <IoMdClose className="cancel-editor" onMouseDown={onEditorCancel} />
         </div>

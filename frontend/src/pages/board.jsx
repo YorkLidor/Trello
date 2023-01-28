@@ -131,7 +131,6 @@ export function Board() {
                 props = { board, groupId, onRemoveGroup, onCopyGroup }
                 elModal.current.style.top = pos.top + 'px'
                 elModal.current.style.left = pos.left + 'px'
-                console.log('props:', props)
                 break;
             default:
                 break;

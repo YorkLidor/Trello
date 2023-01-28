@@ -17,7 +17,7 @@
 
             }
 
-            .text-area-editor-box.checklist-title {
+            .text-area-editor-box.checklist-title-editor {
                 padding-inline-end: 0px;
                 max-width: 100%;
 
@@ -41,12 +41,14 @@
         align-items: center;
         
         .done-precentage {
+            position: absolute;
             font-size: 11px;
+            padding-inline: 5px;
         }
         
         .checklist-bar {
             display: inline-block;
-            margin: 0 0 0 6px;
+            margin: 0 0 0 37px;
             border-radius: 4px;
             width: 100%;
             overflow: hidden;

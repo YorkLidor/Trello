@@ -51,8 +51,6 @@ export function TaskQuickEdit({ task, groupId, pos, onToggleModal, onCloseModal 
         }
     }
 
-
-
     function onCloseQuickEdit(ev) {
         onCloseModal(ev)
         store.dispatch({ type: SET_TASK_QUICK_EDIT, taskQuickEdit: null })

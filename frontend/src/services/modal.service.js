@@ -135,27 +135,6 @@ function getModalData(id, modalType, props) {
         let newModalData
 
         switch (modalType) {
-            case MODAL_LABELS:
-                newModalData = {
-                    className: 'modal',
-                    cmpType: MODAL_LABELS,
-                    props
-                }
-                break
-            case MODAL_ATTACH:
-                newModalData = {
-                    className: 'modal',
-                    cmpType: MODAL_ATTACH,
-                    props
-                }
-                break
-            case MODAL_ATTACH_EDIT:
-                newModalData = {
-                    className: 'modal',
-                    cmpType: MODAL_ATTACH_EDIT,
-                    props
-                }
-                break
             case MODAL_ATTACH_OPEN:
                 newModalData = {
                     className: 'attach-viewer-modal',
@@ -163,27 +142,6 @@ function getModalData(id, modalType, props) {
                     props
                 }
                 break
-            case MODAL_MEMBERS:
-                newModalData = {
-                    className: 'modal',
-                    cmpType: MODAL_MEMBERS,
-                    props
-                }
-                break
-            case MODAL_MEMBER_OPEN:
-                newModalData = {
-                    className: 'modal',
-                    cmpType: MODAL_MEMBER_OPEN,
-                    props
-                }
-                break;
-            case BOARD_CREATOR:
-                newModalData = {
-                    className: 'modal',
-                    cmpType: BOARD_CREATOR,
-                    props
-                }
-                break;
             case MODAL_TASK_QUICK_EDIT:
                 newModalData = {
                     className: 'task-quick-edit-container',
@@ -195,47 +153,6 @@ function getModalData(id, modalType, props) {
                 newModalData = {
                     className: 'modal date-modal',
                     cmpType: MODAL_TASK_DATE,
-                    props
-                }
-                break;
-            case MODAL_TASK_COVER:
-                newModalData = {
-                    className: 'modal',
-                    cmpType: MODAL_TASK_COVER,
-                    props
-                }
-                break;
-            case MODAL_CHECKLIST:
-                newModalData = {
-                    className: 'modal',
-                    cmpType: MODAL_CHECKLIST,
-                    props
-                }
-                break;
-            case MODAL_CHECKLIST_DELETE:
-                newModalData = {
-                    className: 'modal',
-                    cmpType: MODAL_CHECKLIST_DELETE,
-                    props
-                }
-                break;
-            case MODAL_GROUP_QUICK_EDIT:
-                newModalData = {
-                    className: 'modal',
-                    cmpType: MODAL_GROUP_QUICK_EDIT,
-                    props
-                }
-                break;
-            case MODAL_TODO:
-                newModalData = {
-                    className: 'modal',
-                    cmpType: MODAL_TODO,
-                    props
-                }
-            case MODAL_REMOVE_COMMENT:
-                newModalData = {
-                    className: 'modal',
-                    cmpType: MODAL_REMOVE_COMMENT,
                     props
                 }
                 break;
