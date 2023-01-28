@@ -6,7 +6,6 @@ import { storageService } from './async-storage.service.js'
 
 import { getActivityText, saveBoard, saveTask, POST_COMMENT } from '../store/actions/board.actions.js'
 import { SET_ACTIVE_BOARD } from '../store/reducers/board.reducer.js'
-import { httpService } from './http.service.js'
 
 const STORAGE_KEY = 'boardDB'
 
@@ -44,12 +43,6 @@ export const boardService = {
     removeComment
 }
 
-const ROUTE = 'board'
-
-function query(filterBy = {}) {
-    return httpService.get(ROUTE, { filterBy })
-}
-
 async function saveTaskTitle(board, groupId, task) {
     const group = board.groups.find(g => g.id === groupId)
     const taskIndex = group.tasks.findIndex(t => t.id === task.id)
@@ -78,11 +71,16 @@ async function removeTask(board, groupId, taskId) {
     return board
 }
 
+async function query(filterBy = grtDefaultFilter()) {
+    return await storageService.query(STORAGE_KEY)
+
+}
+
 function save(board) {
     if (board._id) {
-        return httpService.put(ROUTE, board)
+        return storageService.put(STORAGE_KEY, board)
     } else {
-        return httpService.post(ROUTE, board)
+        return storageService.post(STORAGE_KEY, board)
     }
 }
 
@@ -210,7 +208,7 @@ async function addComment(user, groupId, task, text) {
         id: task.id,
         title: task.title
     }
-
+    
     await saveTask(groupId, task, comment)
 }
 
