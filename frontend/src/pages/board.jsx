@@ -180,7 +180,7 @@ export function Board() {
             />}
 
 
-            <div ref={elModal} className='modal'>
+            <div ref={elModal} className='modal-container'>
                 {
                     modal?.isOpen && <Modal
                         modal={modal}
