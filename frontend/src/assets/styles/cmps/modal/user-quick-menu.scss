@@ -1,5 +1,4 @@
 .user-quick-menu {
-<<<<<<< HEAD
     padding: 0 0 rem(8px) 0;
     margin: 0;
     font-size: 1.1rem;
@@ -27,17 +26,12 @@
             padding-top: 0;
         }
     }
-=======
-    padding: rem(20px) 0 rem(8px) 0;
-    margin-top: rem(16px);
->>>>>>> 227237752ddad3d100c0478dccd756f6f67d7038
 
     .main-layout>*:not(.full) {
         padding-inline: rem(20px);
     }
 
     .title {
-<<<<<<< HEAD
         @include label;
         padding-inline: rem(20px);
         text-transform: uppercase;
@@ -49,15 +43,6 @@
         @include for-narrow-layout {
             color: #7a869a;
         }
-=======
-        padding-inline: rem(20px);
-        @include label;
-        text-transform: uppercase;
-        font-size: rem(11px);
-        color: #7a869a;
-        line-height: rem(16px);
-        padding-block-end: rem(8px);
->>>>>>> 227237752ddad3d100c0478dccd756f6f67d7038
     }
 
     .user-preview:not(.full) {
@@ -65,7 +50,6 @@
         margin-bottom: rem(8px);
 
         .list-member {
-<<<<<<< HEAD
             width: em(43px);
             height: em(43px);
             margin-inline: 0 8px;
@@ -74,11 +58,6 @@
                 width: em(40px);
                 height: em(40px);
             }
-=======
-            width: rem(40px);
-            height: rem(40px);
-            margin-inline: 0 8px;
->>>>>>> 227237752ddad3d100c0478dccd756f6f67d7038
         }
     }
 
@@ -89,7 +68,6 @@
 
     }
 
-<<<<<<< HEAD
     .footer-container {
         margin-top: auto;
 
@@ -100,16 +78,11 @@
 
     }
 
-=======
->>>>>>> 227237752ddad3d100c0478dccd756f6f67d7038
 
     .divider {
         border: 1px solid rgba(9, 30, 66, 0.13);
         border-bottom: none;
-<<<<<<< HEAD
         width: 100%;
-=======
->>>>>>> 227237752ddad3d100c0478dccd756f6f67d7038
     }
 
     li {
@@ -117,15 +90,10 @@
         padding: rem(8px) 0;
         cursor: pointer;
 
-<<<<<<< HEAD
         @include for-narrow-layout {
             &:hover {
                 background-color: rgba(9, 30, 66, 0.04);
             }
-=======
-        &:hover {
-            background-color: rgba(9, 30, 66, 0.04);
->>>>>>> 227237752ddad3d100c0478dccd756f6f67d7038
         }
     }
 
@@ -138,7 +106,6 @@
         }
 
         h3 {
-<<<<<<< HEAD
             font-size: em(16px);
             line-height: em(22px);
             color: var(--dynamic-text-light);
@@ -163,34 +130,17 @@
                 font-size: em(12px);
                 line-height: em(16px);
             }
-=======
-            font-size: rem(14px);
-            line-height: rem(20px);
-            color: #172b4d;
-        }
-
-        h4 {
-            font-size: rem(12px);
-            line-height: rem(16px);
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            color: #B3BAC5;
->>>>>>> 227237752ddad3d100c0478dccd756f6f67d7038
         }
     }
 
     button {
         width: 100%;
-<<<<<<< HEAD
         height: 100%;
-=======
->>>>>>> 227237752ddad3d100c0478dccd756f6f67d7038
         background-color: transparent;
         border: none;
         text-align: start;
         padding-inline: rem(20px);
         color: #172b4d;
-<<<<<<< HEAD
         font-size: em(14px);
         line-height: em(20px);
         text-align: center;
@@ -198,9 +148,5 @@
         @include for-narrow-layout {
             text-align: start;
         }
-=======
-        font-size: rem(14px);
-        line-height: rem(20px);
->>>>>>> 227237752ddad3d100c0478dccd756f6f67d7038
     }
 }
