@@ -150,8 +150,8 @@ export function CoverModal({ id, cmpProps }) {
         ev.target.parentNode.classList.toggle('active')
         activeFontColorRef.current = ev.target
 
-        const color = (light) ? fontColor.light : fontColor.dark
-        task.cover.style = { ...task.cover.style, color }
+        const color = (light) ? 'light' : 'dark'
+        task.isDark = (light)
         await saveTask(groupId, task, boardService.getActivity(user, task, `${getActivityText(CHANGE_COVER_TEXT_COLOR)} ${color}`))
     }
 
