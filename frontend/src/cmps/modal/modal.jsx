@@ -13,6 +13,7 @@ import { DeleteChecklistModal } from './checklist-delete-modal'
 import { TodoModal } from './checklist-todo-modal'
 import { GroupQuickEdit } from "../group-quick-edit"
 import { UserQuickMenu } from "../user-quick-menu"
+import { DeleteCommentModal } from "./comment-delete-modal"
 
 export const MODAL_LABELS = 'MODAL_LABELS'
 export const MODAL_ATTACH = 'MODAL_ATTACH'
@@ -29,6 +30,7 @@ export const MODAL_CHECKLIST_DELETE = 'MODAL_CHECKLIST_DELETE'
 export const MODAL_TODO = 'MODAL_TODO'
 export const MODAL_GROUP_QUICK_EDIT = 'MODAL_GROUP_QUICK_EDIT'
 export const USER_QUICK_MENU = 'USER_QUICK_MENU'
+export const MODAL_REMOVE_COMMENT = 'MODAL_REMOVE_COMMENT'
 
 
 export function Modal({ modal, cmpProps, cmpType, className }) {
@@ -70,6 +72,8 @@ function GetCmp({ id, cmpProps, cmpType }) {
             return <GroupQuickEdit cmpProps={cmpProps} id={id} />
         case USER_QUICK_MENU:
             return <UserQuickMenu {...cmpProps} id={id} />
+        case MODAL_REMOVE_COMMENT:
+            return <DeleteCommentModal {...cmpProps} id={id} />
         default:
             return ''
     }

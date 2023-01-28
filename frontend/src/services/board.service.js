@@ -39,7 +39,8 @@ export const boardService = {
     setCoverImage,
     getTodoEmpty,
     removeChecklist,
-    removeTodo
+    removeTodo,
+    removeComment
 }
 
 async function saveTaskTitle(board, groupId, task) {
@@ -251,6 +252,13 @@ function getTodoEmpty() {
 
 function removeChecklist(task, checklist) {
     task.checklists = task.checklists.filter(list => list.id !== checklist.id)
+    return task
+}
+
+function removeComment(task, comment) {
+    const board = store.getState().boardModule.board
+    board.activities = board.activities.filter(a => a.id !== comment.id)
+    task.comments = task.comments.filter(c => c.id !== comment.id)
     return task
 }
 

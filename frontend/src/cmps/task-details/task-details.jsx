@@ -12,7 +12,7 @@ import { saveBoard } from '../../store/actions/board.actions'
 import { SET_ACTIVE_BOARD } from "../../store/reducers/board.reducer"
 
 import {
-    MODAL_ATTACH, MODAL_LABELS, MODAL_ATTACH_EDIT, MODAL_CHECKLIST, MODAL_TODO,
+    MODAL_ATTACH, MODAL_LABELS, MODAL_ATTACH_EDIT, MODAL_CHECKLIST, MODAL_TODO, MODAL_REMOVE_COMMENT, 
     MODAL_ATTACH_OPEN, MODAL_MEMBERS, MODAL_MEMBER_OPEN, MODAL_TASK_DATE, MODAL_TASK_COVER, MODAL_CHECKLIST_DELETE
 } from '../modal/modal.jsx'
 
@@ -152,12 +152,13 @@ export function TaskDetails() {
         else if (modalType === MODAL_ATTACH_EDIT) props = { boardId, groupId, task: taskToEdit, attachment: extras.attachment }
         else if (modalType === MODAL_ATTACH_OPEN) props = { user, boardId, groupId, task: taskToEdit, attachment: extras.attachment }
         else if (modalType === MODAL_MEMBERS) props = { groupId, task: taskToEdit }
-        else if (modalType === MODAL_MEMBER_OPEN) props = { member: extras.member, user, boardId, groupId, task: taskToEdit }
-        else if (modalType === MODAL_TASK_DATE) props = { user, boardId, groupId, task: taskToEdit }
-        else if (modalType === MODAL_TASK_COVER) props = { user, boardId, groupId, task: taskToEdit }
-        else if (modalType === MODAL_CHECKLIST) props = { user, boardId, groupId, task: taskToEdit, modals }
-        else if (modalType === MODAL_CHECKLIST_DELETE) props = { user, boardId, groupId, task: taskToEdit, checklist: extras.checklist }
-        else if (modalType === MODAL_TODO) props = { user, boardId, groupId, task: taskToEdit, todo: extras.todo, checklist: extras.checklist }
+        else if (modalType === MODAL_MEMBER_OPEN) props = { member: extras.member, user, groupId, task: taskToEdit }
+        else if (modalType === MODAL_TASK_DATE) props = { user, groupId, task: taskToEdit }
+        else if (modalType === MODAL_TASK_COVER) props = { user, groupId, task: taskToEdit }
+        else if (modalType === MODAL_CHECKLIST) props = { user, groupId, task: taskToEdit, modals }
+        else if (modalType === MODAL_CHECKLIST_DELETE) props = { user, groupId, task: taskToEdit, checklist: extras.checklist }
+        else if (modalType === MODAL_TODO) props = { user, groupId, task: taskToEdit, todo: extras.todo, checklist: extras.checklist }
+        else if (modalType === MODAL_REMOVE_COMMENT) props = { user, groupId, task: taskToEdit, comment: extras.comment }
 
         const pos = utilService.getElementPosition(element)
         modalBoxRef.current.style.top = pos.bottom + 'px'
@@ -223,7 +224,7 @@ export function TaskDetails() {
                         </div>
                     }
                     <Checklists task={taskToEdit} user={user} groupId={groupId} onToggleModal={onToggleModal} />
-                    <Activity user={user} boardId={boardId} groupId={groupId} taskToEdit={taskToEdit} />
+                    <Activity user={user} boardId={boardId} groupId={groupId} taskToEdit={taskToEdit} onToggleModal={onToggleModal} />
                 </section>
 
                 <TaskDetailsSideBar task={taskToEdit} onToggleModal={onToggleModal} />
