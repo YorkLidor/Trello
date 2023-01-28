@@ -38,7 +38,8 @@ export const boardService = {
     getTodoEmpty,
     removeChecklist,
     removeTodo,
-    removeComment
+    removeComment,
+    copyGroup
 }
 
 const ROUTE = 'board'
@@ -52,6 +53,16 @@ async function saveTaskTitle(board, groupId, task) {
     const taskIndex = group.tasks.findIndex(t => t.id === task.id)
     const groupIndex = board.groups.findIndex(g => g.id === groupId)
     board.groups[groupIndex].tasks[taskIndex] = task
+    return board
+}
+
+async function copyGroup(board, groupId) {
+    const group = board.groups.find(g => g.id === groupId)
+    const groupIndex = board.groups.findIndex(g => g.id === groupId)
+    const newGroup = { ...group }
+    newGroup.id = utilService.makeId()
+    board.groups.splice(groupIndex + 1, 0, newGroup)
+    board.groups[groupIndex] = group
     return board
 }
 
