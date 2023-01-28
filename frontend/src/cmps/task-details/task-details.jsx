@@ -12,14 +12,14 @@ import { saveBoard } from '../../store/actions/board.actions'
 import { SET_ACTIVE_BOARD } from "../../store/reducers/board.reducer"
 
 import {
-    MODAL_ATTACH, MODAL_LABELS, MODAL_ATTACH_EDIT, MODAL_CHECKLIST, MODAL_TODO, MODAL_REMOVE_COMMENT, 
+    MODAL_ATTACH, MODAL_LABELS, MODAL_ATTACH_EDIT, MODAL_CHECKLIST, MODAL_TODO, MODAL_REMOVE_COMMENT,
     MODAL_ATTACH_OPEN, MODAL_MEMBERS, MODAL_MEMBER_OPEN, MODAL_TASK_DATE, MODAL_TASK_COVER, MODAL_CHECKLIST_DELETE
 } from '../modal/modal.jsx'
 
 import { AttachmentList } from "./attachment/attachment-list"
 import { MemberList } from "./member-list"
 import { LabelList } from "./label/label-list"
-import { Blocks } from "react-loader-spinner"
+import { Spinner } from '../spinner'
 import { Modal } from "../modal/modal"
 import { Activity } from "./activity"
 import { TaskDetailsSideBar } from "./task-details-sidebar"
@@ -192,7 +192,7 @@ export function TaskDetails() {
         }
     }
 
-    return (!taskToEdit || !group) ? <Blocks visible={true} height="80" width="80" ariaLabel="blocks-loading" wrapperStyle={{}} wrapperClass="blocks-wrapper" /> : <>
+    return (!taskToEdit || !group) ? <Spinner /> : <>
         <section className="task-window flex" onMouseDown={closePage} style={style}>
 
             <section className="task-details" onClick={onCloseModal} onMouseDown={(ev) => ev.stopPropagation()}>

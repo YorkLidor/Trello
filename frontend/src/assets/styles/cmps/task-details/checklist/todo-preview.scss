@@ -25,7 +25,7 @@
     .todo-box {
         position: relative;
         height: 100%;
-        padding-inline-start: 40px;
+        padding-inline-start: 37px;
         padding-inline-end: 10px;
 
 
@@ -37,7 +37,6 @@
 
         .todo-row {
             
-
             .todo-title {
                 display: inline-block;
                 width: 100%;
@@ -72,14 +71,13 @@
 
         .todo-checkbox-container {
             position: absolute;
-            left: 3px;
-            top: 5px;
-
-
+            left: 8px;
+            top: -1px;
+            border-radius: 4px;
 
             .checkbox {
-                height: 18px;
-                width: 18px;
+                height: 15px;
+                width: 15px;
 
                 &.checkbox-checked {
                     color: $button-filled;
