@@ -189,7 +189,7 @@ function getGroupById(board, groupId) {
     return board.groups.find(group => group.id === groupId)
 }
 
-async function addComment(user, boardId, groupId, task, text) {
+async function addComment(user, groupId, task, text) {
     const comment = {
         isComment: true,
         id: 'cm' + utilService.makeId(),
