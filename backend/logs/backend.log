@@ -508,3 +508,6 @@
 >>>>>>> 1e955a953d9ba34d56aa14b907858a2fba22f405
 >>>>>>> 491abaf661a9e263b17c87c5083c887fa1b0e847
 28.1.2023, 17:12:38 - INFO - Server is running on port: 3030 
+28.1.2023, 17:15:55 - DEBUG - Connect to DB------------- | board_db (userId: 63d529673ea947a3c4fe70ae)
+28.1.2023, 17:15:57 - INFO - Broadcasting event: admin-update (userId: 63d529673ea947a3c4fe70ae)
+28.1.2023, 17:15:57 - INFO - Emit to all (userId: 63d529673ea947a3c4fe70ae)
