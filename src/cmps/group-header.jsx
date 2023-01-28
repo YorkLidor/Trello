@@ -59,7 +59,7 @@ export function GroupHeader({ group, board, onRemoveGroup, onToggleModal }) {
             </h1>
         </div>
 
-        <button className="btn-remove" onClick={(ev) => onToggleModal(ev, MODAL_GROUP_QUICK_EDIT, { groupId: group.id })}>
+        <button className="btn-remove" onClick={(ev) => onToggleModal(ev, MODAL_GROUP_QUICK_EDIT, { groupId: group.id, onRemoveGroup })}>
             <span>...</span>
         </button>
     </section>
