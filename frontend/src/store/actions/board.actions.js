@@ -25,6 +25,7 @@ export const REMOVE_LABEL = 'REMOVE_LABEL'
 export const CHANGE_TASK_LOCATION = 'CHANGE_TASK_LOCATION'
 export const SET_CHECKLIST_TITLE = 'SET_CHECKLIST_TITLE'
 export const POST_COMMENT = 'POST_COMMENT'
+export const REMOVE_COMMENT = 'REMOVE_COMMENT'
 
 export async function loadBoards() {
     try {
@@ -207,5 +208,7 @@ export function getActivityText(action) {
             return `has set the title of checklist`
         case POST_COMMENT:
             return `added comment`
+        case REMOVE_COMMENT:
+            return `deleted comment`
     }
 }

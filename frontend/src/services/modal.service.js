@@ -3,7 +3,7 @@ import { utilService } from "./util.service"
 import { SET_MODALS, SET_MODAL } from "../store/reducers/app.reducer"
 
 import {
-    MODAL_LABELS, MODAL_ATTACH, MODAL_ATTACH_EDIT, MODAL_ATTACH_OPEN,
+    MODAL_LABELS, MODAL_ATTACH, MODAL_ATTACH_EDIT, MODAL_ATTACH_OPEN, MODAL_REMOVE_COMMENT,
     MODAL_MEMBERS, MODAL_MEMBER_OPEN, MODAL_TASK_QUICK_EDIT, BOARD_CREATOR,
     MODAL_TASK_DATE, MODAL_TASK_COVER, MODAL_CHECKLIST, MODAL_CHECKLIST_DELETE, MODAL_TODO, MODAL_GROUP_QUICK_EDIT
 } from '../cmps/modal/modal'
@@ -230,6 +230,12 @@ function getModalData(id, modalType, props) {
                 newModalData = {
                     className: 'modal',
                     cmpType: MODAL_TODO,
+                    props
+                }
+            case MODAL_REMOVE_COMMENT:
+                newModalData = {
+                    className: 'modal',
+                    cmpType: MODAL_REMOVE_COMMENT,
                     props
                 }
                 break;
