@@ -1,6 +1,6 @@
 import { ModalHeader } from "./modal/modal-header"
 
-export function GroupQuickEdit({ id, groupId, onRemoveGroup,onCopyGroup,board }) {
+export function GroupQuickEdit({ id, groupId, onRemoveGroup, onCopyGroup, board }) {
 
     return <div className="modal-members-box quick-edit-modal-container">
 
@@ -10,7 +10,7 @@ export function GroupQuickEdit({ id, groupId, onRemoveGroup,onCopyGroup,board })
             <li>
                 Add card...
             </li>
-            <li onClick={() => onCopyGroup(board,groupId)}>
+            <li onClick={() => onCopyGroup(board, groupId)}>
                 Copy list...
             </li>
             <li onClick={() => onRemoveGroup(groupId)}>
