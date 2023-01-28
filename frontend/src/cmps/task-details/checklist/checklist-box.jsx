@@ -22,67 +22,117 @@ export function Checklist({ task, checklist, onSaveChecklist, onToggleModal }) {
 
 
     function onTitleEdit(ev, title) {
-        ev.stopPropagation()
-        if (!title.length) return
-        list.title = title
-        onUpdateChecklist(list)
-        setChecklist(list)
-        clearEditMode()
+        try {
+            ev.stopPropagation()
+            if (!title.length) return
+            list.title = title
+            onUpdateChecklist(list)
+            setChecklist(list)
+            clearEditMode()
+        }
+        catch (err) {
+            console.error('Failed edit title')
+        }
     }
 
     function onUpdateChecklist() {
-        task.checklists = task.checklists.map(checklist => (checklist.id === list.id) ? list : checklist)
-        onSaveChecklist(list)
-        setChecklist(list)
+        try {
+            task.checklists = task.checklists.map(checklist => (checklist.id === list.id) ? list : checklist)
+            onSaveChecklist(list)
+            setChecklist(list)
+        }
+        catch (err) {
+            console.error('Failed update checklist')
+        }
     }
 
     function onAddTodo(ev) {
-        ev.stopPropagation()
-        if (!elEditTodoRef.current.value.length) return
-        const todo = boardService.getTodoEmpty()
-        todo.title = elEditTodoRef.current.value
+        try {
+            ev.stopPropagation()
+            if (!elEditTodoRef.current.value.length) return
+            const todo = boardService.getTodoEmpty()
+            todo.title = elEditTodoRef.current.value
 
-        if (!list.todos) list.todos = []
-        list.todos.push(todo)
-        elEditTodoRef.current.value = ''
-        onUpdateChecklist()
+            if (!list.todos) list.todos = []
+            list.todos.push(todo)
+            elEditTodoRef.current.value = ''
+            onUpdateChecklist()
+        }
+        catch (err) {
+            console.error('Failed add checklist item')
+        }
     }
 
     function onUpdateTodo(todo) {
-        clearEditMode()
-        list.todos = list.todos.map(listToDo => listToDo.id === todo.id ? todo : listToDo)
-        onUpdateChecklist()
+        try {
+            clearEditMode()
+            list.todos = list.todos.map(listToDo => listToDo.id === todo.id ? todo : listToDo)
+            onUpdateChecklist()
+        }
+        catch (err) {
+            console.error('Failed update checklist item')
+        }
     }
 
     function onRemoveTodo(todo) {
-        list = boardService.removeTodo(list, todo)
-        onUpdateChecklist()
-        setChecklist(list)
-        clearEditMode()
+        try {
+            list = boardService.removeTodo(list, todo)
+            onUpdateChecklist()
+            setChecklist(list)
+            clearEditMode()
+        }
+        catch (err) {
+            console.error('Failed remove checklist item')
+        }
     }
 
     function setTitleToEdit(ev) {
-        ev.stopPropagation()
-        setToolInEdit(checklist.id)
+        try {
+            ev.stopPropagation()
+            setToolInEdit(checklist.id)
+        }
+        catch (err) {
+            console.error('Failed to set title to edit mode')
+        }
     }
 
     function setTodoToEdit(ev, todoId) {
-        ev.stopPropagation()
-        setToolInEdit(todoId)
+        try {
+            ev.stopPropagation()
+            setToolInEdit(todoId)
+        }
+        catch (err) {
+            console.error('Failed to set checklist item to edit mode')
+        }
     }
 
     function clearEditMode() {
-        setToolInEdit(null)
+        try {
+            setToolInEdit(null)
+        }
+        catch (error) {
+            console.error('Failed to clear edit mode in checklist')
+        }
     }
 
     function setAddTodoToEdit(ev) {
-        ev.stopPropagation()
-        setToolInEdit(-1)
+        try {
+            ev.stopPropagation()
+            setToolInEdit(-1)
+        }
+        catch(err) {
+            console.error('Failed to set editor mode on add checklist item')
+        }
     }
 
     function setHideChecked(ev) {
+        try {
         ev.stopPropagation()
         setShowChecked(!showChecked)
+        }
+        catch(err) {
+            console.error('Failed to toggle hide or show checked items')
+        }
     }
 
     return list && <section className="checklist-container" key={list.id} onMouseDown={clearEditMode}>
