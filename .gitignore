@@ -31,4 +31,6 @@ frontend/node_modules/.cache/.eslintcache
 frontend/node_modules/.bin/browserslist
 
 backend/logs/backend.log
+backend.log
+logs
 backend/logs/backend.log

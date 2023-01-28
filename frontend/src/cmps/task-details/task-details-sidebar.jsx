@@ -10,7 +10,7 @@ import { useSelector } from "react-redux"
 
 export function TaskDetailsSideBar({ task, onToggleModal }) {
     const user = useSelector((storeState) => storeState.userModule.user)
-    console.log(task.memberIds.includes(user._id), task.memberIds, user._id)
+    const board = useSelector((storeState) => storeState.boardModule.board)
 
     function onJoinBoard() {
         task.memberIds.push(user._id)
@@ -18,7 +18,7 @@ export function TaskDetailsSideBar({ task, onToggleModal }) {
 
     return <div className="window-sidebar-box">
         {
-            !task.memberIds.includes(user._id) && <>
+            board.members.find(member => member._id === user._id) && !task.memberIds.includes(user._id) && <>
                 <span className="sidebar-title">Suggested</span>
                 <nav className="window-sidebar flex column">
                     <button className='button-link' onClick={onJoinBoard}><HiOutlineUser data-type='icon' className="sidebar-icon" /><span className="nav-btn-txt" data-type='icon'>Join</span></button>
