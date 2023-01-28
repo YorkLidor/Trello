@@ -10,7 +10,6 @@ import { saveBoard } from "../store/actions/board.actions"
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd"
 import { GroupAdd } from "./group-add";
 import { Group } from "./group";
-import { TaskQuickEdit } from "./task-quick-edit";
 
 export function GroupList({ onToggleModal }) {
     const board = useSelector(state => state.boardModule.board)
@@ -36,6 +35,16 @@ export function GroupList({ onToggleModal }) {
             await saveBoard(board)
         } catch (err) {
             console.error('Cannot remove group', err)
+        }
+    }
+
+    async function onCopyGroup(board, groupId) {
+        if (window.confirm("Are you sure?") === false) return
+        try {
+            const boardToSave = await boardService.copyGroup(board, groupId)
+            await saveBoard(boardToSave)
+        } catch (err) {
+            console.error('Cannot copy group', err)
         }
     }
 
@@ -84,6 +93,7 @@ export function GroupList({ onToggleModal }) {
                                             group={group}
                                             board={board}
                                             onRemoveGroup={onRemoveGroup}
+                                            onCopyGroup={onCopyGroup}
                                             idx={idx}
                                             isDragging={snapshot.isDragging && !snapshot.isDropAnimating}
                                         />

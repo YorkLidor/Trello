@@ -93,7 +93,7 @@ export function Board() {
         closeModal(modals, modal.id)
     }
 
-    function onToggleModal(ev, modalType, { groupId, task, member }) {
+    function onToggleModal(ev, modalType, { board, groupId, task, member, onRemoveGroup, onCopyGroup }) {
         if (!modal) return
         let element
         if (ev) {
@@ -128,7 +128,7 @@ export function Board() {
                 elModal.current.style.left = pos.left + 'px'
                 break;
             case MODAL_GROUP_QUICK_EDIT:
-                props = { groupId }
+                props = {board, groupId, onRemoveGroup,onCopyGroup }
                 elModal.current.style.top = pos.top + 'px'
                 elModal.current.style.left = pos.left + 'px'
                 console.log('props:', props)
@@ -182,12 +182,16 @@ export function Board() {
 
             <div ref={elModal} className='modal-container'>
                 {
-                    modal?.isOpen && <Modal
+                    modal?.isOpen && <> <Modal
+
                         modal={modal}
                         cmpProps={modal.modalData.props}
                         cmpType={modal.modalData.cmpType}
                         className={modal.modalData.className}
                     />
+                        <div className="all-screen-modal" onClick={() => closeModal(modals, modal.id)}>
+                        </div>
+                    </>
                 }
             </div>
         </main>

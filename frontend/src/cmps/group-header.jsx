@@ -4,7 +4,7 @@ import { useForm } from "../customHooks/useForm.js"
 import { useEffectUpdate } from "../customHooks/useEffectUpdate.js"
 import { MODAL_GROUP_QUICK_EDIT, MODAL_MEMBERS } from "./modal/modal.jsx"
 
-export function GroupHeader({ group, board, onRemoveGroup, onToggleModal }) {
+export function GroupHeader({ group, board, onRemoveGroup, onToggleModal,onCopyGroup }) {
     const [groupToEdit, setGroupToEdit, handleChange] = useForm(group)
     const elTitleInput = useRef()
     const elTitle = useRef()
@@ -59,7 +59,7 @@ export function GroupHeader({ group, board, onRemoveGroup, onToggleModal }) {
             </h1>
         </div>
 
-        <button className="btn-remove" onClick={(ev) => onToggleModal(ev, MODAL_GROUP_QUICK_EDIT, { groupId: group.id, onRemoveGroup })}>
+        <button className="btn-remove" onClick={(ev) => onToggleModal(ev, MODAL_GROUP_QUICK_EDIT, { groupId: group.id, onRemoveGroup,onCopyGroup })}>
             <span>...</span>
         </button>
     </section>

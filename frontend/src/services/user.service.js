@@ -37,7 +37,6 @@ async function getById(userId) {
         console.log('Couldnt get user', err)
         throw err
     }
-
 }
 
 function saveLocalUser(user) {
