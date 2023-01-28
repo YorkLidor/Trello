@@ -9,6 +9,7 @@
     position: absolute;
     left: -40px;
     top: 15px;
+
     @include for-native-layout-details {
         left: 6px;
     }
@@ -55,6 +56,26 @@
         @include for-native-layout-details {
             max-width: 100%;
             background-color: #fff;
+        }
+
+    }
+
+    .comment-tools {
+
+        .edit-comment,
+        .delete-comment {
+            border: 0;
+            font-size: 12px;
+            color: #5e6c84;
+            text-decoration: underline;
+            background-color: inherit;
+            cursor: pointer;
+
+        }
+
+        .break-tools {
+            color: #172b4d;
+            margin: 0 4px;
         }
 
     }
