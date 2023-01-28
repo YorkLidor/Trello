@@ -433,6 +433,11 @@ export const jBoards = [
             "_id": "u106",
             "fullname": "Ori",
             "imgUrl": "https://ca.slack-edge.com/T043N4KE97B-U043S281FLH-583926f36186-512"
+         },
+         {
+            "_id": "2OQJU",
+            "fullname": "Kochava Shavit",
+            "imgUrl": "https://res.cloudinary.com/dk2geeubr/image/upload/v1674765132/latest_c40bvk.png"
          }
       ],
       "groups": [

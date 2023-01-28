@@ -6,9 +6,22 @@ import { RiInboxFill } from 'react-icons/ri'
 import { TbCheckbox } from "react-icons/tb"
 
 import { MODAL_MEMBERS, MODAL_LABELS, MODAL_ATTACH, MODAL_TASK_DATE, MODAL_TASK_COVER, MODAL_CHECKLIST } from '../modal/modal'
+import { useSelector } from "react-redux"
 
 export function TaskDetailsSideBar({ task, onToggleModal }) {
+    const user = useSelector((storeState) => storeState.userModule.user)
+    console.log(task.memberIds.includes(user._id), task.memberIds, user._id)
+
     return <div className="window-sidebar-box">
+        {
+            !task.memberIds.includes(user._id) && <>
+                <span className="sidebar-title">Suggested</span>
+                <nav className="window-sidebar flex column">
+                    <button className='button-link' onClick={(ev) => onToggleModal(ev, MODAL_MEMBERS)}><HiOutlineUser data-type='icon' className="sidebar-icon" /><span className="nav-btn-txt" data-type='icon'>Join</span></button>
+                </nav>
+            </>
+        }
+
         <span className="sidebar-title">Add to card</span>
         <nav className="window-sidebar flex column">
             <button className='button-link' onClick={(ev) => onToggleModal(ev, MODAL_MEMBERS)}><HiOutlineUser data-type='icon' className="sidebar-icon" /><span className="nav-btn-txt" data-type='icon'>Members</span></button>

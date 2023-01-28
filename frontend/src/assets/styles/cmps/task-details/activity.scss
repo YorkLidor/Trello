@@ -143,6 +143,10 @@
     top: 3px;
     left: -40px;
 
+    &:hover {
+        opacity: unset;
+    }
+
     @include for-native-layout-details {
         left: 7px;
         top: 5px;

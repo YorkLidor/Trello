@@ -1,4 +1,3 @@
-import { func } from "prop-types"
 import { storageService } from "./async-storage.service"
 import { jUser } from "./jsons/board"
 import { utilService } from "./util.service"
@@ -84,6 +83,15 @@ function _createUsers() {
             imgUrl: "http://res.cloudinary.com/dk2geeubr/image/upload/v1674746367/qvbgfpwpobofvl5f6ocr.jpg",
             mentions: []
         })
+        users.push({
+            fullname: "Kochava Shavit",
+            imgUrl: "https://res.cloudinary.com/dk2geeubr/image/upload/v1674765132/latest_c40bvk.png",
+            mentions: [],
+            password: "123",
+            username: "kocavha",
+            _id: "2OQJU"
+      
+         })
         utilService.saveToStorage(STORAGE_KEY, users)
     }
 }
