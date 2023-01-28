@@ -1,5 +1,6 @@
 .task-window {
     --cover-color: #fff;
+    z-index: 15;
     @include scrollbar;
 
     @include for-native-layout-details {
