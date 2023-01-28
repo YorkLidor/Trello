@@ -21,18 +21,28 @@ export function LabelPickerEditor({ editorLabel, onSaveLabel, setModalPage }) {
     const deleteButtonClass = ('delete-label delete-label-editor' + (label.id ? ' visible' : ''))
 
     function resetColor() {
-        setLabel((prevEditorLabel) => ({ ...prevEditorLabel, color: boardService.getLabelDeaultColor() }))
+        try {
+            setLabel((prevEditorLabel) => ({ ...prevEditorLabel, color: boardService.getLabelDeaultColor() }))
+        }
+        catch (err) {
+            console.error('Failed reset color')
+        }
     }
 
     function handleEditorChange({ target }, color = null) {
-        if (color) {
-            label.color = color
-            target.parentNode.classList.toggle('active-color')
-            if (activeColorRef.current) activeColorRef.current.parentNode.classList.toggle('active-color')
-            activeColorRef.current = target
+        try {
+            if (color) {
+                label.color = color
+                target.parentNode.classList.toggle('active-color')
+                if (activeColorRef.current) activeColorRef.current.parentNode.classList.toggle('active-color')
+                activeColorRef.current = target
+            }
+            else label.title = target.value
+            setLabel({ ...label })
         }
-        else label.title = target.value
-        setLabel({ ...label })
+        catch (err) {
+            console.error('Failed handle changes in label')
+        }
     }
 
     return <>
@@ -48,7 +58,7 @@ export function LabelPickerEditor({ editorLabel, onSaveLabel, setModalPage }) {
         </div>
 
         <label className='label-title' htmlFor='label-title'>Title</label>
-        <input className="label-editor-title" type='text' id="label-title" value={label.title? label.title : ''} onChange={handleEditorChange} />
+        <input className="label-editor-title" type='text' id="label-title" value={label.title ? label.title : ''} onChange={handleEditorChange} />
 
         <label className='label-title' htmlFor='label-title'>Select a color</label>
         <div className='editor-colors'>

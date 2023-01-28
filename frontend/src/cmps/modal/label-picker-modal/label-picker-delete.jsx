@@ -2,12 +2,17 @@
 import { boardService } from '../../../services/board.service'
 import { PAGE_LIST } from './label-picker'
 
-export function LabelPickerDelete({ board, labelId , setModalPage}) {
+export function LabelPickerDelete({ board, labelId, setModalPage }) {
 
     // Delete label from board labels
     async function deleteLabel() {
-        await boardService.removeBoardLabel(board, labelId)
-        setModalPage(PAGE_LIST)
+        try {
+            await boardService.removeBoardLabel(board, labelId)
+            setModalPage(PAGE_LIST)
+        }
+        catch (err) {
+            console.error('Failed delete label')
+        }
     }
 
     return <>

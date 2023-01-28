@@ -13,7 +13,7 @@ export const PAGE_LIST = 'PAGE_LIST'
 export const PAGE_EDIT = 'PAGE_EDIT'
 export const PAGE_DELETE = 'PAGE_DELETE'
 
-export function LabelsPicker({ id , cmpProps }) {
+export function LabelsPicker({ id, cmpProps }) {
     const { groupId, task } = cmpProps
 
     const board = useSelector((storeState) => storeState.boardModule.board)
@@ -31,8 +31,13 @@ export function LabelsPicker({ id , cmpProps }) {
 
     // Triggers when label edit button is clicked on labels list CMP
     function onEditLabel(label = null) {
-        labelToEdit.current = label ? label : boardService.getEmptyLabel()
-        setModalPage(PAGE_EDIT)
+        try {
+            labelToEdit.current = label ? label : boardService.getEmptyLabel()
+            setModalPage(PAGE_EDIT)
+        }
+        catch (err) {
+            console.error('Failed set label to edit')
+        }
     }
 
     // Saving the label in board service
@@ -49,30 +54,41 @@ export function LabelsPicker({ id , cmpProps }) {
 
     // Returns the header text of the modal, in according to cuurent modal page
     function _getPickerHeaderText() {
-        switch (modalPage) {
-            case PAGE_LIST:
-                return 'Labels'
-            case PAGE_EDIT:
-                return labelToEdit.current?.id ? 'Edit label' : 'Create label'
-            case PAGE_DELETE:
-                return 'Delete label'
-            default:
-                break
+        try {
+            switch (modalPage) {
+                case PAGE_LIST:
+                    return 'Labels'
+                case PAGE_EDIT:
+                    return labelToEdit.current?.id ? 'Edit label' : 'Create label'
+                case PAGE_DELETE:
+                    return 'Delete label'
+                default:
+                    break
+            }
+        }
+        catch (err) {
+            console.error('Failed resolve header text')
         }
     }
 
     // Returns props relevant to current modal page
     function _getProps() {
-        switch (modalPage) {
-            case PAGE_LIST:
-                return { member, boardId: board._id, task, groupId, onEditLabel, labels: board.labels, setModalPage }
-            case PAGE_EDIT:
-                return { editorLabel: labelToEdit.current, onSaveLabel, setModalPage }
-            case PAGE_DELETE:
-                return { board, labelId: labelToEdit.current.id, setModalPage, setModalPage }
-            default:
-                break
+        try {
+            switch (modalPage) {
+                case PAGE_LIST:
+                    return { member, boardId: board._id, task, groupId, onEditLabel, labels: board.labels, setModalPage }
+                case PAGE_EDIT:
+                    return { editorLabel: labelToEdit.current, onSaveLabel, setModalPage }
+                case PAGE_DELETE:
+                    return { board, labelId: labelToEdit.current.id, setModalPage, setModalPage }
+                default:
+                    break
+            }
         }
+        catch (err) {
+            console.error('Failed resolve propls')
+        }
+
     }
 
     return board.labels && <div className='modal-label-picker'>
@@ -86,14 +102,19 @@ export function LabelsPicker({ id , cmpProps }) {
 
 
 function getDynamicModalPage(modalPage, props) {
-    switch (modalPage) {
-        case PAGE_LIST:
-            return <LabelPickerList {...props} />
-        case PAGE_EDIT:
-            return <LabelPickerEditor {...props} />
-        case PAGE_DELETE:
-            return <LabelPickerDelete {...props} />
-        default:
-            break
+    try {
+        switch (modalPage) {
+            case PAGE_LIST:
+                return <LabelPickerList {...props} />
+            case PAGE_EDIT:
+                return <LabelPickerEditor {...props} />
+            case PAGE_DELETE:
+                return <LabelPickerDelete {...props} />
+            default:
+                break
+        }
+    }
+    catch (err) {
+        console.error('Failed resolve page componnent')
     }
 }

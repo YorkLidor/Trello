@@ -15,16 +15,15 @@ export function AttachmentEditModal({ cmpProps, id }) {
     const editInputRef = useRef()
 
     async function editAttach() {
-        const value = editInputRef.current.value
-        if(!value) return
-        
         try {
+            const value = editInputRef.current.value
+            if (!value) return
             attachment.url = value
-            attachment.filename = value.substring(value.lastIndexOf('/')+1)
-            
+            attachment.filename = value.substring(value.lastIndexOf('/') + 1)
+
             const action = `${getActivityText(EDIT_ATTACH)} ${attachment.filename}`
             const activity = boardService.getActivity(member, { id: task.id, title: task.title }, action)
-            
+
             task.attachments = task.attachments.map(attach => attach.id === attachment.id ? attachment : attach)
             await boardService.saveTask(groupId, task, activity)
             closeModal(modals, id)
@@ -42,7 +41,7 @@ export function AttachmentEditModal({ cmpProps, id }) {
 
         <div className='attach-editor-box'>
             <label htmlFor='edit-attach' className='attach-editor-label'>Link</label>
-            <input ref={editInputRef} type='text' id='edit-attach' className='attach-edit-input' defaultValue={attachment.url}/>
+            <input ref={editInputRef} type='text' id='edit-attach' className='attach-edit-input' defaultValue={attachment.url} />
             <button className='save-attach' onClick={editAttach}>Update</button>
         </div>
     </div>

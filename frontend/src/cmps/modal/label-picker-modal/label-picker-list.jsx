@@ -13,22 +13,27 @@ export function LabelPickerList({ member, boardId, task, groupId, labels, onEdit
     const [taskLabelIds, setTaskLabels] = useState(task.labelIds ? task.labelIds : [])
 
     function handleChange({ target }) {
-        const labelId = target.dataset.id
-        let newLabelIds, action
+        try {
+            const labelId = target.dataset.id
+            let newLabelIds, action
 
-        if (!target.checked) {
-            action = `${getActivityText(REMOVE_LABEL)}`
-            newLabelIds = taskLabelIds.filter(labelIdToEdit => labelIdToEdit !== labelId)
-            setTaskLabels(newLabelIds)
-        } else {
-            action = `${getActivityText(ADD_LABEL)}`
-            newLabelIds = [...taskLabelIds, labelId]
-            setTaskLabels(newLabelIds)
+            if (!target.checked) {
+                action = `${getActivityText(REMOVE_LABEL)}`
+                newLabelIds = taskLabelIds.filter(labelIdToEdit => labelIdToEdit !== labelId)
+                setTaskLabels(newLabelIds)
+            } else {
+                action = `${getActivityText(ADD_LABEL)}`
+                newLabelIds = [...taskLabelIds, labelId]
+                setTaskLabels(newLabelIds)
+            }
+
+            task.labelIds = newLabelIds
+            const activity = boardService.getActivity(member, { id: task.id, title: task.title }, action)
+            saveTask(groupId, task, activity)
         }
-
-        task.labelIds = newLabelIds
-        const activity = boardService.getActivity(member, { id: task.id, title: task.title }, action)
-        saveTask(groupId, task, activity)
+        catch (err) {
+            console.error('Failed handle changes in assigned labels')
+        }
     }
 
     return labels.length > 0 && <>
@@ -62,7 +67,7 @@ export function LabelPickerList({ member, boardId, task, groupId, labels, onEdit
                                     {label.title}
                                 </div>
                                 <div className='edit-btn-box' onClick={() => onEditLabel(label)}>
-                                    
+
                                     <BiPencil
                                         className="edit-label-button"
                                     />
