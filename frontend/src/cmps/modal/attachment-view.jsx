@@ -1,11 +1,11 @@
 import { useState } from 'react'
 
-import { onRemoveAttachment } from '../../../store/actions/board.actions'
+import { onRemoveAttachment } from '../../store/actions/board.actions'
 
 import { BsArrowUpRight } from 'react-icons/bs'
 import { AiOutlineClose } from 'react-icons/ai'
 
-import { closeModal } from '../../../store/actions/app.actions'
+import { closeModal } from '../../store/actions/app.actions'
 import { useSelector } from 'react-redux'
 
 export function AttachmentView({ id, cmpProps }) {
@@ -14,12 +14,22 @@ export function AttachmentView({ id, cmpProps }) {
     const [deleteState, setDeleteState] = useState(false)
 
     function toggleDelete(state) {
-        setDeleteState(state)
+        try {
+            setDeleteState(state)
+        }
+        catch (err) {
+            console.error('Failed change to delete state')
+        }
     }
 
-    function onRemoveAttach(ev) {
-        onRemoveAttachment(user, boardId, groupId, task, attachment)
-        closeModal(modals, id)
+    function onRemoveAttach() {
+        try {
+            onRemoveAttachment(user, boardId, groupId, task, attachment)
+            closeModal(modals, id)
+        }
+        catch (err) {
+            console.error('Failed remove attachment')
+        }
     }
 
     return <div className="attachment-viewer" onClick={() => closeModal(modals, id)}>

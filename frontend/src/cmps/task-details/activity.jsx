@@ -13,19 +13,29 @@ export function Activity({ user, groupId, taskToEdit, onToggleModal }) {
     const elCommentRef = useRef()
 
     async function onSaveComment(ev) {
-        ev.preventDefault()
-        const value = ev.target[0].value
-        if (!value.length) return
+        try {
+            ev.preventDefault()
+            const value = ev.target[0].value
+            if (!value.length) return
 
-        ev.target[0].value = ''
-        elCommentRef.current.classList.toggle('comment-typing')
-        await boardService.addComment(user, groupId, taskToEdit, value)
+            ev.target[0].value = ''
+            elCommentRef.current.classList.toggle('comment-typing')
+            await boardService.addComment(user, groupId, taskToEdit, value)
+        }
+        catch (err) {
+            console.error('Failed save comment')
+        }
     }
 
     function handleEdit({ target }, state) {
-        target.dataset.state = state
-        if (target.value.length) return
-        elCommentRef.current.classList.toggle('comment-typing')
+        try {
+            target.dataset.state = state
+            if (target.value.length) return
+            elCommentRef.current.classList.toggle('comment-typing')
+        }
+        catch(err) {
+            console.error('failed handle changes in comment')
+        }
     }
 
     return <div className="task-activity-box flex column">
@@ -46,8 +56,8 @@ export function Activity({ user, groupId, taskToEdit, onToggleModal }) {
         </div>
         {
             !showDetails
-                ? < CommentList task={taskToEdit} onToggleModal={onToggleModal}/>
-                : <ActivityList task={taskToEdit} onToggleModal={onToggleModal}/>
+                ? < CommentList task={taskToEdit} onToggleModal={onToggleModal} />
+                : <ActivityList task={taskToEdit} onToggleModal={onToggleModal} />
         }
     </div>
 }

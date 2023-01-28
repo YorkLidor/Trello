@@ -5,7 +5,8 @@
     padding: 8px 4px 4px 12px;
     position: relative;
     z-index: 0;
-    background-color: #0000003d;
+    // background-color: #0000003d;
+    background-color: var(--board-header-background-color);
     color: var(--dynamic-text);
 
     .board-title-header {

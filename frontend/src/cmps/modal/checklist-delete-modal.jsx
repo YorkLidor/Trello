@@ -14,15 +14,20 @@ export function DeleteChecklistModal({ cmpProps, id }) {
 
     // Delete label from board labels
     async function onDeleteChecklist() {
-        closeModal(modals, id)
-        const newTask = boardService.removeChecklist(task, checklist)
-        
-        const action = `${getActivityText(REMOVE_CHECKLIST)} ${checklist.title}`
-        await saveTask(groupId, newTask, boardService.getActivity(user, newTask, action))
+        try {
+            closeModal(modals, id)
+            const newTask = boardService.removeChecklist(task, checklist)
+
+            const action = `${getActivityText(REMOVE_CHECKLIST)} ${checklist.title}`
+            await saveTask(groupId, newTask, boardService.getActivity(user, newTask, action))
+        }
+        catch (err) {
+            console.error('Failed delete checklist')
+        }
     }
 
     return <div className='delete-checklist-modal'>
-        <ModalHeader id={id} header={'Delete Checklist'} allowBack={false}/>
+        <ModalHeader id={id} header={'Delete Checklist'} allowBack={false} />
         <p className='delete-msg'>
             This will remove this checklist from all cards.
             There is no undo.

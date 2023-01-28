@@ -12,25 +12,40 @@ export function AttachmentList({ task, toggleModal, user, boardId, groupId }) {
 
 
     function removeAttachment(ev, attachment) {
-        ev.stopPropagation()
-        onRemoveAttachment(user, boardId, groupId, task, attachment)
+        try {
+            ev.stopPropagation()
+            onRemoveAttachment(user, boardId, groupId, task, attachment)
+        }
+        catch (err) {
+            console.error('Failed remove attachment')
+        }
     }
 
     async function onTaskUpdateCover(attachment) {
-        task = boardService.setCoverImage(task, attachment)
-        const action = attachment ? `${getActivityText(CHANGE_COVER_ATTACH)} ${attachment?.filename}` : `${getActivityText(REMOVE_COVER)}`
-        await saveTask(groupId, task, boardService.getActivity(user, task, action))
+        try {
+            task = boardService.setCoverImage(task, attachment)
+            const action = attachment ? `${getActivityText(CHANGE_COVER_ATTACH)} ${attachment?.filename}` : `${getActivityText(REMOVE_COVER)}`
+            await saveTask(groupId, task, boardService.getActivity(user, task, action))
+        }
+        catch (error) {
+            console.error('Failed update task cover')
+        }
     }
 
     async function onDragEnd({ source, destination }) {
-        if (!destination) return
-        const { index: destinationIdx } = destination
-        const { index: sourceIdx } = source
-        const attachments = utilService.reorder(task.attachments, sourceIdx, destinationIdx)
-        task.attachments = attachments
+        try {
+            if (!destination) return
+            const { index: destinationIdx } = destination
+            const { index: sourceIdx } = source
+            const attachments = utilService.reorder(task.attachments, sourceIdx, destinationIdx)
+            task.attachments = attachments
 
-        const action = `${getActivityText(CHANGE_TASK_LOCATION)} ${task.title}`
-        saveTask(groupId, { ...task }, boardService.getActivity(user, task, action))
+            const action = `${getActivityText(CHANGE_TASK_LOCATION)} ${task.title}`
+            saveTask(groupId, { ...task }, boardService.getActivity(user, task, action))
+        }
+        catch (err) {
+            console.error('Failed drag attachment')
+        }
     }
 
     return task?.attachments?.length > 0 && <DragDropContext onDragEnd={onDragEnd}>

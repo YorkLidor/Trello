@@ -181,13 +181,13 @@ export function Board() {
 
             <div ref={elModal} className='modal-container'>
                 {
-                    modal?.isOpen && <> <Modal
-
-                        modal={modal}
-                        cmpProps={modal.modalData.props}
-                        cmpType={modal.modalData.cmpType}
-                        className={modal.modalData.className}
-                    />
+                    modal?.isOpen && <>
+                        <Modal
+                            modal={modal}
+                            cmpProps={modal.modalData.props}
+                            cmpType={modal.modalData.cmpType}
+                            className={modal.modalData.className}
+                        />
                         <div className="all-screen-modal" onClick={() => closeModal(modals, modal.id)}>
                         </div>
                     </>

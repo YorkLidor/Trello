@@ -16,20 +16,35 @@ export function DateModal({ cmpProps, id }) {
     const [endDate, setEndDate] = useState(task?.dueDate?.date ? task.dueDate.date : new Date().now)
 
     function onChangeDate(date) {
-        setEndDate(date)
+        try {
+            setEndDate(date)
+        }
+        catch (err) {
+            console.error('Failed change date')
+        }
     }
 
     async function onSaveDate() {
-        if(!endDate) return
-        task.dueDate = {date: endDate.getTime(), done: false}
-        await saveTask(groupId, task, boardService.getActivity(user, task, `${getActivityText(CHANGE_DUE_DATE)} ${endDate}`))
-        closeModal(modals, id)
+        try {
+            if (!endDate) return
+            task.dueDate = { date: endDate.getTime(), done: false }
+            await saveTask(groupId, task, boardService.getActivity(user, task, `${getActivityText(CHANGE_DUE_DATE)} ${endDate}`))
+            closeModal(modals, id)
+        }
+        catch (err) {
+            console.error('Failed save date')
+        }
     }
 
     async function onRemoveDate() {
-        task.dueDate = null
-        await saveTask(groupId, task, boardService.getActivity(user, task, `${getActivityText(REMOVE_DUE_DATE)}`))
-        closeModal(modals, id)
+        try {
+            task.dueDate = null
+            await saveTask(groupId, task, boardService.getActivity(user, task, `${getActivityText(REMOVE_DUE_DATE)}`))
+            closeModal(modals, id)
+        }
+        catch (err) {
+            console.error('Failed remove date from task')
+        }
     }
 
 

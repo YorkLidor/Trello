@@ -5,8 +5,13 @@ export function TextareaEditor({ className, defaultText, onTextSubmit, onEditorC
 
     const [text, setText] = useState(defaultText)
     function onTextChange(ev) {
+        try {
         ev.stopPropagation()
         setText(ev.target.value)
+        }
+        catch(err) {
+            console.error('Failed handle changes in text editor')
+        }
     }
 
 

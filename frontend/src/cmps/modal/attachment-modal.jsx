@@ -13,7 +13,7 @@ import { ADD_ATTACH } from '../../store/actions/board.actions'
 export function AttachmentModal({ id, cmpProps }) {
     const modals = useSelector((storeState) => storeState.appModule.app.modals)
     const user = useSelector((storeState) => storeState.userModule.user)
-    const { boardId, groupId, task } = cmpProps
+    const { groupId, task } = cmpProps
 
     async function uploadAttach(ev) {
         closeModal(modals, id)

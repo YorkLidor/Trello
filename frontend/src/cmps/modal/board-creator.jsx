@@ -1,10 +1,10 @@
-import { useForm } from "../customHooks/useForm"
-import { boardService } from "../services/board.service"
+import { useForm } from "../../customHooks/useForm"
+import { boardService } from "../../services/board.service"
 import { AiOutlineClose } from "react-icons/ai"
 import { useEffect, useRef } from "react"
-import { closeModal } from "../store/actions/app.actions"
+import { closeModal } from "../../store/actions/app.actions"
 import { useState } from "react"
-import { useEffectUpdate } from "../customHooks/useEffectUpdate"
+import { useEffectUpdate } from "../../customHooks/useEffectUpdate"
 import { useSelector } from "react-redux"
 
 export function BoardCreator({ cmpProps }) {

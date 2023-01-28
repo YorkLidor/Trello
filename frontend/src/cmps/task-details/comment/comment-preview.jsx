@@ -13,17 +13,23 @@ export function CommentPreview({ comment, onToggleModal, task }) {
     const elCommentRef = useRef()
 
     function handleEdit({ target }) {
-        if (target.value.length) return
+        if (target?.value?.length) return
     }
 
     async function onSaveComment(ev) {
-        ev.preventDefault()
-        const value = ev.target[0].value
-        if (!value.length) return
-        
-        elCommentRef.current.classList.toggle('comment-typing')
-        setEditComment(false)
-        await boardService.addComment(user, groupId, task, value)
+        try {
+
+            ev.preventDefault()
+            const value = ev.target[0].value
+            if (!value.length) return
+            
+            elCommentRef.current.classList.toggle('comment-typing')
+            setEditComment(false)
+            await boardService.addComment(user, groupId, task, value)
+        }
+        catch(err) {
+            console.error('Failed saving comment')
+        }
     }
 
 

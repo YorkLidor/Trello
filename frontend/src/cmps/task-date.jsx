@@ -9,18 +9,23 @@ export function TaskDate({ task, onToggleModal }) {
     let dateDoneText = getDateDoneText()
 
     function getDateDoneText() {
-        const now = new Date().getTime()
+        try {
+            const now = new Date().getTime()
 
-        if (checked) return 'complete'
-        else if (task.dueDate.date < now) return 'overdue'
-        else if ((task.dueDate.date - now) / (60 * 60 * 1000) < 24) return 'due-soon'
-        return 'later'
+            if (checked) return 'complete'
+            else if (task.dueDate.date < now) return 'overdue'
+            else if ((task.dueDate.date - now) / (60 * 60 * 1000) < 24) return 'due-soon'
+            return 'later'
+        }
+        catch(err) {
+            console.error('failed get date done text')
+        }
     }
 
     return task.dueDate && <div className="info-tab flex-col">
         <span className="due-date-label">Due Date</span>
         <div className="flex row">
-            
+
             <label className="checkbox-date">
                 <input type='checkbox' id={`date-done`} checked={checked} onChange={ev => setChecked(ev.target.checked)} />
                 <span className='checkbox-container'>
