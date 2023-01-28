@@ -57,25 +57,25 @@ async function saveTaskTitle(board, groupId, task) {
 }
 
 async function copyGroup(board, groupId) {
-    console.log('board:', board)
-    console.log('groupId:', groupId)
-    const group = board.groups.find(g => g.id === groupId)
+    const group = JSON.stringify(board.groups.find(g => g.id === groupId))
     const groupIndex = board.groups.findIndex(g => g.id === groupId)
-    const newGroup = { ...group }
+    const newGroup = JSON.parse(group)
+    newGroup.tasks.forEach((task) => task.id = utilService.makeId())
     newGroup.id = utilService.makeId()
     board.groups.splice(groupIndex + 1, 0, newGroup)
-    board.groups[groupIndex] = group
     return board
 }
 
 async function copyTask(board, groupId, task) {
-    const group = board.groups.find(g => g.id === groupId)
-    const taskIndex = group.tasks.findIndex(t => t.id === task.id)
-    const newTask = { ...task }
+    const group = board.groups.find((g) => g.id === groupId)
+    console.log('group:', group)
+    let newTask = JSON.stringify(task)
+    newTask = JSON.parse(newTask)
     newTask.id = utilService.makeId()
-    group.tasks.splice(taskIndex + 1, 0, newTask)
-    const groupIndex = board.groups.findIndex(g => g.id === groupId)
-    board.groups[groupIndex] = group
+    const taskIdx = group.tasks.findIndex(t => t.id === task.id)
+    group.tasks.splice(taskIdx + 1, 0, newTask)
+    group.tasks[taskIdx] = task
+
     return board
 }
 
