@@ -102,8 +102,8 @@ function _buildCriteria(filterBy = {}) {
     if (filterBy.type !== 'All' && filterBy.type) {
         criteria.labels = filterBy.type
     }
-    if (filterBy.inStock) {
-        criteria.inStock = true
+    if (filterBy.isStarred) {
+        criteria.isStarred = true
     }
     if (filterBy.minPrice || filterBy.maxPrice) {
         criteria.price = {

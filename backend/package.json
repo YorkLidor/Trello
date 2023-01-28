@@ -1,5 +1,5 @@
 {
-  "name": "toys-backend",
+  "name": "shmello-backend",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
@@ -17,6 +17,7 @@
     "cryptr": "^6.0.3",
     "express": "^4.17.1",
     "express-session": "^1.17.1",
+    "firebase": "^9.16.0",
     "mongodb": "^4.9.1",
     "socket.io": "^4.5.2"
   }
