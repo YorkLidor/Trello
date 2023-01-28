@@ -1,10 +1,11 @@
 import { func } from "prop-types"
 import { storageService } from "./async-storage.service"
+import { httpService } from "./http.service"
 import { jUser } from "./jsons/board"
 import { utilService } from "./util.service"
 
 const STORAGE_KEY = 'userDB'
-const STORAGE_KEY_LOGGEDIN = 'loggedinUser'
+const STORAGE_KEY_LOGGEDIN_USER = 'loggedinUser'
 _createUsers()
 
 export const userService = {
@@ -22,19 +23,22 @@ function getById(userId) {
     return storageService.get(STORAGE_KEY, userId)
 }
 
-async function login({ username, password }) {
-    let user
+async function login(userCred) {
     try {
-        const users = await storageService.query(STORAGE_KEY)
-        user = users.find(user => user.username === username)
-        if (!user) throw new Error('Invalid login')
-        if (user.password !== password) throw new Error('Invalid password')
-        _setLoggedinUser(user)
-        return user
+        console.log('user', userCred);
+        const user = await httpService.post('auth/login', userCred)
+        if (user) {
+            return saveLocalUser(user)
+        }
     } catch (err) {
+        console.log('Error with login', err)
         throw err
     }
+}
 
+function saveLocalUser(user) {
+    sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user))
+    return user
 }
 
 async function signup({ username, password, fullname, imgUrl = "http://some-img.jpg", mentions = [] }) {
@@ -48,16 +52,16 @@ async function signup({ username, password, fullname, imgUrl = "http://some-img.
 }
 
 function logout() {
-    return sessionStorage.removeItem(STORAGE_KEY_LOGGEDIN)
+    return sessionStorage.removeItem(STORAGE_KEY_LOGGEDIN_USER)
 }
 
 function getLoggedinUser() {
-    return JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN))
+    return JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER))
 }
 
 function _setLoggedinUser(user) {
     const userToSave = { _id: user._id, fullname: user.fullname, email: user.email, imgUrl: user.imgUrl }
-    sessionStorage.setItem(STORAGE_KEY_LOGGEDIN, JSON.stringify(userToSave))
+    sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(userToSave))
     return userToSave
 }
 
