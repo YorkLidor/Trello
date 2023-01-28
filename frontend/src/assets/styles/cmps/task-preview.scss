@@ -1,0 +1,289 @@
+@include for-narrow-layout {
+    .is-dragging {
+        transform: rotate(5deg);
+    }
+}
+
+.task-preview-container {
+    background-position: 50%;
+    background-size: cover;
+    background-color: $clr6;
+    border-radius: 3px;
+    box-shadow: var(--ds-shadow-raised, 0 1px 0 $clr23);
+    margin-bottom: rem(8px);
+    position: relative;
+
+    &.absolute {
+        position: absolute;
+
+    }
+
+    &.full {
+        &.img {
+
+            ::before {
+                background: linear-gradient(180deg, #0000, #00000080);
+                mix-blend-mode: normal;
+            }
+
+            .task-preview.full {
+                background: linear-gradient(180deg, #00000080, #000);
+
+
+
+                .task-body {
+                    color: #ffff;
+                }
+
+                &::before {
+                    background: linear-gradient(180deg,#0000,#00000080);
+                    content: "";
+                    height: 32px;
+                    left: 0;
+                    mix-blend-mode: normal;
+                    position: absolute;
+                    right: 0;
+                    top: -32px;
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+
+.task-preview {
+    color: var(--ds-text, inherit);
+    cursor: pointer;
+    display: block;
+    padding: rem(6px) rem(8px) rem(2px);
+    max-width: 300px;
+    min-height: 20px;
+    position: relative;
+    z-index: 5;
+
+    &.is-dragging {
+        transform: rotate(5deg);
+    }
+
+    &:hover:not(.full) {
+        background-color: #f4f5f7;
+    }
+
+
+
+    .task-body {
+        display: block;
+        width: 100%;
+        color: $clr21;
+        padding: 0;
+        font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans, Ubuntu, Droid Sans, Helvetica Neue, sans-serif;
+        font-size: rem(14px);
+        margin: 0 0 4px;
+        color: #172b4d;
+        word-wrap: break-word;
+        clear: both;
+        overflow: hidden;
+        line-height: rem(20px);
+    }
+
+    &.full {
+        .task-body {
+            font-size: rem(16px);
+            font-weight: 500;
+            line-height: rem(20px);
+        }
+    }
+
+
+
+
+}
+
+.edit-task-icon-container {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    border-radius: 3px;
+    background-color: #f4f5f7;
+    opacity: 0.8;
+    align-items: center;
+    height: 28px;
+    justify-content: center;
+    width: 28px;
+    display: none;
+
+    &:hover {
+        opacity: 1;
+
+        .edit-task-icon {
+            opacity: 0.8;
+        }
+    }
+
+    .edit-task-icon {
+        opacity: 0.6;
+    }
+
+    &.hidden-icon {
+        display: flex;
+        display: block;
+    }
+
+
+
+}
+
+
+
+.cover-color {
+    align-items: flex-end;
+    background-size: 100% auto;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    display: flex;
+    min-height: 32px;
+    overflow: hidden;
+
+    @include background-image;
+}
+
+.labels-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    padding-top: 5px;
+    width: 100%;
+    margin-bottom: 0;
+
+    &.labels-large {
+        margin-bottom: 4px;
+    }
+
+    .labels-preview {
+        height: 8px;
+        border-radius: 4px;
+        min-width: 40px;
+        transition: min-width 0.45s, ease-out 0.45s;
+        display: flex;
+        align-items: center;
+        padding-inline-end: 8px;
+    }
+
+    .labels-large {
+        height: 16px;
+        min-width: 56px;
+    }
+
+    .lable-circle {
+        border-radius: 50%;
+        height: 8px;
+        margin: 4px;
+        width: 8px;
+    }
+
+    .label-title-task-preview {
+        font-size: 12px;
+        color: #172b4d;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+}
+
+.task-preview-drag-container {
+    &.is-dragging {
+        transition: rotate(5deg);
+    }
+}
+
+.add-card-form-container {
+    padding-bottom: rem(8px);
+
+    &.add-card-close {
+        display: none;
+    }
+
+    .task-preview-container {
+        .textarea-container {
+            textarea {
+                padding: 5px 7px;
+                color: #172b4d;
+            }
+
+            .form-textarea {
+                overflow: hidden;
+                overflow-wrap: break-word;
+                resize: none;
+                height: 54px;
+                border: none;
+                border-radius: 3px;
+                width: 100%;
+
+                &:focus {
+                    outline: none;
+                }
+            }
+        }
+
+
+    }
+
+    .btn-controls-container {
+        display: flex;
+        align-items: center;
+
+        .add-btn {
+            @include button-filled(#0079bf, #fff);
+            height: 32px;
+        }
+
+        .btn-cancel {
+            @include button-filled(rgba(255, 255, 255, 0), #6b778c);
+            font-size: 2rem;
+            padding: 0;
+            height: 28px;
+            width: 28px;
+
+            &:hover {
+                color: var(--ds-icon, #172b4d);
+            }
+        }
+    }
+}
+
+.quick-edit-container {
+    .task-preview-container {
+        &:hover {
+            .task-preview:hover {
+                background-color: inherit;
+            }
+        }
+    }
+}
+
+.quick-edit-container {
+    .edit-task-icon-container.hidden-icon {
+        display: none;
+        opacity: 0;
+    }
+
+    .add-btn {
+        @include button-filled(#0079bf, #fff);
+        height: 32px;
+        position: absolute;
+        left: 0;
+        bottom: -45px;
+        padding: 6px 24px;
+    }
+
+    .task-preview-container {
+
+        box-shadow: none;
+
+        &:hover {
+            .edit-task-icon-container.hidden-icon {
+                display: none;
+                opacity: 0;
+            }
+        }
+
+    }
+}

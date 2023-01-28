@@ -1,0 +1,33 @@
+.activity-item {
+    position: relative;
+    min-height: 32px;
+    padding: 8px 0;
+
+    .activity-member-logo {
+        @include user-logo-circle;
+        position: absolute;
+        left: -40px;
+        top: 10px;
+
+        margin-inline-end: 8px;
+    }
+
+    .activity-box {
+        position: relative;
+
+        .activity-member-name {
+            font-weight: 700;
+            margin-inline-end: 5px;
+            font-size: 14px;
+        }
+
+        .activity-txt {
+
+            font-size: 14px;
+        }
+    }
+
+    .activity-time-txt {
+        font-size: 12px;
+    }
+}

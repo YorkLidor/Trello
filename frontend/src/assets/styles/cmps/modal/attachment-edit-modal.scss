@@ -1,0 +1,26 @@
+.attach-modal-box {
+    .attach-editor-box {
+        padding: 0 12px 12px;
+        .attach-editor-label {
+            margin-block-start: 4px;
+            font-size: 12px;
+            font-weight: 700;
+            line-height: 16px;
+            margin-block-end: 4px;
+            color: #5e6c84;
+        }
+
+        .attach-edit-input {
+            width: 100%;
+            margin: 4px 0 12px;
+        }
+
+        .attach-edit-input:focus {
+            @include input-focus;
+        }
+
+        .save-attach {
+            @include button-filled($button-filled , #FFF);
+        }
+    }
+}
