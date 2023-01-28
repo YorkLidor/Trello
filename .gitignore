@@ -29,3 +29,6 @@ frontend/node_modules/.cache/.eslintcache
 frontend/node_modules/.cache/.eslintcache
 frontend/node_modules/.cache/.eslintcache
 frontend/node_modules/.bin/browserslist
+
+backend/logs/backend.log
+backend/logs/backend.log
