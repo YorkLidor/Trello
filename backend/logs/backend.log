@@ -190,3 +190,44 @@
 28.1.2023, 15:22:25 - DEBUG - Connect to DB------------- | board_db (userId: 63d50f04973632ae413a7c1c)
 28.1.2023, 15:36:53 - INFO - Server is running on port: 3030 
 28.1.2023, 15:37:19 - INFO - Server is running on port: 3030 
+28.1.2023, 15:47:26 - DEBUG - auth.service - login with username: shauli 
+28.1.2023, 15:47:26 - DEBUG - Connect to DB------------- | board_db 
+28.1.2023, 15:47:26 - DEBUG - debug | shauli 
+28.1.2023, 15:47:26 - ERROR - Failed to Login Invalid username or password 
+28.1.2023, 15:47:29 - DEBUG - debug | shauli 
+28.1.2023, 15:47:29 - DEBUG - auth.service - login with username: shauli 
+28.1.2023, 15:47:29 - ERROR - Failed to Login Invalid username or password 
+28.1.2023, 15:47:32 - DEBUG - auth.service - login with username: shauli 
+28.1.2023, 15:47:32 - DEBUG - debug | shauli 
+28.1.2023, 15:47:32 - ERROR - Failed to Login Invalid username or password 
+28.1.2023, 15:47:33 - DEBUG - debug | shauli 
+28.1.2023, 15:47:33 - DEBUG - auth.service - login with username: shauli 
+28.1.2023, 15:47:33 - ERROR - Failed to Login Invalid username or password 
+28.1.2023, 15:47:34 - DEBUG - auth.service - login with username: shauli 
+28.1.2023, 15:47:34 - DEBUG - debug | shauli 
+28.1.2023, 15:47:34 - ERROR - Failed to Login Invalid username or password 
+28.1.2023, 15:47:34 - DEBUG - auth.service - login with username: shauli 
+28.1.2023, 15:47:34 - DEBUG - debug | shauli 
+28.1.2023, 15:47:34 - ERROR - Failed to Login Invalid username or password 
+28.1.2023, 15:47:44 - DEBUG - auth.service - login with username: shauli 
+28.1.2023, 15:47:44 - DEBUG - debug | shauli 
+28.1.2023, 15:47:44 - ERROR - Failed to Login Invalid username or password 
+28.1.2023, 15:48:26 - INFO - Server is running on port: 3030 
+28.1.2023, 15:48:35 - DEBUG - auth.service - login with username: shauli 
+28.1.2023, 15:48:35 - DEBUG - Connect to DB------------- | board_db 
+28.1.2023, 15:48:35 - DEBUG - debug | shauli 
+28.1.2023, 15:48:35 - ERROR - Failed to Login Invalid username or password 
+28.1.2023, 15:48:52 - DEBUG - auth.service - login with username: shauli 
+28.1.2023, 15:48:52 - DEBUG - debug | shauli 
+28.1.2023, 15:48:52 - ERROR - Failed to Login Invalid username or password 
+28.1.2023, 15:49:31 - DEBUG - auth.service - login with username: shauli 
+28.1.2023, 15:49:31 - DEBUG - debug | shauli 
+28.1.2023, 15:49:31 - ERROR - Failed to Login Invalid username or password 
+28.1.2023, 15:53:21 - DEBUG - auth.service - login with username: shauli 
+28.1.2023, 15:53:21 - DEBUG - debug | shauli 
+28.1.2023, 15:53:21 - ERROR - Failed to Login Invalid username or password 
+28.1.2023, 15:56:39 - DEBUG - auth.service - login with username: shauli 
+28.1.2023, 15:56:39 - DEBUG - debug | shauli 
+28.1.2023, 15:56:39 - INFO - User login:  | {"_id":"63d529673ea947a3c4fe70ae","fullname":"Shauli","username":"shauli","email":"shauli@gmail.com","imgUrl":"http://res.cloudinary.com/dk2geeubr/image/upload/v1674746367/qvbgfpwpobofvl5f6ocr.jpg","mentions":[]} 
+28.1.2023, 15:56:39 - DEBUG -  to get boards |  (userId: 63d529673ea947a3c4fe70ae)
+28.1.2023, 15:56:49 - DEBUG -  to get boards |  (userId: 63d529673ea947a3c4fe70ae)
