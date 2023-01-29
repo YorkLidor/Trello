@@ -50,7 +50,7 @@ export function TaskPreview({ task, groupId, isDragging, isQuickEdit }) {
         let style = task?.cover?.style
         if (style?.backgroundImage) style = { ...style, height: '107.8px' }
         if (task.cover?.fullSize) style = { ...style, color: task.cover.isDark ? '#273b5b' : '#fcfcfc' }
-        if (task.cover?.fullSize) console.log(style)
+        if (task.cover?.fullSize) console.log(task?.cover)
         return style
     }
 
