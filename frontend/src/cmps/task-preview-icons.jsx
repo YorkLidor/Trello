@@ -5,6 +5,17 @@ import { TbCheckbox, TbMessageCircle2 } from 'react-icons/tb'
 export function TaskPreviewIcons({ board, task }) {
     const membersToRender = board.members.filter((member) => task.memberIds?.includes(member._id))
 
+    function calculateTodos(task) {
+        const { doneTodos, todos } = task.checklists.reduce((acc, checklists) => {
+            checklists.todos.forEach(todo => {
+                if (todo.isDone) acc.doneTodos++
+                acc.todos++
+            })
+            return acc
+        }, { doneTodos: 0, todos: 0 })
+        return doneTodos + '/' + todos
+    }
+
     return <section className="task-preview-icons-container">
 
 
@@ -25,14 +36,11 @@ export function TaskPreviewIcons({ board, task }) {
                     </section>
                 )}
 
-                {task?.checklists && task?.checklists?.length > 0 && (
+                {task?.checklists && (
                     <section className="attachments-container">
-                        {console.log('task:', task?.checklists)}
+                        {console.log('checklists:', JSON.stringify(task?.checklists.todos))}
                         <TbCheckbox className="" />
-                        <span className='attachment-number'>{`${task.checklists.reduce((acc, todo) => {
-                            if (todo.isDone) return acc++
-                            else return acc
-                        }, 0)}/${task.checklists.length}`}</span>
+                        <span className='attachment-number'>{`${calculateTodos(task)}`}</span>
                     </section>
                 )}
             </section>
