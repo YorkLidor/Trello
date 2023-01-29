@@ -24,9 +24,7 @@ export function GroupList({ onToggleModal }) {
     }, [])
 
     function onUpdateGroup(group) {
-        const groups = board.groups.map(g => g.id === group.id ? group : g)
-        board.groups = groups
-        console.log('group:', group)
+        board.groups = group
         setBoard({ ...board })
     }
 
@@ -72,21 +70,19 @@ export function GroupList({ onToggleModal }) {
 
         if (type === 'task-list') {
             const sourceGroup = boardService.getGroupById(board, destinationId)
-            const destinationGroups = boardService.getGroupById(board, sourceId)
+            const destinationGroup = boardService.getGroupById(board, sourceId)
             const tasks = sourceGroup.tasks
 
             if (sourceId === destinationId) {
                 sourceGroup.tasks = utilService.reorder(tasks, sourceIdx, destinationIdx)
-                socketService.emit(SOCKET_EMIT_UPDATE_GROUP, sourceGroup)
-                return setBoard(board)
             } else {
-                sourceGroup.tasks = dndService.swapItemBetweenLists(destinationGroups, sourceGroup, sourceIdx, destinationIdx)
-                return saveBoard(board)
+                sourceGroup.tasks = dndService.swapItemBetweenLists(destinationGroup, sourceGroup, sourceIdx, destinationIdx)
             }
         } else if (type === 'group-list') {
             board.groups = utilService.reorder(board.groups, sourceIdx, destinationIdx)
-            return saveBoard(board)
         }
+        socketService.emit(SOCKET_EMIT_UPDATE_GROUP, board.groups)
+        setBoard(board)
     }
 
     return <DragDropContext onDragEnd={onDragEnd} >

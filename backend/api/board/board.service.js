@@ -82,10 +82,6 @@ async function addNewTask(task, boardId, groupId) {
     try {
         console.log('boardId', boardId);
         const collection = await dbService.getCollection(collectionName)
-        // const board = await collection.findOne({ "_id": ObjectId(boardId) })
-        // board.chatHistory = board.chatHistory ? [...board.chatHistory, msg] : [msg]
-        // await collection.replaceOne({ '_id': ObjectId(boardId) }, board)
-        // Can be done with $push!
         await collection.updateOne({ '_id': ObjectId(boardId), "groups.id": groupId }, { $push: { "groups.$.tasks": { ...task } } })
     } catch (err) {
         console.log(`ERROR: cannot add task to board`)
@@ -103,14 +99,15 @@ async function addNewGroup(group, boardId) {
     }
 }
 
-async function updateGroup(group, boardId) {
+async function updateGroup(groups, boardId) {
     try {
         const collection = await dbService.getCollection(collectionName)
-        await collection.updateOne({ '_id': ObjectId(boardId), 'groups.id': group.id },
-            { $set: { "groups.$": { ...group } } }
+        const groupIds = groups.map(group => group.id);
+        await collection.updateMany({ '_id': ObjectId(boardId), 'groups.id': { $in: groupIds } },
+            { $set: { "groups.$": { $each: groups } } }
         )
     } catch (err) {
-        console.log(`ERROR: cannot update group to board`)
+        console.log(`ERROR: cannot update groups to board`)
         throw err;
     }
 }
