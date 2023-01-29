@@ -78,8 +78,6 @@ export function TaskPreviewIcons({ board, task }) {
                     >
                         {utilService.timestampToDate(task.dueDate.date)}
                     </div>
-
-                    <IoIosArrowDown className="date-modal-button" />
                 </section>
                 }
             </section>
