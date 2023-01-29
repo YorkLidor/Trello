@@ -285,17 +285,7 @@ export function TaskDetails() {
                     <p
                         className="header-subtitle"
                     >
-                        <span
-                            className='board-name'
-                        >
-                            {board.title}
-                        </span>
-                        in list
-                        <span
-                            className='group-name'
-                        >
-                            {group.title}
-                        </span>
+                        <span className='board-name' >{board.title} </span>in list <span className='group-name'>{group.title}</span>
                     </p>
                 </div>
 

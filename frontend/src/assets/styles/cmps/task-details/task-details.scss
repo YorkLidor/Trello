@@ -26,9 +26,9 @@
 .task-details {
     background-color: #fff;
 
+    color: $clr_font_blue;
     @include for-none-native-layout-details {
         position: relative;
-        color: $clr_font_blue;
 
         width: 768px;
         min-height: 800px;
@@ -60,7 +60,7 @@
     display: flex;
     top: 0;
     right: 0;
-    margin: 4px;
+    margin: 8px;
 
     height: 36px;
     width: 36px;
