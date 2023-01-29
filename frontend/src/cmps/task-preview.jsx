@@ -27,7 +27,7 @@ export function TaskPreview({ task, groupId, isDragging, isQuickEdit }) {
         textAreaRef.current?.select()
     }, []);
 
-    async function onChaneTitle(ev) {
+    async function onChangeTitle(ev) {
         ev.preventDefault()
         ev.stopPropagation()
         try {
@@ -49,6 +49,7 @@ export function TaskPreview({ task, groupId, isDragging, isQuickEdit }) {
     function getStyle() {
         let style = task?.cover?.style
         if (style?.backgroundImage) style = { ...style, height: '107.8px' }
+        if (task.cover?.fullSize) style = { ...style, color: task.cover.isDark ? '#273b5b' : '#fcfcfc' }
         return style
     }
 
@@ -103,6 +104,7 @@ export function TaskPreview({ task, groupId, isDragging, isQuickEdit }) {
 
             <li
                 className={`task-preview ${task?.cover?.fullSize && !isQuickEdit ? 'full' : ''}`}
+                style={{ color: taskStyle?.color && task.cover.fullSize ? taskStyle.color : '' }}
 
             >
                 {(taskLabels && !task?.cover?.fullSize) &&
@@ -120,7 +122,7 @@ export function TaskPreview({ task, groupId, isDragging, isQuickEdit }) {
                 }
 
                 {isQuickEdit && (
-                    <form onSubmit={onChaneTitle} className="add-card-form-container" onClick={(ev) => ev.stopPropagation()}>
+                    <form onSubmit={onChangeTitle} className="add-card-form-container" onClick={(ev) => ev.stopPropagation()}>
                         <div className="task-preview-container">
                             <div className="textarea-container">
                                 <textarea

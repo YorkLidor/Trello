@@ -13,7 +13,7 @@
     align-items: center;
     gap: 10px;
     margin-left: -2px;
-    padding-bottom: 4px;
+    padding-bottom: 0;
     max-width: 100%;
     color: var(--ds-text-subtle, #5e6c84);
     max-width: 100%;
@@ -31,7 +31,9 @@
       justify-content: center;
       border-radius: 3px;
       color: #5e6c84;
-      padding: 0;
+      padding: 2px;
+      margin: 0 4px 4px 0;
+      gap: 2px;
 
       .attachment-icon {
         height: 13px;

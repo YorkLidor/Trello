@@ -27,6 +27,7 @@ export const boardService = {
     getAttachment,
     getGroupById,
     addComment,
+    saveComment,
     removeTask,
     copyTask,
     getCoverAttachStyle,
@@ -210,6 +211,7 @@ async function addComment(user, groupId, task, text) {
         }
 
     }
+    if(!task.comments) task.comments = []
     task.comments = task.comments ? [...task.comments, comment] : [comment]
 
     comment.task = {
@@ -217,6 +219,12 @@ async function addComment(user, groupId, task, text) {
         title: task.title
     }
 
+    await saveTask(groupId, task, comment)
+}
+
+async function saveComment(groupId, task, comment) {
+    comment.createdAt = Date.now()
+    task.comments = task.comments.map(c => c.id === comment.id ? comment : c)
     await saveTask(groupId, task, comment)
 }
 

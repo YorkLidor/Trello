@@ -34,7 +34,6 @@ export const MODAL_REMOVE_COMMENT = 'MODAL_REMOVE_COMMENT'
 
 
 export function Modal({ modal, cmpProps, cmpType, className }) {
-    console.log('cmpProps:', cmpProps)
     return modal.isOpen && <div className={className ? className : 'modal'}>
         <ModalCmp id={modal.id} cmpProps={cmpProps} cmpType={cmpType} />
     </div>

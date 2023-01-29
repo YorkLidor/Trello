@@ -108,7 +108,13 @@ export async function saveTask(groupId, task, activity) {
         const tasks = group.tasks?.map(t => t.id === task.id ? task : t)
         group.tasks = tasks
 
-        board.activities.unshift(activity)
+        if(!board.activities) board.activities = []
+
+        const activityIdx = board.activities.findIndex(act => act.id === activity.id)
+        if(activityIdx === -1) board.activities.unshift(activity)
+        else {
+            board.activities[activityIdx] = activity
+        }
         await saveBoard(board)
     }
     catch (error) {
