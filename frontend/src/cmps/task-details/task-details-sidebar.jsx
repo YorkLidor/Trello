@@ -16,7 +16,7 @@ export function TaskDetailsSideBar({ task, onToggleModal }) {
         try {
             task.memberIds.push(user._id)
         }
-        catch(error){
+        catch (error) {
             console.error('Failed join board')
         }
     }
@@ -39,6 +39,10 @@ export function TaskDetailsSideBar({ task, onToggleModal }) {
             <button className='button-link' onClick={(ev) => onToggleModal(ev, MODAL_TASK_DATE)}><HiOutlineClock data-type='icon' className="sidebar-icon" /><span className="nav-btn-txt" data-type='icon'>Dates</span></button>
             <button className='button-link' onClick={(ev) => onToggleModal(ev, MODAL_ATTACH)}><RiAttachment2 data-type='icon' className="sidebar-icon" /><span className="nav-btn-txt" data-type='icon'>Attachment</span></button>
             {!task?.cover && <button className="button-link btn-cover" onClick={(ev) => onToggleModal(ev, MODAL_TASK_COVER)}><RiInboxFill data-type='icon' className="sidebar-icon" /><span className="nav-btn-txt" data-type='icon'>Cover</span></button>}
+        </nav>
+            <span className="sidebar-title">Actions</span>
+        <nav className="window-sidebar flex column">
+            <a className='button-link' href='#'>Move</a>
         </nav>
     </div>
 }
