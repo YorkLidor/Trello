@@ -108,10 +108,10 @@ export async function saveTask(groupId, task, activity) {
         const tasks = group.tasks?.map(t => t.id === task.id ? task : t)
         group.tasks = tasks
 
-        if(!board.activities) board.activities = []
+        if (!board.activities) board.activities = []
 
         const activityIdx = board.activities.findIndex(act => act.id === activity.id)
-        if(activityIdx === -1) board.activities.unshift(activity)
+        if (activityIdx === -1) board.activities.unshift(activity)
         else {
             board.activities[activityIdx] = activity
         }
@@ -167,7 +167,7 @@ export async function saveDescription(task, boardId, groupId, text) {
 }
 
 export function getActivityText(action) {
-    switch(action) {
+    switch (action) {
         case ADD_CHECKLIST:
             return 'added Checklist'
         case EDIT_ATTACH:
@@ -216,5 +216,8 @@ export function getActivityText(action) {
             return `added comment`
         case REMOVE_COMMENT:
             return `deleted comment`
+        default:
+            break
+
     }
 }

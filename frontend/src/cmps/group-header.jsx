@@ -25,7 +25,7 @@ export function GroupHeader({ group, board, onRemoveGroup, onToggleModal, onCopy
     async function onSaveTitle() {
         setEditClass('')
         if (!groupToEdit.title) {
-            setGroupToEdit(group)
+            setGroupToEdit(group) 
             return
         }
         if (groupToEdit.title === group.title) return

@@ -11,7 +11,8 @@ module.exports = {
     update,
     add,
     addNewTask,
-    addNewGroup
+    addNewGroup,
+    updateGroup
 }
 
 const collectionName = 'board'
@@ -94,11 +95,22 @@ async function addNewTask(task, boardId, groupId) {
 
 async function addNewGroup(group, boardId) {
     try {
-        console.log('boardId', boardId);
         const collection = await dbService.getCollection(collectionName)
         await collection.updateOne({ '_id': ObjectId(boardId) }, { $push: { "groups": { ...group } } })
     } catch (err) {
         console.log(`ERROR: cannot add group to board`)
+        throw err;
+    }
+}
+
+async function updateGroup(group, boardId) {
+    try {
+        const collection = await dbService.getCollection(collectionName)
+        await collection.updateOne({ '_id': ObjectId(boardId), 'groups.id': group.id },
+            { $set: { "groups.$": { ...group } } }
+        )
+    } catch (err) {
+        console.log(`ERROR: cannot update group to board`)
         throw err;
     }
 }
