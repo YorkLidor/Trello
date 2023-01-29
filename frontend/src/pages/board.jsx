@@ -19,6 +19,7 @@ import { useEffectUpdate } from "../customHooks/useEffectUpdate";
 import { Spinner } from "../cmps/spinner";
 import { socketService, SOCKET_EMIT_SET_BOARD, SOCKET_EVENT_ADD_GROUP, SOCKET_EVENT_ADD_TASK } from "../services/socket.service";
 import { func } from "prop-types";
+import { setThemeColor } from "../services/color.service";
 
 export function Board() {
     const user = useSelector(state => state.userModule.user)
@@ -37,9 +38,9 @@ export function Board() {
     useEffect(() => {
         socketService.on(SOCKET_EVENT_ADD_TASK, onIncomingNewTask)
         socketService.on(SOCKET_EVENT_ADD_GROUP, onIncomingNewGroup)
-        return () => { 
-            socketService.off(SOCKET_EVENT_ADD_TASK, onIncomingNewTask) 
-            socketService.off(SOCKET_EVENT_ADD_GROUP, onIncomingNewGroup) 
+        return () => {
+            socketService.off(SOCKET_EVENT_ADD_TASK, onIncomingNewTask)
+            socketService.off(SOCKET_EVENT_ADD_GROUP, onIncomingNewGroup)
         }
     }, [])
 
@@ -60,6 +61,7 @@ export function Board() {
     useEffectUpdate(() => {
         document.body.style.backgroundColor = board?.style?.backgroundColor
         document.body.style.backgroundImage = board?.style?.backgroundImage
+        setThemeColor(board?.style)
     }, [board])
 
     function onIncomingNewTask({ task, groupId }) {

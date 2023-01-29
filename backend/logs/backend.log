@@ -1596,3 +1596,554 @@
 29.1.2023, 7:01:38 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
 29.1.2023, 7:01:40 - INFO - New group from socket [id: _2Dnn8kmVE0qHkLdAAAH], emitting group NozF8z 
 29.1.2023, 7:01:45 - INFO - New task from socket [id: _2Dnn8kmVE0qHkLdAAAH], emitting task {"task":{"id":"ulEfr3","title":"fsdfsdf"},"groupId":"NozF8z"} 
+29.1.2023, 12:50:40 - INFO - Socket disconnected [id: undefined] 
+29.1.2023, 12:50:41 - INFO - New connected socket [id: n8Hg6JZ00A7wD7WhAAAX] 
+29.1.2023, 12:50:42 - INFO - Setting socket.userId = 63d53855a63ebfe2c5061453 for socket [id: n8Hg6JZ00A7wD7WhAAAX] 
+29.1.2023, 12:50:42 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 12:50:42 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 12:51:03 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 12:51:03 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 12:51:04 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 12:51:04 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 12:52:50 - INFO - Socket disconnected [id: undefined] 
+29.1.2023, 12:52:51 - INFO - New connected socket [id: xdXc-QgkqFZfyIyVAAAZ] 
+29.1.2023, 12:52:51 - INFO - Setting socket.userId = 63d53855a63ebfe2c5061453 for socket [id: xdXc-QgkqFZfyIyVAAAZ] 
+29.1.2023, 12:52:51 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 12:52:51 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 12:55:24 - INFO - Socket disconnected [id: undefined] 
+29.1.2023, 12:55:25 - INFO - New connected socket [id: VHF8Z_KYLp8khWolAAAb] 
+29.1.2023, 12:55:34 - DEBUG - auth.service - login with username: matanad (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 12:55:34 - DEBUG - debug | matanad (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 12:55:34 - INFO - User login:  | {"_id":"63d53887a63ebfe2c5061454","fullname":"Matan Adi","username":"matanad","email":"matan@gmail.com","imgUrl":"https://ca.slack-edge.com/T043N4KE97B-U045HE0SWR3-89a31180034c-512","mentions":[]} (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 12:55:39 - INFO - Broadcasting event: admin-update (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 12:55:39 - INFO - Emit to all (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 12:55:39 - INFO - Broadcasting event: admin-update (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 12:55:39 - INFO - Emit to all (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 12:55:47 - INFO - New task from socket [id: xdXc-QgkqFZfyIyVAAAZ], emitting task {"task":{"id":"O7VsFa","title":"כדגכד"},"groupId":"g103"} 
+29.1.2023, 12:55:49 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 12:55:49 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 12:55:52 - INFO - Broadcasting event: admin-update (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 12:55:52 - INFO - Emit to all (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 13:01:46 - INFO - Socket disconnected [id: undefined] 
+29.1.2023, 13:01:47 - INFO - New connected socket [id: 9klECGFs6JYXEl3aAAAd] 
+29.1.2023, 13:01:48 - INFO - Setting socket.userId = 63d53855a63ebfe2c5061453 for socket [id: 9klECGFs6JYXEl3aAAAd] 
+29.1.2023, 13:01:48 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 13:01:48 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 13:01:58 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 13:01:58 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 13:02:00 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 13:02:00 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 13:02:00 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 13:02:00 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 13:02:02 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 13:02:02 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 13:02:07 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 13:02:07 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 13:02:08 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 13:02:08 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 13:02:08 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 13:02:08 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 13:02:09 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 13:02:09 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 13:02:10 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 13:02:10 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 13:02:14 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 13:02:14 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 13:02:15 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 13:02:15 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 13:02:15 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 13:02:15 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 13:02:16 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 13:02:16 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 13:02:17 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 13:02:17 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 13:02:18 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 13:02:18 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 13:02:23 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 13:02:23 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 13:02:23 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 13:02:23 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 13:02:23 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 13:02:23 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 13:02:24 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 13:02:24 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 13:02:33 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 13:02:33 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 13:02:33 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 13:02:33 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 13:02:34 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 13:02:34 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 13:02:35 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 13:02:35 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 13:02:50 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 13:02:50 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 13:02:51 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 13:02:51 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 13:03:22 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 13:03:22 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 13:03:27 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 13:03:27 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 13:03:30 - INFO - Socket disconnected [id: undefined] 
+29.1.2023, 13:03:31 - INFO - New connected socket [id: ZpaMT21tjF7KWq8LAAAf] 
+29.1.2023, 13:03:31 - INFO - Setting socket.userId = 63d53855a63ebfe2c5061453 for socket [id: ZpaMT21tjF7KWq8LAAAf] 
+29.1.2023, 13:03:31 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 13:03:31 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 13:07:19 - DEBUG - auth.service - login with username: shauli 
+29.1.2023, 13:07:19 - DEBUG - debug | shauli 
+29.1.2023, 13:07:19 - INFO - User login:  | {"_id":"63d53855a63ebfe2c5061453","fullname":"Shauli","username":"shauli","email":"shauli@gmail.com","imgUrl":"http://res.cloudinary.com/dk2geeubr/image/upload/v1674746367/qvbgfpwpobofvl5f6ocr.jpg","mentions":[]} 
+29.1.2023, 13:07:22 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 13:07:22 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 13:07:23 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 13:07:23 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 13:07:33 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 13:07:33 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 13:07:36 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 13:07:36 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 13:28:26 - DEBUG - auth.service - login with username: shauli 
+29.1.2023, 13:28:26 - DEBUG - debug | shauli 
+29.1.2023, 13:28:26 - INFO - User login:  | {"_id":"63d53855a63ebfe2c5061453","fullname":"Shauli","username":"shauli","email":"shauli@gmail.com","imgUrl":"http://res.cloudinary.com/dk2geeubr/image/upload/v1674746367/qvbgfpwpobofvl5f6ocr.jpg","mentions":[]} 
+29.1.2023, 13:28:34 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 13:28:34 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 13:28:40 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 13:28:40 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 13:28:40 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 13:28:40 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 13:29:06 - INFO - New task from socket [id: ZpaMT21tjF7KWq8LAAAf], emitting task {"task":{"id":"xHAgLY","title":"גהכגה"},"groupId":"g103"} 
+29.1.2023, 13:29:18 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 13:29:18 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 13:29:22 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 13:29:22 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 13:29:29 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 13:29:29 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 13:29:31 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 13:29:31 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 13:29:41 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 13:29:41 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 13:29:46 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 13:29:46 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 13:29:56 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 13:29:56 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 13:29:58 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 13:29:58 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 13:30:08 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 13:30:08 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 13:30:13 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 13:30:13 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 13:30:17 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 13:30:17 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 13:32:10 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 13:32:10 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 13:37:10 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 13:37:10 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 13:43:25 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 13:43:25 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 13:43:25 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 13:43:25 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 14:08:00 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 14:08:00 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 14:08:02 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 14:08:02 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 14:08:03 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 14:08:03 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 14:08:05 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 14:08:05 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 14:08:07 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 14:08:07 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 14:08:08 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 14:08:08 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 14:09:35 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 14:09:35 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 14:09:36 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 14:09:36 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 14:09:37 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 14:09:37 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 14:09:38 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 14:09:38 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 14:09:40 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 14:09:40 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 14:09:47 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 14:09:47 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 14:09:50 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 14:09:50 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 14:09:50 - INFO - Socket is leaving 63d53a20a63ebfe2c5061455 [id: ZpaMT21tjF7KWq8LAAAf] 
+29.1.2023, 14:09:51 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 14:09:51 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 14:09:53 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 14:09:53 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 14:11:25 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 14:11:25 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 14:11:25 - INFO - Socket is leaving 63d539810fbb9296a917e374 [id: ZpaMT21tjF7KWq8LAAAf] 
+29.1.2023, 14:11:25 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 14:11:25 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 14:11:27 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 14:11:27 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 14:42:05 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 14:42:05 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 14:42:05 - INFO - Socket is leaving 63d6095aca28d432134c640a [id: ZpaMT21tjF7KWq8LAAAf] 
+29.1.2023, 14:42:06 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 14:42:06 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 14:46:09 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 14:46:09 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 15:29:08 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 15:29:08 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 15:29:08 - INFO - Socket is leaving 63d5360ea63ebfe2c5061452 [id: ZpaMT21tjF7KWq8LAAAf] 
+29.1.2023, 15:29:08 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 15:29:08 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 15:30:51 - INFO - Server is running on port: 3030 
+29.1.2023, 15:30:51 - INFO - New connected socket [id: 2euq9VWGtL6hPb_aAAAB] 
+29.1.2023, 15:30:52 - INFO - New connected socket [id: GZ2ZSPgcpqeIimDpAAAD] 
+29.1.2023, 15:37:21 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 15:37:21 - INFO - Emit to all (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 15:37:56 - INFO - Server is running on port: 3030 
+29.1.2023, 15:37:57 - INFO - New connected socket [id: GHZkUV6xU66Pz2wGAAAB] 
+29.1.2023, 15:37:57 - INFO - New connected socket [id: garOwEbaLU9cujgeAAAD] 
+29.1.2023, 15:38:20 - INFO - Server is running on port: 3030 
+29.1.2023, 15:38:21 - INFO - New connected socket [id: xibCncSg4QsMjxgEAAAB] 
+29.1.2023, 15:38:22 - INFO - New connected socket [id: D8564SovTq0TnLqVAAAD] 
+29.1.2023, 15:39:04 - INFO - Server is running on port: 3030 
+29.1.2023, 15:39:05 - INFO - New connected socket [id: ggFa1jXKKsgL9uWsAAAB] 
+29.1.2023, 15:39:06 - INFO - New connected socket [id: 3mnwO4iocfoYCQkjAAAD] 
+29.1.2023, 15:39:29 - INFO - Server is running on port: 3030 
+29.1.2023, 15:39:30 - INFO - New connected socket [id: 0WtoB3zQFMMD611oAAAB] 
+29.1.2023, 15:39:30 - INFO - New connected socket [id: EiKurzeEdE15LUYaAAAD] 
+29.1.2023, 15:39:38 - INFO - Server is running on port: 3030 
+29.1.2023, 15:39:38 - INFO - New connected socket [id: jH1nUIsAMWUgSZ9uAAAB] 
+29.1.2023, 15:39:39 - INFO - New connected socket [id: KToe-jaZ2qY2l1TlAAAD] 
+29.1.2023, 15:40:39 - INFO - Server is running on port: 3030 
+29.1.2023, 15:40:40 - INFO - New connected socket [id: Diapjzgd705v8YjcAAAB] 
+29.1.2023, 15:40:41 - INFO - New connected socket [id: j8LuyAqxiyok7KEgAAAD] 
+29.1.2023, 15:40:45 - INFO - Server is running on port: 3030 
+29.1.2023, 15:40:46 - INFO - New connected socket [id: ozIVU8KppftDdx87AAAB] 
+29.1.2023, 15:40:46 - INFO - New connected socket [id: x9HZPyCL9U-zCf4DAAAD] 
+29.1.2023, 15:41:40 - INFO - Server is running on port: 3030 
+29.1.2023, 15:41:41 - INFO - New connected socket [id: L8JIwuD-VO7Zxd7gAAAB] 
+29.1.2023, 15:41:42 - INFO - New connected socket [id: kJbrdumdPl8Ao97zAAAD] 
+29.1.2023, 15:42:33 - INFO - Server is running on port: 3030 
+29.1.2023, 15:42:34 - INFO - New connected socket [id: G1U4NkodyM0lahhtAAAB] 
+29.1.2023, 15:42:34 - INFO - New connected socket [id: lFFSerJ9YfuM2UNcAAAD] 
+29.1.2023, 15:43:14 - INFO - Server is running on port: 3030 
+29.1.2023, 15:43:15 - INFO - New connected socket [id: mmrQsl2ccLrTAHuTAAAB] 
+29.1.2023, 15:43:16 - INFO - New connected socket [id: 5S9c0cz1VgGO62DUAAAD] 
+29.1.2023, 15:44:35 - INFO - Server is running on port: 3030 
+29.1.2023, 15:44:36 - INFO - New connected socket [id: 77NQEVMNjpxCWcDvAAAB] 
+29.1.2023, 15:44:37 - INFO - New connected socket [id: muULKHgBOuR_rm6oAAAD] 
+29.1.2023, 15:44:50 - INFO - Server is running on port: 3030 
+29.1.2023, 15:44:50 - INFO - New connected socket [id: FEuxgt-Cc-CIPEXsAAAB] 
+29.1.2023, 15:44:51 - INFO - New connected socket [id: WiiWPj04jJBDcuCaAAAD] 
+29.1.2023, 15:45:57 - INFO - Server is running on port: 3030 
+29.1.2023, 15:45:58 - INFO - New connected socket [id: tnHOZSNWPdZXj3ypAAAB] 
+29.1.2023, 15:45:59 - INFO - New connected socket [id: 1WETBtUyFAIzTdy7AAAD] 
+29.1.2023, 15:46:01 - INFO - Server is running on port: 3030 
+29.1.2023, 15:46:02 - INFO - New connected socket [id: uOXA6VoC5XXV9c3cAAAB] 
+29.1.2023, 15:46:02 - INFO - New connected socket [id: v_vPrRlq7cKDAuiGAAAD] 
+29.1.2023, 15:46:52 - INFO - Server is running on port: 3030 
+29.1.2023, 15:46:53 - INFO - New connected socket [id: RLdc9WUCUS-TlWRZAAAB] 
+29.1.2023, 15:46:53 - INFO - New connected socket [id: 20B67bfO6mKkpeP5AAAD] 
+29.1.2023, 15:50:36 - INFO - Broadcasting event: admin-update (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 15:50:36 - INFO - Emit to all (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 15:50:37 - INFO - Broadcasting event: admin-update (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 15:50:37 - INFO - Emit to all (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 15:50:49 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 15:50:49 - INFO - Emit to all (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 15:50:49 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 15:50:49 - INFO - Emit to all (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 15:50:52 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 15:50:52 - INFO - Emit to all (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 15:50:53 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 15:50:53 - INFO - Emit to all (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 15:50:53 - INFO - Socket is leaving 63d53a20a63ebfe2c5061455 [id: 20B67bfO6mKkpeP5AAAD] 
+29.1.2023, 15:50:53 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 15:50:53 - INFO - Emit to all (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 15:51:09 - INFO - Socket disconnected [id: undefined] 
+29.1.2023, 15:51:11 - INFO - New connected socket [id: miZwXn1zc0TMKURLAAAF] 
+29.1.2023, 15:51:11 - INFO - Setting socket.userId = 63d53855a63ebfe2c5061453 for socket [id: miZwXn1zc0TMKURLAAAF] 
+29.1.2023, 15:51:47 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 15:51:47 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 15:51:47 - INFO - Broadcasting event: admin-update (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 15:51:47 - INFO - Emit to all (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 15:51:47 - INFO - Broadcasting event: admin-update (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 15:51:47 - INFO - Emit to all (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 15:51:51 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 15:51:51 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 15:51:51 - INFO - Socket is leaving 63d5484e51177f5a30ed69cb [id: miZwXn1zc0TMKURLAAAF] 
+29.1.2023, 15:51:52 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 15:51:52 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 15:52:01 - INFO - Socket disconnected [id: undefined] 
+29.1.2023, 15:52:02 - INFO - New connected socket [id: iw1_jlEN-AvGhBDOAAAH] 
+29.1.2023, 15:52:03 - INFO - Setting socket.userId = 63d53855a63ebfe2c5061453 for socket [id: iw1_jlEN-AvGhBDOAAAH] 
+29.1.2023, 15:52:03 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 15:52:03 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 15:53:23 - INFO - Socket disconnected [id: undefined] 
+29.1.2023, 15:53:24 - INFO - New connected socket [id: LPi7Si1MgYsPccSeAAAJ] 
+29.1.2023, 15:53:24 - INFO - Setting socket.userId = 63d53855a63ebfe2c5061453 for socket [id: LPi7Si1MgYsPccSeAAAJ] 
+29.1.2023, 15:53:24 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 15:53:24 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 15:54:45 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 15:54:45 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 15:54:45 - INFO - Broadcasting event: admin-update (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 15:54:45 - INFO - Emit to all (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 15:54:45 - INFO - Broadcasting event: admin-update (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 15:54:45 - INFO - Emit to all (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 15:55:08 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 15:55:08 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 15:55:08 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 15:55:08 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 15:55:08 - INFO - Broadcasting event: admin-update (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 15:55:08 - INFO - Emit to all (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 15:55:08 - INFO - Broadcasting event: admin-update (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 15:55:08 - INFO - Emit to all (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 15:55:15 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 15:55:15 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 15:55:15 - INFO - Broadcasting event: admin-update (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 15:55:15 - INFO - Emit to all (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 15:55:15 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 15:55:15 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 15:55:16 - INFO - Broadcasting event: admin-update (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 15:55:16 - INFO - Emit to all (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 15:55:22 - INFO - Socket disconnected [id: undefined] 
+29.1.2023, 15:55:23 - INFO - New connected socket [id: JbR4NdXq_nZCDpCKAAAL] 
+29.1.2023, 15:55:24 - INFO - Setting socket.userId = 63d53855a63ebfe2c5061453 for socket [id: JbR4NdXq_nZCDpCKAAAL] 
+29.1.2023, 15:55:24 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 15:55:24 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 15:55:53 - INFO - Broadcasting event: admin-update (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 15:55:53 - INFO - Emit to all (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 15:55:53 - INFO - Broadcasting event: admin-update (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 15:55:53 - INFO - Emit to all (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 15:55:53 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 15:55:53 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 15:56:13 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 15:56:13 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 15:56:13 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 15:56:13 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 15:56:13 - INFO - Broadcasting event: admin-update (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 15:56:13 - INFO - Emit to all (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 15:56:13 - INFO - Broadcasting event: admin-update (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 15:56:13 - INFO - Emit to all (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 15:56:28 - INFO - Broadcasting event: admin-update (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 15:56:28 - INFO - Emit to all (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 15:56:28 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 15:56:28 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 15:56:28 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 15:56:29 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 15:56:29 - INFO - Broadcasting event: admin-update (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 15:56:29 - INFO - Emit to all (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 15:56:36 - INFO - Socket disconnected [id: undefined] 
+29.1.2023, 15:56:38 - INFO - New connected socket [id: 0abQ07KmalPs8f6FAAAN] 
+29.1.2023, 15:56:38 - INFO - Setting socket.userId = 63d53855a63ebfe2c5061453 for socket [id: 0abQ07KmalPs8f6FAAAN] 
+29.1.2023, 15:56:38 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 15:56:38 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 15:57:31 - INFO - Broadcasting event: admin-update (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 15:57:31 - INFO - Emit to all (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 15:57:31 - INFO - Broadcasting event: admin-update (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 15:57:31 - INFO - Emit to all (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 15:57:31 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 15:57:31 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 15:57:34 - INFO - Socket disconnected [id: undefined] 
+29.1.2023, 15:57:35 - INFO - New connected socket [id: gXpACYusSBJFZhkCAAAP] 
+29.1.2023, 15:57:36 - INFO - Setting socket.userId = 63d53855a63ebfe2c5061453 for socket [id: gXpACYusSBJFZhkCAAAP] 
+29.1.2023, 15:57:36 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 15:57:36 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 15:57:57 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 15:57:57 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 15:57:57 - INFO - Broadcasting event: admin-update (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 15:57:57 - INFO - Emit to all (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 15:57:57 - INFO - Broadcasting event: admin-update (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 15:57:57 - INFO - Emit to all (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 15:58:00 - INFO - Socket disconnected [id: undefined] 
+29.1.2023, 15:58:01 - INFO - New connected socket [id: Ux93iWNUBxfJXD5FAAAR] 
+29.1.2023, 15:58:02 - INFO - Setting socket.userId = 63d53855a63ebfe2c5061453 for socket [id: Ux93iWNUBxfJXD5FAAAR] 
+29.1.2023, 15:58:02 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 15:58:02 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 15:58:34 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 15:58:34 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 15:58:34 - INFO - Emit to all (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 15:58:34 - INFO - Broadcasting event: admin-update (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 15:58:34 - INFO - Broadcasting event: admin-update (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 15:58:34 - INFO - Emit to all (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 15:58:44 - INFO - Socket disconnected [id: undefined] 
+29.1.2023, 15:58:45 - INFO - New connected socket [id: 0YjuLpwwdW89JywlAAAT] 
+29.1.2023, 15:58:46 - INFO - Setting socket.userId = 63d53855a63ebfe2c5061453 for socket [id: 0YjuLpwwdW89JywlAAAT] 
+29.1.2023, 15:58:46 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 15:58:46 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 15:59:25 - INFO - Broadcasting event: admin-update (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 15:59:25 - INFO - Emit to all (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 15:59:25 - INFO - Broadcasting event: admin-update (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 15:59:25 - INFO - Emit to all (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 15:59:25 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 15:59:25 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 15:59:28 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 15:59:28 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 15:59:59 - INFO - Broadcasting event: admin-update (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 15:59:59 - INFO - Emit to all (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 15:59:59 - INFO - Broadcasting event: admin-update (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 15:59:59 - INFO - Emit to all (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 16:00:02 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 16:00:02 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 16:00:02 - INFO - Socket is leaving 63d53a20a63ebfe2c5061455 [id: 0YjuLpwwdW89JywlAAAT] 
+29.1.2023, 16:00:02 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 16:00:02 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 16:00:20 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 16:00:20 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 16:00:20 - INFO - Broadcasting event: admin-update (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 16:00:20 - INFO - Emit to all (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 16:00:20 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 16:00:20 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 16:00:20 - INFO - Broadcasting event: admin-update (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 16:00:20 - INFO - Emit to all (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 16:00:24 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 16:00:24 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 16:00:25 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 16:00:25 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 16:00:25 - INFO - Broadcasting event: admin-update (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 16:00:25 - INFO - Emit to all (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 16:00:25 - INFO - Broadcasting event: admin-update (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 16:00:25 - INFO - Emit to all (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 16:00:27 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 16:00:27 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 16:01:26 - INFO - Broadcasting event: admin-update (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 16:01:26 - INFO - Emit to all (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 16:01:26 - INFO - Socket disconnected [id: undefined] 
+29.1.2023, 16:01:26 - INFO - Broadcasting event: admin-update (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 16:01:26 - INFO - Emit to all (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 16:01:28 - INFO - New connected socket [id: E0CZt5dMkAWO8mHdAAAV] 
+29.1.2023, 16:01:28 - INFO - Setting socket.userId = 63d53855a63ebfe2c5061453 for socket [id: E0CZt5dMkAWO8mHdAAAV] 
+29.1.2023, 16:01:30 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 16:01:30 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 16:01:30 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 16:01:30 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 16:01:31 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 16:01:31 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 16:02:04 - INFO - Broadcasting event: admin-update (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 16:02:04 - INFO - Emit to all (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 16:02:04 - INFO - Broadcasting event: admin-update (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 16:02:04 - INFO - Emit to all (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 16:02:05 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 16:02:05 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 16:02:05 - INFO - Socket is leaving 63d53a20a63ebfe2c5061455 [id: E0CZt5dMkAWO8mHdAAAV] 
+29.1.2023, 16:02:05 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 16:02:05 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 16:02:07 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 16:02:07 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 16:02:14 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 16:02:14 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 16:02:14 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 16:02:14 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 16:02:25 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 16:02:25 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 16:03:00 - INFO - Socket disconnected [id: undefined] 
+29.1.2023, 16:03:01 - INFO - New connected socket [id: 15hcPFXtFjlRyp0YAAAX] 
+29.1.2023, 16:03:02 - INFO - Setting socket.userId = 63d53855a63ebfe2c5061453 for socket [id: 15hcPFXtFjlRyp0YAAAX] 
+29.1.2023, 16:03:06 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 16:03:06 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 16:03:06 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 16:03:06 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 16:03:07 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 16:03:07 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 16:03:55 - INFO - Socket disconnected [id: undefined] 
+29.1.2023, 16:03:56 - INFO - New connected socket [id: Wa_VZ-0UKpyfi18UAAAZ] 
+29.1.2023, 16:03:56 - INFO - Setting socket.userId = 63d53855a63ebfe2c5061453 for socket [id: Wa_VZ-0UKpyfi18UAAAZ] 
+29.1.2023, 16:04:11 - INFO - Broadcasting event: admin-update (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 16:04:11 - INFO - Emit to all (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 16:04:11 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 16:04:11 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 16:04:11 - INFO - Broadcasting event: admin-update (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 16:04:11 - INFO - Emit to all (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 16:04:12 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 16:04:12 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 16:04:13 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 16:04:13 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 16:04:29 - INFO - Broadcasting event: admin-update (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 16:04:29 - INFO - Emit to all (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 16:04:29 - INFO - Broadcasting event: admin-update (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 16:04:29 - INFO - Emit to all (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 16:05:13 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 16:05:13 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 16:05:13 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 16:05:13 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 16:05:15 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 16:05:15 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 16:05:17 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 16:05:17 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 16:05:44 - INFO - Broadcasting event: admin-update (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 16:05:44 - INFO - Emit to all (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 16:05:44 - INFO - Broadcasting event: admin-update (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 16:05:44 - INFO - Emit to all (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 16:05:45 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 16:05:45 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 16:05:46 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 16:05:46 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 16:05:48 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 16:05:48 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 16:05:52 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 16:05:52 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 16:05:53 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 16:05:53 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 16:05:57 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 16:05:57 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 16:06:27 - INFO - Broadcasting event: admin-update (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 16:06:27 - INFO - Emit to all (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 16:06:27 - INFO - Broadcasting event: admin-update (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 16:06:27 - INFO - Emit to all (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 16:06:28 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 16:06:28 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 16:06:29 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 16:06:29 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 16:06:32 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 16:06:32 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 16:06:51 - INFO - Broadcasting event: admin-update (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 16:06:51 - INFO - Emit to all (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 16:06:51 - INFO - Broadcasting event: admin-update (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 16:06:51 - INFO - Emit to all (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 16:06:55 - INFO - Socket disconnected [id: undefined] 
+29.1.2023, 16:06:56 - INFO - New connected socket [id: YBUwSRWb2tfYimjDAAAb] 
+29.1.2023, 16:06:57 - INFO - Setting socket.userId = 63d53855a63ebfe2c5061453 for socket [id: YBUwSRWb2tfYimjDAAAb] 
+29.1.2023, 16:07:46 - INFO - Broadcasting event: admin-update (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 16:07:46 - INFO - Emit to all (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 16:07:46 - INFO - Broadcasting event: admin-update (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 16:07:46 - INFO - Emit to all (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 16:07:47 - INFO - Socket disconnected [id: undefined] 
+29.1.2023, 16:07:48 - INFO - New connected socket [id: IwDVbkj8NpxvKfmhAAAd] 
+29.1.2023, 16:07:49 - INFO - Setting socket.userId = 63d53855a63ebfe2c5061453 for socket [id: IwDVbkj8NpxvKfmhAAAd] 
+29.1.2023, 16:08:01 - INFO - Broadcasting event: admin-update (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 16:08:01 - INFO - Emit to all (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 16:08:01 - INFO - Broadcasting event: admin-update (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 16:08:01 - INFO - Emit to all (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 16:08:01 - INFO - Socket disconnected [id: undefined] 
+29.1.2023, 16:08:03 - INFO - New connected socket [id: ON-U_SZI2O82CinXAAAf] 
+29.1.2023, 16:08:03 - INFO - Setting socket.userId = 63d53855a63ebfe2c5061453 for socket [id: ON-U_SZI2O82CinXAAAf] 
+29.1.2023, 16:08:12 - INFO - Broadcasting event: admin-update (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 16:08:12 - INFO - Emit to all (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 16:08:12 - INFO - Socket disconnected [id: undefined] 
+29.1.2023, 16:08:12 - INFO - Broadcasting event: admin-update (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 16:08:12 - INFO - Emit to all (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 16:08:14 - INFO - New connected socket [id: 8ByomwZtaZuFQ3EMAAAh] 
+29.1.2023, 16:08:14 - INFO - Setting socket.userId = 63d53855a63ebfe2c5061453 for socket [id: 8ByomwZtaZuFQ3EMAAAh] 
+29.1.2023, 16:08:17 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 16:08:17 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 16:08:18 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 16:08:18 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 16:08:19 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 16:08:19 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 16:08:20 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 16:08:20 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 16:08:21 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 16:08:21 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 16:08:21 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 16:08:21 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 16:08:22 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 16:08:22 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 16:08:22 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 16:08:22 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 16:08:23 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 16:08:23 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 16:08:24 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 16:08:24 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 16:08:24 - INFO - Socket is leaving 63d5360ea63ebfe2c5061452 [id: 8ByomwZtaZuFQ3EMAAAh] 
+29.1.2023, 16:08:24 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 16:08:24 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 16:08:25 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 16:08:25 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 16:08:47 - INFO - Broadcasting event: admin-update (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 16:08:47 - INFO - Emit to all (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 16:08:47 - INFO - Broadcasting event: admin-update (userId: 63d53887a63ebfe2c5061454)
+29.1.2023, 16:08:47 - INFO - Emit to all (userId: 63d53887a63ebfe2c5061454)

@@ -17,6 +17,7 @@ import { userService } from "../services/user.service"
 import { FaRegStar } from "react-icons/fa"
 import { BsPerson } from 'react-icons/bs'
 import { Spinner } from "../cmps/spinner";
+import { setThemeColor } from "../services/color.service";
 
 export function BoardIndex() {
     const navigate = useNavigate()
@@ -27,6 +28,7 @@ export function BoardIndex() {
     const elModal = useRef()
 
     useEffectInit(() => {
+        setThemeColor()
         setModal(modalService.addNewModal(modals))
     }, [])
 
