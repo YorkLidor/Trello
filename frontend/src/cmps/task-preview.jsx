@@ -49,6 +49,8 @@ export function TaskPreview({ task, groupId, isDragging, isQuickEdit }) {
     function getStyle() {
         let style = task?.cover?.style
         if (style?.backgroundImage) style = { ...style, height: '107.8px' }
+        if (task.cover?.fullSize) style = { ...style, color: task.cover.isDark ? '#273b5b' : '#fcfcfc' }
+        if (task.cover?.fullSize) console.log(style)
         return style
     }
 
@@ -87,15 +89,16 @@ export function TaskPreview({ task, groupId, isDragging, isQuickEdit }) {
             {taskStyle &&
                 <header
                     className="cover-color"
-                    style={task?.cover?.fullSize && !isQuickEdit ? { backgroundColor: "transparent", height: taskStyle.height } : taskStyle}
+                    style={task?.cover?.fullSize && !isQuickEdit ? { backgroundColor: "transparent", ...taskStyle } : taskStyle}
                 />
             }
 
             <li
                 className={`task-preview ${task?.cover?.fullSize && !isQuickEdit ? 'full' : ''}`}
+                style = {{ color: taskStyle?.color ? taskStyle.color : '' }}
 
-            >
-                {(taskLabels && !task?.cover?.fullSize) &&
+                    >
+                    {(taskLabels && !task?.cover?.fullSize) &&
                     <TaskLabels
                         labels={taskLabels}
                         board={board}
@@ -132,6 +135,6 @@ export function TaskPreview({ task, groupId, isDragging, isQuickEdit }) {
                 {!task?.cover?.fullSize && <TaskPreviewIcons board={board} task={task} />}
             </li>
 
-        </div>
+    </div>
     </>
 }
