@@ -33,5 +33,5 @@ frontend/node_modules/.bin/browserslist
 backend/logs/backend.log
 backend.log
 logs
-backend/logs/backend.log
+Trello/backend/logs/backend.log
 backend/logs/backend.log
