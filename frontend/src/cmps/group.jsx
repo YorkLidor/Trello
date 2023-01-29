@@ -1,12 +1,14 @@
 import { useState } from "react"
 import { Droppable } from "react-beautiful-dnd"
+import { SOCKET_EVENT_ADD_TASK } from "../services/socket.service"
 
 import { GroupFooter } from "./group-footer"
 import { GroupHeader } from "./group-header"
 import { TaskList } from "./task-list"
 
-export function Group({ group, board, provided, onRemoveGroup, isDragging,onToggleModal,onCopyGroup }) {
+export function Group({ group, board, provided, onRemoveGroup, isDragging, onToggleModal, onCopyGroup }) {
     const [isAddCardOpen, setIsAddCardOpen] = useState(false)
+    const so = SOCKET_EVENT_ADD_TASK
 
     return <Droppable droppableId={group.id} direction="vertical" type="task-list">
         {prov =>

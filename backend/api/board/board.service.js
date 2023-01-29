@@ -10,7 +10,8 @@ module.exports = {
     remove,
     update,
     add,
-    addMsgToChat
+    addNewTask,
+    addNewGroup
 }
 
 const collectionName = 'board'
@@ -76,7 +77,7 @@ async function add(board) {
     }
 }
 
-async function addMsgToChat(msg, boardId) {
+async function addNewTask(task, boardId, groupId) {
     try {
         console.log('boardId', boardId);
         const collection = await dbService.getCollection(collectionName)
@@ -84,9 +85,20 @@ async function addMsgToChat(msg, boardId) {
         // board.chatHistory = board.chatHistory ? [...board.chatHistory, msg] : [msg]
         // await collection.replaceOne({ '_id': ObjectId(boardId) }, board)
         // Can be done with $push!
-        await collection.updateOne({ '_id': ObjectId(boardId) }, { $push: { chatHistory: msg } })
+        await collection.updateOne({ '_id': ObjectId(boardId), "groups.id": groupId }, { $push: { "groups.$.tasks": { ...task } } })
     } catch (err) {
-        console.log(`ERROR: cannot add message to board`)
+        console.log(`ERROR: cannot add task to board`)
+        throw err;
+    }
+}
+
+async function addNewGroup(group, boardId) {
+    try {
+        console.log('boardId', boardId);
+        const collection = await dbService.getCollection(collectionName)
+        await collection.updateOne({ '_id': ObjectId(boardId) }, { $push: { "groups": { ...group } } })
+    } catch (err) {
+        console.log(`ERROR: cannot add group to board`)
         throw err;
     }
 }

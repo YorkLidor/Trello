@@ -5,11 +5,12 @@ import { boardService } from "../services/board.service";
 import { utilService } from "../services/util.service";
 import { dndService } from "../services/dnd.service";
 
-import { saveBoard } from "../store/actions/board.actions"
+import { saveBoard, setBoard } from "../store/actions/board.actions"
 
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd"
 import { GroupAdd } from "./group-add";
 import { Group } from "./group";
+import { socketService, SOCKET_EMIT_SEND_GROUP } from "../services/socket.service";
 
 export function GroupList({ onToggleModal }) {
     const board = useSelector(state => state.boardModule.board)
@@ -20,7 +21,8 @@ export function GroupList({ onToggleModal }) {
         if (!groupToEdit.title) throw new Error('Must enter title!')
         try {
             board.groups.push(groupToEdit)
-            await saveBoard(board)
+            await setBoard(board)
+            socketService.emit(SOCKET_EMIT_SEND_GROUP, groupToEdit)
             setGroupToEdit(boardService.getEmptyGroup())
         } catch (err) {
             console.log('err', err)
