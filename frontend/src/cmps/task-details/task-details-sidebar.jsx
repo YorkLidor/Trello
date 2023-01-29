@@ -5,7 +5,7 @@ import { HiOutlineClock } from "react-icons/hi"
 import { RiInboxFill } from 'react-icons/ri'
 import { TbCheckbox } from "react-icons/tb"
 
-import { MODAL_MEMBERS, MODAL_LABELS, MODAL_ATTACH, MODAL_TASK_DATE, MODAL_TASK_COVER, MODAL_CHECKLIST } from '../modal/modal'
+import { MODAL_MEMBERS, MODAL_LABELS, MODAL_ATTACH, MODAL_TASK_DATE, MODAL_TASK_COVER, MODAL_CHECKLIST, MODAL_TASK_MOVE } from '../modal/modal'
 import { useSelector } from "react-redux"
 
 export function TaskDetailsSideBar({ task, onToggleModal }) {
@@ -40,9 +40,10 @@ export function TaskDetailsSideBar({ task, onToggleModal }) {
             <button className='button-link' onClick={(ev) => onToggleModal(ev, MODAL_ATTACH)}><RiAttachment2 data-type='icon' className="sidebar-icon" /><span className="nav-btn-txt" data-type='icon'>Attachment</span></button>
             {!task?.cover && <button className="button-link btn-cover" onClick={(ev) => onToggleModal(ev, MODAL_TASK_COVER)}><RiInboxFill data-type='icon' className="sidebar-icon" /><span className="nav-btn-txt" data-type='icon'>Cover</span></button>}
         </nav>
-            <span className="sidebar-title">Actions</span>
+        
+        <span className="sidebar-title">Actions</span>
         <nav className="window-sidebar flex column">
-            <a className='button-link' href='#'>Move</a>
+            <button className='button-link' onClick={(ev) => onToggleModal(ev, MODAL_TASK_MOVE)}>Move</button>
         </nav>
     </div>
 }

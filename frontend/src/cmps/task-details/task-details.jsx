@@ -14,7 +14,7 @@ import { saveBoard } from '../../store/actions/board.actions'
 import { SET_ACTIVE_BOARD } from "../../store/reducers/board.reducer"
 
 import {
-    MODAL_ATTACH, MODAL_LABELS, MODAL_ATTACH_EDIT, MODAL_CHECKLIST, MODAL_TODO, MODAL_REMOVE_COMMENT,
+    MODAL_ATTACH, MODAL_LABELS, MODAL_ATTACH_EDIT, MODAL_CHECKLIST, MODAL_TODO, MODAL_REMOVE_COMMENT, MODAL_TASK_MOVE,
     MODAL_ATTACH_OPEN, MODAL_MEMBERS, MODAL_MEMBER_OPEN, MODAL_TASK_DATE, MODAL_TASK_COVER, MODAL_CHECKLIST_DELETE
 } from '../modal/modal.jsx'
 
@@ -47,7 +47,6 @@ export function TaskDetails() {
     const [modal, setModal] = useState(null)
     const [taskToEdit, setTaskToEdit] = useState(null)
     const [style, setStyle] = useState({})
-    console.dir(taskToEdit?.comments)
 
     const { boardId, groupId, taskId } = useParams()
     const navigate = useNavigate()
@@ -187,7 +186,6 @@ export function TaskDetails() {
     // Toggle modal visibility and set it's pos under element
     function onToggleModal(ev, modalType, extras = null) {
         try {
-            console.log(modalType, extras)
             if (!modal) return
             let element
             if (ev) {
@@ -201,7 +199,8 @@ export function TaskDetails() {
                 case MODAL_TASK_COVER:
                 case MODAL_CHECKLIST:
                 case MODAL_TASK_DATE:
-                    cmpProps = { user, groupId, task: taskToEdit }
+                case MODAL_TASK_MOVE:
+                    cmpProps = { user, groupId, task: taskToEdit, modals }
                     break
                 case MODAL_CHECKLIST_DELETE:
                     cmpProps = { user, groupId, task: taskToEdit, checklist: extras.checklist }
