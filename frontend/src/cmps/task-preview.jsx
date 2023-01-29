@@ -59,12 +59,22 @@ export function TaskPreview({ task, groupId, isDragging, isQuickEdit }) {
         store.dispatch({ type: SET_TASK_QUICK_EDIT, taskQuickEdit: { task, groupId, pos } })
     }
 
+    function test1(){
+        console.log('enter:')
+        setIsEditBtnShow('hidden-icon')
+    }
+
+    function test2(){
+        console.log('out:')
+        setIsEditBtnShow('')
+    }
+
     return <>
         <div
             className={`task-preview-container ${isDragging && 'is-dragging'} ${task?.cover?.fullSize ? 'full' : ''} ${task?.cover?.style?.backgroundImage ? 'img' : ''} ${task?.cover?.isDark ? 'dark' : ''}`}
             ref={elTaskPreview}
-            onMouseEnter={() => setIsEditBtnShow('hidden-icon')}
-            onMouseLeave={() => setIsEditBtnShow('')}
+            onMouseEnter={() => test1()}
+            onMouseLeave={() => test2()}
             onClick={() => navigate(`/${board._id}/${groupId}/${task.id}`)}
             onContextMenu={onTaskQuickEdit}
             style={task?.cover?.fullSize && !isQuickEdit ? task?.cover?.style : {}}
