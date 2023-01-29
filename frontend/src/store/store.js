@@ -4,7 +4,8 @@ import { boardReducer } from './reducers/board.reducer'
 import { appReducer } from './reducers/app.reducer'
 import { userReducer } from "./reducers/user.reducer"
 
-const middleware = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__()
+const middleware = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__() : () => { }
+
 
 const rootReducer = combineReducers({
     appModule: appReducer,

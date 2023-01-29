@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.6c0e3ad5.css",
-    "main.js": "/static/js/main.fe9f0164.js",
+    "main.js": "/static/js/main.7f015c78.js",
     "static/media/notosans-regular.ttf": "/static/media/notosans-regular.eae34fa8f1e0c4c6d797.ttf",
     "static/media/ubuntu-regular.ttf": "/static/media/ubuntu-regular.1cbb1b79a23478cc89ad.ttf",
     "static/media/roboto-regular.ttf": "/static/media/roboto-regular.fc2b5060f7accec5cf74.ttf",
@@ -13,10 +13,10 @@
     "static/media/helvetica-neue-medium-extended.ttf": "/static/media/helvetica-neue-medium-extended.372d58a9bf10285baebe.ttf",
     "index.html": "/index.html",
     "main.6c0e3ad5.css.map": "/static/css/main.6c0e3ad5.css.map",
-    "main.fe9f0164.js.map": "/static/js/main.fe9f0164.js.map"
+    "main.7f015c78.js.map": "/static/js/main.7f015c78.js.map"
   },
   "entrypoints": [
     "static/css/main.6c0e3ad5.css",
-    "static/js/main.fe9f0164.js"
+    "static/js/main.7f015c78.js"
   ]
 }
