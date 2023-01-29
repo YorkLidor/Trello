@@ -91,7 +91,7 @@ export function TaskAdd({ group, isAddCardOpen, setIsAddCardOpen }) {
                 <IoCloseOutline />
             </button>
 
-            <HiMicrophone className="btn-cancel" onClick={onStartListening} />
+            {/* <HiMicrophone className="btn-cancel" onClick={onStartListening} /> */}
         </div>
 
     </form>
