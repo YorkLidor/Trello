@@ -9,7 +9,6 @@ export const setThemeColor = async (style) => {
     const fastAveColor = new FastAverageColor()
     let sourceColor = style?.backgroundColor
     let color
-    console.log('color:', style?.backgroundColor)
     if (style) {
         sourceColor = style.backgroundImage.slice(4, -1).replace(/"/g, "")
         try {
@@ -22,8 +21,6 @@ export const setThemeColor = async (style) => {
             console.log(err);
         }
     } else {
-        // setStyle({ '--dynamic-background': BOARD__BG_COLOR })
-        console.log('hi');
         document.documentElement.style.setProperty('--dynamic-text', DYNAMIC_TXT_LIGHT)
         document.documentElement.style.setProperty('--dynamic-background', '#026AA7')
     }
