@@ -8,9 +8,6 @@ import { TaskList } from "./task-list"
 
 export function Group({ group, board, provided, onRemoveGroup, isDragging, onToggleModal, onCopyGroup }) {
     const [isAddCardOpen, setIsAddCardOpen] = useState(false)
-<<<<<<< HEAD
-
-=======
     const groupRef = useRef(null)
     useEffect(() => {
         document.addEventListener('mousedown', handleClickOutside);
@@ -24,9 +21,6 @@ export function Group({ group, board, provided, onRemoveGroup, isDragging, onTog
             setIsAddCardOpen(false)
         }
     }
-
-    const so = SOCKET_EVENT_ADD_TASK
->>>>>>> 606c5d3a2ff62f3857165df0c497425b2e5b67b6
 
     return <Droppable droppableId={group.id} direction="vertical" type="task-list">
         {prov =>
