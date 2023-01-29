@@ -62,17 +62,18 @@
     right: 0;
     margin: 8px;
 
-    height: 36px;
-    width: 36px;
-    font-size: 23px;
+    height: 42px;
+    width: 42px;
+    font-size: 28px;
 
     border-radius: 50%;
     border: 0;
 
     align-items: center;
     justify-content: center;
+    background-color: transparent;
 
-    color: #42526E;
+    color: #1b324e;
 
     &:hover {
         background-color: #091e4214;
@@ -81,6 +82,9 @@
 
     &.on-cover {
         background-color: #0000001a;
+        &:hover {
+            opacity: 0.75;
+        }
     }
 
     @include for-native-layout-details {

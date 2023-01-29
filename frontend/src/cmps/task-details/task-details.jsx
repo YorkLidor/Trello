@@ -314,7 +314,7 @@ export function TaskDetails() {
                 </section>
 
                 <TaskDetailsSideBar task={taskToEdit} onToggleModal={onToggleModal} />
-                <button onClick={closePage} className='close-task-details'>
+                <button onClick={closePage} className={taskToEdit.cover ? 'close-task-details on-cover' : 'close-task-details'}>
                     <IoClose />
                 </button>
             </section>

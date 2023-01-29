@@ -8,6 +8,10 @@
     background-size: contain;
     background-origin: content-box;
     background-repeat: no-repeat;
+
+    &:hover {
+        opacity: 0.8;
+    }
 }
 
 .btn-cover-box {
