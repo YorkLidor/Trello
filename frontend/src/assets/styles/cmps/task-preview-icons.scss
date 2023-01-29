@@ -46,10 +46,28 @@
 
       }
 
-      .date-done-preview{
-        color: #5e6c84;
-      }
+      .date-done-preview {
 
+        &.overdue{
+          background-color: #ec9488;
+          &:hover{
+            background-color: #eb5a46;
+          }
+        }
+
+        &.due-soon{
+          background-color: #f2d600;
+          color: #fff;
+
+          &:hover{
+            background-color: #d9b51c;
+          }
+        }
+
+        &.later {
+          color: #5e6c84;
+        }
+      }
     }
   }
 

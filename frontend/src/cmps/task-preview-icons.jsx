@@ -30,14 +30,14 @@ export function TaskPreviewIcons({ board, task }) {
     }
 
     function getDateDoneText() {
-        if (task?.dueDate) {
-            const now = new Date().getTime()
+        const now = new Date().getTime()
+        const { dueDate } = task
 
-            if (task?.dueDate?.done) return 'complete'
-            else if (task.dueDate.date < now) return 'overdue'
-            else if ((task.dueDate.date - now) / (60 * 60 * 1000) < 24) return 'due-soon'
-            return 'later'
-        } else return 'later'
+        if (dueDate?.done) return 'complete'
+        else if (dueDate?.date && dueDate.date <= now) return 'overdue'
+        else if (dueDate?.date && (dueDate.date - now) / (60 * 60 * 1000) < 24) return 'due-soon'
+        return 'later'
+
     }
 
     return <section className="task-preview-icons-container">
