@@ -13,7 +13,7 @@ export function CommentPreview({ comment, onToggleModal, task }) {
     const elCommentRef = useRef()
 
     const commentDate = new Date(+comment.createdAt)
-    const strCommentTime = `${commentDate.getUTCDate()}/${commentDate.getUTCMonth()+1}/${commentDate.getFullYear()} at ${commentDate.getHours()}:${commentDate.getMinutes()}`
+    const strCommentTime = `${commentDate.getUTCDate()}/${commentDate.getUTCMonth() + 1}/${commentDate.getFullYear()} at ${commentDate.getHours()}:${commentDate.getMinutes()}`
 
     function handleEdit({ target }) {
         if (target?.value?.length) return
@@ -25,12 +25,14 @@ export function CommentPreview({ comment, onToggleModal, task }) {
             ev.preventDefault()
             const value = ev.target[0].value
             if (!value.length) return
-            
+
             elCommentRef.current.classList.toggle('comment-typing')
             setEditComment(false)
-            await boardService.addComment(user, groupId, task, value)
+
+            comment.txt = value
+            await boardService.saveComment(groupId, task, comment)
         }
-        catch(err) {
+        catch (err) {
             console.error('Failed saving comment')
         }
     }

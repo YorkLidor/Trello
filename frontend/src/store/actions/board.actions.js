@@ -109,7 +109,12 @@ export async function saveTask(groupId, task, activity) {
         group.tasks = tasks
 
         if(!board.activities) board.activities = []
-        board.activities.unshift(activity)
+
+        const activityIdx = board.activities.findIndex(act => act.id === activity.id)
+        if(activityIdx === -1) board.activities.unshift(activity)
+        else {
+            board.activities[activityIdx] = activity
+        }
         await saveBoard(board)
     }
     catch (error) {
