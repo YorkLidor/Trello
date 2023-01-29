@@ -224,6 +224,8 @@ export function TaskDetails() {
                 case MODAL_REMOVE_COMMENT:
                     cmpProps = { user, groupId, task: taskToEdit, comment: extras.comment }
                     break
+                default:
+                    break
             }
 
             const pos = utilService.getElementPosition(element)
@@ -261,7 +263,7 @@ export function TaskDetails() {
                 }
             }
         }
-        catch(err) {
+        catch (err) {
             console.error('Failed to set theme color')
         }
     }
