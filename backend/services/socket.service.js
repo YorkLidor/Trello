@@ -41,6 +41,12 @@ function setupSocketAPI(http) {
             socket.broadcast.to(socket.boardId).emit('board-add-group', group)
         })
 
+        socket.on('user-update-group', group => {
+            logger.info(`Group update from socket [id: ${socket.id}], emitting group ${group.id}`)
+            boardService.updateGroup(group, socket.boardId)
+            socket.broadcast.to(socket.boardId).emit('board-update-group', group)
+        })
+
         socket.on('chat-user-typing', user => {
             logger.info(`User is typing from socket [id: ${socket.id}], emitting to topic ${socket.boardId}`)
             socket.broadcast.to(socket.boardId).emit('chat-add-typing', user)

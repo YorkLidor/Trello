@@ -10,11 +10,25 @@ import { saveBoard, setBoard } from "../store/actions/board.actions"
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd"
 import { GroupAdd } from "./group-add";
 import { Group } from "./group";
-import { socketService, SOCKET_EMIT_SEND_GROUP } from "../services/socket.service";
+import { socketService, SOCKET_EMIT_SEND_GROUP, SOCKET_EMIT_UPDATE_GROUP, SOCKET_EVENT_UPDATE_GROUP } from "../services/socket.service";
+import { useEffect } from "react";
 
 export function GroupList({ onToggleModal }) {
     const board = useSelector(state => state.boardModule.board)
     const [groupToEdit, setGroupToEdit, handleChange] = useForm(boardService.getEmptyGroup())
+
+    useEffect(() => {
+        socketService.on(SOCKET_EVENT_UPDATE_GROUP, onUpdateGroup)
+
+        return () => socketService.off(SOCKET_EVENT_UPDATE_GROUP, onUpdateGroup)
+    }, [])
+
+    function onUpdateGroup(group) {
+        const groups = board.groups.map(g => g.id === group.id ? group : g)
+        board.groups = groups
+        console.log('group:', group)
+        setBoard({ ...board })
+    }
 
     async function onAddGroup(ev) {
         ev.preventDefault()
@@ -57,19 +71,22 @@ export function GroupList({ onToggleModal }) {
 
 
         if (type === 'task-list') {
-            const sourceGroups = boardService.getGroupById(board, destinationId)
+            const sourceGroup = boardService.getGroupById(board, destinationId)
             const destinationGroups = boardService.getGroupById(board, sourceId)
-            const tasks = sourceGroups.tasks
+            const tasks = sourceGroup.tasks
 
             if (sourceId === destinationId) {
-                sourceGroups.tasks = utilService.reorder(tasks, sourceIdx, destinationIdx)
+                sourceGroup.tasks = utilService.reorder(tasks, sourceIdx, destinationIdx)
+                socketService.emit(SOCKET_EMIT_UPDATE_GROUP, sourceGroup)
+                return setBoard(board)
             } else {
-                sourceGroups.tasks = dndService.swapItemBetweenLists(destinationGroups, sourceGroups, sourceIdx, destinationIdx)
+                sourceGroup.tasks = dndService.swapItemBetweenLists(destinationGroups, sourceGroup, sourceIdx, destinationIdx)
+                return saveBoard(board)
             }
         } else if (type === 'group-list') {
             board.groups = utilService.reorder(board.groups, sourceIdx, destinationIdx)
+            return saveBoard(board)
         }
-        saveBoard(board)
     }
 
     return <DragDropContext onDragEnd={onDragEnd} >
