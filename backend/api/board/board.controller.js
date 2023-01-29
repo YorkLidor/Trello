@@ -4,11 +4,10 @@ const socketService = require('../../services/socket.service')
 const asyncLocalStorage = require("../../services/als.service.js")
 
 async function getBoards(req, res) {
-    logger.debug(' to get boards', req.query.filterBy)
     try {
 
         // const filterBy = JSON.parse(req.query.filterBy)
-        const boards = await boardService.query({})
+        const boards = await boardService.query(req.query.filterBy)
         res.send(boards)
     } catch (err) {
         logger.error('Failed to get boards', err)

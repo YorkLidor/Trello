@@ -27,7 +27,7 @@ export function TaskPreview({ task, groupId, isDragging, isQuickEdit }) {
         textAreaRef.current?.select()
     }, []);
 
-    async function onChaneTitle(ev) {
+    async function onChangeTitle(ev) {
         ev.preventDefault()
         ev.stopPropagation()
         try {
@@ -110,7 +110,7 @@ export function TaskPreview({ task, groupId, isDragging, isQuickEdit }) {
                 }
 
                 {isQuickEdit && (
-                    <form onSubmit={onChaneTitle} className="add-card-form-container" onClick={(ev) => ev.stopPropagation()}>
+                    <form onSubmit={onChangeTitle} className="add-card-form-container" onClick={(ev) => ev.stopPropagation()}>
                         <div className="task-preview-container">
                             <div className="textarea-container">
                                 <textarea

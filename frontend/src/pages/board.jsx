@@ -15,9 +15,10 @@ import { modalService } from "../services/modal.service";
 import { Modal, MODAL_GROUP_QUICK_EDIT, MODAL_LABELS, MODAL_MEMBERS, MODAL_MEMBER_OPEN, MODAL_TASK_COVER, MODAL_TASK_DATE } from "../cmps/modal/modal";
 import { utilService } from "../services/util.service";
 import { closeModal, toggleModal } from "../store/actions/app.actions";
-import { FastAverageColor } from "fast-average-color";
 import { useEffectUpdate } from "../customHooks/useEffectUpdate";
 import { Spinner } from "../cmps/spinner";
+import { socketService, SOCKET_EMIT_SET_BOARD, SOCKET_EVENT_ADD_GROUP, SOCKET_EVENT_ADD_TASK } from "../services/socket.service";
+import { func } from "prop-types";
 
 export function Board() {
     const user = useSelector(state => state.userModule.user)
@@ -34,9 +35,19 @@ export function Board() {
     const navigate = useNavigate()
 
     useEffect(() => {
+        socketService.on(SOCKET_EVENT_ADD_TASK, onIncomingNewTask)
+        socketService.on(SOCKET_EVENT_ADD_GROUP, onIncomingNewGroup)
+        return () => { 
+            socketService.off(SOCKET_EVENT_ADD_TASK, onIncomingNewTask) 
+            socketService.off(SOCKET_EVENT_ADD_GROUP, onIncomingNewGroup) 
+        }
+    }, [])
+
+    useEffect(() => {
         if (!user) navigate('/')
         loadBoard()
         setModal(modalService.addNewModal(modals))
+
 
         return async () => {
             await board && saveBoard(board)
@@ -50,6 +61,19 @@ export function Board() {
         document.body.style.backgroundColor = board?.style?.backgroundColor
         document.body.style.backgroundImage = board?.style?.backgroundImage
     }, [board])
+
+    function onIncomingNewTask({ task, groupId }) {
+
+        const groupToEdit = board.groups.find(group => groupId === group.id)
+        console.log(groupToEdit)
+        groupToEdit.tasks.push({ ...task })
+        setBoard({ ...board })
+    }
+
+    function onIncomingNewGroup(group) {
+        board.groups.push(group)
+        setBoard(board)
+    }
 
     async function onDeleteBoard() {
         const isWantDelete = window.confirm('Are you sure?')
@@ -65,6 +89,7 @@ export function Board() {
     async function loadBoard() {
         try {
             const board = await boardService.getById(boardId)
+            socketService.emit(SOCKET_EMIT_SET_BOARD, board._id)
             saveBoard(board)
         } catch (err) {
             navigate('/workspace')

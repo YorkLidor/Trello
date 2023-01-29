@@ -26,7 +26,6 @@ async function getCollection(collectionName) {
 async function connect() {
     if (dbConn) return dbConn
     try {
-        logger.debug('Connect to DB-------------', dbName)
         const client = await MongoClient.connect(config.dbURL, { useNewUrlParser: true, useUnifiedTopology: true })
         const db = client.db(dbName)
         dbConn = db

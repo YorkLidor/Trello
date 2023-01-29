@@ -15,30 +15,30 @@ function setupSocketAPI(http) {
         })
 
         // Join socket to a room
-        socket.on('set-chat-topic', boardId => {
-            console.log('got new topic', boardId);
+        socket.on('set-board', boardId => {
+            console.log('got new board', boardId);
             if (socket.boardId === boardId) return;
             if (socket.boardId) {
                 // When visiting another board, remove the prev "room"
                 socket.leave(socket.boardId)
-                logger.info(`Socket is leaving topic ${socket.boardId} [id: ${socket.id}]`)
+                logger.info(`Socket is leaving ${socket.boardId} [id: ${socket.id}]`)
             }
             socket.join(boardId)
             // save the boardId on this specific user socket for later use.
             socket.boardId = boardId
         })
 
-        // Join socket to a room
-        socket.on('chat-new-msg', msg => {
-            logger.info(`New chat msg from socket [id: ${socket.id}], emitting to topic ${socket.boardId}`)
 
-            // BONUS
-            boardService.addMsgToChat(msg, socket.boardId)
+        socket.on('board-send-task', ({ task, groupId }) => {
+            logger.info(`New task from socket [id: ${socket.id}], emitting task ${JSON.stringify({ task, groupId })}`)
+            boardService.addNewTask(task, socket.boardId, groupId)
+            socket.broadcast.to(socket.boardId).emit('board-add-task', { task, groupId })
+        })
 
-            // emits to all sockets:
-            // gIo.emit('chat addMsg', msg)
-            // emits only to sockets in the same room
-            gIo.to(socket.boardId).emit('chat-add-msg', msg)
+        socket.on('board-send-group', group => {
+            logger.info(`New group from socket [id: ${socket.id}], emitting group ${group.id}`)
+            boardService.addNewGroup(group, socket.boardId)
+            socket.broadcast.to(socket.boardId).emit('board-add-group', group)
         })
 
         socket.on('chat-user-typing', user => {
@@ -46,7 +46,7 @@ function setupSocketAPI(http) {
             socket.broadcast.to(socket.boardId).emit('chat-add-typing', user)
             // broadcast({ type: 'chat typing', data: user, room: socket.boardId, userId: socket.userId })
         })
-        
+
         socket.on('chat-stop-typing', user => {
             logger.info(`User has stopped typing from socket [id: ${socket.id}], emitting to topic ${socket.boardId}`)
             socket.broadcast.to(socket.boardId).emit('chat-remove-typing', user)
