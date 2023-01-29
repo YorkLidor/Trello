@@ -44,10 +44,10 @@ export function TaskDetails() {
     const user = useSelector((storeState) => storeState.userModule.user)
     const board = useSelector((storeState) => storeState.boardModule.board)
     const modals = useSelector((storeState) => storeState.appModule.app.modals)
-    console.dir(board)
     const [modal, setModal] = useState(null)
     const [taskToEdit, setTaskToEdit] = useState(null)
     const [style, setStyle] = useState({})
+    console.dir(taskToEdit?.comments)
 
     const { boardId, groupId, taskId } = useParams()
     const navigate = useNavigate()
@@ -96,7 +96,7 @@ export function TaskDetails() {
                 if (modalPos.right > windowWidth) modalBoxRef.current.style.left = (modalPos.left - (modalPos.right - windowWidth) - 20) + 'px'
                 else if (modalPos.left < 0) modalBoxRef.current.style.left = '10px'
 
-                if (modalPos.bottom > windowHeight) modalBoxRef.current.style.top = (modalPos.top - (modalPos.bottom - windowWidth) - 20) + 'px'
+                if (modalPos.bottom > windowHeight) modalBoxRef.current.style.top = (modalPos.top - (modalPos.bottom - windowHeight) - 20) + 'px'
                 else if (modalPos.top < 0) modalBoxRef.current.style.top = '10px'
             }
         }
@@ -187,6 +187,7 @@ export function TaskDetails() {
     // Toggle modal visibility and set it's pos under element
     function onToggleModal(ev, modalType, extras = null) {
         try {
+            console.log(modalType, extras)
             if (!modal) return
             let element
             if (ev) {
