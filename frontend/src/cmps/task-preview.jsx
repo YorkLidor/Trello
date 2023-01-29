@@ -95,7 +95,7 @@ export function TaskPreview({ task, groupId, isDragging, isQuickEdit }) {
 
             <li
                 className={`task-preview ${task?.cover?.fullSize && !isQuickEdit ? 'full' : ''}`}
-                style = {{ color: taskStyle?.color ? taskStyle.color : '' }}
+                style = {{ color: taskStyle?.color && task.cover.fullSize ? taskStyle.color : '' }}
 
                     >
                     {(taskLabels && !task?.cover?.fullSize) &&
