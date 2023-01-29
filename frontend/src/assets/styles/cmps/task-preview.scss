@@ -129,6 +129,7 @@
 
     &:hover {
         opacity: 1;
+        display: block;
 
         .edit-task-icon {
             opacity: 0.8;
@@ -140,7 +141,7 @@
     }
 
     &.hidden-icon {
-        display: flex;
+        // display: none;
         display: block;
     }
 

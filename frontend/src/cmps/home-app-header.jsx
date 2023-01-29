@@ -26,7 +26,7 @@ export function HomeAppHeader() {
 
         <div className="logo-container">
             <Link to="/" className="logo">
-                <img src="https://www.linkpicture.com/q/shmello-logo.jpg" alt="" />
+                <img src="https://www.linkpicture.com/q/Shmello-final-logo.jpg" alt="" />
             </Link>
         </div>
 

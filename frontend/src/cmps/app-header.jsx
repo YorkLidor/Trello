@@ -57,8 +57,7 @@ export function AppHeader() {
         <nav className="main-nav flex">
             <div className="logo-container">
                 <Link to={!user ? "/" : "/workspace"} className="logo">
-                    <SiTrello />
-                    <span>Shmello</span>
+                    <img src="https://www.linkpicture.com/q/Untitled-Artwork_1.png" alt="" />
                 </Link>
             </div>
             <nav className="navlinks-container">
