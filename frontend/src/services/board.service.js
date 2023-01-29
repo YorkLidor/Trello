@@ -210,6 +210,7 @@ async function addComment(user, groupId, task, text) {
         }
 
     }
+    if(!task.comments) task.comments = []
     task.comments = task.comments ? [...task.comments, comment] : [comment]
 
     comment.task = {

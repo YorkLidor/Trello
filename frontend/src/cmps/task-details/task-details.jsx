@@ -44,6 +44,7 @@ export function TaskDetails() {
     const user = useSelector((storeState) => storeState.userModule.user)
     const board = useSelector((storeState) => storeState.boardModule.board)
     const modals = useSelector((storeState) => storeState.appModule.app.modals)
+    console.dir(board)
     const [modal, setModal] = useState(null)
     const [taskToEdit, setTaskToEdit] = useState(null)
     const [style, setStyle] = useState({})
