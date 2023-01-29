@@ -12,7 +12,7 @@ module.exports = {
     add,
     addNewTask,
     addNewGroup,
-    updateGroup
+    updateGroups
 }
 
 const collectionName = 'board'
@@ -99,7 +99,7 @@ async function addNewGroup(group, boardId) {
     }
 }
 
-async function updateGroup(groups, boardId) {
+async function updateGroups(groups, boardId) {
     try {
         const collection = await dbService.getCollection(collectionName)
         const groupIds = groups.map(group => group.id);
