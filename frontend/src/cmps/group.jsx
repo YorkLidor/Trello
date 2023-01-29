@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { Droppable } from "react-beautiful-dnd"
 import { SOCKET_EVENT_ADD_TASK } from "../services/socket.service"
 
@@ -8,12 +8,24 @@ import { TaskList } from "./task-list"
 
 export function Group({ group, board, provided, onRemoveGroup, isDragging, onToggleModal, onCopyGroup }) {
     const [isAddCardOpen, setIsAddCardOpen] = useState(false)
-    const so = SOCKET_EVENT_ADD_TASK
+    const groupRef = useRef(null)
+    useEffect(() => {
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        }
+    }, [])
+
+    const handleClickOutside = (event) => {
+        if (groupRef.current && !groupRef.current.contains(event.target)) {
+            setIsAddCardOpen(false)
+        }
+    }
 
     return <Droppable droppableId={group.id} direction="vertical" type="task-list">
         {prov =>
             <li className={`group-item-container ${isDragging && 'is-dragging'}`} ref={prov.innerRef} >
-                <div className="group-item">
+                <div className="group-item" ref={groupRef}>
                     <div {...provided.dragHandleProps}>
                         <GroupHeader group={group} board={board} onRemoveGroup={onRemoveGroup} onToggleModal={onToggleModal} onCopyGroup={onCopyGroup} />
                     </div>
