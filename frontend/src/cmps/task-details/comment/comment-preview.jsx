@@ -12,6 +12,9 @@ export function CommentPreview({ comment, onToggleModal, task }) {
     const [editComment, setEditComment] = useState(false)
     const elCommentRef = useRef()
 
+    const commentDate = new Date(+comment.createdAt)
+    const strCommentTime = `${commentDate.getUTCDate()}/${commentDate.getUTCMonth()+1}/${commentDate.getFullYear()} at ${commentDate.getHours()}:${commentDate.getMinutes()}`
+
     function handleEdit({ target }) {
         if (target?.value?.length) return
     }
@@ -37,7 +40,7 @@ export function CommentPreview({ comment, onToggleModal, task }) {
         <img className="commentor-logo" src={comment.byMember.imgUrl ? comment.byMember.imgUrl : 'https://res.cloudinary.com/dk2geeubr/image/upload/v1673890694/profileDefault_khqx4r.png'} />
         <div className="comment-box" key={comment.id}>
             <span className="comment-by-member">{comment.byMember.fullName}</span>
-            <a href="#" className="comment-time">{new Date(+comment.createdAt).toLocaleTimeString()}</a>
+            <a href="#" className="comment-time">{strCommentTime}</a>
 
             {
                 !editComment ? <>

@@ -7,6 +7,8 @@ export function ActivityList({ task, onToggleModal }) {
 
     return activities && activities.map(activity => {
         let txt = activity.txt + (!activity.isComment ? (!task ? ` at ${activity.task?.title}` : '') : '')
+        const activityDate = new Date(+activity.createdAt)
+        const strActivityTime = `${activityDate.getUTCDate()}/${activityDate.getUTCMonth() + 1}/${activityDate.getFullYear()} at ${activityDate.getHours()}:${activityDate.getMinutes()}`
 
         return activity.isComment ? <CommentPreview comment={activity} key={activity.id} onToggleModal={onToggleModal} task={task} /> : <div key={activity.id} className="activity-item">
             <img className='activity-member-logo' src={activity.byMember.imgUrl} />
@@ -14,7 +16,7 @@ export function ActivityList({ task, onToggleModal }) {
                 <span className="activity-member-name">{activity.byMember.fullname}</span>
                 <span className='activity-txt'>{txt}</span>
             </div>
-            <span className="activity-time-txt">{activity.createdAt}</span>
+            <span className="activity-time-txt">{strActivityTime}</span>
         </div>
     })
 }
