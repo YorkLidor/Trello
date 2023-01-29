@@ -9,6 +9,7 @@ export const utilService = {
     getElementPosition,
     reorder,
     shadeColor,
+    timestampToDate
 }
 
 function reorder(arr, startIdx, endIdx) {
@@ -111,3 +112,15 @@ function shadeColor(color, percent) {
 
     return "#" + RR + GG + BB;
 }
+
+function timestampToDate(timestamp) {
+    console.log('monthName:', timestamp)
+    const date = new Date(timestamp * 1000);
+    const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+      "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+    ];
+    const monthName = monthNames[date.getMonth()]
+    const dayNumber = date.getDate()
+    return `${monthName} ${dayNumber}`
+  }
+  
