@@ -17,7 +17,7 @@ export function TaskDate({ task, onToggleModal }) {
             else if ((task.dueDate.date - now) / (60 * 60 * 1000) < 24) return 'due-soon'
             return 'later'
         }
-        catch(err) {
+        catch (err) {
             console.error('failed get date done text')
         }
     }
@@ -27,13 +27,22 @@ export function TaskDate({ task, onToggleModal }) {
         <div className="flex row">
 
             <label className="checkbox-date">
-                <input type='checkbox' id={`date-done`} checked={checked} onChange={ev => setChecked(ev.target.checked)} />
+                <input
+                    type='checkbox'
+                    id={`date-done`}
+                    checked={checked}
+                    onChange={ev => setChecked(ev.target.checked)}
+                />
                 <span className='checkbox-container'>
-                    {checked ? <ImCheckboxChecked className='checkbox checkbox-checked' /> : <ImCheckboxUnchecked className='checkbox checkbox-unchecked' />}
+                    <ImCheckboxChecked
+                        className={`checkbox checkbox-${checked ? 'checked' : 'unchecked'}`}
+                    />
                 </span>
             </label>
 
-            <div className="task-due-date-preview" onClick={(ev) => onToggleModal(ev, MODAL_TASK_DATE)}>
+            <div className="task-due-date-preview"
+                onClick={(ev) => onToggleModal(ev, MODAL_TASK_DATE)}
+            >
                 {new Date(task.dueDate.date).toDateString()}
                 {
                     dateDoneText !== 'later' &&
