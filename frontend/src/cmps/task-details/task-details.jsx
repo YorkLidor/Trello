@@ -15,7 +15,7 @@ import { SET_ACTIVE_BOARD } from "../../store/reducers/board.reducer"
 
 import {
     MODAL_ATTACH, MODAL_LABELS, MODAL_ATTACH_EDIT, MODAL_CHECKLIST, MODAL_TODO, MODAL_REMOVE_COMMENT, MODAL_TASK_MOVE, MODAL_TASK_DELETE,
-    MODAL_ATTACH_OPEN, MODAL_MEMBERS, MODAL_MEMBER_OPEN, MODAL_TASK_DATE, MODAL_TASK_COVER, MODAL_CHECKLIST_DELETE, MODAL_TASK_COPY
+    MODAL_ATTACH_OPEN, MODAL_MEMBERS, MODAL_MEMBER_OPEN, MODAL_TASK_DATE, MODAL_TASK_COVER, MODAL_CHECKLIST_DELETE, MODAL_TASK_COPY, MODAL_MEMBERS_TODOS
 } from '../modal/modal.jsx'
 
 import { AttachmentList } from "./attachment/attachment-list"
@@ -64,7 +64,7 @@ export function TaskDetails() {
             loadBoard()
             setModal(modalService.addNewModal(modals))
 
-            if(board.memberIds?.includes(user._id)) board.memberIds.unshift(user._id)
+            if (board.memberIds?.includes(user._id)) board.memberIds.unshift(user._id)
 
             return () => setStyle({ '--cover-color': '#ffff' })
         }
@@ -131,7 +131,7 @@ export function TaskDetails() {
 
             if (!board) store.dispatch({ type: SET_ACTIVE_BOARD, board: boardModel })
         } catch (err) {
-            console.error('Failed to load board',err)
+            console.error('Failed to load board', err)
             errorRedirect()
         }
     }
@@ -209,7 +209,7 @@ export function TaskDetails() {
                     cmpProps = { user, groupId, task: taskToEdit, modals }
                     break
                 case MODAL_TASK_COPY:
-                    cmpProps = { user, groupId, task: taskToEdit, modals, isCopy: true}
+                    cmpProps = { user, groupId, task: taskToEdit, modals, isCopy: true }
                     break
                 case MODAL_CHECKLIST_DELETE:
                     cmpProps = { user, groupId, task: taskToEdit, checklist: extras.checklist }
@@ -233,6 +233,9 @@ export function TaskDetails() {
                     break
                 case MODAL_REMOVE_COMMENT:
                     cmpProps = { user, groupId, task: taskToEdit, comment: extras.comment }
+                    break
+                case MODAL_MEMBERS_TODOS:
+                    cmpProps = { user, groupId, task: taskToEdit, checklist: extras.checklist, todo: extras.todo }
                     break
                 default:
                     break

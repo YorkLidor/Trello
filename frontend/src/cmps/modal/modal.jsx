@@ -16,6 +16,7 @@ import { UserQuickMenu } from "../user-quick-menu"
 import { DeleteCommentModal } from "./comment-delete-modal"
 import { ModalTaskMove } from "./modal-move-copy-task"
 import { DeleteTaskModal } from "./task-delete-modal"
+import { MemberPickerTodos } from "./member-picker-todo-modal"
 
 export const MODAL_LABELS = 'MODAL_LABELS'
 export const MODAL_ATTACH = 'MODAL_ATTACH'
@@ -23,6 +24,7 @@ export const MODAL_ATTACH_EDIT = 'MODAL_ATTACH_EDIT'
 export const MODAL_ATTACH_OPEN = 'MODAL_ATTACH_OPEN'
 export const BOARD_CREATOR = 'BOARD_CREATOR'
 export const MODAL_MEMBERS = 'MODAL_MEMBERS'
+export const MODAL_MEMBERS_TODOS = 'MODAL_MEMBERS_TODOS'
 export const MODAL_MEMBER_OPEN = 'MODAL_MEMBER_OPEN'
 export const MODAL_TASK_QUICK_EDIT = 'MODAL_TASK_QUICK_EDIT'
 export const MODAL_TASK_DATE = 'MODAL_TASK_DATE'
@@ -59,6 +61,8 @@ function ModalCmp({ id, cmpProps, cmpType }) {
                 return <AttachmentView cmpProps={cmpProps} id={id} />
             case MODAL_MEMBERS:
                 return <MemberPicker cmpProps={cmpProps} id={id} />
+            case MODAL_MEMBERS_TODOS:
+                return <MemberPickerTodos cmpProps={cmpProps} id={id} />
             case MODAL_MEMBER_OPEN:
                 return <MemberModal cmpProps={cmpProps} id={id} />
             case MODAL_TASK_QUICK_EDIT:

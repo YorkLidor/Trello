@@ -18,8 +18,10 @@ export const CHANGE_DUE_DATE = 'CHANGE_DUE_DATE'
 export const REMOVE_DUE_DATE = 'REMOVE_DUE_DATE'
 export const ADD_MEMBER_A = 'ADD_MEMBER_A'
 export const ADD_MEMBER_B = 'ADD_MEMBER_B'
+export const ADD_MEMBER_C = 'ADD_MEMBER_C'
 export const REMOVE_MEMBER_A = 'REMOVE_MEMBER_A'
 export const REMOVE_MEMBER_B = 'REMOVE_MEMBER_B'
+export const REMOVE_MEMBER_C = 'REMOVE_MEMBER_C'
 export const ADD_LABEL = 'ADD_LABEL'
 export const REMOVE_LABEL = 'REMOVE_LABEL'
 export const CHANGE_TASK_LOCATION = 'CHANGE_TASK_LOCATION'
@@ -206,10 +208,14 @@ export function getActivityText(action) {
             return `added member`
         case ADD_MEMBER_B:
             return `to board members`
+        case ADD_MEMBER_C:
+            return `to checklist item`
         case REMOVE_MEMBER_A:
             return `removed member`
         case REMOVE_MEMBER_B:
             return `from board members`
+        case REMOVE_MEMBER_C:
+            return `from checklist item`
         case ADD_LABEL:
             return `added label`
         case REMOVE_LABEL:
