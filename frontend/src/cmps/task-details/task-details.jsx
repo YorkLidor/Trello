@@ -130,8 +130,8 @@ export function TaskDetails() {
             setTaskToEdit(task)
 
             if (!board) store.dispatch({ type: SET_ACTIVE_BOARD, board: boardModel })
-        } catch(err) {
-            console.log(err)
+        } catch (err) {
+            console.error('Failed to load board',err)
             errorRedirect()
         }
     }

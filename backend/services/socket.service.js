@@ -47,7 +47,7 @@ function setupSocketAPI(http) {
         })
 
         socket.on('user-update-group', groups => {
-            // logger.info(`Group update from socket [id: ${socket.id}], emitting group ${group.id}`)
+            logger.info(`Group update from socket [id: ${socket.id}]`)
             boardService.updateGroups(groups, socket.boardId)
             socket.broadcast.to(socket.boardId).emit('board-update-group', groups)
         })
