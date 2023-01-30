@@ -11,10 +11,12 @@ import { ActivityList } from "../activity-list"
 export function Activity({ user, groupId, taskToEdit, onToggleModal }) {
     const [showDetails, setShowDetails] = useState(false)
     const elCommentRef = useRef()
+    const elSaveBtnRef = useRef()
 
     async function onSaveComment(ev) {
         try {
             ev.preventDefault()
+            if(!elSaveBtnRef.current.classList.contains('enabled')) return
             const value = ev.target[0].value
             if (!value.length) return
 
@@ -27,15 +29,30 @@ export function Activity({ user, groupId, taskToEdit, onToggleModal }) {
         }
     }
 
-    function handleEdit({ target }, state) {
+    function handleFocus({ target }, state) {
         try {
             target.dataset.state = state
             if (target.value.length) return
             elCommentRef.current.classList.toggle('comment-typing')
         }
-        catch(err) {
+        catch (err) {
             console.error('failed handle changes in comment')
         }
+    }
+
+    function handleEdit({ target }) {
+        try {
+            const containsEnabledClass = elSaveBtnRef.current.classList.contains('enabled')
+            if (!target.value.length && containsEnabledClass) toggleSaveBtnEnabled()
+            else if (target.value.length && !containsEnabledClass) toggleSaveBtnEnabled()
+        }
+        catch(err) {
+            console.error('failed toggle save button enabled')
+        }
+    }
+
+    function toggleSaveBtnEnabled() {
+        elSaveBtnRef.current.classList.toggle('enabled')
     }
 
     return <div className="task-activity-box flex column">
@@ -49,9 +66,9 @@ export function Activity({ user, groupId, taskToEdit, onToggleModal }) {
             <img className="user-logo" src={user.imgUrl ? user.imgUrl : 'https://res.cloudinary.com/dk2geeubr/image/upload/v1673890694/profileDefault_khqx4r.png'} />
             <form ref={elCommentRef} className="task-activity" onSubmit={onSaveComment}>
                 <div className="comment-input-container" ref={elCommentRef}>
-                    <textarea data-state={false} className="task-activity-input" placeholder={'Write a comment...'} onFocus={(ev) => handleEdit(ev, true)} onBlur={(ev) => !ev.target.dataset.state ? '' : handleEdit(ev, false)} />
+                    <textarea data-state={false} className="task-activity-input" placeholder={'Write a comment...'} onChange={handleEdit} onFocus={(ev) => handleFocus(ev, true)} onBlur={(ev) => !ev.target.dataset.state ? '' : handleFocus(ev, false)} />
                 </div>
-                <button className="comment-btn">Save</button>
+                <button ref={elSaveBtnRef} className="comment-btn">Save</button>
             </form>
         </div>
         {

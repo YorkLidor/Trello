@@ -11,7 +11,7 @@ export function MemberModal({ id, cmpProps }) {
 
     function onRemoveMember() {
         try {
-            onRemoveFromCard(member, task, boardId, groupId)
+            onRemoveFromCard(member, task, groupId)
             closeModal(modals, id)
         }
         catch (err) {

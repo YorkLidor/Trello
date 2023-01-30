@@ -143,7 +143,7 @@ export async function onRemoveAttachment(user, boardId, groupId, task, attachmen
     }
 }
 
-export async function onRemoveFromCard(user, task, boardId, groupId) {
+export async function onRemoveFromCard(user, task, groupId) {
     try {
         const action = `${getActivityText(REMOVE_MEMBER_A)} ${user.fullname} ${REMOVE_MEMBER_B}`
         task.memberIds = task.memberIds?.filter(memberId => memberId !== user._id)

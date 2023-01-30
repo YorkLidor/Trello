@@ -143,6 +143,20 @@
             width: fit-content;
             padding: 6px 12px;
             margin: 0 0 8px 12px;
+            cursor:not-allowed;
+            background-color: inherit;
+            color: #d3d7de;
+
+            &:hover{
+                background-color: unset;
+            }
+
+            &.enabled {
+                cursor: pointer;
+                @include button-filled($button-filled , #FFF);
+                padding: 6px 12px;
+                margin: 0 0 8px 12px;
+            }
         }
     }
 

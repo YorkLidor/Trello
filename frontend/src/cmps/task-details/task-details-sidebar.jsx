@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux"
 
-import { MODAL_MEMBERS, MODAL_LABELS, MODAL_ATTACH, MODAL_TASK_DATE, MODAL_TASK_COVER, MODAL_CHECKLIST, MODAL_TASK_MOVE, MODAL_TASK_COPY } from '../modal/modal'
+import { MODAL_MEMBERS, MODAL_LABELS, MODAL_ATTACH, MODAL_TASK_DATE, MODAL_TASK_COVER, MODAL_CHECKLIST, MODAL_TASK_MOVE, MODAL_TASK_COPY, MODAL_TASK_DELETE } from '../modal/modal'
 
 import { RiAttachment2, RiInboxFill } from "react-icons/ri"
 import { IoPricetagOutline } from "react-icons/io5"
@@ -47,7 +47,7 @@ export function TaskDetailsSideBar({ task, onToggleModal }) {
         <nav className="window-sidebar flex column">
             <button className='button-link' onClick={(ev) => onToggleModal(ev, MODAL_TASK_MOVE)}><HiOutlineArrowRight data-type='icon' className="sidebar-icon" /><span className="nav-btn-txt" data-type='icon'>Move</span></button>
             <button className='button-link' onClick={(ev) => onToggleModal(ev, MODAL_TASK_COPY)}><MdContentCopy data-type='icon' className="sidebar-icon" /><span className="nav-btn-txt" data-type='icon'>Copy</span></button>
-            <button className='button-link' onClick={(ev) => onToggleModal(ev, MODAL_TASK_COPY)}><BsArchive data-type='icon' className="sidebar-icon" /><span className="nav-btn-txt" data-type='icon'>Delete</span></button>
+            <button className='button-link' onClick={(ev) => onToggleModal(ev, MODAL_TASK_DELETE)}><BsArchive data-type='icon' className="sidebar-icon" /><span className="nav-btn-txt" data-type='icon'>Delete</span></button>
         </nav>
     </div>
 }

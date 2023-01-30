@@ -57,10 +57,11 @@ export function TaskDetails() {
 
     useEffectInit(() => {
         try {
-
             if (!boardId || !groupId || !taskId) return errorRedirect()
             loadBoard()
             setModal(modalService.addNewModal(modals))
+
+            if(board.memberIds.includes(user._id)) board.memberIds.unshift(user._id)
 
             return () => setStyle({ '--cover-color': '#ffff' })
         }
