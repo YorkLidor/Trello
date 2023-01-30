@@ -15,7 +15,7 @@ import { SET_ACTIVE_BOARD } from "../../store/reducers/board.reducer"
 
 import {
     MODAL_ATTACH, MODAL_LABELS, MODAL_ATTACH_EDIT, MODAL_CHECKLIST, MODAL_TODO, MODAL_REMOVE_COMMENT, MODAL_TASK_MOVE,
-    MODAL_ATTACH_OPEN, MODAL_MEMBERS, MODAL_MEMBER_OPEN, MODAL_TASK_DATE, MODAL_TASK_COVER, MODAL_CHECKLIST_DELETE
+    MODAL_ATTACH_OPEN, MODAL_MEMBERS, MODAL_MEMBER_OPEN, MODAL_TASK_DATE, MODAL_TASK_COVER, MODAL_CHECKLIST_DELETE, MODAL_TASK_COPY
 } from '../modal/modal.jsx'
 
 import { AttachmentList } from "./attachment/attachment-list"
@@ -202,6 +202,9 @@ export function TaskDetails() {
                 case MODAL_TASK_MOVE:
                     cmpProps = { user, groupId, task: taskToEdit, modals }
                     break
+                case MODAL_TASK_COPY:
+                    cmpProps = { user, groupId, task: taskToEdit, modals, isCopy: true}
+                    break
                 case MODAL_CHECKLIST_DELETE:
                     cmpProps = { user, groupId, task: taskToEdit, checklist: extras.checklist }
                     break
@@ -288,7 +291,7 @@ export function TaskDetails() {
                     <p
                         className="header-subtitle"
                     >
-                        <span className='board-name' >{board.title} </span>in list <span className='group-name'>{group.title}</span>
+                        <span className='board-name' >{board.title} </span>in list <span className='group-name' onClick={(ev) => onToggleModal(ev, MODAL_TASK_COPY)}>{group.title}</span>
                     </p>
                 </div>
 

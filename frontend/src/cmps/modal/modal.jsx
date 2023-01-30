@@ -33,6 +33,7 @@ export const MODAL_GROUP_QUICK_EDIT = 'MODAL_GROUP_QUICK_EDIT'
 export const USER_QUICK_MENU = 'USER_QUICK_MENU'
 export const MODAL_REMOVE_COMMENT = 'MODAL_REMOVE_COMMENT'
 export const MODAL_TASK_MOVE = 'MODAL_TASK_MOVE'
+export const MODAL_TASK_COPY = 'MODAL_TASK_COPY'
 
 
 export function Modal({ modal, cmpProps, cmpType, className }) {
@@ -77,6 +78,7 @@ function ModalCmp({ id, cmpProps, cmpType }) {
             case MODAL_REMOVE_COMMENT:
                 return <DeleteCommentModal {...cmpProps} id={id} />
             case MODAL_TASK_MOVE:
+            case MODAL_TASK_COPY:
                 return <ModalTaskMove {...cmpProps} id={id} />
             default:
                 return ''
