@@ -2,6 +2,7 @@ import { useSelector } from "react-redux"
 import { useState, useRef } from "react"
 import { useParams } from "react-router-dom"
 
+import { utilService } from "../../../services/util.service"
 import { boardService } from "../../../services/board.service"
 
 import { MODAL_REMOVE_COMMENT } from '../../modal/modal'
@@ -12,8 +13,7 @@ export function CommentPreview({ comment, onToggleModal, task }) {
     const [editComment, setEditComment] = useState(false)
     const elCommentRef = useRef()
 
-    const commentDate = new Date(+comment.createdAt)
-    const strCommentTime = `${commentDate.getUTCDate()}/${commentDate.getUTCMonth() + 1}/${commentDate.getFullYear()} at ${commentDate.getHours()}:${commentDate.getMinutes()}`
+    const strCommentTime = utilService.getTimeString(comment.createdAt)
 
     function handleEdit({ target }) {
         if (target?.value?.length) return

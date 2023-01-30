@@ -63,27 +63,7 @@ export function TaskPreview({ task, groupId, isDragging, isQuickEdit }) {
         store.dispatch({ type: SET_TASK_QUICK_EDIT, taskQuickEdit: { task, groupId, pos } })
     }
 
-    async function handleFtileDrop(file) {
-        const { filename } = file
-        console.log(file.name)
-        try {
-            const { url } = await uploadImgDnd(file)
-            const action = `${getActivityText(ADD_ATTACH)} ${filename}`
-            const activity = boardService.getActivity(user, { id: task.id, title: task.title }, action)
 
-            const attachment = boardService.getAttachment(url, filename)
-            console.log('url:', url)
-            if (task.attachments?.length > 0) task.attachments.unshift(attachment)
-            else task.attachments = [boardService.getAttachment(url, filename)]
-
-            const taskToSave = task.cover ? task : boardService.setCoverImage(task, attachment)
-            await saveTask(groupId, taskToSave, activity)
-        }
-        catch (err) {
-            console.error('Failed upload attachment', err)
-        }
-
-    }
     return <>
         <div
             className={`task-preview-container ${isDragging && 'is-dragging'} ${task?.cover?.fullSize ? 'full' : ''} ${task?.cover?.style?.backgroundImage ? 'img' : ''} ${task?.cover?.isDark ? 'dark' : ''}`}

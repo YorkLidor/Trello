@@ -3,7 +3,7 @@ import { useRef, useState } from "react"
 import { useForm } from "../customHooks/useForm.js"
 import { useEffectUpdate } from "../customHooks/useEffectUpdate.js"
 import { MODAL_GROUP_QUICK_EDIT, MODAL_MEMBERS } from "./modal/modal.jsx"
-import { socketService, SOCKET_EMIT_UPDATE_GROUP } from "../services/socket.service.js"
+import { socketService, SOCKET_EMIT_UPDATE_GROUPS } from "../services/socket.service.js"
 
 export function GroupHeader({ group, board, onRemoveGroup, onToggleModal, onCopyGroup }) {
     const [groupToEdit, setGroupToEdit, handleChange] = useForm(group)
@@ -35,7 +35,7 @@ export function GroupHeader({ group, board, onRemoveGroup, onToggleModal, onCopy
         }
         if (groupToEdit.title === group.title) return
         group.title = groupToEdit.title
-        socketService.emit(SOCKET_EMIT_UPDATE_GROUP, group)
+        socketService.emit(SOCKET_EMIT_UPDATE_GROUPS, board.groups)
         try {
             await setBoard(board)
         } catch (err) {

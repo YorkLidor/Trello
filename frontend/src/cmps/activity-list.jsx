@@ -1,14 +1,15 @@
 import { useSelector } from "react-redux"
+import { utilService } from "../services/util.service"
 import { CommentPreview } from "./task-details/comment/comment-preview"
 
 export function ActivityList({ task, onToggleModal }) {
     const board = useSelector((storeState) => storeState.boardModule.board)
-    const activities = task ? board.activities.filter(activity => activity.task?.id === task.id) : board.activities
+    const activities = task ? board.activities?.filter(activity => activity.task?.id === task.id) : board.activities
 
     return activities && activities.map(activity => {
         let txt = activity.txt + (!activity.isComment ? (!task ? ` at ${activity.task?.title}` : '') : '')
         const activityDate = new Date(+activity.createdAt)
-        const strActivityTime = `${activityDate.getUTCDate()}/${activityDate.getUTCMonth() + 1}/${activityDate.getFullYear()} at ${activityDate.getHours()}:${activityDate.getMinutes()}`
+        const strActivityTime = utilService.getTimeString(activityDate)
 
         return activity.isComment ? <CommentPreview comment={activity} key={activity.id} onToggleModal={onToggleModal} task={task} /> : <div key={activity.id} className="activity-item">
             <img className='activity-member-logo' src={activity.byMember.imgUrl} />
