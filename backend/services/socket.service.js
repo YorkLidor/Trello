@@ -28,17 +28,28 @@ function setupSocketAPI(http) {
             socket.boardId = boardId
         })
 
-
         socket.on('board-send-task', ({ task, groupId }) => {
             logger.info(`New task from socket [id: ${socket.id}], emitting task ${JSON.stringify({ task, groupId })}`)
             boardService.addNewTask(task, socket.boardId, groupId)
             socket.broadcast.to(socket.boardId).emit('board-add-task', { task, groupId })
         })
 
+        socket.on('create-new-board', ({ task, groupId }) => {
+            logger.info(`New task from socket [id: ${socket.id}], emitting task ${JSON.stringify({ task, groupId })}`)
+            boardService.addNewTask(task, socket.boardId, groupId)
+            socket.broadcast.to(socket.boardId).emit('add-new-board', { task, groupId })
+        })
+
         socket.on('board-send-group', group => {
             logger.info(`New group from socket [id: ${socket.id}], emitting group ${group.id}`)
             boardService.addNewGroup(group, socket.boardId)
             socket.broadcast.to(socket.boardId).emit('board-add-group', group)
+        })
+
+        socket.on('user-update-group', groups => {
+            // logger.info(`Group update from socket [id: ${socket.id}], emitting group ${group.id}`)
+            boardService.updateGroups(groups, socket.boardId)
+            socket.broadcast.to(socket.boardId).emit('board-update-group', groups)
         })
 
         socket.on('chat-user-typing', user => {

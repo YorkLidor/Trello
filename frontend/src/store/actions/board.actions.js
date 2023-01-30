@@ -1,6 +1,6 @@
 import { boardService } from '../../services/board.service'
 import { store } from '../store.js'
-import { SET_BOARDS, ADD_BOARD, REMOVE_BOARD, EDIT_BOARD, SET_ACTIVE_BOARD, UNDO_EDIT_BOARD } from '../reducers/board.reducer'
+import { SET_BOARDS, ADD_BOARD, REMOVE_BOARD, EDIT_BOARD, SET_ACTIVE_BOARD, UNDO_EDIT_BOARD, ADD_NEW_BOARD } from '../reducers/board.reducer'
 
 export const ADD_CHECKLIST = 'ADD_CHECKLIST'
 export const EDIT_ATTACH = 'EDIT_ATTACH'
@@ -26,6 +26,7 @@ export const CHANGE_TASK_LOCATION = 'CHANGE_TASK_LOCATION'
 export const SET_CHECKLIST_TITLE = 'SET_CHECKLIST_TITLE'
 export const POST_COMMENT = 'POST_COMMENT'
 export const REMOVE_COMMENT = 'REMOVE_COMMENT'
+
 
 export async function loadBoards() {
     try {
@@ -77,6 +78,11 @@ export async function setBoard(board) {
     store.dispatch({ type: SET_ACTIVE_BOARD, board })
 }
 
+export async function addBoard(board) {
+    console.log('board:', board)
+    store.dispatch({ type: ADD_NEW_BOARD, board })
+}
+
 export async function addNewTask(groupId, newTask) {
     try {
         const board = store.getState().boardModule.board
@@ -108,10 +114,10 @@ export async function saveTask(groupId, task, activity) {
         const tasks = group.tasks?.map(t => t.id === task.id ? task : t)
         group.tasks = tasks
 
-        if(!board.activities) board.activities = []
+        if (!board.activities) board.activities = []
 
         const activityIdx = board.activities.findIndex(act => act.id === activity.id)
-        if(activityIdx === -1) board.activities.unshift(activity)
+        if (activityIdx === -1) board.activities.unshift(activity)
         else {
             board.activities[activityIdx] = activity
         }
@@ -167,7 +173,7 @@ export async function saveDescription(task, boardId, groupId, text) {
 }
 
 export function getActivityText(action) {
-    switch(action) {
+    switch (action) {
         case ADD_CHECKLIST:
             return 'added Checklist'
         case EDIT_ATTACH:
@@ -216,5 +222,8 @@ export function getActivityText(action) {
             return `added comment`
         case REMOVE_COMMENT:
             return `deleted comment`
+        default:
+            break
+
     }
 }

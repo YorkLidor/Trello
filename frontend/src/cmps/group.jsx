@@ -22,8 +22,6 @@ export function Group({ group, board, provided, onRemoveGroup, isDragging, onTog
         }
     }
 
-    const so = SOCKET_EVENT_ADD_TASK
-
     return <Droppable droppableId={group.id} direction="vertical" type="task-list">
         {prov =>
             <li className={`group-item-container ${isDragging && 'is-dragging'}`} ref={prov.innerRef} >

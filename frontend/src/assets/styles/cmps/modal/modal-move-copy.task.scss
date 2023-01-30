@@ -1,0 +1,67 @@
+.modal-task-action-box {
+    padding: 0 12px 12px 12px;
+
+    .board-select-box {
+
+        .select-label {
+            @include modal-select-label;
+        }
+
+        @include modal-select-box;
+
+
+        .board-label {
+            @include modal-select-value-label;
+        }
+
+        .board-select {
+            @include modal-select;
+        }
+    }
+
+    .group-pos-select {
+        .group-select-box {
+            flex-grow: 3;
+            @include modal-select-box;
+            margin-inline-end: 8px;
+            padding-inline-end: 0;
+
+            .select-label {
+                @include modal-select-label;
+            }
+
+            .group-label {
+                @include modal-select-value-label;
+            }
+
+            .group-select {
+                @include modal-select;
+            }
+        }
+
+
+        .pos-select-box {
+            flex-grow: 1;
+            @include modal-select-box;
+
+            .select-label {
+                @include modal-select-label;
+            }
+
+            .pos-label {
+                @include modal-select-value-label;
+            }
+
+            .pos-select {
+                @include modal-select;
+            }
+        }
+    }
+
+    .task-copy-move-btn {
+        margin: 8px 4px 0 0;
+        padding-inline: 24px;
+        width: fit-content;
+
+    }
+}

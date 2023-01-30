@@ -189,6 +189,11 @@
         display: flex;
         align-items: center;
         padding-inline-end: 8px;
+
+        &:hover {
+            filter: saturate(85%) brightness(85%);
+        }
+
     }
 
     .labels-large {
