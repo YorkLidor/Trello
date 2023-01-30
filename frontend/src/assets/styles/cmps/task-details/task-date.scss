@@ -22,12 +22,14 @@
     background-color: $btn-background-cyan;
     line-height: 20px;
     font-weight: 400;
+    font-size: 14px;
 
     justify-content: center;
     cursor: pointer;
     padding: 6px 12px;
     border-radius: 3px;
     width: fit-content;
+    color: #1b2f50;
 }
 
 input#date-done {

@@ -120,17 +120,17 @@ export function Checklist({ task, checklist, onSaveChecklist, onToggleModal }) {
             ev.stopPropagation()
             setToolInEdit(-1)
         }
-        catch(err) {
+        catch (err) {
             console.error('Failed to set editor mode on add checklist item')
         }
     }
 
     function setHideChecked(ev) {
         try {
-        ev.stopPropagation()
-        setShowChecked(!showChecked)
+            ev.stopPropagation()
+            setShowChecked(!showChecked)
         }
-        catch(err) {
+        catch (err) {
             console.error('Failed to toggle hide or show checked items')
         }
     }
@@ -144,8 +144,10 @@ export function Checklist({ task, checklist, onSaveChecklist, onToggleModal }) {
                         : <span className='checklist-title-span' onMouseDown={(ev) => setTitleToEdit(ev)}>{checklist.title}</span>
                 }
             </div>
-            {list?.todos.filter(todo => todo.isDone)?.length > 0 && <button className='remove-checklist' onMouseDown={setHideChecked}>{showChecked ? 'Show' : 'Hide'} checked items</button>}
-            {toolInEdit !== list.id && <button className='remove-checklist' onClick={(ev) => onToggleModal(ev, MODAL_CHECKLIST_DELETE, { checklist })}>Delete</button>}
+            {toolInEdit !== list.id && <>
+                {list?.todos.filter(todo => todo.isDone)?.length > 0 && <button className='remove-checklist' onMouseDown={setHideChecked}>{showChecked ? 'Hide checked items' : `Show checked items (${doneTodosCount})`}</button>}
+                <button className='remove-checklist' onClick={(ev) => onToggleModal(ev, MODAL_CHECKLIST_DELETE, { checklist })}>Delete</button>
+            </>}
         </div>
 
         <div className='checklist-bar-container flex row'>

@@ -31,7 +31,7 @@ import { TaskCover } from "./task-cover"
 import { Checklists } from "./checklist/checklists"
 import { FastAverageColor } from "fast-average-color"
 
-import { IoClose } from "react-icons/io5"
+import { IoCloseOutline } from "react-icons/io5"
 import { FaPager as IconHeader } from 'react-icons/fa'
 import { RiAttachment2 as IconAttachment } from 'react-icons/ri'
 import { useEffectUpdate } from "../../customHooks/useEffectUpdate"
@@ -321,7 +321,7 @@ export function TaskDetails() {
 
                 <TaskDetailsSideBar task={taskToEdit} onToggleModal={onToggleModal} />
                 <button onClick={closePage} className={taskToEdit.cover ? 'close-task-details on-cover' : 'close-task-details'}>
-                    <IoClose />
+                    <IoCloseOutline />
                 </button>
             </section>
 

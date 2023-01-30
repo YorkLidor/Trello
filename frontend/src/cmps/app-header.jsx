@@ -1,4 +1,4 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { SiTrello } from 'react-icons/si'
 import { useRef } from "react";
 import { useSelector } from "react-redux";
@@ -9,6 +9,12 @@ import { utilService } from "../services/util.service";
 import { modalService } from "../services/modal.service";
 import { closeModal, toggleModal } from "../store/actions/app.actions";
 import { HiOutlineDotsHorizontal } from "react-icons/hi";
+import { MdClose } from "react-icons/md";
+import { AiOutlineStar } from "react-icons/ai";
+import { BsPerson,  } from "react-icons/bs";
+import { RxShare2 } from "react-icons/rx";
+import { MdOutlineContentCopy } from "react-icons/md";
+
 
 export function AppHeader() {
     const modals = useSelector((storeState) => storeState.appModule.app.modals)
@@ -16,6 +22,9 @@ export function AppHeader() {
     const elModal = useRef()
     const board = useSelector(state => state.boardModule.board)
     const user = useSelector(state => state.userModule.user)
+    const navigate = useNavigate()
+    const [isMobailMenuOpen, setIsMobailMenuOpen] = useState('')
+
 
     useEffect(() => {
         setModal(modalService.addNewModal(modals))
@@ -54,44 +63,84 @@ export function AppHeader() {
         toggleModal(modals, modal.id)
     }
 
-    return <header className="app-header-regular flex justify-between">
-        <nav className="main-nav flex">
-            <div className="logo-container">
-                <Link to={!user ? "/" : "/workspace"} className="logo">
-                    <img src="https://www.linkpicture.com/q/Untitled-Artwork_1.png" alt="" />
-                </Link>
-            </div>
-            <nav className="navlinks-container">
-                <NavLink to="/workspace">Workspaces</NavLink>
-            </nav>
-        </nav >
+    return <>
+        <header className={`app-header-regular ${!board ? 'workspace-mobail' : ''}`}>
+            <nav className="main-nav flex">
+                <div className="logo-container">
+                    <Link to={!user ? "/" : "/workspace"} className="logo">
+                        <img src="https://www.linkpicture.com/q/Untitled-Artwork_1.png" alt="" />
+                    </Link>
+                </div>
 
-        {user &&
-            <button className="btn-user">
-                <img
-                    alt={user.fullname}
-                    src={user.imgUrl}
-                    className='list-member'
-                    onClick={(ev) => onToggleModal(ev, USER_QUICK_MENU)}
-                />
-            </button>
-        }
+                <nav className="navlinks-container">
+                    <NavLink to="/workspace">Workspaces</NavLink>
+                </nav>
 
-        <HiOutlineDotsHorizontal className="mobail-"/>
+                {board && (
+                    <div className="board-name-mobail">
+                        <MdClose onClick={() => navigate("/workspace")} />
+                        <span>{board?.title}</span>
+                    </div>
+                )}
 
-        <div ref={elModal} className='modal-container'>
-            {
-                modal?.isOpen && <>
-                    <Modal
-                        modal={modal}
-                        cmpProps={modal.modalData.props}
-                        cmpType={modal.modalData.cmpType}
-                        className={modal.modalData.className}
-                    />
-                    <div className="all-screen-modal" onClick={() => closeModal(modals, modal.id)} />
+            </nav >
 
-                </>
+            {!board &&
+                <div className="img-logo-mobail-container">
+                    <img className="img-logo-mobail" src="https://www.linkpicture.com/q/Shmello-logo-white.png" alt="" />
+                </div>
             }
-        </div>
-    </header >
+
+            {user &&
+                <button className="btn-user">
+                    <img
+                        alt={user.fullname}
+                        src={user.imgUrl}
+                        className='list-member'
+                        onClick={(ev) => onToggleModal(ev, USER_QUICK_MENU)}
+                    />
+                </button>
+            }
+
+            {board &&
+                <HiOutlineDotsHorizontal
+                    className="mobail-menu-btn"
+                    onClick={() => setIsMobailMenuOpen(!isMobailMenuOpen)}
+                />
+            }
+
+
+
+            <div ref={elModal} className='modal-container'>
+                {
+                    modal?.isOpen && <>
+                        <Modal
+                            modal={modal}
+                            cmpProps={modal.modalData.props}
+                            cmpType={modal.modalData.cmpType}
+                            className={modal.modalData.className}
+                        />
+                        <div className="all-screen-modal" onClick={() => closeModal(modals, modal.id)} />
+
+                    </>
+                }
+            </div>
+
+
+            <div className={`mobail-menu ${isMobailMenuOpen ? 'mobail-menu-open' : ''}`}>
+
+                <div className="board-header">
+                    <span>Board Menu</span>
+                    <MdClose onClick={() => setIsMobailMenuOpen(!isMobailMenuOpen)} />
+                </div>
+                
+                <div className="icons-container">
+                    <button><AiOutlineStar /></button>
+                    <button><BsPerson /></button>
+                    <button><RxShare2 /></button>
+                    <button><MdOutlineContentCopy /></button>
+                </div>
+            </div>
+        </header >
+    </>
 }

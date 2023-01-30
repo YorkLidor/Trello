@@ -4,10 +4,9 @@ import { MODAL_MEMBERS, MODAL_LABELS, MODAL_ATTACH, MODAL_TASK_DATE, MODAL_TASK_
 
 import { RiAttachment2, RiInboxFill } from "react-icons/ri"
 import { IoPricetagOutline } from "react-icons/io5"
-import { HiOutlineClock } from "react-icons/hi"
-import { AiOutlineArrowRight } from 'react-icons/ai'
+import { ImArrowRight2 } from "react-icons/im"
 import { TbCheckbox } from "react-icons/tb"
-import { HiOutlineUser } from "react-icons/hi"
+import { HiOutlineUser, HiOutlineClock, HiOutlineArrowRight} from "react-icons/hi"
 import { MdContentCopy } from 'react-icons/md'
 
 
@@ -46,7 +45,7 @@ export function TaskDetailsSideBar({ task, onToggleModal }) {
 
         <span className="sidebar-title">Actions</span>
         <nav className="window-sidebar flex column">
-            <button className='button-link' onClick={(ev) => onToggleModal(ev, MODAL_TASK_MOVE)}><AiOutlineArrowRight data-type='icon' className="sidebar-icon" /><span className="nav-btn-txt" data-type='icon'>Move</span></button>
+            <button className='button-link' onClick={(ev) => onToggleModal(ev, MODAL_TASK_MOVE)}><HiOutlineArrowRight data-type='icon' className="sidebar-icon" /><span className="nav-btn-txt" data-type='icon'>Move</span></button>
             <button className='button-link' onClick={(ev) => onToggleModal(ev, MODAL_TASK_COPY)}><MdContentCopy data-type='icon' className="sidebar-icon" /><span className="nav-btn-txt" data-type='icon'>Copy</span></button>
         </nav>
     </div>

@@ -1,4 +1,8 @@
 .app-header-regular {
+    display: flex;
+    justify-content: space-between;
+
+
 
     background-color: hsla(0, 0%, 0%, 0.16);
     background-color: var(--dynamic-background);
@@ -35,12 +39,12 @@
         .logo-container {
             .logo {
                 margin-left: 10px;
-    
+
                 img {
                     height: 35px;
                 }
             }
-    
+
         }
 
     }
@@ -68,16 +72,106 @@
         }
     }
 
+    .mobail-menu-btn {
+        display: none;
+    }
+
+    .board-name-mobail {
+        display: none;
+    }
+
+    .img-logo-mobail-container {
+        display: none;
+    }
+
+    .mobail-menu {
+        display: none;
+    }
+
+
+
     @media (max-width: 380px) {
-        height: 40px;
-        .main-nav{
-            .logo-container{
+        height: 50px;
+
+        &.workspace-mobail {
+            display: flex;
+            justify-content: center;
+            padding-bottom: 8px;
+        }
+
+
+        .img-logo-mobail-container {
+            display: flex;
+            height: 35px;
+        }
+
+        .main-nav {
+            .logo-container {
                 display: none;
             }
         }
-        .btn-user{
+
+        .btn-user {
             display: none;
+        }
+
+        .mobail-menu-btn {
+            display: block;
+            margin-right: 11px;
+        }
+
+        .board-name-mobail {
+            display: flex;
+            align-items: center;
+            padding-left: 11px;
+            gap: 14px;
+            color: white;
+        }
+
+        .mobail-menu {
+            display: block;
+            width: 100vw;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            min-height: 0;
+            opacity: 0;
+            background-color: #f4f5f7;
+            max-height: 0px;
+            position: absolute;
+            transition: .6s ease-in, opacity .25s;
+            z-index: 100;
+            
+            &.mobail-menu-open{
+                min-height: 100vh;
+                opacity: 1;
+            }
+            
+            .board-header{
+                color: black;
+                display: flex;
+                // box-shadow: 0px 1px 0 rgb(137 139 139 / 86%);
+                background-color: rgb(226 226 226);
+                display: flex;
+                background-color: unset;
+                span{
+                    margin: auto
+                }
+                
+            }
+
+            .icons-container{
+                height: 30px;
+                display: flex;
+                justify-content: space-evenly;
+                align-items: center;
+                padding: 22px 30px;
+                >*{
+                    border: none;
+                    border-radius: 4px;
+                    padding: 3px 16px;
+                }
+            }
         }
     }
 }
-
