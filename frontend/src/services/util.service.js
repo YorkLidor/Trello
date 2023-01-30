@@ -90,7 +90,7 @@ function getElementPosition(element) {
         top: clientRect.top + document.body.scrollTop,
         bottom: clientRect.bottom + document.body.scrollTop,
         right: clientRect.right + document.body.scrollLeft
-    };
+    }
 }
 
 function shadeColor(color, percent) {
