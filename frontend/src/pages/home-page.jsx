@@ -17,6 +17,8 @@ export function HomePage() {
         if (user) navigate('/workspace')
     }, [])
 
+    console.log(window.location)
+
     async function onGuestLogin(ev) {
         ev.preventDefault()
         try {
