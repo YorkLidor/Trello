@@ -71,6 +71,7 @@ export function Board() {
 
     function onIncomingNewTask({ task, groupId }) {
         const groupToEdit = board.groups.find(group => groupId === group.id)
+        console.log('groupToEdit', groupToEdit)
         groupToEdit.tasks.push({ ...task })
         setBoard({ ...board })
     }

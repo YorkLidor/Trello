@@ -51,12 +51,12 @@ async function addBoard(req, res) {
         const { loggedinUser } = asyncLocalStorage.getStore()
         const board = req.body
         const savedBoard = await boardService.add(board)
-        socketService.broadcast({
-            type: 'add-new-board',
-            data: savedBoard,
-            room: 'workspace',
-            userId: loggedinUser._id
-        })
+        // socketService.broadcast({
+        //     type: 'add-new-board',
+        //     data: savedBoard,
+        //     room: 'workspace',
+        //     userId: loggedinUser._id
+        // })
 
         res.send(savedBoard)
     } catch (err) {
