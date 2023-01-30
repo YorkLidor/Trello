@@ -14,7 +14,8 @@
         .todo-box {
             .todo-row {
 
-                .todo-tools {
+                .todo-tools,
+                .todo-member-logo {
                     display: block;
                 }
             }
@@ -35,7 +36,7 @@
         }
 
         .todo-row {
-            
+
             .todo-title {
                 display: inline-block;
                 width: 100%;
@@ -61,10 +62,20 @@
                 padding: 4px 2px;
                 margin: -2px;
                 margin-inline-end: 10px;
-                &:hover{
+
+                &:hover {
                     background-color: #091e4214;
                 }
+
             }
+
+            .todo-member-logo {
+                display: none;
+                @include user-logo-circle(26px, 26px);
+                margin-inline-end: 10px;
+            }
+
+
         }
 
         .todo-checkbox-container {
