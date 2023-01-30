@@ -35,7 +35,7 @@ export function GroupHeader({ group, board, onRemoveGroup, onToggleModal, onCopy
         }
         if (groupToEdit.title === group.title) return
         group.title = groupToEdit.title
-        socketService.emit(SOCKET_EMIT_UPDATE_GROUPS, group)
+        socketService.emit(SOCKET_EMIT_UPDATE_GROUPS, board.groups)
         try {
             await setBoard(board)
         } catch (err) {
