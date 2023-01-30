@@ -76,6 +76,7 @@ async function updateBoard(req, res) {
         //     room: [savedBoard._id, 'workspace'],
         //     userId: loggedinUser._id
         // })
+        console.log('board.title:', board.title)
         res.send(savedBoard)
     } catch (err) {
         logger.error('Failed to update board', err)
