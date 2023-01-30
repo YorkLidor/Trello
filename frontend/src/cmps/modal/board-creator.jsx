@@ -13,16 +13,16 @@ export function BoardCreator({ cmpProps }) {
     const [boardToEdit, setBoardToEdit, handleChange] = useForm(boardService.getEmptyBoard())
     const elTitleInput = useRef()
     const [isRequired, setIsRequired] = useState(true)
-    const [src, setSrc] = useState('')
+    const [imgBtns, setImgBtns] = useState([])
 
 
     useEffect(() => {
-        bgImg()
+        crateImgBtn()
         elTitleInput.current.focus()
-        bgImg().then(btns => setSrc(btns))
+        crateImgBtn().then(btns => setImgBtns(btns))
     }, [])
 
-    async function bgImg() {
+    async function crateImgBtn() {
         return Promise.all([
             getRandomBgImg(),
             getRandomBgImg(),
@@ -92,7 +92,7 @@ export function BoardCreator({ cmpProps }) {
                         <label className="bg-label">Background</label>
                         <ul className="bg-img-picker clean-list flex">
 
-                            {src && src}
+                            {imgBtns && imgBtns.length ? imgBtns : ''}
 
                         </ul>
                         <ul className="bg-color-container clean-list flex justify-between">
