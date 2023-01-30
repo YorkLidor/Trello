@@ -143,6 +143,7 @@
 
         .group-name {
             text-decoration: underline;
+            cursor: pointer;
 
             @include for-native-layout-details {
                 font-weight: 900;

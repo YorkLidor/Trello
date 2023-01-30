@@ -1,12 +1,15 @@
-import { HiOutlineUser } from "react-icons/hi"
-import { RiAttachment2 } from "react-icons/ri"
+import { useSelector } from "react-redux"
+
+import { MODAL_MEMBERS, MODAL_LABELS, MODAL_ATTACH, MODAL_TASK_DATE, MODAL_TASK_COVER, MODAL_CHECKLIST, MODAL_TASK_MOVE, MODAL_TASK_COPY } from '../modal/modal'
+
+import { RiAttachment2, RiInboxFill } from "react-icons/ri"
 import { IoPricetagOutline } from "react-icons/io5"
 import { HiOutlineClock } from "react-icons/hi"
-import { RiInboxFill } from 'react-icons/ri'
+import { AiOutlineArrowRight } from 'react-icons/ai'
 import { TbCheckbox } from "react-icons/tb"
+import { HiOutlineUser } from "react-icons/hi"
+import { MdContentCopy } from 'react-icons/md'
 
-import { MODAL_MEMBERS, MODAL_LABELS, MODAL_ATTACH, MODAL_TASK_DATE, MODAL_TASK_COVER, MODAL_CHECKLIST, MODAL_TASK_MOVE } from '../modal/modal'
-import { useSelector } from "react-redux"
 
 export function TaskDetailsSideBar({ task, onToggleModal }) {
     const user = useSelector((storeState) => storeState.userModule.user)
@@ -40,10 +43,11 @@ export function TaskDetailsSideBar({ task, onToggleModal }) {
             <button className='button-link' onClick={(ev) => onToggleModal(ev, MODAL_ATTACH)}><RiAttachment2 data-type='icon' className="sidebar-icon" /><span className="nav-btn-txt" data-type='icon'>Attachment</span></button>
             {!task?.cover && <button className="button-link btn-cover" onClick={(ev) => onToggleModal(ev, MODAL_TASK_COVER)}><RiInboxFill data-type='icon' className="sidebar-icon" /><span className="nav-btn-txt" data-type='icon'>Cover</span></button>}
         </nav>
-        
+
         <span className="sidebar-title">Actions</span>
         <nav className="window-sidebar flex column">
-            <button className='button-link' onClick={(ev) => onToggleModal(ev, MODAL_TASK_MOVE)}>Move</button>
+            <button className='button-link' onClick={(ev) => onToggleModal(ev, MODAL_TASK_MOVE)}><AiOutlineArrowRight data-type='icon' className="sidebar-icon" /><span className="nav-btn-txt" data-type='icon'>Move</span></button>
+            <button className='button-link' onClick={(ev) => onToggleModal(ev, MODAL_TASK_COPY)}><MdContentCopy data-type='icon' className="sidebar-icon" /><span className="nav-btn-txt" data-type='icon'>Copy</span></button>
         </nav>
     </div>
 }

@@ -8,9 +8,10 @@ import { loadBoards, saveBoard } from "../../store/actions/board.actions"
 import { boardService } from "../../services/board.service"
 import { closeModal } from "../../store/actions/app.actions"
 import { modalService } from "../../services/modal.service"
+import { utilService } from "../../services/util.service"
 
 
-export function ModalTaskMove({ task, groupId, id, modals }) {
+export function ModalTaskMove({ task, groupId, id, modals, isCopy }) {
     const boards = useSelector((storeState) => storeState.boardModule.boards)
     const currBoard = useSelector((storeState) => storeState.boardModule.board)
 
@@ -64,12 +65,20 @@ export function ModalTaskMove({ task, groupId, id, modals }) {
 
     async function onMoveTask() {
         if (!selectedBoard || !selectedGroup || !selectedPos) return
+
         const currGroup = currBoard.groups.find(group => group.id === groupId)
-        currGroup.tasks = currGroup.tasks.filter(t => t.id !== task.id)
-        currBoard.groups = currBoard.groups.map(group => group.id === groupId ? currGroup : group)
-        selectedGroup.tasks.splice(selectedPos, 0, task)
+
+        let newTask = task
+        if (isCopy) newTask = { ...task, id: 'ta-' + utilService.makeId(8) }
+        selectedGroup.tasks.splice(selectedPos, 0, newTask)
         await saveBoard(selectedBoard)
-        await saveBoard(currBoard)
+
+        if (!isCopy) {
+            currGroup.tasks = currGroup.tasks.filter(t => t.id !== task.id)
+            currBoard.groups = currBoard.groups.map(group => group.id === groupId ? currGroup : group)
+            await saveBoard(currBoard)
+        }
+
         closeModal(modals, id)
         modalService.removeModal(modals, id)
         navigate(`/${selectedBoard._id}`)

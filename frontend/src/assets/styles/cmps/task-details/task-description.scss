@@ -18,6 +18,7 @@
         top: 8px;
         left: -36px;
         width: 22px;
+
         @include for-native-layout-details {
             left: 6px;
         }
@@ -51,6 +52,7 @@
 
         font-family: unset;
         min-height: 40px;
+        overflow: hidden;
 
         @include for-native-layout-details {
             background-color: #F4F5F7;
@@ -63,7 +65,6 @@
                 min-height: unset;
                 line-height: initial;
                 margin-block-start: -3px;
-                margin-block-end: -23px;
             }
 
         }
@@ -95,6 +96,7 @@
 
 .description-editor-tools {
     display: none;
+
     @include for-none-native-layout-details {
         margin: 8px 0 0;
 
