@@ -59,6 +59,7 @@ export function Login() {
                 Continue
             </button>
             <button type="submit" className="btn-login">Log in</button>
+            <hr className="divider"/>
             <section className="signup-link">
                 <a >Sign up for an account</a>
             </section>

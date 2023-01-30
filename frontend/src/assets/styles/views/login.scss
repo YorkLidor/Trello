@@ -5,19 +5,30 @@
     height: 100vh;
     color: #5e6c84;
     text-align: center;
-    background-color: #f9fafc;
+
+    @include for-narrow-layout {
+        background-color: #f9fafc;
+    }
 
     >* {
         margin: 0 auto;
     }
 
     .header {
-        margin: 10px auto;
+        @include for-narrow-layout {
+            margin: 10px auto;
+        }
+
 
         .logo {
             vertical-align: middle;
             width: 197px;
-            margin-block: rem(40px);
+            margin-block: rem(10px) rem(20px);
+
+            @include for-narrow-layout {
+                margin-block: rem(40px);
+
+            }
         }
     }
 
@@ -27,8 +38,12 @@
         width: 100%;
         max-width: 400px;
         padding: rem(10px) rem(40px) rem(25px);
-        box-shadow: rgb(0 0 0 / 10%) 0 0 10px;
         margin-bottom: rem(24px);
+
+        @include for-narrow-layout {
+            box-shadow: rgb(0 0 0 / 10%) 0 0 10px;
+
+        }
 
         >* {
             width: 100%;
@@ -42,19 +57,29 @@
         }
 
         input {
+            color: #4d4d4d;
+            height: rem(40px);
             padding: rem(7px);
             margin-bottom: rem(16.8px);
             border: solid 2px #dfe1e6;
             box-shadow: unset;
+            transition: background-color .2s ease-in-out 0s, border-color .2s ease-in-out 0s;
 
             &:focus {
                 @include input-focus;
+                box-shadow: unset;
+                border: 2px solid #4c9aff;
+
 
             }
         }
 
         button {
-            @include button-filled($color: #5AAC44, $text-color: #fff)
+            @include button-filled($color: #5AAC44, $text-color: #fff);
+            padding: rem(8.4px) rem(18.2px);
+            font-weight: 700;
+            text-size-adjust: 100%;
+
         }
 
         .input-password,
@@ -88,8 +113,32 @@
 
     }
 
-    .atlassian-img{
+    .signup-link {
+        a {
+            font-size: rem(14px);
+            color: #0052cc;
+            text-decoration-color: #0052cc;
+            text-decoration: none;
+            font-weight: 300;
+
+            &:hover {
+                cursor: pointer;
+
+                @include for-narrow-layout {
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+
+    .atlassian-img {
         width: 150px;
         margin-bottom: 20px;
+    }
+
+    .divider {
+        margin: rem(25px) 0 rem(14px);
+        border: 0;
+        border-bottom: 1px solid hsl(0,0%,80%);
     }
 }
