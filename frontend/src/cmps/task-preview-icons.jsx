@@ -4,15 +4,17 @@ import { GrTextAlignFull } from "react-icons/gr"
 import { IoIosArrowDown } from "react-icons/io"
 import { useRef, useState } from 'react'
 import { utilService } from '../services/util.service'
+import { useEffect } from 'react'
 
- 
+
 
 export function TaskPreviewIcons({ board, task }) {
-    const membersToRender = getTaskMembers()
     const dateDoneText = useRef(getDateDoneText())
+    const [membersToRender, setMembersToRender] = useState(getTaskMembers())
 
     function getTaskMembers() {
-        board.members.filter((member) => task.memberIds?.includes(member._id))
+        const loli = board.members.filter((member) => task.memberIds?.includes(member._id))
+        return loli
     }
 
     function calculateTodos(task) {
@@ -84,9 +86,10 @@ export function TaskPreviewIcons({ board, task }) {
         }
 
         {
-            membersToRender && membersToRender.length > 0 && (
+            membersToRender?.length > 0 && (
+             
                 <section className="members-container">
-
+                       {console.log('enter??????????:')}
                     {membersToRender.map((member) => (
                         <div className="member-container" key={member._id}>
                             <img src={`${member.imgUrl}`} alt={`${member.fullname}`} />
