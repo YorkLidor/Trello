@@ -43,7 +43,6 @@ export function Board() {
 
         return async () => {
             turnOffSockets()
-            await board && saveBoard(board)
             setBoard(null)
             document.body.style.backgroundColor = "unset"
             document.body.style.backgroundImage = "unset"

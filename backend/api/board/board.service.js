@@ -60,6 +60,7 @@ async function update(board) {
     try {
         const collection = await dbService.getCollection(collectionName)
         await collection.replaceOne({ '_id': board._id }, board)
+        console.log('boardsaved')
         return board
     } catch (err) {
         console.log(`ERROR: cannot update board ${board._id}`)
