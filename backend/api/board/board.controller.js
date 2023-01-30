@@ -70,12 +70,12 @@ async function updateBoard(req, res) {
         const { loggedinUser } = asyncLocalStorage.getStore()
         const board = req.body
         const savedBoard = await boardService.update(board)
-        socketService.broadcast({
-            type: 'update-board',
-            data: savedBoard,
-            room: [savedBoard._id, 'workspace'],
-            userId: loggedinUser._id
-        })
+        // socketService.broadcast({
+        //     type: 'update-board',
+        //     data: savedBoard,
+        //     room: [savedBoard._id, 'workspace'],
+        //     userId: loggedinUser._id
+        // })
         res.send(savedBoard)
     } catch (err) {
         logger.error('Failed to update board', err)
