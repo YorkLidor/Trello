@@ -13,8 +13,8 @@ export function TaskPreviewIcons({ board, task }) {
     const [membersToRender, setMembersToRender] = useState(getTaskMembers())
 
     function getTaskMembers() {
-        const loli = board.members.filter((member) => task.memberIds?.includes(member._id))
-        return loli
+        const members = board.members.filter((member) => task.memberIds?.includes(member._id))
+        return members
     }
 
     function calculateTodos(task) {
