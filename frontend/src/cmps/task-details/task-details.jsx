@@ -291,7 +291,7 @@ export function TaskDetails() {
                     <p
                         className="header-subtitle"
                     >
-                        <span className='board-name' >{board.title} </span>in list <span className='group-name' onClick={(ev) => onToggleModal(ev, MODAL_TASK_COPY)}>{group.title}</span>
+                        <span className='board-name' >{board.title} </span>in list <span className='group-name' onClick={(ev) => onToggleModal(ev, MODAL_TASK_MOVE)}>{group.title}</span>
                     </p>
                 </div>
 

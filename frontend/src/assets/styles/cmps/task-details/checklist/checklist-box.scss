@@ -53,6 +53,9 @@
             position: absolute;
             font-size: 11px;
             padding-inline: 5px;
+            color: #7d889c;
+            text-align: center;
+            width: 32px;
         }
         
         .checklist-bar {
@@ -64,7 +67,6 @@
             background-color: #e2e4e9;
             
             .checklist-bar-done {
-                border-radius: 4px;
                 height: 8px;
                 background-color: #5ba4cf;
 
@@ -98,6 +100,18 @@
                 padding: 8px 12px 9px;
 
                 resize: none;
+                height: 37px;
+                overflow: hidden;
+                outline: none;
+
+                &::placeholder{
+                    color: '#2b3d5c';
+                }
+
+                &:focus {
+                    @include input-focus;
+                    border-radius: 3px;
+                }
             }
             .cancel-add-todo-btn {
                 background-color: transparent;
