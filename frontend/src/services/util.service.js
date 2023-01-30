@@ -9,7 +9,8 @@ export const utilService = {
     getElementPosition,
     reorder,
     shadeColor,
-    timestampToDate
+    timestampToDate,
+    getTimeString
 }
 
 function reorder(arr, startIdx, endIdx) {
@@ -121,4 +122,10 @@ function timestampToDate(timestamp) {
     const monthName = monthNames[date.getMonth()]
     const dayNumber = date.getDate()
     return `${monthName} ${dayNumber}`
+}
+
+function getTimeString(timeStamp) {
+    const date = new Date(timeStamp)
+    const strCommentTime = `${timestampToDate(timeStamp)} at ${('' + date.getHours()).padStart(2, '0')}:${('' + date.getMinutes()).padStart(2, '0')}`
+    return strCommentTime
 }

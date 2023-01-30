@@ -265,8 +265,7 @@ export function CoverModal({ id, cmpProps }) {
                         key={attachment.filename}
                         className="attach-tab-wrapper"
                     >
-                        <div c
-                            lassName="attachment-cover-picker"
+                        <div className="attachment-cover-picker"
                             style={boardService.getCoverAttachStyle(attachment.url)}
                             onClick={(ev) => onPickAttachCover(ev, attachment)}
                         />
