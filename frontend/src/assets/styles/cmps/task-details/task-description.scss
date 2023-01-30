@@ -53,6 +53,9 @@
         font-family: unset;
         min-height: 40px;
         overflow: hidden;
+        &:not(.filled):not(.is-editing):hover{
+            background-color: #e2e4e9;
+        }
 
         @include for-native-layout-details {
             background-color: #F4F5F7;

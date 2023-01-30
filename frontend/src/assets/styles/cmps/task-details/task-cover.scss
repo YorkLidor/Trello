@@ -9,13 +9,16 @@
     background-origin: content-box;
     background-repeat: no-repeat;
 
-    &:hover {
-        opacity: 0.8;
-    }
 }
 
 .btn-cover-box {
     position: absolute;
     bottom: 8px;
     right: 8px;
+    color: #172b4d;
+    background-color: rgba(255, 255, 255, 0.2);
+
+    &:hover {
+        background-color: rgba(0, 0, 0, 0.2);;
+    }
 }
