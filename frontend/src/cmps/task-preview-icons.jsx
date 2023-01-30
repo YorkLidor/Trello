@@ -1,12 +1,8 @@
 import { FiPaperclip } from 'react-icons/fi'
 import { TbCheckbox, TbMessageCircle2 } from 'react-icons/tb'
 import { GrTextAlignFull } from "react-icons/gr"
-import { IoIosArrowDown } from "react-icons/io"
 import { useRef, useState } from 'react'
 import { utilService } from '../services/util.service'
-import { useEffect } from 'react'
-
-
 
 export function TaskPreviewIcons({ board, task }) {
     const dateDoneText = useRef(getDateDoneText())
@@ -43,7 +39,6 @@ export function TaskPreviewIcons({ board, task }) {
     }
 
     return <section className="task-preview-icons-container">
-
 
         {task &&
             < section className="icons-container flex">
