@@ -6,6 +6,7 @@ import { ADD_MEMBER_A, ADD_MEMBER_C, getActivityText, saveTask, REMOVE_MEMBER_A,
 import { boardService } from "../../services/board.service"
 
 import { AiOutlineCheck } from "react-icons/ai"
+import { closeModal } from "../../store/actions/app.actions"
 
 
 export function MemberPickerTodos({ id, cmpProps }) {
@@ -15,6 +16,7 @@ export function MemberPickerTodos({ id, cmpProps }) {
 
     const user = useSelector((storeState) => storeState.userModule.user)
     const board = useSelector((storeState) => storeState.boardModule.board)
+    const modals = useSelector((storeState) => storeState.appModule.app.modals)
 
     const taskMembers = task.memberIds?.map(memberId => board.members?.find(member => member._id === memberId))
     const boardMembers = board.members.filter(member => !task.memberIds.includes(member._id))
@@ -22,7 +24,6 @@ export function MemberPickerTodos({ id, cmpProps }) {
     async function onMemberToggle(member) {
         try {
             let action
-
 
             if (memberId) {
                 // TODO ADD Remove activity
@@ -40,9 +41,11 @@ export function MemberPickerTodos({ id, cmpProps }) {
             else {
                 setMemberId(member._id)
                 todo.memberId = member._id
-            } 
+            }
             const todos = checklist.todos.map(todoItem => todoItem.id === todo.id ? todo : todoItem)
             task.checklists = task.checklists.map(list => list.id === checklist ? { ...checklist, todos } : list)
+
+            closeModal(modals, id)
 
             const activity = boardService.getActivity(user, { id: task.id, title: task.title }, action)
             await saveTask(groupId, task, activity)
