@@ -29,7 +29,7 @@
             text-transform: uppercase;
         }
 
-        .button-show-details{
+        .button-show-details {
             @include task-nav-button;
         }
     }
@@ -68,71 +68,96 @@
 
     height: fit-content;
 
+
+    .comment-input-container {
+        margin-block-end: -23px;
+        padding: 5.14px 9px 5.14px 0;
+        z-index: 14;
+        background-color: #FFFFFF;
+
+        &:hover {
+            cursor: pointer;
+            background-color: #e2e4e9;
+
+            .task-activity-input {
+                cursor: pointer;
+                background-color: #e2e4e9;
+            }
+        }
+
+        .task-activity-input {
+            transition: padding-block-end 85ms ease;
+            outline: none;
+            resize: none;
+            border: none;
+
+            width: 100%;
+            font-size: 14px;
+            line-height: 20px;
+
+            height: 20px;
+            overflow: hidden;
+            padding: 0;
+            padding-block-start: 2px;
+            padding-inline-start: 3px;
+            margin-inline-start: 9px;
+
+            z-index: 15;
+
+            color: #172b4d;
+
+            background-color: #FFFFFF;
+
+            &::placeholder {
+                color: #172b4d;
+            }
+
+            transition: margin 0.3s ease-in-out;
+        }
+    }
+
     &.comment-typing {
         box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
 
         .comment-input-container {
-            padding-block-end: 22px;
+            padding-block-end: 3px;
+
+            &:hover {
+                cursor: unset;
+                background-color: inherit;
+
+                .task-activity-input {
+                    cursor: unset;
+                    background-color: inherit;
+                }
+            }
 
             .task-activity-input {
                 height: auto;
                 min-height: 20px;
+                margin-block-end: 12px;
             }
         }
 
         .comment-btn {
-            display: block;
-            height: unset;
+            width: fit-content;
+            padding: 6px 12px;
+            margin: 0 0 8px 12px;
         }
     }
 
     .comment-btn {
         @include button-filled($button-filled , #FFF);
-        font-size: 10px;
-
-        display: none;
         font-size: 14px;
-        height: 0px;
+        width: 0px;
 
-        padding: 6px 12px;
-        margin: 0 0 8px 12px;
+        padding: 0;
+        margin: 0;
+        transition: width 0.3s ease-in-out;
+        transition: margin-block 0.3s ease-in-out;
 
         &:hover {
             background-color: darken($button-filled, 10%);
-        }
-    }
-}
-
-.comment-input-container {
-    padding: 5.14px 9px 5.14px 0;
-    z-index: 14;
-    background-color: #FFFFFF;
-
-    .task-activity-input {
-        transition: padding-block-end 85ms ease;
-        outline: none;
-        resize: none;
-        border: none;
-
-        width: 100%;
-        font-size: 14px;
-        line-height: 20px;
-
-        height: 20px;
-        overflow: hidden;
-        padding: 0;
-        padding-block-start: 2px;
-        padding-inline-start: 3px;
-        margin-inline-start: 9px;
-
-        z-index: 15;
-
-        color: #172b4d;
-
-        background-color: #FFFFFF;
-
-        &::placeholder {
-            color: #172b4d;
         }
     }
 }

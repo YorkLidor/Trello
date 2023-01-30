@@ -62,9 +62,9 @@
     right: 0;
     margin: 8px;
 
-    height: 42px;
-    width: 42px;
-    font-size: 28px;
+    height: 40px;
+    width: 40px;
+    font-size: 26px;
 
     border-radius: 50%;
     border: 0;
@@ -76,14 +76,14 @@
     color: #1b324e;
 
     &:hover {
-        background-color: #091e4214;
-        color: #42526e;
+        opacity: 0.3;
     }
 
     &.on-cover {
-        background-color: #0000001a;
+        background-color: rgba(0, 0, 0, 0.2);
+
         &:hover {
-            opacity: 0.75;
+            opacity: 0.3;
         }
     }
 
@@ -113,7 +113,7 @@
     width: 100%;
     position: relative;
 
-    background-color: #f4f5f7;
+    background-color: #fff;
 
     .header-icon {
         position: absolute;
