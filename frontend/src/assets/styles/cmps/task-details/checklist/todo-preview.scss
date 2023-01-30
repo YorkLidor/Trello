@@ -14,9 +14,8 @@
         .todo-box {
             .todo-row {
 
-                .todo-tools,
-                .todo-member-logo {
-                    display: block;
+                .todo-tools {
+                    opacity: 1;
                 }
             }
         }
@@ -51,7 +50,7 @@
             }
 
             .todo-tools {
-                display: none;
+                opacity: 0;
                 transition: display 0.3s ease-in;
 
                 height: 100%;
@@ -70,8 +69,9 @@
             }
 
             .todo-member-logo {
-                display: none;
-                @include user-logo-circle(26px, 26px);
+                height: 22px;
+                width: 22px;
+                border-radius: 50%;
                 margin-inline-end: 10px;
             }
 

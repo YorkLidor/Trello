@@ -2,7 +2,6 @@ import { useEffect } from "react"
 import { useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import { login } from "../store/actions/user.actions"
-import { addGuestUserToBoards } from '../store/actions/board.actions'
 
 const guest = {
     username: 'matanad',
@@ -23,7 +22,6 @@ export function HomePage() {
         ev.preventDefault()
         try {
             const user = await login(guest)
-            addGuestUserToBoards(user)
             console.log('user:', user)
             if (user) navigate('/workspace')
         } catch (error) {
