@@ -1,6 +1,6 @@
 import { boardService } from '../../services/board.service'
 import { store } from '../store.js'
-import { SET_BOARDS, ADD_BOARD, REMOVE_BOARD, EDIT_BOARD, SET_ACTIVE_BOARD, UNDO_EDIT_BOARD } from '../reducers/board.reducer'
+import { SET_BOARDS, ADD_BOARD, REMOVE_BOARD, EDIT_BOARD, SET_ACTIVE_BOARD, UNDO_EDIT_BOARD, ADD_NEW_BOARD } from '../reducers/board.reducer'
 
 export const ADD_CHECKLIST = 'ADD_CHECKLIST'
 export const EDIT_ATTACH = 'EDIT_ATTACH'
@@ -26,6 +26,7 @@ export const CHANGE_TASK_LOCATION = 'CHANGE_TASK_LOCATION'
 export const SET_CHECKLIST_TITLE = 'SET_CHECKLIST_TITLE'
 export const POST_COMMENT = 'POST_COMMENT'
 export const REMOVE_COMMENT = 'REMOVE_COMMENT'
+
 
 export async function loadBoards() {
     try {
@@ -75,6 +76,11 @@ export async function saveBoard(board) {
 
 export async function setBoard(board) {
     store.dispatch({ type: SET_ACTIVE_BOARD, board })
+}
+
+export async function addBoard(board) {
+    console.log('board:', board)
+    store.dispatch({ type: ADD_NEW_BOARD, board })
 }
 
 export async function addNewTask(groupId, newTask) {

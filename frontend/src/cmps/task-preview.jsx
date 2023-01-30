@@ -4,15 +4,18 @@ import { useNavigate } from "react-router-dom"
 import { useForm } from "../customHooks/useForm"
 import { boardService } from "../services/board.service"
 import { utilService } from "../services/util.service"
-import { saveBoard } from "../store/actions/board.actions"
+import { ADD_ATTACH, getActivityText, saveBoard, saveTask } from "../store/actions/board.actions"
 import { SET_TASK_QUICK_EDIT } from "../store/reducers/app.reducer"
 import { store } from "../store/store"
+import { FileUploader } from "react-drag-drop-files"
 
 import { TaskLabels } from "./task-label"
 
 import { TaskPreviewIcons } from "./task-preview-icons"
+import { fileTypes, uploadImgDnd } from "../services/upload-img.service"
 
 export function TaskPreview({ task, groupId, isDragging, isQuickEdit }) {
+    const user = useSelector((storeState) => storeState.userModule.user)
     const board = useSelector((storeState) => storeState.boardModule.board)
     const [taskToSet, setTaskTitleToSet, handleChange] = useForm({ title: task.title })
     const [isEditBtnShow, setIsEditBtnShow] = useState('')
@@ -60,6 +63,26 @@ export function TaskPreview({ task, groupId, isDragging, isQuickEdit }) {
         store.dispatch({ type: SET_TASK_QUICK_EDIT, taskQuickEdit: { task, groupId, pos } })
     }
 
+    async function handleFtileDrop(file) {
+        console.log('file:', file)
+        try {
+            const { url, filename } = await uploadImgDnd(file)
+            const action = `${getActivityText(ADD_ATTACH)} ${filename}`
+            const activity = boardService.getActivity(user, { id: task.id, title: task.title }, action)
+            
+            const attachment = boardService.getAttachment(url, filename)
+            console.log('url:', url)
+            if (task.attachments?.length > 0) task.attachments.unshift(attachment)
+            else task.attachments = [boardService.getAttachment(url, filename)]
+
+            const taskToSave = task.cover ? task : boardService.setCoverImage(task, attachment)
+            await saveTask(groupId, taskToSave, activity)
+        }
+        catch (err) {
+            console.error('Failed upload attachment', err)
+        }
+
+    }
     return <>
         <div
             className={`task-preview-container ${isDragging && 'is-dragging'} ${task?.cover?.fullSize ? 'full' : ''} ${task?.cover?.style?.backgroundImage ? 'img' : ''} ${task?.cover?.isDark ? 'dark' : ''}`}
@@ -71,69 +94,71 @@ export function TaskPreview({ task, groupId, isDragging, isQuickEdit }) {
             style={task?.cover?.fullSize && !isQuickEdit ? task?.cover?.style : {}}
 
         >
+            <FileUploader handleChange={handleFtileDrop} name="file" types={fileTypes} hoverTitle={'hi'} disabled={false}>
+                this is inside drop area
+
+                <section
+                    className={`edit-task-icon-container ${isEditBtnShow}`}
+                    onClick={onTaskQuickEdit}
+                >
+                    <img
+                        className='edit-task-icon'
+                        src="http://res.cloudinary.com/dk2geeubr/image/upload/v1674474594/xln3wronhmxmwxpucark.svg"
+                        alt=""
+                    />
+                </section>
 
 
-            <section
-                className={`edit-task-icon-container ${isEditBtnShow}`}
-                onClick={onTaskQuickEdit}
-            >
-                <img
-                    className='edit-task-icon'
-                    src="http://res.cloudinary.com/dk2geeubr/image/upload/v1674474594/xln3wronhmxmwxpucark.svg"
-                    alt=""
-                />
-            </section>
-
-
-            {taskStyle &&
-                <header
-                    className="cover-color"
-                    style={task?.cover?.fullSize && !isQuickEdit ? { backgroundColor: "transparent", height: taskStyle.height } : taskStyle}
-                />
-            }
-
-            <li
-                className={`task-preview ${task?.cover?.fullSize && !isQuickEdit ? 'full' : ''}`}
-                style={{ color: taskStyle?.color && task.cover.fullSize ? taskStyle.color : '' }}
-
-            >
-                {(taskLabels && !task?.cover?.fullSize) &&
-                    <TaskLabels
-                        labels={taskLabels}
-                        board={board}
-
-                    />}
-
-                {!isQuickEdit && (
-                    <span className={`task-body `} >
-                        {task.title}
-                    </span>
-                )
+                {taskStyle &&
+                    <header
+                        className="cover-color"
+                        style={task?.cover?.fullSize && !isQuickEdit ? { backgroundColor: "transparent", height: taskStyle.height } : taskStyle}
+                    />
                 }
 
-                {isQuickEdit && (
-                    <form onSubmit={onChangeTitle} className="add-card-form-container" onClick={(ev) => ev.stopPropagation()}>
-                        <div className="task-preview-container">
-                            <div className="textarea-container">
-                                <textarea
-                                    ref={textAreaRef}
-                                    onChange={handleChange}
-                                    value={taskToSet.title}
-                                    name='title'
-                                    placeholder="Enter a title for this card..."
-                                    className="form-textarea"
-                                >
-                                </textarea>
+                <li
+                    className={`task-preview ${task?.cover?.fullSize && !isQuickEdit ? 'full' : ''}`}
+                    style={{ color: taskStyle?.color && task.cover.fullSize ? taskStyle.color : '' }}
+
+                >
+                    {(taskLabels && !task?.cover?.fullSize) &&
+                        <TaskLabels
+                            labels={taskLabels}
+                            board={board}
+
+                        />}
+
+                    {!isQuickEdit && (
+                        <span className={`task-body `} >
+                            {task.title}
+                        </span>
+                    )
+                    }
+
+                    {isQuickEdit && (
+                        <form onSubmit={onChangeTitle} className="add-card-form-container" onClick={(ev) => ev.stopPropagation()}>
+                            <div className="task-preview-container">
+                                <div className="textarea-container">
+                                    <textarea
+                                        ref={textAreaRef}
+                                        onChange={handleChange}
+                                        value={taskToSet.title}
+                                        name='title'
+                                        placeholder="Enter a title for this card..."
+                                        className="form-textarea"
+                                    >
+                                    </textarea>
+                                </div>
                             </div>
-                        </div>
-                        <button className="add-btn" type="submit">Save</button>
-                    </form>
-                )
-                }
+                            <button className="add-btn" type="submit">Save</button>
+                        </form>
+                    )
+                    }
 
-                {!task?.cover?.fullSize && <TaskPreviewIcons board={board} task={task} />}
-            </li>
+                    {!task?.cover?.fullSize && <TaskPreviewIcons board={board} task={task} />}
+                </li>
 
+            </FileUploader>
         </div>
     </>
 }

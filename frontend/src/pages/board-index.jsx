@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { BoardPreview } from "../cmps/board-preview";
 import { Audio } from 'react-loader-spinner'
 
-import { loadBoards, saveBoard, setBoard } from "../store/actions/board.actions"
+import { loadBoards, saveBoard, setBoard, addBoard } from "../store/actions/board.actions"
 
 import { BOARD_CREATOR, Modal } from "../cmps/modal/modal"
 import { useEffectInit } from "../customHooks/useEffectInit"
@@ -18,6 +18,7 @@ import { FaRegStar } from "react-icons/fa"
 import { BsPerson } from 'react-icons/bs'
 import { Spinner } from "../cmps/spinner";
 import { setThemeColor } from "../services/color.service";
+import { socketService, SOCKET_EMIT_SET_BOARD, SOCKET_EVENT_ADD_BOARD } from "../services/socket.service";
 
 export function BoardIndex() {
     const navigate = useNavigate()
@@ -28,14 +29,22 @@ export function BoardIndex() {
     const elModal = useRef()
 
     useEffectInit(() => {
+        socketService.emit(SOCKET_EMIT_SET_BOARD, 'workspace')
+        socketService.on(SOCKET_EVENT_ADD_BOARD, addBoard)
         setThemeColor()
         setModal(modalService.addNewModal(modals))
+
+        return () => {socketService.off(SOCKET_EVENT_ADD_BOARD, addBoard)}
     }, [])
 
     useEffect(() => {
         if (!user) navigate('/')
         onLoadBoards()
         return onCloseModal
+    }, [])
+
+    useEffect(() => {
+
     }, [])
 
 

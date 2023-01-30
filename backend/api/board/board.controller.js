@@ -52,10 +52,12 @@ async function addBoard(req, res) {
         const board = req.body
         const savedBoard = await boardService.add(board)
         socketService.broadcast({
-            type: 'admin-update',
-            data: 'admin added a board',
+            type: 'add-new-board',
+            data: savedBoard,
+            room: 'workspace',
             userId: loggedinUser._id
         })
+
         res.send(savedBoard)
     } catch (err) {
         logger.error('Failed to add board', err)
