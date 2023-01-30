@@ -139,6 +139,10 @@ export function BoardIndex() {
             elModal.current.style.right = '0px'
             elModal.current.style.bottom = '0px'
         }
+        if (window.visualViewport.height - pos.top < 500){
+            elModal.current.style.top = 'unset'
+            elModal.current.style.bottom = '14px'
+        }
         setModal(modalService.setModalData(modals, modal.id, BOARD_CREATOR, props))
         toggleModal(modals, modal.id)
     }

@@ -6,17 +6,44 @@ import { closeModal } from "../../store/actions/app.actions"
 import { useState } from "react"
 import { useEffectUpdate } from "../../customHooks/useEffectUpdate"
 import { useSelector } from "react-redux"
+import { getRandomBgImg } from "../../services/color.service"
 
 export function BoardCreator({ cmpProps }) {
     const modals = useSelector((storeState) => storeState.appModule.app.modals)
     const [boardToEdit, setBoardToEdit, handleChange] = useForm(boardService.getEmptyBoard())
     const elTitleInput = useRef()
     const [isRequired, setIsRequired] = useState(true)
+    const [imgBtns, setImgBtns] = useState([])
 
 
     useEffect(() => {
+        crateImgBtn()
         elTitleInput.current.focus()
+        crateImgBtn().then(btns => setImgBtns(btns))
     }, [])
+
+    async function crateImgBtn() {
+        return Promise.all([
+            getRandomBgImg(),
+            getRandomBgImg(),
+            getRandomBgImg(),
+            getRandomBgImg(),
+
+        ]).then((src) => src.map(src =>
+            <li>
+                <button
+                    key={src}
+                    type="button"
+                    className="btn-img"
+                    style={{ backgroundImage: `url(${src})` }}
+                    onClick={onColorClick}
+                />
+            </li>
+        )
+        ).catch((err) => {
+            console.log(err);
+        })
+    }
 
     useEffectUpdate(() => {
         setIsRequired(!boardToEdit.title ? true : false)
@@ -64,38 +91,9 @@ export function BoardCreator({ cmpProps }) {
                     <div className="bg-picker-container">
                         <label className="bg-label">Background</label>
                         <ul className="bg-img-picker clean-list flex">
-                            <li>
-                                <button
-                                    type="button"
-                                    className="btn-img"
-                                    style={{ backgroundImage: 'url(https://res.cloudinary.com/dk2geeubr/image/upload/v1674753160/ztsiw7jboerwrvuvizgl.jpg)' }}
-                                    onClick={onColorClick}
-                                />
-                            </li>
-                            <li>
-                                <button
-                                    type="button"
-                                    className="btn-img"
-                                    style={{ backgroundImage: 'url(https://trello-backgrounds.s3.amazonaws.com/SharedBackground/2048x1152/17c10de18b89807a945d83325a9002eb/photo-1647831597506-3f9071cbbd6f.jpg)' }}
-                                    onClick={onColorClick}
-                                />
-                            </li>
-                            <li>
-                                <button
-                                    type="button"
-                                    className="btn-img"
-                                    style={{ backgroundImage: 'url(https://trello-backgrounds.s3.amazonaws.com/SharedBackground/2386x1600/47f09f0e3910259568294477d0bdedac/photo-1576502200916-3808e07386a5.jpg)' }}
-                                    onClick={onColorClick}
-                                />
-                            </li>
-                            <li>
-                                <button
-                                    type="button"
-                                    className="btn-img"
-                                    style={{ backgroundImage: 'url(https://res.cloudinary.com/dk2geeubr/image/upload/v1674756348/aj6jsv2ifzu6tq0z9pua.jpg)' }}
-                                    onClick={onColorClick}
-                                />
-                            </li>
+
+                            {imgBtns && imgBtns.length ? imgBtns : ''}
+
                         </ul>
                         <ul className="bg-color-container clean-list flex justify-between">
                             <li>
