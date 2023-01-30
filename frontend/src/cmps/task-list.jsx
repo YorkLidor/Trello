@@ -8,7 +8,7 @@ export function TaskList({ group, provided, isAddCardOpen, setIsAddCardOpen }) {
         className="task-list"
 
     >
-        {group.tasks.map((task, idx) =>
+        {group?.tasks?.map((task, idx) =>
             <Draggable
                 draggableId={task.id}
                 key={task.id}
