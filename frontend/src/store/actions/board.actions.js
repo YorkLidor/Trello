@@ -233,8 +233,3 @@ export function getActivityText(action) {
 
     }
 }
-
-export function addGuestUserToBoards(user) {
-    const boards = store.getState().boardModule.boards
-    boards.forEach(board => board.memberIds.push(user._id))
-}

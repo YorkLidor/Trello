@@ -6,7 +6,7 @@ import { RiAttachment2, RiInboxFill } from "react-icons/ri"
 import { IoPricetagOutline } from "react-icons/io5"
 import { BsArchive } from "react-icons/bs"
 import { TbCheckbox } from "react-icons/tb"
-import { HiOutlineUser, HiOutlineClock, HiOutlineArrowRight} from "react-icons/hi"
+import { HiOutlineUser, HiOutlineClock, HiOutlineArrowRight } from "react-icons/hi"
 import { MdContentCopy } from 'react-icons/md'
 
 
@@ -16,7 +16,11 @@ export function TaskDetailsSideBar({ task, onToggleModal }) {
 
     function onJoinBoard() {
         try {
-            task.memberIds.push(user._id)
+            const idx = board.members.findIndex(member => member._id === user._id)
+            if (idx === -1) board.members.push(user)
+            
+            if (task.memberIds) task.memberIds.push(user._id)
+            else task.memberIds = [user._id]
         }
         catch (error) {
             console.error('Failed join board')
@@ -25,7 +29,7 @@ export function TaskDetailsSideBar({ task, onToggleModal }) {
 
     return <div className="window-sidebar-box">
         {
-            board.members.find(member => member._id === user._id) && !task.memberIds.includes(user._id) && <>
+            !task.memberIds?.includes(user._id) && <>
                 <span className="sidebar-title">Suggested</span>
                 <nav className="window-sidebar flex column">
                     <button className='button-link' onClick={onJoinBoard}><HiOutlineUser data-type='icon' className="sidebar-icon" /><span className="nav-btn-txt" data-type='icon'>Join</span></button>

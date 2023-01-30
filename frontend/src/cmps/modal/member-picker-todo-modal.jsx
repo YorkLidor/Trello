@@ -23,6 +23,7 @@ export function MemberPickerTodos({ id, cmpProps }) {
         try {
             let action
 
+
             if (memberId) {
                 // TODO ADD Remove activity
                 action = `${getActivityText(REMOVE_MEMBER_A)} ${member.fullname} ${getActivityText(REMOVE_MEMBER_C)}`
@@ -32,8 +33,14 @@ export function MemberPickerTodos({ id, cmpProps }) {
                 action = `${getActivityText(ADD_MEMBER_A)} ${member.fullname} ${getActivityText(ADD_MEMBER_C)}`
             }
 
-            setMemberId(member._id)
-            todo.memberId = member._id
+            if (memberId === member._id) {
+                setMemberId(null)
+                todo.memberId = null
+            }
+            else {
+                setMemberId(member._id)
+                todo.memberId = member._id
+            } 
             const todos = checklist.todos.map(todoItem => todoItem.id === todo.id ? todo : todoItem)
             task.checklists = task.checklists.map(list => list.id === checklist ? { ...checklist, todos } : list)
 
