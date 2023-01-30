@@ -14,6 +14,7 @@ import { AiOutlineStar } from "react-icons/ai";
 import { BsPerson, } from "react-icons/bs";
 import { RxShare2 } from "react-icons/rx";
 import { MdOutlineContentCopy } from "react-icons/md";
+import { MemberList } from "./task-details/member-list";
 
 
 export function AppHeader() {
@@ -148,8 +149,8 @@ export function AppHeader() {
 
                     <div className="members-contant-container">
                         <div>Members</div>
-                        <div>MMMMM MMMM MMM </div>
-                        <button>Invite...</button>
+                        <div>{board?.members && <MemberList members={board.members} isBoardCall={true}/>}</div>
+                        <div><button className="btn-add">Invite...</button></div>
                     </div>
                 </div>
 
