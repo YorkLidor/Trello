@@ -11,7 +11,7 @@ import { closeModal, toggleModal } from "../store/actions/app.actions";
 import { HiOutlineDotsHorizontal } from "react-icons/hi";
 import { MdClose } from "react-icons/md";
 import { AiOutlineStar } from "react-icons/ai";
-import { BsPerson,  } from "react-icons/bs";
+import { BsPerson, } from "react-icons/bs";
 import { RxShare2 } from "react-icons/rx";
 import { MdOutlineContentCopy } from "react-icons/md";
 
@@ -133,13 +133,26 @@ export function AppHeader() {
                     <span>Board Menu</span>
                     <MdClose onClick={() => setIsMobailMenuOpen(!isMobailMenuOpen)} />
                 </div>
-                
+
                 <div className="icons-container">
                     <button><AiOutlineStar /></button>
                     <button><BsPerson /></button>
                     <button><RxShare2 /></button>
                     <button><MdOutlineContentCopy /></button>
                 </div>
+
+                <div className="members-container">
+                    <div className="icon container">
+                        <BsPerson />
+                    </div>
+
+                    <div className="members-contant-container">
+                        <div>Members</div>
+                        <div>MMMMM MMMM MMM </div>
+                        <button>Invite...</button>
+                    </div>
+                </div>
+
             </div>
         </header >
     </>
