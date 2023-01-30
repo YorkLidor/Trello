@@ -26,7 +26,7 @@ export function DeleteCommentModal({ user, groupId, task, comment, id }) {
     }
 
     return <div className='delete-checklist-modal'>
-        <ModalHeader id={id} header={'Delete Checklist'} allowBack={false} />
+        <ModalHeader id={id} header={'Delete Comment'} allowBack={false} />
         <p className='delete-msg'>
             Deleting a comment is forever. There is no
             undo.

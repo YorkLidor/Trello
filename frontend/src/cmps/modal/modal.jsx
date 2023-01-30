@@ -15,6 +15,7 @@ import { GroupQuickEdit } from "../group-quick-edit"
 import { UserQuickMenu } from "../user-quick-menu"
 import { DeleteCommentModal } from "./comment-delete-modal"
 import { ModalTaskMove } from "./modal-move-copy-task"
+import { DeleteTaskModal } from "./task-delete-modal"
 
 export const MODAL_LABELS = 'MODAL_LABELS'
 export const MODAL_ATTACH = 'MODAL_ATTACH'
@@ -34,6 +35,7 @@ export const USER_QUICK_MENU = 'USER_QUICK_MENU'
 export const MODAL_REMOVE_COMMENT = 'MODAL_REMOVE_COMMENT'
 export const MODAL_TASK_MOVE = 'MODAL_TASK_MOVE'
 export const MODAL_TASK_COPY = 'MODAL_TASK_COPY'
+export const MODAL_TASK_DELETE = 'MODAL_TASK_DELETE'
 
 
 export function Modal({ modal, cmpProps, cmpType, className }) {
@@ -80,6 +82,8 @@ function ModalCmp({ id, cmpProps, cmpType }) {
             case MODAL_TASK_MOVE:
             case MODAL_TASK_COPY:
                 return <ModalTaskMove {...cmpProps} id={id} />
+            case MODAL_TASK_DELETE:
+                return <DeleteTaskModal {...cmpProps} id={id} />
             default:
                 return ''
         }

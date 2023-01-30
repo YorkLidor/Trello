@@ -14,7 +14,7 @@ import { saveBoard } from '../../store/actions/board.actions'
 import { SET_ACTIVE_BOARD } from "../../store/reducers/board.reducer"
 
 import {
-    MODAL_ATTACH, MODAL_LABELS, MODAL_ATTACH_EDIT, MODAL_CHECKLIST, MODAL_TODO, MODAL_REMOVE_COMMENT, MODAL_TASK_MOVE,
+    MODAL_ATTACH, MODAL_LABELS, MODAL_ATTACH_EDIT, MODAL_CHECKLIST, MODAL_TODO, MODAL_REMOVE_COMMENT, MODAL_TASK_MOVE, MODAL_TASK_DELETE,
     MODAL_ATTACH_OPEN, MODAL_MEMBERS, MODAL_MEMBER_OPEN, MODAL_TASK_DATE, MODAL_TASK_COVER, MODAL_CHECKLIST_DELETE, MODAL_TASK_COPY
 } from '../modal/modal.jsx'
 
@@ -200,6 +200,7 @@ export function TaskDetails() {
                 case MODAL_CHECKLIST:
                 case MODAL_TASK_DATE:
                 case MODAL_TASK_MOVE:
+                case MODAL_TASK_DELETE:
                     cmpProps = { user, groupId, task: taskToEdit, modals }
                     break
                 case MODAL_TASK_COPY:
