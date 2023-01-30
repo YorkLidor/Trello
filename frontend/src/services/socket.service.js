@@ -11,6 +11,7 @@ export const SOCKET_EVENT_REVIEW_ADDED = 'review-added'
 export const SOCKET_EVENT_REVIEW_ABOUT_YOU = 'review-about-you'
 export const SOCKET_EVENT_UPDATE_GROUP = 'board-update-group'
 export const SOCKET_EVENT_ADD_BOARD = 'add-new-board'
+export const SOCKET_EVENT_UPDATE_BOARD = 'update-board'
 
 const SOCKET_EMIT_LOGIN = 'set-user-socket'
 const SOCKET_EMIT_LOGOUT = 'unset-user-socket'

@@ -71,8 +71,9 @@ async function updateBoard(req, res) {
         const board = req.body
         const savedBoard = await boardService.update(board)
         socketService.broadcast({
-            type: 'admin-update',
-            data: 'adming updated a board',
+            type: 'update-board',
+            data: savedBoard,
+            room: [savedBoard._id, 'workspace'],
             userId: loggedinUser._id
         })
         res.send(savedBoard)

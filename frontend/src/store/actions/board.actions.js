@@ -79,7 +79,6 @@ export async function setBoard(board) {
 }
 
 export async function addBoard(board) {
-    console.log('board:', board)
     store.dispatch({ type: ADD_NEW_BOARD, board })
 }
 

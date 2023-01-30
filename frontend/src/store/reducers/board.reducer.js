@@ -31,7 +31,6 @@ export function boardReducer(state = initialState, action) {
             lastEditedBoard = state.boards.find(board => board._id === action.board._id)
             lastEditedBoard = JSON.stringify(lastEditedBoard)
             return {
-
                 ...state,
                 boards: state.boards.map(board => board._id === action.board._id ? action.board : board),
                 board: action.board,
