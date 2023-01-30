@@ -51,7 +51,7 @@ export function HomePage() {
             <div className="secondary-content main-layout">
 
                 <div className="secondary-header-1">
-                    <p>SMELLO 101</p>
+                    <p>SHMELLO 101</p>
                     <h2>A productivity powerhouse</h2>
                     <p className="second-p">
                         Simple, flexible, and powerful. All it takes are boards, lists, and cards to get a clear view of who`s doing what and what needs to get done. Learn more in our guide for getting started.

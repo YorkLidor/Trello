@@ -10,6 +10,11 @@ import { modalService } from "../services/modal.service";
 import { closeModal, toggleModal } from "../store/actions/app.actions";
 import { HiOutlineDotsHorizontal } from "react-icons/hi";
 import { MdClose } from "react-icons/md";
+import { AiOutlineStar } from "react-icons/ai";
+import { BsPerson,  } from "react-icons/bs";
+import { RxShare2 } from "react-icons/rx";
+import { MdOutlineContentCopy } from "react-icons/md";
+
 
 export function AppHeader() {
     const modals = useSelector((storeState) => storeState.appModule.app.modals)
@@ -122,9 +127,20 @@ export function AppHeader() {
             </div>
 
 
-        <div className={`mobail-menu ${isMobailMenuOpen ? 'mobail-menu-open' : ''}`}>
-        <MdClose onClick={() => setIsMobailMenuOpen(!isMobailMenuOpen)} />
-        </div>
+            <div className={`mobail-menu ${isMobailMenuOpen ? 'mobail-menu-open' : ''}`}>
+
+                <div className="board-header">
+                    <span>Board Menu</span>
+                    <MdClose onClick={() => setIsMobailMenuOpen(!isMobailMenuOpen)} />
+                </div>
+                
+                <div className="icons-container">
+                    <button><AiOutlineStar /></button>
+                    <button><BsPerson /></button>
+                    <button><RxShare2 /></button>
+                    <button><MdOutlineContentCopy /></button>
+                </div>
+            </div>
         </header >
     </>
 }

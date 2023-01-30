@@ -30,14 +30,14 @@ export function HomeAppHeader() {
             </Link>
         </div>
 
-        <nav className="navlinks-container flex" >
+        {/* <nav className="navlinks-container flex" >
             <NavLink
                 className='workspace-link'
                 to="/workspace"
             >
                 Workspaces
             </NavLink>
-        </nav >
+        </nav > */}
 
         <div className="login-container flex">
             <a className="login" href="/login">
