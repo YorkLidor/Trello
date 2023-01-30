@@ -25,7 +25,7 @@ export const setThemeColor = async (style) => {
         }
     } else {
         document.documentElement.style.setProperty('--dynamic-text', DYNAMIC_TXT_LIGHT)
-        document.documentElement.style.setProperty('--dynamic-background', '#026AA7')
+        document.documentElement.style.setProperty('--dynamic-background', sourceColor ? sourceColor : '#026AA7')
         document.documentElement.style.setProperty('--board-header-background-color', BOARD_HEADER_BG_COLOR_DARK)
         document.documentElement.style.setProperty('--dynamic-text-transparent', DYNAMIC_TXT_TRANSPARENT_LIGHT)
     }

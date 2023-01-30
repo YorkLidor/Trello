@@ -3,6 +3,9 @@
     margin-inline-start: -40px;
     transform-origin: left bottom;
     transition: background-color 0.3s ease-in;
+    outline: none;
+    border: none;
+    box-shadow: none;
     cursor: pointer;
 
     &:hover {
@@ -26,10 +29,6 @@
         position: relative;
         height: 100%;
         padding-inline-start: 37px;
-        padding-inline-end: 10px;
-
-
-
 
         .todo-done-input {
             display: none;
@@ -61,8 +60,7 @@
                 border-radius: 0;
                 padding: 4px 2px;
                 margin: -2px;
-
-
+                margin-inline-end: 10px;
                 &:hover{
                     background-color: #091e4214;
                 }

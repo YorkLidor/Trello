@@ -212,7 +212,7 @@
 }
 
 @mixin input-focus {
-    box-shadow: rgb(0, 121, 191) 0px 0px 0px 2px inset;
+    box-shadow: #0079bf 0px 0px 0px 2px inset;
 }
 
 @mixin label {
