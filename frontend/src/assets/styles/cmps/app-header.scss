@@ -172,17 +172,18 @@
                     border: none;
                     border-radius: 4px;
                     padding: 3px 16px;
-                    background-color: rgb(226 226 226);
+                    background-color: rgb(223 223 223);
                 }
             }
 
             .members-container {
                 display: flex;
-                background-color: rgb(226 226 226);
+                background-color: rgb(223 223 223);
 
                 .icon.container {
                     display: flex;
                     flex-direction: column;
+                    margin: 4px 14px;
                 }
 
                 .members-contant-container{
@@ -192,6 +193,9 @@
                     flex-grow: 1;
                     >* {
                         box-shadow: 0px 1px 0 rgb(215 215 215 / 86%);
+                    }
+                    .btn-add{
+                        @include button-filled(#0079bf, #fff);
                     }
                 }
             }
