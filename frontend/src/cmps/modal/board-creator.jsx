@@ -23,13 +23,13 @@ export function BoardCreator({ cmpProps }) {
     }, [])
 
     async function crateImgBtn() {
-        return Promise.all([
-            getRandomBgImg(),
-            getRandomBgImg(),
-            getRandomBgImg(),
-            getRandomBgImg(),
-
-        ]).then((src) => src.map(src =>
+        return Promise.all((() => {
+            const srcs = []
+            for (var i = 0; i < 4; i++) {
+                srcs.push(getRandomBgImg())
+            }
+            return srcs
+        })()).then((src) => src.map(src =>
             <li>
                 <button
                     key={src}
