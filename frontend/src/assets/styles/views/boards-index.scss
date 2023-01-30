@@ -4,10 +4,11 @@
     background-color: #fff;
     margin: 16px auto 0;
     padding: 0;
-    // position: relative;
+    font-size: .9rem;
 
     @include for-narrow-layout {
         margin-top: 0;
+        font-size: 1rem;
     }
 }
 
@@ -15,8 +16,8 @@
     padding: 0;
     margin: 0 auto;
     min-height: 100%;
-    max-width: rem(400px);
-    min-width: rem(288px);
+    max-width: em(400px);
+    min-width: em(288px);
     width: 100%;
     color: #172b4d;
 

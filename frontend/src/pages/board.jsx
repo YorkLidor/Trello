@@ -17,7 +17,7 @@ import { utilService } from "../services/util.service";
 import { closeModal, toggleModal } from "../store/actions/app.actions";
 import { useEffectUpdate } from "../customHooks/useEffectUpdate";
 import { Spinner } from "../cmps/spinner";
-import { socketService, SOCKET_EMIT_SET_BOARD, SOCKET_EVENT_ADD_GROUP, SOCKET_EVENT_ADD_TASK } from "../services/socket.service";
+import { socketService, SOCKET_EMIT_SET_BOARD, SOCKET_EVENT_ADD_GROUP, SOCKET_EVENT_ADD_TASK, SOCKET_EVENT_UPDATE_BOARD } from "../services/socket.service";
 import { func } from "prop-types";
 import { setThemeColor } from "../services/color.service";
 
@@ -36,21 +36,13 @@ export function Board() {
     const navigate = useNavigate()
 
     useEffect(() => {
-        socketService.on(SOCKET_EVENT_ADD_TASK, onIncomingNewTask)
-        socketService.on(SOCKET_EVENT_ADD_GROUP, onIncomingNewGroup)
-        return () => {
-            socketService.off(SOCKET_EVENT_ADD_TASK, onIncomingNewTask)
-            socketService.off(SOCKET_EVENT_ADD_GROUP, onIncomingNewGroup)
-        }
-    }, [])
-
-    useEffect(() => {
         if (!user) navigate('/')
         loadBoard()
         setModal(modalService.addNewModal(modals))
 
 
         return async () => {
+            turnOffSockets()
             await board && saveBoard(board)
             setBoard(null)
             document.body.style.backgroundColor = "unset"
@@ -58,16 +50,27 @@ export function Board() {
         }
     }, [])
 
+
     useEffectUpdate(() => {
         document.body.style.backgroundColor = board?.style?.backgroundColor
         document.body.style.backgroundImage = board?.style?.backgroundImage
         setThemeColor(board?.style)
     }, [board])
 
-    function onIncomingNewTask({ task, groupId }) {
+    function setSocketListeners() {
+        socketService.on(SOCKET_EVENT_ADD_TASK, onIncomingNewTask)
+        socketService.on(SOCKET_EVENT_ADD_GROUP, onIncomingNewGroup)
+        socketService.on(SOCKET_EVENT_UPDATE_BOARD, console.log)
+    }
 
+    function turnOffSockets() {
+        socketService.off(SOCKET_EVENT_ADD_TASK, onIncomingNewTask)
+        socketService.off(SOCKET_EVENT_ADD_GROUP, onIncomingNewGroup)
+        socketService.off(SOCKET_EVENT_UPDATE_BOARD, console.log)
+    }
+
+    function onIncomingNewTask({ task, groupId }) {
         const groupToEdit = board.groups.find(group => groupId === group.id)
-        console.log(groupToEdit)
         groupToEdit.tasks.push({ ...task })
         setBoard({ ...board })
     }
@@ -92,25 +95,12 @@ export function Board() {
         try {
             const board = await boardService.getById(boardId)
             socketService.emit(SOCKET_EMIT_SET_BOARD, board._id)
-            saveBoard(board)
+            setSocketListeners()
+            setBoard(board)
         } catch (err) {
             navigate('/workspace')
             console.error('No Board!', err)
         }
-    }
-
-    function Loader() {
-        return <main className="board flex column justify-center">
-            <Audio
-                height="100"
-                width="100"
-                color="#091e4214"
-                ariaLabel="audio-loading"
-                wrapperStyle={{ margin: '0 auto' }}
-                wrapperClass="wrapper-class"
-                visible={true}
-            />
-        </main >
     }
 
     function onCloseModal(ev = null) {
