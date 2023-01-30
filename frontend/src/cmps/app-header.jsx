@@ -8,6 +8,7 @@ import { Modal, USER_QUICK_MENU } from "./modal/modal";
 import { utilService } from "../services/util.service";
 import { modalService } from "../services/modal.service";
 import { closeModal, toggleModal } from "../store/actions/app.actions";
+import { HiOutlineDotsHorizontal } from "react-icons/hi";
 
 export function AppHeader() {
     const modals = useSelector((storeState) => storeState.appModule.app.modals)
@@ -75,6 +76,9 @@ export function AppHeader() {
                 />
             </button>
         }
+
+        <HiOutlineDotsHorizontal className="mobail-"/>
+
         <div ref={elModal} className='modal-container'>
             {
                 modal?.isOpen && <>

@@ -66,4 +66,17 @@
             }
         }
     }
+
+    @media (max-width: 380px) {
+        height: 40px;
+        .main-nav{
+            .logo-container{
+                display: none;
+            }
+        }
+        .btn-user{
+            display: none;
+        }
+    }
 }
+
