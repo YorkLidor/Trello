@@ -34,7 +34,7 @@ export function BoardIndex() {
         setThemeColor()
         setModal(modalService.addNewModal(modals))
 
-        return () => {socketService.off(SOCKET_EVENT_ADD_BOARD, addBoard)}
+        return () => { socketService.off(SOCKET_EVENT_ADD_BOARD, addBoard) }
     }, [])
 
     useEffect(() => {
@@ -106,21 +106,6 @@ export function BoardIndex() {
         }
     }
 
-    function Loader() {
-        console.log('loader');
-        return <main className="boards-index-container flex column justify-center">
-            <Audio
-                height="100"
-                width="100"
-                color="#091e4214"
-                ariaLabel="audio-loading"
-                wrapperStyle={{ margin: '0 auto' }}
-                wrapperClass="wrapper-class"
-                visible={true}
-            />
-        </main>
-    }
-
     function onToggleModal({ target }) {
         if (!modal) return
         if (target.dataset?.type === 'icon') target = target.parentNode
@@ -139,7 +124,7 @@ export function BoardIndex() {
             elModal.current.style.right = '0px'
             elModal.current.style.bottom = '0px'
         }
-        if (window.visualViewport.height - pos.top < 500){
+        if (window.visualViewport.height - pos.top < 500) {
             elModal.current.style.top = 'unset'
             elModal.current.style.bottom = '14px'
         }
