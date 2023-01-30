@@ -1,7 +1,10 @@
+import { utilService } from '../../../services/util.service'
+
 import { BsArrowUpRight } from 'react-icons/bs'
 import { MODAL_ATTACH_EDIT, MODAL_ATTACH_OPEN } from '../../modal/modal'
 
 export function AttachmentPreview({ task, attachment, toggleModal, removeAttachment, onTaskUpdateCover }) {
+    const dateString = utilService.getTimeString(attachment.createdAt)
 
     function onEditAttachment(ev, attachment) {
         try {
@@ -52,7 +55,7 @@ export function AttachmentPreview({ task, attachment, toggleModal, removeAttachm
             <BsArrowUpRight className='attachment-open' />
 
             <span className='attachment-info'>
-                <span className="attachment-date">Added {new Date(attachment.createdAt).toLocaleDateString()}</span>
+                <span className="attachment-date">Added at {dateString}</span>
                 <span className='attachment-info-break' />
                 <span className="action-attachment" onClick={(ev) => removeAttachment(ev, attachment)}>Delete</span>
                 <span className='attachment-info-break' />
