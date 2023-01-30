@@ -3382,3 +3382,15 @@
 29.1.2023, 20:58:06 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
 29.1.2023, 20:58:06 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
 29.1.2023, 20:59:36 - INFO - New task from socket [id: HwmoSPK34t1GBTJuAAAz], emitting task {"task":{"id":"QTxMxn","title":"sdsad"},"groupId":"g103"} 
+29.1.2023, 21:14:39 - INFO - New connected socket [id: _zoDimLfR5fVdwOwAAA1] 
+29.1.2023, 21:14:40 - INFO - Setting socket.userId = 63d53855a63ebfe2c5061453 for socket [id: _zoDimLfR5fVdwOwAAA1] 
+29.1.2023, 21:14:40 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 21:14:40 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 21:45:10 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 21:45:10 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 21:45:10 - INFO - Socket disconnected [id: undefined] 
+29.1.2023, 21:45:10 - INFO - Socket disconnected [id: undefined] 
+29.1.2023, 21:45:13 - INFO - New connected socket [id: gUJz-KP--MPDK0voAAA3] 
+29.1.2023, 21:45:14 - INFO - Setting socket.userId = 63d53855a63ebfe2c5061453 for socket [id: gUJz-KP--MPDK0voAAA3] 
+29.1.2023, 21:45:15 - INFO - Broadcasting event: admin-update (userId: 63d53855a63ebfe2c5061453)
+29.1.2023, 21:45:15 - INFO - Broadcast to all excluding user: 63d53855a63ebfe2c5061453 (userId: 63d53855a63ebfe2c5061453)
