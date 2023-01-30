@@ -2,12 +2,13 @@
 
     background-color: hsla(0, 0%, 0%, 0.16);
     background-color: var(--dynamic-background);
+    border-bottom: 1px solid var(--dynamic-text-transparent);
 
     align-items: center;
 
     .main-nav {
         color: var(--dynamic-text);
-        height: 44px;
+        height: 43px;
         display: flex;
         gap: 10px;
         align-items: center;
@@ -66,4 +67,17 @@
             }
         }
     }
+
+    @media (max-width: 380px) {
+        height: 40px;
+        .main-nav{
+            .logo-container{
+                display: none;
+            }
+        }
+        .btn-user{
+            display: none;
+        }
+    }
 }
+

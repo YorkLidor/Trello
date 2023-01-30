@@ -64,12 +64,13 @@ export function TaskPreview({ task, groupId, isDragging, isQuickEdit }) {
     }
 
     async function handleFtileDrop(file) {
-        console.log('file:', file)
+        const { filename } = file
+        console.log(file.name)
         try {
-            const { url, filename } = await uploadImgDnd(file)
+            const { url } = await uploadImgDnd(file)
             const action = `${getActivityText(ADD_ATTACH)} ${filename}`
             const activity = boardService.getActivity(user, { id: task.id, title: task.title }, action)
-            
+
             const attachment = boardService.getAttachment(url, filename)
             console.log('url:', url)
             if (task.attachments?.length > 0) task.attachments.unshift(attachment)
@@ -94,71 +95,69 @@ export function TaskPreview({ task, groupId, isDragging, isQuickEdit }) {
             style={task?.cover?.fullSize && !isQuickEdit ? task?.cover?.style : {}}
 
         >
-            <FileUploader handleChange={handleFtileDrop} name="file" types={fileTypes} hoverTitle={'hi'} disabled={false}>
-                this is inside drop area
-
-                <section
-                    className={`edit-task-icon-container ${isEditBtnShow}`}
-                    onClick={onTaskQuickEdit}
-                >
-                    <img
-                        className='edit-task-icon'
-                        src="http://res.cloudinary.com/dk2geeubr/image/upload/v1674474594/xln3wronhmxmwxpucark.svg"
-                        alt=""
-                    />
-                </section>
 
 
-                {taskStyle &&
-                    <header
-                        className="cover-color"
-                        style={task?.cover?.fullSize && !isQuickEdit ? { backgroundColor: "transparent", height: taskStyle.height } : taskStyle}
-                    />
+            <section
+                className={`edit-task-icon-container ${isEditBtnShow}`}
+                onClick={onTaskQuickEdit}
+            >
+                <img
+                    className='edit-task-icon'
+                    src="http://res.cloudinary.com/dk2geeubr/image/upload/v1674474594/xln3wronhmxmwxpucark.svg"
+                    alt=""
+                />
+            </section>
+
+
+            {taskStyle &&
+                <header
+                    className="cover-color"
+                    style={task?.cover?.fullSize && !isQuickEdit ? { backgroundColor: "transparent", height: taskStyle.height } : taskStyle}
+                />
+            }
+
+            <li
+                className={`task-preview ${task?.cover?.fullSize && !isQuickEdit ? 'full' : ''}`}
+                style={{ color: taskStyle?.color && task.cover.fullSize ? taskStyle.color : '' }}
+
+            >
+                {(taskLabels && !task?.cover?.fullSize) &&
+                    <TaskLabels
+                        labels={taskLabels}
+                        board={board}
+
+                    />}
+
+                {!isQuickEdit && (
+                    <span className={`task-body `} >
+                        {task.title}
+                    </span>
+                )
                 }
 
-                <li
-                    className={`task-preview ${task?.cover?.fullSize && !isQuickEdit ? 'full' : ''}`}
-                    style={{ color: taskStyle?.color && task.cover.fullSize ? taskStyle.color : '' }}
-
-                >
-                    {(taskLabels && !task?.cover?.fullSize) &&
-                        <TaskLabels
-                            labels={taskLabels}
-                            board={board}
-
-                        />}
-
-                    {!isQuickEdit && (
-                        <span className={`task-body `} >
-                            {task.title}
-                        </span>
-                    )
-                    }
-
-                    {isQuickEdit && (
-                        <form onSubmit={onChangeTitle} className="add-card-form-container" onClick={(ev) => ev.stopPropagation()}>
-                            <div className="task-preview-container">
-                                <div className="textarea-container">
-                                    <textarea
-                                        ref={textAreaRef}
-                                        onChange={handleChange}
-                                        value={taskToSet.title}
-                                        name='title'
-                                        placeholder="Enter a title for this card..."
-                                        className="form-textarea"
-                                    >
-                                    </textarea>
-                                </div>
+                {isQuickEdit && (
+                    <form onSubmit={onChangeTitle} className="add-card-form-container" onClick={(ev) => ev.stopPropagation()}>
+                        <div className="task-preview-container">
+                            <div className="textarea-container">
+                                <textarea
+                                    ref={textAreaRef}
+                                    onChange={handleChange}
+                                    value={taskToSet.title}
+                                    name='title'
+                                    placeholder="Enter a title for this card..."
+                                    className="form-textarea"
+                                >
+                                </textarea>
                             </div>
-                            <button className="add-btn" type="submit">Save</button>
-                        </form>
-                    )
-                    }
+                        </div>
+                        <button className="add-btn" type="submit">Save</button>
+                    </form>
+                )
+                }
 
-                    {!task?.cover?.fullSize && <TaskPreviewIcons board={board} task={task} />}
-                </li>
+                {!task?.cover?.fullSize && <TaskPreviewIcons board={board} task={task} />}
+            </li>
 
-            </FileUploader>
         </div>
     </>
 }
