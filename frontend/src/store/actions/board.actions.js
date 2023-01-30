@@ -53,6 +53,7 @@ export async function removeBoard(boardId) {
 }
 
 export async function saveBoard(board) {
+    console.log(board);
     let actionType
     let savedBoard
     try {

@@ -48,6 +48,8 @@ export function TaskDetails() {
     const [taskToEdit, setTaskToEdit] = useState(null)
     const [style, setStyle] = useState({})
 
+
+
     const { boardId, groupId, taskId } = useParams()
     const navigate = useNavigate()
 
@@ -57,16 +59,17 @@ export function TaskDetails() {
 
     useEffectInit(() => {
         try {
+            console.log(boardId, groupId, taskId)
             if (!boardId || !groupId || !taskId) return errorRedirect()
             loadBoard()
             setModal(modalService.addNewModal(modals))
 
-            if(board.memberIds.includes(user._id)) board.memberIds.unshift(user._id)
+            if(board.memberIds?.includes(user._id)) board.memberIds.unshift(user._id)
 
             return () => setStyle({ '--cover-color': '#ffff' })
         }
         catch (err) {
-            console.error('Failed load task details')
+            console.error(err)
             errorRedirect()
         }
     }, [])
@@ -127,7 +130,8 @@ export function TaskDetails() {
             setTaskToEdit(task)
 
             if (!board) store.dispatch({ type: SET_ACTIVE_BOARD, board: boardModel })
-        } catch {
+        } catch(err) {
+            console.log(err)
             errorRedirect()
         }
     }
