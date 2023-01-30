@@ -31,3 +31,8 @@ export const setThemeColor = async (style) => {
     }
 }
 
+export async function getRandomBgImg() {
+    const src = await fetch("https://picsum.photos/1920/1080")
+
+    return src.url;
+}
