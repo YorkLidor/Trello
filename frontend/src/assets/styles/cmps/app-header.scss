@@ -41,7 +41,7 @@
                 margin-left: 10px;
 
                 img {
-                    height: 35px;
+                    max-width: rem(103px);
                 }
             }
 
@@ -100,7 +100,8 @@
 
         .img-logo-mobail-container {
             display: flex;
-            height: 35px;
+            height: rem(30px);
+            width: unset;
         }
 
         .main-nav {
