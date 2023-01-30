@@ -101,13 +101,15 @@ async function addNewGroup(group, boardId) {
 
 async function updateGroups(groups, boardId) {
     try {
-        const collection = await dbService.getCollection(collectionName)
-        const groupIds = groups.map(group => group.id);
-        await collection.updateMany({ '_id': ObjectId(boardId), 'groups.id': { $in: groupIds } },
-            { $set: { "groups.$": { $each: groups } } }
-        )
+        const collection = await dbService.getCollection(collectionName);
+        groups.forEach(async group => {
+            await collection.updateOne(
+                { _id: ObjectId(boardId), "groups.id": group.id },
+                { $set: { "groups.$": group } }
+            );
+        });
     } catch (err) {
-        console.log(`ERROR: cannot update groups to board`)
+        console.error("ERROR: Cannot update groups to board");
         throw err;
     }
 }

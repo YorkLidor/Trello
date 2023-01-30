@@ -43,8 +43,8 @@ export function GroupList({ onToggleModal }) {
     }
 
     async function onRemoveGroup(groupId) {
-        if (window.confirm("Are you sure?") === false) return
         try {
+
             board.groups = board.groups.filter((group) => group.id !== groupId)
             await saveBoard(board)
         } catch (err) {
