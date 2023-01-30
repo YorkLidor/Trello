@@ -10,7 +10,7 @@ import { saveBoard, setBoard } from "../store/actions/board.actions"
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd"
 import { GroupAdd } from "./group-add";
 import { Group } from "./group";
-import { socketService, SOCKET_EMIT_SEND_GROUP, SOCKET_EMIT_UPDATE_GROUP, SOCKET_EVENT_UPDATE_GROUP } from "../services/socket.service";
+import { socketService, SOCKET_EMIT_SEND_GROUP, SOCKET_EMIT_UPDATE_GROUPS, SOCKET_EVENT_UPDATE_GROUP } from "../services/socket.service";
 import { useEffect } from "react";
 
 export function GroupList({ onToggleModal }) {
@@ -81,7 +81,7 @@ export function GroupList({ onToggleModal }) {
         } else if (type === 'group-list') {
             board.groups = utilService.reorder(board.groups, sourceIdx, destinationIdx)
         }
-        socketService.emit(SOCKET_EMIT_UPDATE_GROUP, board.groups)
+        socketService.emit(SOCKET_EMIT_UPDATE_GROUPS, board.groups)
         setBoard(board)
     }
 
