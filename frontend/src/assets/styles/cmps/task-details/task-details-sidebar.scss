@@ -73,6 +73,13 @@
         margin: 0;
         width: 100%;
     }
+
+    .nav-btn-txt {
+        line-height: 20px;
+        vertical-align: text-bottom;
+    }
+
+
 }
 
 .sidebar-icon {
@@ -81,5 +88,7 @@
         background-color: $button-filled;
         border-radius: 50%;
         padding-block: 16px;
+
     }
+    margin: 0 6px 0 -6px;
 }

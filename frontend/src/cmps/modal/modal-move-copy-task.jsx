@@ -86,7 +86,7 @@ export function ModalTaskMove({ task, groupId, id, modals, isCopy }) {
     }
 
     return <div className="modal-task-action-box">
-        <ModalHeader header='Move card' id={id} />
+        <ModalHeader header={isCopy ? 'Copy card' : 'Move card'} id={id} />
         <div className="modal-actions-mainbox flex column">
             <span className="modal-label">Select destination</span>
             {
@@ -143,7 +143,7 @@ export function ModalTaskMove({ task, groupId, id, modals, isCopy }) {
 
                 }
             </div>
-            <button className="save-btn task-copy-move-btn" onClick={onMoveTask}>Move</button>
+            <button className="save-btn task-copy-move-btn" onClick={onMoveTask}>{isCopy ? 'Copy' : 'Move'}</button>
         </div>
     </div>
 }
