@@ -1,18 +1,16 @@
 import { FiPaperclip } from 'react-icons/fi'
 import { TbCheckbox, TbMessageCircle2 } from 'react-icons/tb'
 import { GrTextAlignFull } from "react-icons/gr"
-import { IoIosArrowDown } from "react-icons/io"
 import { useRef, useState } from 'react'
 import { utilService } from '../services/util.service'
 
- 
-
 export function TaskPreviewIcons({ board, task }) {
-    const membersToRender = getTaskMembers()
     const dateDoneText = useRef(getDateDoneText())
+    const [membersToRender, setMembersToRender] = useState(getTaskMembers())
 
     function getTaskMembers() {
-        board.members.filter((member) => task.memberIds?.includes(member._id))
+        const members = board.members.filter((member) => task.memberIds?.includes(member._id))
+        return members
     }
 
     function calculateTodos(task) {
@@ -41,7 +39,6 @@ export function TaskPreviewIcons({ board, task }) {
     }
 
     return <section className="task-preview-icons-container">
-
 
         {task &&
             < section className="icons-container flex">
@@ -84,9 +81,10 @@ export function TaskPreviewIcons({ board, task }) {
         }
 
         {
-            membersToRender && membersToRender.length > 0 && (
+            membersToRender?.length > 0 && (
+             
                 <section className="members-container">
-
+                       {console.log('enter??????????:')}
                     {membersToRender.map((member) => (
                         <div className="member-container" key={member._id}>
                             <img src={`${member.imgUrl}`} alt={`${member.fullname}`} />

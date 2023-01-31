@@ -3,7 +3,7 @@ import { useParams, useNavigate, Outlet } from 'react-router-dom'
 
 import { boardService } from "../services/board.service";
 
-import { saveBoard, setBoard } from "../store/actions/board.actions";
+import { setBoard } from "../store/actions/board.actions";
 
 import { BoardHeader } from "../cmps/board-header";
 import { GroupList } from "../cmps/group-list";
