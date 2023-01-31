@@ -6,7 +6,7 @@ import { utilService } from '../services/util.service'
 
 export function TaskPreviewIcons({ board, task }) {
     const dateDoneText = useRef(getDateDoneText())
-    const [membersToRender, setMembersToRender] = useState(getTaskMembers())
+    const membersToRender = getTaskMembers()
 
     function getTaskMembers() {
         const members = board.members.filter((member) => task.memberIds?.includes(member._id))
