@@ -135,7 +135,7 @@ export function TaskPreview({ task, groupId, isDragging, isQuickEdit }) {
                 )
                 }
 
-                {task && <TaskPreviewIcons board={board} task={task} />}
+                {!task?.cover?.fullSize && <TaskPreviewIcons board={board} task={task} />}
             </li>
 
         </div>
