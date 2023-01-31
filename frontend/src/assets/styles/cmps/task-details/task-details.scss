@@ -27,6 +27,7 @@
     background-color: #f4f5f7;
 
     color: $clr_font_blue;
+
     @include for-none-native-layout-details {
         position: relative;
 
@@ -60,7 +61,7 @@
     display: flex;
     top: 0;
     right: 0;
-    margin: 8px;
+    margin: 4px;
 
     height: 40px;
     width: 40px;
@@ -109,11 +110,17 @@
 .task-header {
     height: fit-content;
     float: left;
-    padding: 24px 40px 8px 56px;
     width: 100%;
     position: relative;
-
     background-color: #fff;
+    padding: 26px 14px 4px;
+
+
+
+    @include for-narrow-layout {
+        padding: 24px 40px 8px 56px;
+        background-color: #f4f5f7;
+    }
 
     .header-icon {
         position: absolute;
@@ -128,41 +135,58 @@
 
     .task-title {
         @include input-as-title;
+        font-weight: 700;
+        font-size: rem(24px);
+        margin-bottom: rem(14px);
+
+        @include for-narrow-layout {
+            @include input-as-title;
+            font-weight: 600;
+            margin-bottom: 0;
+        }
     }
 
     .header-subtitle {
         font-size: 14px;
         display: inline-block;
         width: fit-content;
-        margin: 0px 8px 9px 2px;
         padding-block-start: 8px;
-
         line-height: 20px;
 
-        color: #5E6C84;
+        color: #143e70;
 
         .group-name {
-            text-decoration: underline;
             cursor: pointer;
-
-            @include for-native-layout-details {
-                font-weight: 900;
-                text-decoration: none;
-            }
         }
 
+        .group-name,
         .board-name {
-            display: none;
+            font-weight: 700;
+            font-style: italic;
 
-            @include for-native-layout-details {
+        }
+
+        @include for-narrow-layout {
+            padding-top: 0;
+
+            .group-name,
+            .board-name {
+                margin: 0px 8px 9px 2px;
+                color: #5E6C84;
+                font-style: normal;
+                text-decoration: underline;
                 display: inline;
-                font-weight: 900;
+                font-weight: 400;
+            }
+
+            .board-name {
+                display: none;
             }
         }
+
     }
 
     @include for-native-layout-details {
-        padding: 45px 0 0 10px;
 
         @include task-details-border-line;
     }

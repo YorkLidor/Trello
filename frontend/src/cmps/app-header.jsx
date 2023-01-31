@@ -25,7 +25,7 @@ export function AppHeader() {
     const board = useSelector(state => state.boardModule.board)
     const user = useSelector(state => state.userModule.user)
     const navigate = useNavigate()
-    const [isMobailMenuOpen, setIsMobailMenuOpen] = useState('')
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState('')
 
 
     useEffect(() => {
@@ -66,7 +66,7 @@ export function AppHeader() {
     }
 
     return <>
-        <header className={`app-header-regular ${!board ? 'workspace-mobail' : ''}`}>
+        <header className={`app-header-regular ${!board ? 'workspace-mobile' : ''}`}>
             <nav className="main-nav flex">
                 <div className="logo-container">
                     <Link to={!user ? "/" : "/workspace"} className="logo">
@@ -79,8 +79,8 @@ export function AppHeader() {
                 </nav>
 
                 {board && (
-                    <div className="board-name-mobail">
-                        <MdClose onClick={() => navigate("/workspace")} />
+                    <div className="board-name-mobile">
+                        <BiArrowBack onClick={() => navigate("/workspace")} />
                         <span>{board?.title}</span>
                     </div>
                 )}
@@ -107,7 +107,7 @@ export function AppHeader() {
             {board &&
                 <HiOutlineDotsHorizontal
                     className="mobail-menu-btn"
-                    onClick={() => setIsMobailMenuOpen(!isMobailMenuOpen)}
+                    onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                 />
             }
 
@@ -129,11 +129,10 @@ export function AppHeader() {
             </div>
 
 
-            <div className={`mobail-menu ${isMobailMenuOpen ? 'mobail-menu-open' : ''}`}>
+            <div className={`mobile-menu ${isMobileMenuOpen ? 'mobail-menu-open' : ''}`}>
 
                 <div className="board-header">
-
-                    <BiArrowBack onClick={() => setIsMobailMenuOpen(!isMobailMenuOpen)} />
+                    <MdClose onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} />
                     <span>Board Menu</span>
                 </div>
 

@@ -1,6 +1,6 @@
 .task-details-cover {
     position: relative;
-    height: 160px;
+    height: rem(224px);
     min-height: 160px;
     padding: 0px;
     background-color: var(--cover-color);
@@ -9,19 +9,48 @@
     background-origin: content-box;
     background-repeat: no-repeat;
     cursor: pointer;
+
     &:hover {
         opacity: 0.9;
+    }
+
+    @include for-narrow-layout {
+        height: 160px;
     }
 }
 
 .btn-cover-box {
     position: absolute;
-    bottom: 8px;
-    right: 8px;
+    bottom: 21px;
+    left: 14px;
     color: #172b4d;
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: #fff;
+    width: unset;
+    align-items: center;
+    font-size: 15px;
+    font-weight: 500;
+    padding: 18px 14px;
+
+    svg {
+        background-color: transparent;
+        color: #172b4d;
+    }
+
+    @include for-narrow-layout {
+        display: inline-flex;
+        justify-content: center;
+        background-color: rgba(255, 255, 255, 0.2);
+        padding: inherit;
+        bottom: 0px;
+        left: unset;
+        right: 8px;
+        font-size: 14px;
+        font-weight: 400;
+        width: 75px;
+    }
 
     &:hover {
-        background-color: rgba(0, 0, 0, 0.2);;
+        background-color: rgba(0, 0, 0, 0.2);
+        ;
     }
 }
