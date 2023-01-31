@@ -1,5 +1,5 @@
 .board {
-    height: calc(100vh - 44px);
+    height: calc(100vh - 60px);
     background-position: 50%;
     background-size: cover;
     display: flex;
@@ -10,6 +10,10 @@
     padding: 0;
     overflow-y: hidden;
     overflow-x: hidden;
+
+    @include for-narrow-layout{
+        height: calc(100vh - 44px);
+    }
 }
 
 .all-screen-modal{

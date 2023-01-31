@@ -11,10 +11,11 @@ import { closeModal, toggleModal } from "../store/actions/app.actions";
 import { HiOutlineDotsHorizontal } from "react-icons/hi";
 import { MdClose } from "react-icons/md";
 import { AiOutlineStar } from "react-icons/ai";
-import { BsPerson, } from "react-icons/bs";
+import { BsPeopleFill, BsPerson, } from "react-icons/bs";
 import { RxShare2 } from "react-icons/rx";
 import { MdOutlineContentCopy } from "react-icons/md";
 import { MemberList } from "./task-details/member-list";
+import { BiArrowBack } from "react-icons/bi";
 
 
 export function AppHeader() {
@@ -131,26 +132,30 @@ export function AppHeader() {
             <div className={`mobail-menu ${isMobailMenuOpen ? 'mobail-menu-open' : ''}`}>
 
                 <div className="board-header">
+
+                    <BiArrowBack onClick={() => setIsMobailMenuOpen(!isMobailMenuOpen)} />
                     <span>Board Menu</span>
-                    <MdClose onClick={() => setIsMobailMenuOpen(!isMobailMenuOpen)} />
                 </div>
 
                 <div className="icons-container">
                     <button><AiOutlineStar /></button>
-                    <button><BsPerson /></button>
+                    <button><BsPeopleFill /></button>
                     <button><RxShare2 /></button>
                     <button><MdOutlineContentCopy /></button>
                 </div>
 
                 <div className="members-container">
-                    <div className="icon container">
+                    <div className="title-container">
                         <BsPerson />
+                        <span className="title">Members</span>
                     </div>
 
                     <div className="members-contant-container">
-                        <div>Members</div>
-                        <div>{board?.members && <MemberList members={board.members} isBoardCall={true}/>}</div>
-                        <div><button className="btn-add">Invite...</button></div>
+                        <div className="mambers-icons">
+                            {board?.members && <MemberList members={board.members} isBoardCall={true} />}
+                        </div>
+                        <button className="btn-add">Invite</button>
+
                     </div>
                 </div>
 
