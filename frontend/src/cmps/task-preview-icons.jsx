@@ -84,7 +84,6 @@ export function TaskPreviewIcons({ board, task }) {
             membersToRender?.length > 0 && (
              
                 <section className="members-container">
-                       {console.log('enter??????????:')}
                     {membersToRender.map((member) => (
                         <div className="member-container" key={member._id}>
                             <img src={`${member.imgUrl}`} alt={`${member.fullname}`} />

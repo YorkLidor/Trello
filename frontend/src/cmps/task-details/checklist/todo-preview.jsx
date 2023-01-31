@@ -4,14 +4,13 @@ import { TextareaEditor } from '../../textarea-editor'
 import { TbDots } from 'react-icons/tb'
 import { RiUserAddLine } from 'react-icons/ri'
 import { ImCheckboxChecked, ImCheckboxUnchecked } from 'react-icons/im'
-import { MODAL_MEMBERS, MODAL_MEMBERS_TODOS, MODAL_TODO } from '../../modal/modal'
+import { MODAL_MEMBERS_TODOS, MODAL_TODO } from '../../modal/modal'
 import { useState } from 'react'
 import { useSelector } from 'react-redux'
 
 export function Todo({ checklist, todoItem, onUpdateTodo, onRemoveTodo, setTodoToEdit, toolInEdit, onToggleModal }) {
 
     const board = useSelector(store => store.boardModule.board)
-    console.log(board)
     const [todo, setTodo] = useState(todoItem)
     const todoMember = todo.memberId ? board.members?.find(member => member._id === todo.memberId) : null
 
