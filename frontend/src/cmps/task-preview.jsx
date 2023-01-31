@@ -17,7 +17,7 @@ import { fileTypes, uploadImgDnd } from "../services/upload-img.service"
 export function TaskPreview({ task, groupId, isDragging, isQuickEdit }) {
     const user = useSelector((storeState) => storeState.userModule.user)
     const board = useSelector((storeState) => storeState.boardModule.board)
-    const [taskToSet, setTaskTitleToSet, handleChange] = useForm({ title: task.title })
+    const [taskToEdit, setTaskToEdit, handleChange] = useForm({ title: task.title })
     const [isEditBtnShow, setIsEditBtnShow] = useState('')
     const elTaskPreview = useRef()
     const navigate = useNavigate()
@@ -34,7 +34,7 @@ export function TaskPreview({ task, groupId, isDragging, isQuickEdit }) {
         ev.preventDefault()
         ev.stopPropagation()
         try {
-            task.title = taskToSet.title
+            task.title = taskToEdit.title
             const boardToSave = await boardService.saveTaskTitle(board, groupId, task)
             store.dispatch({ type: SET_TASK_QUICK_EDIT, taskQuickEdit: null })
             await saveBoard(boardToSave)
@@ -122,7 +122,7 @@ export function TaskPreview({ task, groupId, isDragging, isQuickEdit }) {
                                 <textarea
                                     ref={textAreaRef}
                                     onChange={handleChange}
-                                    value={taskToSet.title}
+                                    value={taskToEdit.title}
                                     name='title'
                                     placeholder="Enter a title for this card..."
                                     className="form-textarea"
@@ -135,7 +135,7 @@ export function TaskPreview({ task, groupId, isDragging, isQuickEdit }) {
                 )
                 }
 
-                {task && <TaskPreviewIcons board={board} task={task} />}
+                {!task?.cover?.fullSize && <TaskPreviewIcons board={board} task={task} />}
             </li>
 
         </div>

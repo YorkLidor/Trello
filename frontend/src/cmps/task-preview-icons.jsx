@@ -6,7 +6,7 @@ import { utilService } from '../services/util.service'
 
 export function TaskPreviewIcons({ board, task }) {
     const dateDoneText = useRef(getDateDoneText())
-    const [membersToRender, setMembersToRender] = useState(getTaskMembers())
+    const membersToRender = getTaskMembers()
 
     function getTaskMembers() {
         const members = board.members.filter((member) => task.memberIds?.includes(member._id))
@@ -84,7 +84,6 @@ export function TaskPreviewIcons({ board, task }) {
             membersToRender?.length > 0 && (
              
                 <section className="members-container">
-                       {console.log('enter??????????:')}
                     {membersToRender.map((member) => (
                         <div className="member-container" key={member._id}>
                             <img src={`${member.imgUrl}`} alt={`${member.fullname}`} />
