@@ -163,6 +163,11 @@ export function Board() {
             elModal.current.style.bottom = '0px'
         }
 
+        if (window.visualViewport.height - pos.top < 500) {
+            elModal.current.style.top = 'unset'
+            elModal.current.style.bottom = '14px'
+        }
+
         setModal(modalService.setModalData(modals, modal.id, modalType, props))
         console.log('modal:', modal, "props", props)
         toggleModal(modals, modal.id)
