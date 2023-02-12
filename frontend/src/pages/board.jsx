@@ -131,7 +131,7 @@ export function Board() {
                 break;
             case MODAL_MEMBER_OPEN:
                 props = { member, user, boardId, groupId }
-                elModal.current.style.top = pos.bottom - 6 + 'px'
+                elModal.current.style.top = pos.bottom  + 'px'
                 elModal.current.style.right = '4px'
                 break;
             case MODAL_TASK_COVER:
@@ -156,7 +156,7 @@ export function Board() {
 
 
 
-        if (window.visualViewport.width < 550) {
+        if (window.visualViewport.width < 550 && modalType !== MODAL_MEMBER_OPEN) {
             elModal.current.style.left = '0px'
             elModal.current.style.top = '0px'
             elModal.current.style.right = '0px'
