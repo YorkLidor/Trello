@@ -12,17 +12,13 @@ export function HomePage() {
     const user = useSelector(state => state.userModule.user)
 
     useEffect(() => {
-        console.log(user);
         if (user) navigate('/workspace')
     }, [])
-
-    console.log(window.location)
 
     async function onGuestLogin(ev) {
         ev.preventDefault()
         try {
             const user = await login(guest)
-            console.log('user:', user)
             if (user) navigate('/workspace')
         } catch (error) {
             console.error('cant login')

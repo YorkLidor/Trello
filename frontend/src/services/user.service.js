@@ -1,8 +1,4 @@
-import { func } from "prop-types"
-import { storageService } from "./async-storage.service"
 import { httpService } from "./http.service"
-import { jUser } from "./jsons/board"
-import { utilService } from "./util.service"
 
 const STORAGE_KEY_LOGGEDIN_USER = 'loggedinUser'
 
@@ -19,13 +15,12 @@ const ROUTE = 'user'
 
 async function login(userCred) {
     try {
-        console.log('user', userCred);
         const user = await httpService.post('auth/login', userCred)
         if (user) {
             return saveLocalUser(user)
         }
     } catch (err) {
-        console.log('Error with login', err)
+        console.error('Error with login', err)
         throw err
     }
 }
@@ -34,7 +29,7 @@ async function getById(userId) {
     try {
         return httpService.get(`${ROUTE}/${userId}`)
     } catch (err) {
-        console.log('Couldnt get user', err)
+        console.error('Couldnt get user', err)
         throw err
     }
 }
