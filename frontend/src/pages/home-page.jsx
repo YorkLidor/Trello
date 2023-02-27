@@ -11,9 +11,7 @@ export function HomePage() {
     const navigate = useNavigate()
     const user = useSelector(state => state.userModule.user)
 
-    useEffect(() => {
-        if (user) navigate('/workspace')
-    }, [])
+    useEffect(() => { if (user) navigate('/workspace') })
 
     async function onGuestLogin(ev) {
         ev.preventDefault()
@@ -21,7 +19,7 @@ export function HomePage() {
             const user = await login(guest)
             if (user) navigate('/workspace')
         } catch (error) {
-            console.error('cant login')
+            console.error('can\'t login')
         }
     }
 
@@ -40,7 +38,7 @@ export function HomePage() {
                     </div>
 
                     <div className="right-hero-container">
-                        <img src="https://images.ctfassets.net/rz1oowkt5gyp/75rDABL8fyMtNLlUAtBxrg/c5e145977a86c41c47e17c69410c64f7/TrelloUICollage_4x.png?w=2280&fm=webp" />
+                        <img src="https://images.ctfassets.net/rz1oowkt5gyp/75rDABL8fyMtNLlUAtBxrg/c5e145977a86c41c47e17c69410c64f7/TrelloUICollage_4x.png?w=2280&fm=webp" alt="ui collage"/>
                     </div>
                 </div>
 
@@ -49,7 +47,7 @@ export function HomePage() {
             <div className="secondary-content main-layout">
 
                 <div className="secondary-header-1">
-                    <p>SHMELLO 101</p>
+                    <p>SHMELLO APP</p>
                     <h2>A productivity powerhouse</h2>
                     <p className="second-p">
                         Simple, flexible, and powerful. All it takes are boards, lists, and cards to get a clear view of who`s doing what and what needs to get done. Learn more in our guide for getting started.
@@ -80,7 +78,7 @@ export function HomePage() {
                     </div>
 
                     <div className="img-container">
-                        <img src="https://images.ctfassets.net/rz1oowkt5gyp/4U0VUZYX2tQmB5KVGxBabp/7321ac088fe8ec39dbe3069c47d7df99/Carousel_Image_Lists_2x.png?w=1140&fm=webp" alt="" />
+                        <img src="https://images.ctfassets.net/rz1oowkt5gyp/4U0VUZYX2tQmB5KVGxBabp/7321ac088fe8ec39dbe3069c47d7df99/Carousel_Image_Lists_2x.png?w=1140&fm=webp" alt="Board example" />
                     </div>
                 </div>
 

@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useForm } from "../customHooks/useForm";
 
@@ -11,7 +12,6 @@ import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd"
 import { GroupAdd } from "./group-add";
 import { Group } from "./group";
 import { socketService, SOCKET_EMIT_SEND_GROUP, SOCKET_EMIT_UPDATE_GROUPS, SOCKET_EVENT_UPDATE_GROUP } from "../services/socket.service";
-import { useEffect } from "react";
 
 export function GroupList({ onToggleModal }) {
     const board = useSelector(state => state.boardModule.board)
@@ -117,7 +117,11 @@ export function GroupList({ onToggleModal }) {
                             </Draggable >
                         )}
                     {provided.placeholder}
-                    <GroupAdd onAddGroup={onAddGroup} handleChange={handleChange} groupToEdit={groupToEdit} />
+                    <GroupAdd
+                        onAddGroup={onAddGroup}
+                        handleChange={handleChange}
+                        groupToEdit={groupToEdit}
+                    />
                 </ul>
             }
         </Droppable >

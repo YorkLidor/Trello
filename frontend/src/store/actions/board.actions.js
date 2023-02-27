@@ -32,12 +32,11 @@ export const REMOVE_COMMENT = 'REMOVE_COMMENT'
 
 export async function loadBoards() {
     try {
-
         const boards = await boardService.query()
         store.dispatch({ type: SET_BOARDS, boards })
     }
     catch (error) {
-        console.log('Had issues loading boards', error)
+        console.error('Had issues loading boards', error)
         throw new Error('Had issues loading boards')
     }
 }

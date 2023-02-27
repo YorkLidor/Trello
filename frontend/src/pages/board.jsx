@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { useEffectUpdate } from "../customHooks/useEffectUpdate";
 import { useParams, useNavigate, Outlet } from 'react-router-dom'
 
 import { boardService } from "../services/board.service";
@@ -7,18 +8,14 @@ import { setBoard } from "../store/actions/board.actions";
 
 import { BoardHeader } from "../cmps/board-header";
 import { GroupList } from "../cmps/group-list";
-
-import { Audio } from 'react-loader-spinner'
 import { useSelector } from "react-redux";
 import { TaskQuickEdit } from "../cmps/task-quick-edit";
 import { modalService } from "../services/modal.service";
 import { Modal, MODAL_GROUP_QUICK_EDIT, MODAL_LABELS, MODAL_MEMBERS, MODAL_MEMBER_OPEN, MODAL_TASK_COVER, MODAL_TASK_DATE } from "../cmps/modal/modal";
 import { utilService } from "../services/util.service";
 import { closeModal, toggleModal } from "../store/actions/app.actions";
-import { useEffectUpdate } from "../customHooks/useEffectUpdate";
 import { Spinner } from "../cmps/spinner";
 import { socketService, SOCKET_EMIT_SET_BOARD, SOCKET_EVENT_ADD_GROUP, SOCKET_EVENT_ADD_TASK, SOCKET_EVENT_UPDATE_BOARD } from "../services/socket.service";
-import { func } from "prop-types";
 import { setThemeColor } from "../services/color.service";
 
 export function Board() {
@@ -39,7 +36,6 @@ export function Board() {
         if (!user) navigate('/')
         loadBoard()
         setModal(modalService.addNewModal(modals))
-
 
         return async () => {
             turnOffSockets()
@@ -128,33 +124,26 @@ export function Board() {
                 props = { groupId, task }
                 elModal.current.style.top = pos.top + 'px'
                 elModal.current.style.left = pos.left + 'px'
-                break;
+                break
             case MODAL_MEMBER_OPEN:
                 props = { member, user, boardId, groupId }
-                elModal.current.style.top = pos.bottom  + 'px'
+                elModal.current.style.top = pos.bottom + 'px'
                 elModal.current.style.right = '4px'
-                break;
+                break
             case MODAL_TASK_COVER:
-                props = { user, boardId, groupId, task }
-                elModal.current.style.top = pos.top + 'px'
-                elModal.current.style.left = pos.left + 'px'
-                break;
             case MODAL_TASK_DATE:
                 props = { user, boardId, groupId, task }
                 elModal.current.style.top = pos.top + 'px'
                 elModal.current.style.left = pos.left + 'px'
-                break;
+                break
             case MODAL_GROUP_QUICK_EDIT:
                 props = { board, groupId, onRemoveGroup, onCopyGroup }
                 elModal.current.style.top = pos.bottom + 'px'
                 elModal.current.style.left = pos.left + 'px'
-                break;
+                break
             default:
-                break;
+                break
         }
-
-
-
 
         if (window.visualViewport.width < 550 && modalType !== MODAL_MEMBER_OPEN) {
             elModal.current.style.left = '0px'
@@ -171,7 +160,6 @@ export function Board() {
         setModal(modalService.setModalData(modals, modal.id, modalType, props))
         console.log('modal:', modal, "props", props)
         toggleModal(modals, modal.id)
-
     }
 
     if (!board || !board._id) return <Spinner />

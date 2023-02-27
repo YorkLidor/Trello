@@ -6,6 +6,20 @@ export function GroupQuickEdit({ id, groupId, onRemoveGroup, onCopyGroup }) {
     const board = useSelector(state => state.boardModule.board)
     const modals = useSelector((storeState) => storeState.appModule.app.modals)
 
+    function onItemClick(action) {
+        switch (action) {
+            case 'COPY':
+                onCopyGroup(board, groupId)
+                break;
+            case 'REMOVE':
+                onRemoveGroup(groupId)
+                break;
+            default:
+                break;
+        }
+        closeModal(modals, id)
+    }
+
     return <div className="modal-members-box quick-edit-modal-container">
 
         <ModalHeader id={id} header={'List actions'} allowBack={false} />
@@ -14,10 +28,10 @@ export function GroupQuickEdit({ id, groupId, onRemoveGroup, onCopyGroup }) {
             <li>
                 Add card...
             </li>
-            <li onClick={() => { onCopyGroup(board, groupId); closeModal(modals, id) }}>
+            <li onClick={() => { onItemClick('COPY') }}>
                 Copy list...
             </li>
-            <li onClick={() => { onRemoveGroup(groupId); closeModal(modals, id) }}>
+            <li onClick={() => { onItemClick('REMOVE') }}>
                 Delete list...
             </li>
         </ul>
