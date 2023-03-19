@@ -9,7 +9,7 @@ import { Provider } from 'react-redux'
 import { store } from './store/store'
 import { HomeAppHeader } from './cmps/home-app-header'
 import { AppHeader } from './cmps/app-header'
-import { Login } from './pages/login'
+import { LoginSignup } from './pages/login'
 
 export function RootCmp() {
     const location = useLocation()
@@ -19,7 +19,7 @@ export function RootCmp() {
             {location.pathname !== '/login' && (location.pathname === '/' ? <HomeAppHeader /> : <AppHeader />)}
             <Routes>
                 <Route path="/" element={<HomePage />} />
-                <Route path="/login" element={<Login />} />
+                <Route path="/login" element={<LoginSignup />} />
                 <Route path="/workspace" element={<BoardIndex />} />
                 <Route path="/:boardId" element={<Board />}>
                     <Route path="/:boardId/:groupId/:taskId" element={<TaskDetails />} />

@@ -1,17 +1,17 @@
 import { useState } from "react"
-import { useNavigate } from "react-router-dom"
+import { useNavigate, useParams, useResolvedPath, useRoutes } from "react-router-dom"
 import { useForm } from "../customHooks/useForm"
 import { userService } from "../services/user.service"
-import { login } from "../store/actions/user.actions"
+import { login, signup } from "../store/actions/user.actions"
 import logo from "../assets/img/smello-no-bg.png"
 
-export function Login() {
+export function LoginSignup() {
     const [user, setUser, handleChange] = useForm(userService.getEmptyCredentials())
     const [isFilled, setIsFilled] = useState(false)
     const navigate = useNavigate()
+    const mode = useResolvedPath().pathname
 
-    async function onLogIn(ev) {
-        ev.preventDefault()
+    async function onLogIn() {
         console.log('user:', user)
         if (!user.username || !user.password) return
         try {
@@ -20,6 +20,15 @@ export function Login() {
         } catch (err) {
             console.error(err.massage)
         }
+    }
+
+    function onSignup() {
+
+    }
+
+    function onSubmit(ev) {
+        ev.preventDefault()
+        mode.includes('login') ? onLogIn() : onSignup()
     }
 
     function onContinue(ev) {
@@ -35,8 +44,15 @@ export function Login() {
                 alt="logo"
             />
         </header>
-        <form onSubmit={onLogIn} className={`login-form ${isFilled ? 'filled' : ''}`}>
-            <h1 className="login-title">Log in to Shmello</h1>
+        <form
+            onSubmit={onSubmit}
+            className={`login-form ${isFilled ? 'filled' : ''}`}
+        >
+            <h1
+                className="login-title"
+            >
+                {mode.includes('login') ? 'Log in' : 'Sign up'} to Shmello
+            </h1>
             <input
                 className="input-email"
                 type="text"
@@ -58,13 +74,12 @@ export function Login() {
             >
                 Continue
             </button>
-            <button type="submit" className="btn-login">Log in</button>
-            <hr className="divider"/>
+            <button type="submit" className="btn-login">{mode.includes('login') ? 'Log in' : 'Sign up'}</button>
+            <hr className="divider" />
             <section className="signup-link">
-                <a >Sign up for an account</a>
+                <a >{mode.includes('login') ? 'Sign up for an account' : 'Log in to Shmello'}</a>
             </section>
         </form>
         <hr />
-        <img className="atlassian-img" src="https://d2k1ftgv7pobq7.cloudfront.net/meta/c/p/res/images/16006ae28f149063408d601e8c80eddc/atlassian-logo-blue-small.svg" alt="atlassian" />
     </main>
 }

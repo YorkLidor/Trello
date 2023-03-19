@@ -34,7 +34,7 @@ export function HomePage() {
                             <p>Keep everything in the same place—even if your team isn’t.</p>
                         </div>
 
-                        <button onClick={onGuestLogin} className="signup-btn">Start Demo</button>
+                        <button onClick={onGuestLogin} className="demo-btn">Start Demo</button>
                     </div>
 
                     <div className="right-hero-container">

@@ -5,7 +5,6 @@ import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import { RootCmp } from './root-cmp'
 import './assets/styles/main.scss'
 
-
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Router>

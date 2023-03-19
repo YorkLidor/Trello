@@ -20,12 +20,12 @@ import { BiArrowBack } from "react-icons/bi";
 
 export function AppHeader() {
     const modals = useSelector((storeState) => storeState.appModule.app.modals)
-    const [modal, setModal] = useState(null)
-    const elModal = useRef()
     const board = useSelector(state => state.boardModule.board)
     const user = useSelector(state => state.userModule.user)
-    const navigate = useNavigate()
+    const [modal, setModal] = useState(null)
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState('')
+    const elModal = useRef()
+    const navigate = useNavigate()
 
 
     useEffect(() => {
