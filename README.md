@@ -21,6 +21,6 @@ Shmello is a web application that allows you to manage your tasks and projects i
 
 ## Credits 👏
 
-- This project was made by Matan Adi, Lidor York and Gal Zohar as part of our course in Coding Academy
+- This project was made by [Matan Adi](https://github.com/matanad), [Lidor York](https://github.com/YorkLidor) and [Gal Zohar](https://github.com/GalZohar4021) as part of our course in Coding Academy
 - We used React, Redux, Node.js, MongoDB, Socket.io and other technologies to build Shmello
 - We followed the agile methodology and completed the project in 14 days
