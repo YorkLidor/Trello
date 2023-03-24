@@ -1,6 +1,6 @@
 # Shmello 📝
 
-Shmello is a web application that allows you to manage your tasks and projects in a simple and intuitive way. It is inspired by Trello, but with some unique features and design.
+Shmello is a web application that allows you to manage your tasks and projects in a simple and intuitive way. It is inspired by Trello.
 
 ## Features 🚀
 
